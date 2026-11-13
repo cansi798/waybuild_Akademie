@@ -155,7 +155,7 @@ Als **Teilnehmer/in** möchte ich nach dem Absenden sofort eine Bestätigung seh
 
 #### US-13 Mehrere Teilnehmende anmelden · **Soll**
 Als **Ausbilder/in oder Personaler/in** möchte ich mehrere Azubis in einem Vorgang anmelden, damit ich nicht für jede Person ein eigenes Formular ausfüllen muss.
-- AK1: Bei „Mein Betrieb zahlt“ können weitere Teilnehmende (Vorname, Nachname, E-Mail) hinzugefügt werden, bis zu einer festgelegten Höchstzahl.
+- AK1: Bei beiden Zahlwegen können weitere Teilnehmende (Vorname, Nachname, E-Mail) hinzugefügt werden, insgesamt höchstens 5 Personen.
 - AK2: Die Zusammenfassung zeigt Anzahl der Teilnehmenden und Gesamtpreis.
 - AK3: In der Anmelde-E-Mail ist jede teilnehmende Person einzeln aufgeführt.
 

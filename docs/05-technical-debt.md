@@ -28,6 +28,8 @@ Die Liste wird bei jedem Meilenstein (siehe [Projektdokumentation, Zeitplan](01-
 | TD-10 | Live-Übertragung zu ALL-INKL anfangs manuell | nach Livegang | US-25, NFA-19 |
 | TD-11 | Einfacher Spam-Schutz | nach Livegang | NFA-13, R-07 |
 | TD-12 | Kann-Funktionen nicht umgesetzt (Kalenderdatei, Suche) | bei Bedarf | US-09, US-30 |
+| TD-13 | **Coaching-Knopf ohne JavaScript:** Das Anmeldeformular ist eine statische Seite; ohne JavaScript zeigt es für Coaching den Knopf „Zahlungspflichtig anmelden“ statt „Paket anfragen“. | Eine Seite für Kurs und Coaching, Vorauswahl per URL-Parameter nur mit JavaScript. | Wenige Besucher ohne JavaScript sehen beim Coaching einen strengeren Knopftext als nötig. | Eigene statische Seite /coaching/anfrage/ mit eigenem Knopftext. |
+| TD-14 | **„Nächster Start“ bis zum nächsten Build:** Kursseite und Kurskarte zeigen den nächsten Termin aus dem letzten Build; Countdown und Hero rechnen im Browser nach. | Statische Website; der tägliche Neubau aktualisiert die Angaben. | Nach Ablauf eines Termins kann bis zu einem Tag ein vergangener Start angezeigt werden. | Täglicher Neubau (vorhanden) oder kleine Prüfung im Browser wie beim Countdown. |
 
 ---
 
