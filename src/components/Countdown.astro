@@ -185,10 +185,9 @@ const folge = (o: CountdownOption) =>
 <script>
   // Tage mit dem heutigen Datum in Europe/Berlin neu berechnen (die Seite ist statisch gebaut).
   const TAG = 86_400_000;
-  const heute = () => {
-    const s = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
-    return Date.parse(`${s}T00:00:00Z`);
-  };
+  // Formatierer einmal anlegen (Tempo: jedes neue Intl.DateTimeFormat mit Zeitzone kostet auf schwachen Handys spürbar)
+  const berlin = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit' });
+  const heute = () => Date.parse(`${berlin.format(new Date())}T00:00:00Z`);
   const tageBis = (iso: string) => Math.round((Date.parse(`${iso}T00:00:00Z`) - heute()) / TAG);
 
   interface Folge { pruefung: string; start: string; ende: string; schluss: string; pruefungText: string; startText: string }

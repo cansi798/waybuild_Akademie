@@ -206,6 +206,9 @@ const n = SZENEN.length;
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
+  .wb-bild {
+    aspect-ratio: 320 / 220; /* = viewBox der Grafiken; hält die Größe auch, wenn der Inhalt nicht gezeichnet wird */
+  }
   .wb-bild svg {
     display: block;
     width: 100%;
@@ -228,38 +231,45 @@ const n = SZENEN.length;
     list-style: none;
   }
 
-  /* Bühne (mit JS, ohne reduzierte Bewegung) */
-  .wb.ist-buehne .wb-liste {
-    grid-template-columns: minmax(0, 1fr);
+  /* Bühne (mit JS, ohne reduzierte Bewegung). Tempo: Das Layout steht schon im CSS (wie bei der Hero-Bühne) – kein
+     Umbau von sechs Bildern zur Bühne, wenn das Skript läuft. Nicht sichtbare Szenen zeichnen ihre Grafik nicht
+     (content-visibility); die gerade ausblendende (ist-geht) bleibt für den Übergang gezeichnet. */
+  @media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+    .wb .wb-liste {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .wb .wb-szene {
+      grid-area: 1 / 1;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.45s ease, visibility 0s linear 0.45s;
+    }
+    .wb .wb-szene.ist-aktiv {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.45s ease;
+    }
+    .wb .wb-szene:not(.ist-aktiv):not(.ist-geht) .wb-bild {
+      content-visibility: hidden;
+    }
+    .wb [data-wb-steuerung],
+    .wb [data-wb-punkte-wrap] {
+      display: flex;
+    }
   }
-  .wb.ist-buehne .wb-szene {
-    grid-area: 1 / 1;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.45s ease, visibility 0s linear 0.45s;
-  }
-  .wb.ist-buehne .wb-szene.ist-aktiv {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.45s ease;
-  }
-  @media (min-width: 48rem) {
-    .wb.ist-buehne .wb-szene {
+  @media (prefers-reduced-motion: no-preference) and (scripting: enabled) and (min-width: 48rem) {
+    .wb .wb-szene {
       display: grid;
       grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
       align-items: center;
       gap: 2.5rem;
     }
-    .wb.ist-buehne .wb-text {
+    .wb .wb-text {
       padding-top: 0;
     }
-    .wb.ist-buehne h3 {
+    .wb h3 {
       font-size: clamp(1.75rem, 3vw, 2.5rem);
     }
-  }
-  .wb.ist-buehne [data-wb-steuerung],
-  .wb.ist-buehne [data-wb-punkte-wrap] {
-    display: flex;
   }
 
   .wb-knopf {
@@ -413,6 +423,11 @@ const n = SZENEN.length;
   .wb.ist-buehne .ist-aktiv .a-mond {
     animation: a-auf 0.8s ease-out both;
   }
+  /* Tempo: Szenen-Animationen laufen nur, solange die Bühne sichtbar ist (SVG-Animationen laufen im Hauptthread);
+     außerhalb des Bildes stehen sie angehalten am Anfang und spielen beim Hinscrollen ab. */
+  .wb.ist-buehne .wb-szene:not(.ist-laeuft) :global(*) {
+    animation-play-state: paused !important;
+  }
   .a-tippen {
     opacity: 0;
   }
@@ -464,14 +479,14 @@ const n = SZENEN.length;
 <script>
   const TAKT = 3800;
   document.querySelectorAll<HTMLElement>('[data-warum]').forEach((wb) => {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return; // statische Bildfolge
+    // statische Bildfolge bei reduzierter Bewegung (gleiche Bedingung wie das Bühnen-CSS)
+    if (!matchMedia('(prefers-reduced-motion: no-preference) and (scripting: enabled)').matches) return;
     const szenen = [...wb.querySelectorAll<HTMLElement>('[data-wb-szene]')];
     const punkte = [...wb.querySelectorAll<HTMLButtonElement>('[data-wb-punkt]')];
     const pause = wb.querySelector<HTMLButtonElement>('[data-wb-pause]');
     if (szenen.length < 2 || !pause) return;
 
-    wb.classList.add('ist-buehne');
-    wb.style.setProperty('--wb-takt', `${TAKT}ms`);
+    wb.classList.add('ist-buehne'); // Takt der Punkte = Vorgabe im CSS (3800 ms)
     let aktiv = 0;
     let angehalten = false; // vom Nutzer
     let sichtbar = false;
@@ -479,9 +494,15 @@ const n = SZENEN.length;
     let uhr: ReturnType<typeof setTimeout> | undefined;
 
     const zeigen = (i: number) => {
+      const vorher = szenen[aktiv];
       aktiv = (i + szenen.length) % szenen.length;
+      if (vorher !== szenen[aktiv] && vorher.classList.contains('ist-aktiv')) {
+        vorher.classList.add('ist-geht'); // Grafik bleibt bis zum Ende des Ausblendens gezeichnet
+        setTimeout(() => vorher.classList.remove('ist-geht'), 500);
+      }
       szenen.forEach((s, j) => {
         s.classList.toggle('ist-aktiv', j === aktiv);
+        s.classList.toggle('ist-laeuft', j === aktiv && sichtbar);
         if (j !== aktiv) s.querySelector('details')?.removeAttribute('open');
       });
       punkte.forEach((p, j) => (j === aktiv ? p.setAttribute('aria-current', 'true') : p.removeAttribute('aria-current')));
@@ -511,7 +532,11 @@ const n = SZENEN.length;
     liste?.addEventListener('pointerenter', (e) => { if ((e as PointerEvent).pointerType === 'mouse') { schwebt = true; planen(); } });
     liste?.addEventListener('pointerleave', () => { schwebt = false; planen(); });
 
-    new IntersectionObserver(([e]) => { sichtbar = e.isIntersecting; planen(); }, { threshold: 0.35 }).observe(wb);
+    new IntersectionObserver(([e]) => {
+      sichtbar = e.isIntersecting;
+      szenen[aktiv].classList.toggle('ist-laeuft', sichtbar); // Szenen-Animationen nur, solange die Bühne sichtbar ist
+      planen();
+    }, { threshold: 0.35 }).observe(wb);
     zeigen(0);
     pause.setAttribute('aria-pressed', 'false');
   });

@@ -36,7 +36,7 @@ const STATIONEN = [
 const n = STATIONEN.length;
 ---
 
-<section class="hr" data-reise data-hr-aktiv="0" data-hr-optionen={JSON.stringify(optionen)} aria-labelledby="hr-titel" style={`--hr-dauer:${STATIONEN[0].dauer}ms;--hr-pos:0`}>
+<section class="hr" data-reise data-hr-aktiv="0" data-hr-optionen={JSON.stringify(optionen)} aria-labelledby="hr-titel">
   <div class="hr-kopf">
     <div class="min-w-0">
       <h2 id="hr-titel" class="hr-titel">Von der Anmeldung bis zum Abschluss</h2>
@@ -84,7 +84,7 @@ const n = STATIONEN.length;
   </ol>
 
   <div class="hr-pfad" aria-label="Stationen der Reise" role="group">
-    <span class="hr-spur" aria-hidden="true"><span class="hr-fuell"></span><span class="hr-lauf" data-hr-lauf></span></span>
+    <span class="hr-spur" aria-hidden="true" data-hr-spur style={`--hr-dauer:${STATIONEN[0].dauer}ms;--hr-pos:0`}><span class="hr-fuell"></span><span class="hr-lauf" data-hr-lauf></span></span>
     {
       STATIONEN.map((s, i) => (
         <button type="button" class:list={['hr-punkt', { 'ist-jetzt': i === 0 }]} data-hr-punkt={i} aria-label={`${i + 1} ${s.kurz}${s.kurz === s.titel ? '' : ` – ${s.titel}`}`} aria-current={i === 0 ? 'step' : undefined}>
@@ -386,8 +386,9 @@ const n = STATIONEN.length;
 </style>
 
 <style is:global>
-  /* Ablaufsteuerung der Szenen-Animationen (die Szenen sind eigene Komponenten → global). */
-  .hr:not(.ist-an) .hr-station * { animation-play-state: paused !important; }
+  /* Ablaufsteuerung der Szenen-Animationen (die Szenen sind eigene Komponenten → global).
+     Tempo: „läuft“ steht an der aktiven Station, nicht an der ganzen Bühne – ein Wechsel berechnet so nur deren Stil neu. */
+  .hr-station:not(.ist-laeuft) * { animation-play-state: paused !important; }
   .hr.ist-pausiert .hr-station * { animation: none !important; }
 </style>
 
@@ -397,8 +398,8 @@ const n = STATIONEN.length;
     // ---- Daten: Tage bis zur Prüfung mit dem heutigen Datum (Europe/Berlin) neu rechnen; AP1/AP2-Schalter folgt ----
     type Werte = Record<string, string>;
     const optionen: (Werte & { folge?: Werte[] })[] = JSON.parse(root.dataset.hrOptionen || '[]');
-    const heute = () =>
-      Date.parse(new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()) + 'T00:00:00Z');
+    const berlin = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit' });
+    const heute = () => Date.parse(berlin.format(new Date()) + 'T00:00:00Z');
     const setze = (option?: Werte & { folge?: Werte[] }) => {
       if (!option?.iso) return;
       // Anmeldeschluss des gebauten Termins vorbei (noch kein neuer Build)? → nächster buchbarer Termin desselben Kurses
@@ -421,6 +422,7 @@ const n = STATIONEN.length;
     const pause = root.querySelector<HTMLButtonElement>('[data-hr-pause]');
     const pauseText = root.querySelector('[data-hr-pause-text]');
     const lauf = root.querySelector('[data-hr-lauf]');
+    const spur = root.querySelector<HTMLElement>('[data-hr-spur]');
     const live = root.querySelector<HTMLElement>('[data-hr-live]');
     const n = stationen.length;
     if (matchMedia('(prefers-reduced-motion: no-preference) and (scripting: enabled)').matches && pause && live && n > 1) {
@@ -431,16 +433,20 @@ const n = STATIONEN.length;
       let uhr: ReturnType<typeof setTimeout> | undefined;
       const dauer = () => Number(stationen[aktiv].dataset.dauer) || 3500;
 
-      const zeigen = (i: number, ansagen = false) => {
+      // neuStarten: CSS-Animationen von vorn. Dafür reicht ein Stil-Abgleich (getComputedStyle) – kein erzwungenes
+      // Layout der ganzen Seite (Tempo: beim Laden war das der längste Task). Beim Start steht das Markup schon auf Station 1.
+      const zeigen = (i: number, ansagen = false, neuStarten = true) => {
         const vorher = stationen[aktiv];
         aktiv = (i + n) % n;
         if (vorher !== stationen[aktiv] && vorher.classList.contains('ist-aktiv')) {
           vorher.classList.add('ist-geht'); // bleibt bis zum Ende des Ausblendens gezeichnet
           setTimeout(() => vorher.classList.remove('ist-geht'), 600);
         }
-        stationen.forEach((s) => s.classList.remove('ist-aktiv'));
-        lauf?.classList.remove('takt');
-        void root.offsetWidth; // CSS-Animationen der Station neu starten
+        if (neuStarten) {
+          stationen.forEach((s) => s.classList.remove('ist-aktiv', 'ist-laeuft'));
+          lauf?.classList.remove('takt');
+          if (lauf) void getComputedStyle(lauf).animationName;
+        }
         stationen[aktiv].classList.add('ist-aktiv');
         lauf?.classList.add('takt');
         punkte.forEach((p, j) => {
@@ -450,8 +456,9 @@ const n = STATIONEN.length;
           else p.removeAttribute('aria-current');
         });
         root.dataset.hrAktiv = String(aktiv);
-        root.style.setProperty('--hr-pos', String(aktiv));
-        root.style.setProperty('--hr-dauer', `${dauer()}ms`);
+        // an der Spur statt an der Bühne setzen: geerbte Variablen an der Bühne berechnen sonst alle Stationen neu
+        spur?.style.setProperty('--hr-pos', String(aktiv));
+        spur?.style.setProperty('--hr-dauer', `${dauer()}ms`);
         // Ansage nur bei Bedienung oder Pause – im Automatik-Lauf still (kein Dauer-Vorlesen)
         live.setAttribute('aria-live', ansagen || angehalten ? 'polite' : 'off');
         live.textContent = `Schritt ${aktiv + 1} von ${n}: ${stationen[aktiv].querySelector('h3')?.textContent ?? ''}`;
@@ -460,7 +467,8 @@ const n = STATIONEN.length;
       const planen = () => {
         clearTimeout(uhr);
         root.classList.toggle('ist-an', laeuft());
-        root.classList.toggle('ist-pausiert', angehalten);
+        stationen.forEach((s, j) => s.classList.toggle('ist-laeuft', j === aktiv && laeuft()));
+        if (root.classList.contains('ist-pausiert') !== angehalten) root.classList.toggle('ist-pausiert', angehalten);
         if (!laeuft()) return;
         uhr = setTimeout(() => {
           if (aktiv === n - 1 && ++runden >= 3) return setzePause(true); // nach drei Runden ruhig am Ziel stehen bleiben
@@ -481,13 +489,17 @@ const n = STATIONEN.length;
       });
       punkte.forEach((p, j) => p.addEventListener('click', () => { zeigen(j, true); planen(); }));
       document.addEventListener('visibilitychange', () => { if (!document.hidden) zeigen(aktiv); planen(); });
+      let gesehen = false;
       new IntersectionObserver(([e]) => {
         const war = sichtbar;
         sichtbar = e.isIntersecting;
-        if (sichtbar && !war) zeigen(aktiv);
+        // Beim ersten Sichtbarwerden stehen die Animationen noch angehalten am Anfang – „ist-laeuft“ startet sie;
+        // ein Neustart (Stil-Abgleich) ist erst beim Wiederkommen nötig.
+        if (sichtbar && !war && gesehen) zeigen(aktiv);
+        if (sichtbar) gesehen = true;
         planen();
       }, { threshold: 0.4 }).observe(root);
-      zeigen(0);
+      zeigen(0, false, false);
     }
   }
 </script>

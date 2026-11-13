@@ -140,6 +140,14 @@
     content-visibility: auto;
     contain-intrinsic-size: auto 900px;
   }
+  /* Tempo mobil (NFA, Lighthouse ≥ 95): Dasselbe gilt für alle Hauptabschnitte ab dem zweiten und für den Fuß.
+     Ausgenommen sind Abschnitte mit Bühnen/Lernpfad (IntersectionObserver bzw. view-timeline) und mit sticky-Elementen
+     (content-visibility enthält Paint-Containment). Abschnitte im ersten Bild zeichnet der Browser trotzdem sofort. */
+  main > section:not(:first-child):not(:has([data-warum], [data-reise], .lernpfad, .sticky)),
+  body > footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 720px;
+  }
   @media (scripting: none) {
     .nur-mit-js {
       display: none !important;
