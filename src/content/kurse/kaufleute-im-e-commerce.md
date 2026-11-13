@@ -54,7 +54,7 @@ termine:
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-03-11
     ausfall:
-      - 2027-04-01
+      - 2027-03-25
   - id: e-commerce-t2-2027-winter
     start: 2027-10-19
     ende: 2027-11-18

@@ -53,7 +53,7 @@ termine:
     pruefungHinweis: Schriftliche Prüfung am 27. und 28.04.2027 – Leistungserstellung am ersten Tag. Verbindlich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-03-02
     ausfall:
-      - 2027-04-01
+      - 2027-03-25
   - id: spedition-2027-winter
     start: 2027-10-07
     ende: 2027-11-16

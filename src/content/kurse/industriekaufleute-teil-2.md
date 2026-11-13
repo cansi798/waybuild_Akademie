@@ -57,7 +57,7 @@ termine:
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Dienstag, 27.04.2027 – verbindlich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-03-09
     ausfall:
-      - 2027-04-01
+      - 2027-03-25
   - id: industriekaufleute-t2-2027-winter
     start: 2027-10-14
     ende: 2027-11-16

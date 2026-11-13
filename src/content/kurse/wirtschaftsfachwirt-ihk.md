@@ -77,9 +77,10 @@ abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du b
 termine:
 - id: wirtschaftsfachwirt-2027-maerz
   start: 2027-03-02
-  ende: 2028-08-22
+  ende: 2028-08-24
   anmeldeschluss: 2027-02-23
   ausfall:
+  - 2027-03-25
   - 2027-05-06
   - 2027-12-23
   - 2027-12-28

@@ -55,7 +55,7 @@ termine:
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-02-23
     ausfall:
-      - 2027-04-01
+      - 2027-03-25
   - id: ap2-fidp-2027-winter
     start: 2027-09-28
     ende: 2027-11-16
