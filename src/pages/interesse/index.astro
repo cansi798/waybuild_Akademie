@@ -1,8 +1,42 @@
 ---
+// /interesse/?kurs=<slug> (US-14): unverbindlich vormerken, wenn noch kein buchbarer Termin feststeht.
 import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+import InteresseFormular from '../../components/formulare/InteresseFormular.astro';
+import { href } from '../../lib/pfad';
 ---
 
-<Basis titel="Interesse vormerken" beschreibung="Unverbindlich Interesse an einem Kurs vormerken.">
-  <ImAufbau titel="Interesse vormerken" />
+<Basis titel="Interesse vormerken" beschreibung="Merke dir einen Kurs der waybuild Akademie unverbindlich vor – wir melden uns, sobald Termine feststehen.">
+  <section class="rahmen grid gap-10 pt-8 pb-16 sm:pt-12 sm:pb-24 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
+    <div>
+      <p class="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold ring-1 ring-base-300">
+        <span class="size-2.5 rounded-full bg-bernstein" aria-hidden="true"></span>
+        Unverbindlich und kostenlos
+      </p>
+      <h1 class="trennen mt-5 text-4xl sm:text-5xl">Interesse vormerken</h1>
+      <p class="mt-4 text-lg text-gedaempft">
+        Für deinen Wunschkurs steht noch kein Termin fest? Trag dich ein – wir melden uns, sobald Termine feststehen. Du gehst damit keine Verpflichtung ein.
+      </p>
+      <ol class="mt-8 grid gap-4">
+        {
+          [
+            ['Vormerken', 'Kurs wählen, Name und E-Mail eintragen.'],
+            ['Benachrichtigung', 'Sobald ein Termin feststeht, schreiben wir dir.'],
+            ['Anmelden', 'Passt der Termin, meldest du dich mit einem Klick an.'],
+          ].map(([t, x], i) => (
+            <li class="flex gap-4">
+              <span class="grid size-10 shrink-0 place-items-center rounded-full bg-navy font-semibold text-white" aria-hidden="true">{i + 1}</span>
+              <span>
+                <span class="block font-semibold">{t}</span>
+                <span class="text-gedaempft">{x}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="mt-8 text-sm text-gedaempft">
+        Lieber gleich buchen? Hier findest du <a class="link-fliess" href={href('/termine/')}>alle festen Termine</a>.
+      </p>
+    </div>
+    <InteresseFormular />
+  </section>
 </Basis>

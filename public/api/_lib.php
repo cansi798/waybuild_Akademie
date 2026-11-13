@@ -1,0 +1,512 @@
+<?php
+// Gemeinsame Bausteine der Formular-Endpunkte (PHP 8.x, ohne Composer):
+// nur POST, Spam-Schutz (Lockfeld, signierte Zeitfalle, Rate-Limit je IP-Hash), Eingaben bereinigen und prüfen,
+// Mails sicher aufbauen (keine eingeschleusten Kopfzeilen), Antworten als 303/HTML (ohne JavaScript) oder JSON (fetch).
+// Regeln und Fehlertexte entsprechen src/lib/formular.ts (Spezifikation 5.4) – bei Änderungen beide Seiten anpassen.
+declare(strict_types=1);
+
+if (isset($_SERVER['SCRIPT_FILENAME']) && realpath((string) $_SERVER['SCRIPT_FILENAME']) === __FILE__) {
+    http_response_code(404);
+    exit;
+}
+
+date_default_timezone_set('Europe/Berlin');
+mb_internal_encoding('UTF-8');
+
+const FEHLER = [
+    'kurs' => 'Bitte wähle einen Kurs aus.',
+    'termin' => 'Bitte wähle einen Termin aus.',
+    'terminGeschlossen' => 'Für diesen Termin ist die Anmeldung leider geschlossen. Wähle einen anderen Termin oder merke dein Interesse vor.',
+    'vorname' => 'Bitte gib deinen Vornamen ein.',
+    'nachname' => 'Bitte gib deinen Nachnamen ein.',
+    'email' => 'Bitte gib eine gültige E-Mail-Adresse ein, z. B. name@beispiel.de.',
+    'telefon' => 'Bitte prüfe deine Telefonnummer – erlaubt sind Ziffern, Leerzeichen und + / -.',
+    'zahlweg' => 'Bitte wähle aus, wer die Rechnung bekommt.',
+    'strasse' => 'Bitte gib Straße und Hausnummer ein.',
+    'plz' => 'Bitte gib eine gültige Postleitzahl ein.',
+    'ort' => 'Bitte gib deinen Ort ein.',
+    'firma' => 'Bitte gib den Namen deines Betriebs ein.',
+    'ansprechperson' => 'Bitte gib an, wer bei euch die Rechnung bearbeitet.',
+    'rechnungEmail' => 'Bitte gib die E-Mail-Adresse für die Rechnung ein.',
+    'bestellnummer' => 'Die Bestellnummer darf höchstens 50 Zeichen lang sein.',
+    'personenMax' => 'Pro Anmeldung sind höchstens 5 Personen möglich.',
+    'emailDoppelt' => 'Diese E-Mail-Adresse ist schon eingetragen.',
+    'nachricht' => 'Deine Nachricht ist zu lang – bitte kürze sie auf 2.000 Zeichen.',
+    'agb' => 'Bitte bestätige die Teilnahmebedingungen.',
+    'datenschutz' => 'Bitte bestätige, dass du Datenschutzerklärung und Widerrufsbelehrung gelesen hast.',
+    'wertersatz' => 'Dein Kurs startet innerhalb der 14-tägigen Widerrufsfrist. Bitte bestätige, dass wir schon vorher mit dem Kurs beginnen dürfen.',
+    'zuSchnell' => 'Das ging sehr schnell – bitte versuche es in einer Minute erneut.',
+    'name' => 'Bitte gib deinen Namen ein.',
+    'wunschzeitraum' => 'Bitte fasse deinen Wunschzeitraum kürzer (höchstens 100 Zeichen).',
+    'einwilligungInteresse' => 'Bitte bestätige, dass wir dich per E-Mail benachrichtigen dürfen.',
+    'paket' => 'Bitte wähle ein Paket aus.',
+    'anliegen' => 'Beschreib kurz, wobei wir dir helfen sollen.',
+    'pruefungszeitraum' => 'Bitte fasse den Prüfungszeitraum kürzer (höchstens 100 Zeichen).',
+    'wunschzeiten' => 'Bitte fasse deine Wunschzeiten kürzer (höchstens 200 Zeichen).',
+    'thema' => 'Bitte wähle ein Thema aus.',
+    'kontaktNachricht' => 'Bitte schreib uns kurz, worum es geht.',
+    'einwilligungKontakt' => 'Bitte bestätige, dass wir deine Angaben zur Beantwortung deiner Anfrage nutzen dürfen.',
+    'vertrag' => 'Bitte gib an, welchen Vertrag du widerrufen möchtest – z. B. Kurs und Termin, Anmeldedatum oder Vorgangsnummer.',
+];
+
+const MAX_PERSONEN = 5;
+const RABATT_AB_PERSONEN = 3;
+const RABATT_PROZENT = 10;
+const WIDERRUFSFRIST_TAGE = 14;
+
+function konfig(): array
+{
+    static $k = null;
+    return $k ??= require __DIR__ . '/config.php';
+}
+
+/** HTML-Ausgabe immer escapen. */
+function e(string $s): string
+{
+    return htmlspecialchars($s, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML5, 'UTF-8');
+}
+
+// ---------------------------------------------------------------- Anfrage
+
+function nur_post(): void
+{
+    if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+        header('Allow: POST');
+        header('Content-Type: text/plain; charset=utf-8');
+        http_response_code(405);
+        echo "Dieses Formular nimmt nur Daten per POST entgegen.\n";
+        exit;
+    }
+}
+
+function will_json(): bool
+{
+    return str_contains((string) ($_SERVER['HTTP_ACCEPT'] ?? ''), 'application/json');
+}
+
+/** Rohwert aus dem Formular (nur Zeichenketten, gültiges UTF-8). */
+function roh(string $name): string
+{
+    $w = $_POST[$name] ?? '';
+    if (!is_string($w) || !mb_check_encoding($w, 'UTF-8')) {
+        return '';
+    }
+    return $w;
+}
+
+/** Einzeiliges Feld: Steuerzeichen inkl. CR/LF entfernen (Schutz vor eingeschleusten Kopfzeilen), trimmen. */
+function einzeilig(string $name): string
+{
+    return trim((string) preg_replace('/[\x00-\x1F\x7F\x{2028}\x{2029}]+/u', ' ', roh($name)));
+}
+
+/** Mehrzeiliges Feld (Nachricht): Zeilenenden vereinheitlichen, übrige Steuerzeichen entfernen. */
+function mehrzeilig(string $name): string
+{
+    $s = str_replace(["\r\n", "\r"], "\n", roh($name));
+    return trim((string) preg_replace('/[\x00-\x08\x0B-\x1F\x7F]/u', '', $s));
+}
+
+function angehakt(string $name): bool
+{
+    return roh($name) !== '';
+}
+
+function laenge(string $s): int
+{
+    return mb_strlen($s);
+}
+
+function pruefe_text(array &$f, string $feld, string $wert, int $min, int $max, string $text, bool $pflicht = true): void
+{
+    if ($wert === '') {
+        if ($pflicht) {
+            $f[$feld] = $text;
+        }
+        return;
+    }
+    $l = laenge($wert);
+    if ($l < $min || $l > $max) {
+        $f[$feld] = $text;
+    }
+}
+
+function email_ok(string $s): bool
+{
+    return $s !== '' && strlen($s) <= 254 && filter_var($s, FILTER_VALIDATE_EMAIL) !== false;
+}
+
+function pruefe_email(array &$f, string $feld, string $wert, string $text, bool $pflicht = true): void
+{
+    if ($wert === '' && !$pflicht) {
+        return;
+    }
+    if (!email_ok($wert)) {
+        $f[$feld] = $text;
+    }
+}
+
+function pruefe_telefon(array &$f, string $feld, string $wert): void
+{
+    if ($wert !== '' && !preg_match('~^[0-9 +/()\-]{6,30}$~', $wert)) {
+        $f[$feld] = FEHLER['telefon'];
+    }
+}
+
+function pruefe_plz(array &$f, string $feld, string $wert): void
+{
+    if (!preg_match('/^[A-Za-z0-9 ]{4,10}$/', $wert)) {
+        $f[$feld] = FEHLER['plz'];
+    }
+}
+
+// ---------------------------------------------------------------- Daten außerhalb des Webroots
+
+/** Verzeichnis außerhalb des Webroots (Fallback: System-Temp). null, wenn nichts beschreibbar ist. */
+function datenverzeichnis(string $unter = ''): ?string
+{
+    $kandidaten = [rtrim((string) konfig()['datenverzeichnis'], '/'), rtrim(sys_get_temp_dir(), '/') . '/akademie-daten'];
+    foreach ($kandidaten as $basis) {
+        $dir = $unter === '' ? $basis : $basis . '/' . $unter;
+        if (!is_dir($dir)) {
+            @mkdir($dir, 0700, true);
+        }
+        if (is_dir($dir) && is_writable($dir)) {
+            if (!is_file($basis . '/.htaccess')) {
+                @file_put_contents($basis . '/.htaccess', "Require all denied\n");
+            }
+            return $dir;
+        }
+    }
+    return null;
+}
+
+/**
+ * Formular-Geheimnis für die signierte Zeitfalle. Reihenfolge: Umgebungsvariable AKADEMIE_FORM_SECRET →
+ * Datei außerhalb des Webroots (config 'geheimnis_datei') → einmalig zufällig erzeugen und dort ablegen.
+ * Gelingt nichts, läuft das Formular ohne Zeitfalle weiter (Hinweis im PHP-Fehlerprotokoll, siehe LIESMICH.md).
+ */
+function geheimnis(): ?string
+{
+    static $g = false;
+    if ($g !== false) {
+        return $g;
+    }
+    $env = getenv('AKADEMIE_FORM_SECRET');
+    if (is_string($env) && strlen($env) >= 32) {
+        return $g = $env;
+    }
+    $datei = (string) konfig()['geheimnis_datei'];
+    if (is_readable($datei)) {
+        $s = trim((string) file_get_contents($datei));
+        if (strlen($s) >= 32) {
+            return $g = $s;
+        }
+    }
+    $dir = dirname($datei);
+    if (!is_dir($dir)) {
+        @mkdir($dir, 0700, true);
+    }
+    if (is_dir($dir) && is_writable($dir)) {
+        $fp = @fopen($datei, 'x');
+        if ($fp !== false) {
+            $s = bin2hex(random_bytes(32));
+            fwrite($fp, $s . "\n");
+            fclose($fp);
+            @chmod($datei, 0600);
+            error_log('[waybuild-akademie] Formular-Geheimnis neu erzeugt: ' . $datei);
+            return $g = $s;
+        }
+        // Gleichzeitig von einer anderen Anfrage erzeugt
+        $s = is_readable($datei) ? trim((string) file_get_contents($datei)) : '';
+        if (strlen($s) >= 32) {
+            return $g = $s;
+        }
+    }
+    error_log('[waybuild-akademie] HINWEIS: Kein Formular-Geheimnis verfügbar – Zeitfalle ist aus. Siehe api/LIESMICH.md.');
+    return $g = null;
+}
+
+function zeitstempel_signatur(string $ts, string $geheimnis): string
+{
+    return hash_hmac('sha256', 'zeit:' . $ts, $geheimnis);
+}
+
+// ---------------------------------------------------------------- Spam-Schutz
+
+/**
+ * Lockfeld, Rate-Limit und Zeitfalle. Gibt true zurück, wenn das Lockfeld ausgefüllt ist:
+ * Dann antwortet der Endpunkt wie bei Erfolg, verschickt aber nichts (Bots bekommen keinen Hinweis).
+ */
+function spam_pruefen(): bool
+{
+    $lockfeld = roh('website') !== '';
+    rate_limit_pruefen();
+    if ($lockfeld) {
+        return true;
+    }
+    zeitfalle_pruefen();
+    return false;
+}
+
+function rate_limit_pruefen(): void
+{
+    $dir = datenverzeichnis('ratelimit');
+    if ($dir === null) {
+        return; // lieber annehmen als echte Anmeldungen verlieren
+    }
+    $k = konfig();
+    $fenster = (int) $k['rate_limit_fenster'];
+    $max = (int) $k['rate_limit_max'];
+    $ip = (string) ($_SERVER['REMOTE_ADDR'] ?? 'unbekannt');
+    // Nicht rückrechenbarer Wert der Adresse – gespeichert werden nur Hash und Zeitpunkte der letzten Stunde
+    $hash = hash_hmac('sha256', $ip, geheimnis() ?? 'waybuild-akademie-rate-limit');
+    $jetzt = time();
+    $zuViel = false;
+    $fp = @fopen($dir . '/' . $hash . '.json', 'c+');
+    if ($fp !== false) {
+        flock($fp, LOCK_EX);
+        $liste = json_decode((string) stream_get_contents($fp), true);
+        $liste = array_values(array_filter(is_array($liste) ? $liste : [], fn ($t) => is_int($t) && $t > $jetzt - $fenster));
+        $zuViel = count($liste) >= $max;
+        if (!$zuViel) {
+            $liste[] = $jetzt;
+        }
+        ftruncate($fp, 0);
+        rewind($fp);
+        fwrite($fp, json_encode($liste));
+        fflush($fp);
+        flock($fp, LOCK_UN);
+        fclose($fp);
+    }
+    // Aufräumen: Einträge älter als eine Stunde löschen (TTL 1 h)
+    if (random_int(1, 20) === 1) {
+        foreach (glob($dir . '/*.json') ?: [] as $datei) {
+            if (@filemtime($datei) < $jetzt - $fenster) {
+                @unlink($datei);
+            }
+        }
+    }
+    if ($zuViel) {
+        $mail = konfig()['empfaenger']['kontakt'];
+        fehler_antwort(429, 'zu_viele', "Von deinem Anschluss kamen gerade sehr viele Anfragen. Bitte versuche es in einer Stunde noch einmal oder schreib uns an {$mail}.");
+    }
+}
+
+function zeitfalle_pruefen(): void
+{
+    $ts = roh('ts');
+    $sig = roh('sig');
+    if ($ts === '' && $sig === '') {
+        return; // ohne JavaScript gibt es keinen Zeitstempel (Spezifikation 5.4)
+    }
+    $g = geheimnis();
+    if ($g === null) {
+        return;
+    }
+    if (!ctype_digit($ts) || !hash_equals(zeitstempel_signatur($ts, $g), $sig)) {
+        fehler_antwort(400, 'zeitstempel', 'Da ist etwas durcheinandergeraten. Bitte lade die Seite neu und sende das Formular noch einmal.');
+    }
+    $alter = time() - (int) $ts;
+    if ($alter < (int) konfig()['min_sekunden']) {
+        fehler_antwort(429, 'zu_schnell', FEHLER['zuSchnell']);
+    }
+    if ($alter > (int) konfig()['max_alter']) {
+        fehler_antwort(422, 'abgelaufen', 'Die Seite war sehr lange geöffnet. Bitte lade sie neu und sende das Formular noch einmal.');
+    }
+}
+
+// ---------------------------------------------------------------- Termine (S-06)
+
+function termine_laden(): array
+{
+    $datei = (string) konfig()['termine_datei'];
+    $daten = is_readable($datei) ? json_decode((string) file_get_contents($datei), true) : null;
+    if (!is_array($daten) || !isset($daten['kurse']) || !is_array($daten['kurse'])) {
+        error_log('[waybuild-akademie] Terminliste fehlt oder ist ungültig: ' . $datei);
+        $mail = konfig()['empfaenger']['anmeldung'];
+        fehler_antwort(500, 'termine', "Die Anmeldung ist gerade leider nicht möglich. Bitte schreib uns an {$mail} – wir kümmern uns sofort darum.");
+    }
+    return $daten['kurse'];
+}
+
+function heute(): DateTimeImmutable
+{
+    return new DateTimeImmutable('today', new DateTimeZone('Europe/Berlin'));
+}
+
+/** Kalendertage von heute bis zum ISO-Datum (heute = 0, gestern = -1). */
+function tage_bis(string $iso): int
+{
+    $ziel = DateTimeImmutable::createFromFormat('!Y-m-d', $iso, new DateTimeZone('Europe/Berlin'));
+    if ($ziel === false) {
+        return -9999;
+    }
+    return (int) heute()->diff($ziel)->format('%r%a');
+}
+
+function datum_de(?string $iso): string
+{
+    if (!$iso) {
+        return '';
+    }
+    $d = DateTimeImmutable::createFromFormat('!Y-m-d', $iso);
+    return $d ? $d->format('d.m.Y') : $iso;
+}
+
+function euro(float $n): string
+{
+    return number_format($n, 2, ',', '.') . ' €';
+}
+
+function jetzt_text(?int $ts = null): string
+{
+    return date('d.m.Y', $ts ?? time()) . ' um ' . date('H:i', $ts ?? time()) . ' Uhr';
+}
+
+function vorgangsnummer(string $praefix): string
+{
+    $zeichen = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+    $z = '';
+    for ($i = 0; $i < 4; $i++) {
+        $z .= $zeichen[random_int(0, strlen($zeichen) - 1)];
+    }
+    return $praefix . '-' . date('Ymd') . '-' . $z;
+}
+
+// ---------------------------------------------------------------- Mail
+
+/** Kopfzeilen-Wert ohne Zeilenumbrüche (Header-Injection). */
+function kopf(string $s): string
+{
+    return trim(str_replace(["\r", "\n", "\0"], '', $s));
+}
+
+function mail_senden(string $an, string $betreff, string $text, string $von, ?string $antwortAn = null, bool $automatisch = false): bool
+{
+    $an = kopf($an);
+    $von = kopf($von);
+    if (!email_ok($an) || !email_ok($von)) {
+        return false;
+    }
+    $name = mb_encode_mimeheader(kopf((string) konfig()['absender_name']), 'UTF-8', 'Q');
+    $kopfzeilen = [
+        'From: ' . $name . ' <' . $von . '>',
+        'MIME-Version: 1.0',
+        'Content-Type: text/plain; charset=UTF-8',
+        'Content-Transfer-Encoding: 8bit',
+        'X-Formular: waybuild-akademie',
+    ];
+    if ($antwortAn !== null && email_ok(kopf($antwortAn))) {
+        $kopfzeilen[] = 'Reply-To: ' . kopf($antwortAn);
+    }
+    if ($automatisch) {
+        $kopfzeilen[] = 'Auto-Submitted: auto-generated';
+    }
+    $betreffKodiert = mb_encode_mimeheader(kopf($betreff), 'UTF-8', 'B', "\r\n", 9);
+    // Zeilen unter 998 Zeichen halten (RFC 5322)
+    $zeilen = array_map(fn ($z) => wordwrap($z, 900, "\n", true), explode("\n", str_replace(["\r\n", "\r"], "\n", $text)));
+    return mail($an, $betreffKodiert, implode("\n", $zeilen) . "\n", implode("\r\n", $kopfzeilen), '-f' . $von);
+}
+
+function json_block(array $daten): string
+{
+    return "----- DATEN (JSON, für CRM) -----\n"
+        . json_encode($daten, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+        . "\n----- ENDE -----";
+}
+
+function link_zu(string $pfad): string
+{
+    return rtrim((string) konfig()['website'], '/') . '/' . ltrim($pfad, '/');
+}
+
+function versand_fehler(string $postfach): never
+{
+    fehler_antwort(500, 'versand', "Das Senden hat leider nicht geklappt. Bitte schreib uns direkt an {$postfach} – deine Eingaben sind noch im Formular.");
+}
+
+// ---------------------------------------------------------------- Antworten
+
+function pfad(string $relativ): string
+{
+    return rtrim((string) konfig()['basis'], '/') . '/' . ltrim($relativ, '/');
+}
+
+/** Erfolg: 303 auf die Danke-Seite (ohne JavaScript) bzw. JSON mit Zieladresse (fetch). */
+function weiter(string $relativ, array $extra = []): never
+{
+    $ziel = pfad($relativ);
+    if (will_json()) {
+        json_antwort(200, ['ok' => true, 'weiter' => $ziel] + $extra);
+    }
+    header('Location: ' . $ziel, true, 303);
+    header('Cache-Control: no-store');
+    exit;
+}
+
+function json_antwort(int $status, array $daten): never
+{
+    http_response_code($status);
+    header('Content-Type: application/json; charset=utf-8');
+    header('Cache-Control: no-store');
+    header('X-Content-Type-Options: nosniff');
+    echo json_encode($daten, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+/**
+ * Fehler: JSON (fetch) mit Fehlertext je Feld – oder ohne JavaScript eine einfache Seite mit allen Fehlern
+ * und dem Hinweis, mit „Zurück“ zum Formular zu gehen (die Eingaben bleiben im Browser erhalten).
+ */
+function fehler_antwort(int $status, string $code, string $meldung, array $felder = []): never
+{
+    if (will_json()) {
+        json_antwort($status, ['ok' => false, 'code' => $code, 'meldung' => $meldung, 'fehler' => (object) $felder]);
+    }
+    $liste = '';
+    if ($felder) {
+        $texte = [];
+        foreach ($felder as $feld => $text) {
+            $person = preg_match('/^p([2-5])_/', (string) $feld, $m) ? "Person {$m[1]}: " : '';
+            $texte[$person . $text] = true;
+        }
+        $liste = '<ul>' . implode('', array_map(fn ($t) => '<li>' . e($t) . '</li>', array_keys($texte))) . '</ul>';
+    }
+    html_seite($status, $felder ? 'Bitte prüfe deine Angaben' : 'Das hat leider nicht geklappt', '<p>' . e($meldung) . '</p>' . $liste
+        . '<p>Geh mit dem <strong>Zurück-Knopf deines Browsers</strong> zum Formular – deine Eingaben sind dort in der Regel noch vorhanden.</p>'
+        . '<p><a class="knopf" href="' . e(zurueck_adresse()) . '">Zurück zum Formular</a></p>');
+}
+
+function zurueck_adresse(): string
+{
+    $ref = (string) ($_SERVER['HTTP_REFERER'] ?? '');
+    $host = (string) ($_SERVER['HTTP_HOST'] ?? '');
+    if ($ref !== '' && $host !== '' && parse_url($ref, PHP_URL_HOST) === explode(':', $host)[0]) {
+        $p = (string) parse_url($ref, PHP_URL_PATH);
+        $q = parse_url($ref, PHP_URL_QUERY);
+        return $p . ($q ? '?' . $q : '');
+    }
+    return pfad('');
+}
+
+/** Minimale, eigenständige HTML-Seite (ohne externe Dateien) für Fehler und den zweiten Widerrufsschritt ohne JavaScript. */
+function html_seite(int $status, string $titel, string $inhalt): never
+{
+    http_response_code($status);
+    header('Content-Type: text/html; charset=utf-8');
+    header('Cache-Control: no-store');
+    header('X-Content-Type-Options: nosniff');
+    header('X-Robots-Tag: noindex');
+    echo '<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
+        . '<meta name="robots" content="noindex"><title>' . e($titel) . ' | waybuild Akademie</title><style>'
+        . 'body{margin:0;background:#faf8f4;color:#00346b;font:1.05rem/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}'
+        . 'main{max-width:40rem;margin:0 auto;padding:3rem 1rem}h1{font-family:Georgia,serif;font-weight:600;font-size:2rem;line-height:1.15}'
+        . 'ul{padding-left:1.2rem}li{margin:.4rem 0}.karte{background:#fff;border:1px solid #e5dfd3;border-radius:1.25rem;padding:1.25rem 1.5rem;margin:1.5rem 0}'
+        . 'dl{margin:0}dt{font-weight:600;margin-top:.75rem}dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}'
+        . '.knopf,button{display:inline-flex;align-items:center;min-height:2.75rem;padding:.6rem 1.4rem;border-radius:999px;border:0;background:#00346b;color:#fff;font:inherit;font-weight:600;text-decoration:none;cursor:pointer}'
+        . 'button.warn{background:#b42318}a{color:#0079a6}:focus-visible{outline:3px solid #0079a6;outline-offset:3px}'
+        . '</style></head><body><main><p><a href="' . e(pfad('')) . '">waybuild Akademie</a></p><h1>' . e($titel) . '</h1>'
+        . $inhalt . '</main></body></html>';
+    exit;
+}

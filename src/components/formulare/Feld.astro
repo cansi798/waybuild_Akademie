@@ -1,0 +1,75 @@
+---
+// Ein Formularfeld nach den Gestaltungsregeln der Spezifikation 5.2: Beschriftung über dem Feld, Pflichtfelder mit *
+// und „Pflichtfeld“ für Screenreader, Hinweis und Fehlertext als Text direkt unter dem Feld (aria-describedby).
+// Die Regeln stehen als data-Attribute am Feld; formular.ts prüft sie im Browser, der PHP-Endpunkt noch einmal.
+interface Props {
+  form: string;
+  name: string;
+  label: string;
+  typ?: 'text' | 'email' | 'tel' | 'textarea' | 'select';
+  /** Pflichtfeld (Stern + Browser-Prüfung). */
+  pflicht?: boolean;
+  /** Natives `required` (nur für immer sichtbare Pflichtfelder – ohne JavaScript prüft dann der Browser). */
+  nativ?: boolean;
+  regel?: 'email' | 'telefon' | 'plz' | 'vorname';
+  min?: number;
+  max?: number;
+  fehler: string;
+  /** Abweichender Text, wenn das Feld ausgefüllt, aber falsch ist */
+  fehlerFormat?: string;
+  hinweis?: string;
+  autocomplete?: string;
+  inputmode?: 'text' | 'email' | 'tel' | 'numeric';
+  wert?: string;
+  zeilen?: number;
+  platzhalter?: string;
+  klasse?: string;
+  /** zusätzliche Attribute am Feld (z. B. data-url-param, data-zeile) */
+  zusatz?: Record<string, string>;
+  /** kein „(freiwillig)“ hinter der Beschriftung (z. B. Auswahl mit Vorgabe) */
+  ohneZusatz?: boolean;
+}
+const {
+  form, name, label, typ = 'text', pflicht = false, nativ = false, regel, min, max, fehler, fehlerFormat,
+  hinweis, autocomplete, inputmode, wert, zeilen = 5, platzhalter, klasse, zusatz = {}, ohneZusatz = false,
+} = Astro.props;
+const id = `${form}-${name}`;
+const beschrieben = [hinweis ? `${id}-hinweis` : '', `${id}-fehler`].filter(Boolean).join(' ');
+const attrs = {
+  id,
+  name,
+  required: nativ || undefined,
+  'aria-required': pflicht ? 'true' : undefined,
+  'aria-describedby': beschrieben,
+  'data-feld': '',
+  'data-pflicht': pflicht ? '' : undefined,
+  'data-regel': regel,
+  'data-min': min,
+  'data-max': max,
+  'data-fehler-pflicht': fehler,
+  'data-fehler-format': fehlerFormat ?? fehler,
+  autocomplete,
+  ...zusatz,
+} as Record<string, any>;
+const feldKlasse = 'w-full text-base aria-[invalid=true]:border-error aria-[invalid=true]:ring-1 aria-[invalid=true]:ring-error';
+---
+
+<div class:list={['feld grid content-start gap-1.5', klasse]} data-feld-rahmen={name}>
+  <label for={id} class="font-semibold leading-snug">
+    {label}{pflicht ? <span class="text-error" aria-hidden="true"> *</span> : ohneZusatz ? null : <span class="font-normal text-gedaempft"> (freiwillig)</span>}
+    {pflicht && <span class="sr-only"> (Pflichtfeld)</span>}
+  </label>
+  {
+    typ === 'textarea' ? (
+      <textarea {...attrs} rows={zeilen} maxlength={max} placeholder={platzhalter} class:list={['textarea min-h-28', feldKlasse]}>{wert}</textarea>
+    ) : typ === 'select' ? (
+      <select {...attrs} class:list={['select', feldKlasse]}>
+        <slot />
+      </select>
+    ) : (
+      <input {...attrs} type={typ} value={wert} inputmode={inputmode} maxlength={max} placeholder={platzhalter} class:list={['input', feldKlasse]} />
+    )
+  }
+  {hinweis && <p id={`${id}-hinweis`} class="text-sm text-gedaempft">{hinweis}</p>}
+  <p id={`${id}-fehler`} class="feld-fehler" data-fehler-fuer={name} hidden></p>
+</div>

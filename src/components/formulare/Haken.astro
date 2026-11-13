@@ -1,0 +1,39 @@
+---
+// Checkbox mit Beschriftung (Slot, darf Links enthalten), nie vorausgewählt. Fehlertext direkt darunter.
+interface Props {
+  form: string;
+  name: string;
+  pflicht?: boolean;
+  nativ?: boolean;
+  fehler?: string;
+  hinweis?: string;
+  klasse?: string;
+}
+const { form, name, pflicht = false, nativ = false, fehler = '', hinweis, klasse } = Astro.props;
+const id = `${form}-${name}`;
+const beschrieben = [hinweis ? `${id}-hinweis` : '', `${id}-fehler`].filter(Boolean).join(' ');
+---
+
+<div class:list={['feld grid content-start gap-1.5', klasse]} data-feld-rahmen={name}>
+  <div class="flex items-start gap-3">
+    <input
+      type="checkbox"
+      id={id}
+      name={name}
+      value="1"
+      required={nativ || undefined}
+      aria-required={pflicht ? 'true' : undefined}
+      aria-describedby={beschrieben}
+      data-feld
+      data-pflicht={pflicht ? '' : undefined}
+      data-fehler-pflicht={fehler}
+      class="checkbox checkbox-secondary mt-0.5 size-6 shrink-0 rounded-[0.4rem] aria-[invalid=true]:border-error"
+    />
+    <label for={id} class="leading-snug">
+      <slot />
+      <span data-pflicht-stern class:list={['text-error', !pflicht && 'hidden']} aria-hidden="true"> *</span>
+    </label>
+  </div>
+  {hinweis && <p id={`${id}-hinweis`} class="pl-9 text-sm text-gedaempft" data-haken-hinweis>{hinweis}</p>}
+  <p id={`${id}-fehler`} class="feld-fehler pl-9" data-fehler-fuer={name} hidden></p>
+</div>

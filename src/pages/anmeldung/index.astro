@@ -1,8 +1,25 @@
 ---
+// /anmeldung/?kurs=<slug>&termin=<id> (US-10 … US-13) bzw. ?kurs=pruefungscoaching&paket=<id> (US-15).
 import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+import AnmeldeFormular from '../../components/formulare/AnmeldeFormular.astro';
+import { href } from '../../lib/pfad';
 ---
 
-<Basis titel="Anmeldung" beschreibung="Anmeldung zu einem Live-Online-Kurs der waybuild Akademie.">
-  <ImAufbau titel="Anmeldung" />
+<Basis titel="Anmeldung" beschreibung="Melde dich zu deinem Live-Online-Kurs der waybuild Akademie an – Rechnung per E-Mail, keine Online-Zahlung.">
+  <section class="rahmen pt-8 pb-16 sm:pt-12 sm:pb-24">
+    <div class="max-w-3xl">
+      <p class="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold ring-1 ring-base-300">
+        <span class="size-2.5 rounded-full bg-bernstein" aria-hidden="true"></span>
+        Anmeldung in fünf kurzen Schritten
+      </p>
+      <h1 class="trennen mt-5 text-4xl sm:text-5xl">Melde dich zu deinem Kurs an</h1>
+      <p class="mt-4 text-lg text-gedaempft">
+        Wähle Kurs und Termin, trag die Teilnehmenden ein und sag uns, wer die Rechnung bekommt. Die Rechnung kommt per E-Mail – an dich oder an deinen Betrieb.
+        Fragen vorab? <a class="link-fliess" href={href('/kontakt/')}>Schreib uns</a>.
+      </p>
+    </div>
+    <div class="mt-10">
+      <AnmeldeFormular />
+    </div>
+  </section>
 </Basis>

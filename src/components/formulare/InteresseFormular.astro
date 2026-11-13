@@ -1,0 +1,63 @@
+---
+// Interesse vormerken (US-14): unverbindlich, Name, E-Mail, Kurs (vorausgewählt per ?kurs=), optional Wunschzeitraum und
+// Nachricht, ausdrückliche Einwilligung (nicht vorausgewählt). POST an /api/interesse.php → info@.
+import Feld from './Feld.astro';
+import Haken from './Haken.astro';
+import Grundlagen from './Grundlagen.astro';
+import { formularDaten } from './daten';
+import { FEHLER } from '../../lib/formular';
+import { IS_PREVIEW } from '../../lib/env';
+import { href } from '../../lib/pfad';
+
+const F = 'interesse';
+const kurse = (await formularDaten()).kurse.filter((k) => k.art === 'kurs');
+const gruppen = [...new Set(kurse.map((k) => k.saeule))].map((s) => ({ saeule: s, kurse: kurse.filter((k) => k.saeule === s) }));
+---
+
+<form
+  id={F}
+  class="formular grid gap-6 rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8"
+  method="post"
+  action={href('/api/interesse.php')}
+  accept-charset="utf-8"
+  data-einfaches-formular
+  data-art="interesse"
+  data-demo={IS_PREVIEW ? 'true' : 'false'}
+  data-danke={href('/danke/')}
+  data-token={href('/api/token.php')}
+>
+  <Grundlagen form={F} />
+  <Feld form={F} name="kurs" label="Kurs" typ="select" pflicht nativ fehler={FEHLER.kurs} zusatz={{ 'data-url-param': 'kurs', 'data-zeile': 'Kurs' }}>
+    <option value="">Bitte Kurs wählen</option>
+    {
+      gruppen.map((g) => (
+        <optgroup label={g.saeule}>
+          {g.kurse.map((k) => (
+            <option value={k.id}>
+              {k.titel}
+              {k.status === 'entwurf' ? ' (Entwurf)' : ''}
+            </option>
+          ))}
+        </optgroup>
+      ))
+    }
+  </Feld>
+  <div class="grid gap-5 sm:grid-cols-2">
+    <Feld form={F} name="name" label="Name" pflicht nativ min={2} max={100} fehler={FEHLER.name} autocomplete="name" zusatz={{ 'data-zeile': 'Name' }} />
+    <Feld form={F} name="email" label="E-Mail" typ="email" pflicht nativ regel="email" max={254} fehler={FEHLER.email} autocomplete="email" inputmode="email" zusatz={{ 'data-zeile': 'E-Mail' }} />
+  </div>
+  <Feld form={F} name="wunschzeitraum" label="Wunschzeitraum" max={100} fehler={FEHLER.wunschzeitraum} platzhalter="z. B. ab Frühjahr 2027, abends" zusatz={{ 'data-zeile': 'Wunschzeitraum' }} />
+  <Feld form={F} name="nachricht" label="Nachricht" typ="textarea" max={2000} zeilen={4} fehler={FEHLER.nachricht} />
+  <Haken form={F} name="einwilligung" pflicht nativ fehler={FEHLER.einwilligungInteresse} hinweis="Du kannst die Einwilligung jederzeit per E-Mail widerrufen – dann löschen wir deine Vormerkung.">
+    Ja, ihr dürft mich per E-Mail benachrichtigen, sobald es Termine für diesen Kurs gibt. Mehr dazu in der{' '}
+    <a class="link-fliess" href={href('/datenschutz/')} target="_blank">Datenschutzerklärung</a>.
+  </Haken>
+  <div class="flex flex-wrap items-center gap-4 border-t border-base-300 pt-6">
+    <button type="submit" class="btn btn-accent btn-lg rounded-full px-8" data-absenden>Interesse vormerken</button>
+    <p class="text-sm text-gedaempft">Unverbindlich und kostenlos.</p>
+  </div>
+</form>
+
+<script>
+  import './einfach-client';
+</script>
