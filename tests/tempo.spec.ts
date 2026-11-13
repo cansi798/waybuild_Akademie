@@ -70,6 +70,24 @@ test.describe('Tempo', () => {
     expect(Math.abs(bild.width / bild.height - 320 / 220)).toBeLessThan(0.02);
   });
 
+  test('Warum-Bühne: beim Szenenwechsel nie halb durchsichtiger Text (Kontrast), nur die Grafik blendet über', async ({ page }) => {
+    await page.goto('./');
+    const buehne = page.locator('[data-warum]');
+    await buehne.scrollIntoViewIfNeeded();
+    await expect(buehne).toHaveClass(/ist-buehne/);
+    await page.locator('[data-wb-weiter]').click();
+    // direkt nach dem Wechsel (mitten in der Überblendung): neuer Text voll deckend, alter Text unsichtbar
+    const zustand = await page.evaluate(() => {
+      const li = [...document.querySelectorAll<HTMLElement>('[data-wb-szene]')];
+      const deckkraft = (el: Element | null) => { let o = 1; for (let e = el; e; e = e.parentElement) o *= Number(getComputedStyle(e).opacity); return o; };
+      return li.map((s) => ({ aktiv: s.classList.contains('ist-aktiv'), text: deckkraft(s.querySelector('.wb-text')), sichtbar: getComputedStyle(s.querySelector('.wb-text')!).visibility }));
+    });
+    for (const z of zustand) {
+      if (z.aktiv) expect(z.text).toBe(1);
+      else expect(z.sichtbar).toBe('hidden');
+    }
+  });
+
   test('Hero-Bühne: Fortschritts-Variablen hängen an der Spur, nicht an der ganzen Bühne', async ({ page }) => {
     await page.clock.install();
     await page.goto('./');

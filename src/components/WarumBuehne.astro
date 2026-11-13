@@ -241,13 +241,21 @@ const n = SZENEN.length;
     .wb .wb-szene {
       grid-area: 1 / 1;
       visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.45s ease, visibility 0s linear 0.45s;
     }
     .wb .wb-szene.ist-aktiv {
       visibility: visible;
-      opacity: 1;
+    }
+    /* Überblendet wird nur die Grafik (aria-hidden). Der Text wechselt ohne Halbtransparenz – so steht nie
+       halb durchsichtiger Text mit zu wenig Kontrast im Accessibility-Baum (axe color-contrast). */
+    .wb .wb-bild {
+      opacity: 0;
       transition: opacity 0.45s ease;
+    }
+    .wb .wb-szene.ist-aktiv .wb-bild {
+      opacity: 1;
+    }
+    .wb .wb-szene.ist-geht:not(.ist-aktiv) .wb-bild {
+      visibility: visible;
     }
     .wb .wb-szene:not(.ist-aktiv):not(.ist-geht) .wb-bild {
       content-visibility: hidden;
