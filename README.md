@@ -22,6 +22,20 @@ ENV: `SITE`, `BASE` (`/waybuild_Akademie` bzw. `/`), `PUBLIC_PREVIEW` (`true` = 
 - Termine je Kurs unter `termine:` (Anmeldeschluss = Start − 7 Tage). Vergangene Termine verschwinden beim nächsten Build (täglich automatisch).
 - Datenzugriff zentral über `src/lib/kurse.ts`; interne Links immer über `href()` aus `src/lib/pfad.ts`.
 
+## Dokumentation
+
+Entwicklung in drei Phasen nach [`docs/00-prozess.md`](docs/00-prozess.md):
+
+| Phase | Dokumente |
+|---|---|
+| 1 Konzeption | [Projektdokumentation](docs/01-projektdokumentation.md) · [Anforderungen](docs/02-anforderungen.md) · [Spezifikation](docs/03-spezifikation.md) |
+| 2 Erarbeitung | [Architektur](docs/04-architektur.md) · [Technical Debt](docs/05-technical-debt.md) |
+| 3 Finalisierung | [Tests (Strategie + Protokoll)](docs/06-tests.md) · [Benutzeranleitung](docs/07-benutzeranleitung.md) · [Abschlussbericht](docs/08-abschlussbericht.md) |
+
+Diagramme (PlantUML) unter [`docs/diagramme/`](docs/diagramme/LIESMICH.md), Formular-Endpunkte unter [`public/api/LIESMICH.md`](public/api/LIESMICH.md).
+
+Live-Tests: nach `scripts/bau.sh live` → `BASE=/ scripts/test.sh tests/seiten.spec.ts tests/recht.spec.ts tests/hero.spec.ts`; danach für die Vorschau-Tests wieder `scripts/bau.sh`.
+
 ## Aufbau
 
 `src/layouts/Basis.astro` (Kopf, Fuß, SEO, Vorschau-Banner) · `src/components/` (Kopf, Fuss, Countdown, Lernpfad, KursKarte, WarumBuehne, ImAufbau) · `src/pages/` · `public/logo/` · `tests/` · `.github/workflows/deploy.yml`.

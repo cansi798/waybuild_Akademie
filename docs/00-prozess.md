@@ -5,9 +5,9 @@ Erst nach der Freigabe beginnt die nächste Phase.
 
 | Phase | Ergebnis (Dokumente) | Gate |
 |---|---|---|
-| **1 Konzeption** | `01-projektdokumentation.md` · `02-anforderungen.md` · `03-spezifikation.md` | Freigabe Can (Inhalt + Umfang) |
-| **2 Erarbeitung** | `04-architektur.md` · Umsetzung im Repo (Astro) · `05-technical-debt.md` | Freigabe Vorschau |
-| **3 Finalisierung** | `06-tests.md` (Strategie + Protokoll) · `07-benutzeranleitung.md` · `08-abschlussbericht.md` | Freigabe Livegang |
+| **1 Konzeption** | [`01-projektdokumentation.md`](01-projektdokumentation.md) · [`02-anforderungen.md`](02-anforderungen.md) · [`03-spezifikation.md`](03-spezifikation.md) | Freigabe Can (Inhalt + Umfang) |
+| **2 Erarbeitung** | [`04-architektur.md`](04-architektur.md) · Umsetzung im Repo (Astro) · [`05-technical-debt.md`](05-technical-debt.md) | Freigabe Vorschau |
+| **3 Finalisierung** | [`06-tests.md`](06-tests.md) (Strategie + Protokoll) · [`07-benutzeranleitung.md`](07-benutzeranleitung.md) · [`08-abschlussbericht.md`](08-abschlussbericht.md) | Freigabe Livegang |
 
 ## Phase 1 – Konzeption
 
