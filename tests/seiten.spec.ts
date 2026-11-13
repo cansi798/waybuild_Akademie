@@ -118,6 +118,8 @@ test.describe('Seiten (Vorschau-Build)', () => {
   });
 
   test('Katalog: Entwürfe tragen das gelbe Band', async ({ page }) => {
+    // Karten-Ansicht (Standard bei vielen Kursen ist die Liste, siehe tests/uebersicht.spec.ts)
+    await page.addInitScript(() => localStorage.setItem('akademie-kursansicht', 'karten'));
     await page.goto('./kurse/');
     for (const slug of entwuerfe.slice(0, 5)) {
       await expect(page.locator(`[data-kurskarte="${slug}"] [data-entwurf-band]`)).toBeVisible();

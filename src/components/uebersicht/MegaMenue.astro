@@ -1,0 +1,82 @@
+---
+// Mega-Menü „Kurse“ (Desktop): drei Säulen als Spalten, darin die Kategorien mit Anzahl und je bis zu 6 Kursen.
+// Beim Build als HTML erzeugt (kein JSON, kein Nachladen); Daten aus der Collection – live nur freigegebene Kurse,
+// leere Kategorien entfallen, eine Säule ohne Kurse steht als „in Vorbereitung“ da. Steuerung: Kopf.astro.
+import { IS_PREVIEW } from '../../lib/env';
+import { href } from '../../lib/pfad';
+import { kategorieUrl, MENUE_KURSE_JE_KATEGORIE, nachSaeuleUndKategorie, saeulenName, SAEULEN_REIHENFOLGE, type Kurs } from '../../lib/kurse';
+
+interface Props {
+  kurse: Kurs[];
+}
+const { kurse } = Astro.props;
+const gruppen = nachSaeuleUndKategorie(kurse);
+const spalten = SAEULEN_REIHENFOLGE.map((saeule) => ({ saeule, gruppe: gruppen.find((g) => g.saeule === saeule) }));
+const mitMarke = IS_PREVIEW && kurse.some((k) => k.data.status === 'entwurf');
+---
+
+<div id="mega-kurse" class="mega-panel absolute inset-x-0 top-full border-b border-base-300 bg-base-100" data-mega-panel hidden>
+  <div class="rahmen mega-rollen py-7">
+    <div class="grid grid-cols-3 gap-x-10">
+      {
+        spalten.map(({ saeule, gruppe }) => (
+          <div class="min-w-0" data-mega-saeule={saeule}>
+            <p class="flex items-baseline justify-between gap-3 border-b border-base-300 pb-3">
+              <a href={href(`/kurse/?saeule=${saeule}`)} class="mega-saeule font-serif text-xl text-navy">
+                {saeulenName(saeule)}
+              </a>
+              {gruppe && <span class="text-sm font-semibold text-gedaempft">{gruppe.kurse.length}</span>}
+            </p>
+            {gruppe ? (
+              <ul class="mt-4 grid gap-5">
+                {gruppe.kategorien.map((kat) => (
+                  <li>
+                    <a href={href(kategorieUrl(saeule, kat.name))} class="mega-kat" data-mega-kategorie={kat.slug}>
+                      {kat.name}
+                      <span class="mega-zahl">
+                        <span class="sr-only">(</span>
+                        {kat.kurse.length}
+                        <span class="sr-only"> {kat.kurse.length === 1 ? 'Kurs' : 'Kurse'})</span>
+                      </span>
+                    </a>
+                    <ul class="mt-1 grid">
+                      {kat.kurse.slice(0, MENUE_KURSE_JE_KATEGORIE).map((k) => (
+                        <li>
+                          <a href={href(`/kurse/${k.id}/`)} class="mega-kurs" data-mega-kurs={k.id}>
+                            {k.data.titel}
+                            {IS_PREVIEW && k.data.status === 'entwurf' && (
+                              <>
+                                <span class="mega-punkt" aria-hidden="true" />
+                                <span class="sr-only"> (Entwurf)</span>
+                              </>
+                            )}
+                          </a>
+                        </li>
+                      ))}
+                      {kat.kurse.length > MENUE_KURSE_JE_KATEGORIE && (
+                        <li>
+                          <a href={href(kategorieUrl(saeule, kat.name))} class="mega-mehr">
+                            Alle {kat.kurse.length} in {kat.name} →
+                          </a>
+                        </li>
+                      )}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="mt-4 text-sm text-gedaempft">In Vorbereitung – die ersten Kurse folgen.</p>
+            )}
+          </div>
+        ))
+      }
+    </div>
+    <div class="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-base-300 pt-5">
+      <a href={href('/kurse/')} class="btn btn-secondary rounded-full px-6">Alle Kurse ansehen →</a>
+      <p class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+        {mitMarke && <span class="flex items-center gap-2 text-gedaempft"><span class="mega-punkt" aria-hidden="true" />Entwurf – nur in der Vorschau</span>}
+        <a href={href('/termine/')} class="link-fliess font-semibold">Alle Starttermine</a>
+      </p>
+    </div>
+  </div>
+</div>
