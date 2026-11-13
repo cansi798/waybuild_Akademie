@@ -1,0 +1,197 @@
+---
+// Prüfungs-Countdown (Startseite): „Noch N Tage bis zur AP1 am 24.02.2027“, Umschalter AP1/AP2, darunter der Kursstart.
+// Alle Werte kommen aus den Kursterminen (Props, kein Hardcode). Umschalten ohne JavaScript per Radio + CSS (:checked);
+// das Skript rechnet die Tage nur mit dem heutigen Datum (Europe/Berlin) neu. Ohne JS gilt der Stand des Builds.
+import { formatDatum, isoDatum, tageBis } from '../lib/kurse';
+import { href } from '../lib/pfad';
+import type { CountdownOption } from '../lib/countdown';
+
+interface Props {
+  optionen: CountdownOption[];
+}
+const { optionen } = Astro.props;
+
+// Zeitstrahl: heute → Prüfung; Kurs als Bernstein-Abschnitt
+const anteil = (o: CountdownOption, d: Date) => {
+  const gesamt = Math.max(1, tageBis(o.pruefung));
+  return Math.min(100, Math.max(0, (tageBis(d) / gesamt) * 100));
+};
+const einheit = (n: number) => (n === 1 ? 'Tag' : 'Tage');
+---
+
+{
+  optionen.length > 0 && (
+    <section class="cd-box relative isolate overflow-hidden rounded-[1.75rem] bg-navy p-6 text-white sm:p-8" aria-labelledby="countdown-titel" data-countdown>
+      <svg class="pointer-events-none absolute -right-24 -top-24 -z-10 size-80 text-white/[0.06]" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="98" fill="none" stroke="currentColor" stroke-width="1.5" />
+        <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" stroke-width="1.5" />
+        <circle cx="100" cy="100" r="42" fill="none" stroke="currentColor" stroke-width="1.5" />
+      </svg>
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <h2 id="countdown-titel" class="font-sans text-base font-semibold text-white/85">Prüfungs-Countdown</h2>
+        {optionen.length > 1 && (
+          <fieldset class="cd-schalter">
+            <legend class="sr-only">Prüfung wählen</legend>
+            {optionen.map((o, i) => (
+              <label>
+                <input type="radio" name="cd-pruefung" value={o.kurz} checked={i === 0} class="sr-only" data-cd-radio />
+                <span>{o.kurz}</span>
+              </label>
+            ))}
+          </fieldset>
+        )}
+      </div>
+
+      <div class="cd-tafeln mt-4">
+        {optionen.map((o, i) => {
+          const tage = tageBis(o.pruefung);
+          return (
+            <div class="cd-tafel" data-cd-tafel={i} data-pruefung={isoDatum(o.pruefung)} data-start={isoDatum(o.start)} data-ende={isoDatum(o.ende)}>
+              <p class="flex flex-wrap items-end gap-x-4 gap-y-1">
+                <span class="text-lg text-white/80">Noch</span>
+                <span class="cd-zahl font-serif tabular-nums" data-cd-tage>{tage}</span>
+                <span class="pb-3 text-lg leading-snug">
+                  <span data-cd-einheit>{einheit(tage)}</span> bis zur {o.kurz}
+                  <br />
+                  am <time datetime={isoDatum(o.pruefung)} class="font-semibold" data-cd-datum>{formatDatum(o.pruefung)}</time>
+                </span>
+              </p>
+
+              <div class="cd-strahl mt-6" aria-hidden="true" style={`--kurs-start:${anteil(o, o.start)}%;--kurs-ende:${anteil(o, o.ende)}%`}>
+                <span class="cd-strahl-kurs" />
+                <span class="cd-strahl-ziel" />
+              </div>
+              <div class="cd-legende relative mt-2 h-4 text-xs text-white/70" aria-hidden="true" style={`--kurs-start:${anteil(o, o.start)}%`}>
+                <span class="absolute left-0">heute</span>
+                <span class="cd-legende-kurs absolute">Kurs</span>
+                <span class="absolute right-0">Prüfung</span>
+              </div>
+
+              <a href={href(`/kurse/${o.slug}/#termine`)} class="cd-start mt-6 flex items-center justify-between gap-3 rounded-2xl bg-bernstein px-5 py-4 text-navy">
+                <span>
+                  <span class="block text-sm font-medium">{o.kursTitel}</span>
+                  <span class="block text-lg font-semibold">Dein Kurs startet am {formatDatum(o.start)}</span>
+                </span>
+                <svg viewBox="0 0 24 24" class="size-6 shrink-0" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </a>
+              {o.hinweis && <p class="mt-3 text-sm text-white/75">Prüfungstermin bundesweit. {o.hinweis}</p>}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .cd-schalter {
+    display: inline-flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.1);
+  }
+  .cd-schalter label {
+    position: relative;
+  }
+  .cd-schalter span {
+    display: inline-flex;
+    min-height: 2.75rem;
+    min-width: 3.75rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    color: rgb(255 255 255 / 0.9);
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .cd-schalter input:checked + span {
+    background: var(--color-white, #fff);
+    color: var(--color-navy);
+  }
+  .cd-schalter input:focus-visible + span {
+    outline: 3px solid var(--color-bernstein);
+    outline-offset: 2px;
+  }
+  .cd-zahl {
+    font-size: clamp(5.5rem, 22vw, 9.5rem);
+    line-height: 0.85;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    font-variation-settings: 'opsz' 144;
+  }
+  .cd-strahl {
+    position: relative;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.28) 0 2px, transparent 2px 9px);
+  }
+  .cd-strahl-kurs {
+    position: absolute;
+    inset-block: 0;
+    left: var(--kurs-start);
+    right: calc(100% - var(--kurs-ende));
+    border-radius: 999px;
+    background: var(--color-bernstein);
+  }
+  .cd-strahl-ziel {
+    position: absolute;
+    right: -0.25rem;
+    top: 50%;
+    width: 1rem;
+    height: 1rem;
+    translate: 0 -50%;
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgb(255 255 255 / 0.2);
+  }
+  .cd-legende-kurs {
+    left: var(--kurs-start);
+  }
+  .cd-start {
+    transition: transform 0.2s ease;
+  }
+  .cd-start:hover {
+    transform: translateY(-2px);
+  }
+</style>
+
+<style is:global>
+  /* Tafeln: nur die gewählte ist sichtbar (ohne JS über :has). Global, weil Astros Scoping :has(… nth-of-type) verfälscht. */
+  .cd-tafel { display: none; }
+  .cd-box .cd-tafel[data-cd-tafel='0'] { display: block; }
+  .cd-box:has(.cd-schalter label:nth-of-type(2) input:checked) .cd-tafel[data-cd-tafel='0'],
+  .cd-box:has(.cd-schalter label:nth-of-type(3) input:checked) .cd-tafel[data-cd-tafel='0'],
+  .cd-box:has(.cd-schalter label:nth-of-type(4) input:checked) .cd-tafel[data-cd-tafel='0'] { display: none; }
+  .cd-box:has(.cd-schalter label:nth-of-type(2) input:checked) .cd-tafel[data-cd-tafel='1'],
+  .cd-box:has(.cd-schalter label:nth-of-type(3) input:checked) .cd-tafel[data-cd-tafel='2'],
+  .cd-box:has(.cd-schalter label:nth-of-type(4) input:checked) .cd-tafel[data-cd-tafel='3'] { display: block; }
+</style>
+
+<script>
+  // Tage mit dem heutigen Datum in Europe/Berlin neu berechnen (die Seite ist statisch gebaut).
+  const TAG = 86_400_000;
+  const heute = () => {
+    const s = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+    return Date.parse(`${s}T00:00:00Z`);
+  };
+  const tageBis = (iso: string) => Math.round((Date.parse(`${iso}T00:00:00Z`) - heute()) / TAG);
+
+  document.querySelectorAll<HTMLElement>('[data-cd-tafel]').forEach((tafel) => {
+    const { pruefung = '', start = '', ende = '' } = tafel.dataset;
+    const tage = tageBis(pruefung);
+    if (tage < 0) return;
+    const zahl = tafel.querySelector('[data-cd-tage]');
+    const einheit = tafel.querySelector('[data-cd-einheit]');
+    if (zahl) zahl.textContent = String(tage);
+    if (einheit) einheit.textContent = tage === 1 ? 'Tag' : 'Tage';
+    const strahl = tafel.querySelector<HTMLElement>('.cd-strahl');
+    const gesamt = Math.max(1, tage);
+    const anteil = (iso: string) => Math.min(100, Math.max(0, (tageBis(iso) / gesamt) * 100));
+    strahl?.style.setProperty('--kurs-start', `${anteil(start)}%`);
+    strahl?.style.setProperty('--kurs-ende', `${anteil(ende)}%`);
+    tafel.querySelector<HTMLElement>('.cd-legende')?.style.setProperty('--kurs-start', `${anteil(start)}%`);
+  });
+</script>

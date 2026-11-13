@@ -1,0 +1,38 @@
+---
+// Platzhalter-Kursseite (Task 3 baut die vollständige Kursseite mit Sprungnavigation, Inhalten, Terminen, Preis, FAQ).
+import Basis from '../../layouts/Basis.astro';
+import ImAufbau from '../../components/ImAufbau.astro';
+import { alleKurse, formatDatum, formatEuro, buchbareTermine, type Kurs } from '../../lib/kurse';
+import { IHK_HINWEIS } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const kurse = await alleKurse();
+  return kurse.map((kurs) => ({ params: { slug: kurs.id }, props: { kurs } }));
+}
+interface Props {
+  kurs: Kurs;
+}
+const { kurs } = Astro.props;
+const d = kurs.data;
+const termine = buchbareTermine(kurs);
+---
+
+<Basis titel={d.titel} beschreibung={d.kurzbeschreibung}>
+  <ImAufbau titel={d.titel} text={d.kurzbeschreibung}>
+    <p class="mt-4 font-semibold text-tief">{d.untertitel}</p>
+    <p class="mt-4"><span class="font-serif text-3xl font-semibold">{formatEuro(d.preis.betrag)}</span> <span class="text-gedaempft">Endpreis, alles inklusive</span></p>
+    {
+      termine.length > 0 && (
+        <ul id="termine" class="mt-6 grid gap-2">
+          {termine.map((t) => (
+            <li class="rounded-xl bg-white p-4 ring-1 ring-base-300">
+              {formatDatum(t.start)}–{formatDatum(t.ende)} · {d.zeiten}
+              {t.pruefung && <span class="block text-sm text-gedaempft">Prüfung {formatDatum(t.pruefung)}. {t.pruefungHinweis}</span>}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    {d.saeule !== 'akademie' && <p class="mt-6 rounded-xl bg-base-200 p-4 text-sm">{IHK_HINWEIS}</p>}
+  </ImAufbau>
+</Basis>

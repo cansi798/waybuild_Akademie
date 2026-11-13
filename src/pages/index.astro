@@ -1,0 +1,238 @@
+---
+// Startseite (US-01): Kernbotschaft + Countdown, drei Säulen, buchbare Kurse mit Preis/UE/Termin, Warum-Bühne,
+// Lernpfad „So läuft's“, FAQ-Kurzblock, Abschluss-CTA. Textarm – Details nur aufklappbar.
+import Basis from '../layouts/Basis.astro';
+import Countdown from '../components/Countdown.astro';
+import type { CountdownOption } from '../lib/countdown';
+import KursKarte from '../components/KursKarte.astro';
+import Lernpfad from '../components/Lernpfad.astro';
+import WarumBuehne from '../components/WarumBuehne.astro';
+import { alleTermine, formatDatum, formatEuro, freigegebeneKurse, kurzname, naechsterTermin, saeulenName, type Saeule } from '../lib/kurse';
+import { href } from '../lib/pfad';
+import { AKADEMIE } from '../lib/site';
+
+const freigegeben = await freigegebeneKurse();
+
+// Countdown: freigegebene Prüfungsvorbereitungen mit nächstem buchbaren Termin inkl. Prüfungstag
+const countdown: CountdownOption[] = freigegeben
+  .filter((k) => k.data.saeule === 'ihk-pruefung' && k.data.art === 'kurs')
+  .flatMap((k) => {
+    const t = naechsterTermin(k);
+    return t?.pruefung
+      ? [{ kurz: kurzname(k), kursTitel: k.data.untertitel, slug: k.id, terminId: t.id, pruefung: t.pruefung, start: t.start, ende: t.ende, hinweis: t.pruefungHinweis }]
+      : [];
+  })
+  .slice(0, 4);
+
+const highlights = freigegeben.slice(0, 3);
+const naechsteStarts = (await alleTermine()).filter((x) => x.kurs.data.status === 'freigegeben').slice(0, 4);
+const erster = countdown[0];
+const ersterKurs = erster && freigegeben.find((k) => k.id === erster.slug);
+const ersterTermin = ersterKurs && naechsterTermin(ersterKurs);
+
+const SAEULEN: { id: Saeule; text: string; url: string }[] = [
+  { id: 'ihk-pruefung', text: 'AP1 für alle IT-Berufe, AP2 Systemintegration und persönliches Prüfungscoaching.', url: href('/pruefungsvorbereitung/') },
+  { id: 'ihk-weiterbildung', text: 'Berufsbegleitend zum Fachwirt, Betriebswirt oder Ausbilderschein – die Prüfung legst du bei deiner IHK ab.', url: href('/kurse/?saeule=ihk-weiterbildung') },
+  { id: 'akademie', text: 'Praxiskurse in KI, Programmierung und IT mit Teilnahmezertifikat der waybuild Akademie.', url: href('/kurse/?saeule=akademie') },
+];
+const buchbar = (s: Saeule) => freigegeben.filter((k) => k.data.saeule === s).length;
+
+const FAQ = [
+  { frage: 'Ist der Kurs eine offizielle IHK-Veranstaltung?', antwort: 'Nein. Die waybuild Akademie ist ein unabhängiger Anbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine.' },
+  { frage: 'Wie bezahle ich?', antwort: 'Nach der Anmeldung bekommst du die Rechnung per E-Mail – an dich oder an deinen Betrieb. Eine Online-Zahlung ist nicht nötig.' },
+  { frage: 'Was brauche ich für den Live-Unterricht?', antwort: 'Einen Computer mit stabiler Internetverbindung, einen aktuellen Browser und ein Headset oder Kopfhörer mit Mikrofon.' },
+  { frage: 'Was ist, wenn ich einen Abend verpasse?', antwort: 'Abend verpasst? Du holst die Inhalte in einem späteren Live-Termin nach – sprich uns einfach an.' },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.frage, acceptedAnswer: { '@type': 'Answer', text: f.antwort } })),
+};
+---
+
+<Basis
+  titel="waybuild Akademie – Live-Online-Kurse und IHK-Prüfungsvorbereitung"
+  beschreibung="Vorbereitung auf die IHK-Abschlussprüfung für IT-Berufe (AP1, AP2), Prüfungscoaching und Weiterbildungen – live online, mit festen Terminen und klaren Endpreisen."
+  schema={[faqSchema]}
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="rahmen grid items-center gap-10 pt-8 pb-16 sm:pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:pt-16 lg:pb-24">
+      <div>
+        <p class="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold ring-1 ring-base-300">
+          <span class="relative flex size-2.5" aria-hidden="true">
+            <span class="absolute inline-flex size-full animate-ping rounded-full bg-bernstein opacity-75 motion-reduce:hidden"></span>
+            <span class="relative inline-flex size-2.5 rounded-full bg-bernstein"></span>
+          </span>
+          Alle Kurse live online
+        </p>
+        <h1 class="mt-5 text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.25rem]">
+          <span class="block">Live lernen.</span>
+          <span class="block text-petrol">Gut vorbereitet in die Prüfung.</span>
+          <span class="block">Weiter im Beruf.</span>
+        </h1>
+        <p class="mt-6 max-w-xl text-lg text-gedaempft sm:text-xl">
+          IHK-Prüfungsvorbereitung für IT-Azubis und Umschüler – bald auch IHK-Weiterbildungen und eigene Kurse in KI und IT. Abends, mit festen Terminen und klaren Endpreisen.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={href('/kurse/')} class="btn btn-accent btn-lg rounded-full px-7">Kurse ansehen</a>
+          <a href={href('/termine/')} class="btn btn-outline btn-secondary btn-lg rounded-full px-7">Alle Termine</a>
+        </div>
+        <ul class="mt-8 grid gap-2 text-[0.95rem] sm:flex sm:flex-wrap sm:gap-x-6">
+          {
+            ['Dozenten mit IHK-Prüfer-Erfahrung', 'Rechnung an dich oder deinen Betrieb', 'Keine Online-Zahlung'].map((t) => (
+              <li class="flex items-center gap-2">
+                <svg viewBox="0 0 20 20" class="size-5 shrink-0 text-tief" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                {t}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <Countdown optionen={countdown} />
+    </div>
+  </section>
+
+  <!-- Drei Säulen -->
+  <section class="border-y border-base-300 bg-white" aria-labelledby="saeulen-titel">
+    <div class="rahmen py-16 sm:py-20">
+      <h2 id="saeulen-titel" class="max-w-xl text-3xl sm:text-4xl">Drei Wege zu deinem nächsten Abschluss</h2>
+      <ul class="mt-10 divide-y divide-base-300 border-y border-base-300">
+        {
+          SAEULEN.map((s, i) => (
+            <li>
+              <a href={s.url} class="saeule group grid gap-3 py-7 md:grid-cols-[1.1fr_1.4fr_auto] md:items-center md:gap-8">
+                <span class="flex items-center gap-4">
+                  <span class:list={['h-12 w-1.5 shrink-0 rounded-full', ['bg-petrol', 'bg-tief', 'bg-navy'][i]]} aria-hidden="true" />
+                  <span class="trennen font-serif text-2xl leading-tight sm:text-3xl">{saeulenName(s.id)}</span>
+                </span>
+                <span class="text-gedaempft md:text-lg">{s.text}</span>
+                <span class="flex items-center gap-3 md:justify-end">
+                  {buchbar(s.id) > 0 ? (
+                    <span class="rounded-full bg-bernstein px-3 py-1 text-sm font-semibold text-navy">Jetzt buchbar</span>
+                  ) : (
+                    <span class="rounded-full bg-base-200 px-3 py-1 text-sm font-semibold">In Vorbereitung</span>
+                  )}
+                  <span class="grid size-11 place-items-center rounded-full bg-base-200 transition-colors group-hover:bg-navy group-hover:text-white" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" class="size-5"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Kurs-Highlights -->
+  <section class="rahmen py-16 sm:py-24" aria-labelledby="kurse-titel">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div class="max-w-2xl">
+        <h2 id="kurse-titel" class="text-3xl sm:text-4xl">Jetzt buchbar</h2>
+        <p class="mt-3 text-lg text-gedaempft">Preis, Umfang und nächster Start – auf einen Blick, ohne Kleingedrucktes.</p>
+      </div>
+      <a href={href('/kurse/')} class="link-fliess font-semibold">Alle Kurse ansehen</a>
+    </div>
+    <ul class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {highlights.map((k) => <li><KursKarte kurs={k} /></li>)}
+    </ul>
+
+    {
+      naechsteStarts.length > 0 && (
+        <div class="mt-14">
+          <h3 class="text-2xl">Nächste Starttermine</h3>
+          <ul class="mt-5 grid gap-3">
+            {naechsteStarts.map(({ kurs, termin }) => (
+              <li class="grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 rounded-2xl bg-white p-4 ring-1 ring-base-300 sm:grid-cols-[auto_1fr_auto_auto] sm:p-5">
+                <time datetime={termin.start.toISOString().slice(0, 10)} class="grid w-16 place-items-center rounded-xl bg-navy py-2 text-white">
+                  <span class="font-serif text-2xl leading-none">{formatDatum(termin.start, 'tagmonat').slice(0, 2)}</span>
+                  <span class="text-xs">{new Intl.DateTimeFormat('de-DE', { month: 'short', year: '2-digit', timeZone: 'UTC' }).format(termin.start)}</span>
+                </time>
+                <span class="min-w-0">
+                  <span class="trennen block font-semibold">{kurzname(kurs)} – {kurs.data.untertitel}</span>
+                  <span class="block text-sm text-gedaempft">
+                    {formatDatum(termin.start, 'tagmonat')}–{formatDatum(termin.ende)}, {kurs.data.zeiten}
+                  </span>
+                </span>
+                <span class="col-start-2 font-serif text-2xl font-semibold tabular-nums sm:col-start-auto">{formatEuro(kurs.data.preis.betrag)}</span>
+                <a href={href(`/anmeldung/?kurs=${kurs.id}&termin=${termin.id}`)} class="btn btn-secondary col-span-2 rounded-full sm:col-span-1">
+                  Anmelden<span class="sr-only">: {kurs.data.titel}, Start {formatDatum(termin.start)}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-4 text-sm text-gedaempft">Alle Preise sind Endpreise, alles inklusive. Die Prüfungsgebühr deiner IHK ist nicht enthalten.</p>
+        </div>
+      )
+    }
+  </section>
+
+  <!-- Warum-Bühne (Vertrauen) -->
+  <section class="bg-white py-16 sm:py-24 border-y border-base-300">
+    <div class="rahmen">
+      <WarumBuehne
+        naechster={ersterTermin && ersterKurs ? { text: `Nächster Start: ${formatDatum(ersterTermin.start)} (${kurzname(ersterKurs)})`, url: href(`/anmeldung/?kurs=${ersterKurs.id}&termin=${ersterTermin.id}`) } : undefined}
+      />
+    </div>
+  </section>
+
+  <!-- So läuft's / Lernpfad -->
+  {
+    ersterKurs && ersterTermin && (
+      <section class="rahmen py-16 sm:py-24" aria-labelledby="ablauf-titel">
+        <h2 id="ablauf-titel" class="max-w-xl text-3xl sm:text-4xl">So läuft's</h2>
+        <p class="mt-3 max-w-xl text-lg text-gedaempft">Vier Schritte von der Anmeldung bis zur Prüfung.</p>
+        <div class="mt-12">
+          <Lernpfad
+            kurz={kurzname(ersterKurs)}
+            slug={ersterKurs.id}
+            zeiten={ersterKurs.data.zeiten}
+            anmeldeschluss={ersterTermin.anmeldeschluss}
+            start={ersterTermin.start}
+            ende={ersterTermin.ende}
+            pruefung={ersterTermin.pruefung}
+          />
+        </div>
+      </section>
+    )
+  }
+
+  <!-- FAQ-Kurzblock -->
+  <section class="border-t border-base-300 bg-base-200/60" aria-labelledby="faq-titel">
+    <div class="rahmen grid gap-10 py-16 sm:py-20 lg:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <h2 id="faq-titel" class="text-3xl sm:text-4xl">Kurz gefragt</h2>
+        <p class="mt-3 text-gedaempft">Mehr Antworten findest du in den <a class="link-fliess" href={href('/faq/')}>häufigen Fragen</a>.</p>
+      </div>
+      <div class="grid gap-3">
+        {
+          FAQ.map((f) => (
+            <details class="faq group rounded-2xl bg-white ring-1 ring-base-300">
+              <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold [&::-webkit-details-marker]:hidden">
+                {f.frage}
+                <svg viewBox="0 0 20 20" class="size-5 shrink-0 transition-transform group-open:rotate-45" aria-hidden="true"><path d="M10 4v12M4 10h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+              </summary>
+              <p class="px-5 pb-5 text-gedaempft">{f.antwort}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Abschluss-CTA -->
+  <section class="bg-tief text-white" aria-labelledby="cta-titel">
+    <div class="rahmen flex flex-col gap-8 py-16 sm:py-20 md:flex-row md:items-center md:justify-between">
+      <div class="max-w-xl">
+        <h2 id="cta-titel" class="text-3xl sm:text-4xl">Such dir deinen Termin aus.</h2>
+        <p class="mt-3 text-lg text-white/85">Anmelden geht per Formular. Die Rechnung kommt per E-Mail – an dich oder an deinen Betrieb.</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href={href('/termine/')} class="btn btn-accent btn-lg rounded-full px-7">Termine ansehen</a>
+        <a href={`mailto:${AKADEMIE.mailInfo}`} class="btn btn-lg rounded-full border-white/40 bg-transparent px-7 text-white hover:bg-white/10">Frage stellen</a>
+      </div>
+    </div>
+  </section>
+</Basis>

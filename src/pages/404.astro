@@ -1,0 +1,17 @@
+---
+import Basis from '../layouts/Basis.astro';
+import { href } from '../lib/pfad';
+import { MENUE } from '../lib/site';
+---
+
+<Basis titel="Seite nicht gefunden" noindex>
+  <section class="rahmen py-20 sm:py-28">
+    <p class="font-serif text-[7rem] leading-none text-petrol sm:text-[10rem]" aria-hidden="true">404</p>
+    <h1 class="mt-4 text-4xl sm:text-5xl">Diese Seite gibt es nicht.</h1>
+    <p class="mt-4 max-w-xl text-lg text-gedaempft">Vielleicht hat sich die Adresse geändert. Von hier aus kommst du weiter:</p>
+    <ul class="mt-8 flex flex-wrap gap-3">
+      <li><a href={href('/')} class="btn btn-accent rounded-full">Zur Startseite</a></li>
+      {MENUE.slice(0, 3).map((m) => <li><a href={href(m.pfad)} class="btn btn-outline btn-secondary rounded-full">{m.name}</a></li>)}
+    </ul>
+  </section>
+</Basis>

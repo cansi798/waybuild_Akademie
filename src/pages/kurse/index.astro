@@ -1,0 +1,18 @@
+---
+// Platzhalter-Katalog (Task 3 baut Filter nach Säule/Kategorie). Zeigt schon alle sichtbaren Kurse als Karten.
+import Basis from '../../layouts/Basis.astro';
+import ImAufbau from '../../components/ImAufbau.astro';
+import KursKarte from '../../components/KursKarte.astro';
+import { alleKurse } from '../../lib/kurse';
+
+const kurse = await alleKurse();
+---
+
+<Basis titel="Kurse" beschreibung="Alle Live-Online-Kurse der waybuild Akademie mit Preis, Umfang und nächstem Starttermin.">
+  <ImAufbau titel="Kurse" text="Der Kurskatalog mit Filtern ist im Aufbau. Hier findest du schon alle Kurse." />
+  <section class="rahmen pb-20" aria-label="Kursliste">
+    <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {kurse.map((k) => <li><KursKarte kurs={k} /></li>)}
+    </ul>
+  </section>
+</Basis>

@@ -1,0 +1,24 @@
+---
+// Schlichter Platzhalter für Seiten, die in späteren Tasks gebaut werden – damit kein Link ins Leere geht.
+import { href } from '../lib/pfad';
+import { AKADEMIE } from '../lib/site';
+
+interface Props {
+  titel: string;
+  text?: string;
+}
+const { titel, text } = Astro.props;
+---
+
+<section class="rahmen py-16 sm:py-24">
+  <div class="max-w-2xl">
+    <p class="inline-flex rounded-full bg-base-200 px-3 py-1 text-sm font-semibold">Seite im Aufbau</p>
+    <h1 class="trennen mt-4 text-4xl sm:text-5xl">{titel}</h1>
+    <p class="mt-5 text-lg text-gedaempft">{text ?? 'Diese Seite ist im Aufbau und bald für dich da.'}</p>
+    <slot />
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href={href('/')} class="btn btn-secondary rounded-full">Zur Startseite</a>
+      <a href={`mailto:${AKADEMIE.mailInfo}`} class="btn btn-ghost rounded-full text-navy">{AKADEMIE.mailInfo}</a>
+    </div>
+  </div>
+</section>
