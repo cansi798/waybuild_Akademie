@@ -1,0 +1,480 @@
+---
+// Hero-Bühne „Von der Anmeldung bis zum Abschluss“ (Auftrag Can): fünf Stationen als animierte Reise.
+// - Reine SVG/CSS-Grafik, jede Station nur einmal im Markup; kleines Skript für Ablauf, Pause/Weiter und Daten.
+// - Startet, sobald die Bühne sichtbar ist; läuft in Schleife (nach drei Runden bleibt sie am Ziel stehen).
+// - Bühnen-Layout steht schon im CSS (kein Umbau durch JS → CLS 0). Ohne JavaScript oder bei reduzierter
+//   Bewegung: alle Stationen als statische Bildfolge (Endbild jeder Grafik), ohne Steuerung.
+// - Daten (Kursstart, Prüfungstag, Uhrzeit) kommen aus den Kursterminen; der AP1/AP2-Schalter des
+//   Countdowns schaltet die Bühne mit um. Rechtlich: keine Erfolgsversprechen, nur Live-Unterricht.
+import type { ReiseWerte } from './reise';
+import SzeneAnmelden from './SzeneAnmelden.astro';
+import SzeneRechnung from './SzeneRechnung.astro';
+import SzeneLive from './SzeneLive.astro';
+import SzenePruefung from './SzenePruefung.astro';
+import SzeneAbschluss from './SzeneAbschluss.astro';
+
+interface Props {
+  /** Ein Wertesatz je Countdown-Option (gleiche Reihenfolge wie dessen Schalter). */
+  optionen: ReiseWerte[];
+}
+const { optionen } = Astro.props;
+
+const LEER: ReiseWerte = {
+  iso: '', kursStart: 'Kurs & Termin wählen', start: '', datum: '', tag: '', vortag: '', vorvortag: '',
+  monat: 'Prüfungstag', wochentag: '', pruefungTitel: 'Prüfung bei deiner IHK', zeiten: 'Abends', uhr: 'abends', tage: '', einheit: '',
+};
+const w = optionen[0] ?? LEER;
+
+const STATIONEN = [
+  { kurz: 'Anmelden', titel: 'Anmelden', dauer: 4000 },
+  { kurz: 'Rechnung', titel: 'Rechnung per E-Mail', dauer: 3200 },
+  { kurz: 'Live', titel: 'Live-Unterricht abends', dauer: 3800 },
+  { kurz: 'Prüfung', titel: 'Prüfungstag', dauer: 3400 },
+  { kurz: 'Abschluss', titel: 'Abschluss in der Tasche', dauer: 3800 },
+];
+const n = STATIONEN.length;
+---
+
+<section class="hr" data-reise data-hr-aktiv="0" data-hr-optionen={JSON.stringify(optionen)} aria-labelledby="hr-titel" style={`--hr-dauer:${STATIONEN[0].dauer}ms;--hr-pos:0`}>
+  <div class="hr-kopf">
+    <div class="min-w-0">
+      <h2 id="hr-titel" class="hr-titel">Von der Anmeldung bis zum Abschluss</h2>
+      <p class="hr-unter">Schritt für Schritt begleitet</p>
+    </div>
+    <button type="button" class="hr-pause" data-hr-pause>
+      <svg class="hr-ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12" /></svg>
+      <svg class="hr-ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5l10.5 6.5L8 18.5z" /></svg>
+      <span data-hr-pause-text>Pause</span>
+    </button>
+  </div>
+
+  <ol class="hr-liste">
+    {
+      STATIONEN.map((s, i) => (
+        <li class:list={['hr-station', { 'ist-aktiv': i === 0 }]} data-hr-station={i} data-dauer={s.dauer}>
+          <div class={`hr-bild hr-bild--${i + 1}`}>
+            {i === 0 && <SzeneAnmelden w={w} />}
+            {i === 1 && <SzeneRechnung />}
+            {i === 2 && <SzeneLive w={w} />}
+            {i === 3 && <SzenePruefung w={w} />}
+            {i === 4 && <SzeneAbschluss />}
+          </div>
+          <div class="hr-text">
+            <p class="hr-schritt">Schritt {i + 1} von {n}</p>
+            <h3 class="hr-h3">{s.titel}</h3>
+            <p class="hr-p">
+              {i === 0 && <>Termin wählen, Formular ausfüllen, „Zahlungspflichtig anmelden“ – fertig.</>}
+              {i === 1 && <>Nach der Anmeldung – an dich oder deinen Betrieb. Keine Online-Zahlung.</>}
+              {i === 2 && <><span data-hr-f="zeiten">{w.zeiten}</span>. Übungsaufgaben besprechen wir gemeinsam live.</>}
+              {i === 3 &&
+                (w.iso ? (
+                  <>
+                    <time datetime={w.iso} data-hr-dt data-hr-f="datum">{w.datum}</time> – noch <span data-hr-f="tage">{w.tage}</span> <span data-hr-f="einheit">{w.einheit}</span> bis zur Prüfung bei deiner IHK.
+                  </>
+                ) : (
+                  <>Die Prüfung legst du bei deiner IHK ab – verbindlich ist deren Einladung.</>
+                ))}
+              {i === 4 && <>Prüfung bestanden? Dann geht’s mit deinem Abschluss weiter im Beruf.</>}
+            </p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+
+  <div class="hr-pfad" aria-label="Stationen der Reise" role="group">
+    <span class="hr-spur" aria-hidden="true"><span class="hr-fuell"></span><span class="hr-lauf" data-hr-lauf></span></span>
+    {
+      STATIONEN.map((s, i) => (
+        <button type="button" class:list={['hr-punkt', { 'ist-jetzt': i === 0 }]} data-hr-punkt={i} aria-label={`Schritt ${i + 1}: ${s.titel}`} aria-current={i === 0 ? 'step' : undefined}>
+          <span class="hr-knoten" aria-hidden="true">
+            <span class="hr-knoten-nr">{i + 1}</span>
+            <svg viewBox="0 0 20 20" class="hr-knoten-ok"><path d="M5 10.5l3.2 3.2L15 6.8" /></svg>
+          </span>
+          <span class="hr-etikett" aria-hidden="true">{s.kurz}</span>
+        </button>
+      ))
+    }
+  </div>
+  <p class="sr-only" data-hr-live aria-live="off" aria-atomic="true"></p>
+</section>
+
+<style>
+  /* ---------- Grundform = statische Bildfolge (ohne JS / reduzierte Bewegung) ---------- */
+  .hr {
+    position: relative;
+    border-radius: 1.75rem;
+    background: #fff;
+    padding: 1rem;
+    box-shadow:
+      0 0 0 1px rgb(0 52 107 / 0.06),
+      0 2px 4px rgb(0 52 107 / 0.04),
+      0 30px 60px -24px rgb(0 52 107 / 0.28);
+  }
+  @media (min-width: 40rem) {
+    .hr { padding: 1.5rem; border-radius: 2rem; }
+  }
+  .hr-kopf {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.125rem 0.25rem 0;
+  }
+  .hr-titel {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 650;
+    letter-spacing: 0;
+    line-height: 1.3;
+    color: var(--color-navy);
+  }
+  .hr-unter {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    color: var(--color-grau);
+  }
+  .hr-pause {
+    display: none;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.375rem;
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+    padding: 0 1rem 0 0.75rem;
+    border-radius: 999px;
+    background: var(--color-base-200);
+    color: var(--color-navy);
+    font-size: 0.9rem;
+    font-weight: 650;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .hr-pause:hover { background: var(--color-base-300); }
+  .hr-pause svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .hr-ic-play { display: none; }
+  .hr-ic-play path { fill: currentColor; }
+  .hr.ist-pausiert .hr-ic-play { display: block; }
+  .hr.ist-pausiert .hr-ic-pause { display: none; }
+
+  .hr-liste {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  .hr-station {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+  }
+  @media (min-width: 40rem) {
+    .hr-station { grid-template-columns: 11rem minmax(0, 1fr); gap: 1.25rem; }
+  }
+  .hr-bild {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    border-radius: 1rem;
+    background: var(--hr-tint);
+  }
+  .hr-bild--1 { --hr-tint: #e6f1f6; }
+  .hr-bild--2 { --hr-tint: #f4efe6; }
+  .hr-bild--3 { --hr-tint: linear-gradient(165deg, #003c78 0%, #00346b 55%, #00294f 100%); }
+  .hr-bild--4 { --hr-tint: #e6f0ef; }
+  .hr-bild--5 { --hr-tint: #fbf3dc; }
+  .hr-bild :global(.hr-svg) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .hr-bild :global(.hr-sans) { font-family: var(--font-sans); }
+  .hr-bild :global(.hr-serif) { font-family: var(--font-serif); font-weight: 560; }
+
+  .hr-schritt {
+    font-size: 0.8rem;
+    font-weight: 650;
+    color: var(--color-tief);
+  }
+  .hr-h3 {
+    margin-top: 0.125rem;
+    font-size: 1.25rem;
+  }
+  .hr-p {
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-grau);
+  }
+  .hr-p time,
+  .hr-p span { color: var(--color-navy); font-weight: 600; }
+  .hr-pfad { display: none; }
+
+  /* ---------- Bühne (JS an, Bewegung erlaubt) ---------- */
+  @media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+    .hr-pause { display: inline-flex; }
+    .hr-liste { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .hr-station {
+      grid-area: 1 / 1;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+    }
+    .hr-station.ist-aktiv {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    .hr-bild {
+      aspect-ratio: auto;
+      height: clamp(7.5rem, calc(70vh - 20rem), 64vw);
+      border-radius: 1.25rem;
+    }
+    @supports (height: 1svh) {
+      .hr-bild { height: clamp(7.5rem, calc(70svh - 20rem), 64vw); }
+    }
+    .hr-station .hr-bild :global(.hr-svg) {
+      transform: scale(0.97);
+      transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .hr-station.ist-aktiv .hr-bild :global(.hr-svg) { transform: none; }
+    .hr-text { padding: 0.875rem 0.25rem 0; }
+    .hr-schritt { display: none; }
+    .hr-h3 { margin-top: 0; }
+
+    .hr-pfad {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      margin-top: 0.75rem;
+    }
+    .hr-spur {
+      position: absolute;
+      top: 1.375rem;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      translate: 0 -50%;
+      border-radius: 999px;
+      background: repeating-linear-gradient(90deg, var(--color-base-300) 0 6px, transparent 6px 11px);
+    }
+    .hr-fuell,
+    .hr-lauf {
+      position: absolute;
+      inset-block: 0;
+      left: 0;
+      border-radius: inherit;
+    }
+    .hr-fuell {
+      width: calc(var(--hr-pos) * 25%);
+      background: var(--color-petrol);
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hr-lauf {
+      left: calc(var(--hr-pos) * 25%);
+      width: 25%;
+      background: var(--color-bernstein);
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    .hr.ist-an:not(.ist-pausiert) .hr-lauf.takt { animation: hr-takt var(--hr-dauer) linear both; }
+    .hr[data-hr-aktiv='4'] .hr-lauf { display: none; }
+
+    .hr-punkt {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      min-height: 2.75rem;
+      cursor: pointer;
+      border-radius: 0.75rem;
+    }
+    .hr-knoten {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 2.75rem;
+      height: 2.75rem;
+    }
+    .hr-knoten::before {
+      content: '';
+      position: absolute;
+      inset: 0.5rem;
+      border-radius: 999px;
+      background: #fff;
+      box-shadow: inset 0 0 0 2px var(--color-base-300);
+      transition: background-color 0.3s, box-shadow 0.3s, inset 0.3s;
+    }
+    .hr-knoten-nr,
+    .hr-knoten-ok {
+      position: relative;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-grau);
+    }
+    .hr-knoten-ok {
+      display: none;
+      width: 0.95rem;
+      height: 0.95rem;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .hr-punkt.ist-fertig .hr-knoten::before { background: var(--color-petrol); box-shadow: none; }
+    .hr-punkt.ist-fertig .hr-knoten-nr { display: none; }
+    .hr-punkt.ist-fertig .hr-knoten-ok { display: block; }
+    .hr-punkt.ist-jetzt .hr-knoten::before {
+      inset: 0.25rem;
+      background: var(--color-navy);
+      box-shadow: 0 0 0 4px rgb(242 169 0 / 0.45);
+    }
+    .hr-punkt.ist-jetzt .hr-knoten-nr { color: #fff; }
+    .hr-punkt:hover:not(.ist-jetzt) .hr-knoten::before { box-shadow: inset 0 0 0 2px var(--color-petrol); }
+    .hr-etikett {
+      display: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--color-grau);
+    }
+    .hr-punkt.ist-jetzt .hr-etikett { color: var(--color-navy); }
+    @media (min-width: 30rem) {
+      .hr-etikett { display: block; }
+    }
+    /* Kleine Bildschirme (z. B. 320 × 568): Bühne bleibt unter ca. 70 % der Höhe */
+    @media (max-width: 47.99rem) and (max-height: 42rem) {
+      .hr-unter { display: none; }
+      .hr-text { padding-top: 0.625rem; }
+      .hr-h3 { font-size: 1.125rem; }
+      .hr-p { font-size: 0.85rem; line-height: 1.45; }
+      .hr-pfad { margin-top: 0.375rem; }
+      .hr-liste { margin-top: 0.625rem; }
+    }
+
+    @media (min-width: 64rem) {
+      .hr-bild { height: auto; aspect-ratio: 4 / 3; }
+      .hr-text { padding: 1.125rem 0.5rem 0; min-height: 6.25rem; }
+      .hr-h3 { font-size: 1.625rem; }
+      .hr-p { font-size: 1.02rem; }
+      .hr-titel { font-size: 1rem; }
+      .hr-pfad { margin-top: 1rem; }
+    }
+  }
+  @keyframes hr-takt {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+</style>
+
+<style is:global>
+  /* Ablaufsteuerung der Szenen-Animationen (die Szenen sind eigene Komponenten → global). */
+  .hr:not(.ist-an) .hr-station * { animation-play-state: paused !important; }
+  .hr.ist-pausiert .hr-station * { animation: none !important; }
+</style>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-reise]');
+  if (root) {
+    // ---- Daten: Tage bis zur Prüfung mit dem heutigen Datum (Europe/Berlin) neu rechnen; AP1/AP2-Schalter folgt ----
+    const optionen: Record<string, string>[] = JSON.parse(root.dataset.hrOptionen || '[]');
+    const heute = () =>
+      Date.parse(new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()) + 'T00:00:00Z');
+    const setze = (o?: Record<string, string>) => {
+      if (!o?.iso) return;
+      const tage = Math.round((Date.parse(o.iso + 'T00:00:00Z') - heute()) / 864e5);
+      const werte = tage >= 0 ? { ...o, tage: String(tage), einheit: tage === 1 ? 'Tag' : 'Tage' } : o;
+      root.querySelectorAll<HTMLElement>('[data-hr-f]').forEach((el) => {
+        const k = el.dataset.hrF!;
+        if (k in werte) el.textContent = werte[k];
+      });
+      root.querySelectorAll('[data-hr-dt]').forEach((el) => el.setAttribute('datetime', o.iso));
+    };
+    setze(optionen[0]);
+    document.querySelectorAll<HTMLInputElement>('[data-cd-radio]').forEach((r, i) => r.addEventListener('change', () => r.checked && setze(optionen[i])));
+
+    // ---- Bühne: nur wenn das CSS sie zeigt (Bewegung erlaubt, Skript an) ----
+    const stationen = [...root.querySelectorAll<HTMLElement>('[data-hr-station]')];
+    const punkte = [...root.querySelectorAll<HTMLButtonElement>('[data-hr-punkt]')];
+    const pause = root.querySelector<HTMLButtonElement>('[data-hr-pause]');
+    const pauseText = root.querySelector('[data-hr-pause-text]');
+    const lauf = root.querySelector('[data-hr-lauf]');
+    const live = root.querySelector<HTMLElement>('[data-hr-live]');
+    const n = stationen.length;
+    if (matchMedia('(prefers-reduced-motion: no-preference) and (scripting: enabled)').matches && pause && live && n > 1) {
+      let aktiv = 0;
+      let angehalten = false;
+      let sichtbar = false;
+      let runden = 0;
+      let uhr: ReturnType<typeof setTimeout> | undefined;
+      const dauer = () => Number(stationen[aktiv].dataset.dauer) || 3500;
+
+      const zeigen = (i: number, ansagen = false) => {
+        aktiv = (i + n) % n;
+        stationen.forEach((s) => s.classList.remove('ist-aktiv'));
+        lauf?.classList.remove('takt');
+        void root.offsetWidth; // CSS-Animationen der Station neu starten
+        stationen[aktiv].classList.add('ist-aktiv');
+        lauf?.classList.add('takt');
+        punkte.forEach((p, j) => {
+          p.classList.toggle('ist-fertig', j < aktiv);
+          p.classList.toggle('ist-jetzt', j === aktiv);
+          if (j === aktiv) p.setAttribute('aria-current', 'step');
+          else p.removeAttribute('aria-current');
+        });
+        root.dataset.hrAktiv = String(aktiv);
+        root.style.setProperty('--hr-pos', String(aktiv));
+        root.style.setProperty('--hr-dauer', `${dauer()}ms`);
+        // Ansage nur bei Bedienung oder Pause – im Automatik-Lauf still (kein Dauer-Vorlesen)
+        live.setAttribute('aria-live', ansagen || angehalten ? 'polite' : 'off');
+        live.textContent = `Schritt ${aktiv + 1} von ${n}: ${stationen[aktiv].querySelector('h3')?.textContent ?? ''}`;
+      };
+      const laeuft = () => sichtbar && !angehalten && !document.hidden;
+      const planen = () => {
+        clearTimeout(uhr);
+        root.classList.toggle('ist-an', laeuft());
+        root.classList.toggle('ist-pausiert', angehalten);
+        if (!laeuft()) return;
+        uhr = setTimeout(() => {
+          if (aktiv === n - 1 && ++runden >= 3) return setzePause(true); // nach drei Runden ruhig am Ziel stehen bleiben
+          zeigen(aktiv + 1);
+          planen();
+        }, dauer());
+      };
+      const setzePause = (an: boolean) => {
+        angehalten = an;
+        if (pauseText) pauseText.textContent = an ? 'Weiter' : 'Pause';
+        if (!an) zeigen(aktiv); // Weiter: Station von vorn
+        planen();
+      };
+
+      pause.addEventListener('click', () => {
+        if (angehalten) runden = 0;
+        setzePause(!angehalten);
+      });
+      punkte.forEach((p, j) => p.addEventListener('click', () => { zeigen(j, true); planen(); }));
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) zeigen(aktiv); planen(); });
+      new IntersectionObserver(([e]) => {
+        const war = sichtbar;
+        sichtbar = e.isIntersecting;
+        if (sichtbar && !war) zeigen(aktiv);
+        planen();
+      }, { threshold: 0.4 }).observe(root);
+      zeigen(0);
+    }
+  }
+</script>

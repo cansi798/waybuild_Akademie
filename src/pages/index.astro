@@ -1,8 +1,8 @@
 ---
-// Startseite (US-01): Kernbotschaft + Countdown, drei Säulen, buchbare Kurse mit Preis/UE/Termin, Warum-Bühne,
+// Startseite (US-01): Kernbotschaft + Reise-Bühne + Countdown, drei Säulen, buchbare Kurse mit Preis/UE/Termin, Warum-Bühne,
 // Lernpfad „So läuft's“, FAQ-Kurzblock, Abschluss-CTA. Textarm – Details nur aufklappbar.
 import Basis from '../layouts/Basis.astro';
-import Countdown from '../components/Countdown.astro';
+import Hero from '../components/hero/Hero.astro';
 import type { CountdownOption } from '../lib/countdown';
 import KursKarte from '../components/KursKarte.astro';
 import Lernpfad from '../components/Lernpfad.astro';
@@ -56,43 +56,8 @@ const faqSchema = {
   beschreibung="Vorbereitung auf die IHK-Abschlussprüfung für IT-Berufe (AP1, AP2), Prüfungscoaching und Weiterbildungen – live online, mit festen Terminen und klaren Endpreisen."
   schema={[faqSchema]}
 >
-  <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="rahmen grid items-center gap-10 pt-8 pb-16 sm:pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 lg:pt-16 lg:pb-24">
-      <div>
-        <p class="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold ring-1 ring-base-300">
-          <span class="relative flex size-2.5" aria-hidden="true">
-            <span class="absolute inline-flex size-full animate-ping rounded-full bg-bernstein opacity-75 motion-reduce:hidden"></span>
-            <span class="relative inline-flex size-2.5 rounded-full bg-bernstein"></span>
-          </span>
-          Alle Kurse live online
-        </p>
-        <h1 class="mt-5 text-[2.6rem] leading-[1.02] sm:text-6xl lg:text-[4.25rem]">
-          <span class="block">Live lernen.</span>
-          <span class="block text-petrol">Gut vorbereitet in die Prüfung.</span>
-          <span class="block">Weiter im Beruf.</span>
-        </h1>
-        <p class="mt-6 max-w-xl text-lg text-gedaempft sm:text-xl">
-          IHK-Prüfungsvorbereitung für IT-Azubis und Umschüler – bald auch IHK-Weiterbildungen und eigene Kurse in KI und IT. Abends, mit festen Terminen und klaren Endpreisen.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href={href('/kurse/')} class="btn btn-accent btn-lg rounded-full px-7">Kurse ansehen</a>
-          <a href={href('/termine/')} class="btn btn-outline btn-secondary btn-lg rounded-full px-7">Alle Termine</a>
-        </div>
-        <ul class="mt-8 grid gap-2 text-[0.95rem] sm:flex sm:flex-wrap sm:gap-x-6">
-          {
-            ['Dozenten mit IHK-Prüfer-Erfahrung', 'Rechnung an dich oder deinen Betrieb', 'Keine Online-Zahlung'].map((t) => (
-              <li class="flex items-center gap-2">
-                <svg viewBox="0 0 20 20" class="size-5 shrink-0 text-tief" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                {t}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <Countdown optionen={countdown} />
-    </div>
-  </section>
+  <!-- Hero: Botschaft + Reise-Bühne (Anmeldung → Abschluss) + Prüfungs-Countdown -->
+  <Hero countdown={countdown} kurse={freigegeben} />
 
   <!-- Drei Säulen -->
   <section class="border-y border-base-300 bg-white" aria-labelledby="saeulen-titel">
