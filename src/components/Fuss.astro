@@ -2,6 +2,7 @@
 // Fuß: IHK-Hinweis (US-19, wörtlich), Menü, Rechtslinks (US-20, ein Klick von jeder Seite), allgemeine Mail.
 import { AKADEMIE, IHK_HINWEIS, MENUE, RECHTLICHES } from '../lib/site';
 import { href } from '../lib/pfad';
+import { WIDERRUF_PFAD } from './recht/status';
 
 const jahr = new Date().getFullYear();
 ---
@@ -48,6 +49,15 @@ const jahr = new Date().getFullYear();
             ))
           }
         </ul>
+        <!-- Widerrufsbutton nach § 356a BGB: deutlich beschriftet, von den übrigen Rechtslinks abgesetzt, auf jeder Seite ohne Login erreichbar -->
+        <a
+          href={href(WIDERRUF_PFAD)}
+          class="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-bernstein px-5 font-semibold text-white hover:bg-bernstein hover:text-navy"
+          data-widerruf-link
+        >
+          <svg aria-hidden="true" viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3 3 7l4 4M3 7h8.5a5 5 0 0 1 0 10H8" /></svg>
+          Vertrag widerrufen
+        </a>
       </nav>
     </div>
 

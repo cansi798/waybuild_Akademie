@@ -1,8 +1,362 @@
 ---
-import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+// Teilnahmebedingungen (AGB) – ENTWURF (Task 5). Regeln aus docs/intern/entscheidungen.md und GR-01 … GR-21.
+// Prüfpunkte für den Anwalt sind als <mark>[Anwalt prüfen: …]</mark> markiert.
+import RechtSeite from '../../components/recht/RechtSeite.astro';
+import Luecke from '../../components/recht/Luecke.astro';
+import { FIRMA, RECHT_STAND, WIDERRUF_PFAD } from '../../components/recht/status';
+import { AKADEMIE } from '../../lib/site';
+import { href } from '../../lib/pfad';
+
+const titel = [
+  ['geltung', 'Geltungsbereich und Vertragspartner'],
+  ['vertragsschluss', 'Anmeldung und Vertragsschluss'],
+  ['leistung', 'Leistungen: Live-Online-Unterricht'],
+  ['coaching', 'Prüfungscoaching'],
+  ['preise', 'Preise, Rechnung und Zahlung'],
+  ['raten', 'Ratenzahlung bei langen Weiterbildungen'],
+  ['gruppen', 'Mehrere Teilnehmende und Gruppenrabatt'],
+  ['storno', 'Rücktritt durch Teilnehmende'],
+  ['ersatz', 'Ersatzperson'],
+  ['absage', 'Absage und Terminänderungen durch uns'],
+  ['kuendigung', 'Kündigung langer Weiterbildungen'],
+  ['bescheinigung', 'Teilnahmebescheinigung, Zertifikat und IHK-Prüfung'],
+  ['pflichten', 'Regeln für den Unterricht und Unterlagen'],
+  ['haftung', 'Haftung'],
+  ['datenschutz', 'Datenschutz'],
+  ['widerruf', 'Widerrufsrecht'],
+  ['streit', 'Beschwerden und Streitbeilegung'],
+  ['recht', 'Anwendbares Recht und Gerichtsstand'],
+  ['stand', 'Stand dieser Fassung'],
+] as const;
+const abschnitte = titel.map(([id, t], i) => ({ id, titel: t, nr: i + 1 }));
+const h = (id: (typeof titel)[number][0]) => {
+  const a = abschnitte.find((x) => x.id === id)!;
+  return `${a.nr}. ${a.titel}`;
+};
 ---
 
-<Basis titel="Teilnahmebedingungen" beschreibung="Teilnahmebedingungen der waybuild Akademie.">
-  <ImAufbau titel="Teilnahmebedingungen" />
-</Basis>
+<RechtSeite titel="Teilnahmebedingungen" beschreibung="Teilnahmebedingungen (AGB) der waybuild Akademie für Live-Online-Kurse und Prüfungscoaching." {abschnitte}>
+  <p slot="einleitung" class="mt-5 text-lg">
+    Diese Bedingungen gelten für alle Kurse und Coachings der waybuild Akademie. Wir haben sie so klar wie möglich
+    geschrieben. Wenn etwas unklar ist, frag uns gern: <a class="link-fliess" href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a>.
+  </p>
+
+  <h2 id="geltung">{h('geltung')}</h2>
+  <p>
+    (1) Anbieter und dein Vertragspartner ist die {FIRMA.name}, {FIRMA.strasse}, {FIRMA.plz} {FIRMA.ort}{' '}
+    („wir“). Die waybuild Akademie ist eine Marke und ein Angebot der {FIRMA.name}.
+  </p>
+  <p>
+    (2) Diese Teilnahmebedingungen gelten für alle Verträge über Kurse, Weiterbildungen und Coachings, die du über diese
+    Website oder per E-Mail mit uns schließt – in der Fassung, die zum Zeitpunkt deiner Anmeldung gilt.
+  </p>
+  <p>
+    (3) „Verbraucher“ ist, wer den Vertrag überwiegend zu privaten oder unselbständigen beruflichen Zwecken schließt
+    (§ 13 BGB), zum Beispiel als Azubi, Umschüler oder Angestellte für die eigene Weiterbildung. „Unternehmer“ ist, wer in
+    Ausübung einer gewerblichen oder selbständigen beruflichen Tätigkeit bucht (§ 14 BGB), zum Beispiel ein Betrieb für
+    seine Mitarbeitenden. Regeln, die nur für eine Gruppe gelten, sind ausdrücklich so gekennzeichnet.
+  </p>
+  <p>
+    (4) Abweichende Bedingungen von Unternehmern gelten nur, wenn wir ihnen ausdrücklich in Textform zustimmen.{' '}
+    <Luecke text="Anwalt prüfen: eigene Fassung für Unternehmer (Betrieb als Vertragspartner) nötig?" />
+  </p>
+
+  <h2 id="vertragsschluss">{h('vertragsschluss')}</h2>
+  <p>
+    (1) Die Darstellung der Kurse und Termine auf der Website ist noch kein verbindliches Angebot, sondern eine Einladung,
+    dich anzumelden.
+  </p>
+  <p>
+    (2) Im Anmeldeformular wählst du Kurs, Termin und Zahlweg und gibst deine Daten ein. Vor dem Absenden siehst du eine
+    Zusammenfassung mit Gesamtpreis und kannst alle Eingaben prüfen und korrigieren. Mit Klick auf den Knopf{' '}
+    <strong>„Zahlungspflichtig anmelden“</strong> gibst du ein verbindliches Angebot zum Abschluss des Vertrags ab.
+  </p>
+  <p>
+    (3) Direkt nach dem Absenden bekommst du eine automatische Eingangsbestätigung per E-Mail. Sie bestätigt nur, dass
+    deine Anmeldung bei uns angekommen ist, und ist noch keine Annahme. Der Vertrag kommt zustande, wenn wir deine
+    Anmeldung per E-Mail bestätigen (Anmeldebestätigung), spätestens mit Zusendung der Rechnung.{' '}
+    <Luecke text="Anwalt prüfen: Eingangsbestätigung schon als Annahme gestalten?" />
+  </p>
+  <p>
+    (4) Mit der Anmeldebestätigung erhältst du den Vertragsinhalt, diese Teilnahmebedingungen, die Widerrufsbelehrung und
+    das Muster-Widerrufsformular per E-Mail (dauerhafter Datenträger). Wir speichern den Vertragstext; frühere Fassungen der
+    Teilnahmebedingungen schicken wir dir auf Wunsch gern zu. Vertragssprache ist Deutsch.
+  </p>
+  <p>
+    (5) Anmeldeschluss ist 7 Tage vor Kursbeginn. Danach ist der Termin nicht mehr buchbar.
+  </p>
+  <p>
+    (6) Teilnehmen können Personen ab 18 Jahren. Minderjährige brauchen die Zustimmung ihrer gesetzlichen Vertreter.{' '}
+    <Luecke text="Entscheidung offen: Mindestalter 18 oder Eltern-Einwilligung für Azubis" />
+  </p>
+  <p>
+    (7) „Interesse vormerken“, Kontaktanfragen und Coaching-Anfragen sind unverbindlich. Beim Coaching kommt der Vertrag erst
+    zustande, wenn wir gemeinsam Termine abgestimmt haben und wir dir das per E-Mail bestätigen.
+  </p>
+
+  <h2 id="leistung">{h('leistung')}</h2>
+  <p>
+    (1) Der Unterricht findet <strong>ausschließlich als Live-Veranstaltung per Videokonferenz</strong> zu festen Terminen
+    statt. Während des Unterrichts kannst du jederzeit Fragen stellen und bekommst direkt eine Antwort. Umfang (Anzahl der
+    Unterrichtseinheiten), Termine und Uhrzeiten stehen auf der Kursseite und in deiner Anmeldebestätigung.
+  </p>
+  <p>
+    (2) <strong>Aufzeichnungen</strong> des Unterrichts werden weder erstellt noch bereitgestellt; sie sind nicht
+    Vertragsbestandteil.
+  </p>
+  <p>
+    (3) Skripte, Übungsaufgaben und andere Unterlagen erhältst du <strong>ergänzend</strong> zur freiwilligen Vor- und
+    Nachbereitung. Ihre Bearbeitung außerhalb der Unterrichtstermine ist freiwillig und nicht Gegenstand einer eigenen
+    Leistungspflicht; Übungsaufgaben besprechen wir gemeinsam im Live-Unterricht. Empfohlene Lernzeiten sind nur Empfehlungen.
+  </p>
+  <p>
+    (4) Hast du einen Termin verpasst, kannst du ihn in einem späteren Live-Termin desselben Inhalts (zum Beispiel in einer
+    anderen Gruppe) nachholen, soweit dort Platz ist. Einen Anspruch auf einen bestimmten Nachholtermin oder auf
+    Erstattung für selbst versäumte Termine gibt es nicht.
+  </p>
+  <p>
+    (5) Für die Teilnahme brauchst du ein Endgerät (Computer, Laptop oder Tablet) mit aktuellem Browser, eine stabile
+    Internetverbindung, Lautsprecher bzw. Kopfhörer und ein Mikrofon; eine Kamera ist empfehlenswert. Für deine Technik bist
+    du selbst verantwortlich.
+  </p>
+  <p>
+    (6) Wir schulden fachgerechten Unterricht, nicht das Bestehen einer Prüfung. Den Erfolg in der Prüfung können wir nicht
+    garantieren; er hängt von deiner eigenen Leistung ab.
+  </p>
+
+  <h2 id="coaching">{h('coaching')}</h2>
+  <p>
+    (1) Das Prüfungscoaching ist Einzelunterricht bzw. Beratung live per Video. Wir geben Rückmeldung, beantworten Fragen und
+    trainieren mit dir zum Beispiel die Präsentation oder das Fachgespräch.
+  </p>
+  <p>
+    (2) Projektantrag, Projektdokumentation und alle anderen Prüfungsleistungen erstellst du selbst. Wir schreiben keine
+    Prüfungsleistungen für dich und nehmen keinen Einfluss auf Prüfung oder Bewertung.
+  </p>
+  <p>
+    (3) Einen vereinbarten Coaching-Termin kannst du bis 24 Stunden vorher kostenlos absagen oder verschieben. Bei späterer
+    Absage oder wenn du nicht erscheinst, gilt der Termin als wahrgenommen; dir bleibt der Nachweis gestattet, dass uns kein
+    oder ein wesentlich geringerer Schaden entstanden ist.{' '}
+    <Luecke text="Anwalt prüfen: Kündigungsrecht nach § 627 BGB beim Einzelcoaching" />
+  </p>
+
+  <h2 id="preise">{h('preise')}</h2>
+  <p>
+    (1) Alle Preise auf der Website sind <strong>Endpreise</strong> in Euro und enthalten alle Kosten des Kurses
+    einschließlich einer etwa anfallenden Umsatzsteuer. Weitere Kosten für Unterlagen oder Zugang fallen nicht an.
+  </p>
+  <p>
+    (2) Gebühren für IHK-Prüfungen sind nicht enthalten. Sie berechnet die IHK direkt dir bzw. deinem Ausbildungsbetrieb.
+  </p>
+  <p>
+    (3) Eine Online-Zahlung gibt es nicht. Nach Vertragsschluss bekommst du eine Rechnung per E-Mail. Der Rechnungsbetrag
+    ist innerhalb von 14 Tagen nach Erhalt der Rechnung fällig, spätestens jedoch vor Kursbeginn, und wird per Überweisung
+    auf das in der Rechnung genannte Konto gezahlt.
+  </p>
+  <p>
+    (4) Wählst du „Mein Betrieb zahlt“, stellen wir die Rechnung an den angegebenen Betrieb.{' '}
+    <Luecke text="Anwalt prüfen: Vertragspartner und Haftung, wenn die Person bucht und der Betrieb zahlt" />
+  </p>
+
+  <h2 id="raten">{h('raten')}</h2>
+  <p>
+    (1) Bei langen Weiterbildungen, bei denen die Kursseite das ausdrücklich anbietet, kannst du die Teilnahmegebühr nach
+    Vereinbarung in gleichen Monatsraten zahlen. Es entstehen <strong>keine Zinsen, Gebühren oder Aufschläge</strong>; der
+    Gesamtbetrag ist derselbe wie bei Einmalzahlung.
+  </p>
+  <p>
+    (2) Jede Rate ist die Vergütung für den jeweils folgenden Unterrichtsabschnitt und wird zu Beginn dieses Abschnitts
+    fällig. Den Ratenplan nennen wir in der Rechnung. Eine Klausel, nach der bei Verzug der gesamte Restbetrag sofort fällig
+    wird, gibt es nicht; bei Verzug gelten die gesetzlichen Regeln.
+  </p>
+  <p>
+    <Luecke text="Anwalt prüfen: Verbraucherkredit-Recht ab 20.11.2026 (§§ 491 ff., 506 BGB n. F.) – trägt die Teilvergütung je Abschnitt?" />
+  </p>
+
+  <h2 id="gruppen">{h('gruppen')}</h2>
+  <p>
+    (1) Mit einer Anmeldung können bis zu 5 Personen für denselben Termin angemeldet werden (Zahlweg „Mein Betrieb zahlt“).
+  </p>
+  <p>
+    (2) Ab 3 Personen in einer Anmeldung erhältst du bzw. dein Betrieb <strong>10 % Rabatt</strong> auf die gesamte
+    Teilnahmegebühr dieser Anmeldung. Tritt später eine Person zurück und sind es dadurch weniger als 3, bleibt der Rabatt
+    für die übrigen Personen bestehen. <Luecke text="Annahme – bitte bestätigen" />
+  </p>
+  <p>
+    (3) Wer andere Personen anmeldet, versichert, dazu berechtigt zu sein, und informiert sie über diese
+    Teilnahmebedingungen und unsere Datenschutzerklärung.
+  </p>
+
+  <h2 id="storno">{h('storno')}</h2>
+  <p>
+    (1) Du kannst deine Teilnahme an einem Kurs jederzeit vor Kursbeginn in Textform (zum Beispiel per E-Mail an{' '}
+    {AKADEMIE.mailAnmeldung}) stornieren. Maßgeblich ist der Eingang bei uns.
+  </p>
+  <div class="recht-kasten">
+    <table>
+      <thead>
+        <tr><th scope="col">Eingang deiner Stornierung</th><th scope="col">Kosten</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>bis 14 Tage vor Kursbeginn</td><td>kostenlos</td></tr>
+        <tr><td>später als 14 Tage vor Kursbeginn</td><td>50 % der Teilnahmegebühr</td></tr>
+        <tr><td>ab Kursbeginn</td><td>100 % der Teilnahmegebühr</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    (2) <strong>Dir bleibt der Nachweis unbenommen, dass uns kein oder ein wesentlich geringerer Schaden entstanden ist</strong>{' '}
+    (§ 309 Nr. 5 Buchst. b BGB). Dann zahlst du nur den geringeren Betrag.
+  </p>
+  <p>
+    (3) Statt zu stornieren, kannst du jederzeit kostenlos eine Ersatzperson schicken (siehe Nr. 9).
+  </p>
+  <p>
+    (4) Dein <strong>gesetzliches Widerrufsrecht</strong> als Verbraucher bleibt von diesen Regeln unberührt (siehe{' '}
+    <a href={href('/widerruf/')}>Widerrufsbelehrung</a>). Innerhalb der Widerrufsfrist kannst du also kostenfrei widerrufen;
+    hast du verlangt, dass der Kurs schon in der Widerrufsfrist beginnt, schuldest du nur Wertersatz für bereits erbrachten
+    Unterricht.
+  </p>
+  <p>
+    (5) Bei Weiterbildungen mit einer Laufzeit von mehr als 6 Monaten gilt ab Kursbeginn statt der Stornoregel die
+    Kündigungsregel in Nr. 11.{' '}
+    <Luecke text="Anwalt prüfen: Höhe der Pauschalen (50 %/100 %) anhand ersparter Aufwendungen, § 615 S. 2 BGB" />
+  </p>
+
+  <h2 id="ersatz">{h('ersatz')}</h2>
+  <p>
+    Statt der angemeldeten Person kann jederzeit vor Kursbeginn – bei laufenden Kursen auch später – kostenlos eine
+    Ersatzperson teilnehmen. Teile uns dazu bitte Name und E-Mail-Adresse der Ersatzperson per E-Mail mit. Ablehnen dürfen wir
+    eine Ersatzperson nur aus wichtigem Grund, etwa wenn ihr die fachlichen Voraussetzungen für den Kurs fehlen.
+  </p>
+
+  <h2 id="absage">{h('absage')}</h2>
+  <p>
+    (1) Wir dürfen einen Kurs <strong>bis 10 Tage vor Kursbeginn</strong> absagen, wenn die für eine sinnvolle Durchführung
+    erforderliche Mindestteilnehmerzahl nicht erreicht ist oder die Lehrkraft ausfällt und kein gleichwertiger Ersatz
+    möglich ist. Wir informieren dich unverzüglich per E-Mail.
+  </p>
+  <p>
+    (2) Sagen wir ab, erstatten wir bereits gezahlte Beträge unverzüglich und vollständig, spätestens innerhalb von 14 Tagen –
+    oder du wechselst auf Wunsch kostenlos in einen anderen Termin.
+  </p>
+  <p>
+    (3) Fällt ein einzelner Unterrichtstermin aus (zum Beispiel wegen Krankheit der Lehrkraft oder einer technischen Störung
+    auf unserer Seite), bieten wir einen Ersatztermin an. Ist ein Ersatztermin nicht möglich oder für dich nicht zumutbar,
+    erstatten wir den anteiligen Preis für die ausgefallenen Unterrichtseinheiten.
+  </p>
+  <p>
+    (4) Wir dürfen einzelne Termine verlegen oder die Lehrkraft wechseln, wenn das aus wichtigem Grund (zum Beispiel
+    Krankheit) erforderlich und für dich zumutbar ist. Der Gesamtumfang des Unterrichts bleibt erhalten. Ist dir eine
+    Änderung nicht zumutbar, kannst du vom Vertrag zurücktreten und bekommst bereits gezahlte Beträge für noch nicht
+    erbrachten Unterricht zurück.
+  </p>
+  <p>(5) Weitergehende Ansprüche bestehen nur nach Nr. 14 (Haftung).</p>
+
+  <h2 id="kuendigung">{h('kuendigung')}</h2>
+  <p>
+    (1) Weiterbildungen mit einer Laufzeit von mehr als 6 Monaten laufen über die vereinbarte Kursdauer und enden dann
+    automatisch. Eine stillschweigende Verlängerung gibt es nicht.
+  </p>
+  <p>
+    (2) Du kannst solche Weiterbildungen nach Kursbeginn mit einer Frist von 4 Wochen zum Monatsende in Textform kündigen.
+    Bis zum Wirksamwerden der Kündigung zahlst du den Anteil für den bis dahin erbrachten bzw. angebotenen Unterricht; bereits
+    gezahlte Beträge für spätere Abschnitte erstatten wir.
+  </p>
+  <p>
+    (3) Das Recht beider Seiten zur außerordentlichen Kündigung aus wichtigem Grund (§ 314 BGB) bleibt unberührt.
+    Gesetzliche Kündigungsrechte, etwa nach § 627 BGB, werden nicht eingeschränkt.
+  </p>
+  <p>
+    <Luecke text="Anwalt prüfen: Einordnung als Dauerschuldverhältnis, §§ 621, 627 BGB, § 309 Nr. 9 BGB und Kündigungsbutton nach § 312k BGB" />
+  </p>
+
+  <h2 id="bescheinigung">{h('bescheinigung')}</h2>
+  <p>
+    (1) Nach dem Kurs bekommst du eine Teilnahmebescheinigung mit Kursinhalt, Umfang und Zeitraum, wenn du an mindestens{' '}
+    <Luecke text="bitte ergänzen: Mindestanwesenheit, z. B. 80 %" /> der Unterrichtseinheiten teilgenommen hast. Bei
+    eigenen Weiterbildungen der waybuild Akademie (zum Beispiel KI oder Programmierung) gibt es ein Zertifikat der
+    waybuild Akademie, sofern die Kursseite das nennt. Das Zertifikat ist kein staatlicher oder IHK-Abschluss.
+  </p>
+  <p>
+    (2) Unsere Kurse sind <strong>keine Veranstaltungen der IHK</strong>. Wir sind ein unabhängiger Anbieter und gehören
+    nicht zur Industrie- und Handelskammer. Die Prüfung legst du bei deiner zuständigen IHK ab; Zulassung, Anmeldung,
+    Termine und Gebühren der Prüfung regelt allein die IHK. Die Prüfungsgebühren zahlst du bzw. dein Betrieb gesondert an die
+    IHK.
+  </p>
+
+  <h2 id="pflichten">{h('pflichten')}</h2>
+  <p>
+    (1) Bild- und Tonaufnahmen, Mitschnitte und Screenshots von Teilnehmenden während des Unterrichts sind nicht erlaubt.
+  </p>
+  <p>
+    (2) Bitte geh respektvoll miteinander um. Wer den Unterricht trotz Hinweis erheblich stört oder andere beleidigt, kann
+    von einzelnen Terminen oder – bei schweren Verstößen – vom Kurs ausgeschlossen werden. Dein Anspruch auf Rückzahlung
+    richtet sich dann nach dem Gesetz.
+  </p>
+  <p>
+    (3) Den Zugangslink zum Unterricht darfst du nicht an andere weitergeben.
+  </p>
+  <p>
+    (4) Kursunterlagen sind urheberrechtlich geschützt. Du darfst sie für deine eigene Vorbereitung nutzen und ausdrucken,
+    aber nicht veröffentlichen, weitergeben oder verkaufen.
+  </p>
+
+  <h2 id="haftung">{h('haftung')}</h2>
+  <p>
+    (1) Wir haften unbeschränkt bei Vorsatz und grober Fahrlässigkeit, bei Verletzung von Leben, Körper oder Gesundheit,
+    nach dem Produkthaftungsgesetz sowie im Umfang einer übernommenen Garantie.
+  </p>
+  <p>
+    (2) Bei leicht fahrlässiger Verletzung einer wesentlichen Vertragspflicht – also einer Pflicht, deren Erfüllung die
+    ordnungsgemäße Durchführung des Vertrags erst ermöglicht und auf deren Einhaltung du regelmäßig vertrauen darfst – ist
+    unsere Haftung auf den bei Vertragsschluss vorhersehbaren, vertragstypischen Schaden begrenzt. Im Übrigen haften wir
+    bei leichter Fahrlässigkeit nicht.
+  </p>
+  <p>
+    (3) Diese Regeln gelten auch für unsere Mitarbeitenden, Lehrkräfte und sonstigen Erfüllungsgehilfen.
+  </p>
+
+  <h2 id="datenschutz">{h('datenschutz')}</h2>
+  <p>
+    Wie wir mit deinen Daten umgehen, erklären wir in unserer <a href={href('/datenschutz/')}>Datenschutzerklärung</a>.
+  </p>
+
+  <h2 id="widerruf">{h('widerruf')}</h2>
+  <p>
+    Als Verbraucher hast du ein gesetzliches Widerrufsrecht. Einzelheiten stehen in der{' '}
+    <a href={href('/widerruf/')}>Widerrufsbelehrung</a>. Widerrufen kannst du ganz einfach online über{' '}
+    <a href={href(WIDERRUF_PFAD)}>„Vertrag widerrufen“</a> – der Link steht unten auf jeder Seite. Unternehmern steht kein
+    gesetzliches Widerrufsrecht zu.
+  </p>
+
+  <h2 id="streit">{h('streit')}</h2>
+  <p>
+    (1) Wenn du mit etwas nicht zufrieden bist, schreib uns an <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a>.
+    Wir melden uns schnellstmöglich und suchen gemeinsam eine Lösung.
+  </p>
+  <p>
+    (2) Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+    teilzunehmen (§ 36 VSBG).
+  </p>
+
+  <h2 id="recht">{h('recht')}</h2>
+  <p>
+    (1) Es gilt das Recht der Bundesrepublik Deutschland. Bist du Verbraucher, gilt diese Rechtswahl nur, soweit dir dadurch
+    nicht der Schutz zwingender Vorschriften des Staates entzogen wird, in dem du deinen gewöhnlichen Aufenthalt hast.
+  </p>
+  <p>
+    (2) Gegenüber Verbrauchern vereinbaren wir keinen Gerichtsstand; es gelten die gesetzlichen Regeln.
+  </p>
+  <p>
+    (3) Sind beide Vertragsparteien Kaufleute, juristische Personen des öffentlichen Rechts oder öffentlich-rechtliche
+    Sondervermögen, ist Gerichtsstand für alle Streitigkeiten aus dem Vertrag der Sitz der {FIRMA.name} in {FIRMA.ort}.{' '}
+    <Luecke text="prüfen: Norderstedt (Amtsgericht Norderstedt/Landgericht Kiel)" />
+  </p>
+
+  <h2 id="stand">{h('stand')}</h2>
+  <p>
+    Stand: {RECHT_STAND}. Für deinen Vertrag gilt die Fassung, die zum Zeitpunkt deiner Anmeldung auf dieser Seite
+    veröffentlicht war; sie ist Teil deiner Anmeldebestätigung.
+  </p>
+</RechtSeite>

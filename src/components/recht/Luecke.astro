@@ -1,0 +1,11 @@
+---
+// Einheitlicher Platzhalter in den Rechtstexten: <mark>[…]</mark>.
+// Liste aller Platzhalter: docs/intern/recht-offene-punkte.md (Hauptarbeitskopie).
+interface Props {
+  /** Text in den eckigen Klammern, z. B. „bitte ergänzen: Telefonnummer“ */
+  text?: string;
+}
+const { text } = Astro.props;
+---
+
+<mark class="recht-luecke" data-platzhalter>[{text}<slot />]</mark>
