@@ -31,6 +31,8 @@ Die Zeitfalle braucht ein Geheimnis, mit dem `token.php` den Zeitstempel signier
 3. Fehlt die Datei, erzeugt der erste Aufruf sie automatisch: `random_bytes(32)` (64 Hex-Zeichen), Rechte 0600,
    atomar über eine temporäre Datei + `rename`, gesperrt mit `flock`; das Verzeichnis bekommt eine sperrende `.htaccess`.
    Im PHP-Fehlerprotokoll steht dann „Formular-Geheimnis neu erzeugt“.
+   Voraussetzung: Die Domain zeigt im KAS auf einen eigenen Ordner (z. B. `/www/htdocs/w0123456/waybuild-akademie.de/`),
+   nicht auf die Konto-Wurzel – sonst läge `akademie-daten/` außerhalb des Kontos und kann nicht angelegt werden.
 4. **Es gibt keinen festen Ersatzschlüssel** (er stünde im öffentlichen Repository). Gelingt das Erzeugen nicht, arbeiten
    alle Formulare **„fail closed“**: Antwort 503 „Gerade technisch nicht erreichbar – schreib uns an info@…“, es wird
    nichts versendet; im Fehlerprotokoll steht „FEHLER: Kein Formular-Geheimnis verfügbar“. Abhilfe: Ordner

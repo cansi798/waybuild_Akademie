@@ -1,0 +1,64 @@
+# waybuild Akademie – Webroot (ALL-INKL, Apache 2.4). Nur im Live-Paket wirksam; GitHub Pages (Vorschau) ignoriert die Datei.
+# Ergänzt api/.htaccess (Sperren der Formular-Bibliothek). Jeder Block ist in <IfModule> gekapselt: Fehlt ein Modul,
+# bleibt die Seite erreichbar (kein 500).
+
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+# ---------------------------------------------------------------- Weiterleitungen
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # top-abschluss.de (falls auf diesen Ordner gelegt) → Seite Prüfungsvorbereitung (Entscheidung 20, US-27), dauerhaft
+  RewriteCond %{HTTP_HOST} ^(www\.)?top-abschluss\.de$ [NC]
+  RewriteRule ^ https://waybuild-akademie.de/pruefungsvorbereitung/ [R=301,L]
+
+  # www.waybuild-akademie.de → https://waybuild-akademie.de (kanonische Adresse, ein Schritt auch von http://www)
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L,NE]
+
+  # Immer HTTPS
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
+</IfModule>
+
+# ---------------------------------------------------------------- Sicherheits-Header
+<IfModule mod_headers.c>
+  # HSTS nur über HTTPS senden (ohne includeSubDomains – andere Subdomains bleiben unberührt)
+  Header always set Strict-Transport-Security "max-age=31536000" "expr=%{HTTPS} == 'on'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "DENY"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  # CSP: nur eigene Quellen, keine fremden Skripte/Fonts/Frames. 'unsafe-inline' ist nötig, weil Astro kleine Skripte
+  # und die JSON-LD-Daten direkt in die Seite schreibt und einzelne Elemente style-Attribute tragen.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+</IfModule>
+
+# ---------------------------------------------------------------- Zwischenspeicher
+<IfModule mod_headers.c>
+  # Dateien mit Inhalts-Hash im Namen (/_astro/…) ändern sich nie → ein Jahr, unveränderlich
+  <If "%{REQUEST_URI} =~ m#^/_astro/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+  # Seiten immer neu prüfen (Termine/Preise ändern sich mit jedem Upload); api/ regelt api/.htaccess (no-store)
+  <FilesMatch "\.(html|xml|txt)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # Logos, Favicons, Vorschaubild
+  <FilesMatch "\.(svg|png|ico|webmanifest)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>
+
+# ---------------------------------------------------------------- Kompression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/xml application/json text/javascript application/javascript image/svg+xml
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType application/manifest+json .webmanifest
+  AddCharset utf-8 .html .css .js .json .xml .txt .svg
+</IfModule>
