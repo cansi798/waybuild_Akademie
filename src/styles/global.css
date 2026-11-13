@@ -3,7 +3,7 @@
    Kontraste (WCAG 2.2 AA, geprüft):
    - Navy #00346B auf Off-White #FAF8F4 ≈ 11,6 : 1 (Fließtext, Überschriften)
    - Grau #545454 auf Off-White ≈ 7,1 : 1 (Nebentext)
-   - Weiß auf Petrol #0079A6 ≈ 4,9 : 1, Petrol auf Off-White ≈ 4,6 : 1 (Links)
+   - Weiß auf Petrol #0079A6 ≈ 4,9 : 1, Petrol auf Off-White ≈ 4,6 : 1; Textlinks #006D96 (≥ 5,0 : 1 auch auf Beige)
    - Navy auf Bernstein #F2A900 ≈ 6,1 : 1  → Bernstein NUR als Fläche mit dunklem Text, nie als Textfarbe auf hell
    - Weiß auf Tief-Petrol #006B68 ≈ 6,4 : 1, Weiß auf Navy ≈ 12,3 : 1 */
 
@@ -55,12 +55,33 @@
   --noise: 0;
 }
 
+/* Ersatzschriften mit angeglichenen Maßen: Bis Inter/Fraunces geladen sind, nimmt der Text fast denselben Platz ein –
+   kein Springen beim Schrift-Tausch (CLS). Werte berechnet aus den Font-Dateien (Breite einer deutschen Textprobe,
+   hhea-Ascent/-Descent) gegenüber Arial bzw. Times New Roman (Liberation Sans/Serif sind maßgleich). */
+@font-face {
+  font-family: 'Inter Ersatz';
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('LiberationSans'), local('Helvetica');
+  size-adjust: 106.8%;
+  ascent-override: 90.71%;
+  descent-override: 22.58%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Fraunces Ersatz';
+  src: local('Times New Roman'), local('TimesNewRomanPSMT'), local('Liberation Serif'), local('LiberationSerif'), local('Times');
+  size-adjust: 108.55%;
+  ascent-override: 90.1%;
+  descent-override: 23.49%;
+  line-gap-override: 0%;
+}
+
 @theme {
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Fraunces Variable', ui-serif, Georgia, serif;
+  --font-sans: 'Inter Variable', 'Inter Ersatz', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Fraunces Variable', 'Fraunces Ersatz', ui-serif, Georgia, serif;
 
   --color-navy: #00346b;
   --color-petrol: #0079a6;
+  --color-petrol-text: #006d96;
   --color-tief: #006b68;
   --color-grau: #545454;
   --color-bernstein: #f2a900;
@@ -110,6 +131,25 @@
     hyphens: auto;
     overflow-wrap: anywhere;
   }
+  /* Bedienelemente, die nur mit JavaScript funktionieren (Filter): per CSS statt per Skript ein-/ausblenden –
+     so stehen sie schon beim ersten Zeichnen an ihrem Platz (kein Layout-Sprung) und fehlen ohne JavaScript. */
+  /* Abschnitte weit unterhalb des ersten Bildes erst zeichnen, wenn sie in die Nähe kommen (spart beim Laden viel
+     Layout-Arbeit auf schwachen Handys; Höhe wird geschätzt und danach gemerkt – kein Springen im sichtbaren Bereich).
+     Nicht für Abschnitte mit IntersectionObserver-Animationen (Warum-Bühne, Lernpfad): WebKit meldet dort sonst zu spät „sichtbar“. */
+  .spaeter-zeichnen {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+  @media (scripting: none) {
+    .nur-mit-js {
+      display: none !important;
+    }
+  }
+  @media (scripting: enabled) {
+    [data-ohne-js-hinweis] {
+      display: none !important;
+    }
+  }
 }
 
 @layer components {
@@ -124,8 +164,11 @@
     min-height: 2.75rem;
     font-weight: 600;
   }
+  /* Textlinks: etwas dunkleres Petrol (#006D96), damit sie auch auf den beigen Flächen (base-200) AA erfüllen:
+     5,5 : 1 auf Off-White, 5,0 : 1 auf #F2EEE6 (Petrol #0079A6 käme dort nur auf 4,2 : 1). */
   .link-fliess {
-    @apply text-petrol underline decoration-1 hover:decoration-2;
+    @apply underline decoration-1 hover:decoration-2;
+    color: var(--color-petrol-text);
   }
 }
 

@@ -26,7 +26,7 @@ const zahl = (n: number) => `${n} ${n === 1 ? 'Termin' : 'Termine'}`;
   <div class="rahmen pt-8 pb-20 sm:pt-10" data-termine-seite data-termine-liste>
     {
       saeulen.length > 1 && (
-        <div class="mb-10 flex flex-wrap items-center justify-between gap-4 rounded-3xl bg-white p-5 ring-1 ring-base-300 sm:p-6" data-filter hidden>
+        <div class="mb-10 flex flex-wrap items-center justify-between gap-4 rounded-3xl bg-white p-5 ring-1 ring-base-300 sm:p-6 nur-mit-js" data-filter>
           <div class="flex flex-wrap gap-2" role="group" aria-label="Termine nach Bereich filtern">
             <button type="button" class="chip" data-filter-saeule="" aria-pressed="true">
               Alle

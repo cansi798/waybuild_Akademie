@@ -6,6 +6,10 @@ import Fuss from '../components/Fuss.astro';
 import { IS_PREVIEW } from '../lib/env';
 import { AKADEMIE } from '../lib/site';
 import { href, absolut } from '../lib/pfad';
+// Die zwei Schriftdateien des ersten Bildes (lateinischer Zeichensatz) vorladen – zusammen mit den maßgleichen
+// Ersatzschriften in global.css verhindert das Springen beim Schrift-Tausch (CLS).
+import interLatein from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import frauncesLatein from '@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2?url';
 
 interface Props {
   /** Seitentitel ohne Marke (wird zu „Titel | waybuild Akademie“) */
@@ -41,6 +45,8 @@ const organisation = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{vollerTitel}</title>
+    <link rel="preload" href={interLatein} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={frauncesLatein} as="font" type="font/woff2" crossorigin />
     <meta name="description" content={beschreibung} />
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
@@ -72,11 +78,11 @@ const organisation = {
     >
     {
       IS_PREVIEW && (
-        <div class="bg-bernstein text-navy text-sm" data-vorschau-banner>
+        <aside class="bg-bernstein text-navy text-sm" aria-label="Hinweis zur Vorschau" data-vorschau-banner>
           <p class="rahmen py-2 text-center font-medium">
             Vorschau – nicht öffentlich. Inhalte, Termine und Preise werden noch geprüft.
           </p>
-        </div>
+        </aside>
       )
     }
     <Kopf />

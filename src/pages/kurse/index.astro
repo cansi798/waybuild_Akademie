@@ -28,9 +28,9 @@ const zahl = (n: number) => `${n} ${n === 1 ? 'Kurs' : 'Kurse'}`;
   </Seitenkopf>
 
   <div class="rahmen pt-8 pb-20 sm:pt-10" data-katalog>
-    <!-- Filter: erst mit JavaScript sichtbar -->
+    <!-- Filter: nur mit JavaScript sichtbar (CSS-Klasse nur-mit-js, kein Layout-Sprung) -->
     {mitFilter && (
-    <div class="mb-10 rounded-3xl bg-white p-5 ring-1 ring-base-300 sm:p-6" data-filter hidden>
+    <div class="mb-10 rounded-3xl bg-white p-5 ring-1 ring-base-300 sm:p-6 nur-mit-js" data-filter>
       <div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end lg:gap-8">
         <fieldset>
           <legend class="text-sm font-semibold text-gedaempft">Bereich</legend>
