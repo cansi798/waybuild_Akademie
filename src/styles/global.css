@@ -1,0 +1,141 @@
+/* waybuild Akademie – Design-System
+   Tailwind CSS v4 + daisyUI v5 (nur CSS, kein Framework-JS), Theme „akademie“.
+   Kontraste (WCAG 2.2 AA, geprüft):
+   - Navy #00346B auf Off-White #FAF8F4 ≈ 11,9 : 1 (Fließtext, Überschriften)
+   - Grau #545454 auf Off-White ≈ 7,1 : 1 (Nebentext)
+   - Weiß auf Petrol #0079A6 ≈ 4,9 : 1, Petrol auf Off-White ≈ 4,6 : 1 (Links)
+   - Navy auf Bernstein #F2A900 ≈ 6,1 : 1  → Bernstein NUR als Fläche mit dunklem Text, nie als Textfarbe auf hell
+   - Weiß auf Tief-Petrol #006B68 ≈ 6,2 : 1, Weiß auf Navy ≈ 12,6 : 1 */
+
+@import 'tailwindcss';
+@import '@fontsource-variable/fraunces/opsz.css';
+@import '@fontsource-variable/inter/index.css';
+
+@plugin 'daisyui' {
+  themes: false;
+  logs: false;
+}
+
+@plugin 'daisyui/theme' {
+  name: 'akademie';
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: #faf8f4;
+  --color-base-200: #f2eee6;
+  --color-base-300: #e5dfd3;
+  --color-base-content: #00346b;
+
+  --color-primary: #0079a6;
+  --color-primary-content: #ffffff;
+  --color-secondary: #00346b;
+  --color-secondary-content: #ffffff;
+  --color-accent: #f2a900;
+  --color-accent-content: #00346b;
+  --color-neutral: #00346b;
+  --color-neutral-content: #ffffff;
+
+  --color-info: #0079a6;
+  --color-info-content: #ffffff;
+  --color-success: #006b68;
+  --color-success-content: #ffffff;
+  --color-warning: #f2a900;
+  --color-warning-content: #00346b;
+  --color-error: #b42318;
+  --color-error-content: #ffffff;
+
+  --radius-selector: 2rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Fraunces Variable', ui-serif, Georgia, serif;
+
+  --color-navy: #00346b;
+  --color-petrol: #0079a6;
+  --color-tief: #006b68;
+  --color-grau: #545454;
+  --color-bernstein: #f2a900;
+  --color-papier: #faf8f4;
+  --color-karte: #ffffff;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5.5rem;
+  }
+  body {
+    @apply bg-base-100 text-base-content font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    line-height: 1.65;
+    overflow-x: clip;
+  }
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-serif);
+    font-optical-sizing: auto;
+    font-weight: 560;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  a {
+    text-underline-offset: 0.2em;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-petrol);
+    outline-offset: 3px;
+    border-radius: 0.25rem;
+  }
+  .bg-navy :focus-visible,
+  .bg-tief :focus-visible {
+    outline-color: var(--color-bernstein);
+  }
+  /* Deutsche Silbentrennung für lange Begriffe (Fachinformatiker/in …) bei 320 px */
+  .trennen {
+    hyphens: auto;
+    overflow-wrap: anywhere;
+  }
+}
+
+@layer components {
+  .rahmen {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .text-gedaempft {
+    color: var(--color-grau);
+  }
+  /* Knöpfe: mindestens 44 px hoch (NFA-04) */
+  .btn {
+    min-height: 2.75rem;
+    font-weight: 600;
+  }
+  .link-fliess {
+    @apply text-petrol underline decoration-1 hover:decoration-2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

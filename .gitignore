@@ -6,6 +6,9 @@ dist/
 .astro/
 .superpowers/
 .env
+# Playwright
+test-results/
+playwright-report/
 # PlantUML/Java-Cache
 **/?/
 .java/
