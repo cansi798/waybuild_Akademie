@@ -1,0 +1,113 @@
+---
+// Station 1: Das Anmeldeformular füllt sich, der Knopf „Zahlungspflichtig anmelden“ wird gedrückt, Haken.
+// Grundzustand = Endbild (statische Bildfolge); Animation nur in der aktiven Station der Bühne.
+import type { ReiseWerte } from './reise';
+interface Props { w: ReiseWerte }
+const { w } = Astro.props;
+---
+
+<svg viewBox="0 0 480 360" class="hr-svg" aria-hidden="true" focusable="false">
+  <circle cx="430" cy="40" r="110" fill="#0079a6" opacity=".07" />
+  <circle cx="40" cy="330" r="80" fill="#f2a900" opacity=".12" />
+  <g class="s1-karte">
+    <rect x="100" y="30" width="280" height="320" rx="20" fill="#00346b" opacity=".08" />
+    <rect x="96" y="22" width="288" height="320" rx="20" fill="#ffffff" />
+    <text x="120" y="58" class="hr-serif" font-size="19" fill="#00346b">Anmeldung</text>
+    <g fill="#e5dfd3"><circle cx="330" cy="52" r="4" /><circle cx="344" cy="52" r="4" /><circle cx="358" cy="52" r="4" /></g>
+
+    <g font-size="11" fill="#545454" class="hr-sans">
+      <text x="120" y="84">Kurs &amp; Termin</text>
+      <text x="120" y="140">Name</text>
+      <text x="120" y="196">E-Mail</text>
+      <text x="120" y="252">Rechnung an</text>
+    </g>
+    <g fill="#faf8f4" stroke="#e5dfd3" stroke-width="1.5">
+      <rect x="120" y="90" width="240" height="32" rx="9" />
+      <rect x="120" y="146" width="240" height="32" rx="9" />
+      <rect x="120" y="202" width="240" height="32" rx="9" />
+    </g>
+    <text x="132" y="111" font-size="13" font-weight="650" fill="#00346b" class="hr-sans" data-hr-f="kursStart">{w.kursStart}</text>
+    <rect class="s1-deck" x="128" y="94" width="228" height="24" fill="#faf8f4" />
+    <rect class="s1-balken s1-b1" x="132" y="158" width="112" height="8" rx="4" fill="#9cc3d6" />
+    <g class="s1-balken s1-b2"><rect x="132" y="214" width="70" height="8" rx="4" fill="#9cc3d6" /><text x="206" y="222" font-size="12" font-weight="700" fill="#0079a6" class="hr-sans">@</text><rect x="222" y="214" width="64" height="8" rx="4" fill="#9cc3d6" /></g>
+
+    <g class="hr-sans" font-size="12" font-weight="600">
+      <rect x="120" y="258" width="72" height="28" rx="14" fill="#ffffff" stroke="#e5dfd3" stroke-width="1.5" />
+      <text x="156" y="276" text-anchor="middle" fill="#00346b">mich</text>
+      <rect x="200" y="258" width="124" height="28" rx="14" fill="#ffffff" stroke="#e5dfd3" stroke-width="1.5" />
+      <text x="262" y="276" text-anchor="middle" fill="#00346b">meinen Betrieb</text>
+      <g class="s1-wahl">
+        <rect x="200" y="258" width="124" height="28" rx="14" fill="#0079a6" />
+        <text x="262" y="276" text-anchor="middle" fill="#ffffff">meinen Betrieb</text>
+      </g>
+    </g>
+
+    <g class="s1-knopf">
+      <rect x="120" y="298" width="240" height="34" rx="17" fill="#f2a900" />
+      <text x="240" y="320" text-anchor="middle" font-size="13.5" font-weight="700" fill="#00346b" class="hr-sans">Zahlungspflichtig anmelden</text>
+    </g>
+  </g>
+
+  <g transform="translate(378 30)">
+    <g class="s1-ok">
+      <circle r="24" fill="#006b68" />
+      <circle r="31" fill="none" stroke="#006b68" stroke-width="2" opacity=".3" />
+      <path class="s1-haken" d="M-10 1l7 7 13-15" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1" />
+    </g>
+  </g>
+
+  <g transform="translate(306 320)">
+    <g class="s1-zeiger">
+      <path d="M0 0v20l5.5-5 4 9 4-1.8-4-8.7h7.5z" fill="#00346b" stroke="#ffffff" stroke-width="1.6" stroke-linejoin="round" />
+    </g>
+  </g>
+</svg>
+
+<style>
+  .s1-zeiger,
+  .s1-deck { opacity: 0; }
+  @media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+    :global(.hr-station.ist-aktiv) .s1-deck {
+      animation: s1-tippen 0.7s steps(14, end) 0.25s both;
+      transform-box: fill-box;
+      transform-origin: right;
+    }
+    :global(.hr-station.ist-aktiv) .s1-balken {
+      animation: s1-wachsen 0.45s cubic-bezier(0.3, 0.7, 0.4, 1) both;
+      transform-box: fill-box;
+      transform-origin: left;
+    }
+    :global(.hr-station.ist-aktiv) .s1-b1 { animation-delay: 1s; }
+    :global(.hr-station.ist-aktiv) .s1-b2 { animation-delay: 1.45s; }
+    :global(.hr-station.ist-aktiv) .s1-wahl { animation: s1-ein 0.3s ease-out 2s both; }
+    :global(.hr-station.ist-aktiv) .s1-zeiger { animation: s1-zeigen 2.7s cubic-bezier(0.45, 0, 0.3, 1) 0.2s both; }
+    :global(.hr-station.ist-aktiv) .s1-knopf {
+      animation: s1-druck 0.35s ease-in-out 2.75s both;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    :global(.hr-station.ist-aktiv) .s1-ok {
+      animation: s1-pop 0.55s cubic-bezier(0.3, 1.5, 0.5, 1) 3s both;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    :global(.hr-station.ist-aktiv) .s1-haken {
+      stroke-dasharray: 1;
+      animation: s1-zeichnen 0.4s ease-out 3.25s both;
+    }
+  }
+  @keyframes s1-tippen { from { opacity: 1; transform: scaleX(1); } to { opacity: 1; transform: scaleX(0); } }
+  @keyframes s1-wachsen { from { transform: scaleX(0); } }
+  @keyframes s1-ein { from { opacity: 0; } }
+  @keyframes s1-zeigen {
+    0% { opacity: 0; transform: translate(-150px, -170px); }
+    12% { opacity: 1; transform: translate(-150px, -170px); }
+    35% { transform: translate(-110px, -112px); }
+    62% { transform: translate(-50px, -52px); }
+    80%, 92% { opacity: 1; transform: translate(0, 0); }
+    100% { opacity: 0; transform: translate(4px, 4px); }
+  }
+  @keyframes s1-druck { 50% { transform: scale(0.94); } }
+  @keyframes s1-pop { from { opacity: 0; transform: scale(0.3); } }
+  @keyframes s1-zeichnen { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+</style>

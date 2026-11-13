@@ -1,0 +1,96 @@
+---
+// Station 2: Eine E-Mail fliegt ein, die Rechnung gleitet heraus – an dich oder deinen Betrieb.
+---
+
+<svg viewBox="0 0 480 360" class="hr-svg" aria-hidden="true" focusable="false">
+  <circle cx="60" cy="60" r="90" fill="#0079a6" opacity=".07" />
+  <circle cx="440" cy="300" r="90" fill="#f2a900" opacity=".12" />
+
+  <!-- Benachrichtigung -->
+  <g transform="translate(240 34)">
+    <g class="s2-pille">
+      <rect x="-128" y="-18" width="256" height="36" rx="18" fill="#ffffff" />
+      <rect x="-128" y="-18" width="256" height="36" rx="18" fill="none" stroke="#e5dfd3" stroke-width="1.5" />
+      <circle cx="-106" cy="0" r="11" fill="#0079a6" />
+      <path d="M-112 -4h12v8h-12z M-112 -4l6 4.5 6-4.5" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linejoin="round" />
+      <text x="-88" y="5" font-size="13" font-weight="650" fill="#00346b" class="hr-sans">Neue E-Mail: Deine Rechnung</text>
+    </g>
+  </g>
+
+  <!-- Rechnung -->
+  <g transform="translate(236 72)">
+    <g class="s2-rechnung">
+      <rect x="5" y="8" width="180" height="214" rx="14" fill="#00346b" opacity=".08" />
+      <rect width="180" height="214" rx="14" fill="#ffffff" />
+      <text x="18" y="36" class="hr-serif" font-size="20" fill="#00346b">Rechnung</text>
+      <text x="18" y="54" font-size="11" font-weight="600" fill="#006b68" class="hr-sans">per E-Mail</text>
+      <g fill="#e5dfd3"><rect x="18" y="72" width="140" height="7" rx="3.5" /><rect x="18" y="86" width="112" height="7" rx="3.5" /><rect x="18" y="100" width="126" height="7" rx="3.5" /></g>
+      <path d="M18 124h144" stroke="#e5dfd3" stroke-width="1.5" />
+      <text x="18" y="146" font-size="11" fill="#545454" class="hr-sans">Teilnahmegebühr</text>
+      <rect x="120" y="138" width="42" height="10" rx="5" fill="#00346b" />
+      <rect x="18" y="170" width="144" height="28" rx="14" fill="#e6f1f6" />
+      <text x="90" y="188" text-anchor="middle" font-size="11.5" font-weight="650" fill="#00346b" class="hr-sans">keine Online-Zahlung</text>
+    </g>
+  </g>
+
+  <!-- Umschlag -->
+  <g transform="translate(64 126)">
+    <g class="s2-brief">
+      <rect x="6" y="10" width="176" height="120" rx="14" fill="#00346b" opacity=".12" />
+      <rect width="176" height="120" rx="14" fill="#00346b" />
+      <path d="M8 12l80 58 80-58" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".45" />
+      <path d="M8 112l58-44 M168 112l-58-44" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".2" />
+      <rect x="138" y="14" width="24" height="28" rx="4" fill="#f2a900" />
+      <circle cx="150" cy="28" r="6" fill="none" stroke="#00346b" stroke-width="1.6" />
+    </g>
+  </g>
+
+  <!-- Empfänger -->
+  <g transform="translate(240 322)" class="hr-sans" font-size="13" font-weight="650">
+    <g class="s2-an s2-an1">
+      <rect x="-176" y="-18" width="112" height="36" rx="18" fill="#ffffff" />
+      <circle cx="-154" cy="-4" r="5" fill="#0079a6" />
+      <path d="M-163 9c0-6 4-9 9-9s9 3 9 9" fill="#0079a6" />
+      <text x="-138" y="5" fill="#00346b">an dich</text>
+    </g>
+    <text x="-48" y="5" fill="#545454" font-weight="500" class="s2-an s2-oder">oder</text>
+    <g class="s2-an s2-an2">
+      <rect x="-12" y="-18" width="188" height="36" rx="18" fill="#00346b" />
+      <path d="M8 10v-17l9-5 9 5v17z" fill="#f2a900" />
+      <path d="M13 -3h3 M19 -3h3 M13 3h3 M19 3h3" stroke="#00346b" stroke-width="2" />
+      <text x="36" y="5" fill="#ffffff">deinen Betrieb</text>
+    </g>
+  </g>
+</svg>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+    :global(.hr-station.ist-aktiv) .s2-brief {
+      animation: s2-flug 1s cubic-bezier(0.2, 0.75, 0.25, 1) 0.1s both;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    :global(.hr-station.ist-aktiv) .s2-rechnung {
+      animation: s2-raus 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.95s both;
+      transform-box: fill-box;
+      transform-origin: left center;
+    }
+    :global(.hr-station.ist-aktiv) .s2-pille { animation: s2-runter 0.5s cubic-bezier(0.3, 1.4, 0.5, 1) 1.3s both; }
+    :global(.hr-station.ist-aktiv) .s2-an {
+      animation: s2-auf 0.4s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    :global(.hr-station.ist-aktiv) .s2-an1 { animation-delay: 1.8s; }
+    :global(.hr-station.ist-aktiv) .s2-oder { animation-delay: 2s; }
+    :global(.hr-station.ist-aktiv) .s2-an2 { animation-delay: 2.2s; }
+  }
+  @keyframes s2-flug {
+    0% { opacity: 0; transform: translate(-190px, -170px) rotate(-24deg) scale(0.6); }
+    55% { opacity: 1; transform: translate(-40px, -46px) rotate(-6deg) scale(0.95); }
+    100% { transform: none; }
+  }
+  @keyframes s2-raus { from { opacity: 0; transform: translateX(-120px) scale(0.7); } }
+  @keyframes s2-runter { from { opacity: 0; transform: translateY(-60px); } }
+  @keyframes s2-auf { from { opacity: 0; transform: translateY(10px) scale(0.8); } }
+</style>

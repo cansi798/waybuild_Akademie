@@ -1,0 +1,115 @@
+---
+// Station 5: Zeugnis mit Siegel, Glanz und „Weiter im Beruf“. Kein Erfolgsversprechen – der Text der Station
+// formuliert bedingt („Prüfung bestanden? …“).
+const STRAHLEN = Array.from({ length: 12 }, (_, i) => i * 30);
+// Siegel-Rosette: 16 Zacken
+const zacken = Array.from({ length: 32 }, (_, i) => {
+  const r = i % 2 ? 26 : 32;
+  const a = (Math.PI * i) / 16;
+  return `${(Math.sin(a) * r).toFixed(1)},${(-Math.cos(a) * r).toFixed(1)}`;
+}).join(' ');
+---
+
+<svg viewBox="0 0 480 360" class="hr-svg" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="hr-s5-glanz" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset=".5" stop-color="#ffffff" stop-opacity=".85" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <clipPath id="hr-s5-blatt"><rect x="104" y="40" width="272" height="216" rx="12" /></clipPath>
+  </defs>
+
+  <g transform="translate(240 150)">
+    <g class="s5-strahlen" fill="#f2a900" opacity=".2">{STRAHLEN.map((g) => <path d="M-9 0L0 -260 9 0z" transform={`rotate(${g})`} />)}</g>
+  </g>
+
+  <!-- Zeugnis -->
+  <g class="s5-blatt">
+    <rect x="110" y="50" width="272" height="216" rx="12" fill="#00346b" opacity=".1" />
+    <rect x="104" y="40" width="272" height="216" rx="12" fill="#ffffff" />
+    <rect x="114" y="50" width="252" height="196" rx="7" fill="none" stroke="#0079a6" stroke-width="1.5" />
+    <rect x="119" y="55" width="242" height="186" rx="5" fill="none" stroke="#0079a6" stroke-width=".8" opacity=".5" />
+    <text x="240" y="94" text-anchor="middle" class="hr-serif" font-size="26" fill="#00346b">Zeugnis</text>
+    <rect x="210" y="104" width="60" height="3" rx="1.5" fill="#f2a900" />
+    <g fill="#e5dfd3"><rect x="150" y="124" width="180" height="7" rx="3.5" /><rect x="170" y="139" width="140" height="7" rx="3.5" /><rect x="160" y="154" width="160" height="7" rx="3.5" /></g>
+    <path class="s5-unterschrift" d="M140 208c10-16 18-18 16-4-2 14 10-20 18-10 6 8 4 14 14 2 8-9 12-4 18-2" fill="none" stroke="#00346b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" pathLength="1" />
+    <path d="M136 220h96" stroke="#c9c1b3" stroke-width="1.5" />
+    <g clip-path="url(#hr-s5-blatt)"><g transform="rotate(12 85 150)"><rect class="s5-glanz" x="40" y="30" width="90" height="240" fill="url(#hr-s5-glanz)" /></g></g>
+  </g>
+
+  <!-- Siegel -->
+  <g transform="translate(330 228)">
+    <g class="s5-siegel">
+      <path d="M-14 16l-12 44 14-8 9 14 7-42z" fill="#006b68" />
+      <path d="M14 16l12 44-14-8-9 14-7-42z" fill="#0079a6" />
+      <polygon points={zacken} fill="#f2a900" />
+      <circle r="21" fill="#00346b" />
+      <circle r="17" fill="none" stroke="#f2a900" stroke-width="1.2" stroke-dasharray="2 3" />
+      <path class="s5-haken" d="M-9 0l6 6 12-13" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" pathLength="1" />
+    </g>
+  </g>
+
+  <g fill="#0079a6" class="s5-funken">
+    <path d="M92 70l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" />
+    <path d="M400 150l2.5 6.5 6.5 2.5-6.5 2.5-2.5 6.5-2.5-6.5-6.5-2.5 6.5-2.5z" fill="#f2a900" />
+    <circle cx="70" cy="190" r="3.5" fill="#f2a900" />
+    <circle cx="414" cy="70" r="4" />
+  </g>
+
+  <g transform="translate(240 316)">
+    <g class="s5-weiter">
+      <rect x="-104" y="-20" width="208" height="40" rx="20" fill="#00346b" />
+      <text x="-14" y="5.5" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff" class="hr-sans">Weiter im Beruf</text>
+      <g class="s5-pfeil"><path d="M62 0h22M76 -7l8 7-8 7" fill="none" stroke="#f2a900" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></g>
+    </g>
+  </g>
+</svg>
+
+<style>
+  .s5-glanz { opacity: 0; }
+  @media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+    :global(.hr-station.ist-aktiv) .s5-blatt {
+      animation: s5-auf 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      transform-box: fill-box;
+      transform-origin: center bottom;
+    }
+    :global(.hr-station.ist-aktiv) .s5-strahlen {
+      animation: s5-drehen 8s linear both;
+      transform-box: view-box;
+      transform-origin: 0 0;
+    }
+    :global(.hr-station.ist-aktiv) .s5-unterschrift {
+      stroke-dasharray: 1;
+      animation: s5-zeichnen 0.7s ease-in-out 0.45s both;
+    }
+    :global(.hr-station.ist-aktiv) .s5-siegel {
+      animation: s5-stempel 0.6s cubic-bezier(0.3, 1.3, 0.5, 1) 1.1s both;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    :global(.hr-station.ist-aktiv) .s5-haken {
+      stroke-dasharray: 1;
+      animation: s5-zeichnen 0.35s ease-out 1.55s both;
+    }
+    :global(.hr-station.ist-aktiv) .s5-glanz { animation: s5-glanz 0.9s ease-in-out 1.7s both; }
+    :global(.hr-station.ist-aktiv) .s5-funken { animation: s5-funkeln 1.6s ease-in-out 1.6s both; }
+    :global(.hr-station.ist-aktiv) .s5-weiter { animation: s5-rein 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 2.2s both; }
+    :global(.hr-station.ist-aktiv) .s5-pfeil { animation: s5-stupsen 1s ease-in-out 2.8s 2; }
+  }
+  @keyframes s5-auf { from { opacity: 0; transform: translateY(24px) scale(0.92); } }
+  @keyframes s5-drehen { to { transform: rotate(30deg); } }
+  @keyframes s5-zeichnen { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @keyframes s5-stempel {
+    0% { opacity: 0; transform: scale(2.4) rotate(-35deg); }
+    60% { opacity: 1; transform: scale(0.9) rotate(4deg); }
+    100% { transform: none; }
+  }
+  @keyframes s5-glanz {
+    0% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 1; transform: translateX(360px); }
+  }
+  @keyframes s5-funkeln { 0% { opacity: 0; } 40% { opacity: 1; } 70% { opacity: 0.4; } 100% { opacity: 1; } }
+  @keyframes s5-rein { from { opacity: 0; transform: translateX(-24px); } }
+  @keyframes s5-stupsen { 50% { transform: translateX(5px); } }
+</style>
