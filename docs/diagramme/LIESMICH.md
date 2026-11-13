@@ -7,8 +7,8 @@ Neu rendern (im Ordner `docs/diagramme`):
 
 ```bash
 cd docs/diagramme
-docker run --rm -u $(id -u):$(id -g) -v $PWD:/data -w /data plantuml/plantuml:1.2024.8 -tsvg -o svg *.puml
-docker run --rm -u $(id -u):$(id -g) -v $PWD:/data -w /data plantuml/plantuml:1.2024.8 -tpng -o png *.puml
+docker run --rm -e HOME=/tmp -u $(id -u):$(id -g) -v $PWD:/data -w /data plantuml/plantuml:1.2024.8 -tsvg -o svg *.puml
+docker run --rm -e HOME=/tmp -u $(id -u):$(id -g) -v $PWD:/data -w /data plantuml/plantuml:1.2024.8 -tpng -o png *.puml
 ```
 
 Der Name nach `@startuml` bestimmt den Dateinamen der Ausgabe (z. B. `@startuml 1-use-cases` → `svg/1-use-cases.svg`).
