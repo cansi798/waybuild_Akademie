@@ -48,7 +48,9 @@ Neues Geheimnis = Datei löschen; offene Formulare müssen danach einmal neu gel
   `token.php`; das Formular holt ihn alle 5 Stunden neu). Nur mit JavaScript, ohne JavaScript entfällt sie.
 - **Rate-Limit**: höchstens 15 Absendungen je Stunde und Anschluss (IPv6: je /64-Netz). Gespeichert wird nur ein
   HMAC-Hash der (bei IPv6 gekürzten) IP-Adresse mit den Zeitpunkten der letzten Stunde
-  (`akademie-daten/ratelimit/<hash>.json`); ältere Einträge werden gelöscht (TTL 1 h).
+  (`akademie-daten/ratelimit/<hash>.json`); ältere Einträge werden gelöscht (TTL 1 h): Dateien, die älter als 1 h sind,
+  entfernt `abgelaufene_loeschen()` bei jedem Formular-Absenden und bei jedem Abruf von `token.php` (also beim Laden
+  eines Formulars) – so steht es auch in der Datenschutzerklärung.
 - `akademie-daten/` bekommt automatisch eine `.htaccess` mit `Require all denied` – falls das Konto-Verzeichnis über
   eine Domain (z. B. `w0123456.kasserver.com`) erreichbar ist. Nach dem ersten Formular einmal prüfen:
   `https://<konto-domain>/akademie-daten/formular-geheimnis.txt` muss **403** liefern.

@@ -245,6 +245,16 @@ $inhalt = json_decode((string) file_get_contents($dateien[0]), true);
 pruefe(is_array($inhalt) && count($inhalt) === 15 && array_filter($inhalt, 'is_int') === $inhalt, 'Rate-Limit-Datei enthält nur Zeitpunkte');
 $alles = array_map(fn ($p) => substr($p, strlen(DATEN) + 1), array_merge(glob(DATEN . '/*') ?: [], glob(DATEN . '/.*') ?: [], $dateien));
 pruefe(!array_filter($alles, fn ($p) => !in_array($p, ['.', '..', '.htaccess', '.geheimnis.lock', 'formular-geheimnis.txt', 'mails-24h.json', 'ratelimit', 'empfaenger', 'empfaenger-widerruf'], true) && !str_starts_with($p, 'ratelimit/')), 'keine Formulardaten auf dem Server gespeichert');
+// Löschung nach 1 h (Datenschutzerklärung): abgelaufene Hash-Dateien verschwinden beim nächsten Formularaufruf (token.php)
+@mkdir(DATEN . '/empfaenger', 0700, true);
+file_put_contents(DATEN . '/empfaenger/' . str_repeat('a', 64) . '.json', json_encode([time() - 7200]));
+touch(DATEN . '/empfaenger/' . str_repeat('a', 64) . '.json', time() - 7200);
+touch($dateien[0], time() - 3601);
+file_put_contents(DATEN . '/ratelimit/' . str_repeat('b', 64) . '.json', json_encode([time()]));
+anfrage('/api/token.php', [], false, 'GET', 8080, true);
+clearstatcache();
+pruefe(!is_file($dateien[0]) && !is_file(DATEN . '/empfaenger/' . str_repeat('a', 64) . '.json'), 'Hash-Dateien älter als 1 h: beim nächsten Formularaufruf gelöscht');
+pruefe(is_file(DATEN . '/ratelimit/' . str_repeat('b', 64) . '.json'), 'Hash-Dateien jünger als 1 h bleiben');
 limit_leeren();
 
 gruppe('Header-Injection');
