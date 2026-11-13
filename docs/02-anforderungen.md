@@ -138,7 +138,7 @@ Als **Interessent/in** möchte ich mich über ein einfaches Formular verbindlich
 - AK1: Das Formular zeigt oben Kurs, Zeitraum und Preis des gewählten Termins; der Termin ist änderbar, aber vorausgewählt.
 - AK2: Pflichtfelder sind nur: Vorname, Nachname, E-Mail, Zahlweg, Rechnungsanschrift sowie die Bestätigung der Teilnahmebedingungen und der Kenntnisnahme von Datenschutz und Widerruf. Telefon und Nachricht sind freiwillig.
 - AK3: Fehler werden direkt am Feld in Textform erklärt (nicht nur farblich) und die Eingaben bleiben erhalten.
-- AK4: Der Absende-Knopf ist eindeutig beschriftet (z. B. „Verbindlich anmelden“) und es ist erkennbar, dass die Anmeldung zahlungspflichtig ist.
+- AK4: Der Absende-Knopf ist eindeutig beschriftet mit „Zahlungspflichtig anmelden“ (Button-Lösung nach § 312j BGB).
 
 #### US-11 Zahlweg wählen: selbst zahlen oder Betrieb zahlt · **Muss**
 Als **Teilnehmer/in** möchte ich wählen, ob ich selbst zahle oder mein Betrieb zahlt, damit die Rechnung an die richtige Stelle geht.
