@@ -15,7 +15,7 @@ export const FIRMA = {
   ort: 'Norderstedt',
   land: 'Deutschland',
   geschaeftsfuehrer: 'Can Siebert',
-  /** Firmen-Website hat nur eine erfundene Platzhalter-Nummer → hier bewusst offen. */
+  /** Noch keine bestätigte Telefonnummer → bewusst offen (Platzhalter). */
   telefon: null as string | null,
   registergericht: null as string | null,
   registernummer: null as string | null,
