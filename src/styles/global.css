@@ -1,11 +1,11 @@
 /* waybuild Akademie – Design-System
    Tailwind CSS v4 + daisyUI v5 (nur CSS, kein Framework-JS), Theme „akademie“.
    Kontraste (WCAG 2.2 AA, geprüft):
-   - Navy #00346B auf Off-White #FAF8F4 ≈ 11,9 : 1 (Fließtext, Überschriften)
+   - Navy #00346B auf Off-White #FAF8F4 ≈ 11,6 : 1 (Fließtext, Überschriften)
    - Grau #545454 auf Off-White ≈ 7,1 : 1 (Nebentext)
    - Weiß auf Petrol #0079A6 ≈ 4,9 : 1, Petrol auf Off-White ≈ 4,6 : 1 (Links)
    - Navy auf Bernstein #F2A900 ≈ 6,1 : 1  → Bernstein NUR als Fläche mit dunklem Text, nie als Textfarbe auf hell
-   - Weiß auf Tief-Petrol #006B68 ≈ 6,2 : 1, Weiß auf Navy ≈ 12,6 : 1 */
+   - Weiß auf Tief-Petrol #006B68 ≈ 6,4 : 1, Weiß auf Navy ≈ 12,3 : 1 */
 
 @import 'tailwindcss';
 @import '@fontsource-variable/fraunces/opsz.css';
