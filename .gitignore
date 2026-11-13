@@ -6,3 +6,6 @@ dist/
 .astro/
 .superpowers/
 .env
+# PlantUML/Java-Cache
+**/?/
+.java/
