@@ -4,6 +4,9 @@ import { bereich, formularEinrichten, wert, type Zeile } from './formular';
 import type { FormDaten, FormKurs, FormTermin } from './daten';
 import { FEHLER, MAX_PERSONEN, berechnePreis, buchbarIso, euro, paketId, tageBisIso, wertersatzPflicht } from '../../lib/formular';
 
+// Zusatz für Entwürfe nur im Vorschau-Build: Vite setzt PUBLIC_PREVIEW beim Bauen ein, live fällt der Text ganz weg.
+const ENTWURF_ZUSATZ = import.meta.env.PUBLIC_PREVIEW === 'true' ? ' (Entwurf – live nicht buchbar)' : '';
+
 const form = document.querySelector<HTMLFormElement>('[data-anmeldeformular]');
 if (form) einrichten(form);
 
@@ -73,7 +76,7 @@ function einrichten(form: HTMLFormElement) {
   function zusammenfassung(): Zeile[] {
     const k = kurs();
     if (!k) return [];
-    const z: Zeile[] = [['Kurs', `${k.titel}${k.status === 'entwurf' ? ' (Entwurf – live nicht buchbar)' : ''}`]];
+    const z: Zeile[] = [['Kurs', `${k.titel}${k.status === 'entwurf' ? ENTWURF_ZUSATZ : ''}`]];
     const t = termin();
     const p = paket();
     if (istCoaching()) {
@@ -208,7 +211,7 @@ function einrichten(form: HTMLFormElement) {
     if (knopf.textContent !== knopfText) knopf.textContent = knopfText;
     setzeText('[data-knopf-hinweis]', coaching
       ? 'Unverbindliche Anfrage – wir melden uns zur Terminabstimmung. Die Rechnung kommt danach per E-Mail.'
-      : 'Die Rechnung kommt per E-Mail – eine Online-Zahlung ist nicht nötig. Die IHK-Prüfungsgebühr ist nicht enthalten.');
+      : 'Die Rechnung kommt per E-Mail – eine Online-Zahlung ist nicht nötig. Die Prüfungsgebühr deiner IHK ist nicht enthalten.');
   }
 
   // Vorauswahl aus der Adresse

@@ -14,7 +14,8 @@ interface Props {
   kurse: Kurs[];
 }
 const { countdown, kurse } = Astro.props;
-const reise = countdown.map((o) => reiseWerte(o, kurse));
+// Je Kurs der erste und alle späteren buchbaren Termine – der Browser nimmt den ersten mit offenem Anmeldeschluss
+const reise = countdown.map((o) => ({ ...reiseWerte(o, kurse), folge: o.weitere.map((w) => reiseWerte(w, kurse)) }));
 const VORTEILE = ['Dozenten mit IHK-Prüfer-Erfahrung', 'Rechnung an dich oder deinen Betrieb', 'Keine Online-Zahlung'];
 ---
 

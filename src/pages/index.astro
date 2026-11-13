@@ -7,7 +7,8 @@ import type { CountdownOption } from '../lib/countdown';
 import KursKarte from '../components/KursKarte.astro';
 import Lernpfad from '../components/Lernpfad.astro';
 import WarumBuehne from '../components/WarumBuehne.astro';
-import { alleTermine, formatDatum, formatEuro, freigegebeneKurse, kurzname, naechsterTermin, saeulenName, type Saeule } from '../lib/kurse';
+import TerminWaechter from '../components/seiten/TerminWaechter.astro';
+import { alleTermine, buchbareTermine, formatDatum, isoDatum, formatEuro, freigegebeneKurse, kurzname, naechsterTermin, saeulenName, type Saeule } from '../lib/kurse';
 import { href } from '../lib/pfad';
 import { AKADEMIE } from '../lib/site';
 
@@ -17,10 +18,13 @@ const freigegeben = await freigegebeneKurse();
 const countdown: CountdownOption[] = freigegeben
   .filter((k) => k.data.saeule === 'ihk-pruefung' && k.data.art === 'kurs')
   .flatMap((k) => {
-    const t = naechsterTermin(k);
-    return t?.pruefung
-      ? [{ kurz: kurzname(k), kursTitel: k.data.untertitel, slug: k.id, terminId: t.id, pruefung: t.pruefung, start: t.start, ende: t.ende, hinweis: t.pruefungHinweis }]
-      : [];
+    const optionen = buchbareTermine(k).flatMap((t): CountdownOption[] =>
+      t.pruefung
+        ? [{ kurz: kurzname(k), kursTitel: k.data.untertitel, slug: k.id, terminId: t.id, pruefung: t.pruefung, start: t.start, ende: t.ende, hinweis: t.pruefungHinweis, anmeldeschluss: t.anmeldeschluss, weitere: [] }]
+        : [],
+    );
+    const [erste, ...weitere] = optionen;
+    return erste ? [{ ...erste, weitere }] : [];
   })
   .slice(0, 4);
 
@@ -108,9 +112,9 @@ const faqSchema = {
       naechsteStarts.length > 0 && (
         <div class="mt-14">
           <h3 class="text-2xl">Nächste Starttermine</h3>
-          <ul class="mt-5 grid gap-3">
+          <ul class="mt-5 grid gap-3" data-termine-liste>
             {naechsteStarts.map(({ kurs, termin }) => (
-              <li class="grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 rounded-2xl bg-white p-4 ring-1 ring-base-300 sm:grid-cols-[auto_1fr_auto_auto] sm:p-5">
+              <li data-anmeldeschluss={isoDatum(termin.anmeldeschluss)} class="grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 rounded-2xl bg-white p-4 ring-1 ring-base-300 sm:grid-cols-[auto_1fr_auto_auto] sm:p-5">
                 <time datetime={termin.start.toISOString().slice(0, 10)} class="grid w-16 place-items-center rounded-xl bg-navy py-2 text-white">
                   <span class="font-serif text-2xl leading-none">{formatDatum(termin.start, 'tagmonat').slice(0, 2)}</span>
                   <span class="text-xs">{new Intl.DateTimeFormat('de-DE', { month: 'short', year: '2-digit', timeZone: 'UTC' }).format(termin.start)}</span>
@@ -165,7 +169,7 @@ const faqSchema = {
   }
 
   <!-- FAQ-Kurzblock -->
-  <section class="border-t border-base-300 bg-base-200/60" aria-labelledby="faq-titel">
+  <section class="spaeter-zeichnen border-t border-base-300 bg-base-200/60" aria-labelledby="faq-titel">
     <div class="rahmen grid gap-10 py-16 sm:py-20 lg:grid-cols-[0.8fr_1.2fr]">
       <div>
         <h2 id="faq-titel" class="text-3xl sm:text-4xl">Kurz gefragt</h2>
@@ -200,4 +204,5 @@ const faqSchema = {
       </div>
     </div>
   </section>
+  <TerminWaechter />
 </Basis>

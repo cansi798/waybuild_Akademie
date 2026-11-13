@@ -15,12 +15,13 @@ import SzeneAbschluss from './SzeneAbschluss.astro';
 
 interface Props {
   /** Ein Wertesatz je Countdown-Option (gleiche Reihenfolge wie dessen Schalter). */
-  optionen: ReiseWerte[];
+  /** Je Kurs die Werte des ersten buchbaren Termins, dazu spätere Termine (folge) für den Sprung im Browser */
+  optionen: (ReiseWerte & { folge?: ReiseWerte[] })[];
 }
 const { optionen } = Astro.props;
 
 const LEER: ReiseWerte = {
-  iso: '', kursStart: 'Kurs & Termin wählen', start: '', datum: '', tag: '', vortag: '', vorvortag: '',
+  iso: '', schluss: '', kursStart: 'Kurs & Termin wählen', start: '', datum: '', tag: '', vortag: '', vorvortag: '',
   monat: 'Prüfungstag', wochentag: '', pruefungTitel: 'Prüfung bei deiner IHK', zeiten: 'Abends', uhr: 'abends', tage: '', einheit: '',
 };
 const w = optionen[0] ?? LEER;
@@ -237,6 +238,9 @@ const n = STATIONEN.length;
       opacity: 1;
       transition: opacity 0.5s ease;
     }
+    /* Unsichtbare Stationen nicht zeichnen (SVG-Text ist teuer im Layout – spart beim Laden viel Hauptthread-Zeit);
+       die gerade ausblendende Station (ist-geht) bleibt für den Übergang gezeichnet. Größe kommt von .hr-bild. */
+    .hr-station:not(.ist-aktiv):not(.ist-geht) .hr-bild { content-visibility: hidden; }
     .hr-bild {
       aspect-ratio: auto;
       height: clamp(7.5rem, calc(70vh - 20rem), 64vw);
@@ -391,11 +395,15 @@ const n = STATIONEN.length;
   const root = document.querySelector<HTMLElement>('[data-reise]');
   if (root) {
     // ---- Daten: Tage bis zur Prüfung mit dem heutigen Datum (Europe/Berlin) neu rechnen; AP1/AP2-Schalter folgt ----
-    const optionen: Record<string, string>[] = JSON.parse(root.dataset.hrOptionen || '[]');
+    type Werte = Record<string, string>;
+    const optionen: (Werte & { folge?: Werte[] })[] = JSON.parse(root.dataset.hrOptionen || '[]');
     const heute = () =>
       Date.parse(new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()) + 'T00:00:00Z');
-    const setze = (o?: Record<string, string>) => {
-      if (!o?.iso) return;
+    const setze = (option?: Werte & { folge?: Werte[] }) => {
+      if (!option?.iso) return;
+      // Anmeldeschluss des gebauten Termins vorbei (noch kein neuer Build)? → nächster buchbarer Termin desselben Kurses
+      const { folge = [], ...erster } = option;
+      const o: Werte = [erster, ...folge].find((t) => !t.schluss || Date.parse(t.schluss + 'T00:00:00Z') >= heute()) ?? erster;
       const tage = Math.round((Date.parse(o.iso + 'T00:00:00Z') - heute()) / 864e5);
       const werte = tage >= 0 ? { ...o, tage: String(tage), einheit: tage === 1 ? 'Tag' : 'Tage' } : o;
       root.querySelectorAll<HTMLElement>('[data-hr-f]').forEach((el) => {
@@ -424,7 +432,12 @@ const n = STATIONEN.length;
       const dauer = () => Number(stationen[aktiv].dataset.dauer) || 3500;
 
       const zeigen = (i: number, ansagen = false) => {
+        const vorher = stationen[aktiv];
         aktiv = (i + n) % n;
+        if (vorher !== stationen[aktiv] && vorher.classList.contains('ist-aktiv')) {
+          vorher.classList.add('ist-geht'); // bleibt bis zum Ende des Ausblendens gezeichnet
+          setTimeout(() => vorher.classList.remove('ist-geht'), 600);
+        }
         stationen.forEach((s) => s.classList.remove('ist-aktiv'));
         lauf?.classList.remove('takt');
         void root.offsetWidth; // CSS-Animationen der Station neu starten

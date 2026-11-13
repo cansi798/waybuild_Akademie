@@ -6,6 +6,7 @@ import { formatDatum, isoDatum, tageBis, type Kurs } from '../../lib/kurse';
 /** Ein Satz Anzeige-Werte; Schlüssel = data-hr-f im Markup. */
 export interface ReiseWerte {
   iso: string; // Prüfungstag "JJJJ-MM-TT" (Grundlage für „Noch N Tage“ im Browser)
+  schluss: string; // Anmeldeschluss "JJJJ-MM-TT" – danach springt der Browser auf den nächsten Termin (folge)
   kursStart: string; // "AP1 · Start TT.MM.JJJJ"
   start: string; // "TT.MM.JJJJ"
   datum: string; // "Mittwoch, TT.MM.JJJJ"
@@ -31,6 +32,7 @@ export function reiseWerte(o: CountdownOption, kurse: Kurs[]): ReiseWerte {
   const tagVor = (n: number) => fmt(new Date(o.pruefung.getTime() - n * TAG_MS), { day: 'numeric' });
   return {
     iso: isoDatum(o.pruefung),
+    schluss: isoDatum(o.anmeldeschluss),
     kursStart: `${o.kurz} · Start ${formatDatum(o.start)}`,
     start: formatDatum(o.start),
     datum: `${fmt(o.pruefung, { weekday: 'long' })}, ${formatDatum(o.pruefung)}`,

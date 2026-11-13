@@ -17,6 +17,18 @@ const anteil = (o: CountdownOption, d: Date) => {
   return Math.min(100, Math.max(0, (tageBis(d) / gesamt) * 100));
 };
 const einheit = (n: number) => (n === 1 ? 'Tag' : 'Tage');
+// Termin-Folge je Tafel (erster + spätere buchbare Termine) für den Sprung im Browser zwischen zwei Builds
+const folge = (o: CountdownOption) =>
+  JSON.stringify(
+    [o, ...o.weitere].map((x) => ({
+      pruefung: isoDatum(x.pruefung),
+      start: isoDatum(x.start),
+      ende: isoDatum(x.ende),
+      schluss: isoDatum(x.anmeldeschluss),
+      pruefungText: formatDatum(x.pruefung),
+      startText: formatDatum(x.start),
+    })),
+  );
 ---
 
 {
@@ -46,7 +58,7 @@ const einheit = (n: number) => (n === 1 ? 'Tag' : 'Tage');
         {optionen.map((o, i) => {
           const tage = tageBis(o.pruefung);
           return (
-            <div class="cd-tafel" data-cd-tafel={i} data-pruefung={isoDatum(o.pruefung)} data-start={isoDatum(o.start)} data-ende={isoDatum(o.ende)}>
+            <div class="cd-tafel" data-cd-tafel={i} data-pruefung={isoDatum(o.pruefung)} data-start={isoDatum(o.start)} data-ende={isoDatum(o.ende)} data-folge={folge(o)}>
               <p class="flex flex-wrap items-end gap-x-4 gap-y-1">
                 <span class="text-lg text-white/80">Noch</span>
                 <span class="cd-zahl font-serif tabular-nums" data-cd-tage>{tage}</span>
@@ -70,7 +82,7 @@ const einheit = (n: number) => (n === 1 ? 'Tag' : 'Tage');
               <a href={href(`/kurse/${o.slug}/#termine`)} class="cd-start mt-6 flex items-center justify-between gap-3 rounded-2xl bg-bernstein px-5 py-4 text-navy">
                 <span>
                   <span class="block text-sm font-medium">{o.kursTitel}</span>
-                  <span class="block text-lg font-semibold">Dein Kurs startet am {formatDatum(o.start)}</span>
+                  <span class="block text-lg font-semibold">Dein Kurs startet am <span data-cd-start>{formatDatum(o.start)}</span></span>
                 </span>
                 <svg viewBox="0 0 24 24" class="size-6 shrink-0" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
               </a>
@@ -179,7 +191,20 @@ const einheit = (n: number) => (n === 1 ? 'Tag' : 'Tage');
   };
   const tageBis = (iso: string) => Math.round((Date.parse(`${iso}T00:00:00Z`) - heute()) / TAG);
 
+  interface Folge { pruefung: string; start: string; ende: string; schluss: string; pruefungText: string; startText: string }
+
   document.querySelectorAll<HTMLElement>('[data-cd-tafel]').forEach((tafel) => {
+    // Anmeldeschluss des gebauten Termins vorbei (noch kein neuer Build)? → auf den nächsten buchbaren Termin springen
+    const liste: Folge[] = JSON.parse(tafel.dataset.folge || '[]');
+    const naechster = liste.find((t) => tageBis(t.schluss) >= 0);
+    if (naechster && naechster.pruefung !== tafel.dataset.pruefung) {
+      Object.assign(tafel.dataset, { pruefung: naechster.pruefung, start: naechster.start, ende: naechster.ende });
+      const datum = tafel.querySelector('[data-cd-datum]');
+      datum?.setAttribute('datetime', naechster.pruefung);
+      if (datum) datum.textContent = naechster.pruefungText;
+      const startText = tafel.querySelector('[data-cd-start]');
+      if (startText) startText.textContent = naechster.startText;
+    }
     const { pruefung = '', start = '', ende = '' } = tafel.dataset;
     const tage = tageBis(pruefung);
     if (tage < 0) return;
