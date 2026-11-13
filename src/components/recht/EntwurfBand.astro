@@ -1,0 +1,29 @@
+---
+// Deutliches Band oben auf jeder Rechtsseite – in Vorschau und Live-Build, solange RECHT_GEPRUEFT = false.
+import { RECHT_GEPRUEFT } from './status';
+---
+
+{
+  !RECHT_GEPRUEFT && (
+    <div class="recht-band" role="note" data-recht-entwurf>
+      <p class="rahmen py-3 text-center font-semibold">
+        Entwurf – rechtlich noch nicht geprüft. Vor Veröffentlichung anwaltlich prüfen lassen.
+      </p>
+    </div>
+  )
+}
+
+<style>
+  .recht-band {
+    background: #b42318;
+    color: #fff;
+    border-bottom: 4px solid var(--color-bernstein);
+  }
+  @media print {
+    .recht-band {
+      background: none;
+      color: #000;
+      border: 2px solid #000;
+    }
+  }
+</style>

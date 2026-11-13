@@ -1,0 +1,249 @@
+---
+// Gemeinsames Gerüst der vier Rechtsseiten: Entwurfsband, Titel mit Stand, Inhaltsverzeichnis mit Sprungmarken,
+// gut lesbarer Fließtext (~70 Zeichen je Zeile, großzügiger Zeilenabstand) und eine druckfreundliche Ansicht.
+import Basis from '../../layouts/Basis.astro';
+import EntwurfBand from './EntwurfBand.astro';
+import { RECHT_GEPRUEFT, RECHT_STAND } from './status';
+
+interface Props {
+  titel: string;
+  beschreibung: string;
+  /** Abschnitte in Reihenfolge – jede id muss als id einer <h2> im Inhalt stehen. */
+  abschnitte: { id: string; titel: string }[];
+}
+const { titel, beschreibung, abschnitte } = Astro.props;
+---
+
+<Basis titel={titel} beschreibung={beschreibung}>
+  <EntwurfBand />
+  <div class="rahmen py-12 sm:py-16">
+    <header class="max-w-[38rem]">
+      <p class="text-sm font-semibold uppercase tracking-wider text-tief">Rechtliches</p>
+      <h1 class="trennen mt-3 text-4xl sm:text-5xl">{titel}</h1>
+      <p class="mt-4 text-gedaempft" data-recht-stand>
+        Stand: {RECHT_STAND}{!RECHT_GEPRUEFT && ' · Entwurfsfassung'}
+      </p>
+      <slot name="einleitung" />
+    </header>
+
+    <div class="recht-raster mt-10">
+      <nav class="recht-toc" aria-labelledby="inhalt-titel" data-recht-toc>
+        <h2 id="inhalt-titel" class="font-sans text-sm font-semibold uppercase tracking-wider text-gedaempft">Inhalt</h2>
+        <ol class="mt-3">
+          {
+            abschnitte.map((a, i) => (
+              <li>
+                <a href={`#${a.id}`} class="recht-toc-link">
+                  <span class="recht-toc-nr">{i + 1}.</span> <span>{a.titel}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+
+      <article class="recht-text trennen" data-recht-text>
+        <slot />
+      </article>
+    </div>
+  </div>
+</Basis>
+
+<style>
+  .recht-raster {
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 64rem) {
+    .recht-raster {
+      grid-template-columns: 16rem minmax(0, 1fr);
+      gap: 4rem;
+      align-items: start;
+    }
+    .recht-toc {
+      position: sticky;
+      top: 6rem;
+      max-height: calc(100dvh - 7rem);
+      overflow-y: auto;
+    }
+  }
+  .recht-toc {
+    border-radius: var(--radius-box);
+    background: var(--color-base-200);
+    padding: 1.25rem 1.25rem 1rem;
+  }
+  .recht-toc ol {
+    display: grid;
+    gap: 0.15rem;
+  }
+  .recht-toc-link {
+    display: flex;
+    gap: 0.4rem;
+    min-height: 2.5rem;
+    align-items: center;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    line-height: 1.35;
+    color: var(--color-navy);
+  }
+  .recht-toc-link:hover {
+    background: var(--color-base-300);
+    text-decoration: underline;
+  }
+  .recht-toc-nr {
+    min-width: 1.6rem;
+    color: var(--color-grau);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Fließtext: Zeilenlänge ~70 Zeichen, großzügiger Zeilen- und Absatzabstand */
+  .recht-text {
+    /* ≈ 70 Zeichen je Zeile bei Inter 17 px (70ch wäre bei Inter deutlich länger) */
+    max-width: 38rem;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .recht-text :global(h2) {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-base-300);
+    font-size: 1.75rem;
+  }
+  .recht-text :global(h2:first-child) {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+  .recht-text :global(h3) {
+    margin-top: 2rem;
+    font-size: 1.3rem;
+  }
+  .recht-text :global(h4) {
+    margin-top: 1.5rem;
+    font-weight: 650;
+  }
+  .recht-text :global(p),
+  .recht-text :global(ul),
+  .recht-text :global(ol),
+  .recht-text :global(dl),
+  .recht-text :global(blockquote),
+  .recht-text :global(address) {
+    margin-top: 1.25rem;
+  }
+  .recht-text :global(address) {
+    font-style: normal;
+  }
+  .recht-text :global(ul) {
+    list-style: disc;
+    padding-left: 1.4rem;
+  }
+  .recht-text :global(ol) {
+    list-style: decimal;
+    padding-left: 1.6rem;
+  }
+  .recht-text :global(li + li) {
+    margin-top: 0.6rem;
+  }
+  .recht-text :global(li::marker) {
+    color: var(--color-tief);
+  }
+  .recht-text :global(a) {
+    color: var(--color-petrol);
+    text-decoration: underline;
+    overflow-wrap: anywhere;
+  }
+  .recht-text :global(strong) {
+    font-weight: 650;
+  }
+  .recht-text :global(.recht-kasten) {
+    margin-top: 1.5rem;
+    border-radius: var(--radius-box);
+    border: 1px solid var(--color-base-300);
+    background: #fff;
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+  .recht-text :global(.recht-kasten > :first-child) {
+    margin-top: 0;
+  }
+  .recht-text :global(.recht-hinweis) {
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--color-petrol);
+    background: var(--color-base-200);
+    padding: 1rem 1.25rem;
+    border-radius: 0 0.75rem 0.75rem 0;
+  }
+  .recht-text :global(.recht-hinweis > :first-child) {
+    margin-top: 0;
+  }
+  .recht-text :global(mark.recht-luecke) {
+    background: #fde9a8;
+    color: var(--color-navy);
+    padding: 0 0.25em;
+    border-radius: 0.25em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .recht-text :global(table) {
+    margin-top: 1.25rem;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.98rem;
+  }
+  .recht-text :global(th),
+  .recht-text :global(td) {
+    border-bottom: 1px solid var(--color-base-300);
+    padding: 0.6rem 0.5rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  /* Druckansicht: nur Band, Titel und Text; Kopf, Fuß, Menü und Inhaltsverzeichnis entfallen */
+  @media print {
+    :global(body > header),
+    :global(body > footer),
+    :global(body > a[href='#inhalt']),
+    :global([data-vorschau-banner]),
+    .recht-toc {
+      display: none !important;
+    }
+    :global(body) {
+      background: #fff !important;
+      color: #000 !important;
+    }
+    .recht-raster {
+      display: block;
+      margin-top: 1.5rem;
+    }
+    .recht-text {
+      max-width: none;
+      font-size: 11pt;
+      line-height: 1.55;
+    }
+    .recht-text :global(h2) {
+      break-after: avoid;
+      font-size: 15pt;
+      margin-top: 1.6rem;
+    }
+    .recht-text :global(h3) {
+      break-after: avoid;
+      font-size: 12.5pt;
+    }
+    .recht-text :global(.recht-kasten) {
+      break-inside: avoid;
+    }
+    .recht-text :global(a) {
+      color: #000;
+    }
+    .recht-text :global(a[href^='http'])::after {
+      content: ' (' attr(href) ')';
+      font-size: 9pt;
+    }
+    .recht-text :global(mark.recht-luecke) {
+      background: none;
+      border: 1px dashed #000;
+    }
+    :global([data-widerruf-app]) {
+      display: none !important;
+    }
+  }
+</style>

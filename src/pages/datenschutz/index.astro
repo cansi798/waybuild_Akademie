@@ -1,8 +1,254 @@
 ---
-import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+// Datenschutzerklärung nach Art. 13/14 DSGVO – ENTWURF (Task 5). Annahmen sind als <mark>[…]</mark> markiert.
+import RechtSeite from '../../components/recht/RechtSeite.astro';
+import Luecke from '../../components/recht/Luecke.astro';
+import { FIRMA, RECHT_STAND } from '../../components/recht/status';
+import { AKADEMIE } from '../../lib/site';
+import { href } from '../../lib/pfad';
+import { IS_PREVIEW } from '../../lib/env';
+
+const abschnitte = [
+  { id: 'verantwortlicher', titel: 'Verantwortlicher' },
+  { id: 'grundsaetze', titel: 'Das Wichtigste in Kürze' },
+  { id: 'hosting', titel: 'Hosting und Server-Logfiles' },
+  { id: 'formulare', titel: 'Formulare auf dieser Website' },
+  { id: 'e-mail', titel: 'E-Mail-Kontakt und Bestätigungen' },
+  { id: 'rechnung', titel: 'Rechnung, Buchhaltung und Aufbewahrung' },
+  { id: 'unterricht', titel: 'Live-Unterricht per Videokonferenz' },
+  { id: 'empfaenger', titel: 'Empfänger deiner Daten' },
+  { id: 'rechte', titel: 'Deine Rechte' },
+  { id: 'beschwerde', titel: 'Beschwerde bei der Aufsichtsbehörde' },
+  { id: 'sicherheit', titel: 'Datensicherheit und Pflichtangaben' },
+  { id: 'stand', titel: 'Stand und Änderungen' },
+];
 ---
 
-<Basis titel="Datenschutz" beschreibung="Datenschutzerklärung der waybuild Akademie.">
-  <ImAufbau titel="Datenschutz" />
-</Basis>
+<RechtSeite titel="Datenschutzerklärung" beschreibung="Datenschutzerklärung der waybuild Akademie: welche Daten wir verarbeiten, wozu und welche Rechte du hast." {abschnitte}>
+  <p slot="einleitung" class="mt-5 text-lg">
+    Hier erfährst du, welche personenbezogenen Daten wir verarbeiten, wenn du unsere Website besuchst, uns schreibst, dich
+    anmeldest oder an unserem Live-Unterricht teilnimmst – und welche Rechte du hast.
+  </p>
+
+  <h2 id="verantwortlicher">Verantwortlicher</h2>
+  <p>Verantwortlich für die Datenverarbeitung im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
+  <address>
+    <strong>{FIRMA.name}</strong><br />
+    {FIRMA.strasse}, {FIRMA.plz} {FIRMA.ort}<br />
+    Vertreten durch den Geschäftsführer {FIRMA.geschaeftsfuehrer}<br />
+    E-Mail: <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a><br />
+    Telefon: {FIRMA.telefon ?? <Luecke text="bitte ergänzen: Telefonnummer" />}
+  </address>
+  <p>
+    Die waybuild Akademie ist ein Angebot der {FIRMA.name}. Einen Datenschutzbeauftragten haben wir nicht benannt, weil wir
+    dazu gesetzlich nicht verpflichtet sind (§ 38 BDSG). <Luecke text="Anwalt prüfen: keine Pflicht zur Benennung" />{' '}
+    Bei Fragen zum Datenschutz schreib uns einfach an <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a>.
+  </p>
+
+  <h2 id="grundsaetze">Das Wichtigste in Kürze</h2>
+  <ul>
+    <li><strong>Keine Cookies, kein Tracking:</strong> Wir setzen keine Cookies, nutzen keine Analyse- oder Statistikdienste und keine Werbe-Netzwerke. Deshalb gibt es auch kein Cookie-Banner.</li>
+    <li><strong>Keine fremden Inhalte:</strong> Schriften, Bilder und Skripte liegen auf unserem eigenen Webspace. Beim Aufruf der Website werden keine Inhalte von Drittanbietern (zum Beispiel Google Fonts, Karten oder Videos) geladen.</li>
+    <li><strong>Formulare per E-Mail:</strong> Was du in ein Formular einträgst, schicken wir als E-Mail an unser Postfach. Eine Datenbank für Formulardaten betreiben wir auf der Website nicht.</li>
+    <li><strong>Keine Aufzeichnungen:</strong> Unseren Live-Unterricht zeichnen wir nicht auf.</li>
+    <li><strong>Kein Verkauf, keine Werbung:</strong> Wir verkaufen keine Daten und nutzen sie nicht für Werbung durch Dritte.</li>
+  </ul>
+
+  <h2 id="hosting">Hosting und Server-Logfiles</h2>
+  <p>
+    Diese Website und unsere E-Mail-Postfächer liegen bei <strong>ALL-INKL.COM – Neue Medien Münnich</strong>, Inhaber René
+    Münnich, Hauptstraße 68, 02742 Friedersdorf, Deutschland. Die Server stehen in Deutschland. Mit ALL-INKL haben wir einen
+    Vertrag über die Auftragsverarbeitung nach Art. 28 DSGVO geschlossen.{' '}
+    <Luecke text="bitte bestätigen: AV-Vertrag mit ALL-INKL abgeschlossen" />
+  </p>
+  <p>Bei jedem Aufruf einer Seite speichert der Server automatisch technisch notwendige Angaben in Logdateien:</p>
+  <ul>
+    <li>IP-Adresse des anfragenden Geräts,</li>
+    <li>Datum und Uhrzeit des Abrufs,</li>
+    <li>aufgerufene Seite bzw. Datei und übertragene Datenmenge,</li>
+    <li>Statuscode (zum Beispiel „Seite gefunden“),</li>
+    <li>zuvor besuchte Seite (Referrer), Browser und Betriebssystem.</li>
+  </ul>
+  <p>
+    <strong>Zweck:</strong> sichere und stabile Auslieferung der Website, Erkennen und Abwehren von Angriffen.{' '}
+    <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (unser berechtigtes Interesse an einem sicheren Betrieb).{' '}
+    <strong>Speicherdauer:</strong> Die Logdateien werden nach{' '}
+    <Luecke text="bitte ergänzen: Löschfrist laut ALL-INKL-Einstellung, z. B. 7 Tage" /> gelöscht oder anonymisiert. Wir
+    führen diese Daten nicht mit anderen Daten zusammen.
+  </p>
+  <h3>Vorschau-Version</h3>
+  <p>
+    Neue Inhalte testen wir vorab in einer Vorschau-Version, die bei GitHub Pages (GitHub Inc., 88 Colin P. Kelly Jr. Street,
+    San Francisco, CA 94107, USA) liegt. Die Vorschau ist nicht öffentlich beworben, für Suchmaschinen gesperrt und nur für
+    unser Team und Abstimmungen gedacht. Formulare senden dort nichts ab. Wer die Vorschau aufruft, dessen Server-Logdaten
+    (siehe oben) verarbeitet GitHub; dabei kann eine Übermittlung in die USA stattfinden. GitHub ist nach dem
+    EU-US Data Privacy Framework zertifiziert (Art. 45 DSGVO). Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.{' '}
+    {IS_PREVIEW && <strong>Du siehst gerade diese Vorschau-Version.</strong>}
+  </p>
+
+  <h2 id="formulare">Formulare auf dieser Website</h2>
+  <p>
+    Für alle Formulare gilt: Deine Eingaben werden verschlüsselt (HTTPS) an ein Skript auf unserem Webspace bei ALL-INKL
+    übertragen und von dort als E-Mail an unser Postfach geschickt (Anmeldungen, Coaching-Anfragen und Widerrufe an{' '}
+    {AKADEMIE.mailAnmeldung}, Kontaktanfragen und Vormerkungen an {AKADEMIE.mailInfo}). Auf der Website selbst werden die Formulardaten nicht
+    gespeichert. Pflichtfelder sind gekennzeichnet; alles andere ist freiwillig.
+  </p>
+  <h3>Schutz vor Missbrauch</h3>
+  <p>
+    Damit niemand unsere Formulare automatisiert missbraucht, prüft das Skript ein unsichtbares Lockfeld und wie schnell das
+    Formular abgeschickt wurde. Außerdem begrenzt es die Zahl der Anfragen je Absender: Dafür speichert es nicht deine
+    IP-Adresse selbst, sondern nur einen daraus berechneten, nicht umkehrbaren Prüfwert (Hash) mit Zeitpunkt. Dieser
+    Eintrag wird nach einer Stunde automatisch gelöscht. Ein Captcha oder einen fremden Prüfdienst nutzen wir nicht.
+    Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (Schutz vor Spam und Missbrauch).
+  </p>
+
+  <h3>Kontaktformular und Coaching-Anfrage</h3>
+  <ul>
+    <li><strong>Daten:</strong> Name, E-Mail-Adresse, deine Nachricht; freiwillig Telefonnummer. Bei der Coaching-Anfrage zusätzlich Paket, Anliegen, Zahlweg und Rechnungsangaben.</li>
+    <li><strong>Zweck:</strong> deine Anfrage beantworten, beim Coaching einen Termin abstimmen und ein Angebot machen.</li>
+    <li><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Anfrage zu einem Vertrag bzw. vorvertragliche Maßnahmen), sonst Art. 6 Abs. 1 lit. f DSGVO (Beantwortung allgemeiner Anfragen).</li>
+    <li><strong>Speicherdauer:</strong> Wir löschen die Anfrage, wenn sie erledigt ist, spätestens nach 6 Monaten <Luecke text="Annahme – bitte bestätigen" />, es sei denn, daraus wird ein Vertrag – dann gilt die Aufbewahrung für Vertragsdaten (siehe <a href="#rechnung">Rechnung und Aufbewahrung</a>).</li>
+  </ul>
+
+  <h3>Interesse vormerken</h3>
+  <ul>
+    <li><strong>Daten:</strong> Name, E-Mail-Adresse, gewünschter Kurs; freiwillig Wunschzeitraum.</li>
+    <li><strong>Zweck:</strong> dich per E-Mail zu benachrichtigen, sobald es für den Kurs einen Termin gibt.</li>
+    <li><strong>Rechtsgrundlage:</strong> deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du im Formular ausdrücklich erteilst. Du kannst sie jederzeit per E-Mail an {AKADEMIE.mailInfo} widerrufen; die bis dahin erfolgte Verarbeitung bleibt rechtmäßig.</li>
+    <li><strong>Speicherdauer:</strong> bis zu deinem Widerruf oder bis wir dich über den Termin informiert haben, spätestens 12 Monate nach deiner Vormerkung <Luecke text="Annahme – bitte bestätigen" />.</li>
+  </ul>
+
+  <h3>Anmeldung zu einem Kurs</h3>
+  <ul>
+    <li><strong>Daten:</strong> Vor- und Nachname, E-Mail-Adresse, Kurs und Termin, Zahlweg, deine Bestätigungen (Teilnahmebedingungen, Datenschutz, Widerruf); bei „Ich zahle selbst“ deine Anschrift; bei „Mein Betrieb zahlt“ Firmenname, Ansprechperson, Anschrift und Rechnungs-E-Mail der Firma, freiwillig eine Bestellnummer; freiwillig Telefon und Nachricht; bei Gruppenanmeldungen Name und E-Mail weiterer Teilnehmender.</li>
+    <li><strong>Zweck:</strong> Vertragsschluss und -abwicklung: Bestätigung, Rechnung, Kursorganisation, Zugang zum Live-Unterricht, Teilnahmebescheinigung, Rückfragen und Terminänderungen.</li>
+    <li><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertrag); für Rechnungen und Belege Art. 6 Abs. 1 lit. c DSGVO (gesetzliche Aufbewahrungspflichten); bei Gruppenanmeldungen durch einen Betrieb zusätzlich Art. 6 Abs. 1 lit. f DSGVO (Organisation der vom Betrieb gebuchten Schulung).</li>
+    <li><strong>Speicherdauer:</strong> für die Dauer des Vertrags; danach bewahren wir Vertrags- und Rechnungsdaten nach den gesetzlichen Fristen auf (siehe <a href="#rechnung">Rechnung und Aufbewahrung</a>).</li>
+  </ul>
+  <p>
+    <strong>Wenn dein Betrieb zahlt:</strong> Die Rechnung geht an die angegebene Firma. Sie enthält deinen Namen, den Kurs,
+    den Termin und den Preis. Weitere Angaben – etwa zu deiner Anwesenheit – geben wir nur weiter, wenn du zugestimmt hast
+    oder es mit dem Betrieb als Vertragspartner vereinbart ist.{' '}
+    <Luecke text="Anwalt prüfen: Weitergabe an den Betrieb, Vertragspartner bei „Betrieb zahlt“" />
+  </p>
+  <p>
+    <strong>Wenn jemand anderes dich angemeldet hat</strong> (zum Beispiel dein Betrieb oder eine Kollegin bei einer
+    Gruppenanmeldung): Wir haben deinen Namen und deine E-Mail-Adresse von der anmeldenden Person erhalten (Art. 14 DSGVO).
+    Wir nutzen sie nur für die Organisation deiner Teilnahme und informieren dich mit der Bestätigung über diese
+    Datenschutzerklärung. Wer andere anmeldet, versichert, dazu berechtigt zu sein.
+  </p>
+  <p>
+    <strong>Alter:</strong> Die Anmeldung ist ab 18 Jahren möglich; Minderjährige melden sich nur mit Zustimmung ihrer
+    Eltern bzw. gesetzlichen Vertreter an. <Luecke text="Entscheidung offen: Mindestalter 18 oder Eltern-Einwilligung" />
+  </p>
+
+  <h3>Widerrufsformular („Vertrag widerrufen“)</h3>
+  <ul>
+    <li><strong>Daten:</strong> Name, Angabe zum Vertrag (zum Beispiel Anmelde- oder Rechnungsnummer, Kurs und Termin), E-Mail-Adresse für die Bestätigung, freiwillige weitere Angaben, sowie Datum und Uhrzeit des Eingangs.</li>
+    <li><strong>Zweck:</strong> deinen Widerruf entgegennehmen, dir den Eingang unverzüglich auf einem dauerhaften Datenträger (E-Mail) bestätigen und den Vertrag rückabwickeln.</li>
+    <li><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. c DSGVO in Verbindung mit §§ 355, 356a BGB (gesetzliche Pflicht zur Widerrufsfunktion und Eingangsbestätigung) sowie Art. 6 Abs. 1 lit. f DSGVO (Nachweis, dass und wann der Widerruf eingegangen ist).</li>
+    <li><strong>Speicherdauer:</strong> bis zum Ende der Verjährungsfrist für Ansprüche aus dem Vertrag (in der Regel 3 Jahre zum Jahresende) <Luecke text="Annahme – bitte bestätigen" />; Buchungsbelege einer Rückzahlung nach den gesetzlichen Aufbewahrungsfristen.</li>
+  </ul>
+
+  <h2 id="e-mail">E-Mail-Kontakt und Bestätigungen</h2>
+  <p>
+    Wenn du uns eine E-Mail schreibst, verarbeiten wir deine Adresse und den Inhalt, um dir zu antworten
+    (Art. 6 Abs. 1 lit. b oder lit. f DSGVO). Nach dem Absenden eines Formulars schicken wir dir automatisch eine
+    Eingangsbestätigung. Unsere E-Mails versenden wir über unser Postfach bei ALL-INKL; der Transport ist – soweit dein
+    E-Mail-Anbieter das unterstützt – per TLS verschlüsselt. Bitte schick uns keine besonders sensiblen Daten (zum Beispiel
+    Gesundheitsdaten) per E-Mail.
+  </p>
+
+  <h2 id="rechnung">Rechnung, Buchhaltung und Aufbewahrung</h2>
+  <p>
+    Rechnungen erstellen wir mit einem Buchhaltungsprogramm
+    (<Luecke text="Annahme – bitte bestätigen: z. B. Lexware Office, Anbieter und AV-Vertrag ergänzen" />) und geben die
+    Buchhaltungsunterlagen an unsere Steuerberatung weiter, die als Berufsgeheimnisträgerin eigenverantwortlich arbeitet.
+  </p>
+  <p>
+    Handels- und steuerrechtliche Vorschriften (§ 257 HGB, § 147 AO) verpflichten uns, Unterlagen aufzubewahren:
+    Handels- und Geschäftsbriefe (auch Vertragsbestätigungen) <strong>6 Jahre</strong>, Rechnungen, Buchungsbelege und
+    Jahresabschlüsse <strong>bis zu 10 Jahre</strong>, jeweils ab Ende des Kalenderjahres.{' '}
+    <Luecke text="Anwalt/Steuerberatung prüfen: Buchungsbelege seit 2025 ggf. 8 Jahre" />{' '}
+    Rechtsgrundlage ist Art. 6 Abs. 1 lit. c DSGVO. Während dieser Zeit sind die Daten für andere Zwecke gesperrt; danach
+    löschen wir sie.
+  </p>
+
+  <h2 id="unterricht">Live-Unterricht per Videokonferenz</h2>
+  <p>
+    Unser Unterricht findet ausschließlich live per Videokonferenz statt.{' '}
+    <Luecke text="Annahme – bitte bestätigen: Wir nutzen einen eigenen Videokonferenz-Server (Jitsi Meet), den die Waybuild UG auf einem gemieteten Server in Deutschland betreibt, bzw. einen Dienst, mit dem ein Vertrag über die Auftragsverarbeitung besteht. Betreiber/Rechenzentrum ergänzen." />
+  </p>
+  <ul>
+    <li><strong>Daten:</strong> dein Anzeigename, Bild und Ton, solange du Kamera und Mikrofon einschaltest, Chat-Nachrichten während des Termins, technische Verbindungsdaten (IP-Adresse, Gerät, Zeitpunkt).</li>
+    <li><strong>Zweck:</strong> Durchführung des gebuchten Unterrichts.</li>
+    <li><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertrag).</li>
+    <li><strong>Keine Aufzeichnung:</strong> Wir zeichnen weder Bild noch Ton auf; auch Teilnehmenden ist das Aufzeichnen untersagt. Kamera und Mikrofon kannst du selbst ein- und ausschalten.</li>
+    <li><strong>Speicherdauer:</strong> Inhalte der Konferenz (Bild, Ton, Chat) werden nur während des Termins übertragen und nicht gespeichert; technische Verbindungsprotokolle des Servers werden nach <Luecke text="bitte ergänzen: Löschfrist der Server-Protokolle" /> gelöscht.</li>
+  </ul>
+  <p>Den Zugangslink zum Unterricht bekommst du per E-Mail. Bitte gib ihn nicht weiter.</p>
+
+  <h2 id="empfaenger">Empfänger deiner Daten</h2>
+  <p>Wir geben deine Daten nur weiter, wenn es für die genannten Zwecke nötig ist:</p>
+  <ul>
+    <li>ALL-INKL.COM – Neue Medien Münnich (Hosting, E-Mail) als Auftragsverarbeiter,</li>
+    <li>der Betreiber der Videokonferenz-Technik (siehe oben),</li>
+    <li>unser Buchhaltungsprogramm und unsere Steuerberatung,</li>
+    <li>bei „Mein Betrieb zahlt“ der angegebene Betrieb (Rechnung),</li>
+    <li>die Dozentinnen und Dozenten des jeweiligen Kurses (Vorname und Anzeigename, soweit für den Unterricht nötig); sie sind zur Vertraulichkeit verpflichtet.</li>
+  </ul>
+  <p>
+    An die IHK geben wir keine Daten weiter – die Anmeldung zur Prüfung erledigst du selbst bzw. dein Ausbildungsbetrieb.
+    Eine Übermittlung in Länder außerhalb der EU findet – abgesehen von der oben beschriebenen Vorschau-Version – nicht
+    statt. Automatisierte Entscheidungen oder Profiling (Art. 22 DSGVO) setzen wir nicht ein.
+  </p>
+
+  <h2 id="rechte">Deine Rechte</h2>
+  <p>Du hast gegenüber uns jederzeit das Recht auf</p>
+  <ul>
+    <li>Auskunft über deine gespeicherten Daten (Art. 15 DSGVO),</li>
+    <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO),</li>
+    <li>Löschung (Art. 17 DSGVO), soweit keine Aufbewahrungspflicht besteht,</li>
+    <li>Einschränkung der Verarbeitung (Art. 18 DSGVO),</li>
+    <li>Datenübertragbarkeit (Art. 20 DSGVO),</li>
+    <li>Widerruf einer Einwilligung mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO).</li>
+  </ul>
+  <div class="recht-kasten">
+    <h3>Widerspruchsrecht (Art. 21 DSGVO)</h3>
+    <p>
+      Verarbeiten wir deine Daten auf Grundlage unseres berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO), kannst du
+      dieser Verarbeitung aus Gründen, die sich aus deiner besonderen Situation ergeben, jederzeit widersprechen. Wir
+      verarbeiten die Daten dann nicht mehr, es sei denn, wir können zwingende schutzwürdige Gründe nachweisen oder die
+      Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.
+    </p>
+  </div>
+  <p>Für alle Anliegen genügt eine formlose E-Mail an <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a>.</p>
+
+  <h2 id="beschwerde">Beschwerde bei der Aufsichtsbehörde</h2>
+  <p>
+    Du hast das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren (Art. 77 DSGVO). Für uns zuständig ist:
+  </p>
+  <address>
+    <strong>Unabhängiges Landeszentrum für Datenschutz Schleswig-Holstein (ULD)</strong><br />
+    Holstenstraße 98, 24103 Kiel<br />
+    E-Mail: <a href="mailto:mail@datenschutzzentrum.de">mail@datenschutzzentrum.de</a><br />
+    Website: <a href="https://www.datenschutzzentrum.de" rel="noopener">www.datenschutzzentrum.de</a>
+  </address>
+
+  <h2 id="sicherheit">Datensicherheit und Pflichtangaben</h2>
+  <p>
+    Die Website ist ausschließlich per HTTPS erreichbar. Wir schützen deine Daten durch technische und organisatorische
+    Maßnahmen, zum Beispiel Zugriffsbeschränkungen auf unsere Postfächer und Zwei-Faktor-Anmeldung, wo verfügbar.
+  </p>
+  <p>
+    Du bist nicht verpflichtet, uns Daten zu geben. Ohne die Pflichtangaben im Anmeldeformular können wir den Vertrag aber
+    nicht schließen und dir keine Rechnung stellen; ohne Pflichtangaben im Kontakt- oder Interessenformular können wir dir
+    nicht antworten. Mehr zu Vertrag und Widerruf findest du in den{' '}
+    <a href={href('/teilnahmebedingungen/')}>Teilnahmebedingungen</a> und der <a href={href('/widerruf/')}>Widerrufsbelehrung</a>.
+  </p>
+
+  <h2 id="stand">Stand und Änderungen</h2>
+  <p>
+    Stand dieser Datenschutzerklärung: {RECHT_STAND}. Wenn sich unsere Angebote oder die Rechtslage ändern, passen wir sie
+    an. Es gilt die jeweils hier veröffentlichte Fassung.
+  </p>
+</RechtSeite>

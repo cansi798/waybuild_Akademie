@@ -1,8 +1,88 @@
 ---
-import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+// Impressum nach § 5 DDG – ENTWURF (Task 5). Firmendaten aus dem Impressum der Firmen-Website übernommen.
+import RechtSeite from '../../components/recht/RechtSeite.astro';
+import Luecke from '../../components/recht/Luecke.astro';
+import { FIRMA } from '../../components/recht/status';
+import { AKADEMIE, IHK_HINWEIS } from '../../lib/site';
+import { href } from '../../lib/pfad';
+
+const abschnitte = [
+  { id: 'anbieter', titel: 'Anbieter' },
+  { id: 'kontakt', titel: 'Kontakt' },
+  { id: 'register', titel: 'Register und Umsatzsteuer' },
+  { id: 'verantwortlich', titel: 'Verantwortlich für den Inhalt' },
+  { id: 'streitbeilegung', titel: 'Verbraucherstreitbeilegung' },
+  { id: 'ihk', titel: 'Unabhängig von der IHK' },
+  { id: 'haftung', titel: 'Links und Inhalte' },
+];
 ---
 
-<Basis titel="Impressum" beschreibung="Impressum der waybuild Akademie.">
-  <ImAufbau titel="Impressum" />
-</Basis>
+<RechtSeite titel="Impressum" beschreibung="Impressum der waybuild Akademie – ein Angebot der Waybuild UG (haftungsbeschränkt), Norderstedt." {abschnitte}>
+  <p slot="einleitung" class="mt-5 text-lg">Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG).</p>
+
+  <h2 id="anbieter">Anbieter</h2>
+  <address>
+    <strong>{FIRMA.name}</strong><br />
+    {FIRMA.strasse}<br />
+    {FIRMA.plz} {FIRMA.ort}<br />
+    {FIRMA.land}
+  </address>
+  <p>Vertreten durch den Geschäftsführer: {FIRMA.geschaeftsfuehrer}</p>
+  <p>
+    Die <strong>waybuild Akademie</strong> ist eine Marke und ein Angebot der {FIRMA.name}. Vertragspartner für alle Kurse
+    und Coachings ist die {FIRMA.name}.
+  </p>
+
+  <h2 id="kontakt">Kontakt</h2>
+  <p>
+    E-Mail: <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a><br />
+    Telefon: {FIRMA.telefon ?? <Luecke text="bitte ergänzen: Telefonnummer" />}<br />
+    Kontaktformular: <a href={href('/kontakt/')}>waybuild-akademie.de/kontakt/</a>
+  </p>
+  <p>
+    Wir beantworten Nachrichten in der Regel innerhalb von zwei Werktagen.{' '}
+    <Luecke text="Annahme – bitte bestätigen: Antwortzeit" />
+  </p>
+
+  <h2 id="register">Register und Umsatzsteuer</h2>
+  <p>
+    Registergericht: {FIRMA.registergericht ?? <Luecke text="bitte ergänzen: Amtsgericht" />}<br />
+    Registernummer: {FIRMA.registernummer ?? <Luecke text="bitte ergänzen: HRB-Nummer" />}
+  </p>
+  <p>
+    Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:{' '}
+    {FIRMA.ustId ?? <Luecke text="bitte ergänzen: USt-IdNr., falls erteilt – sonst Zeile streichen" />}
+  </p>
+
+  <h2 id="verantwortlich">Verantwortlich für den Inhalt</h2>
+  <p>Verantwortlich für den Inhalt nach § 18 Abs. 2 Medienstaatsvertrag (MStV):</p>
+  <p>{FIRMA.geschaeftsfuehrer}, Anschrift wie oben</p>
+
+  <h2 id="streitbeilegung">Verbraucherstreitbeilegung</h2>
+  <p>
+    Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+    teilzunehmen (§ 36 Verbraucherstreitbeilegungsgesetz). Die Waybuild UG beschäftigt nicht mehr als zehn Personen und ist
+    daher nach § 36 Abs. 3 VSBG nicht zur Teilnahme verpflichtet.{' '}
+    <Luecke text="Anwalt prüfen: Beschäftigtenzahl zum 31.12. des Vorjahres" />
+  </p>
+  <p>
+    Wenn du mit uns unzufrieden bist, schreib uns gern direkt an{' '}
+    <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a> – wir suchen gemeinsam eine Lösung.
+  </p>
+
+  <h2 id="ihk">Unabhängig von der IHK</h2>
+  <p>{IHK_HINWEIS}</p>
+  <p>
+    Die waybuild Akademie ist ein unabhängiger Anbieter von Prüfungsvorbereitung und Weiterbildung. Sie ist keine Einrichtung
+    der Industrie- und Handelskammer, nicht von ihr beauftragt und nicht von ihr zertifiziert. Zulassung, Termine und
+    Gebühren der Prüfungen regelt deine zuständige IHK.
+  </p>
+
+  <h2 id="haftung">Links und Inhalte</h2>
+  <p>
+    Wir erstellen die Inhalte dieser Website mit Sorgfalt. Termine, Preise und Kursinhalte können sich ändern; verbindlich
+    ist die Bestätigung deiner Anmeldung. Für Inhalte verlinkter fremder Websites sind ausschließlich deren Betreiber
+    verantwortlich. Wenn dir ein Fehler oder ein rechtswidriger Inhalt auffällt, gib uns bitte Bescheid – wir korrigieren
+    ihn umgehend.
+  </p>
+</RechtSeite>

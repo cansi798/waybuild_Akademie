@@ -1,8 +1,154 @@
 ---
-import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+// Widerrufsbelehrung für Dienstleistungen (Muster nach Anlage 1 zu Art. 253 EGBGB, Fassung ab 19.06.2026) und
+// Muster-Widerrufsformular (Anlage 2) – ENTWURF (Task 5).
+// Die Belehrung bleibt bewusst in der „Sie“-Form des gesetzlichen Musters (Gesetzlichkeitsfiktion), der Rest der Seite duzt.
+// Die elektronische Widerrufsfunktion (§ 356a BGB) baut Task 4 als src/components/formulare/WiderrufFormular.astro;
+// sie wird hier optional eingebunden, damit der Build auch ohne die Datei funktioniert.
+import RechtSeite from '../../components/recht/RechtSeite.astro';
+import Luecke from '../../components/recht/Luecke.astro';
+import { FIRMA, WIDERRUF_PFAD } from '../../components/recht/status';
+import { AKADEMIE } from '../../lib/site';
+import { href, absolut } from '../../lib/pfad';
+
+const mods = import.meta.glob('../../components/formulare/WiderrufFormular.astro', { eager: true });
+const WiderrufFormular = (Object.values(mods)[0] as { default?: any } | undefined)?.default;
+
+const widerrufUrl = absolut(WIDERRUF_PFAD, Astro.site);
+const anschrift = `${FIRMA.name}, ${FIRMA.strasse}, ${FIRMA.plz} ${FIRMA.ort}`;
+
+const abschnitte = [
+  { id: 'kurz', titel: 'Das Wichtigste in Kürze' },
+  { id: 'belehrung', titel: 'Widerrufsbelehrung' },
+  { id: 'hinweise', titel: 'Ergänzende Hinweise' },
+  { id: 'muster-formular', titel: 'Muster-Widerrufsformular' },
+  { id: 'widerrufsformular', titel: 'Vertrag online widerrufen' },
+];
 ---
 
-<Basis titel="Widerruf" beschreibung="Widerrufsbelehrung und Muster-Widerrufsformular der waybuild Akademie.">
-  <ImAufbau titel="Widerruf" />
-</Basis>
+<RechtSeite titel="Widerrufsbelehrung" beschreibung="Widerrufsbelehrung, Muster-Widerrufsformular und Online-Widerruf („Vertrag widerrufen“) der waybuild Akademie." {abschnitte}>
+  <div slot="einleitung" class="mt-6 flex flex-wrap items-center gap-3">
+    <a href="#widerrufsformular" class="btn btn-secondary rounded-full">Vertrag jetzt online widerrufen</a>{' '}
+    <a href="#muster-formular" class="btn btn-ghost rounded-full text-navy">Zum Muster-Formular</a>
+  </div>
+
+  <h2 id="kurz">Das Wichtigste in Kürze</h2>
+  <ul>
+    <li>Als <strong>Verbraucher</strong> kannst du deine Anmeldung innerhalb von <strong>14 Tagen</strong> ab Vertragsschluss ohne Begründung widerrufen.</li>
+    <li>Am einfachsten geht das <a href="#widerrufsformular">online über „Vertrag widerrufen“</a> – ohne Anmeldung. Du bekommst sofort eine Eingangsbestätigung per E-Mail.</li>
+    <li>Alternativ reicht ein Brief oder eine E-Mail an <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a>.</li>
+    <li>Beginnt der Kurs auf deinen Wunsch schon innerhalb der 14 Tage, zahlst du bei einem Widerruf nur den Anteil für den bereits erhaltenen Unterricht.</li>
+    <li>Bucht ein <strong>Betrieb</strong> als Unternehmer, besteht kein gesetzliches Widerrufsrecht. Es gelten dann die Regeln zum Rücktritt in den <a href={href('/teilnahmebedingungen/#storno')}>Teilnahmebedingungen</a>.</li>
+  </ul>
+
+  <h2 id="belehrung">Widerrufsbelehrung</h2>
+  <p class="text-gedaempft">
+    Die folgende Belehrung entspricht dem gesetzlichen Muster und verwendet deshalb die Anrede „Sie“.{' '}
+    <Luecke text="Anwalt prüfen: Wortlaut mit Anlage 1 zu Art. 253 EGBGB (Fassung ab 19.06.2026) abgleichen" />
+  </p>
+  <div class="recht-kasten" data-widerrufsbelehrung>
+    <h3>Widerrufsrecht</h3>
+    <p>Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.</p>
+    <p>Die Widerrufsfrist beträgt vierzehn Tage ab dem Tag des Vertragsabschlusses.</p>
+    <p>
+      Um Ihr Widerrufsrecht auszuüben, müssen Sie uns ({anschrift}, Telefon:{' '}
+      {FIRMA.telefon ?? <Luecke text="bitte ergänzen: Telefonnummer" />}, E-Mail:{' '}
+      <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a>) mittels einer eindeutigen Erklärung (z. B. ein mit der
+      Post versandter Brief oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür
+      das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.
+    </p>
+    <p>
+      Sie können Ihren Widerruf auch über die Widerrufsfunktion auf unserer Webseite erklären:{' '}
+      <a href={href(WIDERRUF_PFAD)}>{widerrufUrl}</a> (Schaltfläche „Vertrag widerrufen“). Machen Sie von dieser Möglichkeit
+      Gebrauch, so werden wir Ihnen unverzüglich (z. B. per E-Mail) eine Bestätigung über den Eingang eines solchen Widerrufs
+      auf einem dauerhaften Datenträger übermitteln.
+    </p>
+    <p>
+      Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf
+      der Widerrufsfrist absenden.
+    </p>
+
+    <h3>Folgen des Widerrufs</h3>
+    <p>
+      Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, einschließlich der
+      Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie eine andere Art der Lieferung als
+      die von uns angebotene, günstigste Standardlieferung gewählt haben), unverzüglich und spätestens binnen vierzehn Tagen
+      ab dem Tag zurückzuzahlen, an dem die Mitteilung über Ihren Widerruf dieses Vertrags bei uns eingegangen ist. Für diese
+      Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion eingesetzt haben, es sei
+      denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall werden Ihnen wegen dieser Rückzahlung
+      Entgelte berechnet.
+    </p>
+    <p>
+      Haben Sie verlangt, dass die Dienstleistungen während der Widerrufsfrist beginnen sollen, so haben Sie uns einen
+      angemessenen Betrag zu zahlen, der dem Anteil der bis zu dem Zeitpunkt, zu dem Sie uns von der Ausübung des
+      Widerrufsrechts hinsichtlich dieses Vertrags unterrichten, bereits erbrachten Dienstleistungen im Vergleich zum
+      Gesamtumfang der im Vertrag vorgesehenen Dienstleistungen entspricht.
+    </p>
+  </div>
+
+  <h2 id="hinweise">Ergänzende Hinweise</h2>
+  <p>
+    <strong>Wertersatz bei vorzeitigem Beginn:</strong> Startet dein Kurs innerhalb der Widerrufsfrist, fragen wir dich bei
+    der Anmeldung ausdrücklich, ob der Unterricht schon vorher beginnen soll. Widerrufst du nach Kursbeginn, berechnen wir den
+    Wertersatz anteilig: Teilnahmegebühr geteilt durch die vereinbarten Unterrichtseinheiten, mal die bis zu deinem Widerruf
+    angebotenen Unterrichtseinheiten. Alles Übrige erstatten wir dir.{' '}
+    <Luecke text="Anwalt prüfen: Form des ausdrücklichen Verlangens, Berechnung nach angebotenen oder besuchten Einheiten" />
+  </p>
+  <p>
+    <strong>Vorzeitiges Erlöschen:</strong> Das Widerrufsrecht erlischt, wenn wir die Dienstleistung vollständig erbracht
+    haben und du vorher ausdrücklich zugestimmt hast, dass wir vor Ablauf der Widerrufsfrist beginnen, und du bestätigt hast,
+    dass du von diesem Erlöschen weißt (§ 356 Abs. 4 BGB).
+  </p>
+  <p>
+    <strong>Kein Widerrufsrecht für Unternehmer:</strong> Das Widerrufsrecht gilt nur für Verbraucher (§ 13 BGB). Meldet ein
+    Betrieb seine Mitarbeitenden an, steht ihm kein gesetzliches Widerrufsrecht zu.
+  </p>
+  <p>
+    <strong>Rücktritt nach den Teilnahmebedingungen:</strong> Unabhängig vom Widerrufsrecht kannst du nach den{' '}
+    <a href={href('/teilnahmebedingungen/#storno')}>Teilnahmebedingungen</a> zurücktreten oder eine Ersatzperson schicken.
+    Diese Regeln schränken dein Widerrufsrecht nicht ein.
+  </p>
+
+  <h2 id="muster-formular">Muster-Widerrufsformular</h2>
+  <p class="text-gedaempft">
+    Du kannst dieses Formular ausdrucken, ausfüllen und per Post oder E-Mail schicken – schneller geht es{' '}
+    <a href="#widerrufsformular">online</a>.
+  </p>
+  <div class="recht-kasten" data-muster-widerrufsformular>
+    <p>(Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es zurück.)</p>
+    <ul>
+      <li>An {anschrift}, E-Mail: {AKADEMIE.mailInfo}:</li>
+      <li>
+        Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*)/die
+        Erbringung der folgenden Dienstleistung (*)
+        <br />_______________________________
+      </li>
+      <li>Bestellt am (*)/erhalten am (*) _______________</li>
+      <li>Name des/der Verbraucher(s) _______________</li>
+      <li>Anschrift des/der Verbraucher(s) _______________</li>
+      <li>Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier) _______________</li>
+      <li>Datum _______________</li>
+    </ul>
+    <p>(*) Unzutreffendes streichen.</p>
+  </div>
+
+  <h2 id="widerrufsformular">Vertrag online widerrufen</h2>
+  <p>
+    Hier kannst du deinen Vertrag ohne Anmeldung widerrufen. Gib deinen Namen, eine Angabe zum Vertrag (zum Beispiel
+    Anmelde- oder Rechnungsnummer, Kurs und Termin) und deine E-Mail-Adresse an. Einen Grund musst du nicht nennen. Im
+    zweiten Schritt bestätigst du den Widerruf; danach bekommst du sofort eine Eingangsbestätigung per E-Mail mit Datum und
+    Uhrzeit.
+  </p>
+  <div class="mt-6" data-widerruf-app>
+    {
+      WiderrufFormular ? (
+        <WiderrufFormular />
+      ) : (
+        <p class="recht-hinweis" data-widerruf-folgt>
+          Das Online-Formular folgt in Kürze. Bis dahin widerrufst du bitte formlos per E-Mail an{' '}
+          <a href={`mailto:${AKADEMIE.mailInfo}?subject=${encodeURIComponent('Widerruf meines Vertrags')}`}>{AKADEMIE.mailInfo}</a>{' '}
+          oder per Brief an {anschrift}.
+        </p>
+      )
+    }
+  </div>
+</RechtSeite>
