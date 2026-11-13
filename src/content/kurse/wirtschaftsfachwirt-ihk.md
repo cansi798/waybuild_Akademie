@@ -101,6 +101,6 @@ reihenfolge: 11
 
 Der Lehrgang bereitet dich auf beide Teile der Prüfung zum Geprüften Wirtschaftsfachwirt bzw. zur Geprüften Wirtschaftsfachwirtin vor. Im ersten Abschnitt geht es um die wirtschaftsbezogenen Grundlagen, im zweiten um Management, Controlling, Logistik, Marketing und Führung – immer mit Blick auf die Aufgaben der Prüfung.
 
-Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht und klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
 
 Der Lehrgang passt zu dir, wenn du kaufmännisch arbeitest und mehr Verantwortung übernehmen willst – ohne deinen Job zu unterbrechen. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.

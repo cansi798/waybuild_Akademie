@@ -65,6 +65,6 @@ reihenfolge: 26
 
 Der Lehrgang bereitet dich auf die Fortbildungsprüfung zum Berufsspezialisten bzw. zur Berufsspezialistin für Informationssicherheit vor. Du lernst, Bedrohungen zu analysieren, Schutzmaßnahmen zu planen, sie im Betrieb umzusetzen und ihre Wirkung zu prüfen.
 
-Der Lehrgang läuft live-online an einem Abend pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht und klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Lehrgang läuft live-online an einem Abend pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
 
 Der Lehrgang passt zu dir, wenn du in der IT arbeitest und dich auf Informationssicherheit spezialisieren willst. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.

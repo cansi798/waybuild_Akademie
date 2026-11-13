@@ -67,6 +67,6 @@ reihenfolge: 23
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Betriebswirt bzw. zur Geprüften Betriebswirtin vor. Du beschäftigst dich mit Unternehmensstrategie, Finanzen und Recht, internationalen Geschäften, Organisation und Personal sowie der Steuerung von Unternehmensprozessen.
 
-Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht und klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
 
 Der Lehrgang passt zu dir, wenn du bereits einen Fachwirt- oder vergleichbaren Abschluss hast und Verantwortung im Management übernehmen willst. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.

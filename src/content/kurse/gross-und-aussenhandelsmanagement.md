@@ -46,7 +46,7 @@ abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du b
 termine: []
 faq:
 - frage: Warum gibt es noch keinen Termin?
-  antwort: Wir starten diesen Kurs, sobald sich genug Interessierte gemeldet haben. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
+  antwort: Wir legen die Termine nach Nachfrage fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
 - frage: Ist der Kurs eine Veranstaltung der IHK?
   antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
 - frage: Ist die Gebühr der IHK im Preis enthalten?

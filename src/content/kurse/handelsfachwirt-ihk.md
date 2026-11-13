@@ -83,6 +83,6 @@ reihenfolge: 20
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Handelsfachwirt bzw. zur Geprüften Handelsfachwirtin vor. Du lernst, einen Handelsbetrieb zu steuern, Personal zu führen, Sortiment und Marketing zu planen und Beschaffung und Logistik zu organisieren.
 
-Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht und klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
 
 Der Lehrgang passt zu dir, wenn du im Handel arbeitest und eine Leitungsaufgabe übernehmen willst. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.

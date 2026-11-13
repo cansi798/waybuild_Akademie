@@ -61,6 +61,6 @@ reihenfolge: 35
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Technischen Betriebswirt bzw. zur Geprüften Technischen Betriebswirtin vor. Du ergänzt dein technisches Wissen um Rechnungswesen, Finanzierung, Produktion, Organisation und Personalführung.
 
-Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht und klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
 
 Der Lehrgang passt zu dir, wenn du einen technischen Aufstiegsabschluss oder ein technisches Studium hast und ins Management willst. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.

@@ -76,6 +76,6 @@ reihenfolge: 10
 
 In diesem Kurs bereitest du dich auf die Ausbildereignungsprüfung bei deiner IHK vor. Du gehst die vier Handlungsfelder durch – von der Planung über die Einstellung und Durchführung bis zum Abschluss der Ausbildung – und übst die praktische Prüfung mit eigenen Beispielen.
 
-Der Lehrgang läuft live-online an einem Abend pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht und klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Lehrgang läuft live-online an einem Abend pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
 
 Der Kurs passt zu dir, wenn du Auszubildende betreuen oder selbst ausbilden willst. Er ist auch ein guter Einstieg, wenn du später eine Fortbildung wie Personalfachkaufmann oder Fachwirt planst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

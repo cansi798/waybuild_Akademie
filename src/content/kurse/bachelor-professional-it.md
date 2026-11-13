@@ -2,7 +2,7 @@
 saeule: ihk-weiterbildung
 kategorie: IT-Fortbildung
 titel: Bachelor Professional in IT
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Fortbildungsprüfung (ehemals Operative/r Professional)
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Fortbildungsprüfung
 kurzbeschreibung: 'Übernimm Verantwortung für IT-Projekte und Teams: Du lernst Projektmanagement, Einführung und Betrieb von IT-Lösungen und Führung für die IHK-Fortbildungsprüfung – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
@@ -64,6 +64,6 @@ reihenfolge: 36
 
 Der Lehrgang bereitet dich auf die Fortbildungsprüfung Bachelor Professional in IT vor. Neben deiner fachlichen Spezialisierung lernst du, IT-Projekte zu führen, IT-Lösungen einzuführen und zu betreiben und Mitarbeitende zu führen.
 
-Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht und klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
 
 Der Lehrgang passt zu dir, wenn du IT-Erfahrung hast und Führungs- oder Projektverantwortung übernehmen willst. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.

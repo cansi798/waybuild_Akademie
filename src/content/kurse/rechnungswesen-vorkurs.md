@@ -43,7 +43,7 @@ abschluss: Teilnahmebescheinigung der waybuild Akademie
 termine: []
 faq:
 - frage: Warum gibt es noch keinen Termin?
-  antwort: Wir starten diesen Kurs, sobald sich genug Interessierte gemeldet haben. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
+  antwort: Wir legen die Termine nach Nachfrage fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
 - frage: Endet der Kurs mit einer Prüfung?
   antwort: Nein. Der Vorkurs bereitet dich auf spätere Prüfungen vor. Du bekommst eine Teilnahmebescheinigung der waybuild Akademie.
 - frage: Kann mein Betrieb die Rechnung bekommen?
