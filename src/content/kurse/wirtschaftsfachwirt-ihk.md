@@ -67,7 +67,7 @@ abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprü
 termine:
 - id: wirtschaftsfachwirt-2027-maerz
   start: 2027-03-02
-  ende: 2028-04-01
+  ende: 2028-04-04
   anmeldeschluss: 2027-02-23
   ausfall:
   - 2027-03-25

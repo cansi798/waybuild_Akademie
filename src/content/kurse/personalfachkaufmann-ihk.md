@@ -50,13 +50,14 @@ abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprü
 termine:
 - id: personalfachkaufmann-2027-herbst
   start: 2027-09-07
-  ende: 2028-09-09
+  ende: 2028-09-12
   anmeldeschluss: 2027-08-31
   ausfall:
   - 2027-12-23
   - 2027-12-28
   - 2027-12-30
   - 2028-01-01
+  - 2028-04-13
   - 2028-05-25
 faq:
 - frage: Wie ist die Prüfung aufgebaut?

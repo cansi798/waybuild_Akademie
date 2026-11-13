@@ -2,6 +2,8 @@
 //  - Kurstage (Wochentage aus `zeiten`) von start bis ende, ohne Feiertage HH/SH und ohne `ausfall`
 //  - Anzahl Abende gegen `dauer` ("(N Abende)") bzw. ue / UE je Abend (nur Kurzkurse)
 //  - Feiertage/Gründonnerstag 2027 auf Kurstagen müssen in `ausfall` stehen
+//  - Samstagmuster „jeden zweiten Samstag“: 14-Tage-Takt ab dem ersten Samstag nach start (Ausfälle verschieben den Takt nicht);
+//    UE-Summe (Abend- und Samstags-UE) muss `ue` entsprechen
 //  - start/ende sind Kurstage, ende liegt mind. 3 Tage vor `pruefung`, anmeldeschluss = start - 7 Tage
 // Start: docker run --rm -v "$PWD":/app -w /app node:22 node scripts/termine-pruefen.mjs
 import fs from 'node:fs';
@@ -25,19 +27,19 @@ function ostern(y) {
   return new Date(Date.UTC(y, month - 1, day));
 }
 
-// gesetzliche Feiertage Hamburg / Schleswig-Holstein (inkl. Reformationstag) + unterrichtsfreier Gründonnerstag 2027
+// gesetzliche Feiertage Hamburg / Schleswig-Holstein (inkl. Reformationstag) + unterrichtsfreier Gründonnerstag
 const feiertage = new Map();
 for (let y = 2026; y <= 2029; y++) {
   const o = ostern(y);
   const fix = (m, d, n) => feiertage.set(iso(new Date(Date.UTC(y, m - 1, d))), n);
   fix(1, 1, 'Neujahr'); fix(5, 1, 'Tag der Arbeit'); fix(10, 3, 'Tag der Deutschen Einheit');
   fix(10, 31, 'Reformationstag'); fix(12, 25, '1. Weihnachtstag'); fix(12, 26, '2. Weihnachtstag');
+  feiertage.set(iso(add(o, -3)), 'Gründonnerstag (unterrichtsfrei)');
   feiertage.set(iso(add(o, -2)), 'Karfreitag');
   feiertage.set(iso(add(o, 1)), 'Ostermontag');
   feiertage.set(iso(add(o, 39)), 'Christi Himmelfahrt');
   feiertage.set(iso(add(o, 50)), 'Pfingstmontag');
 }
-feiertage.set('2027-03-25', 'Gründonnerstag (unterrichtsfrei)');
 
 const WT = { So: 0, Mo: 1, Di: 2, Mi: 3, Do: 4, Fr: 5, Sa: 6 };
 let fehler = 0, geprueft = 0;
@@ -49,7 +51,14 @@ for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.md')).sort()) {
   if (!y.termine?.length || !y.zeiten) continue;
   const tage = [...String(y.zeiten).matchAll(/\b(Mo|Di|Mi|Do|Fr|Sa|So)\b/g)].map((x) => WT[x[1]]);
   if (!tage.length) continue;
-  const stunden = /21:15|21:30/.test(y.zeiten) ? 4 : 3;
+  const ueVon = (von, bis) => { const [h1, m1] = von.split(':').map(Number), [h2, m2] = bis.split(':').map(Number); return Math.floor((h2 * 60 + m2 - h1 * 60 - m1) / 45); };
+  const zeitAbend = /(\d\d:\d\d)\s*[–-]\s*(\d\d:\d\d)/.exec(y.zeiten);
+  const zeitSa = /Samstag[^\d]*(\d\d:\d\d)\s*[–-]\s*(\d\d:\d\d)/.exec(y.zeiten);
+  const stunden = zeitAbend ? ueVon(zeitAbend[1], zeitAbend[2]) : (/21:15|21:30/.test(y.zeiten) ? 4 : 3);
+  // Samstag 09:00–14:15 = 7 Zeit-UE abzüglich 1 UE Pause = 6 UE (Zeitmodell der Weiterbildungskurse)
+  const ueSa = zeitSa ? ueVon(zeitSa[1], zeitSa[2]) - 1 : 0;
+  const samstag14 = /jeden zweiten Samstag/.test(y.zeiten);
+  if (/Samstag im Monat/.test(y.zeiten)) { fehler++; console.log(`FEHLER ${f}: Samstagmuster „im Monat“ nicht prüfbar (Termine vorhanden)`); continue; }
   const abendeText = /\((\d+) Abende\)/.exec(`${y.dauer} ${y.zeiten}`) || /^(\d+) Abende/.exec(y.zeiten);
   let erwartet = abendeText ? Number(abendeText[1]) : (y.ue && y.ue <= 100 && y.ue % stunden === 0 ? y.ue / stunden : null);
 
@@ -58,11 +67,19 @@ for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.md')).sort()) {
     geprueft++;
     const id = t.id, start = toDate(t.start), ende = toDate(t.ende);
     const ausfall = (t.ausfall || []).map((a) => iso(toDate(a)));
-    const kurstag = (d) => tage.includes(d.getUTCDay());
-    let n = 0; const tageListe = [];
+    // erster Samstag nach start als Phase des 14-Tage-Taktes
+    const ersterSa = add(start, ((6 - start.getUTCDay() + 7) % 7) || 7);
+    const istSaTakt = (d) => samstag14 && d.getUTCDay() === 6 && Math.round((d - ersterSa) / DAY) >= 0 && Math.round((d - ersterSa) / DAY) % 14 === 0;
+    const kurstag = (d) => tage.includes(d.getUTCDay()) || istSaTakt(d);
+    let n = 0, nSa = 0; const tageListe = [];
     for (let d = start; d <= ende; d = add(d, 1)) {
       if (!kurstag(d) || feiertage.has(iso(d)) || ausfall.includes(iso(d))) continue;
-      n++; tageListe.push(iso(d));
+      if (istSaTakt(d)) nSa++; else n++;
+      tageListe.push(iso(d));
+    }
+    if (samstag14 && ueSa && y.ue) {
+      const summe = n * stunden + nSa * ueSa;
+      if (summe !== y.ue) err(f, id, `UE-Summe ${summe} (${n} Abende × ${stunden} + ${nSa} Samstage × ${ueSa}) != ue ${y.ue} (ende ${iso(ende)})`);
     }
     // Feiertage auf Kurstagen müssen in ausfall stehen
     for (let d = start; d <= ende; d = add(d, 1))
@@ -75,7 +92,7 @@ for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.md')).sort()) {
     }
     if (!kurstag(start) || ausfall.includes(iso(start)) || feiertage.has(iso(start))) err(f, id, `start ${iso(start)} ist kein Unterrichtstag`);
     if (!kurstag(ende) || ausfall.includes(iso(ende)) || feiertage.has(iso(ende))) err(f, id, `ende ${iso(ende)} ist kein Unterrichtstag`);
-    if (erwartet != null && n !== erwartet) err(f, id, `${n} Abende berechnet, erwartet ${erwartet} (ende ${iso(ende)})`);
+    if (erwartet != null && !samstag14 && n !== erwartet) err(f, id, `${n} Abende berechnet, erwartet ${erwartet} (ende ${iso(ende)})`);
     if (t.pruefung && ende > add(toDate(t.pruefung), -3)) err(f, id, `ende ${iso(ende)} weniger als 3 Tage vor Prüfung ${iso(toDate(t.pruefung))}`);
     if (t.anmeldeschluss && iso(toDate(t.anmeldeschluss)) !== iso(add(start, -7))) err(f, id, `anmeldeschluss ${iso(toDate(t.anmeldeschluss))} != start-7 (${iso(add(start, -7))})`);
     // Texte: 01.04.2027 darf nicht mit Ostern/Gründonnerstag zusammen stehen
