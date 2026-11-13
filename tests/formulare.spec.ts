@@ -1,6 +1,32 @@
-// Formulare im Vorschau-Build (Demo-Modus, kein PHP): Anmeldung, Interesse, Kontakt, Danke, Widerruf.
-// Die serverseitige Prüfung testet scripts/php-test.sh.
+// Formulare: Anmeldung, Interesse, Kontakt, Danke, Widerruf. Die serverseitige Prüfung testet scripts/php-test.sh.
+// Vorschau-Build: Demo-Modus (kein Versand). Live-Build (BASE=/): Versand per fetch an /api/*.php – hier durch eine
+// nachgebildete PHP-Antwort ersetzt ({ ok, weiter }); reine Demo-Prüfungen werden live übersprungen.
 import { test, expect, type Page } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+const BASE = (process.env.BASE ?? '/waybuild_Akademie').replace(/\/+$/, '');
+const istVorschau = (() => {
+  try {
+    return readFileSync(join(process.cwd(), 'dist/index.html'), 'utf8').includes('data-vorschau-banner');
+  } catch {
+    return true;
+  }
+})();
+/** Ziel nach erfolgreichem Absenden: Vorschau …&demo=1, live die Adresse aus der (nachgebildeten) PHP-Antwort */
+const danke = (art: string) => (istVorschau ? new RegExp(`danke/\\?art=${art}&demo=1$`) : new RegExp(`danke/\\?art=${art}&vorgang=T-1$`));
+
+// Live: PHP-Endpunkte nachbilden (der Test-Server liefert nur dist/ aus)
+test.beforeEach(async ({ page }) => {
+  if (istVorschau) return;
+  await page.route('**/api/*.php', async (r) => {
+    const url = r.request().url();
+    if (url.endsWith('/token.php')) return r.fulfill({ json: { ts: '1', sig: 'x' } });
+    const form = url.match(/\/api\/(\w+)\.php/)?.[1] ?? '';
+    const art = form === 'anmeldung' && (r.request().postData() ?? '').includes('pruefungscoaching') ? 'coaching' : form;
+    return r.fulfill({ json: { ok: true, weiter: `${BASE}/danke/?art=${art}&vorgang=T-1`, vorgang: 'T-1' } });
+  });
+});
 
 test.describe.configure({ mode: 'default' }); // Datei in einem Worker nacheinander – entlastet parallele Läufe
 
@@ -48,7 +74,8 @@ test.describe('Anmeldung', () => {
     await expect(knopf).toHaveText('Zahlungspflichtig anmelden');
     expect((await knopf.textContent())?.trim()).toBe('Zahlungspflichtig anmelden');
     await expect(page.locator('[data-preis-gesamt]')).toHaveText('349,00 €');
-    await expect(page.locator('[data-demo-hinweis]').first()).toContainText('Demo-Modus');
+    if (istVorschau) await expect(page.locator('[data-demo-hinweis]').first()).toContainText('Demo-Modus');
+    else await expect(page.locator('[data-demo-hinweis]')).toHaveCount(0);
     // Links an der Bestätigungsstelle (US-20 AK2)
     await expect(page.locator('[data-feld-rahmen="agb"] a')).toHaveAttribute('href', /\/teilnahmebedingungen\/$/);
     await expect(page.locator('[data-feld-rahmen="datenschutz"] a').first()).toHaveAttribute('href', /\/datenschutz\/$/);
@@ -65,8 +92,9 @@ test.describe('Anmeldung', () => {
     const werte = await feld(page, 'termin').locator('option').evaluateAll((o) => o.map((x) => (x as HTMLOptionElement).value).filter(Boolean));
     expect(werte.length).toBeGreaterThan(0);
     expect(werte.every((w) => w.startsWith('ap2-'))).toBe(true);
-    // Entwürfe in der Vorschau gekennzeichnet
-    await expect(feld(page, 'kurs').locator('option', { hasText: '(Entwurf)' }).first()).toBeAttached();
+    // Entwürfe nur in der Vorschau – dort gekennzeichnet
+    if (istVorschau) await expect(feld(page, 'kurs').locator('option', { hasText: '(Entwurf)' }).first()).toBeAttached();
+    else await expect(feld(page, 'kurs').locator('option', { hasText: 'Entwurf' })).toHaveCount(0);
   });
 
   test('Pflichtfelder bei „Ich zahle selbst“: Fehlertexte, aria, Fokus, Zusammenfassung', async ({ page }) => {
@@ -174,6 +202,7 @@ test.describe('Anmeldung', () => {
   });
 
   test('Demo-Modus: gültige Anmeldung führt ohne Versand zur Danke-Seite', async ({ page }) => {
+    test.skip(!istVorschau, 'Demo-Modus gibt es nur in der Vorschau');
     let gesendet = false;
     await page.route('**/api/**', (r) => {
       gesendet = true;
@@ -183,7 +212,7 @@ test.describe('Anmeldung', () => {
     await gueltigSelbst(page);
     await expect(page.locator('[data-zusammenfassung]')).toContainText('Lena Muster');
     await page.locator('#anmeldung [data-absenden]').click();
-    await expect(page).toHaveURL(/danke\/\?art=anmeldung&demo=1$/);
+    await expect(page).toHaveURL(danke('anmeldung'));
     await expect(page.locator('h1:visible')).toHaveText('Danke – deine Anmeldung ist angekommen');
     await expect(page.locator('[data-danke-demo]')).toBeVisible();
     await expect(page.locator('[data-danke-zeilen]')).toContainText('Lena Muster');
@@ -205,7 +234,7 @@ test.describe('Wertersatz-Bestätigung', () => {
     await expect(feld(page, 'wertersatz')).toBeFocused();
     await feld(page, 'wertersatz').check();
     await page.locator('#anmeldung [data-absenden]').click();
-    await expect(page).toHaveURL(/danke\/\?art=anmeldung&demo=1$/);
+    await expect(page).toHaveURL(danke('anmeldung'));
   });
 
   test('freiwillig bei späterem Kursstart', async ({ page }) => {
@@ -215,7 +244,7 @@ test.describe('Wertersatz-Bestätigung', () => {
     await expect(feld(page, 'wertersatz')).toBeVisible();
     await expect(feld(page, 'wertersatz')).toHaveAttribute('aria-required', 'false');
     await page.locator('#anmeldung [data-absenden]').click();
-    await expect(page).toHaveURL(/danke\/\?art=anmeldung&demo=1$/);
+    await expect(page).toHaveURL(danke('anmeldung'));
   });
 });
 
@@ -242,7 +271,7 @@ test.describe('Coaching', () => {
     await feld(page, 'wunschzeiten').fill('ab März, abends');
     await feld(page, 'datenschutz').check();
     await page.locator('#anmeldung [data-absenden]').click();
-    await expect(page).toHaveURL(/danke\/\?art=coaching&demo=1$/);
+    await expect(page).toHaveURL(danke('coaching'));
     await expect(page.locator('h1:visible')).toHaveText('Danke – deine Coaching-Anfrage ist angekommen');
   });
 
@@ -267,7 +296,7 @@ test.describe('Interesse und Kontakt', () => {
     await feld(page, 'email', 'interesse').fill('sara@beispiel.de');
     await feld(page, 'einwilligung', 'interesse').check();
     await page.locator('#interesse [data-absenden]').click();
-    await expect(page).toHaveURL(/danke\/\?art=interesse&demo=1$/);
+    await expect(page).toHaveURL(danke('interesse'));
     await expect(page.getByText('Wir melden uns, sobald Termine feststehen.').first()).toBeVisible();
   });
 
@@ -288,13 +317,14 @@ test.describe('Interesse und Kontakt', () => {
     await feld(page, 'nachricht', 'kontakt').fill('Welcher Kurs passt zu mir?');
     await feld(page, 'einwilligung', 'kontakt').check();
     await page.locator('#kontakt [data-absenden]').click();
-    await expect(page).toHaveURL(/danke\/\?art=kontakt&demo=1$/);
+    await expect(page).toHaveURL(danke('kontakt'));
     await expect(page.locator('h1:visible')).toHaveText('Danke – deine Nachricht ist angekommen');
   });
 });
 
 test.describe('Widerruf (§ 356a BGB)', () => {
   test('zweistufig: „Vertrag jetzt widerrufen“ → „Widerruf bestätigen“ → Eingang mit Datum und Uhrzeit', async ({ page }) => {
+    test.skip(!istVorschau, 'zweiter Schritt läuft live über widerruf.php (php-test.sh)');
     await page.clock.setFixedTime(new Date('2026-12-01T14:05:00+01:00'));
     await page.goto('widerruf/');
     test.skip((await page.locator('[data-widerruf-formular]').count()) === 0, 'Seite /widerruf/ bindet das Formular noch nicht ein');
@@ -329,7 +359,7 @@ test.describe('ohne JavaScript', () => {
     await page.goto('anmeldung/');
     const form = page.locator('#anmeldung');
     await expect(form).toHaveAttribute('method', 'post');
-    await expect(form).toHaveAttribute('action', '/waybuild_Akademie/api/anmeldung.php');
+    await expect(form).toHaveAttribute('action', `${BASE}/api/anmeldung.php`);
     // ohne JavaScript sind beide Zahlweg-Bereiche sichtbar
     await expect(feld(page, 'strasse')).toBeVisible();
     await expect(feld(page, 'firma')).toBeVisible();
@@ -355,7 +385,7 @@ test.describe('ohne JavaScript', () => {
     for (const [seite, form] of [['interesse/', 'interesse'], ['kontakt/', 'kontakt']]) {
       await page.goto(seite);
       await expect(page.locator(`#${form}`)).toHaveAttribute('method', 'post');
-      await expect(page.locator(`#${form}`)).toHaveAttribute('action', `/waybuild_Akademie/api/${form}.php`);
+      await expect(page.locator(`#${form}`)).toHaveAttribute('action', `${BASE}/api/${form}.php`);
     }
   });
 });

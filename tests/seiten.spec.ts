@@ -22,6 +22,10 @@ const kursDateien = readdirSync(KURSE_DIR)
     const text = readFileSync(join(KURSE_DIR, f), 'utf8');
     return { slug: f.replace(/\.md$/, ''), status: /^status:\s*(\S+)/m.exec(text)?.[1] ?? '' };
   });
+/** Rechtstexte noch ungeprüft? Dann tragen die 4 Rechtsseiten bewusst auch live das rote Entwurfsband (EntwurfBand.astro). */
+const rechtGeprueft = /RECHT_GEPRUEFT\s*=\s*true/.test(readFileSync(join(process.cwd(), 'src/components/recht/status.ts'), 'utf8'));
+const RECHT_ENTWURF = ['Entwurf – rechtlich noch nicht geprüft. Vor Veröffentlichung anwaltlich prüfen lassen.', ' · Entwurfsfassung'];
+
 const freigegeben = kursDateien.filter((k) => k.status === 'freigegeben').map((k) => k.slug);
 const entwuerfe = kursDateien.filter((k) => k.status === 'entwurf').map((k) => k.slug);
 
@@ -317,7 +321,9 @@ test.describe('Live-Build', () => {
     };
     laufen(DIST);
     expect(dateien.length).toBeGreaterThan(10);
-    const treffer = dateien.filter((p) => /Entwurf|data-entwurf|Preisvorschlag/.test(readFileSync(p, 'utf8')));
+    // Gewollt und erlaubt: nur das Entwurfsband der Rechtsseiten (solange RECHT_GEPRUEFT = false) – sonst nirgends „Entwurf“
+    const ohneRechtsband = (text: string) => (rechtGeprueft ? text : RECHT_ENTWURF.reduce((t, b) => t.replaceAll(b, ''), text));
+    const treffer = dateien.filter((p) => /Entwurf|data-entwurf|Preisvorschlag/.test(ohneRechtsband(readFileSync(p, 'utf8'))));
     expect(treffer).toEqual([]);
     const kursSeiten = readdirSync(join(DIST, 'kurse')).filter((f) => statSync(join(DIST, 'kurse', f)).isDirectory());
     expect(kursSeiten.sort()).toEqual([...freigegeben].sort());

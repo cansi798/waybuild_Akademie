@@ -1,4 +1,15 @@
 import { test, expect, type Page } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+/** Vorschau- oder Live-Build in dist/? (Vorschau-Banner ja/nein) */
+const istVorschau = (() => {
+  try {
+    return readFileSync(join(process.cwd(), 'dist/index.html'), 'utf8').includes('data-vorschau-banner');
+  } catch {
+    return true;
+  }
+})();
 
 const BREITEN = [320, 375, 768, 1280, 1440];
 
@@ -14,7 +25,10 @@ test('Startseite lädt ohne Konsolenfehler', async ({ page }) => {
   const antwort = await page.goto('./');
   expect(antwort?.status()).toBe(200);
   await expect(page.locator('h1')).toContainText('Gut vorbereitet in die Prüfung');
-  await page.waitForLoadState('networkidle');
+  // „load“ statt „networkidle“: Die Bühnen-Animationen laufen weiter, networkidle war unter Last unzuverlässig.
+  // Module-Skripte laufen vor „load“; die kurze Wartezeit fängt späte Fehler (Timer, Beobachter) ab.
+  await page.waitForLoadState('load');
+  await page.waitForTimeout(1000);
   expect(fehler).toEqual([]);
 });
 
@@ -63,10 +77,11 @@ test('mobiles Menü ist per Tastatur bedienbar', async ({ page, browserName }) =
 });
 
 test('alle internen Links liefern 200', async ({ page, request, baseURL }) => {
-  test.setTimeout(120_000); // besucht jede Seite inkl. ?kurs=-Varianten (mit Kursentwürfen > 90 Seiten)
+  test.setTimeout(120_000); // mit Kursentwürfen ~60 Seiten und ~90 Adressen
   const base = new URL(baseURL!);
   const offen = [base.href];
   const gesehen = new Set<string>();
+  const geladen = new Set<string>(); // Pfade, deren Links schon gesammelt sind
   while (offen.length) {
     const url = offen.shift()!;
     if (gesehen.has(url)) continue;
@@ -74,7 +89,11 @@ test('alle internen Links liefern 200', async ({ page, request, baseURL }) => {
     const antwort = await request.get(url);
     expect(antwort.status(), url).toBe(200);
     if (!(antwort.headers()['content-type'] ?? '').includes('text/html')) continue;
-    await page.goto(url);
+    // Statische Seiten: ?kurs=…-Varianten liefern dasselbe HTML – Links je Pfad nur einmal im Browser sammeln
+    const pfad = new URL(url).pathname;
+    if (geladen.has(pfad)) continue;
+    geladen.add(pfad);
+    await page.goto(url, { waitUntil: 'domcontentloaded' });
     const links = await page.$$eval('a[href], link[rel="icon"], link[rel="apple-touch-icon"], img[src]', (els) =>
       els.map((e) => (e as HTMLAnchorElement).href || (e as HTMLImageElement).src),
     );
@@ -89,11 +108,23 @@ test('alle internen Links liefern 200', async ({ page, request, baseURL }) => {
 });
 
 test('Vorschau: noindex und robots.txt sperrt alles', async ({ page, request }) => {
+  test.skip(!istVorschau, 'nur im Vorschau-Build');
   await page.goto('./');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
   await expect(page.locator('[data-vorschau-banner]')).toBeVisible();
   const robots = await request.get('robots.txt');
   expect(await robots.text()).toContain('Disallow: /');
+});
+
+test('Live: indexierbar, robots.txt mit Sitemap, kein Vorschau-Banner', async ({ page, request }) => {
+  test.skip(istVorschau, 'nur im Live-Build');
+  await page.goto('./');
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'index, follow');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://waybuild-akademie.de/');
+  await expect(page.locator('[data-vorschau-banner]')).toHaveCount(0);
+  const robots = await (await request.get('robots.txt')).text();
+  expect(robots).not.toContain('Disallow: /');
+  expect(robots).toContain('Sitemap: https://waybuild-akademie.de/sitemap-index.xml');
 });
 
 test('IHK-Hinweis steht im Fuß', async ({ page }) => {
