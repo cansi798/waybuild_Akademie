@@ -28,6 +28,7 @@ import {
 import { href } from '../../lib/pfad';
 import Risikoumkehr from '../../components/seiten/Risikoumkehr.astro';
 import { BEWEIS_DOZENTEN } from '../../lib/zusagen';
+import { fragen, ohneDoppelte, type FaqId } from '../../lib/faq';
 
 export async function getStaticPaths() {
   const kurse = await alleKurse();
@@ -62,13 +63,20 @@ const mitBeweis = !entwurf && (d.saeule === 'ihk-pruefung' || coaching);
 // Risikoumkehr nur bei buchbaren Angeboten (freigegeben, mit Termin bzw. Coaching)
 const buchbar = !entwurf && (coaching || termine.length > 0);
 
+// FAQ: Fragen der Kursdatei + gemeinsame Fragen aus lib/faq.ts (Storno, Absage, Betrieb, Technik, Prüfungsanmeldung), ohne Doppelte.
+// „Prüfungsanmeldung“ nur bei IHK-Abschlussprüfungen der Säule ihk-pruefung (dort läuft sie über den Ausbildungsbetrieb).
+const gemeinsameFragen: FaqId[] = coaching
+  ? ['coaching-verbindlich', 'coaching-verschieben', 'coaching-betrieb', 'coaching-technik', 'coaching-wer']
+  : ['storno', 'absage', 'betrieb', 'technik', ...(d.saeule === 'ihk-pruefung' ? (['pruefung-anmeldung'] as FaqId[]) : [])];
+const faqEintraege = ohneDoppelte(d.faq, fragen(...gemeinsameFragen));
+
 const abschnitte = [
   { id: 'ueberblick', name: 'Überblick' },
   { id: 'inhalte', name: 'Inhalte' },
   { id: 'termine', name: 'Termine' },
   { id: 'preis', name: 'Preis' },
   { id: 'voraussetzungen', name: 'Voraussetzungen' },
-  ...(d.faq.length > 0 ? [{ id: 'faq', name: 'FAQ' }] : []),
+  { id: 'faq', name: 'FAQ' },
 ];
 
 const kerndaten: { name: string; wert: string; breit?: boolean }[] = [
@@ -97,7 +105,7 @@ const schema =
     ? []
     : [
         ...kursSchema(kurs, termine, Astro.site),
-        ...(d.faq.length > 0 ? [faqSchema(d.faq)] : []),
+        faqSchema(faqEintraege),
         brotkrumenSchema([['Start', '/'], ['Kurse', '/kurse/'], [d.titel, `/kurse/${kurs.id}/`]], Astro.site),
       ];
 ---
@@ -381,11 +389,11 @@ const schema =
 
       <!-- FAQ -->
       {
-        d.faq.length > 0 && (
+        faqEintraege.length > 0 && (
           <section id="faq" aria-labelledby="faq-titel" class="abschnitt">
             <h2 id="faq-titel" class="text-3xl sm:text-4xl">Häufige Fragen</h2>
             <div class="mt-6">
-              <FaqVerzeichnis eintraege={d.faq} id="faq-frage" spalten={false} />
+              <FaqVerzeichnis eintraege={faqEintraege} id="faq-frage" spalten={false} />
             </div>
           </section>
         )

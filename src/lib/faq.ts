@@ -56,7 +56,7 @@ export const FAQ = {
   // Storno, Ersatz, Absage
   storno: {
     frage: 'Kann ich stornieren?',
-    antwort: 'Ja. Bis 14 Tage vor Kursstart kostenlos, danach 50 % der Teilnahmegebühr, ab Kursbeginn die volle Gebühr. Statt zu stornieren, kann jederzeit kostenlos eine Ersatzperson teilnehmen. Dein gesetzliches Widerrufsrecht bleibt unberührt. Die Einzelheiten stehen in den Teilnahmebedingungen.',
+    antwort: 'Ja. Bis 14 Tage vor Kursstart kostenlos, danach 50 % der Teilnahmegebühr, ab Kursbeginn die volle Gebühr. Statt zu stornieren, kann jederzeit kostenlos eine Ersatzperson teilnehmen. Bei Weiterbildungen mit mehr als 6 Monaten Laufzeit gilt ab Kursbeginn stattdessen eine Kündigungsfrist von 4 Wochen zum Monatsende. Dein gesetzliches Widerrufsrecht bleibt unberührt. Die Einzelheiten stehen in den Teilnahmebedingungen.',
   },
   ersatz: {
     frage: 'Kann jemand anderes meinen Platz übernehmen?',

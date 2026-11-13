@@ -6,7 +6,7 @@ import { join, relative } from 'node:path';
 // Fuß-Link auf allen Seiten, 320 px, axe ohne Verstöße (chromium + webkit).
 const PFAD = 'barrierefreiheit/';
 const DIST = new URL('../dist/', import.meta.url).pathname;
-// axe-core ist (noch) keine Abhängigkeit im Repo: Test läuft, sobald node_modules/axe-core vorhanden ist.
+// axe-core kommt über die devDependency @axe-core/playwright (npm ci legt node_modules/axe-core an); fehlt es, wird übersprungen.
 const AXE = new URL('../node_modules/axe-core/axe.min.js', import.meta.url).pathname;
 
 test('lädt mit H1, Entwurfsband und Stand', async ({ page }) => {

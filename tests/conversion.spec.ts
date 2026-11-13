@@ -126,6 +126,20 @@ test.describe('FAQ und So läuft\'s', () => {
     });
   }
 
+  for (const s of ['kurse/ap1-it-berufe/', 'kurse/ap2-fachinformatiker-systemintegration/', 'kurse/pruefungscoaching/']) {
+    test(`${s}: Kurs-FAQ um gemeinsame Fragen auf 8–10 aufgefüllt, ohne Doppelte, Schema = Liste`, async ({ page }) => {
+      await page.goto(`./${s}`);
+      const fragen = (await page.locator('#faq [data-faq-eintrag] h3').allTextContents()).map((f) => f.trim());
+      expect(fragen.length, s).toBeGreaterThanOrEqual(8);
+      expect(fragen.length, s).toBeLessThanOrEqual(10);
+      expect(new Set(fragen.map((f) => f.toLowerCase())).size, 'keine doppelten Fragen').toBe(fragen.length);
+      const schema = (await page.locator('script[type="application/ld+json"]').allTextContents())
+        .flatMap((b) => ([] as Record<string, unknown>[]).concat(JSON.parse(b)))
+        .find((o) => o['@type'] === 'FAQPage') as unknown as { mainEntity: { name: string }[] } | undefined;
+      if (schema) expect(schema.mainEntity.map((q) => q.name)).toEqual(fragen);
+    });
+  }
+
   test('So läuft\'s: vier Schritte, gleich auf Kursseite, Landing und Coaching', async ({ page }) => {
     for (const s of ['kurse/ap1-it-berufe/', 'pruefungsvorbereitung/']) {
       await page.goto(`./${s}`);
@@ -138,7 +152,7 @@ test.describe('FAQ und So läuft\'s', () => {
   });
 });
 
-// axe auf allen in Teil 1 geänderten Seiten (läuft nur, wenn node_modules/axe-core vorhanden ist – siehe TODO devDependency)
+// axe auf allen in Teil 1 geänderten Seiten (axe-core kommt über die devDependency @axe-core/playwright)
 const AXE = join(process.cwd(), 'node_modules/axe-core/axe.min.js');
 for (const breite of [1280, 320]) {
   test(`axe: geänderte Seiten ohne Verstöße bei ${breite} px`, async ({ page }) => {
