@@ -1,0 +1,64 @@
+---
+// FAQ als offene Liste statt Akkordeon (redesign-existing-projects: „Accordion-FAQ ersetzen“):
+// links Kopf (Slot „kopf“) und ab lg ein Fragenverzeichnis mit Sprungmarken, rechts alle Fragen mit Antwort.
+// Alles ist ohne JavaScript sichtbar und lesbar; die Fragen sind Überschriften (Navigation per Screenreader).
+// FAQPage-Schema bleibt Sache der Seite (gleiche Einträge übergeben).
+import type { FaqEintrag } from './schema';
+
+interface Props {
+  eintraege: FaqEintrag[];
+  /** Präfix für die Sprungmarken, je Seite eindeutig */
+  id: string;
+  /** Überschriftenebene der Fragen */
+  ebene?: 'h3' | 'h4';
+  /** Verzeichnis + zweispaltig (Standard); false = eine Spalte (z. B. Kursseite mit Seitenleiste) */
+  spalten?: boolean;
+  /** Name des Verzeichnisses (eindeutig je Seite, z. B. Gruppentitel auf /faq/) */
+  name?: string;
+}
+const { eintraege, id, ebene = 'h3', spalten = true, name } = Astro.props;
+const Frage = ebene;
+const anker = (i: number) => `${id}-${i + 1}`;
+const mitKopf = Astro.slots.has('kopf');
+---
+
+<div class:list={['faq-v grid gap-8', spalten && 'lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16']} data-faq-liste>
+  {
+    (spalten || mitKopf) && (
+      <div class:list={['min-w-0', spalten && 'lg:sticky lg:top-28 lg:self-start']}>
+        <slot name="kopf" />
+        {spalten && (
+          <nav aria-label={name ? `Fragen: ${name}` : 'Fragen im Überblick'} class:list={['hidden lg:block', mitKopf && 'mt-8']}>
+            <ol class="grid gap-0.5 border-l border-base-300">
+              {eintraege.map((f, i) => (
+                <li>
+                  <a href={`#${anker(i)}`} class="faq-sprung -ml-px block border-l-2 border-transparent py-1.5 pr-2 pl-4 text-[0.95rem] leading-snug text-gedaempft hover:border-petrol hover:text-navy">
+                    {f.frage}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
+      </div>
+    )
+  }
+
+  <div class="min-w-0 border-b border-base-300">
+    {
+      eintraege.map((f, i) => (
+        <div id={anker(i)} class="faq-eintrag scroll-mt-28 border-t border-base-300 py-6 sm:py-7" data-faq-eintrag>
+          <Frage class="trennen font-sans text-lg leading-snug font-semibold text-navy sm:text-xl">{f.frage}</Frage>
+          <p class="trennen mt-2.5 max-w-[65ch] text-gedaempft">{f.antwort}</p>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .faq-eintrag:target {
+    box-shadow: inset 3px 0 0 var(--color-bernstein);
+    padding-left: 1rem;
+  }
+</style>

@@ -1,34 +1,80 @@
 ---
-// Kompakter Ablauf „So läuft's ab“ (US-06 AK2) für Kursseiten – ohne Termin-Daten, gilt für jeden Kurs.
+// „So läuft's“ – EINE gemeinsame Komponente (Conversion-Konzept E) für Kursseiten, Landing, Coaching und Anmeldung:
+// Termin wählen → Rechnung per E-Mail → Live-Unterricht → Prüfung bei deiner IHK (Ziel, Bernstein markiert).
+// Mit Termin-Daten (Landing) steht unter jedem Schritt das passende Datum. Coaching: gleiche vier Schritte, eigene Texte.
+// Kurse ohne IHK-Prüfung (Säule akademie) übergeben ein eigenes Ziel. Start- und Hero-Dateien haben eigene Varianten.
+import { formatDatum } from '../../lib/kurse';
+
 interface Props {
   coaching?: boolean;
+  /** Daten des nächsten Termins (optional) */
+  termin?: { anmeldeschluss: Date; start: Date; ende: Date; pruefung?: Date };
+  /** letzter Schritt, wenn es keine IHK-Prüfung gibt */
+  ziel?: { titel: string; text: string };
+  /** senkrechte, kleine Liste (Seitenleiste der Anmeldung) */
+  kompakt?: boolean;
+  /** Überschriftenebene der Schritte */
+  ebene?: 'h3' | 'h4';
 }
-const { coaching = false } = Astro.props;
-const schritte = coaching
+const { coaching = false, termin: t, ziel, kompakt = false, ebene = 'h3' } = Astro.props;
+const Titel = ebene;
+
+type Schritt = { titel: string; text: string; wann?: string };
+const schritte: Schritt[] = coaching
   ? [
-      { t: 'Anliegen schildern', x: 'Kurzes Anfrageformular: Paket, Thema und Prüfungszeitraum.' },
-      { t: 'Termine abstimmen', x: 'Wir melden uns und vereinbaren passende Online-Termine. Erst dann wird es verbindlich.' },
-      { t: '1:1 online', x: 'Je 60 Minuten Beratung, Rückmeldung und Training – live per Videokonferenz.' },
-      { t: 'Rechnung per E-Mail', x: 'An dich oder an deinen Betrieb. Keine Online-Zahlung.' },
+      { titel: 'Coaching anfragen', text: 'Paket, Thema und Prüfungszeitraum angeben. Wir stimmen die Termine mit dir ab – erst dann wird es verbindlich.' },
+      { titel: 'Rechnung per E-Mail', text: 'An dich oder an deinen Betrieb. Keine Online-Zahlung.' },
+      { titel: 'Live 1:1 online', text: 'Je 60 Minuten Rückmeldung und Training per Videokonferenz – zu deinen selbst erstellten Unterlagen.' },
+      { titel: 'Prüfung bei deiner IHK', text: 'Präsentation und Fachgespräch legst du bei deiner IHK ab.' },
     ]
   : [
-      { t: 'Termin wählen', x: 'Anmelden per kurzem Formular – bis 7 Tage vor Kursstart.' },
-      { t: 'Rechnung per E-Mail', x: 'An dich oder an deinen Betrieb. Keine Online-Zahlung, kein Kundenkonto.' },
-      { t: 'Zugang per E-Mail', x: 'Vor dem Start bekommst du den Link zum Live-Raum.' },
-      { t: 'Live dabei sein', x: 'Unterricht in Echtzeit mit Fragen und Übungen – gemeinsam in der Gruppe.' },
+      { titel: 'Termin wählen', text: 'Ein kurzes Formular, kein Kundenkonto. Anmelden bis 7 Tage vor Kursstart.', wann: t && `bis ${formatDatum(t.anmeldeschluss)}` },
+      { titel: 'Rechnung per E-Mail', text: 'An dich oder an deinen Betrieb, keine Online-Zahlung. Den Link zum Live-Raum bekommst du vor dem Start.', wann: t && 'nach der Anmeldung' },
+      { titel: 'Live-Unterricht', text: 'In einer festen Gruppe, in Echtzeit. Fragen klärst du sofort – per Mikrofon oder Chat.', wann: t && `${formatDatum(t.start, 'tagmonat')}–${formatDatum(t.ende)}` },
+      ziel
+        ? { titel: ziel.titel, text: ziel.text }
+        : {
+            titel: 'Prüfung bei deiner IHK',
+            text: 'Verbindlich ist die Einladung deiner IHK.',
+            wann: t && (t.pruefung ? formatDatum(t.pruefung) : 'laut Einladung deiner IHK'),
+          },
     ];
+const letzter = schritte.length - 1;
 ---
 
-<ol class="grid gap-4 sm:grid-cols-2" data-ablauf>
-  {
-    schritte.map((s, i) => (
-      <li class="flex gap-4 rounded-2xl bg-white p-5 ring-1 ring-base-300">
-        <span class="grid size-10 shrink-0 place-items-center rounded-full bg-navy font-serif text-lg text-white" aria-hidden="true">{i + 1}</span>
-        <span>
-          <span class="block font-semibold">{s.t}</span>
-          <span class="mt-1 block text-sm text-gedaempft">{s.x}</span>
-        </span>
-      </li>
-    ))
-  }
-</ol>
+{
+  kompakt ? (
+    <ol class="grid gap-4 text-sm" data-ablauf>
+      {schritte.map((s, i) => (
+        <li class="flex gap-3">
+          <span class:list={['grid size-8 shrink-0 place-items-center rounded-full font-serif font-semibold', i === letzter ? 'bg-bernstein text-navy' : 'bg-navy text-white']} aria-hidden="true">
+            {i + 1}
+          </span>
+          <span>
+            <span class="block font-semibold text-navy">{s.titel}</span>
+            <span class="text-gedaempft">{s.text}</span>
+          </span>
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <div class="@container">
+      <ol class="ablauf grid gap-x-8 gap-y-8 @lg:grid-cols-2 @4xl:grid-cols-4" data-ablauf>
+        {schritte.map((s, i) => (
+          <li class:list={['relative min-w-0 border-t-2 pt-5', i === letzter ? 'border-bernstein' : 'border-navy/20']} data-schritt={i + 1}>
+            <span class="flex items-baseline gap-3">
+              <span class="font-serif text-4xl leading-none font-semibold text-navy tabular-nums" aria-hidden="true">{i + 1}</span>
+              {i === letzter && <span class="size-2.5 rounded-full bg-bernstein" aria-hidden="true" />}
+            </span>
+            <Titel class="mt-3 font-sans text-lg leading-snug font-semibold text-navy">
+              <span class="sr-only">Schritt {i + 1}: </span>
+              {s.titel}
+            </Titel>
+            {s.wann && <p class="mt-1 text-sm font-semibold text-tief tabular-nums">{s.wann}</p>}
+            <p class="mt-2 text-gedaempft">{s.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
+}

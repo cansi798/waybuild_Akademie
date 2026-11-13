@@ -4,12 +4,15 @@
 import { getEntry } from 'astro:content';
 import Basis from '../../layouts/Basis.astro';
 import Ablauf from '../../components/seiten/Ablauf.astro';
-import FaqListe from '../../components/seiten/FaqListe.astro';
+import FaqVerzeichnis from '../../components/seiten/FaqVerzeichnis.astro';
 import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
 import { brotkrumenSchema, faqSchema, kursSchema } from '../../components/seiten/schema';
 import { kursSeo } from '../../lib/seo';
 import { formatEuro, kategorieSlug } from '../../lib/kurse';
 import { href } from '../../lib/pfad';
+import Risikoumkehr from '../../components/seiten/Risikoumkehr.astro';
+import { fragen, ohneDoppelte } from '../../lib/faq';
+import { BEWEIS_DOZENTEN } from '../../lib/zusagen';
 
 const kurs = await getEntry('kurse', 'pruefungscoaching');
 if (!kurs) throw new Error('Kursdatei pruefungscoaching.md fehlt');
@@ -29,17 +32,12 @@ const ICONS = [
   'M4 5h11v8H8l-4 3zM15 9h5v8l-3-2h-6v-2',
 ];
 
-const FAQ = [
-  ...d.faq,
-  {
-    frage: 'Ist die Anfrage verbindlich?',
-    antwort: 'Nein. Die Anfrage ist unverbindlich. Der Vertrag kommt erst zustande, wenn wir die Termine gemeinsam abgestimmt haben.',
-  },
-  {
-    frage: 'Kann mein Betrieb das Coaching bezahlen?',
-    antwort: 'Ja. Im Anfrageformular wählst du „Mein Betrieb zahlt“. Die Rechnung geht dann per E-Mail an die Firma.',
-  },
-];
+// FAQ: Fragen aus der Kursdatei + gemeinsame Coaching-Fragen (lib/faq.ts), ohne Doppelte.
+const FAQ = ohneDoppelte(
+  d.faq,
+  fragen('coaching-verbindlich', 'coaching-paket', 'coaching-verschieben', 'coaching-betrieb', 'coaching-wer', 'coaching-technik', 'coaching-ihk'),
+);
+const beweise = [BEWEIS_DOZENTEN, `ab ${formatEuro(d.preis.betrag)} je 60 Minuten, Endpreis`, 'Anfrage unverbindlich'];
 ---
 
 <Basis
@@ -60,10 +58,20 @@ const FAQ = [
         <p class="mt-5 max-w-2xl text-lg text-gedaempft sm:text-xl">
           Persönliche Begleitung für Projektantrag, Dokumentation, Präsentation und Fachgespräch – mit ehrlicher Rückmeldung und einem realistischen Probedurchlauf.
         </p>
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
           <a href={anfrageUrl} class="btn btn-accent btn-lg rounded-full px-7" data-coaching-anfrage>Coaching anfragen</a>
-          <a href="#pakete" class="btn btn-outline btn-secondary btn-lg rounded-full px-7">Pakete und Preise</a>
+          <a href="#pakete" class="link-fliess font-semibold">Pakete und Preise</a>
         </div>
+        <ul class="mt-7 grid gap-2 sm:flex sm:flex-wrap sm:gap-x-6" data-beweis>
+          {
+            beweise.map((b) => (
+              <li class="flex items-center gap-2 font-semibold text-navy">
+                <svg viewBox="0 0 20 20" class="size-5 shrink-0 text-tief" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                {b}
+              </li>
+            ))
+          }
+        </ul>
       </div>
       <div class="rounded-[1.75rem] bg-navy p-6 text-white sm:p-8" data-selbst-hinweis>
         <svg viewBox="0 0 24 24" class="size-9 text-bernstein" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
@@ -141,7 +149,13 @@ const FAQ = [
           })
         }
       </ul>
-      {d.preis.hinweis && <p class="mt-6 max-w-3xl text-sm text-gedaempft">{d.preis.hinweis}</p>}
+      <div class="mt-8 grid gap-6 border-t border-base-300 pt-6 md:grid-cols-2 md:gap-12">
+        <div>
+          <h3 class="font-sans text-base font-semibold">Wenn etwas dazwischenkommt</h3>
+          <Risikoumkehr variante="coaching" form="liste" class="mt-3" />
+        </div>
+        {d.preis.hinweis && <p class="max-w-xl text-sm text-gedaempft md:pt-8">{d.preis.hinweis}</p>}
+      </div>
     </div>
   </section>
 
@@ -154,12 +168,13 @@ const FAQ = [
 
   <!-- FAQ -->
   <section class="border-t border-base-300 bg-base-200/60" aria-labelledby="faq-titel">
-    <div class="rahmen grid gap-10 py-16 sm:py-20 lg:grid-cols-[0.8fr_1.2fr]">
-      <div>
-        <h2 id="faq-titel" class="text-3xl sm:text-4xl">Häufige Fragen zum Coaching</h2>
-        <p class="mt-3 text-gedaempft">Weitere Antworten findest du in den <a class="link-fliess" href={href('/faq/')}>häufigen Fragen</a>.</p>
-      </div>
-      <FaqListe eintraege={FAQ} />
+    <div class="rahmen py-16 sm:py-20">
+      <FaqVerzeichnis eintraege={FAQ} id="frage">
+        <div slot="kopf">
+          <h2 id="faq-titel" class="text-3xl sm:text-4xl">Häufige Fragen zum Coaching</h2>
+          <p class="mt-3 text-gedaempft">Weitere Antworten findest du in den <a class="link-fliess" href={href('/faq/')}>häufigen Fragen</a>.</p>
+        </div>
+      </FaqVerzeichnis>
     </div>
   </section>
 

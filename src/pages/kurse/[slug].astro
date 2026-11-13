@@ -7,7 +7,7 @@ import { render } from 'astro:content';
 import Basis from '../../layouts/Basis.astro';
 import Ablauf from '../../components/seiten/Ablauf.astro';
 import Entwurfsband from '../../components/seiten/Entwurfsband.astro';
-import FaqListe from '../../components/seiten/FaqListe.astro';
+import FaqVerzeichnis from '../../components/seiten/FaqVerzeichnis.astro';
 import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
 import TerminKarte from '../../components/seiten/TerminKarte.astro';
 import TerminWaechter from '../../components/seiten/TerminWaechter.astro';
@@ -19,12 +19,15 @@ import {
   formatDatum,
   formatEuro,
   interesseUrl,
+  isoDatum,
   istIhkKurs,
   saeulenName,
   umfangText,
   type Kurs,
 } from '../../lib/kurse';
 import { href } from '../../lib/pfad';
+import Risikoumkehr from '../../components/seiten/Risikoumkehr.astro';
+import { BEWEIS_DOZENTEN } from '../../lib/zusagen';
 
 export async function getStaticPaths() {
   const kurse = await alleKurse();
@@ -51,9 +54,13 @@ const hinweisEnthaeltIhk = /IHK/.test(d.preis.hinweis ?? '');
 const aktion = coaching
   ? { text: 'Coaching anfragen', url: href(`/anmeldung/?kurs=${kurs.id}`), daten: 'coaching' }
   : termine.length > 0
-    ? { text: entwurf ? 'Termine ansehen' : 'Termin wählen & anmelden', url: '#termine', daten: 'termine' }
+    ? { text: entwurf ? 'Termine ansehen' : 'Termin wählen', url: '#termine', daten: 'termine' }
     : { text: 'Interesse vormerken', url: href(interesseUrl(kurs)), daten: 'interesse' };
-const aktionKurz = aktion.daten === 'termine' ? (entwurf ? 'Termine ansehen' : 'Termin wählen') : aktion.text;
+const aktionKurz = aktion.text;
+// Beweis nur, wo er stimmt: Säule ihk-pruefung (Prüfungsvorbereitung + Coaching), nicht bei Entwürfen.
+const mitBeweis = !entwurf && (d.saeule === 'ihk-pruefung' || coaching);
+// Risikoumkehr nur bei buchbaren Angeboten (freigegeben, mit Termin bzw. Coaching)
+const buchbar = !entwurf && (coaching || termine.length > 0);
 
 const abschnitte = [
   { id: 'ueberblick', name: 'Überblick' },
@@ -109,41 +116,61 @@ const schema =
         </ol>
       </nav>
 
-      <div class="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
-        <div class="min-w-0">
+      <!-- mobil: Titel → Karte mit Preis, Start und Knopf → Kurztext (Preis und Start in der ersten Ansicht) -->
+      <div class="kopf-raster mt-6 grid gap-x-10 gap-y-6">
+        <div class="kopf-titel min-w-0">
           <p class="flex flex-wrap gap-2 text-xs font-semibold">
             <span class="rounded-full bg-white px-3 py-1 ring-1 ring-base-300">{saeulenName(d.saeule)}</span>
             <span class="rounded-full bg-white px-3 py-1 ring-1 ring-base-300">{d.kategorie}</span>
           </p>
           <h1 class="trennen mt-4 text-[2.2rem] leading-[1.06] sm:text-5xl lg:text-[3.4rem]">{d.titel}</h1>
           <p class="trennen mt-3 text-lg font-semibold text-tief sm:text-xl">{d.untertitel}</p>
-          <p class="mt-5 max-w-2xl text-lg text-gedaempft">{d.kurzbeschreibung}</p>
-        </div>
-
-        <div class="rounded-3xl bg-navy p-6 text-white" data-start-kopf>
           {
-            coaching ? (
-              <p>
-                <span class="block text-sm text-white/75">Termine</span>
-                <span class="font-serif text-2xl leading-tight">flexibel nach Vereinbarung</span>
-              </p>
-            ) : naechster ? (
-              <p>
-                <span class="block text-sm text-white/75">Nächster Start</span>
-                <span class="font-serif text-3xl leading-tight">{formatDatum(naechster.start, 'wochentag')}</span>
-                {naechster.pruefung && <span class="mt-1 block text-sm text-white/85">Prüfung {formatDatum(naechster.pruefung)} · {termine.length > 1 ? `${termine.length} Termine zur Wahl` : '1 Termin'}</span>}
-                {!naechster.pruefung && termine.length > 1 && <span class="mt-1 block text-sm text-white/85">{termine.length} Termine zur Wahl</span>}
-              </p>
-            ) : (
-              <p>
-                <span class="block text-sm text-white/75">Nächster Start</span>
-                <span class="font-serif text-2xl leading-tight">Termin in Planung</span>
-                <span class="mt-1 block text-sm text-white/85">Merk dir den Kurs unverbindlich vor.</span>
+            mitBeweis && (
+              <p class="mt-4 flex items-center gap-2 font-semibold text-navy" data-beweis>
+                <svg viewBox="0 0 20 20" class="size-5 shrink-0 text-tief" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                {BEWEIS_DOZENTEN}
               </p>
             )
           }
-          <a href={aktion.url} class="btn btn-accent mt-5 w-full rounded-full" data-hauptaktion={aktion.daten}>{aktion.text}</a>
         </div>
+
+        <div class="kopf-karte rounded-3xl bg-navy p-5 text-white sm:p-6" data-start-kopf>
+          <!-- flex-wrap: bei 320 px rutscht der Start unter den Preis statt seitlich zu überlaufen -->
+          <div class="flex flex-wrap gap-x-7 gap-y-4">
+            <p data-kopf-preis>
+              <span class="block text-sm text-white/75">{coaching ? 'Preis ab' : preisLabel}</span>
+              <span class="font-serif text-[2.1rem] leading-none font-semibold tabular-nums">{formatEuro(d.preis.betrag)}</span>
+              <span class="mt-1.5 block text-xs text-white/80">{entwurf ? 'Vorschlag' : coaching ? 'je 60 Minuten, Endpreis' : 'Endpreis, alles inklusive'}</span>
+            </p>
+            {
+              coaching ? (
+                <p class="min-w-0">
+                  <span class="block text-sm text-white/75">Termine</span>
+                  <span class="font-serif text-xl leading-tight">flexibel nach Vereinbarung</span>
+                </p>
+              ) : naechster ? (
+                <p class="min-w-0" data-kopf-start>
+                  <span class="block text-sm text-white/75">Nächster Start</span>
+                  <time datetime={isoDatum(naechster.start)} class="font-serif text-2xl leading-tight tabular-nums">{formatDatum(naechster.start)}</time>
+                  <span class="mt-1.5 block text-xs text-white/80">
+                    {naechster.pruefung ? `Prüfung ${formatDatum(naechster.pruefung)}` : termine.length > 1 ? `${termine.length} Termine zur Wahl` : 'live online'}
+                  </span>
+                </p>
+              ) : (
+                <p class="min-w-0">
+                  <span class="block text-sm text-white/75">Nächster Start</span>
+                  <span class="font-serif text-xl leading-tight">Termin in Planung</span>
+                </p>
+              )
+            }
+          </div>
+          <a href={aktion.url} class="btn btn-accent mt-5 w-full rounded-full" data-hauptaktion={aktion.daten}>{aktion.text}</a>
+          {buchbar && <Risikoumkehr variante={coaching ? 'coaching' : 'kurs'} ton="dunkel" class="mt-4" />}
+          {!coaching && !naechster && <p class="mt-3 text-sm text-white/80">Merk dir den Kurs unverbindlich vor.</p>}
+        </div>
+
+        <p class="kopf-text max-w-2xl text-lg text-gedaempft">{d.kurzbeschreibung}</p>
       </div>
 
       <dl class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-base-300 ring-1 ring-base-300 md:grid-cols-3 lg:grid-cols-6" data-kerndaten>
@@ -243,6 +270,7 @@ const schema =
               <a href={href(`/anmeldung/?kurs=${kurs.id}`)} class="btn btn-secondary mt-5 rounded-full px-6">
                 Coaching anfragen
               </a>
+              {!entwurf && <Risikoumkehr variante="coaching" class="mt-4" />}
             </div>
           ) : (
             <div data-termine-liste>
@@ -254,6 +282,7 @@ const schema =
                       <TerminKarte kurs={kurs} termin={t} />
                     ))}
                   </ul>
+                  {!entwurf && <Risikoumkehr ausfall class="mt-5" />}
                 </>
               )}
               <div class="mt-6 rounded-2xl bg-white p-6 ring-1 ring-base-300" data-termine-leer hidden={termine.length > 0}>
@@ -317,6 +346,14 @@ const schema =
                 ))
               }
             </ul>
+            {
+              buchbar && (
+                <div class="mt-6 border-t border-base-300 pt-5" data-preis-zusagen>
+                  <h3 class="font-sans text-base font-semibold">Wenn etwas dazwischenkommt</h3>
+                  <Risikoumkehr variante={coaching ? 'coaching' : 'kurs'} form="liste" ausfall class="mt-3" />
+                </div>
+              )
+            }
           </div>
         </div>
       </section>
@@ -336,7 +373,7 @@ const schema =
         </ul>
         {d.saeule === 'ihk-weiterbildung' && <p class="mt-4 text-gedaempft">Über die Zulassung zur Prüfung entscheidet deine IHK.</p>}
         <h3 class="mt-12 text-2xl">So läuft's ab</h3>
-        <div class="mt-5"><Ablauf coaching={coaching} /></div>
+        <div class="mt-6"><Ablauf coaching={coaching} ebene="h4" ziel={ihk ? undefined : { titel: 'Dein Abschluss', text: d.abschluss }} /></div>
         <p class="mt-4 text-sm text-gedaempft">
           Mehr Antworten zu Anmeldung, Zahlung und Live-Unterricht findest du in den <a href={href('/faq/')} class="link-fliess">häufigen Fragen</a>.
         </p>
@@ -348,7 +385,7 @@ const schema =
           <section id="faq" aria-labelledby="faq-titel" class="abschnitt">
             <h2 id="faq-titel" class="text-3xl sm:text-4xl">Häufige Fragen</h2>
             <div class="mt-6">
-              <FaqListe eintraege={d.faq} />
+              <FaqVerzeichnis eintraege={d.faq} id="faq-frage" spalten={false} />
             </div>
           </section>
         )
@@ -371,6 +408,7 @@ const schema =
           {naechster && <li class="font-semibold">Start {formatDatum(naechster.start)}</li>}
         </ul>
         <a href={aktion.url} class="btn btn-secondary mt-5 w-full rounded-full">{aktionKurz}</a>
+        {buchbar && <Risikoumkehr variante={coaching ? 'coaching' : 'kurs'} klein class="mt-4" />}
       </div>
     </aside>
   </div>
@@ -398,6 +436,20 @@ const schema =
   }
   .abschnitt {
     scroll-margin-top: 6rem;
+  }
+  .kopf-raster {
+    grid-template-areas: 'titel' 'karte' 'text';
+  }
+  .kopf-titel { grid-area: titel; }
+  .kopf-karte { grid-area: karte; }
+  .kopf-text { grid-area: text; }
+  @media (min-width: 64rem) {
+    .kopf-raster {
+      grid-template-columns: minmax(0, 1fr) 22rem;
+      grid-template-areas: 'titel karte' 'text karte';
+      row-gap: 1.25rem;
+    }
+    .kopf-karte { align-self: end; }
   }
   .cta-leiste {
     transition: transform 0.25s ease, opacity 0.25s ease;

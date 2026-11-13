@@ -9,6 +9,8 @@ import { formularDaten } from './daten';
 import { FEHLER, MAX_PERSONEN, RABATT_AB_PERSONEN, RABATT_PROZENT, euro } from '../../lib/formular';
 import { IS_PREVIEW } from '../../lib/env';
 import { href } from '../../lib/pfad';
+import Ablauf from '../seiten/Ablauf.astro';
+import Risikoumkehr from '../seiten/Risikoumkehr.astro';
 
 const F = 'anmeldung';
 const daten = await formularDaten();
@@ -254,7 +256,11 @@ const kartenKlasse = 'rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8'
         </p>
       </div>
 
-      <div class="mt-8 grid gap-4 border-t border-base-300 pt-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
+      <!-- Risikoumkehr direkt über dem Absende-Knopf (Wortlaut: lib/zusagen.ts) -->
+      <div class="mt-6" data-bereich="kurs"><Risikoumkehr /></div>
+      <div class="mt-6" data-bereich="coaching" hidden><Risikoumkehr variante="coaching" /></div>
+
+      <div class="mt-5 grid gap-4 border-t border-base-300 pt-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
         <div class="min-w-0" data-preis aria-live="polite">
           <dl class="grid gap-1 text-sm" data-preis-zeilen hidden>
             <div class="flex justify-between gap-4"><dt data-preis-einzel-titel>Teilnahmegebühr je Person</dt><dd class="tabular-nums" data-preis-einzel></dd></div>
@@ -284,20 +290,8 @@ const kartenKlasse = 'rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8'
         <span class="font-serif text-3xl font-semibold tabular-nums" data-auswahl-preis>–</span>
       </p>
     </div>
-    <ol class="mt-6 grid gap-4 text-sm">
-      {
-        [
-          ['Anmelden', 'Formular ausfüllen und absenden – du bekommst sofort eine Eingangsbestätigung per E-Mail.'],
-          ['Rechnung', 'Die Rechnung kommt per E-Mail an dich oder deinen Betrieb.'],
-          ['Live-Raum', 'Vor Kursstart schicken wir jeder Person den Zugang zum Live-Unterricht.'],
-        ].map(([t, x], i) => (
-          <li class="flex gap-3">
-            <span class="grid size-8 shrink-0 place-items-center rounded-full bg-bernstein font-semibold text-navy" aria-hidden="true">{i + 1}</span>
-            <span><span class="block font-semibold">{t}</span><span class="text-gedaempft">{x}</span></span>
-          </li>
-        ))
-      }
-    </ol>
+    <div class="mt-6" data-seiten-bereich="kurs"><Ablauf kompakt /></div>
+    <div class="mt-6" data-seiten-bereich="coaching" hidden><Ablauf kompakt coaching /></div>
   </aside>
 </div>
 

@@ -1,0 +1,57 @@
+---
+// Risikoumkehr am Preis (Conversion-Konzept B): Zusagen aus lib/zusagen.ts + Link auf die Teilnahmebedingungen.
+//   form="zeile"  → ein Satz (Kurskarte, Kopf der Kursseite, Absende-Knopf)
+//   form="liste"  → Zusagen untereinander mit Haken (Preisbox, Termine, Coaching-Pakete)
+// ausfall: zusätzlich „Fällt ein Kurs aus …“ (nur Kurse). ton="dunkel" für Navy-Flächen.
+import { ZUSAGEN } from '../../lib/zusagen';
+import { href } from '../../lib/pfad';
+
+interface Props {
+  variante?: 'kurs' | 'coaching';
+  form?: 'zeile' | 'liste';
+  ausfall?: boolean;
+  ton?: 'hell' | 'dunkel';
+  /** kleinere Schrift (Kurskarte) */
+  klein?: boolean;
+  class?: string;
+}
+const { variante = 'kurs', form = 'zeile', ausfall = false, ton = 'hell', klein = false, class: klasse } = Astro.props;
+const coaching = variante === 'coaching';
+const satz = coaching ? ZUSAGEN.coaching : ZUSAGEN.kurs;
+const punkte = [...satz.split(' · '), ...(ausfall && !coaching ? [ZUSAGEN.ausfall] : [])];
+const linkZiel = href(coaching ? ZUSAGEN.link.pfadCoaching : ZUSAGEN.link.pfad);
+const dunkel = ton === 'dunkel';
+// Zeile: Trenner an das vorige Wort binden, damit keine Zeile mit „·“ beginnt
+const satzZeile = satz.replaceAll(' · ', '\u00a0· ');
+---
+
+{
+  form === 'zeile' ? (
+    <p class:list={['zusage', klein ? 'text-xs leading-relaxed' : 'text-sm', dunkel ? 'text-white/85' : 'text-gedaempft', klasse]} data-zusage={variante}>
+      <svg viewBox="0 0 20 20" class:list={['mr-1 inline size-4 -translate-y-px align-middle', dunkel ? 'text-bernstein' : 'text-tief']} aria-hidden="true">
+        <path d="M10 2.5l6 2.4v4.4c0 3.9-2.6 7-6 8.2-3.4-1.2-6-4.3-6-8.2V4.9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+        <path d="M7.2 10.1l2 2 3.8-4.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      {satzZeile}
+      {ausfall && !coaching && <>. {ZUSAGEN.ausfall}</>}.{' '}
+      <a href={linkZiel} class:list={['relative z-10 underline underline-offset-2 hover:no-underline', dunkel ? 'text-white' : 'text-petrol-text']}>{ZUSAGEN.link.text}</a>
+    </p>
+  ) : (
+    <div class:list={['zusage', klasse]} data-zusage={variante}>
+      <ul class="grid gap-2">
+        {punkte.map((p) => (
+          <li class="flex gap-2.5">
+            <svg viewBox="0 0 20 20" class:list={['mt-0.5 size-[1.1rem] shrink-0', dunkel ? 'text-bernstein' : 'text-tief']} aria-hidden="true">
+              <path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class:list={['font-medium', dunkel ? 'text-white' : 'text-navy']}>{p}</span>
+          </li>
+        ))}
+      </ul>
+      <p class:list={['mt-2.5 pl-[1.75rem] text-sm', dunkel ? 'text-white/80' : 'text-gedaempft']}>
+        Alle Regeln in den{' '}
+        <a href={linkZiel} class:list={['underline underline-offset-2 hover:no-underline', dunkel ? 'text-white' : 'text-petrol-text']}>{ZUSAGEN.link.text}</a>.
+      </p>
+    </div>
+  )
+}

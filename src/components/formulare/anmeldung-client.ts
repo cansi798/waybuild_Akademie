@@ -119,6 +119,8 @@ function einrichten(form: HTMLFormElement) {
     for (const el of $$('[data-bereich="kurs"]')) bereich(el, !coaching);
     for (const el of $$('[data-bereich="coaching"]')) bereich(el, coaching);
     for (const el of $$('[data-paket-kurs]')) bereich(el, coaching && el.dataset.paketKurs === k?.id);
+    // Seitenleiste (außerhalb des Formulars): „So läuft's“ für Kurs bzw. Coaching
+    for (const el of document.querySelectorAll<HTMLElement>('[data-seiten-bereich]')) el.hidden = (el.dataset.seitenBereich === 'coaching') !== coaching;
     const n = anzahl();
     for (const el of $$('[data-person]')) bereich(el, Number(el.dataset.person) <= n);
     const zw = wert(form, 'zahlweg');

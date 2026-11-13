@@ -112,8 +112,10 @@ test.describe('Seiten (Vorschau-Build)', () => {
       await page.goto('./termine/');
       expect(await page.locator('li[data-termin]:visible').count()).toBeGreaterThan(1);
       await page.goto('./faq/');
-      await page.locator('[data-faq-gruppe="allgemein"] summary').first().click();
-      await expect(page.locator('[data-faq-gruppe="allgemein"] details').first()).toContainText('Nein');
+      // offene Liste statt Akkordeon: Antworten ohne Klick sichtbar
+      const erste = page.locator('[data-faq-gruppe="allgemein"] [data-faq-eintrag]').first();
+      await expect(erste).toBeVisible();
+      await expect(erste).toContainText('Nein');
     });
   });
 

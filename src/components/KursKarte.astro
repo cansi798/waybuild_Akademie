@@ -3,6 +3,7 @@
 // alles aus der Content Collection. Aufbau wie ein Kursticket: oben der Kurs, unten (Abriss) Termin und Preis.
 import { formatDatum, formatEuro, naechsterTermin, saeulenName, type Kurs } from '../lib/kurse';
 import { href } from '../lib/pfad';
+import Risikoumkehr from './seiten/Risikoumkehr.astro';
 
 interface Props {
   kurs: Kurs;
@@ -18,10 +19,11 @@ const istEntwurf = d.status === 'entwurf';
 const kursUrl = href(`/kurse/${kurs.id}/`);
 const umfang = istCoaching ? '60 Min. je Termin' : d.ue ? `${d.ue} UE` : undefined;
 
+// Einheitliche Hauptaktion (Conversion-Konzept A): „Termin wählen“ führt zu den Terminen der Kursseite.
 let aktion: { text: string; url: string };
 if (istEntwurf) aktion = { text: 'Details ansehen', url: kursUrl };
-else if (istCoaching) aktion = { text: 'Paket anfragen', url: href('/coaching/') };
-else if (termin) aktion = { text: 'Anmelden', url: href(`/anmeldung/?kurs=${kurs.id}&termin=${termin.id}`) };
+else if (istCoaching) aktion = { text: 'Coaching anfragen', url: href('/coaching/') };
+else if (termin) aktion = { text: 'Termin wählen', url: href(`/kurse/${kurs.id}/#termine`) };
 else aktion = { text: 'Interesse vormerken', url: href(`/interesse/?kurs=${kurs.id}`) };
 ---
 
@@ -84,6 +86,7 @@ else aktion = { text: 'Interesse vormerken', url: href(`/interesse/?kurs=${kurs.
       <span class="font-serif text-3xl font-semibold tabular-nums">{formatEuro(d.preis.betrag)}</span>
       {!istEntwurf && <span class="block text-xs text-gedaempft">Endpreis, alles inklusive</span>}
     </p>
+    {!istEntwurf && <Risikoumkehr variante={istCoaching ? 'coaching' : 'kurs'} klein class="col-span-2 -mt-1" />}
     <a href={aktion.url} class="btn btn-secondary relative z-10 col-span-2 w-full rounded-full">{aktion.text}<span class="sr-only">: {d.titel}</span></a>
   </div>
 </article>

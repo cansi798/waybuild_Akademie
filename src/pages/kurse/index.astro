@@ -12,6 +12,7 @@ import KursZeile from '../../components/uebersicht/KursZeile.astro';
 import Seitenkopf from '../../components/seiten/Seitenkopf.astro';
 import { alleKurse, kategorieSlug, kategorienVon, nachSaeuleUndKategorie, saeulenName, suchText, SAEULEN_REIHENFOLGE, SAEULEN_TEXT } from '../../lib/kurse';
 import { href } from '../../lib/pfad';
+import Risikoumkehr from '../../components/seiten/Risikoumkehr.astro';
 
 const kurse = await alleKurse();
 const gruppen = nachSaeuleUndKategorie(kurse);
@@ -26,7 +27,7 @@ const zahl = (n: number) => `${n} ${n === 1 ? 'Kurs' : 'Kurse'}`;
 ---
 
 <Basis titel="Kurse und Weiterbildungen live online" beschreibung="Alle Live-Online-Kurse der waybuild Akademie im Überblick – mit Umfang, Dauer, Endpreis und nächstem Starttermin. Abends live, in einer festen Gruppe.">
-  <Seitenkopf kicker="Kurskatalog" titel="Finde deinen Kurs" text="Alle Kurse auf einen Blick – mit Umfang, Dauer, Preis und nächstem Start. Alle Kurse finden live online statt – abends, in einer festen Gruppe.">
+  <Seitenkopf kicker="Kurskatalog" titel="Finde deinen Kurs" text="Alle Kurse auf einen Blick – mit Umfang, Dauer, Preis und nächstem Start. Alle Kurse finden live online statt – berufsbegleitend: abends oder samstags, in einer festen Gruppe.">
     <p class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
       <a href={href('/termine/')} class="link-fliess font-semibold">Alle Starttermine auf einen Blick</a>
       <a href={href('/pruefungsvorbereitung/')} class="link-fliess font-semibold">Zur IHK-Prüfungsvorbereitung</a>
@@ -181,7 +182,8 @@ const zahl = (n: number) => `${n} ${n === 1 ? 'Kurs' : 'Kurse'}`;
       </p>
     </div>
 
-    <p class="mt-14 text-sm text-gedaempft">
+    <Risikoumkehr class="mt-14" />
+    <p class="mt-3 text-sm text-gedaempft">
       Alle Preise sind Endpreise, alles inklusive. Bei IHK-Kursen ist die Prüfungsgebühr deiner IHK nicht enthalten. Dein Kurs ist nicht dabei?
       <a href={href('/kontakt/')} class="link-fliess">Schreib uns</a>.
     </p>

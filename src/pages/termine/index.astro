@@ -8,6 +8,7 @@ import Seitenkopf from '../../components/seiten/Seitenkopf.astro';
 import TerminKarte from '../../components/seiten/TerminKarte.astro';
 import { alleTermine, nachMonat, saeulenName, SAEULEN_REIHENFOLGE } from '../../lib/kurse';
 import { href } from '../../lib/pfad';
+import Risikoumkehr from '../../components/seiten/Risikoumkehr.astro';
 
 const termine = await alleTermine();
 const monate = nachMonat(termine);
@@ -21,6 +22,7 @@ const zahl = (n: number) => `${n} ${n === 1 ? 'Termin' : 'Termine'}`;
       <svg viewBox="0 0 24 24" class="size-5 shrink-0 text-tief" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2" /><path d="M12 11v6M12 7.2v.1" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" /></svg>
       <span>Die Prüfungstage sind die bundesweiten schriftlichen Termine. <strong>Verbindlich ist die Einladung deiner IHK.</strong></span>
     </p>
+    <Risikoumkehr ausfall class="mt-4 max-w-2xl" />
   </Seitenkopf>
 
   <div class="rahmen pt-8 pb-20 sm:pt-10" data-termine-seite data-termine-liste>
