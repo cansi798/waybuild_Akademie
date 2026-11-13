@@ -1,8 +1,52 @@
 ---
+// /kontakt/ (US-16): Kontaktformular → info@, sichtbare E-Mail-Adresse; Telefon folgt (Platzhalter deutlich markiert).
 import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+import KontaktFormular from '../../components/formulare/KontaktFormular.astro';
+import { AKADEMIE } from '../../lib/site';
+import { href } from '../../lib/pfad';
 ---
 
-<Basis titel="Kontakt" beschreibung="So erreichst du die waybuild Akademie.">
-  <ImAufbau titel="Kontakt" />
+<Basis titel="Kontakt" beschreibung="So erreichst du die waybuild Akademie: Kontaktformular oder E-Mail an info@waybuild-akademie.de.">
+  <section class="rahmen grid gap-10 pt-8 pb-16 sm:pt-12 sm:pb-24 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
+    <div>
+      <p class="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold ring-1 ring-base-300">
+        <span class="size-2.5 rounded-full bg-bernstein" aria-hidden="true"></span>
+        Frag uns einfach
+      </p>
+      <h1 class="trennen mt-5 text-4xl sm:text-5xl">Kontakt</h1>
+      <p class="mt-4 text-lg text-gedaempft">
+        Du weißt nicht, welcher Kurs passt, oder möchtest mehrere Azubis anmelden? Schreib uns – wir antworten in der Regel innerhalb von zwei Werktagen.
+      </p>
+
+      <div class="mt-8 grid gap-3">
+        <a href={`mailto:${AKADEMIE.mailInfo}`} class="group flex items-center gap-4 rounded-2xl bg-white p-5 ring-1 ring-base-300 hover:ring-navy">
+          <span class="grid size-11 shrink-0 place-items-center rounded-full bg-navy text-white" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="size-5"><path d="M4 6h16v12H4zM4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /></svg>
+          </span>
+          <span class="min-w-0">
+            <span class="block text-sm text-gedaempft">E-Mail</span>
+            <span class="trennen block font-semibold underline decoration-bernstein decoration-2 underline-offset-4">{AKADEMIE.mailInfo}</span>
+          </span>
+        </a>
+        <div class="flex items-center gap-4 rounded-2xl bg-white p-5 ring-1 ring-base-300" data-telefon-platzhalter>
+          <span class="grid size-11 shrink-0 place-items-center rounded-full bg-base-200 text-navy" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="size-5"><path d="M6.5 3.5l3 3-2 2.5a12 12 0 006.5 6.5l2.5-2 3 3-2 3C11 19 5 13 3.5 5.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /></svg>
+          </span>
+          <span>
+            <span class="block text-sm text-gedaempft">Telefon</span>
+            <span class="inline-flex items-center gap-2 font-semibold">
+              <mark class="rounded bg-bernstein px-1.5 text-navy">[Telefon folgt]</mark>
+              <span class="rounded-full bg-base-200 px-2 py-0.5 text-xs font-semibold">Platzhalter</span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <p class="mt-8 text-sm text-gedaempft">
+        Schon entschieden? Zu den <a class="link-fliess" href={href('/termine/')}>Terminen</a> oder direkt zur{' '}
+        <a class="link-fliess" href={href('/anmeldung/')}>Anmeldung</a>.
+      </p>
+    </div>
+    <KontaktFormular />
+  </section>
 </Basis>

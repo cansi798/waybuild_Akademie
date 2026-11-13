@@ -1,8 +1,156 @@
 ---
+// /danke/?art=anmeldung|coaching|interesse|kontakt[&vorgang=…][&demo=1] (US-12, US-14, US-15 AK4, US-16 AK2).
+// Ohne JavaScript erscheint der allgemeine Text; mit JavaScript der passende Block und die Zusammenfassung
+// (aus sessionStorage, vom Formular vor dem Absenden abgelegt – nichts davon verlässt den Browser).
 import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+import { AKADEMIE } from '../../lib/site';
+import { href } from '../../lib/pfad';
+
+interface Block {
+  art: string;
+  titel: string;
+  text: string;
+  schritte: [string, string][];
+}
+const BLOECKE: Block[] = [
+  {
+    art: 'anmeldung',
+    titel: 'Danke – deine Anmeldung ist angekommen',
+    text: 'Wir haben deine Anmeldung erhalten. Du bekommst gleich eine Eingangsbestätigung per E-Mail mit Kurs, Termin und Endpreis.',
+    schritte: [
+      ['Eingangsbestätigung', 'Kommt in den nächsten Minuten an die E-Mail-Adresse der Ansprechperson. Nichts da? Schau bitte auch im Spam-Ordner nach.'],
+      ['Rechnung', 'Du erhältst die Rechnung per E-Mail; eine Online-Zahlung ist nicht nötig. Zahlt dein Betrieb, geht sie an die Rechnungsadresse der Firma.'],
+      ['Zugang zum Live-Raum', 'Vor Kursstart bekommt jede teilnehmende Person den Zugang zum Live-Unterricht per E-Mail.'],
+    ],
+  },
+  {
+    art: 'coaching',
+    titel: 'Danke – deine Coaching-Anfrage ist angekommen',
+    text: 'Deine Anfrage ist unverbindlich. Der Vertrag kommt erst zustande, wenn wir gemeinsam die Termine abgestimmt haben.',
+    schritte: [
+      ['Eingangsbestätigung', 'Kommt in den nächsten Minuten per E-Mail.'],
+      ['Terminabstimmung', 'Wir melden uns in der Regel innerhalb von zwei Werktagen und schlagen dir Online-Termine vor.'],
+      ['Rechnung', 'Nach der Terminabstimmung kommt die Rechnung per E-Mail – eine Online-Zahlung ist nicht nötig.'],
+    ],
+  },
+  {
+    art: 'interesse',
+    titel: 'Danke – dein Interesse ist vorgemerkt',
+    text: 'Wir melden uns, sobald Termine feststehen. Die Vormerkung ist unverbindlich und kostenlos.',
+    schritte: [
+      ['Bestätigung', 'Du bekommst gleich eine kurze Bestätigung per E-Mail.'],
+      ['Benachrichtigung', 'Steht ein Termin fest, schreiben wir dir – dann entscheidest du in Ruhe.'],
+      ['Abmelden', 'Keine Nachricht mehr gewünscht? Antworte einfach auf unsere E-Mail.'],
+    ],
+  },
+  {
+    art: 'kontakt',
+    titel: 'Danke – deine Nachricht ist angekommen',
+    text: 'Wir antworten dir in der Regel innerhalb von zwei Werktagen.',
+    schritte: [
+      ['Bestätigung', 'Du bekommst gleich eine kurze Eingangsbestätigung per E-Mail.'],
+      ['Antwort', 'Wir melden uns per E-Mail – oder rufen dich an, wenn du eine Telefonnummer angegeben hast.'],
+    ],
+  },
+];
 ---
 
-<Basis noindex titel="Danke" beschreibung="Deine Nachricht ist angekommen.">
-  <ImAufbau titel="Danke" />
+<Basis noindex titel="Danke" beschreibung="Deine Nachricht an die waybuild Akademie ist angekommen.">
+  <section class="rahmen pt-10 pb-16 sm:pt-16 sm:pb-24">
+    <div class="mx-auto max-w-3xl">
+      <div class="mb-8 flex gap-3 rounded-2xl border border-bernstein bg-bernstein/15 p-4 text-sm" data-danke-demo hidden>
+        <span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-bernstein font-bold text-navy" aria-hidden="true">i</span>
+        <p><strong>Vorschau – es wurde nichts gesendet.</strong> In der Live-Version kommt jetzt die Bestätigung per E-Mail.</p>
+      </div>
+
+      <span class="grid size-16 place-items-center rounded-full bg-tief text-white" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="size-8"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </span>
+
+      <!-- Allgemein (ohne JavaScript oder unbekannte Art) -->
+      <div data-danke-art="allgemein">
+        <h1 class="mt-6 text-4xl sm:text-5xl">Danke – das hat geklappt</h1>
+        <p class="mt-4 text-lg text-gedaempft">
+          Deine Angaben sind bei uns angekommen. Du bekommst gleich eine Bestätigung per E-Mail.
+        </p>
+        <ul class="mt-8 grid gap-3">
+          <li class="rounded-2xl bg-white p-5 ring-1 ring-base-300"><strong>Anmeldung:</strong> Du erhältst die Rechnung per E-Mail; eine Online-Zahlung ist nicht nötig. Den Zugang zum Live-Raum bekommst du vor Kursstart.</li>
+          <li class="rounded-2xl bg-white p-5 ring-1 ring-base-300"><strong>Coaching-Anfrage:</strong> Wir melden uns zur Terminabstimmung – erst dann kommt der Vertrag zustande.</li>
+          <li class="rounded-2xl bg-white p-5 ring-1 ring-base-300"><strong>Interesse oder Nachricht:</strong> Wir melden uns, sobald Termine feststehen bzw. in der Regel innerhalb von zwei Werktagen.</li>
+        </ul>
+      </div>
+
+      {
+        BLOECKE.map((b) => (
+          <div data-danke-art={b.art} hidden>
+            <h1 class="mt-6 text-4xl sm:text-5xl">{b.titel}</h1>
+            <p class="mt-4 text-lg text-gedaempft">{b.text}</p>
+            <h2 class="mt-10 text-2xl">So geht es weiter</h2>
+            <ol class="mt-5 grid gap-4">
+              {b.schritte.map(([t, x], i) => (
+                <li class="flex gap-4 rounded-2xl bg-white p-5 ring-1 ring-base-300">
+                  <span class="grid size-10 shrink-0 place-items-center rounded-full bg-bernstein font-semibold text-navy" aria-hidden="true">{i + 1}</span>
+                  <span>
+                    <span class="block font-semibold">{t}</span>
+                    <span class="text-gedaempft">{x}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))
+      }
+
+      <div class="mt-10 rounded-2xl bg-base-200/70 p-5" data-danke-zusammenfassung hidden>
+        <h2 class="font-sans text-base font-semibold">Deine Angaben</h2>
+        <p class="mt-1 text-sm text-gedaempft" data-danke-vorgang hidden></p>
+        <dl class="mt-3 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-[11rem_minmax(0,1fr)]" data-danke-zeilen></dl>
+      </div>
+
+      <p class="mt-10 text-sm text-gedaempft">
+        Fragen oder etwas falsch eingetragen? Schreib uns an{' '}
+        <a class="link-fliess" href={`mailto:${AKADEMIE.mailAnmeldung}`}>{AKADEMIE.mailAnmeldung}</a>. Deine Rechte als Verbraucher findest du in der{' '}
+        <a class="link-fliess" href={href('/widerruf/')}>Widerrufsbelehrung</a>.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={href('/')} class="btn btn-secondary rounded-full px-6">Zur Startseite</a>
+        <a href={href('/kurse/')} class="btn btn-ghost rounded-full text-navy">Weitere Kurse ansehen</a>
+      </div>
+    </div>
+  </section>
 </Basis>
+
+<script>
+  import { laden } from '../../components/formulare/formular';
+
+  const p = new URLSearchParams(location.search);
+  const art = p.get('art') ?? '';
+  const block = document.querySelector<HTMLElement>(`[data-danke-art="${CSS.escape(art)}"]`);
+  if (block && art !== 'allgemein') {
+    document.querySelector<HTMLElement>('[data-danke-art="allgemein"]')!.hidden = true;
+    block.hidden = false;
+  }
+  if (p.get('demo') === '1') document.querySelector<HTMLElement>('[data-danke-demo]')!.hidden = false;
+
+  const z = laden();
+  const vorgang = p.get('vorgang') ?? z?.vorgang;
+  if (z && z.art === art && z.zeilen.length) {
+    const dl = document.querySelector('[data-danke-zeilen]')!;
+    for (const [a, b] of z.zeilen) {
+      const dt = document.createElement('dt');
+      dt.className = 'text-gedaempft';
+      dt.textContent = a;
+      const dd = document.createElement('dd');
+      dd.className = 'trennen font-semibold';
+      dd.textContent = b;
+      dl.append(dt, dd);
+    }
+    document.querySelector<HTMLElement>('[data-danke-zusammenfassung]')!.hidden = false;
+  }
+  if (vorgang && /^[ACIKW]-\d{8}-[A-Z0-9]{4}$/.test(vorgang)) {
+    const v = document.querySelector<HTMLElement>('[data-danke-vorgang]')!;
+    v.textContent = `Vorgangsnummer: ${vorgang}`;
+    v.hidden = false;
+    document.querySelector<HTMLElement>('[data-danke-zusammenfassung]')!.hidden = false;
+  }
+</script>

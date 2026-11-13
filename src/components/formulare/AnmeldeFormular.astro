@@ -1,0 +1,331 @@
+---
+// Anmeldeformular (US-10 … US-13, US-15): Kurs + Termin bzw. Coaching-Paket, 1–5 Teilnehmende, Zahlweg mit Rechnungsangaben,
+// Live-Preis (ab 3 Personen −10 %), Zusammenfassung, Bestätigungen und der Knopf „Zahlungspflichtig anmelden“ (Button-Lösung).
+// Ohne JavaScript: alle Bereiche sichtbar und klar beschriftet, normales POST an /api/anmeldung.php.
+import Feld from './Feld.astro';
+import Haken from './Haken.astro';
+import Grundlagen from './Grundlagen.astro';
+import { formularDaten } from './daten';
+import { FEHLER, MAX_PERSONEN, RABATT_AB_PERSONEN, RABATT_PROZENT, euro } from '../../lib/formular';
+import { IS_PREVIEW } from '../../lib/env';
+import { href } from '../../lib/pfad';
+
+const F = 'anmeldung';
+const daten = await formularDaten();
+const kurse = daten.kurse;
+const gruppen = [...new Set(kurse.map((k) => k.saeule))].map((s) => ({ saeule: s, kurse: kurse.filter((k) => k.saeule === s) }));
+const mitTerminen = kurse.filter((k) => k.art === 'kurs' && k.termine.length > 0);
+const coachingKurse = kurse.filter((k) => k.art === 'coaching');
+const json = JSON.stringify(daten).replace(/</g, '\\u003c');
+const personen = Array.from({ length: MAX_PERSONEN }, (_, i) => i + 1);
+const kartenKlasse = 'rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8';
+---
+
+<div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_21rem] lg:items-start lg:gap-10">
+  <form
+    id={F}
+    class="formular grid min-w-0 gap-6"
+    method="post"
+    action={href('/api/anmeldung.php')}
+    accept-charset="utf-8"
+    data-anmeldeformular
+    data-art="anmeldung"
+    data-demo={IS_PREVIEW ? 'true' : 'false'}
+    data-danke={href('/danke/')}
+    data-token={href('/api/token.php')}
+  >
+    <Grundlagen form={F} />
+
+    <!-- 1 Kurs -->
+    <section class={kartenKlasse} aria-labelledby={`${F}-s1`}>
+      <h2 id={`${F}-s1`} class="schritt-titel" data-nr="1">Kurs und Termin</h2>
+      <div class="mt-6 grid gap-5">
+        <Feld form={F} name="kurs" label="Kurs" typ="select" pflicht nativ fehler={FEHLER.kurs}>
+          <option value="">Bitte Kurs wählen</option>
+          {
+            gruppen.map((g) => (
+              <optgroup label={g.saeule}>
+                {g.kurse.map((k) => (
+                  <option value={k.id}>
+                    {k.titel}
+                    {k.status === 'entwurf' ? ' (Entwurf)' : ''}
+                  </option>
+                ))}
+              </optgroup>
+            ))
+          }
+        </Feld>
+
+        <div class="grid gap-5" data-bereich="kurs">
+          <Feld form={F} name="termin" label="Termin" typ="select" pflicht fehler={FEHLER.termin} hinweis="Alle Termine finden live online statt. Anmeldeschluss ist 7 Tage vor Kursstart.">
+            <option value="">Bitte Termin wählen</option>
+            {
+              mitTerminen.map((k) => (
+                <optgroup label={k.titel}>
+                  {k.termine.map((t) => (
+                    <option value={t.id}>
+                      {t.zeitraum} · {k.zeiten}
+                    </option>
+                  ))}
+                </optgroup>
+              ))
+            }
+          </Feld>
+          <p class="rounded-2xl bg-base-200 p-4 text-sm" data-keine-termine hidden>
+            Für diesen Kurs steht noch kein Termin fest.{' '}
+            <a class="link-fliess font-semibold" href={href('/interesse/')} data-interesse-link>Merke dein Interesse vor</a> – wir melden uns, sobald es losgeht.
+          </p>
+        </div>
+
+        {
+          coachingKurse.length > 0 && (
+            <div class="grid gap-5" data-bereich="coaching">
+              <fieldset class="grid gap-3" aria-describedby={`${F}-paket-fehler`}>
+                <legend class="mb-2 font-semibold">
+                  Coaching-Paket <span class="font-normal text-gedaempft">(nur beim Prüfungscoaching)</span>
+                  <span class="text-error" aria-hidden="true"> *</span>
+                </legend>
+                {coachingKurse.map((k) =>
+                  k.pakete.map((p) => (
+                    <label class="wahlkarte" data-paket-kurs={k.id}>
+                      <input
+                        type="radio"
+                        id={`${F}-paket-${k.id}-${p.id}`}
+                        name="paket"
+                        value={p.id}
+                        class="radio radio-secondary mt-0.5 shrink-0"
+                        data-feld
+                        data-pflicht
+                        data-fehler-pflicht={FEHLER.paket}
+                        data-betrag={p.betrag}
+                        aria-describedby={`${F}-paket-fehler`}
+                      />
+                      <span class="grid min-w-0 flex-1 gap-0.5 sm:flex sm:items-baseline sm:justify-between sm:gap-4">
+                        <span>
+                          <span class="block font-semibold">{p.name}</span>
+                          <span class="block text-sm text-gedaempft">{p.beschreibung}</span>
+                        </span>
+                        <span class="font-serif text-xl font-semibold tabular-nums">{euro(p.betrag)}</span>
+                      </span>
+                    </label>
+                  )),
+                )}
+                <p id={`${F}-paket-fehler`} class="feld-fehler" data-fehler-fuer="paket" hidden />
+              </fieldset>
+              <Feld form={F} name="anliegen" label="Wobei sollen wir dir helfen?" typ="textarea" pflicht min={10} max={2000} zeilen={4} fehler={FEHLER.anliegen} hinweis="Zum Beispiel Projektantrag, Dokumentation, Präsentation oder Fachgespräch." />
+              <div class="grid gap-5 sm:grid-cols-2">
+                <Feld form={F} name="pruefungszeitraum" label="Prüfungszeitraum" max={100} fehler={FEHLER.pruefungszeitraum} platzhalter="z. B. Sommer 2027" />
+                <Feld form={F} name="wunschzeiten" label="Wunschzeitraum und -zeiten" max={200} fehler={FEHLER.wunschzeiten} platzhalter="z. B. ab März, abends" />
+              </div>
+              <p class="rounded-2xl bg-base-200 p-4 text-sm">
+                Projektantrag, Dokumentation und alle Prüfungsleistungen erstellst du selbst. Das Coaching ist Beratung, Rückmeldung und Training – ohne Einfluss auf Prüfung oder Bewertung.
+                Die Anfrage ist unverbindlich; der Vertrag kommt erst mit der Terminabstimmung zustande.
+              </p>
+            </div>
+          )
+        }
+
+        <dl class="grid gap-x-6 gap-y-3 rounded-2xl bg-base-200/70 p-4 text-sm sm:grid-cols-3" data-kursinfo hidden>
+          <div><dt class="text-gedaempft">Umfang</dt><dd class="font-semibold" data-info-umfang></dd></div>
+          <div><dt class="text-gedaempft">Zeiten</dt><dd class="font-semibold" data-info-zeiten></dd></div>
+          <div><dt class="text-gedaempft" data-info-preis-titel>Teilnahmegebühr</dt><dd class="font-semibold" data-info-preis></dd></div>
+          <div class="sm:col-span-3" data-info-pruefung-zeile hidden><dt class="sr-only">Prüfung</dt><dd data-info-pruefung></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 2 Teilnehmende -->
+    <section class={kartenKlasse} aria-labelledby={`${F}-s2`}>
+      <h2 id={`${F}-s2`} class="schritt-titel" data-nr="2">Wer nimmt teil?</h2>
+      <div class="mt-6 grid gap-6">
+        <div data-bereich="kurs">
+          <Feld form={F} name="personen" label="Anzahl Personen" typ="select" ohneZusatz fehler={FEHLER.personenMax} hinweis={`Bis zu ${MAX_PERSONEN} Personen pro Anmeldung – ab ${RABATT_AB_PERSONEN} Personen gibt es ${RABATT_PROZENT} % Gruppenrabatt auf die gesamte Teilnahmegebühr.`} klasse="max-w-xs">
+            {personen.map((n) => <option value={String(n)}>{n === 1 ? '1 Person' : `${n} Personen`}</option>)}
+          </Feld>
+        </div>
+        {
+          personen.map((n) => (
+            <fieldset class="grid gap-4 rounded-2xl p-0 sm:grid-cols-2" data-person={n}>
+              <legend class="mb-3 flex flex-wrap items-baseline gap-x-2 font-serif text-xl">
+                Person {n}
+                {n === 1 ? (
+                  <span class="font-sans text-sm font-normal text-gedaempft">– Ansprechperson für Rückfragen</span>
+                ) : (
+                  <span class="font-sans text-sm font-normal text-gedaempft" data-ohne-js-hinweis>– nur ausfüllen, wenn diese Person teilnimmt</span>
+                )}
+              </legend>
+              <Feld form={F} name={`p${n}_vorname`} label="Vorname" pflicht nativ={n === 1} regel="vorname" max={60} fehler={n === 1 ? FEHLER.vorname : FEHLER.person(n)} autocomplete={n === 1 ? 'given-name' : 'off'} />
+              <Feld form={F} name={`p${n}_nachname`} label="Nachname" pflicht nativ={n === 1} max={60} fehler={n === 1 ? FEHLER.nachname : FEHLER.person(n)} autocomplete={n === 1 ? 'family-name' : 'off'} />
+              <Feld form={F} name={`p${n}_email`} label="E-Mail" typ="email" pflicht nativ={n === 1} regel="email" max={254} fehler={n === 1 ? FEHLER.email : FEHLER.person(n)} fehlerFormat={FEHLER.email} autocomplete={n === 1 ? 'email' : 'off'} inputmode="email" hinweis={n === 1 ? 'Hierhin schicken wir die Bestätigung.' : undefined} klasse={n === 1 ? '' : 'sm:col-span-2'} />
+              {n === 1 && <Feld form={F} name="p1_telefon" label="Telefon" typ="tel" regel="telefon" fehler={FEHLER.telefon} autocomplete="tel" inputmode="tel" hinweis="Nur für Rückfragen." />}
+            </fieldset>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- 3 Rechnung -->
+    <section class={kartenKlasse} aria-labelledby={`${F}-s3`}>
+      <h2 id={`${F}-s3`} class="schritt-titel" data-nr="3">Wer bekommt die Rechnung?</h2>
+      <fieldset class="mt-6 grid gap-3 sm:grid-cols-2" aria-describedby={`${F}-zahlweg-fehler`}>
+        <legend class="sr-only">Zahlweg</legend>
+        <label class="wahlkarte">
+          <input type="radio" id={`${F}-zahlweg-selbst`} name="zahlweg" value="selbst" required class="radio radio-secondary mt-0.5 shrink-0" data-feld data-pflicht data-fehler-pflicht={FEHLER.zahlweg} aria-describedby={`${F}-zahlweg-fehler`} />
+          <span><span class="block font-semibold">Ich zahle selbst</span><span class="block text-sm text-gedaempft">Rechnung an dich (Person 1)</span></span>
+        </label>
+        <label class="wahlkarte">
+          <input type="radio" id={`${F}-zahlweg-betrieb`} name="zahlweg" value="betrieb" required class="radio radio-secondary mt-0.5 shrink-0" data-feld data-pflicht data-fehler-pflicht={FEHLER.zahlweg} aria-describedby={`${F}-zahlweg-fehler`} />
+          <span><span class="block font-semibold">Mein Betrieb zahlt</span><span class="block text-sm text-gedaempft">Rechnung an die Firma</span></span>
+        </label>
+        <p id={`${F}-zahlweg-fehler`} class="feld-fehler sm:col-span-2" data-fehler-fuer="zahlweg" hidden></p>
+      </fieldset>
+      <noscript><p class="mt-4 text-sm text-gedaempft">Fülle nur den Bereich aus, der zu deiner Auswahl passt.</p></noscript>
+
+      <div class="mt-6 grid gap-5 sm:grid-cols-6" data-zahlweg-bereich="selbst">
+        <h3 class="font-serif text-xl sm:col-span-6">Deine Rechnungsanschrift <span class="font-sans text-sm font-normal text-gedaempft">(bei „Ich zahle selbst“)</span></h3>
+        <p class="text-sm text-gedaempft sm:col-span-6">Die Rechnung lautet auf <span class="font-semibold text-navy" data-rechnung-name>Person 1</span> und kommt per E-Mail.</p>
+        <Feld form={F} name="strasse" label="Straße und Hausnummer" pflicht min={3} max={100} fehler={FEHLER.strasse} autocomplete="street-address" klasse="sm:col-span-6" />
+        <Feld form={F} name="plz" label="PLZ" pflicht regel="plz" fehler={FEHLER.plz} autocomplete="postal-code" inputmode="numeric" max={10} klasse="sm:col-span-2" />
+        <Feld form={F} name="ort" label="Ort" pflicht min={2} max={60} fehler={FEHLER.ort} autocomplete="address-level2" klasse="sm:col-span-4" />
+      </div>
+
+      <div class="mt-6 grid gap-5 sm:grid-cols-6" data-zahlweg-bereich="betrieb">
+        <h3 class="font-serif text-xl sm:col-span-6">Rechnung an deinen Betrieb <span class="font-sans text-sm font-normal text-gedaempft">(bei „Mein Betrieb zahlt“)</span></h3>
+        <Feld form={F} name="firma" label="Firmenname" pflicht min={2} max={120} fehler={FEHLER.firma} autocomplete="organization" klasse="sm:col-span-6" />
+        <Feld form={F} name="ansprechperson" label="Ansprechperson für die Rechnung" pflicht min={2} max={100} fehler={FEHLER.ansprechperson} klasse="sm:col-span-6" />
+        <Feld form={F} name="firma_strasse" label="Straße und Hausnummer" pflicht min={3} max={100} fehler={FEHLER.strasse} klasse="sm:col-span-6" />
+        <Feld form={F} name="firma_plz" label="PLZ" pflicht regel="plz" max={10} fehler={FEHLER.plz} inputmode="numeric" klasse="sm:col-span-2" />
+        <Feld form={F} name="firma_ort" label="Ort" pflicht min={2} max={60} fehler={FEHLER.ort} klasse="sm:col-span-4" />
+        <Feld form={F} name="rechnung_email" label="E-Mail für die Rechnung" typ="email" pflicht regel="email" max={254} fehler={FEHLER.rechnungEmail} inputmode="email" klasse="sm:col-span-6" />
+        <Feld form={F} name="bestellnummer" label="Bestellnummer oder Kostenstelle" max={50} fehler={FEHLER.bestellnummer} klasse="sm:col-span-6" />
+      </div>
+    </section>
+
+    <!-- 4 Nachricht -->
+    <section class={kartenKlasse} aria-labelledby={`${F}-s4`}>
+      <h2 id={`${F}-s4`} class="schritt-titel" data-nr="4">Noch etwas?</h2>
+      <div class="mt-6">
+        <Feld form={F} name="nachricht" label="Nachricht an uns" typ="textarea" max={2000} zeilen={4} fehler={FEHLER.nachricht} hinweis="Zum Beispiel Fragen zur Ratenzahlung oder zu deinen Vorkenntnissen." />
+      </div>
+    </section>
+
+    <!-- 5 Prüfen und absenden -->
+    <section class="rounded-[1.5rem] bg-white p-5 ring-2 ring-navy sm:p-8" aria-labelledby={`${F}-s5`}>
+      <h2 id={`${F}-s5`} class="schritt-titel" data-nr="5">Prüfen und absenden</h2>
+
+      <div class="mt-6 rounded-2xl bg-base-200/70 p-5" data-zusammenfassung-box hidden>
+        <h3 class="font-sans text-base font-semibold">Deine Angaben im Überblick</h3>
+        <dl class="mt-3 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-[11rem_minmax(0,1fr)]" data-zusammenfassung></dl>
+      </div>
+      <noscript>
+        <p class="mt-6 rounded-2xl bg-base-200/70 p-5 text-sm">
+          Prüf bitte alle Angaben oben, bevor du absendest. Teilnahmegebühr je Person: siehe Kursseite. Ab {RABATT_AB_PERSONEN} Personen ziehen wir {RABATT_PROZENT} %
+          Gruppenrabatt ab. Den Endpreis findest du in deiner Bestätigung per E-Mail.
+        </p>
+        <ul class="mt-3 grid gap-1 text-sm">
+          {kurse.filter((k) => k.art === 'kurs' && k.termine.length).map((k) => <li>{k.titel}: {euro(k.preis)} je Person, alles inklusive</li>)}
+        </ul>
+      </noscript>
+
+      <div class="mt-6 grid gap-4">
+        <div data-bereich="kurs">
+          <Haken form={F} name="agb" pflicht nativ fehler={FEHLER.agb}>
+            Ich habe die <a class="link-fliess" href={href('/teilnahmebedingungen/')} target="_blank">Teilnahmebedingungen</a> gelesen und akzeptiere sie.
+          </Haken>
+        </div>
+        <div data-bereich="kurs">
+          <Haken form={F} name="alter" pflicht nativ fehler={FEHLER.alter}>
+            Ich bin volljährig – oder meine Erziehungsberechtigten sind mit der Anmeldung einverstanden, oder mein Ausbildungsbetrieb meldet mich an.
+          </Haken>
+        </div>
+        <Haken form={F} name="datenschutz" pflicht nativ fehler={FEHLER.datenschutz}>
+          Ich habe die <a class="link-fliess" href={href('/datenschutz/')} target="_blank">Datenschutzerklärung</a> und die{' '}
+          <a class="link-fliess" href={href('/widerruf/')} target="_blank">Widerrufsbelehrung</a> gelesen.
+        </Haken>
+        <div data-bereich="kurs">
+          <Haken form={F} name="wertersatz" fehler={FEHLER.wertersatz} hinweis="Pflicht, wenn dein Kurs innerhalb von 14 Tagen nach heute startet – sonst freiwillig.">
+            Ich verlange ausdrücklich, dass ihr vor Ablauf der Widerrufsfrist mit der Leistung beginnt. Mir ist bekannt, dass ich bei Widerruf Wertersatz für bereits erbrachte Leistungen schulde.
+          </Haken>
+        </div>
+        <p class="rounded-2xl bg-base-200/70 p-4 text-sm" data-bereich="kurs">
+          <strong>Dein Widerrufsrecht:</strong> Als Verbraucher kannst du den Vertrag innerhalb von 14 Tagen ohne Angabe von Gründen widerrufen –
+          alles dazu in der <a class="link-fliess" href={href('/widerruf/')} target="_blank">Widerrufsbelehrung</a>. Widerrufen kannst du auch online über die Seite{' '}
+          <a class="link-fliess" href={href('/widerruf/')}>Vertrag widerrufen</a>.
+        </p>
+      </div>
+
+      <div class="mt-8 grid gap-4 border-t border-base-300 pt-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
+        <div class="min-w-0" data-preis aria-live="polite">
+          <dl class="grid gap-1 text-sm" data-preis-zeilen hidden>
+            <div class="flex justify-between gap-4"><dt data-preis-einzel-titel>Teilnahmegebühr je Person</dt><dd class="tabular-nums" data-preis-einzel></dd></div>
+            <div class="flex justify-between gap-4" data-preis-personen-zeile><dt data-preis-personen-titel>× 1 Person</dt><dd class="tabular-nums" data-preis-zwischen></dd></div>
+            <div class="flex justify-between gap-4 font-semibold text-tief" data-preis-rabatt-zeile hidden><dt>− {RABATT_PROZENT} % Gruppenrabatt</dt><dd class="tabular-nums" data-preis-rabatt></dd></div>
+          </dl>
+          <p class="mt-2 flex flex-wrap items-baseline justify-between gap-x-4">
+            <span class="font-semibold">Endpreis</span>
+            <span><span class="font-serif text-3xl font-semibold tabular-nums" data-preis-gesamt>–</span> <span class="text-sm text-gedaempft">alles inklusive</span></span>
+          </p>
+          <p class="mt-1 text-sm font-semibold text-tief" data-raten hidden>Ratenzahlung möglich – sprechen wir nach der Anmeldung ab.</p>
+        </div>
+        <button type="submit" class="btn btn-accent btn-lg w-full rounded-full px-8 sm:w-auto" data-absenden>Zahlungspflichtig anmelden</button>
+      </div>
+      <p class="mt-4 text-sm text-gedaempft" data-knopf-hinweis>Die Rechnung kommt per E-Mail – eine Online-Zahlung ist nicht nötig. Die IHK-Prüfungsgebühr ist nicht enthalten.</p>
+    </section>
+  </form>
+
+  <!-- Seitenleiste: deine Auswahl (mit JavaScript live) -->
+  <aside class="hidden lg:sticky lg:top-24 lg:block" aria-label="Deine Auswahl">
+    <div class="rounded-[1.5rem] bg-navy p-6 text-white">
+      <p class="text-sm font-semibold text-white/70">Deine Auswahl</p>
+      <p class="trennen mt-2 font-serif text-2xl leading-tight" data-auswahl-kurs>Noch kein Kurs gewählt</p>
+      <p class="mt-2 text-white/85" data-auswahl-termin></p>
+      <p class="mt-5 border-t border-white/20 pt-4">
+        <span class="block text-sm text-white/70">Endpreis, alles inklusive</span>
+        <span class="font-serif text-3xl font-semibold tabular-nums" data-auswahl-preis>–</span>
+      </p>
+    </div>
+    <ol class="mt-6 grid gap-4 text-sm">
+      {
+        [
+          ['Anmelden', 'Formular ausfüllen und absenden – du bekommst sofort eine Eingangsbestätigung per E-Mail.'],
+          ['Rechnung', 'Die Rechnung kommt per E-Mail an dich oder deinen Betrieb.'],
+          ['Live-Raum', 'Vor Kursstart schicken wir jeder Person den Zugang zum Live-Unterricht.'],
+        ].map(([t, x], i) => (
+          <li class="flex gap-3">
+            <span class="grid size-8 shrink-0 place-items-center rounded-full bg-bernstein font-semibold text-navy" aria-hidden="true">{i + 1}</span>
+            <span><span class="block font-semibold">{t}</span><span class="text-gedaempft">{x}</span></span>
+          </li>
+        ))
+      }
+    </ol>
+  </aside>
+</div>
+
+<script type="application/json" id="anmeldung-daten" set:html={json} />
+
+<style is:global>
+  .schritt-titel {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-size: 1.65rem;
+  }
+  .schritt-titel::before {
+    content: attr(data-nr);
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    background: var(--color-navy);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  import './anmeldung-client';
+</script>

@@ -1,0 +1,172 @@
+---
+// Elektronische Widerrufsfunktion nach § 356a BGB – eingebunden auf /widerruf/ (per import.meta.glob, ohne Props).
+// Schritt 1: Name, E-Mail für die Bestätigung, Vertrag (Kurs aus der Liste und/oder Vorgangsnummer, optional Anmeldedatum),
+// optional Nachricht ans Team – kein Grund nötig – Knopf „Vertrag jetzt widerrufen“. Schritt 2: Angaben prüfen, Knopf „Widerruf bestätigen“.
+// Danach Meldung mit Datum und Uhrzeit des Eingangs; der PHP-Endpunkt schickt die Eingangsbestätigung per E-Mail.
+// Ohne JavaScript übernimmt /api/widerruf.php den zweiten Schritt als eigene Seite.
+import Feld from './Feld.astro';
+import Grundlagen from './Grundlagen.astro';
+import { FEHLER } from '../../lib/formular';
+import { formularDaten } from './daten';
+import { IS_PREVIEW } from '../../lib/env';
+import { href } from '../../lib/pfad';
+
+const F = 'widerruf';
+const kurse = (await formularDaten()).kurse;
+---
+
+<section class="widerruf-formular" aria-labelledby={`${F}-titel`} data-widerruf-formular>
+  <div class="rounded-[1.5rem] bg-white p-5 ring-2 ring-navy sm:p-8">
+    <h2 id={`${F}-titel`} class="text-3xl">Vertrag online widerrufen</h2>
+    <p class="mt-3 text-gedaempft">
+      Du möchtest deine Anmeldung widerrufen? Das geht hier ohne Login und ohne Angabe von Gründen. Nach dem Absenden bekommst du sofort eine
+      Eingangsbestätigung per E-Mail.
+    </p>
+
+    <form
+      id={F}
+      class="formular mt-6 grid gap-6"
+      method="post"
+      action={href('/api/widerruf.php')}
+      accept-charset="utf-8"
+      data-art="widerruf"
+      data-demo={IS_PREVIEW ? 'true' : 'false'}
+      data-danke={href('/danke/')}
+      data-token={href('/api/token.php')}
+    >
+      <Grundlagen form={F} />
+      <input type="hidden" name="schritt" value="1" data-schritt />
+
+      <div class="grid gap-5" data-widerruf-schritt="1">
+        <div class="grid gap-5 sm:grid-cols-2">
+          <Feld form={F} name="name" label="Dein Name" pflicht nativ min={2} max={100} fehler={FEHLER.name} autocomplete="name" />
+          <Feld form={F} name="email" label="E-Mail für die Bestätigung" typ="email" pflicht nativ regel="email" max={254} fehler={FEHLER.email} autocomplete="email" inputmode="email" />
+        </div>
+        <fieldset class="grid gap-5 rounded-2xl bg-base-200/60 p-4 sm:p-5">
+          <legend class="sr-only">Welchen Vertrag möchtest du widerrufen?</legend>
+          <p class="font-semibold">Welchen Vertrag möchtest du widerrufen? <span class="font-normal text-gedaempft">Kurs oder Vorgangsnummer genügt.</span></p>
+          <Feld form={F} name="kurs" label="Kurs" typ="select" fehler={FEHLER.vertrag} ohneZusatz>
+            <option value="">Bitte Kurs wählen</option>
+            {kurse.map((k) => <option value={k.id}>{k.titel}{k.status === 'entwurf' ? ' (Entwurf)' : ''}</option>)}
+          </Feld>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <Feld form={F} name="anmeldedatum" label="Anmeldedatum" typ="date" fehler={FEHLER.anmeldedatum} />
+            <Feld form={F} name="vorgang" label="Vorgangsnummer" regel="vorgang" max={15} fehler={FEHLER.vorgang} platzhalter="z. B. A-20261113-7F3K" hinweis="Steht in deiner Bestätigungs-E-Mail." />
+          </div>
+        </fieldset>
+        <Feld form={F} name="nachricht" label="Nachricht an unser Team" typ="textarea" max={2000} zeilen={3} fehler={FEHLER.nachricht} hinweis="Ein Grund ist nicht nötig." />
+        <div>
+          <button type="submit" class="btn btn-secondary btn-lg rounded-full px-8" data-widerruf-weiter>Vertrag jetzt widerrufen</button>
+        </div>
+      </div>
+
+      <div class="grid gap-5" data-widerruf-schritt="2" hidden>
+        <div class="rounded-2xl bg-base-200/70 p-5">
+          <h3 class="font-sans text-base font-semibold">Bitte prüfe deine Angaben</h3>
+          <dl class="mt-3 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-[12rem_minmax(0,1fr)]" data-widerruf-zusammenfassung></dl>
+        </div>
+        <p>Erst mit „Widerruf bestätigen“ schickst du deinen Widerruf ab.</p>
+        <div class="flex flex-wrap gap-3">
+          <button type="submit" class="btn btn-error btn-lg rounded-full px-8 text-white" data-absenden>Widerruf bestätigen</button>
+          <button type="button" class="btn btn-ghost btn-lg rounded-full text-navy" data-widerruf-zurueck>Angaben ändern</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="mt-6 rounded-2xl border-2 border-tief bg-white p-5" role="status" tabindex="-1" data-widerruf-erfolg hidden>
+      <h3 class="text-2xl">Dein Widerruf ist eingegangen</h3>
+      <p class="mt-2">Wir haben deinen Widerruf am <strong data-widerruf-zeit></strong> erhalten.</p>
+      <p class="mt-2" data-widerruf-bestaetigung-text>
+        Eine Eingangsbestätigung mit dem Inhalt deines Widerrufs schicken wir an <strong data-widerruf-mail></strong>. Wir prüfen deinen Widerruf und melden uns bei dir.
+      </p>
+      <p class="mt-2 text-sm text-gedaempft" data-widerruf-vorgang hidden></p>
+      {IS_PREVIEW && <p class="mt-3 text-sm font-semibold">Vorschau – es wurde nichts gesendet.</p>}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { formularEinrichten, wert } from './formular';
+
+  for (const sektion of document.querySelectorAll<HTMLElement>('[data-widerruf-formular]')) {
+    const form = sektion.querySelector<HTMLFormElement>('form')!;
+    const schritt = form.querySelector<HTMLInputElement>('[data-schritt]')!;
+    const s1 = form.querySelector<HTMLElement>('[data-widerruf-schritt="1"]')!;
+    const s2 = form.querySelector<HTMLElement>('[data-widerruf-schritt="2"]')!;
+    const erfolg = sektion.querySelector<HTMLElement>('[data-widerruf-erfolg]')!;
+
+    const zeigeSchritt = (n: 1 | 2) => {
+      schritt.value = String(n);
+      s1.hidden = n === 2;
+      s2.hidden = n === 1;
+      if (n === 2) {
+        const dl = form.querySelector('[data-widerruf-zusammenfassung]')!;
+        const kursSel = form.elements.namedItem('kurs') as HTMLSelectElement;
+        const zeilen: [string, string][] = [
+          ['Name', wert(form, 'name')],
+          ['E-Mail für die Bestätigung', wert(form, 'email')],
+        ];
+        if (kursSel.value) zeilen.push(['Kurs', kursSel.selectedOptions[0]?.textContent?.trim() ?? '']);
+        const datum = wert(form, 'anmeldedatum');
+        if (datum) zeilen.push(['Anmeldedatum', datum.split('-').reverse().join('.')]);
+        if (wert(form, 'vorgang')) zeilen.push(['Vorgangsnummer', wert(form, 'vorgang').toUpperCase()]);
+        if (wert(form, 'nachricht')) zeilen.push(['Nachricht', wert(form, 'nachricht')]);
+        dl.replaceChildren(
+          ...zeilen.flatMap(([a, b]) => {
+            const dt = document.createElement('dt');
+            dt.className = 'text-gedaempft';
+            dt.textContent = a;
+            const dd = document.createElement('dd');
+            dd.className = 'trennen font-semibold whitespace-pre-wrap';
+            dd.textContent = b;
+            return [dt, dd];
+          }),
+        );
+        s2.querySelector<HTMLButtonElement>('[data-absenden]')!.focus();
+      } else {
+        form.querySelector<HTMLInputElement>('[name="name"]')!.focus();
+      }
+    };
+
+    form.querySelector('[data-widerruf-zurueck]')!.addEventListener('click', () => zeigeSchritt(1));
+
+    formularEinrichten(form, {
+      art: () => 'widerruf',
+      // Vertragsangabe: Kurs aus der Liste oder Vorgangsnummer; Datum nicht in der Zukunft
+      zusatz: () => {
+        const f: Record<string, string> = {};
+        if (!wert(form, 'kurs') && !wert(form, 'vorgang')) f.kurs = form.querySelector<HTMLElement>('[name="kurs"]')!.dataset.fehlerPflicht!;
+        const d = wert(form, 'anmeldedatum');
+        if (d && (!/^\d{4}-\d{2}-\d{2}$/.test(d) || d > new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Berlin' }))) {
+          f.anmeldedatum = form.querySelector<HTMLElement>('[name="anmeldedatum"]')!.dataset.fehlerPflicht!;
+        }
+        return f;
+      },
+      vorSenden: () => {
+        if (schritt.value !== '2') {
+          zeigeSchritt(2);
+          return false;
+        }
+        return true;
+      },
+      erfolg: (antwort) => {
+        form.hidden = true;
+        sektion.querySelector('[data-widerruf-zeit]')!.textContent = String(antwort.eingang ?? '');
+        sektion.querySelector('[data-widerruf-mail]')!.textContent = wert(form, 'email');
+        if (antwort.bestaetigung === false) {
+          // Limit je Adresse erreicht: Bestätigung kommt gesondert vom Team – Seite als Nachweis aufbewahren
+          sektion.querySelector('[data-widerruf-bestaetigung-text]')!.textContent =
+            `Die Eingangsbestätigung per E-Mail an ${wert(form, 'email')} schicken wir dir gesondert. Bitte bewahre diese Meldung (oder einen Screenshot) mit Datum, Uhrzeit und Vorgangsnummer auf. Wir prüfen deinen Widerruf und melden uns bei dir.`;
+        }
+        const v = sektion.querySelector<HTMLElement>('[data-widerruf-vorgang]')!;
+        if (typeof antwort.vorgang === 'string') {
+          v.textContent = `Vorgangsnummer: ${antwort.vorgang}`;
+          v.hidden = false;
+        }
+        erfolg.hidden = false;
+        erfolg.focus();
+        return true;
+      },
+    });
+  }
+</script>
