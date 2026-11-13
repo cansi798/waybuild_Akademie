@@ -1,0 +1,92 @@
+name: Vorschau (GitHub Pages) + Live-Paket (ALL-INKL)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # Täglich neu bauen, damit abgelaufene Termine automatisch verschwinden (US-25) – 04:17 UTC
+  schedule:
+    - cron: '17 4 * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      SITE: https://cansi798.github.io
+      BASE: /waybuild_Akademie
+      # GitHub Pages ist nur die VORSCHAU: noindex, robots.txt sperrt alles, Vorschau-Banner, Entwürfe sichtbar
+      PUBLIC_PREVIEW: 'true'
+      ASTRO_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  # Playwright-Tests gegen die Vorschau (gleiches Image wie lokal, scripts/test.sh)
+  test:
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/playwright:v1.48.2-jammy
+    env:
+      SITE: https://cansi798.github.io
+      BASE: /waybuild_Akademie
+      PUBLIC_PREVIEW: 'true'
+      ASTRO_TELEMETRY_DISABLED: '1'
+      HOME: /root
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright test
+
+  # Live-Version für ALL-INKL (waybuild-akademie.de) – zum Herunterladen unter Actions → Artifacts
+  live-build:
+    runs-on: ubuntu-latest
+    env:
+      SITE: https://waybuild-akademie.de
+      BASE: /
+      ASTRO_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: akademie-allinkl-upload
+          path: dist
+          include-hidden-files: true
+          retention-days: 30
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
