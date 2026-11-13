@@ -68,7 +68,7 @@ faq:
   - frage: Kommt Statistik in der schriftlichen Prüfung vor?
     antwort: Statistische Verfahren und Vorhersagemodelle gehören vor allem zur Projektarbeit. In den schriftlichen Bereichen stehen Prozesse, Datenqualität und Datenschutz im Mittelpunkt. Grundbegriffe wie Mittelwert und Ausreißer wiederholen wir trotzdem.
   - frage: Hilft mir der Kurs bei meiner Projektarbeit?
-    antwort: Die Projektarbeit zur Datenanalyse zählt 50 % und ist nicht Teil des Kurses. Für Projektbeschreibung, Dokumentation und Präsentation gibt es unser individuelles Prüfungscoaching.
+    antwort: Dafür ist der Kurs nicht gedacht. Deine Projektarbeit mit Datenanalyse, Dokumentation und Präsentation macht die Hälfte der Note aus – sie begleiten wir im individuellen Prüfungscoaching.
 reihenfolge: 22
 ---
 

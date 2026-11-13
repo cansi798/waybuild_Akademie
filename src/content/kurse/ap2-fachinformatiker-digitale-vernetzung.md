@@ -66,7 +66,7 @@ faq:
   - frage: Muss ich mich mit Steuerungstechnik auskennen?
     antwort: Grundbegriffe aus der Ausbildung reichen. Im Kurs geht es um das Zusammenspiel der Systeme im Netzwerk, nicht um das Programmieren einer bestimmten Steuerung.
   - frage: Hilft mir der Kurs bei meiner Projektarbeit?
-    antwort: Die Projektarbeit zählt 50 % und ist nicht Teil des Kurses. Für Projektbeschreibung, Dokumentation und Präsentation gibt es unser individuelles Prüfungscoaching.
+    antwort: Nein, der Kurs übt die schriftlichen Bereiche. Die Projektarbeit zu einem vernetzten System zählt 50 % der Note – bei Planung, Dokumentation und Präsentation unterstützt dich unser individuelles Prüfungscoaching.
 reihenfolge: 23
 ---
 

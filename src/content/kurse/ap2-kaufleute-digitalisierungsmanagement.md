@@ -46,16 +46,16 @@ termine:
   - id: ap2-kdm-2027-sommer
     start: 2027-03-02
     ende: 2027-04-22
-    pruefung: 2027-04-27
-    pruefungHinweis: Schriftliche Prüfung Teil 2 im bundesweiten Zeitraum 27./28.04.2027 – den genauen Tag nennt dir die Einladung deiner IHK.
+    pruefung: 2027-04-28
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-02-23
     ausfall:
       - 2027-04-01
   - id: ap2-kdm-2027-winter
     start: 2027-09-28
     ende: 2027-11-16
-    pruefung: 2027-11-23
-    pruefungHinweis: Schriftliche Prüfung Teil 2 im bundesweiten Zeitraum 23./24.11.2027 – den genauen Tag nennt dir die Einladung deiner IHK.
+    pruefung: 2027-11-24
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-09-21
 faq:
   - frage: Muss ich programmieren können?
