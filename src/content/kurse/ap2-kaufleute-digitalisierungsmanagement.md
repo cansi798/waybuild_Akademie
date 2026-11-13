@@ -2,69 +2,73 @@
 saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: AP2 Kaufleute für Digitalisierungsmanagement
-untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung
-kurzbeschreibung: 'Bereite dich gezielt auf Teil 2 vor: Du übst Prozessdigitalisierung, Datenauswertung, Projekte, Recht und WiSo an prüfungsnahen Aufgaben – live-online am Abend.'
+untertitel: Kaufmann/Kauffrau für Digitalisierungsmanagement – schriftliche Prüfung Teil 2
+kurzbeschreibung: Übe „Entwicklung eines digitalen Geschäftsmodells“, „Kaufmännische Unterstützungsprozesse“ und WiSo an prüfungsnahen Fällen – live online an 15 Abenden.
 status: entwurf
 art: kurs
 ue: 45
-dauer: ca. 7,5 Wochen
+dauer: ca. 7,5 Wochen (15 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
   betrag: 369
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende zur Kauffrau oder zum Kaufmann für Digitalisierungsmanagement kurz vor Teil 2 der Abschlussprüfung
-- Umschülerinnen und Umschüler zur Kauffrau oder zum Kaufmann für Digitalisierungsmanagement
-- Alle, die Prüfungsaufgaben unter Anleitung üben wollen
+  - Auszubildende Kaufleute für Digitalisierungsmanagement vor der AP2
+  - Umschülerinnen und Umschüler in diesem Beruf
+  - Prüflinge, die einen schriftlichen Prüfungsbereich der AP2 wiederholen
 voraussetzungen:
-- Du bist in der Ausbildung oder Umschulung zur Kauffrau oder zum Kaufmann für Digitalisierungsmanagement und stehst vor Teil 2
-- Teil 1 der Abschlussprüfung hast du abgelegt oder legst ihn vorher ab
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Kaufmännisches Grundwissen und Erfahrung mit Geschäftsprozessen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Taschenrechner
+  - Computer mit stabiler Internetverbindung und aktuellem Browser, Headset oder Kopfhörer mit Mikrofon
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Geschäftsprozesse digitalisieren
-  punkte:
-  - Abläufe analysieren und modellieren
-  - Digitale Lösungen auswählen und bewerten
-  - Wirtschaftlichkeit und Kennzahlen
-- titel: Daten nutzen
-  punkte:
-  - Daten erheben, aufbereiten und auswerten
-  - Datenbanken und Abfragen in Grundzügen
-  - Ergebnisse verständlich darstellen
-- titel: Projekte, Verträge und Recht
-  punkte:
-  - Projekte planen und steuern
-  - Beschaffung und Verträge rund um IT
-  - Datenschutz und IT-Sicherheit im Unternehmen
-- titel: Wirtschafts- und Sozialkunde
-  punkte:
-  - Ausbildungsvertrag, Rechte und Pflichten in der Ausbildung
-  - Arbeitsvertrag, Kündigung, Arbeitsschutz und Jugendarbeitsschutz
-  - Sozialversicherung und Entgeltabrechnung in Grundzügen
-  - Betriebsrat, Tarifvertrag und Mitbestimmung
-  - Rechtsformen von Unternehmen und wirtschaftliche Zusammenhänge
-- titel: Projekt und Fachgespräch
-  punkte:
-  - Aufbau einer Projektdokumentation
-  - Präsentation vorbereiten und üben
-  - Typische Fragen im Fachgespräch
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
-termine: []
+  - titel: Entwicklung eines digitalen Geschäftsmodells (90 Minuten)
+    punkte:
+      - Prozesse nach Digitalisierungsgrad, Kosten und Wertschöpfung analysieren
+      - Den Kundennutzen einer digitalen Lösung kalkulieren
+      - Digitale Geschäftsmodelle unterscheiden – Plattform, Abo, Freemium und weitere
+      - Vertragsarten und Lizenzmodelle bedarfsgerecht auswählen
+      - Datenschutz und IT-Sicherheit im Geschäftsmodell anwenden
+  - titel: Kaufmännische Unterstützungsprozesse (90 Minuten)
+    punkte:
+      - Kosten- und Leistungsrechnung und Kennzahlen für Entscheidungen nutzen
+      - Vertrags- und Finanzierungsarten unterscheiden und Kunden beraten
+      - Beschaffung von IT-Produkten und Dienstleistungen planen und durchführen
+      - Leistungserbringung kontrollieren und dokumentieren
+  - titel: Wirtschafts- und Sozialkunde (60 Minuten)
+    punkte:
+      - Ausbildungs- und Arbeitsvertrag, Kündigung, Arbeitsschutz
+      - Sozialversicherung, Tarifvertrag und Mitbestimmung im Betrieb
+      - Rechtsformen und wirtschaftliche Zusammenhänge
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
+termine:
+  - id: ap2-kdm-2027-sommer
+    start: 2027-03-02
+    ende: 2027-04-22
+    pruefung: 2027-04-27
+    pruefungHinweis: Schriftliche Prüfung Teil 2 im bundesweiten Zeitraum 27./28.04.2027 – den genauen Tag nennt dir die Einladung deiner IHK.
+    anmeldeschluss: 2027-02-23
+    ausfall:
+      - 2027-04-01
+  - id: ap2-kdm-2027-winter
+    start: 2027-09-28
+    ende: 2027-11-16
+    pruefung: 2027-11-23
+    pruefungHinweis: Schriftliche Prüfung Teil 2 im bundesweiten Zeitraum 23./24.11.2027 – den genauen Tag nennt dir die Einladung deiner IHK.
+    anmeldeschluss: 2027-09-21
 faq:
-- frage: Warum gibt es noch keinen Termin?
-  antwort: Wir legen die Termine nach Nachfrage fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
-- frage: Kann mein Betrieb die Rechnung bekommen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per Mail an die Firma.
-reihenfolge: 44
+  - frage: Muss ich programmieren können?
+    antwort: Nein. Im Beruf geht es um Prozesse, Daten und Geschäftsmodelle. Technisches Verständnis hilft, Programmieraufgaben kommen in den schriftlichen Bereichen von Teil 2 aber nicht vor.
+  - frage: Worin unterscheidet sich der Kurs von IT-System-Management?
+    antwort: Beide Berufe schreiben „Kaufmännische Unterstützungsprozesse“. Der zweite Fachbereich ist hier das digitale Geschäftsmodell, bei IT-System-Management das Einführen einer IT-Systemlösung beim Kunden.
+  - frage: Hilft mir der Kurs bei meiner Projektarbeit?
+    antwort: Die Projektarbeit „Digitale Entwicklung von Prozessen“ zählt 50 % und ist nicht Teil des Kurses. Dafür gibt es unser individuelles Prüfungscoaching.
+reihenfolge: 26
 ---
 
-Der Kurs bereitet dich auf die schriftliche Prüfung Teil 2 für Kaufleute für Digitalisierungsmanagement vor. Du digitalisierst Geschäftsprozesse, wertest Daten aus, planst Projekte und wiederholst Wirtschafts- und Sozialkunde an Aufgaben im Stil der Prüfung.
+In Teil 2 schreibst du „Entwicklung eines digitalen Geschäftsmodells“ und „Kaufmännische Unterstützungsprozesse“ mit je 90 Minuten sowie Wirtschafts- und Sozialkunde mit 60 Minuten. Jeder Bereich zählt 10 % der Gesamtnote, die Projektarbeit „Digitale Entwicklung von Prozessen“ 50 %.
 
-Der Kurs läuft live-online im virtuellen Klassenraum, zweimal pro Woche am Abend. Jeder Termin hat einen Schwerpunkt: kurze Erklärung, dann Aufgaben im Stil früherer Prüfungen, die wir gemeinsam lösen und besprechen. Fragen klärst du direkt live. Die Unterlagen bekommst du zum Download.
+Typisch ist ein Unternehmen, das einen Ablauf digitalisieren will – etwa die Terminbuchung eines Handwerksbetriebs oder den Vertrieb über eine Plattform. Du analysierst den Ist-Zustand, rechnest Kosten und Nutzen durch, wählst ein passendes Lizenz- oder Abomodell und prüfst, was der Datenschutz verlangt. Stolperstein ist oft die Rechnung: Ohne sauberen Ansatz für Kosten und Nutzen bleibt die beste Idee in der Prüfung ohne Punkte.
 
-Er passt zu dir, wenn du in der Ausbildung oder Umschulung in diesem Beruf bist und Teil 2 vor dir hast. Die Anmeldung zur Prüfung läuft über deinen Betrieb bzw. deinen Bildungsträger bei deiner IHK.
+Wir bearbeiten solche Fälle gemeinsam live und üben, Entscheidungen kurz und begründet aufzuschreiben. Fragen klärst du direkt per Mikrofon oder Chat.

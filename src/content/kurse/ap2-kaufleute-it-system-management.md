@@ -2,69 +2,75 @@
 saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: AP2 Kaufleute für IT-System-Management
-untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung
-kurzbeschreibung: 'Bereite dich gezielt auf Teil 2 vor: Du übst Kundenberatung, Angebote und Kalkulation, IT-Lösungen und WiSo an prüfungsnahen Aufgaben – live-online am Abend.'
+untertitel: Kaufmann/Kauffrau für IT-System-Management – schriftliche Prüfung Teil 2
+kurzbeschreibung: Übe „Einführen einer IT-Systemlösung“, „Kaufmännische Unterstützungsprozesse“ und WiSo an prüfungsnahen Kundenfällen – live online an 15 Abenden.
 status: entwurf
 art: kurs
 ue: 45
-dauer: ca. 7,5 Wochen
+dauer: ca. 7,5 Wochen (15 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
   betrag: 369
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende zur Kauffrau oder zum Kaufmann für IT-System-Management kurz vor Teil 2 der Abschlussprüfung
-- Umschülerinnen und Umschüler zur Kauffrau oder zum Kaufmann für IT-System-Management
-- Alle, die Prüfungsaufgaben unter Anleitung üben wollen
+  - Auszubildende Kaufleute für IT-System-Management vor der AP2
+  - Umschülerinnen und Umschüler in diesem Beruf
+  - Prüflinge, die einen schriftlichen Prüfungsbereich der AP2 wiederholen
 voraussetzungen:
-- Du bist in der Ausbildung oder Umschulung zur Kauffrau oder zum Kaufmann für IT-System-Management und stehst vor Teil 2
-- Teil 1 der Abschlussprüfung hast du abgelegt oder legst ihn vorher ab
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Kaufmännisches und technisches Grundwissen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Taschenrechner
+  - Computer mit stabiler Internetverbindung und aktuellem Browser, Headset oder Kopfhörer mit Mikrofon
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Kunden beraten und Angebote erstellen
-  punkte:
-  - Kundenbedarf ermitteln und IT-Lösungen vorschlagen
-  - Kalkulation, Angebotsvergleich und Preisgestaltung
-  - Verträge und Leistungsbeschreibungen
-- titel: IT-Lösungen einführen und betreuen
-  punkte:
-  - Hardware, Software und Dienste auswählen
-  - Einführung planen und Kunden einweisen
-  - Service, Support und Störungsmanagement
-- titel: Kaufmännische Steuerung
-  punkte:
-  - Kosten- und Leistungsrechnung
-  - Kennzahlen und Controlling in Grundzügen
-  - Datenschutz und IT-Sicherheit im Kundenprojekt
-- titel: Wirtschafts- und Sozialkunde
-  punkte:
-  - Ausbildungsvertrag, Rechte und Pflichten in der Ausbildung
-  - Arbeitsvertrag, Kündigung, Arbeitsschutz und Jugendarbeitsschutz
-  - Sozialversicherung und Entgeltabrechnung in Grundzügen
-  - Betriebsrat, Tarifvertrag und Mitbestimmung
-  - Rechtsformen von Unternehmen und wirtschaftliche Zusammenhänge
-- titel: Projekt und Fachgespräch
-  punkte:
-  - Aufbau einer Projektdokumentation
-  - Präsentation vorbereiten und üben
-  - Typische Fragen im Fachgespräch
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
-termine: []
+  - titel: Einführen einer IT-Systemlösung (90 Minuten)
+    punkte:
+      - Hardware, Software und Dienstleistungen beschaffen, Produktinformationen einholen
+      - Angebote quantitativ und mit einer Nutzwertanalyse vergleichen
+      - Vertragsarten und Lizenzmodelle unterscheiden und passend auswählen
+      - Kundeninformationen für den Vertrieb aufbereiten
+      - Eine Kalkulation für die Kundenlösung erstellen
+      - Datenschutz und IT-Sicherheit in der Kundenlösung berücksichtigen
+  - titel: Kaufmännische Unterstützungsprozesse (90 Minuten)
+    punkte:
+      - Kosten- und Leistungsrechnung, Deckungsbeitrag und Kennzahlen für Entscheidungen nutzen
+      - Vertrags- und Finanzierungsarten unterscheiden, etwa Kauf, Miete oder Leasing
+      - Kundinnen und Kunden beraten und Verträge vorbereiten
+      - Marketing- und Vertriebsinstrumente zielgruppengerecht einsetzen
+      - Leistungserbringung kontrollieren, Störungen und Mängel bearbeiten
+  - titel: Wirtschafts- und Sozialkunde (60 Minuten)
+    punkte:
+      - Ausbildungs- und Arbeitsvertrag, Kündigung, Arbeitsschutz
+      - Sozialversicherung, Tarifvertrag und Mitbestimmung im Betrieb
+      - Rechtsformen und wirtschaftliche Zusammenhänge
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
+termine:
+  - id: ap2-kitsm-2027-sommer
+    start: 2027-03-02
+    ende: 2027-04-22
+    pruefung: 2027-04-27
+    pruefungHinweis: Schriftliche Prüfung Teil 2 im bundesweiten Zeitraum 27./28.04.2027 – den genauen Tag nennt dir die Einladung deiner IHK.
+    anmeldeschluss: 2027-02-23
+    ausfall:
+      - 2027-04-01
+  - id: ap2-kitsm-2027-winter
+    start: 2027-09-28
+    ende: 2027-11-16
+    pruefung: 2027-11-23
+    pruefungHinweis: Schriftliche Prüfung Teil 2 im bundesweiten Zeitraum 23./24.11.2027 – den genauen Tag nennt dir die Einladung deiner IHK.
+    anmeldeschluss: 2027-09-21
 faq:
-- frage: Warum gibt es noch keinen Termin?
-  antwort: Wir legen die Termine nach Nachfrage fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
-- frage: Kann mein Betrieb die Rechnung bekommen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per Mail an die Firma.
-reihenfolge: 45
+  - frage: Ist der Kurs eher technisch oder kaufmännisch?
+    antwort: Beides, so wie die Prüfung. Die Aufgaben beginnen meist beim Kundenbedarf, gehen über die passende IT-Lösung und enden bei Vertrag, Kalkulation und Rechnung.
+  - frage: Worin unterscheidet sich der Kurs von Digitalisierungsmanagement?
+    antwort: Beide Berufe schreiben „Kaufmännische Unterstützungsprozesse“, der zweite Fachbereich ist verschieden. Hier geht es um das Einführen einer IT-Systemlösung beim Kunden, im Digitalisierungsmanagement um digitale Geschäftsmodelle.
+  - frage: Hilft mir der Kurs bei meiner Projektarbeit?
+    antwort: Die Projektarbeit „Abwicklung eines Kundenauftrages“ zählt 50 % und ist nicht Teil des Kurses. Dafür gibt es unser individuelles Prüfungscoaching.
+reihenfolge: 25
 ---
 
-Der Kurs bereitet dich auf die schriftliche Prüfung Teil 2 für Kaufleute für IT-System-Management vor. Du berätst Kunden, kalkulierst Angebote, planst die Einführung von IT-Lösungen und wiederholst Wirtschafts- und Sozialkunde an Aufgaben im Stil der Prüfung.
+In Teil 2 schreibst du „Einführen einer IT-Systemlösung“ und „Kaufmännische Unterstützungsprozesse“ mit je 90 Minuten sowie Wirtschafts- und Sozialkunde mit 60 Minuten. Jeder Bereich zählt 10 % der Gesamtnote, die Projektarbeit zur Abwicklung eines Kundenauftrages 50 %.
 
-Der Kurs läuft live-online im virtuellen Klassenraum, zweimal pro Woche am Abend. Jeder Termin hat einen Schwerpunkt: kurze Erklärung, dann Aufgaben im Stil früherer Prüfungen, die wir gemeinsam lösen und besprechen. Fragen klärst du direkt live. Die Unterlagen bekommst du zum Download.
+Die Prüfungsfälle erzählen meist eine Geschichte: Ein Kunde braucht neue Arbeitsplätze oder eine Cloud-Lösung. Du vergleichst Angebote, wählst ein Lizenzmodell, kalkulierst den Preis und entscheidest, ob Kauf, Miete oder Leasing günstiger ist. Häufige Punktverluste entstehen bei Rechenwegen ohne Einheiten und bei Vertragsfragen, in denen Kauf-, Dienst- und Werkvertrag verwechselt werden.
 
-Er passt zu dir, wenn du in der Ausbildung oder Umschulung in diesem Beruf bist und Teil 2 vor dir hast. Die Anmeldung zur Prüfung läuft über deinen Betrieb bzw. deinen Bildungsträger bei deiner IHK.
+Wir lösen solche Fälle gemeinsam live und besprechen, wie du Entscheidungen kurz und nachvollziehbar begründest. Fragen klärst du direkt am Abend per Mikrofon oder Chat.

@@ -2,92 +2,78 @@
 saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: AP2 Fachinformatiker/in Anwendungsentwicklung
-untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung
-kurzbeschreibung: 'Geh vorbereitet in deine AP2: Du übst Softwareplanung, Algorithmen, Datenbanken und WiSo an prüfungsnahen Aufgaben – live-online an 15 Abenden, mit Tipps für Projekt und Fachgespräch.'
+untertitel: Fachinformatiker/in Fachrichtung Anwendungsentwicklung – schriftliche Prüfung Teil 2
+kurzbeschreibung: Trainiere „Planen eines Softwareproduktes“, „Entwicklung und Umsetzung von Algorithmen“ sowie WiSo an prüfungsnahen Aufgaben – live online an 15 Abenden.
 status: entwurf
 art: kurs
 ue: 45
-dauer: ca. 7,5 Wochen
+dauer: ca. 7,5 Wochen (15 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
   betrag: 369
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende zum/zur Fachinformatiker/in Anwendungsentwicklung kurz vor Teil 2 der Abschlussprüfung
-- Umschülerinnen und Umschüler zum/zur Fachinformatiker/in Anwendungsentwicklung
-- Alle, die Prüfungsaufgaben unter Anleitung üben wollen
+  - Auszubildende Fachinformatiker/innen Anwendungsentwicklung vor der AP2
+  - Umschülerinnen und Umschüler der Fachrichtung Anwendungsentwicklung
+  - Prüflinge, die einen schriftlichen Prüfungsbereich der AP2 wiederholen
 voraussetzungen:
-- Du bist in der Ausbildung oder Umschulung zum/zur Fachinformatiker/in Anwendungsentwicklung und stehst vor Teil 2
-- Teil 1 der Abschlussprüfung hast du abgelegt oder legst ihn vorher ab
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Programmiergrundlagen aus der Ausbildung (Schleifen, Bedingungen, Klassen, einfache SQL-Abfragen) – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Computer mit stabiler Internetverbindung und aktuellem Browser
+  - Headset oder Kopfhörer mit Mikrofon, Kamera optional
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Ein Softwareprodukt planen
-  punkte:
-  - Anforderungen aufnehmen, Lasten- und Pflichtenheft
-  - 'UML: Anwendungsfall-, Klassen-, Aktivitäts- und Sequenzdiagramm'
-  - 'Vorgehensmodelle: klassisch und agil'
-  - Wirtschaftlichkeit und Make-or-Buy-Entscheidungen
-- titel: Algorithmen entwickeln und umsetzen
-  punkte:
-  - Pseudocode und Struktogramme lesen und schreiben
-  - Suchen, Sortieren, Rekursion
-  - 'Datenstrukturen: Arrays, Listen, Objekte'
-  - Fremden Code nachvollziehen und Fehler finden
-- titel: Datenbanken und Schnittstellen
-  punkte:
-  - Datenmodell, ER-Diagramm und Normalisierung
-  - SQL-Abfragen mit JOIN, GROUP BY und Unterabfragen
-  - Datenformate und Schnittstellen (JSON, XML, REST)
-- titel: Qualität und Sicherheit
-  punkte:
-  - Testverfahren und Testfälle
-  - Objektorientierung und Entwurfsmuster in Grundzügen
-  - Datenschutz und IT-Sicherheit in der Entwicklung
-- titel: Wirtschafts- und Sozialkunde
-  punkte:
-  - Ausbildungsvertrag, Rechte und Pflichten in der Ausbildung
-  - Arbeitsvertrag, Kündigung, Arbeitsschutz und Jugendarbeitsschutz
-  - Sozialversicherung und Entgeltabrechnung in Grundzügen
-  - Betriebsrat, Tarifvertrag und Mitbestimmung
-  - Rechtsformen von Unternehmen und wirtschaftliche Zusammenhänge
-- titel: Projekt und Fachgespräch
-  punkte:
-  - Aufbau einer Projektdokumentation
-  - Präsentation vorbereiten und üben
-  - Typische Fragen im Fachgespräch
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - titel: Planen eines Softwareproduktes (90 Minuten)
+    punkte:
+      - Anforderungen aufnehmen und in eine Programmspezifikation übersetzen
+      - "UML: Anwendungsfall-, Klassen-, Sequenz- und Aktivitätsdiagramm zu einem Fallbeispiel"
+      - Bedienoberflächen funktionsgerecht und ergonomisch entwerfen
+      - Entwicklungsumgebung, Bibliotheken und Vorgehensmodell begründet auswählen
+      - Qualitätssicherung planen – Testarten, Testkonzept, Code-Review
+  - titel: Entwicklung und Umsetzung von Algorithmen (90 Minuten)
+    punkte:
+      - Fremden Programmcode lesen, Ausgaben bestimmen und Fehler finden
+      - Algorithmen als Pseudocode, Struktogramm oder Aktivitätsdiagramm darstellen
+      - Suchen, Sortieren, Rekursion und typische Datenstrukturen
+      - Testfälle und Testdaten ableiten, Grenzwerte prüfen
+      - SQL-Abfragen mit JOIN, GROUP BY und Unterabfragen sowie Datenänderungen
+  - titel: Wirtschafts- und Sozialkunde (60 Minuten)
+    punkte:
+      - Ausbildungs- und Arbeitsvertrag, Kündigung, Arbeitsschutz
+      - Sozialversicherung, Tarifvertrag und Mitbestimmung im Betrieb
+      - Rechtsformen und wirtschaftliche Zusammenhänge im IT-Unternehmen
+  - titel: Prüfungstechnik
+    punkte:
+      - Arbeitsanweisungen wie „nennen“, „erläutern“ und „begründen“ richtig umsetzen
+      - Bearbeitungszeit je Aufgabe planen und Teilpunkte sichern
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
-- id: ap2-fiae-2027-sommer
-  start: 2027-03-02
-  ende: 2027-04-20
-  pruefung: 2027-04-27
-  pruefungHinweis: Schriftliche Prüfung Teil 2 voraussichtlich am 27./28.04.2027 – verbindlich ist die Einladung deiner IHK
-  anmeldeschluss: 2027-02-23
-  ausfall: []
-- id: ap2-fiae-2027-winter
-  start: 2027-09-28
-  ende: 2027-11-16
-  pruefung: 2027-11-23
-  pruefungHinweis: Schriftliche Prüfung Teil 2 voraussichtlich am 23./24.11.2027 – verbindlich ist die Einladung deiner IHK
-  anmeldeschluss: 2027-09-21
-  ausfall: []
+  - id: ap2-fiae-2027-sommer
+    start: 2027-03-02
+    ende: 2027-04-22
+    pruefung: 2027-04-28
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-02-23
+    ausfall:
+      - 2027-04-01
+  - id: ap2-fiae-2027-winter
+    start: 2027-09-28
+    ende: 2027-11-16
+    pruefung: 2027-11-24
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-09-21
 faq:
-- frage: Mit welcher Programmiersprache arbeitet ihr?
-  antwort: Die schriftliche Prüfung ist nicht an eine Sprache gebunden. Wir arbeiten vor allem mit Pseudocode, Struktogrammen und SQL und zeigen Beispiele in gängigen Sprachen.
-- frage: Hilft mir der Kurs bei meiner Projektarbeit?
-  antwort: Wir zeigen dir Aufbau und typische Stolperstellen von Projektdokumentation und Präsentation. Für die Arbeit an deinem eigenen Projekt kannst du zusätzlich ein Prüfungscoaching buchen.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
-- frage: Kann mein Betrieb die Rechnung bekommen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per Mail an die Firma.
-reihenfolge: 20
+  - frage: Mit welcher Programmiersprache arbeitet ihr?
+    antwort: Vor allem mit Pseudocode und SQL. Beispiele zeigen wir zusätzlich in verbreiteten Sprachen wie Java, C# oder Python. In der Prüfung zählt die richtige Logik – welche Schreibweise erlaubt ist, steht in der jeweiligen Aufgabe.
+  - frage: Hilft mir der Kurs bei meiner Projektarbeit?
+    antwort: Die Projektarbeit mit Dokumentation, Präsentation und Fachgespräch zählt 50 % und ist nicht Teil des Kurses. Dafür gibt es unser individuelles Prüfungscoaching.
+  - frage: Ich habe Teil 1 noch nicht geschrieben. Kann ich trotzdem teilnehmen?
+    antwort: Ja. Der Kurs setzt auf den Stoff der gesamten Ausbildung auf und behandelt nur die Prüfungsbereiche von Teil 2. Für Teil 1 gibt es unseren AP1-Kurs.
+reihenfolge: 21
 ---
 
-In diesem Kurs gehst du die Themen der schriftlichen Prüfung Teil 2 für Anwendungsentwicklung Schritt für Schritt durch. Du planst Softwareprodukte, entwickelst Algorithmen, schreibst SQL-Abfragen und wiederholst Wirtschafts- und Sozialkunde – immer an Aufgaben, wie sie in der Prüfung vorkommen.
+In Teil 2 schreibst du drei Prüfungsbereiche: „Planen eines Softwareproduktes“ und „Entwicklung und Umsetzung von Algorithmen“ mit je 90 Minuten sowie Wirtschafts- und Sozialkunde mit 60 Minuten. Jeder dieser Bereiche zählt 10 % deiner Gesamtnote. Die Hälfte der Note entfällt auf die betriebliche Projektarbeit, 20 % bringst du aus Teil 1 mit.
 
-Der Kurs läuft live-online im virtuellen Klassenraum, zweimal pro Woche am Abend. Jeder Termin hat einen Schwerpunkt: kurze Erklärung, dann Aufgaben im Stil früherer Prüfungen, die wir gemeinsam lösen und besprechen. Fragen klärst du direkt live. Die Unterlagen bekommst du zum Download.
+Im Kurs trainieren wir die schriftlichen Bereiche. Ein häufiger Stolperstein ist Programmcode auf Papier: Welche Ausgabe erzeugt diese Schleife, wo steckt der Fehler, welcher Testfall deckt die Grenze ab? Ebenso oft gefragt sind ein UML-Diagramm zu einem Kundenszenario und SQL-Abfragen über mehrere Tabellen. Solche Aufgaben lösen wir gemeinsam live und besprechen, wie du deinen Lösungsweg nachvollziehbar aufschreibst.
 
-Der Kurs passt zu dir, wenn du in der Ausbildung oder Umschulung zum Fachinformatiker oder zur Fachinformatikerin für Anwendungsentwicklung bist und Teil 2 vor dir hast. Die Anmeldung zur Prüfung läuft über deinen Betrieb bzw. deinen Bildungsträger bei deiner IHK.
+Fragen klärst du direkt am Abend per Mikrofon oder Chat. So übst du nicht nur einzelne Lösungen, sondern erkennst die Muster, nach denen die Aufgaben aufgebaut sind.

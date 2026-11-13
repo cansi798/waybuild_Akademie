@@ -2,55 +2,73 @@
 saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Industriekaufleute – Teil 1
-untertitel: Vorbereitung auf Teil 1 der IHK-Abschlussprüfung (Ausbildungsordnung 2024)
-kurzbeschreibung: 'Bereite dich gezielt auf Teil 1 vor: Du übst Beschaffung, Leistungserstellung, Auftragsabwicklung und Rechnungswesen an prüfungsnahen Aufgaben – live-online am Abend.'
+untertitel: Leistungserstellung, Logistik, Beschaffung und Buchhaltung (Ausbildungsordnung 2024)
+kurzbeschreibung: Übe den Prüfungsbereich von Teil 1 – Leistungserstellung, Logistik, Beschaffung und Buchhaltung – an Fällen im Stil der Prüfung. Live online an acht Abenden.
 status: entwurf
 art: kurs
 ue: 24
-dauer: ca. 4 Wochen
+dauer: ca. 4 Wochen (8 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
-  betrag: 279
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  betrag: 249
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende zur Industriekauffrau oder zum Industriekaufmann vor der Prüfung
-- Umschülerinnen und Umschüler zur Industriekauffrau oder zum Industriekaufmann
-- Alle, die Prüfungsaufgaben unter Anleitung üben wollen
+  - Auszubildende Industriekaufleute (Beginn ab August 2024) vor Teil 1
+  - Umschülerinnen und Umschüler nach der neuen Ausbildungsordnung
+  - Auszubildende mit verkürzter Ausbildung, die Teil 1 bald schreiben
 voraussetzungen:
-- Du bist in der Ausbildung oder Umschulung zur Industriekauffrau oder zum Industriekaufmann
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Wissen aus der ersten Ausbildungshälfte – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Taschenrechner
+  - Computer mit stabiler Internetverbindung und aktuellem Browser, Headset oder Kopfhörer mit Mikrofon
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Beschaffung und Lager
-  punkte:
-  - Bedarf ermitteln, Angebote vergleichen, bestellen
-  - Wareneingang und Lagerhaltung
-  - Kennzahlen der Lagerwirtschaft
-- titel: Leistungserstellung
-  punkte:
-  - Produktionsplanung in Grundzügen
-  - Qualität und Nachhaltigkeit im Betrieb
-- titel: Auftragsabwicklung und Rechnungswesen
-  punkte:
-  - Vom Angebot bis zur Rechnung
-  - Buchführung in Grundzügen
-  - Kalkulation einfacher Aufträge
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
-termine: []
+  - titel: Leistungserstellung
+    punkte:
+      - Die Wertschöpfungskette planen und koordinieren
+      - Fertigungsverfahren, Kapazitäten und Termine abstimmen
+      - Entscheidungen ökonomisch, ökologisch und sozial bewerten
+  - titel: Beschaffung und Logistik
+    punkte:
+      - Bedarf ermitteln, Angebote vergleichen, Bezugspreise kalkulieren
+      - Bestellmengen und Bestellzeitpunkte bestimmen
+      - Lagerkennzahlen wie Umschlagshäufigkeit und Lagerdauer berechnen und deuten
+      - Nachhaltigkeit in Beschaffung und Lager
+  - titel: Buchhaltung
+    punkte:
+      - Belege prüfen und Buchungssätze bilden
+      - Grundsätze ordnungsmäßiger Buchführung und Bewertung
+      - Abweichungen erkennen und Maßnahmen ableiten
+  - titel: Information, Kommunikation und Digitalisierung
+    punkte:
+      - Mit internen und externen Partnern zusammenarbeiten
+      - Datenschutz, Datensicherheit sowie Nutzen und Risiken digitaler Geschäftsprozesse
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
+termine:
+  - id: industriekaufleute-t1-2027-fruehjahr
+    start: 2027-01-26
+    ende: 2027-02-18
+    pruefung: 2027-02-24
+    pruefungHinweis: Schriftliche Prüfung Teil 1 am Mittwoch, 24.02.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-01-19
+  - id: industriekaufleute-t1-2027-herbst
+    start: 2027-08-31
+    ende: 2027-09-23
+    pruefung: 2027-09-29
+    pruefungHinweis: Schriftliche Prüfung Teil 1 am Mittwoch, 29.09.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-08-24
 faq:
-- frage: Warum gibt es noch keinen Termin?
-  antwort: Wir legen die Termine nach Nachfrage fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
-- frage: Kann mein Betrieb die Rechnung bekommen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per Mail an die Firma.
-reihenfolge: 51
+  - frage: Wie ist Teil 1 aufgebaut?
+    antwort: Teil 1 besteht aus einem schriftlichen Prüfungsbereich mit 90 Minuten. Etwa 60 % der Aufgaben sind offen formuliert, der Rest sind gebundene Aufgaben. Das Ergebnis zählt 25 % deiner Abschlussnote.
+  - frage: Für wen ist der Kurs nicht passend?
+    antwort: Wenn deine Ausbildung vor August 2024 begonnen hat, wirst du meist noch nach der Ordnung von 2002 geprüft – ohne Teil 1. Dafür gibt es unseren eigenen Kurs. Im Zweifel fragst du deine IHK.
+  - frage: Brauche ich Vorkenntnisse in Buchführung?
+    antwort: Die Grundlagen aus Berufsschule und Betrieb reichen. Wenn dir Buchungssätze noch schwerfallen, ist unser Vorkurs „Rechnungswesen kompakt“ eine gute Ergänzung.
+reihenfolge: 52
 ---
 
-Der Kurs bereitet dich auf Teil 1 der Abschlussprüfung vor. Du wiederholst Beschaffung und Lager, Leistungserstellung, Auftragsabwicklung und Grundlagen des Rechnungswesens an Aufgaben im Stil der Prüfung.
+Seit der neuen Ausbildungsordnung von 2024 wird die Abschlussprüfung der Industriekaufleute gestreckt. Teil 1 findet im zweiten Ausbildungsjahr statt und zählt bereits 25 % deiner Abschlussnote. Geprüft wird ein Bereich mit 90 Minuten: „Leistungserstellung, Logistik, Beschaffung und Buchhaltung“.
 
-Der Kurs läuft live-online im virtuellen Klassenraum, zweimal pro Woche am Abend. Jeder Termin hat einen Schwerpunkt: kurze Erklärung, dann Aufgaben im Stil früherer Prüfungen, die wir gemeinsam lösen und besprechen. Fragen klärst du direkt live. Die Unterlagen bekommst du zum Download.
+Die Aufgaben folgen meist einem Unternehmen durch die Wertschöpfungskette: Material wird knapp, du vergleichst Lieferanten, berechnest den Bezugspreis, prüfst die Lagerkennzahlen und buchst die Eingangsrechnung. Ein typischer Stolperstein sind Rechenaufgaben, bei denen ein Zwischenergebnis fehlt – dann gehen auch die Folgepunkte verloren. Wir üben deshalb, Rechenwege vollständig und übersichtlich aufzuschreiben.
 
-Er passt zu dir, wenn du in der Ausbildung oder Umschulung zur Industriekauffrau oder zum Industriekaufmann bist und Teil 1 vor dir hast. Die Anmeldung zur Prüfung läuft über deinen Betrieb bzw. deinen Bildungsträger bei deiner IHK.
+An jedem Abend steht ein Abschnitt der Wertschöpfungskette im Mittelpunkt – von der Beschaffung bis zur Buchung. Fragen stellst du direkt live per Mikrofon oder Chat.

@@ -3,79 +3,75 @@ saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute für Groß- und Außenhandelsmanagement – Teil 2 Außenhandel
 untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung, Fachrichtung Außenhandel
-kurzbeschreibung: 'Geh vorbereitet in Teil 2: Du übst Außenhandelsgeschäfte, Incoterms, Zahlung, Zoll, kaufmännische Steuerung und WiSo an prüfungsnahen Aufgaben – live-online an 10 Abenden.'
+kurzbeschreibung: Übe Außenhandelsgeschäfte mit Incoterms, Zahlungssicherung und Fremdsprache, die kaufmännische Steuerung und WiSo an Fällen im Stil der Prüfung. Live online an zehn Abenden.
 status: entwurf
 art: kurs
 ue: 30
-dauer: ca. 5 Wochen
+dauer: ca. 5 Wochen (10 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
-  betrag: 329
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  betrag: 299
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende in der Fachrichtung Außenhandel vor Teil 2
-- Umschülerinnen und Umschüler mit Schwerpunkt Außenhandel
-- Alle, die Import- und Exportfälle prüfungssicher lösen wollen
+  - Auszubildende in der Fachrichtung Außenhandel vor Teil 2
+  - Umschülerinnen und Umschüler mit Schwerpunkt Außenhandel
+  - Prüflinge, die einen schriftlichen Bereich von Teil 2 wiederholen
 voraussetzungen:
-- Du wirst in der Fachrichtung Außenhandel ausgebildet oder umgeschult
-- Teil 1 der Abschlussprüfung hast du abgelegt oder legst ihn vorher ab
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Fachwissen aus der Ausbildung und Teil 1 abgelegt – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Englisch auf Schulniveau
+  - Computer mit stabiler Internetverbindung und aktuellem Browser, Headset oder Kopfhörer mit Mikrofon
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Außenhandelsgeschäfte organisieren
-  punkte:
-  - Incoterms und Gefahrübergang
-  - Zahlungsbedingungen, Akkreditiv und Dokumenteninkasso
-  - Zoll, Ursprung und Exportkontrolle in Grundzügen
-  - Transport, Versicherung und Währungsrisiken
-- titel: Kaufmännische Steuerung und Kontrolle
-  punkte:
-  - Kalkulation im Import und Export
-  - Buchführung und Kosten- und Leistungsrechnung
-  - Kennzahlen und Controlling
-- titel: Wirtschafts- und Sozialkunde
-  punkte:
-  - Ausbildungsvertrag, Rechte und Pflichten in der Ausbildung
-  - Arbeitsvertrag, Kündigung, Arbeitsschutz und Jugendarbeitsschutz
-  - Sozialversicherung und Entgeltabrechnung in Grundzügen
-  - Betriebsrat, Tarifvertrag und Mitbestimmung
-  - Rechtsformen von Unternehmen und wirtschaftliche Zusammenhänge
-- titel: Fachgespräch
-  punkte:
-  - Ablauf des mündlichen Prüfungsteils
-  - Einen Außenhandelsfall verständlich darstellen
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - titel: Prozessorientierte Organisation von Außenhandelsgeschäften (120 Minuten)
+    punkte:
+      - Absatzmärkte im Ausland identifizieren und Risiken einschätzen
+      - Incoterms, Gefahr- und Kostenübergang
+      - Zahlungsbedingungen, Akkreditiv, Dokumenteninkasso und Kreditsicherung
+      - Logistik von der Beschaffung bis zur Distribution, Zoll und Transportversicherung
+      - Geschäftskorrespondenz mit ausländischen Partnern in einer Fremdsprache
+  - titel: Kaufmännische Steuerung von Geschäftsprozessen (60 Minuten)
+    punkte:
+      - Geschäftsvorgänge buchen und Zahlungen bearbeiten, auch in Fremdwährung
+      - Kosten- und Leistungsrechnung anwenden, Kennzahlen ermitteln und deuten
+      - Daten- und Warenfluss eines Auftrags im Warenwirtschaftssystem nachvollziehen
+  - titel: Wirtschafts- und Sozialkunde (60 Minuten)
+    punkte:
+      - Ausbildungs- und Arbeitsvertrag, Kündigung, Arbeitsschutz
+      - Sozialversicherung, Tarifvertrag und Mitbestimmung im Betrieb
+      - Rechtsformen und wirtschaftliche Zusammenhänge
+  - titel: Fallbezogenes Fachgespräch
+    punkte:
+      - Ablauf und die drei möglichen Gebiete im Überblick
+      - Einen Außenhandelsfall verständlich darstellen und begründen
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
-- id: aussenhandel-t2-2027-sommer
-  start: 2027-03-18
-  ende: 2027-04-20
-  pruefung: 2027-04-27
-  pruefungHinweis: Schriftliche Prüfung Teil 2 voraussichtlich am 27./28.04.2027 – verbindlich ist die Einladung deiner IHK
-  anmeldeschluss: 2027-03-11
-  ausfall: []
-- id: aussenhandel-t2-2027-winter
-  start: 2027-10-14
-  ende: 2027-11-16
-  pruefung: 2027-11-23
-  pruefungHinweis: Schriftliche Prüfung Teil 2 voraussichtlich am 23./24.11.2027 – verbindlich ist die Einladung deiner IHK
-  anmeldeschluss: 2027-10-07
-  ausfall: []
+  - id: aussenhandel-t2-2027-sommer
+    start: 2027-03-16
+    ende: 2027-04-20
+    pruefung: 2027-04-27
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am 27. und 28.04.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-03-09
+    ausfall:
+      - 2027-04-01
+  - id: aussenhandel-t2-2027-winter
+    start: 2027-10-14
+    ende: 2027-11-16
+    pruefung: 2027-11-23
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am 23. und 24.11.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-10-07
 faq:
-- frage: Wie unterscheidet sich dieser Kurs vom Kurs für den Großhandel?
-  antwort: Wirtschafts- und Sozialkunde sowie kaufmännische Steuerung sind gleich. Der Fachteil dreht sich hier um Außenhandelsgeschäfte – Incoterms, Zahlungssicherung, Zoll und Transport.
-- frage: Muss ich gut Englisch können?
-  antwort: Für den Kurs nicht. Wir verwenden die üblichen Fachbegriffe aus dem Außenhandel und erklären sie, wo nötig.
-- frage: Kann der Kurs über meinen Betrieb laufen?
-  antwort: Ja. Bei der Anmeldung wählst du „Mein Betrieb zahlt“, die Rechnung geht dann an die Firma.
-- frage: Ist der Kurs eine Prüfung der IHK?
-  antwort: Nein, er ist ein unabhängiges Vorbereitungsangebot. Die Prüfung selbst legst du bei deiner zuständigen IHK ab.
-reihenfolge: 62
+  - frage: Muss ich gut Englisch können?
+    antwort: Die Ausbildungsordnung verlangt, Außenhandelsgeschäfte auch in einer Fremdsprache abzuwickeln. Wir üben typische englische Geschäftsbriefe, Anfragen und Fachbegriffe. Schulenglisch als Basis reicht für den Kurs.
+  - frage: Wie unterscheidet sich der Kurs vom Kurs für den Großhandel?
+    antwort: Kaufmännische Steuerung und WiSo sind gleich. Der Fachteil dreht sich hier um Außenhandelsgeschäfte – Incoterms, Zahlungssicherung, Zoll, Transport und Kommunikation mit ausländischen Partnern.
+  - frage: Worüber wird im Fachgespräch gesprochen?
+    antwort: Über eine praxisbezogene Fachaufgabe aus einem von drei Gebieten – Internationaler Handel und Auslandsmärkte, Warensortiment und Marketing oder Einkauf und Beschaffungslogistik. Das Gespräch dauert 30 Minuten.
+reihenfolge: 61
 ---
 
-Der Kurs bereitet dich auf Teil 2 der Abschlussprüfung in der Fachrichtung Außenhandel vor. Du übst die Abwicklung von Außenhandelsgeschäften, die kaufmännische Steuerung und Kontrolle sowie Wirtschafts- und Sozialkunde.
+In Teil 2 der Fachrichtung Außenhandel schreibst du „Prozessorientierte Organisation von Außenhandelsgeschäften“ mit 120 Minuten, „Kaufmännische Steuerung von Geschäftsprozessen“ mit 60 Minuten und Wirtschafts- und Sozialkunde mit 60 Minuten. Der Fachbereich zählt 30 % deiner Abschlussnote, das anschließende Fachgespräch 20 %.
 
-Wir arbeiten an typischen Prüfungsfällen: Lieferbedingungen auswählen, Zahlungen absichern, Zoll und Transport planen, Import- und Exportpreise kalkulieren. Jeder Abend verbindet eine kurze Erklärung mit Aufgaben, die ihr gemeinsam live löst.
+Typische Fälle: Ein Kunde in Übersee bestellt, du wählst die passende Incoterm-Klausel, sicherst die Zahlung über ein Akkreditiv ab und kalkulierst den Exportpreis. Oder eine Importlieferung kommt beschädigt an und du musst klären, wer das Risiko trägt. Ein häufiger Stolperstein ist die Verwechslung von Kosten- und Gefahrübergang bei den Incoterms. Außerdem verlangt die Prüfung, Teile der Kommunikation in einer Fremdsprache zu führen.
 
-Am Ende bekommst du Hinweise für das Fachgespräch. Die Unterlagen stehen zum Download bereit.
-
-Für die Fachrichtung Großhandel nutze bitte unseren Kurs „Kaufleute für Groß- und Außenhandelsmanagement – Teil 2 Großhandel“.
+Wir lösen solche Fälle gemeinsam live, jeder Abend verbindet eine kurze Erklärung mit Aufgaben. Für die Fachrichtung Großhandel nutze bitte unseren Kurs „Kaufleute für Groß- und Außenhandelsmanagement – Teil 2 Großhandel“.
