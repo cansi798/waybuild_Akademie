@@ -49,7 +49,7 @@ termine:
     pruefungHinweis: Teil 1 im Einzelhandel am Dienstag, 27.04.2027 – verbindlich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-03-02
     ausfall:
-      - 2027-04-01
+      - 2027-03-25
   - id: einzelhandel-t1-2027-winter
     start: 2027-10-07
     ende: 2027-11-16

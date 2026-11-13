@@ -42,13 +42,11 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: einzelhandel-t2-2027-sommer
-    start: 2027-03-25
+    start: 2027-03-30
     ende: 2027-04-22
     pruefung: 2027-04-28
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-03-18
-    ausfall:
-      - 2027-04-01
+    anmeldeschluss: 2027-03-23
   - id: einzelhandel-t2-2027-winter
     start: 2027-10-26
     ende: 2027-11-18

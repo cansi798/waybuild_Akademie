@@ -201,7 +201,7 @@ Im Termin das Feld `ausfall:` ergänzen:
     pruefungHinweis: Verbindlich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-02-23
     ausfall:
-      - 2027-04-01
+      - 2027-03-25
 ```
 
 Der Ausfalltag erscheint auf der Terminkarte. Den Nachholtermin teilt das Backoffice den Teilnehmenden per E-Mail mit.

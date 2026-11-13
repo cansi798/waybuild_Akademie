@@ -59,9 +59,10 @@ abschluss: Zertifikat der waybuild Akademie
 termine:
 - id: ki-manager-2027-fruehjahr
   start: 2027-02-02
-  ende: 2027-03-25
+  ende: 2027-03-30
   anmeldeschluss: 2027-01-26
-  ausfall: []
+  ausfall:
+  - 2027-03-25
 - id: ki-manager-2027-herbst
   start: 2027-09-07
   ende: 2027-10-28
