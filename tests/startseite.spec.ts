@@ -63,6 +63,7 @@ test('mobiles Menü ist per Tastatur bedienbar', async ({ page, browserName }) =
 });
 
 test('alle internen Links liefern 200', async ({ page, request, baseURL }) => {
+  test.setTimeout(60_000); // Seitenlauf über die ganze Website, auch auf ausgelasteten Rechnern
   const base = new URL(baseURL!);
   const offen = [base.href];
   const gesehen = new Set<string>();
