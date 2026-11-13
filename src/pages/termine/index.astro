@@ -15,7 +15,7 @@ const saeulen = SAEULEN_REIHENFOLGE.filter((s) => termine.some((t) => t.kurs.dat
 const zahl = (n: number) => `${n} ${n === 1 ? 'Termin' : 'Termine'}`;
 ---
 
-<Basis titel="Termine" beschreibung="Alle Starttermine der Live-Online-Kurse der waybuild Akademie – chronologisch, mit Prüfungstag, Anmeldeschluss und Preis.">
+<Basis titel="Starttermine aller Live-Online-Kurse" beschreibung="Alle Starttermine der Live-Online-Kurse der waybuild Akademie – chronologisch sortiert mit Zeitraum, Uhrzeit, Prüfungstag, Anmeldeschluss und Endpreis.">
   <Seitenkopf kicker="Termine" titel="Alle Starttermine" text="Chronologisch nach Monat – mit Zeitraum, Uhrzeit, Prüfungstag und Anmeldeschluss. Anmelden kannst du bis 7 Tage vor Kursstart.">
     <p class="mt-6 inline-flex max-w-full items-start gap-3 rounded-2xl bg-white px-4 py-3 text-sm ring-1 ring-base-300" data-ihk-einladung>
       <svg viewBox="0 0 24 24" class="size-5 shrink-0 text-tief" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2" /><path d="M12 11v6M12 7.2v.1" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" /></svg>

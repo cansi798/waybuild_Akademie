@@ -10,7 +10,7 @@ import FaqListe from '../../components/seiten/FaqListe.astro';
 import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
 import TerminKarte from '../../components/seiten/TerminKarte.astro';
 import TerminWaechter from '../../components/seiten/TerminWaechter.astro';
-import { faqSchema } from '../../components/seiten/schema';
+import { brotkrumenSchema, faqSchema } from '../../components/seiten/schema';
 import { buchbareTermine, formatDatum, freigegebeneKurse, kurzname, type Kurs, type Termin } from '../../lib/kurse';
 import { href } from '../../lib/pfad';
 
@@ -56,8 +56,8 @@ const FAQ = [
 
 <Basis
   titel="IHK-Prüfungsvorbereitung für IT-Berufe"
-  beschreibung="Vorbereitung auf die IHK-Abschlussprüfung für IT-Berufe: AP1 für alle IT-Berufe, AP2 Systemintegration und Prüfungscoaching – live online mit Dozenten mit IHK-Prüfer-Erfahrung."
-  schema={[faqSchema(FAQ)]}
+  beschreibung="IHK-Prüfungsvorbereitung für IT-Berufe: AP1 für alle sieben IT-Berufe, AP2 Systemintegration und 1:1-Coaching – live online, abends, mit klaren Endpreisen."
+  schema={[faqSchema(FAQ), brotkrumenSchema([['Start', '/'], ['Prüfungsvorbereitung', '/pruefungsvorbereitung/']], Astro.site)]}
 >
   <!-- Botschaft -->
   <section class="relative overflow-hidden border-b border-base-300">

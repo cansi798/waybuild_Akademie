@@ -11,7 +11,8 @@ import FaqListe from '../../components/seiten/FaqListe.astro';
 import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
 import TerminKarte from '../../components/seiten/TerminKarte.astro';
 import TerminWaechter from '../../components/seiten/TerminWaechter.astro';
-import { faqSchema, kursSchema } from '../../components/seiten/schema';
+import { brotkrumenSchema, faqSchema, kursSchema } from '../../components/seiten/schema';
+import { kursSeo } from '../../lib/seo';
 import {
   alleKurse,
   buchbareTermine,
@@ -80,10 +81,21 @@ const leistungen = coaching
       'Rechnung per E-Mail – an dich oder deinen Betrieb',
     ];
 
-const schema = entwurf ? [] : [...kursSchema(kurs, termine, Astro.site), ...(d.faq.length > 0 ? [faqSchema(d.faq)] : [])];
+// Das Prüfungscoaching hat mit /coaching/ eine ausführlichere Hauptseite → diese Kursseite bleibt für die Navigation,
+// wird aber nicht indexiert (kein Doppel-Inhalt; Course-Daten stehen auf /coaching/). SEO-Audit 13.11.2026.
+const doppelVonCoaching = kurs.id === 'pruefungscoaching';
+const seo = kursSeo(kurs);
+const schema =
+  entwurf || doppelVonCoaching
+    ? []
+    : [
+        ...kursSchema(kurs, termine, Astro.site),
+        ...(d.faq.length > 0 ? [faqSchema(d.faq)] : []),
+        brotkrumenSchema([['Start', '/'], ['Kurse', '/kurse/'], [d.titel, `/kurse/${kurs.id}/`]], Astro.site),
+      ];
 ---
 
-<Basis titel={d.titel} beschreibung={d.kurzbeschreibung} schema={schema}>
+<Basis titel={seo.titel} beschreibung={seo.beschreibung} schema={schema} noindex={doppelVonCoaching}>
   {entwurf && <Entwurfsband />}
 
   <!-- Kopf -->

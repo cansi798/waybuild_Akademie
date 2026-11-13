@@ -14,8 +14,9 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
-      // Danke-Seite und 404 nicht in die Sitemap
-      filter: (page) => !/\/(danke|404)\/?$/.test(page),
+      // Nicht in die Sitemap: Danke-Seite und 404 (noindex), Interesse-Formular (noindex, nur mit ?kurs= sinnvoll)
+      // und /kurse/pruefungscoaching/ (noindex, Doppel von /coaching/ – SEO-Audit 13.11.2026).
+      filter: (page) => !/\/(danke|404|interesse|kurse\/pruefungscoaching)\/?$/.test(page),
     }),
   ],
   vite: { plugins: [tailwindcss()] },
