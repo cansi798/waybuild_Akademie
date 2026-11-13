@@ -2,71 +2,73 @@
 saeule: ihk-weiterbildung
 kategorie: Fachkaufleute
 titel: Bilanzbuchhalter/in
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Bilanzbuchhalter/in“
-kurzbeschreibung: 'Werde Fachkraft für Abschluss und Finanzen: Du lernst Jahresabschluss, Steuern, Finanzmanagement, Kostenrechnung und internes Kontrollsystem für die IHK-Prüfung – live-online.'
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Bilanzbuchhalter/in – Bachelor Professional in Bilanzbuchhaltung“
+kurzbeschreibung: 'Werde Fachkraft für Abschluss und Finanzen: Du erstellst und analysierst Jahresabschlüsse, löst Steuerfälle, steuerst Finanzen und sicherst das interne Kontrollsystem – live-online.'
 status: entwurf
 art: kurs
-ue: 570
-dauer: ca. 17 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr
+ue: 600
+dauer: ca. 13 Monate
+zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
 preis:
   betrag: 3790
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Fachkräfte aus Buchhaltung und Rechnungswesen
-- Steuerfachangestellte mit Praxis
-- Mitarbeitende, die Abschlüsse eigenständig erstellen wollen
+- Steuerfachangestellte, die in ein Unternehmen wechseln wollen
+- Mitarbeitende, die Abschlüsse künftig eigenständig verantworten wollen
 voraussetzungen:
-- Zum Beispiel eine abgeschlossene kaufmännische Ausbildung mit Berufspraxis, ein Fachwirt- oder Fachkaufmann-Abschluss, ein Studium mit Praxis oder mehrere Jahre Berufspraxis
+- 'Einer dieser Wege: eine bestandene Abschlussprüfung in einem dreijährigen kaufmännischen oder verwaltenden Ausbildungsberuf – ein Fachwirt oder Fachkaufmann nach dem BBiG – ein Abschluss als Staatlich geprüfte/r Betriebswirt/in – ein wirtschaftswissenschaftliches Studium und danach mindestens ein Jahr Berufspraxis – oder mindestens fünf Jahre Berufspraxis'
+- Wo Berufspraxis verlangt wird, muss sie überwiegend im Finanz- und Rechnungswesen liegen
+- Sichere Kenntnisse in Buchführung erleichtern dir den Einstieg
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
-- Sichere Kenntnisse in Buchführung
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
-- titel: Geschäftsvorfälle erfassen und Abschlüsse erstellen
+- titel: Geschäftsvorfälle erfassen und nach Rechnungslegungsvorschriften zu Abschlüssen führen
   punkte:
-  - Buchungen nach Handelsrecht
-  - Jahresabschluss erstellen
-  - Grundzüge internationaler Rechnungslegung
-- titel: Abschlüsse analysieren
+  - Buchführung nach Handels- und Steuerrecht organisieren
+  - Bilanzierung und Bewertung, Gewinn- und Verlustrechnung, Anhang und Lagebericht
+  - Unterschiede zu IFRS, Grundzüge der Konzernrechnungslegung
+- titel: Jahresabschlüsse aufbereiten und auswerten
   punkte:
   - Bilanzanalyse und Kennzahlen
-  - Berichte für die Geschäftsführung
-- titel: Steuern
+  - Ergebnisse für Geschäftsführung und Kapitalgeber aufbereiten
+- titel: Betriebliche Sachverhalte steuerlich darstellen
   punkte:
-  - Ertragsteuern
-  - Umsatzsteuer
-  - Steuerliche Besonderheiten im Abschluss
-- titel: Finanzmanagement und Kostenrechnung
+  - Ertragsteuern und Umsatzsteuer im Unternehmen
+  - Gewerbesteuer, Lohnsteuer und steuerliches Verfahrensrecht
+- titel: Finanzmanagement, Kosten- und Leistungsrechnung, internes Kontrollsystem
   punkte:
-  - Finanzplanung und Liquidität
-  - Kosten- und Leistungsrechnung
-  - Internes Kontrollsystem
-- titel: Kommunikation und Führung
+  - Finanz- und Liquiditätsplanung, Finanzierung
+  - Kosten- und Leistungsrechnung zielorientiert anwenden
+  - Internes Kontrollsystem aufbauen und überwachen
+- titel: Kommunikation, Führung und Zusammenarbeit mit internen und externen Partnern
   punkte:
-  - Zusammenarbeit mit Geschäftsführung, Steuerberatung und Prüfern
-  - Team führen
+  - Zusammenarbeit mit Geschäftsführung, Steuerberatung und Abschlussprüfung
+  - Team führen, Nachwuchs ausbilden
 - titel: Prüfungstraining
   punkte:
-  - Aufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Lösungswege besprechen und Lücken schließen
-  - Vorbereitung auf den mündlichen Teil
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Drei Aufgabenstellungen zu einer betrieblichen Situation, je 240 Minuten – Schwerpunkte Abschluss, Auswertung und Steuern
+  - Präsentationsthema aus dem Bereich Jahresabschlussanalyse finden und gliedern
+  - Präsentation (höchstens 15 Minuten) und Fachgespräch (höchstens 30 Minuten) proben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Bilanzbuchhalter/in – Bachelor Professional in Bilanzbuchhaltung“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
-- frage: Wann startet der nächste Lehrgang?
-  antwort: Für diesen Lehrgang steht noch kein Starttermin fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
+- frage: Wie ist die Prüfung aufgebaut?
+  antwort: 'Zuerst schreibst du drei Aufgabenstellungen zu einer betrieblichen Situation, je 240 Minuten. Schwerpunkte sind der Abschluss nach Rechnungslegungsvorschriften, die Auswertung des Jahresabschlusses und die steuerliche Darstellung. Wer bestanden hat, kommt zur mündlichen Prüfung mit Präsentation und Fachgespräch – innerhalb von zwei Jahren.'
+- frage: Welches Thema nehme ich für die Präsentation?
+  antwort: Das Thema muss aus dem Handlungsbereich „Jahresabschlüsse aufbereiten und auswerten“ kommen, zum Beispiel die Auswirkung einer Bewertungsentscheidung auf Kennzahlen. Kurzbeschreibung und Gliederung reichst du zum Termin der dritten schriftlichen Prüfungsleistung ein. Im Kurs besprechen wir deine Themenidee live.
+- frage: Gilt der Abschluss auch für die AEVO?
+  antwort: Teilweise. Laut Fortbildungsordnung bist du nach bestandener Prüfung vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
+- frage: Reichen 600 Unterrichtseinheiten?
+  antwort: Die Fortbildungsordnung nennt einen Lernumfang von in der Regel mindestens 1.200 Stunden. Dazu zählt neben dem Unterricht auch deine eigene Vorbereitung und deine Praxis im Rechnungswesen. Unsere 600 Live-Einheiten decken alle sieben Handlungsbereiche ab; wie viel Zeit du zusätzlich einplanst, entscheidest du selbst.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja. Bei dieser Weiterbildung ist Ratenzahlung ohne Aufpreis möglich. Die Einzelheiten stimmen wir nach deiner Anmeldung mit dir ab.
+  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Bilanzbuchhalter/in“ bieten wir 13 gleiche Monatsraten an, eine pro Monat des rund 13-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
 reihenfolge: 33
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Bilanzbuchhalter bzw. zur Geprüften Bilanzbuchhalterin vor. Du lernst, Abschlüsse zu erstellen und zu analysieren, steuerliche Fragen zu lösen, Finanzen zu planen und ein internes Kontrollsystem aufzubauen.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Bilanzbuchhalter bzw. zur Geprüften Bilanzbuchhalterin – Bachelor Professional in Bilanzbuchhaltung vor. Er folgt den sieben Handlungsbereichen der Fortbildungsordnung, mit dem größten Gewicht auf Jahresabschluss, Abschlussanalyse und Steuern, denn diese drei bilden die Schwerpunkte der schriftlichen Prüfung.
 
-Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung rechnen Buchungs-, Bewertungs- und Steuerfälle Schritt für Schritt mit dir durch. An den Samstagen bearbeitest du lange Aufgabenstellungen unter Zeitvorgabe, und wir gehen die Lösungswege anschließend gemeinsam durch.
 
-Der Lehrgang passt zu dir, wenn du im Rechnungswesen arbeitest und Abschlüsse künftig eigenständig verantworten willst. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du im Rechnungswesen arbeitest und Abschlüsse künftig selbst verantworten willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

@@ -3,72 +3,69 @@ saeule: ihk-weiterbildung
 kategorie: IT-Fortbildung
 titel: Berufsspezialist/in für IT-Beratung
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Fortbildungsprüfung
-kurzbeschreibung: 'Berate Kunden auf Augenhöhe: Du lernst Kundenmanagement, Anforderungen, Angebote, Verträge und Betreuung im laufenden Betrieb für die IHK-Fortbildungsprüfung – berufsbegleitend live-online.'
+kurzbeschreibung: 'Berate Kunden auf Augenhöhe: Du gewinnst und betreust Kunden, steuerst Interessengruppen, begleitest Angebote und Verträge und unterstützt im laufenden Betrieb – live-online.'
 status: entwurf
 art: kurs
 ue: 240
-dauer: ca. 12 Monate
-zeiten: Di, 18:00–21:15 Uhr, dazu einzelne Samstage
+dauer: ca. 11 Monate
+zeiten: Di, 18:00–21:15 Uhr, dazu ein Samstag im Monat 09:00–14:15 Uhr
 preis:
   betrag: 3790
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
-- IT-Fachkräfte mit Kundenkontakt
-- Kaufleute für IT-System-Management und Digitalisierungsmanagement nach der Ausbildung
-- Mitarbeitende aus IT-Vertrieb, Support oder Projektgeschäft
+- IT-Fachkräfte mit Kundenkontakt in Beratung, Vertrieb oder Support
+- Kaufleute für IT-System-Management oder Digitalisierungsmanagement nach der Ausbildung
+- Quereinsteiger mit mehrjähriger Praxis in der IT-Beratung
 voraussetzungen:
-- Zum Beispiel eine abgeschlossene IT-Ausbildung, eine andere Ausbildung mit Berufspraxis in der IT, ein Teilstudium mit Praxis oder mehrere Jahre Berufspraxis in der IT
+- 'Einer dieser Wege: eine abgeschlossene Ausbildung in einem IT-Beruf – eine andere abgeschlossene Ausbildung und danach mindestens ein Jahr Berufspraxis – mindestens 60 ECTS-Leistungspunkte aus einem Studium und mindestens zwei Jahre Berufspraxis – oder mindestens vier Jahre Berufspraxis'
+- 'Die Berufspraxis muss inhaltlich zum Abschluss passen: Beraten und Betreuen von Kunden bei IT-Lösungen'
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
-- titel: Kundenmanagement
+- titel: 'Kundenmanagement gestalten, Kunden gewinnen, beraten und betreuen'
   punkte:
-  - Kunden gewinnen und Bedarf ermitteln
-  - Beratungsgespräche führen
-  - Kunden langfristig betreuen
-- titel: Stakeholdermanagement
+  - Markt- und Machbarkeitsanalysen, Beratungsstrategie
+  - Kundenbeziehungen aufbauen und halten
+  - Rückmeldungen auswerten, eigenes Verhalten reflektieren
+- titel: 'Stakeholdermanagement durchführen'
   punkte:
-  - Beteiligte erkennen und einbinden
-  - Interessen abwägen und kommunizieren
-- titel: Angebots- und Vertragsmanagement
+  - Interessengruppen erkennen und analysieren
+  - Zielgruppengerechte Kommunikation planen
+- titel: 'Angebots- und Vertragsmanagement durchführen'
   punkte:
-  - Lösungen konzipieren und kalkulieren
-  - Angebote erstellen
-  - Verträge vorbereiten und begleiten
-- titel: Beratung im laufenden Betrieb
+  - Kundenbedarf und Geschäftsprozesse analysieren
+  - Angebote entwickeln und präsentieren
+  - Vertragsgestaltung begleiten, Leistung abnehmen, Reklamationen steuern
+- titel: 'Im laufenden Betrieb beraten und unterstützen'
   punkte:
-  - Service und Support organisieren
-  - Verbesserungen vorschlagen
-  - Änderungen begleiten
-- titel: Organisatorische und rechtliche Vorgaben
+  - Optimierungspotenzial erkennen, Empfehlungen umsetzen
+- titel: 'Organisatorische und rechtliche Vorgaben'
   punkte:
-  - Verträge, Lizenzen und Haftung in IT-Projekten
-  - Datenschutz und Informationssicherheit
-  - Normen und Qualitätsvorgaben
-- titel: Projektunterstützung und -koordination
+  - Vertragsrecht, Datenschutz, Lizenzen
+- titel: 'Projektunterstützung und -koordination'
   punkte:
-  - Projekte planen und dokumentieren
-  - Aufgaben im Team abstimmen
-  - Ergebnisse präsentieren
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Projektleitung bei Planung, Durchführung und Abschluss unterstützen
+- titel: Prüfungstraining
+  punkte:
+  - 'Schriftliche Prüfung: zwei Aufgaben zu einer betrieblichen Situation, je mindestens 90 Minuten (zusammen höchstens 240 Minuten)'
+  - 'Mündliche Prüfung: Thema für deine Präsentation finden und beschreiben, Präsentation (höchstens 15 Minuten) und Fachgespräch (höchstens 30 Minuten) proben'
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Berufsspezialist/in für IT-Beratung“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Ist das eher ein technischer oder ein kaufmännischer Abschluss?
-  antwort: Beides. Du brauchst technisches Verständnis, im Mittelpunkt stehen aber Beratung, Angebote, Verträge und die Betreuung von Kunden.
+  antwort: Beides. Im Mittelpunkt steht die Beratung bei IT-Lösungen – du verbindest technisches Verständnis mit Kundenmanagement, Angeboten und Verträgen. Programmieren musst du dafür nicht.
 - frage: Kann ich danach weitermachen?
-  antwort: Ja. Der Berufsspezialist ist die erste Stufe der IT-Fortbildung. Danach kannst du den Bachelor Professional in IT anstreben; was angerechnet wird, entscheidet deine IHK.
-- frage: Wann beginnt der Lehrgang?
-  antwort: Einen festen Start gibt es noch nicht. Merk dich unverbindlich vor – wir informieren dich rechtzeitig.
-- frage: Wird die Prüfung bei euch abgelegt?
-  antwort: Nein. Wir sind ein unabhängiger Anbieter und bereiten dich vor. Die Prüfung legst du bei deiner zuständigen IHK ab.
+  antwort: Ja. Ein bestandener Berufsspezialist im IT-Bereich ist einer der Zugänge zur Prüfung Bachelor Professional in IT. Über deine Zulassung entscheidet deine IHK.
+- frage: Wie läuft die Prüfung ab?
+  antwort: 'Geprüft wird ein einziger Prüfungsbereich: „Beratung und Unterstützung bei der Umsetzung individueller IT-Kundenlösungen“. Zuerst schreibst du zwei Aufgaben zu einer betrieblichen Situation. Danach hältst du eine Präsentation zu einem selbst gewählten, von der IHK genehmigten Thema und beantwortest im Fachgespräch Fragen dazu. Das ganze Prüfungsverfahren muss innerhalb von zwei Jahren abgeschlossen sein.'
+- frage: Reichen 240 Unterrichtseinheiten?
+  antwort: Die Fortbildungsordnung geht von einem Lernumfang von in der Regel mindestens 400 Stunden aus. Darin steckt neben dem Unterricht auch deine eigene Vorbereitung, zum Beispiel das Ausarbeiten deiner Präsentation. Unsere 240 Live-Einheiten decken alle Qualifikationsschwerpunkte ab; wie viel Zeit du zusätzlich einplanst, entscheidest du selbst.
 reihenfolge: 27
 ---
 
-Der Lehrgang bereitet dich auf die Fortbildungsprüfung zum Berufsspezialisten bzw. zur Berufsspezialistin für IT-Beratung vor. Du lernst, Kunden zu gewinnen und zu beraten, Anforderungen in Angebote und Verträge zu übersetzen und Kunden im laufenden Betrieb zu begleiten.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten bzw. zur Geprüften Berufsspezialistin für IT-Beratung vor. Die sechs Qualifikationsschwerpunkte der Fortbildungsordnung reichen von Kundengewinnung und Stakeholdermanagement über Angebote und Verträge bis zur Betreuung im laufenden Betrieb.
 
-Der Lehrgang läuft live-online an einem Abend pro Woche, ergänzt um einzelne Samstage. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit typischen Beratungssituationen, die ihr gemeinsam durchspielt und besprecht.
+Der Unterricht läuft jeden Dienstagabend und an einem Samstag im Monat live per Video. Dozenten mit IHK-Prüfer-Erfahrung bringen Fälle aus Beratungsprojekten mit: Du analysierst Kundenbedarf, baust ein Angebot auf und übst Beratungsgespräche in kleinen Runden. Die Samstage nutzen wir für Prüfungsaufgaben unter Zeitvorgabe.
 
-Der Lehrgang passt zu dir, wenn du in der IT mit Kunden arbeitest und diese Rolle mit einem anerkannten Abschluss untermauern willst.
-
-Die Zulassung prüft deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du in der IT mit Kunden arbeitest und diese Rolle fachlich festigen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

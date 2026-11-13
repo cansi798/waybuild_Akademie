@@ -3,7 +3,7 @@ saeule: akademie
 kategorie: Programmierung
 titel: Python-Programmierung
 untertitel: Einstieg in die Programmierung mit Python
-kurzbeschreibung: 'Lern programmieren mit Python: Du schreibst eigene Programme, arbeitest mit Daten und Dateien und automatisierst kleine Aufgaben – Schritt für Schritt, live-online an 12 Abenden.'
+kurzbeschreibung: 'Lern programmieren mit Python: Du schreibst eigene Programme, verarbeitest Dateien und Tabellen und automatisierst eine Aufgabe aus deinem Alltag – Schritt für Schritt, live-online an 12 Abenden.'
 status: entwurf
 art: kurs
 ue: 36
@@ -11,35 +11,39 @@ dauer: ca. 6 Wochen
 zeiten: Mo + Mi, 18:00–20:30 Uhr
 preis:
   betrag: 690
-  hinweis: Inkl. Unterlagen und Zertifikat
+  hinweis: Inklusive Kursunterlagen, Beispielcode und Zertifikat
   raten: false
 zielgruppe:
 - Einsteigerinnen und Einsteiger ohne Programmiererfahrung
-- Fachkräfte, die Aufgaben automatisieren wollen
+- Fachkräfte, die Aufgaben mit Tabellen und Dateien automatisieren wollen
 - Auszubildende, die Programmierpraxis sammeln wollen
 voraussetzungen:
 - Keine Programmierkenntnisse nötig
 - Sicherer Umgang mit dem Computer
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+- Rechner oder Laptop (Windows, macOS oder Linux) mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
 - titel: Erste Schritte
   punkte:
-  - Python einrichten und erste Programme
-  - Variablen, Datentypen und Ausgaben
+  - Aktuelles Python und den Editor Visual Studio Code einrichten
+  - Variablen, Datentypen, Ein- und Ausgaben
 - titel: Programme steuern
   punkte:
   - Bedingungen und Schleifen
-  - Funktionen schreiben
-  - Fehler finden und beheben
+  - Funktionen schreiben und wiederverwenden
+  - Fehlermeldungen lesen und Fehler beheben
 - titel: Mit Daten arbeiten
   punkte:
   - Listen und Dictionaries
-  - Dateien lesen und schreiben
+  - Dateien lesen und schreiben, Ordner durchsuchen
   - CSV- und Excel-Daten verarbeiten
+- titel: Werkzeuge der Praxis
+  punkte:
+  - Bibliotheken installieren und nutzen
+  - KI-Assistenten beim Programmieren sinnvoll einsetzen – und ihren Code prüfen
 - titel: Praxisprojekt
   punkte:
-  - Kleine Aufgabe aus dem Alltag automatisieren
-  - Code verständlich strukturieren
+  - Kleine Aufgabe aus dem Alltag automatisieren, zum Beispiel einen Bericht aus mehreren Tabellen
+  - Code verständlich strukturieren und vorstellen
 abschluss: Zertifikat der waybuild Akademie
 termine:
 - id: python-2027-maerz
@@ -50,16 +54,25 @@ termine:
   - 2027-03-29
 faq:
 - frage: Welche Software brauche ich?
-  antwort: Python und ein Code-Editor sind kostenlos. Wir richten beides am ersten Abend gemeinsam ein.
+  antwort: Python und der Code-Editor Visual Studio Code sind kostenlos. Wir richten beides am ersten Abend gemeinsam ein.
+- frage: Darf ich KI-Werkzeuge beim Programmieren nutzen?
+  antwort: Ja, an einem Abend zeigen wir, wie dir ein KI-Assistent beim Erklären und Schreiben von Code hilft. Vorher lernst du die Grundlagen selbst, damit du KI-Vorschläge verstehen und prüfen kannst.
+- frage: Was baue ich im Praxisprojekt?
+  antwort: Ein kleines Programm für eine Aufgabe, die du sonst von Hand machst – etwa Dateien umbenennen, Tabellen zusammenführen oder eine Auswertung erstellen. Es entsteht in den letzten Terminen im Unterricht.
 - frage: Ist das ein IHK-Abschluss?
-  antwort: Nein. Du bekommst ein Zertifikat der waybuild Akademie, das Inhalte und Umfang des Kurses beschreibt. Es ist kein öffentlich-rechtlicher Abschluss.
-- frage: Kann mein Betrieb die Rechnung bekommen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per Mail an die Firma.
+  antwort: Nein. Das Zertifikat der waybuild Akademie führt auf, was du in den 36 Unterrichtseinheiten gelernt hast. Ein öffentlich-rechtlicher Abschluss ist es nicht.
 reihenfolge: 22
 ---
 
-In diesem Kurs lernst du die Grundlagen der Programmierung mit Python. Du schreibst eigene Programme, arbeitest mit Listen, Dateien und Tabellen und automatisierst in den letzten Terminen gemeinsam mit der Gruppe eine kleine Aufgabe aus deinem Alltag.
+In diesem Kurs lernst du die Grundlagen der Programmierung mit Python. Du schreibst eigene Programme, arbeitest mit Listen, Dateien und Tabellen und automatisierst zum Schluss eine kleine Aufgabe aus deinem Alltag.
 
-Der Kurs läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit langjähriger Praxis erklären jedes Thema an Beispielen, danach probierst du es direkt im Live-Unterricht aus und wir besprechen die Ergebnisse gemeinsam. Fragen klärst du direkt live. Die Unterlagen bekommst du zum Download.
+**Das kannst du nach dem Kurs:**
 
-Der Kurs passt zu dir, wenn du ohne Vorkenntnisse programmieren lernen willst – für den Beruf, für eine Ausbildung in der IT oder als Vorbereitung auf den Kurs Softwareentwicklung.
+- kleine Python-Programme selbst schreiben, starten und Fehler finden
+- Dateien, CSV- und Excel-Tabellen einlesen, verändern und speichern
+- Bibliotheken einbinden und KI-Vorschläge für Code kritisch prüfen
+- eine wiederkehrende Aufgabe mit einem eigenen Skript erledigen
+
+Der Kurs läuft an zwölf Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis schreiben den Code am geteilten Bildschirm vor, danach programmierst du im Live-Termin selbst und wir schauen uns Lösungen und Fehler gemeinsam an. In den letzten Terminen entsteht dein Praxisprojekt.
+
+Der Kurs passt zu dir, wenn du ohne Vorkenntnisse programmieren lernen willst – für den Beruf, für eine Ausbildung in der IT oder als Vorbereitung auf den Kurs Softwareentwicklung mit Python und Web.

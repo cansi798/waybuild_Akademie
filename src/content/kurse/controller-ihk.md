@@ -3,72 +3,74 @@ saeule: ihk-weiterbildung
 kategorie: Fachkaufleute
 titel: Controller/in
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Controller/in“
-kurzbeschreibung: 'Mach Zahlen zur Grundlage von Entscheidungen: Du lernst Kostenmanagement, Planung, Budgetierung, Berichtswesen und Beratung für die IHK-Prüfung – berufsbegleitend live-online.'
+kurzbeschreibung: 'Mach Zahlen zur Grundlage von Entscheidungen: Du lernst Kostenmanagement, Planung und Budgetierung, Abschlussanalyse und Berichtswesen mit Tabellenkalkulation – live-online.'
 status: entwurf
 art: kurs
-ue: 500
-dauer: ca. 15 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr
+ue: 520
+dauer: ca. 11 Monate
+zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
 preis:
   betrag: 3290
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Fachkräfte aus Rechnungswesen, Buchhaltung und Finanzen
 - Mitarbeitende, die ins Controlling wechseln wollen
 - Fachwirtinnen und Fachwirte mit Schwerpunkt Zahlen
 voraussetzungen:
-- Zum Beispiel eine kaufmännische Ausbildung mit mehreren Jahren Berufspraxis, ein wirtschaftsnahes Studium mit Praxis oder langjährige einschlägige Berufspraxis
+- 'Einer dieser Wege: eine dreijährige kaufmännische oder verwaltende Ausbildung und danach mindestens drei Jahre Berufspraxis – ein wirtschaftswissenschaftliches Studium oder ein betriebswirtschaftlicher Berufsakademie-Abschluss und danach mindestens zwei Jahre Praxis – eine andere Ausbildung und danach mindestens vier Jahre Praxis – oder mindestens sechs Jahre Berufspraxis'
+- Die Berufspraxis muss Bezug zu Controlling-Aufgaben wie Planung, Steuerung oder Berichtswesen haben
+- Sichere Grundlagen im Rechnungswesen
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+- Rechner oder Laptop mit Kamera, Mikrofon, stabiler Internetverbindung und einem Tabellenkalkulationsprogramm
 inhalte:
 - titel: Kostenrechnung und Kostenmanagement
   punkte:
-  - Voll- und Teilkostenrechnung
-  - Plankostenrechnung und Abweichungsanalyse
-  - Kosten gezielt steuern
+  - Verfahren der Kosten- und Leistungsrechnung einschließlich Plankostenrechnung
+  - Kostenrechnung als Entscheidungshilfe
+  - Kosten systematisch beeinflussen
 - titel: Unternehmensplanung und Budgetierung
   punkte:
-  - Strategische und operative Planung
-  - Budgets aufstellen und abstimmen
-  - Investitions- und Finanzplanung
+  - Planungssystem gestalten, Zielfindung unterstützen
+  - Strategische Analyse- und Prognosemethoden
+  - Strategisches und operatives Controlling, Teil- und Gesamtbudgets
 - titel: Jahresabschlussanalyse
   punkte:
-  - Bilanz und Erfolgsrechnung auswerten
-  - Kennzahlen und Kennzahlensysteme
-  - Liquidität und Rentabilität beurteilen
+  - Bilanzierung und Bewertung nach Handelsrecht, wesentliche Unterschiede zu IFRS
+  - Jahresabschluss aufbereiten und analysieren
 - titel: Berichtswesen und Informationsmanagement
   punkte:
-  - Berichte und Dashboards aufbauen
-  - Daten aufbereiten und verdichten
-  - Systeme im Controlling
-- titel: Beratung, Führung und Moderation
+  - Controllingberichte für verschiedene Managementebenen
+  - Praktische Übungen mit Tabellenkalkulation
+  - Informationssysteme und Datenschutz im Controlling
+- titel: Betriebswirtschaftliche Beratung, Führungsaufgaben und Moderation
   punkte:
-  - Ergebnisse präsentieren und Entscheidungen vorbereiten
+  - Management entscheidungsorientiert beraten
+  - Projektarbeit als Beratungsleistung aufbereiten
   - Gespräche und Workshops moderieren
-  - Mit Fachbereichen zusammenarbeiten
 - titel: Prüfungstraining
   punkte:
-  - Situationsaufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Vorbereitung auf Präsentation und Fachgespräch
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Situationsaufgaben unter Zeitvorgabe (in der Prüfung 180 Minuten für Kosten und Planung, 90 bis 120 Minuten für die Abschlussanalyse)
+  - Übungen am Rechner für die 240-minütige Prüfung im Berichtswesen
+  - Präsentation (in der Regel höchstens 15 Minuten) und Fachgespräch proben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Controller/in“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
-- frage: Brauche ich Vorkenntnisse in Buchführung?
-  antwort: Ja, sichere Grundlagen im Rechnungswesen solltest du mitbringen. Falls sie eingerostet sind, hilft dir unser Kurs „Rechnungswesen kompakt“ vorab.
+- frage: Wie ist die Prüfung aufgebaut?
+  antwort: 'Es gibt vier schriftliche Prüfungsleistungen: Kostenrechnung und Kostenmanagement, Unternehmensplanung und Budgetierung, Jahresabschlussanalyse sowie Berichtswesen und Informationsmanagement. Danach folgen eine Projektarbeit und eine mündliche Prüfung mit Präsentation und Fachgespräch.'
 - frage: Arbeiten wir mit Excel oder anderer Software?
-  antwort: Wir zeigen Beispiele mit gängigen Werkzeugen. Die Prüfung verlangt aber vor allem Verständnis und Rechenwege, kein bestimmtes Programm.
-- frage: Wie anspruchsvoll ist die Zulassung?
-  antwort: Für diesen Abschluss wird meist mehr Berufspraxis verlangt als bei vielen Fachwirten. Kläre deine Zulassung deshalb früh mit deiner IHK.
-- frage: Gibt es schon einen Starttermin?
-  antwort: Noch nicht. Merk dich unverbindlich vor, dann melden wir uns mit dem Termin.
+  antwort: Ja. Das Berichtswesen wird mit praktischen Übungen in einem üblichen Tabellenkalkulationsprogramm geprüft. Deshalb bauen wir Auswertungen und Berichte im Unterricht gemeinsam am Rechner auf, meist mit Excel.
+- frage: Wie läuft die Projektarbeit?
+  antwort: Du schlägst dem Prüfungsausschuss zwei Themen aus deiner Controllingpraxis vor, daraus formuliert er die Aufgabe. Du hast 30 Kalendertage Zeit und bereitest das Ergebnis auch als Beratungsleistung für das Management auf. Wie du Themen auswählst und gliederst, besprechen wir live im Kurs.
+- frage: Brauche ich Vorkenntnisse in Buchführung?
+  antwort: Ja, sichere Grundlagen im Rechnungswesen solltest du mitbringen. Wenn sie eingerostet sind, hilft dir unser Kurs „Rechnungswesen kompakt“ vorab.
+- frage: Kann ich in Raten zahlen?
+  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Controller/in“ lässt sich in 11 gleiche Monatsraten aufteilen, passend zu den rund 11 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 34
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Controller bzw. zur Geprüften Controllerin vor. Du lernst Kosten zu analysieren und zu steuern, Planungen und Budgets aufzubauen, Jahresabschlüsse auszuwerten und Ergebnisse so aufzubereiten, dass andere damit entscheiden können.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Controller bzw. zur Geprüften Controllerin vor. Er folgt den sechs Handlungsbereichen der Prüfungsverordnung: Kostenmanagement, Planung und Budgetierung, Jahresabschlussanalyse und Berichtswesen für die schriftlichen Teile, Beratung sowie Führung und Moderation für Projektarbeit und Fachgespräch.
 
-Der Unterricht läuft live-online an zwei Abenden pro Woche. Dozenten mit IHK-Prüfer-Erfahrung rechnen mit dir Fälle durch, wie sie in der Prüfung vorkommen, und besprechen die Lösungswege live.
+Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung rechnen Fälle mit dir durch, wie sie in der Prüfung vorkommen. Weil das Berichtswesen am Rechner geprüft wird, baust du Berichte und Auswertungen in der Tabellenkalkulation selbst auf, und wir besprechen die Ergebnisse gemeinsam am geteilten Bildschirm.
 
-Der Lehrgang passt zu dir, wenn du schon mit Zahlen arbeitest und künftig Unternehmensbereiche beraten und steuern willst.
-
-Über deine Zulassung entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du schon mit Zahlen arbeitest und künftig Unternehmensbereiche beraten und steuern willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

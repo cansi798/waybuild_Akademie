@@ -2,65 +2,73 @@
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
 titel: Fachwirt/in für Einkauf
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in für Einkauf“
-kurzbeschreibung: 'Kauf strategisch ein: Du lernst Bedarfsplanung, Einkaufsstrategien, Lieferanten- und Risikomanagement sowie Einkaufscontrolling für die Fachwirt-Prüfung – berufsbegleitend live-online.'
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in für Einkauf – Bachelor Professional in Procurement“
+kurzbeschreibung: 'Bring den Einkauf auf Strategieniveau: Du ermittelst Bedarfe, entwickelst Einkaufsstrategien, steuerst Lieferanten und Risiken und führst mit Kennzahlen – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
 ue: 560
-dauer: ca. 16 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr
+dauer: ca. 12 Monate
+zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
 preis:
   betrag: 3490
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Fachkräfte aus Einkauf und Beschaffung
-- Disposition und Materialwirtschaft
-- Mitarbeitende, die in den strategischen Einkauf wechseln wollen
+- Mitarbeitende aus Disposition und Materialwirtschaft
+- Fachkräfte, die in den strategischen Einkauf wechseln wollen
 voraussetzungen:
-- Zum Beispiel eine abgeschlossene kaufmännische Ausbildung, eine andere Ausbildung mit Berufspraxis oder mehrere Jahre Berufspraxis
+- 'Einer dieser Wege: eine bestandene Abschlussprüfung in einem dreijährigen kaufmännischen oder verwaltenden Ausbildungsberuf – eine andere Ausbildung und danach mindestens ein Jahr Berufspraxis – oder mindestens fünf Jahre Berufspraxis'
+- Wo Berufspraxis verlangt wird, muss sie Bezug zu Aufgaben im Einkauf haben
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
-- titel: Bedarfe ermitteln und Strategien entwickeln
+- titel: Interne und externe Einkaufsbedarfe ermitteln
   punkte:
-  - Bedarfsanalyse und Beschaffungsmarktforschung
-  - Einkaufsstrategien und Warengruppen
-- titel: Lieferanten, Risiken und Qualität
+  - Bedarfsanalyse mit Fachbereichen
+  - Beschaffungsmarktforschung
+- titel: Einkaufsstrategien entwickeln und umsetzen
   punkte:
-  - Lieferanten auswählen und bewerten
-  - Risikomanagement in der Lieferkette
-  - Qualität und Nachhaltigkeit
-- titel: Einkaufsprozesse gestalten
+  - Warengruppen- und Beschaffungsstrategien
+  - Make-or-buy, Global Sourcing, Nachhaltigkeit
+- titel: Lieferanten-, Risiko- und Qualitätsmanagement gestalten
   punkte:
-  - Verhandlung und Verträge
-  - Digitale Einkaufsprozesse
-  - Recht im Einkauf
-- titel: Einkaufscontrolling und Führung
+  - Lieferanten auswählen, bewerten und entwickeln
+  - Risiken in der Lieferkette erkennen und absichern
+  - Qualitätsanforderungen vereinbaren
+- titel: Einkaufsprozesse vorbereiten und realisieren
   punkte:
-  - Kennzahlen und Kostenanalyse
-  - Kommunikation und Führung im Einkauf
+  - Ausschreibung, Verhandlung und Vertrag
+  - Recht im Einkauf, digitale Einkaufsprozesse
+- titel: Einkaufscontrolling durchführen
+  punkte:
+  - Kennzahlen, Kostenanalysen und Einsparungen bewerten
+- titel: Kommunikation, Führung und Zusammenarbeit
+  punkte:
+  - Mit internen Kunden und Lieferanten zusammenarbeiten
+  - Mitarbeitende führen, Ausbildung organisieren, Teams und Projekte leiten
 - titel: Prüfungstraining
   punkte:
-  - Aufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Lösungswege besprechen und Lücken schließen
-  - Vorbereitung auf den mündlichen Teil
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Situationsbeschreibung mit zwei offenen Aufgabenstellungen unter Zeitvorgabe (in der Prüfung zusammen 600 Minuten)
+  - Präsentationsthema mit Bezug zu Führung und Zusammenarbeit finden, Präsentation (höchstens 10 Minuten) und Fachgespräch proben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Fachwirt/in für Einkauf – Bachelor Professional in Procurement“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
-- frage: Wann startet der nächste Lehrgang?
-  antwort: Für diesen Lehrgang steht noch kein Starttermin fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
+- frage: Wie ist die Prüfung aufgebaut?
+  antwort: Schriftlich bearbeitest du eine betriebliche Situation mit zwei gleich gewichteten, offenen Aufgabenstellungen, die alle sechs Handlungsbereiche berühren – zusammen rund 600 Minuten. Nach bestandener schriftlicher Prüfung folgen Präsentation und Fachgespräch.
+- frage: Welches Thema nehme ich für die Präsentation?
+  antwort: Das Thema muss mindestens zwei Handlungsbereiche verbinden, einer davon ist „Kommunikation, Führung und Zusammenarbeit“ – etwa die Einführung einer neuen Lieferantenbewertung im Team. Kurzbeschreibung, Ziel und Gliederung reichst du zum Termin der schriftlichen Prüfung ein.
+- frage: Was bedeutet „Bachelor Professional in Procurement“?
+  antwort: Das ist Teil der offiziellen Abschlussbezeichnung nach der Fortbildungsordnung von 2020. Es handelt sich um eine berufliche Fortbildung bei der IHK, nicht um einen Hochschulabschluss.
+- frage: Bin ich danach von der AEVO befreit?
+  antwort: Teilweise. Wer die Prüfung bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja. Bei dieser Weiterbildung ist Ratenzahlung ohne Aufpreis möglich. Die Einzelheiten stimmen wir nach deiner Anmeldung mit dir ab.
+  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Fachwirt/in für Einkauf“ bieten wir 12 gleiche Monatsraten an, eine pro Monat des rund 12-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
 reihenfolge: 32
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Einkauf vor. Du lernst, Bedarfe zu planen, Strategien zu entwickeln, Lieferanten und Risiken zu steuern und den Einkauf mit Kennzahlen zu führen.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Einkauf – Bachelor Professional in Procurement vor. Er folgt den sechs Handlungsbereichen der Fortbildungsordnung, vom Ermitteln der Bedarfe über Strategie, Lieferanten und Einkaufsprozess bis zu Controlling und Führung.
 
-Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Einkaufsfällen aus Industrie und Handel: Du bewertest Angebote, baust eine Lieferantenbewertung auf und bereitest Verhandlungen vor, die wir in der Gruppe durchspielen. An den Samstagen trainierst du die lange schriftliche Prüfung in Etappen.
 
-Der Lehrgang passt zu dir, wenn du im Einkauf arbeitest und mehr Verantwortung übernehmen willst. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du im Einkauf arbeitest und mehr Verantwortung für Strategie, Lieferanten und Kosten übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

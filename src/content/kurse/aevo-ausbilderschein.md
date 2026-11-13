@@ -2,8 +2,8 @@
 saeule: ihk-weiterbildung
 kategorie: Ausbilder
 titel: Ausbildereignung (AEVO)
-untertitel: Vorbereitung auf die IHK-Prüfung zum Ausbilderschein
-kurzbeschreibung: 'Werde fit fürs Ausbilden: Du lernst, Ausbildung zu planen, durchzuführen und abzuschließen, und übst die praktische Prüfung – live-online an einem Abend pro Woche.'
+untertitel: Vorbereitung auf die Ausbildereignungsprüfung bei der IHK
+kurzbeschreibung: 'Werde fit fürs Ausbilden: Du arbeitest die vier Handlungsfelder der AEVO durch und probst deine Präsentation fürs Fachgespräch – live-online an 16 Dienstagabenden.'
 status: entwurf
 art: kurs
 ue: 64
@@ -11,46 +11,48 @@ dauer: ca. 4 Monate
 zeiten: Di, 18:00–21:15 Uhr
 preis:
   betrag: 499
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Inklusive Kursunterlagen und Vorlagen für deine Präsentation
   raten: false
 zielgruppe:
 - Fachkräfte, die künftig Auszubildende betreuen
-- Meisterinnen, Meister und Fachwirte in spe
+- Teamleitungen und Personalverantwortliche
 - Selbstständige, die in ihrem Betrieb ausbilden wollen
-- Personalverantwortliche
+- Alle, die eine Fortbildung planen, für die der AEVO-Nachweis gebraucht wird
 voraussetzungen:
-- Für die Prüfung gibt es keine formalen Zulassungsvoraussetzungen
-- Berufserfahrung hilft dir, die Beispiele einzuordnen
-- Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
+- Die Ausbilder-Eignungsverordnung nennt keine besonderen Zulassungsvoraussetzungen für die Prüfung
+- Eigene Berufserfahrung hilft dir, eine passende Ausbildungssituation für die Präsentation zu finden
+- Zur Prüfung meldest du dich bei deiner IHK an; die Zulassung prüft deine IHK
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
-- titel: Ausbildung planen
+- titel: 'Handlungsfeld 1: Ausbildungsvoraussetzungen prüfen und Ausbildung planen'
   punkte:
-  - Vorteile und Nutzen der Ausbildung für den Betrieb
-  - 'Rechtliche Grundlagen: BBiG, JArbSchG, Ausbildungsordnung'
-  - Eignung von Betrieb und Ausbildenden prüfen
-- titel: Ausbildung vorbereiten und einstellen
+  - Nutzen der Ausbildung für den Betrieb begründen
+  - Berufsbildungssystem, BBiG und Ausbildungsordnung
+  - Ausbildungsberuf auswählen und Eignung des Betriebs prüfen
+  - Aufgaben der Mitwirkenden im Betrieb abstimmen
+- titel: 'Handlungsfeld 2: Ausbildung vorbereiten und bei der Einstellung mitwirken'
   punkte:
   - Betrieblichen Ausbildungsplan erstellen
-  - Auswahl von Auszubildenden
-  - Ausbildungsvertrag und Probezeit
-- titel: Ausbildung durchführen
+  - Mitbestimmung, Zusammenarbeit mit der Berufsschule
+  - Auszubildende auswählen, Ausbildungsvertrag vorbereiten und eintragen lassen
+  - Ausbildungsabschnitte im Ausland prüfen
+- titel: 'Handlungsfeld 3: Ausbildung durchführen'
   punkte:
-  - Lernaufgaben und Methoden auswählen
-  - Motivieren, beurteilen, Feedback geben
-  - Konflikte erkennen und lösen
-  - Interkulturelle Kompetenz in der Ausbildung
-- titel: Ausbildung abschließen
+  - Probezeit gestalten, Lern- und Arbeitsaufgaben entwickeln
+  - Methoden und Medien passend auswählen
+  - Bei Lernschwierigkeiten und Konflikten unterstützen
+  - Leistungen feststellen, Beurteilungsgespräche führen
+- titel: 'Handlungsfeld 4: Ausbildung abschließen'
   punkte:
-  - Auf Prüfungen vorbereiten
-  - Zeugnis und Abschlussgespräch
-  - Weiterbildung nach der Ausbildung
+  - Auf die Abschlussprüfung vorbereiten und anmelden
+  - Am Ausbildungszeugnis mitwirken
+  - Über Wege nach der Ausbildung beraten
 - titel: Prüfungstraining
   punkte:
-  - Aufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Lösungswege besprechen und Lücken schließen
-  - Vorbereitung auf den mündlichen Teil
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Fallbezogene Aufgaben aus allen Handlungsfeldern unter Zeitvorgabe (die schriftliche Prüfung dauert drei Stunden)
+  - Deine Ausbildungssituation auswählen und als Präsentation (höchstens 15 Minuten) aufbauen
+  - Fachgespräch in der Gruppe proben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Nachweis der Ausbildereignung erhältst du nach bestandener Prüfung von deiner IHK
 termine:
 - id: aevo-2027-fruehjahr
   start: 2027-02-02
@@ -63,19 +65,19 @@ termine:
   anmeldeschluss: 2027-08-31
   ausfall: []
 faq:
-- frage: Wie läuft die Prüfung ab?
-  antwort: Die Prüfung besteht aus einem schriftlichen und einem praktischen Teil. Im praktischen Teil präsentierst oder führst du eine Ausbildungssituation durch und führst ein Fachgespräch. Beides üben wir im Kurs.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
+- frage: Wie ist die Prüfung aufgebaut?
+  antwort: 'Sie hat zwei Teile. Im schriftlichen Teil bearbeitest du fallbezogene Aufgaben aus allen vier Handlungsfeldern, angesetzt sind drei Stunden. Im praktischen Teil präsentierst du eine Ausbildungssituation, die du selbst auswählst, oder führst sie praktisch durch; danach folgt ein Fachgespräch. Zusammen dauert der praktische Teil höchstens 30 Minuten.'
+- frage: Welche Ausbildungssituation soll ich für die Präsentation nehmen?
+  antwort: Am besten eine typische Aufgabe aus deinem Beruf, die du gut kennst. In den letzten Abenden stellst du deinen Entwurf in der Gruppe vor, und wir besprechen gemeinsam Aufbau, Methode und mögliche Fragen im Fachgespräch.
+- frage: Ich mache später einen Fachwirt. Brauche ich die AEVO trotzdem?
+  antwort: 'Das hängt von der Fortbildung ab. Bei manchen Abschlüssen musst du die Ausbildereignung bis zur letzten Prüfungsleistung nachweisen, bei anderen ersetzt die bestandene Fortbildungsprüfung den schriftlichen Teil der AEVO-Prüfung. Was für dich gilt, steht in der jeweiligen Fortbildungsordnung; im Zweifel fragst du deine IHK.'
 - frage: Kann mein Betrieb die Rechnung bekommen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per Mail an die Firma.
+  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per E-Mail an die Firma.
 reihenfolge: 10
 ---
 
-In diesem Kurs bereitest du dich auf die Ausbildereignungsprüfung bei deiner IHK vor. Du gehst die vier Handlungsfelder durch – von der Planung über die Einstellung und Durchführung bis zum Abschluss der Ausbildung – und übst die praktische Prüfung mit eigenen Beispielen.
+In diesem Kurs bereitest du dich auf die Ausbildereignungsprüfung nach der AEVO vor. Du gehst die vier Handlungsfelder in der Reihenfolge durch, in der Ausbildung im Betrieb abläuft: planen, einstellen, durchführen, abschließen. Zu jedem Feld bearbeiten wir Fälle, wie sie in der schriftlichen Prüfung vorkommen.
 
-Der Lehrgang läuft live-online an einem Abend pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Unterricht findet an 16 Dienstagabenden live per Video statt, immer in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung zeigen dir, worauf es bei Ausbildungsplan, Probezeit und Beurteilungsgespräch ankommt. Ab der Mitte des Kurses entwickelst du deine eigene Ausbildungssituation, probst die Präsentation vor der Gruppe und übst das Fachgespräch. Die Kursunterlagen bekommst du zum Download.
 
-Der Kurs passt zu dir, wenn du Auszubildende betreuen oder selbst ausbilden willst. Er ist auch ein guter Einstieg, wenn du später eine Fortbildung wie Personalfachkaufmann oder Fachwirt planst. Zur Prüfung meldest du dich selbst bei deiner IHK an.
+Der Kurs passt zu dir, wenn du Auszubildende betreuen, im eigenen Betrieb ausbilden oder den AEVO-Nachweis für eine spätere Fortbildung erbringen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

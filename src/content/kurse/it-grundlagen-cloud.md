@@ -2,8 +2,8 @@
 saeule: akademie
 kategorie: IT & Cloud
 titel: IT-Grundlagen und Cloud
-untertitel: Cloud-Dienste verstehen und sicher nutzen
-kurzbeschreibung: 'Versteh, wie Cloud funktioniert: Du lernst Grundbegriffe, Dienste, Kosten, Sicherheit und Verantwortung in der Cloud und bereitest dich auf Einsteiger-Zertifizierungen vor – live-online.'
+untertitel: Cloud-Dienste verstehen, einrichten und sicher nutzen
+kurzbeschreibung: 'Versteh, wie Cloud funktioniert: Du lernst Grundbegriffe, Dienste, Kosten, Sicherheit und europäische Alternativen kennen und richtest selbst eine kleine Umgebung ein – live-online an 8 Abenden.'
 status: entwurf
 art: kurs
 ue: 32
@@ -11,11 +11,11 @@ dauer: ca. 4 Wochen
 zeiten: Di + Do, 18:00–21:15 Uhr
 preis:
   betrag: 790
-  hinweis: Inkl. Unterlagen und Zertifikat
+  hinweis: Inklusive Kursunterlagen, Übungsumgebung für den Live-Unterricht und Zertifikat
   raten: false
 zielgruppe:
 - Einsteigerinnen und Einsteiger in die IT
-- Fachkräfte, die mit Cloud-Projekten zu tun haben
+- Fachkräfte aus Einkauf, Projekt und Verwaltung, die mit Cloud-Projekten zu tun haben
 - Auszubildende in IT- und kaufmännischen Berufen
 voraussetzungen:
 - Sicherer Umgang mit dem Computer
@@ -24,38 +24,50 @@ voraussetzungen:
 inhalte:
 - titel: IT-Grundlagen
   punkte:
-  - Server, Netzwerke und Speicher
+  - Server, Netzwerke, Speicher und Rechenzentren
   - Virtualisierung und Container in Grundzügen
 - titel: Cloud-Modelle
   punkte:
   - IaaS, PaaS und SaaS
   - Öffentliche, private und hybride Cloud
-  - Große Anbieter im Überblick
+  - Große Anbieter und europäische Alternativen im Überblick
 - titel: Dienste in der Praxis
   punkte:
   - Rechenleistung, Speicher und Datenbanken
-  - Eine einfache Umgebung einrichten
+  - Eine einfache Umgebung mit virtueller Maschine und Speicher selbst einrichten
+  - KI-Dienste aus der Cloud – was dahintersteckt
 - titel: Sicherheit, Recht und Kosten
   punkte:
   - Geteilte Verantwortung zwischen Anbieter und Kunde
-  - Datenschutz und Standortfragen
-  - Kosten planen und überwachen
+  - Identitäten, Rechte und Mehrfaktor-Anmeldung
+  - Datenschutz, Standort der Daten und Abhängigkeit vom Anbieter
+  - Kosten planen, überwachen und begrenzen
+- titel: Projekt
+  punkte:
+  - Cloud-Lösung für ein Beispielunternehmen skizzieren und vorstellen
 abschluss: Zertifikat der waybuild Akademie
 termine: []
 faq:
 - frage: Bereitet der Kurs auf eine Hersteller-Zertifizierung vor?
-  antwort: Die Inhalte orientieren sich an gängigen Einsteiger-Zertifizierungen der großen Cloud-Anbieter. Die Prüfung selbst legst du bei dem jeweiligen Anbieter ab; sie ist nicht im Preis enthalten.
+  antwort: Die Grundlagen decken viele Themen gängiger Einsteiger-Zertifizierungen der großen Cloud-Anbieter ab. Eine gezielte Prüfungsvorbereitung für ein bestimmtes Zertifikat ist der Kurs nicht; die Prüfung legst du gegebenenfalls beim Anbieter ab, sie ist nicht im Preis enthalten.
+- frage: Entstehen Kosten bei einem Cloud-Anbieter?
+  antwort: Nein. Für die Übungen im Live-Unterricht stellen wir eine Übungsumgebung bereit. Du musst kein eigenes Konto mit Zahlungsdaten anlegen. Aufgaben außerhalb der Termine gibt es nicht.
+- frage: Was ist das Projekt?
+  antwort: Am letzten Abend skizzierst du in einer kleinen Gruppe eine Cloud-Lösung für ein Beispielunternehmen – mit Diensten, Sicherheit und grober Kostenschätzung – und stellst sie vor.
 - frage: Ist das ein IHK-Abschluss?
-  antwort: Nein. Du bekommst ein Zertifikat der waybuild Akademie, das Inhalte und Umfang des Kurses beschreibt. Es ist kein öffentlich-rechtlicher Abschluss.
-- frage: Kann mein Betrieb die Rechnung bekommen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per Mail an die Firma.
-- frage: Wann startet der nächste Kurs?
-  antwort: Für diesen Kurs steht noch kein Termin fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
+  antwort: Nein. Das Zertifikat der waybuild Akademie nennt Inhalte und Umfang der 32 Unterrichtseinheiten. Ein öffentlich-rechtlicher Abschluss oder eine Herstellerzertifizierung ist es nicht.
 reihenfolge: 31
 ---
 
-In diesem Kurs lernst du die Grundlagen moderner IT-Infrastruktur und der Cloud. Du verstehst die wichtigsten Modelle und Dienste, richtest eine einfache Umgebung ein und lernst, Sicherheit, Datenschutz und Kosten im Blick zu behalten.
+In diesem Kurs lernst du die Grundlagen moderner IT-Infrastruktur und der Cloud. Du verstehst die wichtigsten Modelle und Dienste, richtest selbst eine einfache Umgebung ein und lernst, Sicherheit, Datenschutz und Kosten im Blick zu behalten.
 
-Der Kurs läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit langjähriger Praxis erklären jedes Thema an Beispielen, danach probierst du es direkt im Live-Unterricht aus und wir besprechen die Ergebnisse gemeinsam. Fragen klärst du direkt live. Die Unterlagen bekommst du zum Download.
+**Das kannst du nach dem Kurs:**
 
-Der Kurs passt zu dir, wenn du mit Cloud-Themen zu tun hast oder in die IT einsteigen willst und einen verständlichen Überblick brauchst.
+- Begriffe wie IaaS, SaaS, Container oder Region sicher einordnen
+- eine einfache Cloud-Umgebung anlegen und wieder abbauen
+- Verantwortung, Datenschutz und Standortfragen in Angeboten erkennen
+- Kosten eines Cloud-Dienstes grob schätzen und begrenzen
+
+Der Kurs läuft an acht Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis zeigen jeden Schritt am geteilten Bildschirm, danach probierst du ihn noch im selben Live-Termin in der Übungsumgebung selbst aus und wir besprechen die Ergebnisse gemeinsam. Am letzten Abend stellt ihr eure Projektskizzen vor.
+
+Der Kurs passt zu dir, wenn du mit Cloud-Themen zu tun hast oder in die IT einsteigen willst und einen verständlichen Überblick mit Praxis brauchst.
