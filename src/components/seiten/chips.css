@@ -1,0 +1,26 @@
+/* Filter-Chips für Katalog und Terminübersicht (aria-pressed = gewählt), mindestens 44 px hoch (NFA-04). */
+.chip {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+  background: var(--color-base-200);
+  color: var(--color-navy);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s;
+}
+.chip:hover {
+  background: var(--color-base-300);
+}
+.chip[aria-pressed='true'] {
+  background: var(--color-navy);
+  color: #fff;
+}
+.chip[hidden] {
+  display: none;
+}

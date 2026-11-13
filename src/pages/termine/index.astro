@@ -1,8 +1,85 @@
 ---
+// Terminübersicht (US-07, US-25, US-28): alle künftigen, buchbaren Termine aller sichtbaren Kurse,
+// chronologisch nach Monat gruppiert. Filter nach Säule (mit JavaScript, ?saeule=…), ohne JavaScript alle sichtbar.
+// Abgelaufene Termine: beim Build entfernt, zusätzlich im Browser ausgeblendet (zwischen zwei Builds).
 import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+import '../../components/seiten/chips.css';
+import Seitenkopf from '../../components/seiten/Seitenkopf.astro';
+import TerminKarte from '../../components/seiten/TerminKarte.astro';
+import { alleTermine, nachMonat, saeulenName, SAEULEN_REIHENFOLGE } from '../../lib/kurse';
+import { href } from '../../lib/pfad';
+
+const termine = await alleTermine();
+const monate = nachMonat(termine);
+const saeulen = SAEULEN_REIHENFOLGE.filter((s) => termine.some((t) => t.kurs.data.saeule === s));
+const zahl = (n: number) => `${n} ${n === 1 ? 'Termin' : 'Termine'}`;
 ---
 
-<Basis titel="Termine" beschreibung="Alle Starttermine der Live-Online-Kurse der waybuild Akademie.">
-  <ImAufbau titel="Termine" />
+<Basis titel="Termine" beschreibung="Alle Starttermine der Live-Online-Kurse der waybuild Akademie – chronologisch, mit Prüfungstag, Anmeldeschluss und Preis.">
+  <Seitenkopf kicker="Termine" titel="Alle Starttermine" text="Chronologisch nach Monat – mit Zeitraum, Uhrzeit, Prüfungstag und Anmeldeschluss. Anmelden kannst du bis 7 Tage vor Kursstart.">
+    <p class="mt-6 inline-flex max-w-full items-start gap-3 rounded-2xl bg-white px-4 py-3 text-sm ring-1 ring-base-300" data-ihk-einladung>
+      <svg viewBox="0 0 24 24" class="size-5 shrink-0 text-tief" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2" /><path d="M12 11v6M12 7.2v.1" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" /></svg>
+      <span>Die Prüfungstage sind die bundesweiten schriftlichen Termine. <strong>Verbindlich ist die Einladung deiner IHK.</strong></span>
+    </p>
+  </Seitenkopf>
+
+  <div class="rahmen pt-8 pb-20 sm:pt-10" data-termine-seite data-termine-liste>
+    {
+      saeulen.length > 1 && (
+        <div class="mb-10 flex flex-wrap items-center justify-between gap-4 rounded-3xl bg-white p-5 ring-1 ring-base-300 sm:p-6" data-filter hidden>
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Termine nach Bereich filtern">
+            <button type="button" class="chip" data-filter-saeule="" aria-pressed="true">
+              Alle
+            </button>
+            {saeulen.map((s) => (
+              <button type="button" class="chip" data-filter-saeule={s} aria-pressed="false">
+                {saeulenName(s)}
+              </button>
+            ))}
+          </div>
+          <p class="font-semibold" aria-live="polite" aria-atomic="true" data-treffer>
+            {zahl(termine.length)}
+          </p>
+        </div>
+      )
+    }
+
+    <div class="grid gap-14">
+      {
+        monate.map((m) => (
+          <section aria-labelledby={`monat-${m.schluessel}`} data-termin-gruppe={m.schluessel}>
+            <h2 id={`monat-${m.schluessel}`} class="flex items-center gap-4 text-2xl sm:text-3xl">
+              {m.titel}
+              <span class="h-px flex-1 bg-base-300" aria-hidden="true" />
+            </h2>
+            <ul class="mt-6 grid gap-4">
+              {m.eintraege.map(({ kurs, termin }) => (
+                <TerminKarte kurs={kurs} termin={termin} mitKurs />
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+
+    <div class="mt-4 rounded-2xl bg-white p-6 ring-1 ring-base-300" data-termine-leer data-keine-treffer hidden={termine.length > 0}>
+      <p class="text-lg font-semibold">Gerade ist kein Termin buchbar.</p>
+      <p class="mt-2 text-gedaempft">Neue Termine planen wir laufend. Merk dir einen Kurs unverbindlich vor – wir melden uns, sobald ein Termin feststeht.</p>
+      <a href={href('/kurse/')} class="btn btn-secondary mt-5 rounded-full px-6">Zu den Kursen</a>
+    </div>
+
+    <div class="mt-14 grid gap-4 text-sm text-gedaempft md:grid-cols-2">
+      <p>Alle Preise sind Endpreise, alles inklusive. Bei IHK-Kursen ist die Prüfungsgebühr deiner IHK nicht enthalten. Ab 3 Personen in einer Anmeldung gibt es 10 % Rabatt.</p>
+      <p>
+        Für das individuelle Prüfungscoaching gibt es keine festen Termine – wir stimmen sie mit dir ab.
+        <a href={href('/coaching/')} class="link-fliess">Zum Coaching</a>
+      </p>
+    </div>
+  </div>
 </Basis>
+
+
+<script>
+  import { initTerminFilter } from '../../components/seiten/katalog-filter';
+  initTerminFilter();
+</script>

@@ -1,18 +1,122 @@
 ---
-// Platzhalter-Katalog (Task 3 baut Filter nach Säule/Kategorie). Zeigt schon alle sichtbaren Kurse als Karten.
+// Kurskatalog (US-02, US-03): alle sichtbaren Kurse als Karten, nach Säulen gegliedert.
+// Ohne JavaScript: alle Kurse sichtbar, nach Säulen gruppiert (AK3). Mit JavaScript: Filter-Chips für Säule und
+// Kategorie (aria-pressed), Filter in der Adresse (?saeule=…&kategorie=…), Trefferzahl per aria-live (AK2, AK4).
+// Sortierung: reihenfolge, dann Titel (lib/kurse.ts). Entwürfe nur in der Vorschau (KursKarte zeigt das gelbe Band).
 import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+import '../../components/seiten/chips.css';
 import KursKarte from '../../components/KursKarte.astro';
-import { alleKurse } from '../../lib/kurse';
+import Seitenkopf from '../../components/seiten/Seitenkopf.astro';
+import { alleKurse, kategorieSlug, kategorienVon, nachSaeule, saeulenName, SAEULEN_REIHENFOLGE, SAEULEN_TEXT } from '../../lib/kurse';
+import { href } from '../../lib/pfad';
 
 const kurse = await alleKurse();
+const gruppen = nachSaeule(kurse);
+const kategorien = kategorienVon(kurse);
+// Filter nur anbieten, wenn es etwas zu filtern gibt (live z. B. zunächst nur eine Säule)
+const ohneKurse = SAEULEN_REIHENFOLGE.filter((s) => !gruppen.some((g) => g.saeule === s));
+const mitFilter = gruppen.length > 1 || kategorien.length > 1;
+const zahl = (n: number) => `${n} ${n === 1 ? 'Kurs' : 'Kurse'}`;
 ---
 
-<Basis titel="Kurse" beschreibung="Alle Live-Online-Kurse der waybuild Akademie mit Preis, Umfang und nächstem Starttermin.">
-  <ImAufbau titel="Kurse" text="Der Kurskatalog mit Filtern ist im Aufbau. Hier findest du schon alle Kurse." />
-  <section class="rahmen pb-20" aria-label="Kursliste">
-    <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {kurse.map((k) => <li><KursKarte kurs={k} /></li>)}
-    </ul>
-  </section>
+<Basis titel="Kurse" beschreibung="Alle Live-Online-Kurse der waybuild Akademie mit Preis, Umfang und nächstem Starttermin – filterbar nach Prüfungsvorbereitung, IHK-Weiterbildung und eigener Weiterbildung.">
+  <Seitenkopf kicker="Kurskatalog" titel="Finde deinen Kurs" text="Preis, Umfang und nächster Start stehen direkt auf jeder Karte. Alle Kurse finden live online statt – abends, in einer festen Gruppe.">
+    <p class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+      <a href={href('/termine/')} class="link-fliess font-semibold">Alle Starttermine auf einen Blick</a>
+      <a href={href('/pruefungsvorbereitung/')} class="link-fliess font-semibold">Zur IHK-Prüfungsvorbereitung</a>
+    </p>
+  </Seitenkopf>
+
+  <div class="rahmen pt-8 pb-20 sm:pt-10" data-katalog>
+    <!-- Filter: erst mit JavaScript sichtbar -->
+    {mitFilter && (
+    <div class="mb-10 rounded-3xl bg-white p-5 ring-1 ring-base-300 sm:p-6" data-filter hidden>
+      <div class="grid gap-5 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end lg:gap-8">
+        <fieldset>
+          <legend class="text-sm font-semibold text-gedaempft">Bereich</legend>
+          <div class="mt-2 flex flex-wrap gap-2" role="group" aria-label="Nach Bereich filtern">
+            <button type="button" class="chip" data-filter-saeule="" aria-pressed="true">Alle</button>
+            {
+              gruppen.map((g) => (
+                <button type="button" class="chip" data-filter-saeule={g.saeule} aria-pressed="false">
+                  {saeulenName(g.saeule)}
+                </button>
+              ))
+            }
+          </div>
+        </fieldset>
+        <div class="grid gap-2 sm:max-w-sm">
+          <label for="filter-kategorie" class="text-sm font-semibold text-gedaempft">Kategorie</label>
+          <select id="filter-kategorie" class="select w-full rounded-full border-base-300 bg-base-100 font-semibold" data-filter-kategorie-auswahl>
+            <option value="">Alle Kategorien</option>
+            {
+              kategorien.map((k) => (
+                <option value={k.slug} data-saeulen={k.saeulen.join(' ')}>
+                  {k.name}
+                </option>
+              ))
+            }
+          </select>
+        </div>
+      </div>
+      <div class="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-base-300 pt-4">
+        <p class="font-semibold" aria-live="polite" aria-atomic="true" data-treffer>{zahl(kurse.length)}</p>
+        <button type="button" class="link-fliess text-sm font-semibold" data-filter-zuruecksetzen hidden>Filter zurücksetzen</button>
+      </div>
+    </div>
+    )}
+
+    {
+      ohneKurse.map((s) => (
+        <div class="mb-10 rounded-3xl bg-base-200 p-6 sm:p-7" data-saeule-vorbereitung={s} role="status" hidden>
+          <p class="font-serif text-2xl">{saeulenName(s)}: in Vorbereitung</p>
+          <p class="mt-2 text-gedaempft">
+            Kurse in diesem Bereich bereiten wir gerade vor. <a href={href('/kontakt/')} class="link-fliess font-semibold">Schreib uns</a>, wenn du Interesse hast – darunter findest du alle Kurse, die du schon buchen kannst.
+          </p>
+        </div>
+      ))
+    }
+
+    <div class="grid gap-16">
+      {
+        gruppen.map((g) => (
+          <section aria-labelledby={`gruppe-${g.saeule}`} data-saeule-gruppe={g.saeule}>
+            <div class="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 border-b border-base-300 pb-4">
+              <div class="max-w-2xl">
+                <h2 id={`gruppe-${g.saeule}`} class="trennen text-3xl sm:text-4xl">
+                  {saeulenName(g.saeule)}
+                </h2>
+                <p class="mt-2 text-gedaempft">{SAEULEN_TEXT[g.saeule]}</p>
+              </div>
+              <p class="text-sm font-semibold text-gedaempft" data-gruppe-zahl>
+                {zahl(g.kurse.length)}
+              </p>
+            </div>
+            <ul class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {g.kurse.map((k) => (
+                <li data-kurs={k.id} data-saeule={k.data.saeule} data-kategorie={kategorieSlug(k.data.kategorie)} data-status={k.data.status}>
+                  <KursKarte kurs={k} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+
+    <p class="mt-12 rounded-2xl bg-base-200 p-6 text-gedaempft" data-keine-treffer hidden>
+      Für diese Auswahl gibt es gerade keinen Kurs. <button type="button" class="link-fliess font-semibold" data-filter-zuruecksetzen>Alle Kurse anzeigen</button>
+    </p>
+
+    <p class="mt-14 text-sm text-gedaempft">
+      Alle Preise sind Endpreise, alles inklusive. Bei IHK-Kursen ist die Prüfungsgebühr deiner IHK nicht enthalten. Dein Kurs ist nicht dabei?
+      <a href={href('/kontakt/')} class="link-fliess">Schreib uns</a>.
+    </p>
+  </div>
 </Basis>
+
+
+<script>
+  import { initKatalog } from '../../components/seiten/katalog-filter';
+  initKatalog();
+</script>

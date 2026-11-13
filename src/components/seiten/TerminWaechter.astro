@@ -1,0 +1,19 @@
+---
+// Blendet Termine aus, deren Anmeldeschluss nach dem Bauen abgelaufen ist (US-25, ergänzt den täglichen Build).
+// Markup: Container [data-termine-liste] mit Einträgen [data-anmeldeschluss="YYYY-MM-DD"], optional Gruppen
+// [data-termin-gruppe] (leer → ausgeblendet) und ein verstecktes [data-termine-leer] als Ersatz.
+// Ohne JavaScript gilt der Stand des letzten Builds.
+---
+
+<script>
+  import { markiereAbgelaufene } from './katalog-filter';
+  document.querySelectorAll<HTMLElement>('[data-termine-liste]').forEach((liste) => {
+    markiereAbgelaufene(liste);
+    liste.querySelectorAll<HTMLElement>('[data-termin-gruppe]').forEach((g) => {
+      if (!g.querySelector('[data-anmeldeschluss]:not([data-abgelaufen])')) g.hidden = true;
+    });
+    if (!liste.querySelector('[data-anmeldeschluss]:not([data-abgelaufen])')) {
+      liste.querySelectorAll<HTMLElement>('[data-termine-leer]').forEach((l) => (l.hidden = false));
+    }
+  });
+</script>

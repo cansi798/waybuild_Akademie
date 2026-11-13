@@ -1,0 +1,21 @@
+---
+// Pflichthinweis auf IHK-bezogenen Seiten (US-19, GR-13) – Wortlaut aus lib/site.ts, optional mit Zusatz (Coaching).
+import { IHK_HINWEIS } from '../../lib/site';
+
+interface Props {
+  zusatz?: string;
+  class?: string;
+}
+const { zusatz, class: klasse } = Astro.props;
+---
+
+<aside class:list={['flex gap-4 rounded-2xl bg-base-200 p-5 text-sm leading-relaxed sm:p-6', klasse]} aria-label="Hinweis zur IHK" data-ihk-hinweis-seite>
+  <svg viewBox="0 0 24 24" class="mt-0.5 size-6 shrink-0 text-tief" aria-hidden="true">
+    <circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2" />
+    <path d="M12 11v6M12 7.2v.1" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+  </svg>
+  <p>
+    {IHK_HINWEIS}
+    {zusatz && <span class="mt-2 block">{zusatz}</span>}
+  </p>
+</aside>

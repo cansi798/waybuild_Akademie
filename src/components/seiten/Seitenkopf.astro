@@ -1,0 +1,22 @@
+---
+// Einheitlicher Seitenkopf der Inhaltsseiten: Kicker, H1, Einleitung, optional Knöpfe (Slot) und Begleiter (Slot "seite").
+interface Props {
+  kicker?: string;
+  titel: string;
+  text?: string;
+}
+const { kicker, titel, text } = Astro.props;
+const mitSeite = Astro.slots.has('seite');
+---
+
+<section class="border-b border-base-300">
+  <div class:list={['rahmen grid gap-10 pt-10 pb-12 sm:pt-14 sm:pb-16', mitSeite && 'lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-14']}>
+    <div class="max-w-3xl">
+      {kicker && <p class="text-sm font-semibold tracking-wide text-tief uppercase">{kicker}</p>}
+      <h1 class="trennen mt-3 text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-6xl">{titel}</h1>
+      {text && <p class="mt-5 max-w-2xl text-lg text-gedaempft sm:text-xl">{text}</p>}
+      <slot />
+    </div>
+    {mitSeite && <div><slot name="seite" /></div>}
+  </div>
+</section>

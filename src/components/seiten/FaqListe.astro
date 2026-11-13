@@ -1,0 +1,27 @@
+---
+// Ausklappbare Fragen (US-17 AK2): <details> – per Tastatur bedienbar, ohne JavaScript vollständig lesbar.
+import type { FaqEintrag } from './schema';
+
+interface Props {
+  eintraege: FaqEintrag[];
+  /** erste Frage geöffnet */
+  ersteOffen?: boolean;
+}
+const { eintraege, ersteOffen = false } = Astro.props;
+---
+
+<div class="grid gap-3" data-faq-liste>
+  {
+    eintraege.map((f, i) => (
+      <details class="group rounded-2xl bg-white ring-1 ring-base-300 open:ring-petrol/40" open={ersteOffen && i === 0}>
+        <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold [&::-webkit-details-marker]:hidden">
+          <span class="trennen">{f.frage}</span>
+          <svg viewBox="0 0 20 20" class="size-5 shrink-0 transition-transform group-open:rotate-45" aria-hidden="true">
+            <path d="M10 4v12M4 10h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </summary>
+        <p class="trennen px-5 pb-5 text-gedaempft">{f.antwort}</p>
+      </details>
+    ))
+  }
+</div>

@@ -1,8 +1,112 @@
 ---
+// Über uns (US-18, GR-15): wer hinter der Akademie steht, wie wir unterrichten – Lehrende nur allgemein,
+// ohne Namen, Fotos, Lebensläufe, Zahlen oder Quoten. Unabhängigkeit von der IHK (US-19).
 import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
+import Seitenkopf from '../../components/seiten/Seitenkopf.astro';
+import { href } from '../../lib/pfad';
+import { AKADEMIE } from '../../lib/site';
+
+const MERKMALE = [
+  {
+    titel: 'Live-online',
+    text: 'Unterricht in Echtzeit per Videokonferenz – mit Fragen, Übungen und Austausch in der Gruppe. Ohne Anfahrt, von überall.',
+    icon: 'M3 5h18v11H3zM8 20h8M12 16v4',
+  },
+  {
+    titel: 'Berufsbegleitend',
+    text: 'Feste Abendtermine, die neben Ausbildung, Umschulung oder Beruf funktionieren. Du weißt vorher genau, wann du dabei bist.',
+    icon: 'M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z',
+  },
+  {
+    titel: 'Faire Endpreise',
+    text: 'Der Preis auf der Kursseite ist der Preis, den du zahlst – alles inklusive. Die Rechnung kommt per E-Mail, an dich oder an deinen Betrieb.',
+    icon: 'M4 7h16v12H4zM4 11h16M8 15h3',
+  },
+  {
+    titel: 'Erfahrene Dozenten',
+    text: 'Bei uns unterrichten Dozenten mit IHK-Prüfer-Erfahrung und langjähriger Praxis. Sie wissen, worauf es bei nachvollziehbaren Antworten ankommt.',
+    icon: 'M12 3l9 5-9 5-9-5zM7 10.5V15c0 1.7 2.2 3 5 3s5-1.3 5-3v-4.5',
+  },
+];
+
+const WIE = [
+  { titel: 'Verstehen statt auswendig lernen', text: 'Wir erklären Zusammenhänge so, dass du dein Wissen in neuen Aufgaben anwenden kannst.' },
+  { titel: 'Prüfungsnah üben', text: 'Aufgaben im Stil der Prüfung besprechen wir gemeinsam live – mit Lösungsweg und typischen Fehlern.' },
+  { titel: 'Klarer Plan', text: 'Jeder Abend hat ein Schwerpunktthema. Die Kurse enden kurz vor dem Prüfungstermin.' },
+];
 ---
 
-<Basis titel="Über uns" beschreibung="Wer hinter der waybuild Akademie steht und wie wir unterrichten.">
-  <ImAufbau titel="Über uns" />
+<Basis titel="Über uns" beschreibung="Die waybuild Akademie: Live-Online-Kurse, berufsbegleitend, mit fairen Endpreisen und Dozenten mit IHK-Prüfer-Erfahrung. Ein unabhängiges Angebot der Waybuild UG (haftungsbeschränkt).">
+  <Seitenkopf kicker="Über uns" titel="Die waybuild Akademie" text="Wir bereiten dich live online auf deine Prüfung und deinen nächsten Schritt im Beruf vor – mit festen Terminen, klaren Preisen und Lehrenden, die Prüfungen von der anderen Seite kennen." />
+
+  <section class="rahmen py-16 sm:py-20" aria-labelledby="merkmale-titel">
+    <h2 id="merkmale-titel" class="max-w-2xl text-3xl sm:text-4xl">Was uns ausmacht</h2>
+    <ul class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        MERKMALE.map((m) => (
+          <li class="flex flex-col rounded-3xl bg-white p-6 ring-1 ring-base-300">
+            <span class="grid size-12 place-items-center rounded-2xl bg-navy text-bernstein" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="size-6"><path d={m.icon} fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+            <h3 class="mt-5 text-2xl">{m.titel}</h3>
+            <p class="mt-2 text-gedaempft">{m.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="border-y border-base-300 bg-white" aria-labelledby="wie-titel">
+    <div class="rahmen grid gap-10 py-16 sm:py-20 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+      <div>
+        <h2 id="wie-titel" class="text-3xl sm:text-4xl">So unterrichten wir</h2>
+        <p class="mt-3 text-lg text-gedaempft">Alle Kurse sind Live-Unterricht – gemeinsam, in Echtzeit, mit Lehrenden, die du direkt fragen kannst.</p>
+      </div>
+      <ol class="grid gap-6">
+        {
+          WIE.map((w, i) => (
+            <li class="grid grid-cols-[auto_1fr] gap-5">
+              <span class="font-serif text-4xl leading-none text-petrol tabular-nums" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <span>
+                <span class="block text-xl font-semibold">{w.titel}</span>
+                <span class="mt-1 block text-gedaempft">{w.text}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="rahmen grid gap-6 py-16 sm:py-20 lg:grid-cols-2" aria-label="Unabhängigkeit und Anbieter">
+    <div class="rounded-3xl bg-base-200 p-7 sm:p-8">
+      <h2 class="text-2xl sm:text-3xl">Unabhängig</h2>
+      <p class="mt-3 text-gedaempft">
+        Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Unsere Kurse sind keine Veranstaltung der IHK. Die Prüfung legst du bei deiner zuständigen IHK ab – verbindlich sind deren Termine und Regeln.
+      </p>
+    </div>
+    <div class="rounded-3xl bg-navy p-7 text-white sm:p-8" data-anbieter>
+      <h2 class="text-2xl sm:text-3xl">Wer dahintersteht</h2>
+      <p class="mt-3 text-white/85">
+        Die waybuild Akademie gehört zur Waybuild UG (haftungsbeschränkt) mit Sitz in Norderstedt.
+      </p>
+      <p class="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+        <a href={`mailto:${AKADEMIE.mailInfo}`} class="font-semibold text-white underline decoration-bernstein decoration-2 underline-offset-4">{AKADEMIE.mailInfo}</a>
+        <a href={href('/impressum/')} class="font-semibold text-white underline decoration-white/40 underline-offset-4">Impressum</a>
+      </p>
+    </div>
+  </section>
+
+  <div class="rahmen pb-16"><IhkHinweis /></div>
+
+  <section class="bg-tief text-white" aria-labelledby="cta-titel">
+    <div class="rahmen flex flex-col gap-8 py-16 sm:py-20 md:flex-row md:items-center md:justify-between">
+      <h2 id="cta-titel" class="max-w-xl text-3xl sm:text-4xl">Lern uns im Kurs kennen.</h2>
+      <div class="flex flex-wrap gap-3">
+        <a href={href('/kurse/')} class="btn btn-accent btn-lg rounded-full px-7">Kurse ansehen</a>
+        <a href={href('/kontakt/')} class="btn btn-lg rounded-full border-white/40 bg-transparent px-7 text-white hover:bg-white/10">Kontakt</a>
+      </div>
+    </div>
+  </section>
 </Basis>

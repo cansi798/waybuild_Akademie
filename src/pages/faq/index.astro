@@ -1,8 +1,113 @@
 ---
+// FAQ (US-17): alle Fragen gruppiert, ausklappbar, ohne JavaScript lesbar, FAQPage-Schema.
+// Wortwahl laut Rulings: nur Live-Unterricht (keine Mitschnitte/Selbstlernen), keine Förderhinweise,
+// keine Mindestzahl/Plätze, Endpreise „alles inklusive“, Storno laut GR-05 (vor Livegang rechtlich prüfen).
 import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+import FaqListe from '../../components/seiten/FaqListe.astro';
+import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
+import Seitenkopf from '../../components/seiten/Seitenkopf.astro';
+import { faqSchema, type FaqEintrag } from '../../components/seiten/schema';
+import { href } from '../../lib/pfad';
+import { AKADEMIE } from '../../lib/site';
+
+const GRUPPEN: { id: string; titel: string; fragen: FaqEintrag[] }[] = [
+  {
+    id: 'allgemein',
+    titel: 'Allgemein',
+    fragen: [
+      { frage: 'Ist der Kurs eine offizielle IHK-Veranstaltung?', antwort: 'Nein. Die waybuild Akademie ist ein unabhängiger Anbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine.' },
+      { frage: 'Wer unterrichtet bei euch?', antwort: 'Erfahrene IHK-Prüfer und Dozenten mit langjähriger Praxis. Sie kennen die Prüfungen von der anderen Seite.' },
+      { frage: 'Finden die Kurse vor Ort statt?', antwort: 'Nein. Alle Kurse finden ausschließlich live online statt – per Videokonferenz, in Echtzeit und gemeinsam mit der Gruppe.' },
+      { frage: 'Wer steht hinter der waybuild Akademie?', antwort: 'Die waybuild Akademie gehört zur Waybuild UG (haftungsbeschränkt) mit Sitz in Norderstedt.' },
+    ],
+  },
+  {
+    id: 'anmeldung',
+    titel: 'Anmeldung & Bezahlung',
+    fragen: [
+      { frage: 'Wie melde ich mich an?', antwort: 'Wähle auf der Kursseite oder in der Terminübersicht einen Termin und fülle das kurze Formular aus. Du bekommst danach eine Eingangsbestätigung per E-Mail.' },
+      { frage: 'Bis wann kann ich mich anmelden?', antwort: 'Bis 7 Tage vor Kursstart. Den Anmeldeschluss findest du bei jedem Termin.' },
+      { frage: 'Wie bezahle ich?', antwort: 'Nach der Anmeldung bekommst du die Rechnung per E-Mail. Eine Online-Zahlung ist nicht nötig, ein Kundenkonto auch nicht.' },
+      { frage: 'Kann mein Betrieb die Rechnung bekommen?', antwort: 'Ja. Wähle im Formular „Mein Betrieb zahlt“ und gib die Rechnungsangaben der Firma an. Eine Bestellnummer kannst du freiwillig ergänzen.' },
+      { frage: 'Kann ich mehrere Personen anmelden?', antwort: 'Ja, bis zu 5 Personen in einer Anmeldung, wenn der Betrieb zahlt. Ab 3 Personen gibt es 10 % Rabatt auf die gesamte Teilnahmegebühr.' },
+      { frage: 'Ist der Preis ein Endpreis?', antwort: 'Ja. Alle Preise sind Endpreise, alles inklusive. Die Prüfungsgebühr deiner IHK ist nicht enthalten.' },
+      { frage: 'Kann ich stornieren?', antwort: 'Ja. Bis 14 Tage vor Kursstart kostenlos, danach 50 % der Teilnahmegebühr, ab Kursbeginn die volle Gebühr. Statt dir kann jederzeit vor Kursbeginn kostenlos eine Ersatzperson teilnehmen. Dein gesetzliches Widerrufsrecht bleibt unberührt. Die Einzelheiten stehen in den Teilnahmebedingungen.' },
+      { frage: 'Was passiert, wenn ein Kurs nicht stattfindet?', antwort: 'Dann sagen wir spätestens 10 Tage vor Kursstart ab. Du bekommst bereits gezahlte Beträge vollständig zurück oder wechselst kostenlos auf einen anderen Termin.' },
+    ],
+  },
+  {
+    id: 'live-unterricht',
+    titel: 'Live-Unterricht',
+    fragen: [
+      { frage: 'Wie läuft ein Kursabend ab?', antwort: 'Jeder Abend hat ein Schwerpunktthema. Die Lehrkraft führt kurz ein, danach besprechen wir prüfungsnahe Aufgaben gemeinsam live.' },
+      { frage: 'Was brauche ich für den Live-Unterricht?', antwort: 'Einen Computer mit stabiler Internetverbindung, einen aktuellen Browser und ein Headset oder Kopfhörer mit Mikrofon. Eine Kamera ist optional.' },
+      { frage: 'Wie bekomme ich den Zugang?', antwort: 'Vor Kursbeginn schicken wir dir den Link zum Live-Raum per E-Mail. Auf der Website steht er nicht.' },
+      { frage: 'Kann ich Fragen stellen?', antwort: 'Ja, jederzeit – per Mikrofon oder im Chat. Genau dafür ist der Live-Unterricht da.' },
+      { frage: 'Was ist, wenn ich einen Abend verpasse?', antwort: 'Sprich uns an. Du kannst die Inhalte in einem späteren Live-Termin nachholen.' },
+    ],
+  },
+  {
+    id: 'pruefung',
+    titel: 'Prüfung',
+    fragen: [
+      { frage: 'Wann ist meine Prüfung?', antwort: 'Bei jedem Termin steht der bundesweite schriftliche Prüfungstag. Verbindlich ist die Einladung deiner IHK.' },
+      { frage: 'Melde ich mich bei euch auch zur Prüfung an?', antwort: 'Nein. Die Anmeldung zur Prüfung läuft über deine zuständige IHK – in der Ausbildung meist über deinen Ausbildungsbetrieb.' },
+      { frage: 'Schreibt ihr beim Coaching meinen Projektantrag?', antwort: 'Nein. Projektantrag, Dokumentation und alle Prüfungsleistungen erstellst du selbst. Im Coaching bekommst du Beratung, Rückmeldung und Training.' },
+      { frage: 'Muss ich Fachwissen mitbringen?', antwort: 'Ja. Die Prüfungsvorbereitung wiederholt und vertieft, was du in der Ausbildung gelernt hast. Sie ersetzt keine Ausbildung.' },
+    ],
+  },
+  {
+    id: 'weiterbildung',
+    titel: 'Weiterbildung',
+    fragen: [
+      { frage: 'Welche Weiterbildungen bietet ihr an?', antwort: 'Berufsbegleitende IHK-Weiterbildungen wie Fachwirt oder Betriebswirt und eigene Kurse in KI, Programmierung und IT bereiten wir gerade vor. Du kannst dein Interesse unverbindlich vormerken.' },
+      { frage: 'Wer entscheidet über die Zulassung zur Fortbildungsprüfung?', antwort: 'Deine IHK. Kläre die Zulassung am besten vor Kursbeginn.' },
+      { frage: 'Welchen Abschluss bekomme ich bei einer eigenen Weiterbildung?', antwort: 'Ein Teilnahmezertifikat der waybuild Akademie. Das ist kein öffentlich-rechtlicher Abschluss.' },
+      { frage: 'Kann ich bei langen Weiterbildungen in Raten zahlen?', antwort: 'Ja. Bei langen Weiterbildungen ist Ratenzahlung ohne Aufpreis möglich. Den Ratenplan findest du in deiner Rechnung.' },
+    ],
+  },
+];
+
+const alle = GRUPPEN.flatMap((g) => g.fragen);
 ---
 
-<Basis titel="Häufige Fragen" beschreibung="Antworten zu Anmeldung, Zahlung, Live-Unterricht, Technik und Prüfung.">
-  <ImAufbau titel="Häufige Fragen" />
+<Basis titel="Häufige Fragen" beschreibung="Antworten zu Anmeldung, Bezahlung, Live-Unterricht, Prüfung und Weiterbildung bei der waybuild Akademie." schema={[faqSchema(alle)]}>
+  <Seitenkopf kicker="FAQ" titel="Häufige Fragen" text="Kurze Antworten auf das, was andere vor der Anmeldung wissen wollten.">
+    <nav aria-label="Themen" class="mt-7">
+      <ul class="flex flex-wrap gap-2">
+        {
+          GRUPPEN.map((g) => (
+            <li>
+              <a href={`#${g.id}`} class="inline-flex min-h-11 items-center rounded-full bg-white px-4 font-semibold ring-1 ring-base-300 hover:bg-base-200">
+                {g.titel}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </Seitenkopf>
+
+  <div class="rahmen grid gap-16 py-14 sm:py-16">
+    {
+      GRUPPEN.map((g) => (
+        <section id={g.id} class="grid scroll-mt-24 gap-6 lg:grid-cols-[0.6fr_1.4fr] lg:gap-12" aria-labelledby={`${g.id}-titel`} data-faq-gruppe={g.id}>
+          <h2 id={`${g.id}-titel`} class="text-3xl sm:text-4xl">{g.titel}</h2>
+          <FaqListe eintraege={g.fragen} />
+        </section>
+      ))
+    }
+  </div>
+
+  <div class="rahmen grid gap-6 pb-20 lg:grid-cols-2">
+    <div class="rounded-3xl bg-navy p-7 text-white sm:p-8">
+      <h2 class="text-2xl sm:text-3xl">Deine Frage ist nicht dabei?</h2>
+      <p class="mt-3 text-white/85">Schreib uns – wir helfen dir gern weiter.</p>
+      <p class="mt-5 flex flex-wrap gap-3">
+        <a href={href('/kontakt/')} class="btn btn-accent rounded-full px-6">Zum Kontakt</a>
+        <a href={`mailto:${AKADEMIE.mailInfo}`} class="btn rounded-full border-white/40 bg-transparent px-6 text-white hover:bg-white/10">{AKADEMIE.mailInfo}</a>
+      </p>
+    </div>
+    <IhkHinweis />
+  </div>
 </Basis>

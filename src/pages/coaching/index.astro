@@ -1,8 +1,174 @@
 ---
+// Prüfungscoaching und Projektbegleitung (US-15, GR-19): Themen, Pakete mit Endpreis, Ablauf, Hinweis zu
+// Prüfungsleistungen, FAQ. Daten aus src/content/kurse/pruefungscoaching.md (Pakete, Themen, FAQ).
+import { getEntry } from 'astro:content';
 import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+import Ablauf from '../../components/seiten/Ablauf.astro';
+import FaqListe from '../../components/seiten/FaqListe.astro';
+import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
+import { faqSchema } from '../../components/seiten/schema';
+import { formatEuro, kategorieSlug } from '../../lib/kurse';
+import { href } from '../../lib/pfad';
+
+const kurs = await getEntry('kurse', 'pruefungscoaching');
+if (!kurs) throw new Error('Kursdatei pruefungscoaching.md fehlt');
+const d = kurs.data;
+const pakete = d.pakete ?? [{ name: 'Einzelcoaching', betrag: d.preis.betrag, beschreibung: '1 × 60 Minuten' }];
+const anfrageUrl = href(`/anmeldung/?kurs=${kurs.id}`);
+const sitzungen = (b: string) => Number(b.match(/(\d+)\s*×/)?.[1] ?? 1);
+
+const ICONS = [
+  // Antrag
+  'M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h4',
+  // Dokumentation
+  'M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM8 4v13M11 9h4M11 13h4',
+  // Präsentation
+  'M3 4h18M5 4v10h14V4M12 14v4M8 21l4-3 4 3',
+  // Fachgespräch
+  'M4 5h11v8H8l-4 3zM15 9h5v8l-3-2h-6v-2',
+];
+
+const FAQ = [
+  ...d.faq,
+  {
+    frage: 'Ist die Anfrage verbindlich?',
+    antwort: 'Nein. Die Anfrage ist unverbindlich. Der Vertrag kommt erst zustande, wenn wir die Termine gemeinsam abgestimmt haben.',
+  },
+  {
+    frage: 'Kann mein Betrieb das Coaching bezahlen?',
+    antwort: 'Ja. Im Anfrageformular wählst du „Mein Betrieb zahlt“. Die Rechnung geht dann per E-Mail an die Firma.',
+  },
+];
 ---
 
-<Basis titel="Prüfungscoaching" beschreibung="Individuelles Prüfungscoaching für IT-Berufe: Projektantrag, Dokumentation, Präsentation und Fachgespräch.">
-  <ImAufbau titel="Prüfungscoaching" />
+<Basis
+  titel="Prüfungscoaching und Projektbegleitung"
+  beschreibung="1:1-Prüfungscoaching für IT-Berufe: Projektantrag, Dokumentation, Präsentation und Fachgespräch – online, flexibel, ab 69 € je 60 Minuten."
+  schema={[faqSchema(FAQ)]}
+>
+  <!-- Kopf -->
+  <section class="border-b border-base-300">
+    <div class="rahmen grid gap-10 pt-10 pb-14 sm:pt-14 sm:pb-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-14">
+      <div>
+        <p class="text-sm font-semibold tracking-wide text-tief uppercase">Prüfungscoaching · 1:1 online</p>
+        <h1 class="trennen mt-3 text-[2.4rem] leading-[1.05] sm:text-5xl lg:text-6xl">Dein Projekt. Deine Fragen. Deine Vorbereitung.</h1>
+        <p class="mt-5 max-w-2xl text-lg text-gedaempft sm:text-xl">
+          Persönliche Begleitung für Projektantrag, Dokumentation, Präsentation und Fachgespräch – mit ehrlicher Rückmeldung und einem realistischen Probedurchlauf.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={anfrageUrl} class="btn btn-accent btn-lg rounded-full px-7" data-coaching-anfrage>Coaching anfragen</a>
+          <a href="#pakete" class="btn btn-outline btn-secondary btn-lg rounded-full px-7">Pakete und Preise</a>
+        </div>
+      </div>
+      <div class="rounded-[1.75rem] bg-navy p-6 text-white sm:p-8" data-selbst-hinweis>
+        <svg viewBox="0 0 24 24" class="size-9 text-bernstein" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        <p class="mt-4 font-serif text-2xl leading-snug sm:text-3xl">Beratung und Feedback – deine Prüfungsleistungen erstellst du selbst.</p>
+        <p class="mt-3 text-white/85">Projektantrag, Dokumentation und Präsentation sind deine eigene Arbeit. Wir geben Rückmeldung, stellen Fragen und trainieren mit dir. Eine Einflussnahme auf Prüfung oder Bewertung erfolgt nicht.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Themen -->
+  <section class="rahmen py-16 sm:py-20" aria-labelledby="themen-titel">
+    <h2 id="themen-titel" class="max-w-2xl text-3xl sm:text-4xl">Wobei wir dich begleiten</h2>
+    <p class="mt-3 max-w-2xl text-lg text-gedaempft">Du entscheidest, wo du Unterstützung brauchst – ein Thema oder alle vier.</p>
+    <ul class="trennen mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
+      {
+        d.inhalte.map((m, i) => (
+          <li class="rounded-3xl bg-white p-6 ring-1 ring-base-300 sm:p-7" id={kategorieSlug(m.titel)}>
+            <div class="flex items-center gap-4">
+              <span class="grid size-12 shrink-0 place-items-center rounded-2xl bg-base-200 text-petrol" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="size-6"><path d={ICONS[i % ICONS.length]} fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </span>
+              <h3 class="trennen text-2xl">{m.titel}</h3>
+            </div>
+            <ul class="mt-5 grid gap-2">
+              {m.punkte.map((p) => (
+                <li class="flex gap-3 text-gedaempft">
+                  <svg viewBox="0 0 20 20" class="mt-1 size-4 shrink-0 text-tief" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+    <details class="group mt-6 rounded-2xl bg-base-200/70">
+      <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold [&::-webkit-details-marker]:hidden">
+        Auch bei Prüfungsunsicherheit und Lernstrategie
+        <svg viewBox="0 0 20 20" class="size-5 shrink-0 transition-transform group-open:rotate-45" aria-hidden="true"><path d="M10 4v12M4 10h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+      </summary>
+      <p class="px-5 pb-5 text-gedaempft">
+        Wenn dich die Prüfungssituation unsicher macht, üben wir anspruchsvolle Gesprächssituationen und entwickeln gemeinsam eine Lernstrategie, die zu dir passt.
+      </p>
+    </details>
+  </section>
+
+  <!-- Pakete -->
+  <section id="pakete" class="scroll-mt-24 border-y border-base-300 bg-white" aria-labelledby="pakete-titel">
+    <div class="rahmen py-16 sm:py-20">
+      <h2 id="pakete-titel" class="max-w-2xl text-3xl sm:text-4xl">Pakete und Preise</h2>
+      <p class="mt-3 max-w-2xl text-lg text-gedaempft">Jede Sitzung dauert 60 Minuten und findet online statt. Alle Preise sind Endpreise, alles inklusive.</p>
+      <ul class="mt-10 grid gap-5 md:grid-cols-3" data-pakete>
+        {
+          pakete.map((p, i) => {
+            const n = sitzungen(p.beschreibung);
+            const hervor = i === 1;
+            return (
+              <li class:list={['relative flex flex-col rounded-3xl p-7 ring-1', hervor ? 'bg-navy text-white ring-navy' : 'bg-base-100 ring-base-300']} data-paket={kategorieSlug(p.name)}>
+                {hervor && <span class="absolute -top-3 left-7 rounded-full bg-bernstein px-3 py-1 text-xs font-semibold text-navy">Für Projekt und Fachgespräch</span>}
+                <h3 class="font-sans text-lg font-semibold">{p.name}</h3>
+                <p class:list={['text-sm', hervor ? 'text-white/80' : 'text-gedaempft']}>{p.beschreibung}</p>
+                <p class="mt-6 font-serif text-5xl leading-none font-semibold tabular-nums">{formatEuro(p.betrag)}</p>
+                <p class:list={['mt-2 text-sm', hervor ? 'text-white/80' : 'text-gedaempft']}>
+                  {n > 1 ? `${formatEuro(Math.round((p.betrag / n) * 100) / 100)} je Sitzung · ` : ''}Endpreis
+                </p>
+                <a
+                  href={`${anfrageUrl}&paket=${kategorieSlug(p.name)}`}
+                  class:list={['btn mt-7 rounded-full', hervor ? 'btn-accent' : 'btn-secondary']}
+                  data-coaching-anfrage
+                >
+                  Coaching anfragen<span class="sr-only">: {p.name}</span>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+      {d.preis.hinweis && <p class="mt-6 max-w-3xl text-sm text-gedaempft">{d.preis.hinweis}</p>}
+    </div>
+  </section>
+
+  <!-- Ablauf -->
+  <section class="rahmen py-16 sm:py-20" aria-labelledby="ablauf-titel">
+    <h2 id="ablauf-titel" class="max-w-2xl text-3xl sm:text-4xl">So läuft das Coaching</h2>
+    <p class="mt-3 max-w-2xl text-lg text-gedaempft">Unverbindlich anfragen – verbindlich wird es erst mit den abgestimmten Terminen.</p>
+    <div class="mt-10"><Ablauf coaching /></div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="border-t border-base-300 bg-base-200/60" aria-labelledby="faq-titel">
+    <div class="rahmen grid gap-10 py-16 sm:py-20 lg:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <h2 id="faq-titel" class="text-3xl sm:text-4xl">Häufige Fragen zum Coaching</h2>
+        <p class="mt-3 text-gedaempft">Weitere Antworten findest du in den <a class="link-fliess" href={href('/faq/')}>häufigen Fragen</a>.</p>
+      </div>
+      <FaqListe eintraege={FAQ} />
+    </div>
+  </section>
+
+  <div class="rahmen py-12">
+    <IhkHinweis zusatz="Projektanträge, Projektdokumentationen und sonstige Prüfungsleistungen erstellen ausschließlich die Prüfungsteilnehmenden selbst. Eine Einflussnahme auf die Prüfung oder deren Bewertung erfolgt nicht." />
+  </div>
+
+  <section class="bg-tief text-white" aria-labelledby="cta-titel">
+    <div class="rahmen flex flex-col gap-8 py-16 sm:py-20 md:flex-row md:items-center md:justify-between">
+      <div class="max-w-xl">
+        <h2 id="cta-titel" class="text-3xl sm:text-4xl">Schildere uns dein Anliegen.</h2>
+        <p class="mt-3 text-lg text-white/85">Wir melden uns und schlagen dir passende Online-Termine vor.</p>
+      </div>
+      <a href={anfrageUrl} class="btn btn-accent btn-lg self-start rounded-full px-7 md:self-auto" data-coaching-anfrage>Coaching anfragen</a>
+    </div>
+  </section>
 </Basis>

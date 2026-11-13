@@ -8,7 +8,7 @@ status: freigegeben
 art: kurs
 ue: 35
 dauer: ca. 5 Wochen (10 Abende)
-zeiten: Di + Do, 18:00–20:45 Uhr
+zeiten: "10 Abende, Di + Do: 5 × 18:00–20:45 Uhr (3 UE) und 5 × 18:00–21:30 Uhr (4 UE)"
 preis:
   betrag: 349
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die Prüfungsgebühr deiner IHK ist nicht enthalten."

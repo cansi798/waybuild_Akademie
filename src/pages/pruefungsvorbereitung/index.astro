@@ -1,8 +1,234 @@
 ---
+// Landingpage IHK-Prüfungsvorbereitung (US-27: Ziel der Weiterleitung von top-abschluss.de).
+// Textarm: kurze Botschaft, AP1/AP2/Coaching-Karten, Warum-Bühne, Termine, „So läuft's“, aufklappbare Details, FAQ.
+// Nur freigegebene Kurse (auch in der Vorschau), damit die Seite den späteren Live-Stand zeigt.
 import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
+import KursKarte from '../../components/KursKarte.astro';
+import Lernpfad from '../../components/Lernpfad.astro';
+import WarumBuehne from '../../components/WarumBuehne.astro';
+import FaqListe from '../../components/seiten/FaqListe.astro';
+import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
+import TerminKarte from '../../components/seiten/TerminKarte.astro';
+import TerminWaechter from '../../components/seiten/TerminWaechter.astro';
+import { faqSchema } from '../../components/seiten/schema';
+import { buchbareTermine, formatDatum, freigegebeneKurse, kurzname, type Kurs, type Termin } from '../../lib/kurse';
+import { href } from '../../lib/pfad';
+
+const kurse = (await freigegebeneKurse()).filter((k) => k.data.saeule === 'ihk-pruefung');
+// Kurse zuerst, Coaching zuletzt
+const karten = [...kurse.filter((k) => k.data.art === 'kurs'), ...kurse.filter((k) => k.data.art === 'coaching')];
+const termine: { kurs: Kurs; termin: Termin }[] = kurse
+  .filter((k) => k.data.art === 'kurs')
+  .flatMap((kurs) => buchbareTermine(kurs).map((termin) => ({ kurs, termin })))
+  .sort((a, b) => a.termin.start.getTime() - b.termin.start.getTime());
+const pruefungen = termine.filter((t) => t.termin.pruefung);
+const jahre = [...new Set(termine.map((t) => t.termin.start.getUTCFullYear()))];
+const termineTitel = jahre.length === 1 ? `Termine ${jahre[0]}` : 'Nächste Termine';
+const erster = termine[0];
+
+const FAQ = [
+  {
+    frage: 'Ist der Kurs eine offizielle IHK-Veranstaltung?',
+    antwort: 'Nein. Die waybuild Akademie ist ein unabhängiger Anbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine.',
+  },
+  {
+    frage: 'Welcher Kurs passt zu mir – AP1 oder AP2?',
+    antwort: 'Die AP1 schreibst du etwa zur Mitte der Ausbildung; sie ist für alle sieben IT-Berufe gleich. Die AP2 kommt am Ende der Ausbildung. Unseren AP2-Kurs gibt es zuerst für die Fachrichtung Systemintegration.',
+  },
+  {
+    frage: 'Muss ich Fachwissen mitbringen?',
+    antwort: 'Ja. Die Kurse wiederholen und vertiefen, was du in der Ausbildung gelernt hast. Sie ersetzen keine Ausbildung.',
+  },
+  {
+    frage: 'Ist der Kurs auch für Umschüler geeignet?',
+    antwort: 'Ja. Die Prüfungsvorbereitung richtet sich an Auszubildende und Umschüler, die dieselbe IHK-Abschlussprüfung ablegen.',
+  },
+  {
+    frage: 'Kann mein Betrieb die Rechnung bekommen?',
+    antwort: 'Ja. Bei der Anmeldung wählst du „Mein Betrieb zahlt“. Die Rechnung geht dann per E-Mail an die Firma. Ab 3 Personen in einer Anmeldung gibt es 10 % Rabatt.',
+  },
+  {
+    frage: 'Wer schreibt beim Coaching meinen Projektantrag?',
+    antwort: 'Du selbst. Projektantrag, Dokumentation und alle Prüfungsleistungen erstellst du selbst. Im Coaching bekommst du Beratung, Rückmeldung und Training.',
+  },
+];
 ---
 
-<Basis titel="IHK-Prüfungsvorbereitung" beschreibung="Vorbereitung auf die IHK-Abschlussprüfung für IT-Berufe: AP1, AP2 und Prüfungscoaching – live online.">
-  <ImAufbau titel="IHK-Prüfungsvorbereitung" />
+<Basis
+  titel="IHK-Prüfungsvorbereitung für IT-Berufe"
+  beschreibung="Vorbereitung auf die IHK-Abschlussprüfung für IT-Berufe: AP1 für alle IT-Berufe, AP2 Systemintegration und Prüfungscoaching – live online mit Dozenten mit IHK-Prüfer-Erfahrung."
+  schema={[faqSchema(FAQ)]}
+>
+  <!-- Botschaft -->
+  <section class="relative overflow-hidden border-b border-base-300">
+    <div class="rahmen grid items-center gap-12 pt-10 pb-14 sm:pt-14 sm:pb-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+      <div>
+        <p class="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold ring-1 ring-base-300">
+          <span class="size-2.5 rounded-full bg-bernstein" aria-hidden="true"></span>
+          IHK-Prüfungsvorbereitung · live online
+        </p>
+        <h1 class="trennen mt-5 text-[2.5rem] leading-[1.03] sm:text-6xl lg:text-[4rem]">
+          Deine IHK-Prüfung.<br /><span class="text-petrol">Gut vorbereitet.</span>
+        </h1>
+        <p class="mt-6 max-w-xl text-lg text-gedaempft sm:text-xl">
+          AP1 für alle IT-Berufe, AP2 Systemintegration und persönliches Prüfungscoaching. Abends live online – mit Dozenten mit IHK-Prüfer-Erfahrung.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#termine" class="btn btn-accent btn-lg rounded-full px-7">Termin wählen</a>
+          <a href={href('/coaching/')} class="btn btn-outline btn-secondary btn-lg rounded-full px-7">Zum Coaching</a>
+        </div>
+      </div>
+
+      {
+        pruefungen.length > 0 && (
+          <aside class="rounded-[1.75rem] bg-navy p-6 text-white sm:p-8" aria-labelledby="pruefungen-titel">
+            <h2 id="pruefungen-titel" class="font-sans text-sm font-semibold tracking-wide text-white/75 uppercase">
+              Schriftliche Prüfungstage
+            </h2>
+            <ul class="mt-4 divide-y divide-white/15">
+              {pruefungen.map(({ kurs, termin }) => (
+                <li class="flex items-center justify-between gap-4 py-3.5">
+                  <span>
+                    <span class="font-serif text-2xl">{kurzname(kurs)}</span>
+                    <span class="block text-sm text-white/80">Kurs ab {formatDatum(termin.start)}</span>
+                  </span>
+                  <time datetime={termin.pruefung!.toISOString().slice(0, 10)} class="rounded-full bg-white/10 px-3 py-1.5 font-semibold tabular-nums whitespace-nowrap">
+                    {formatDatum(termin.pruefung!)}
+                  </time>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-4 text-sm text-white/80">Bundesweite Termine. Verbindlich ist die Einladung deiner IHK.</p>
+          </aside>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- Angebote -->
+  <section class="rahmen py-16 sm:py-20" aria-labelledby="angebote-titel">
+    <h2 id="angebote-titel" class="max-w-2xl text-3xl sm:text-4xl">Drei Wege zur Prüfung</h2>
+    <ul class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {karten.map((k) => <li><KursKarte kurs={k} /></li>)}
+    </ul>
+  </section>
+
+  <!-- Warum -->
+  <section class="border-y border-base-300 bg-white py-16 sm:py-24">
+    <div class="rahmen">
+      <WarumBuehne id="warum-pruefung" buchenUrl="#termine" />
+    </div>
+  </section>
+
+  <!-- Termine -->
+  <section id="termine" class="rahmen scroll-mt-24 py-16 sm:py-20" aria-labelledby="termine-titel" data-termine-liste>
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div class="max-w-2xl">
+        <h2 id="termine-titel" class="text-3xl sm:text-4xl">{termineTitel}</h2>
+        <p class="mt-3 text-lg text-gedaempft">Jeder Kurs endet kurz vor dem schriftlichen Prüfungstag.</p>
+      </div>
+      <a href={href('/termine/')} class="link-fliess font-semibold">Alle Termine</a>
+    </div>
+    {
+      termine.length > 0 && (
+        <ul class="mt-8 grid gap-4">
+          {termine.map(({ kurs, termin }) => (
+            <TerminKarte kurs={kurs} termin={termin} mitKurs />
+          ))}
+        </ul>
+      )
+    }
+    <p class="mt-6 rounded-2xl bg-white p-6 ring-1 ring-base-300" data-termine-leer hidden={termine.length > 0}>
+      Neue Termine sind in Planung. <a href={href('/kurse/?saeule=ihk-pruefung')} class="link-fliess font-semibold">Kurs ansehen und Interesse vormerken</a>
+    </p>
+  </section>
+
+  <!-- So läuft's -->
+  {
+    erster && (
+      <section class="border-t border-base-300 bg-base-200/60" aria-labelledby="ablauf-titel">
+        <div class="rahmen py-16 sm:py-20">
+          <h2 id="ablauf-titel" class="max-w-xl text-3xl sm:text-4xl">So läuft's</h2>
+          <p class="mt-3 max-w-xl text-lg text-gedaempft">Vier Schritte von der Anmeldung bis zur Prüfung.</p>
+          <div class="mt-12">
+            <Lernpfad
+              kurz={kurzname(erster.kurs)}
+              slug={erster.kurs.id}
+              zeiten={erster.kurs.data.zeiten}
+              anmeldeschluss={erster.termin.anmeldeschluss}
+              start={erster.termin.start}
+              ende={erster.termin.ende}
+              pruefung={erster.termin.pruefung}
+            />
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Details (aufklappbar) + FAQ -->
+  <section class="rahmen grid gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:gap-16" aria-label="Details und häufige Fragen">
+    <div>
+      <h2 class="text-3xl sm:text-4xl">Was geprüft wird</h2>
+      <p class="mt-3 text-gedaempft">Kurz erklärt – die Einzelheiten regelt deine IHK.</p>
+      <div class="mt-6 grid gap-3">
+        <details class="group rounded-2xl bg-white ring-1 ring-base-300" open>
+          <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold [&::-webkit-details-marker]:hidden">
+            AP1 – alle IT-Berufe
+            <svg viewBox="0 0 20 20" class="size-5 shrink-0 transition-transform group-open:rotate-45" aria-hidden="true"><path d="M10 4v12M4 10h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+          </summary>
+          <div class="grid gap-3 px-5 pb-5 text-gedaempft">
+            <p>Geprüft wird der gemeinsame Bereich „Einrichten eines IT-gestützten Arbeitsplatzes“. Das Ergebnis zählt mit 20 % für deine gesamte Abschlussprüfung.</p>
+            <p>Im Kurs: Hardware, Netzwerktechnik, Betriebssysteme, IT-Sicherheit, Wirtschaftlichkeit und IT-Service – mit prüfungsnahen Aufgaben.</p>
+          </div>
+        </details>
+        <details class="group rounded-2xl bg-white ring-1 ring-base-300">
+          <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold [&::-webkit-details-marker]:hidden">
+            AP2 – Systemintegration
+            <svg viewBox="0 0 20 20" class="size-5 shrink-0 transition-transform group-open:rotate-45" aria-hidden="true"><path d="M10 4v12M4 10h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+          </summary>
+          <div class="grid gap-3 px-5 pb-5 text-gedaempft">
+            <p>Schriftlich: Konzeption und Administration von IT-Systemen, Analyse und Entwicklung von Netzwerken sowie Wirtschafts- und Sozialkunde.</p>
+            <p>Dazu kommt die betriebliche Projektarbeit mit Präsentation und Fachgespräch – dabei begleitet dich das Prüfungscoaching.</p>
+          </div>
+        </details>
+        <details class="group rounded-2xl bg-white ring-1 ring-base-300">
+          <summary class="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold [&::-webkit-details-marker]:hidden">
+            Projektarbeit und Fachgespräch
+            <svg viewBox="0 0 20 20" class="size-5 shrink-0 transition-transform group-open:rotate-45" aria-hidden="true"><path d="M10 4v12M4 10h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+          </summary>
+          <div class="grid gap-3 px-5 pb-5 text-gedaempft">
+            <p>Projektantrag, Dokumentation, Präsentation und Fachgespräch bereitest du im 1:1-Coaching vor – mit Rückmeldung und einem realistischen Probedurchlauf.</p>
+            <p>Deine Prüfungsleistungen erstellst du selbst. <a href={href('/coaching/')} class="link-fliess">Mehr zum Coaching</a></p>
+          </div>
+        </details>
+      </div>
+    </div>
+    <div>
+      <h2 class="text-3xl sm:text-4xl">Häufige Fragen</h2>
+      <p class="mt-3 text-gedaempft">Alle Antworten findest du in den <a href={href('/faq/')} class="link-fliess">häufigen Fragen</a>.</p>
+      <div class="mt-6">
+        <FaqListe eintraege={FAQ} />
+      </div>
+    </div>
+  </section>
+
+  <div class="rahmen pb-16">
+    <IhkHinweis />
+  </div>
+
+  <!-- Abschluss -->
+  <section class="bg-tief text-white" aria-labelledby="cta-titel">
+    <div class="rahmen flex flex-col gap-8 py-16 sm:py-20 md:flex-row md:items-center md:justify-between">
+      <div class="max-w-xl">
+        <h2 id="cta-titel" class="text-3xl sm:text-4xl">Such dir deinen Termin aus.</h2>
+        <p class="mt-3 text-lg text-white/85">Anmelden per Formular, Rechnung per E-Mail – an dich oder an deinen Betrieb.</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="#termine" class="btn btn-accent btn-lg rounded-full px-7">Termin wählen</a>
+        <a href={href('/kontakt/')} class="btn btn-lg rounded-full border-white/40 bg-transparent px-7 text-white hover:bg-white/10">Frage stellen</a>
+      </div>
+    </div>
+  </section>
+  <TerminWaechter />
 </Basis>

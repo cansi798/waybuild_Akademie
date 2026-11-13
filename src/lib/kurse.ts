@@ -62,7 +62,7 @@ export async function alleTermine(jetzt: Date = new Date()): Promise<TerminMitKu
     .sort((a, b) => a.termin.start.getTime() - b.termin.start.getTime());
 }
 
-const EURO = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 2, minimumFractionDigits: 0 });
+const EURO = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 2, minimumFractionDigits: 2 });
 
 /** 349 → "349 €", 69.5 → "69,50 €" */
 export function formatEuro(n: number): string {
@@ -101,4 +101,93 @@ export function saeulenName(s: Saeule): string {
 export function kurzname(kurs: Kurs): string {
   const m = kurs.id.match(/^(ap\d)/i);
   return m ? m[1].toUpperCase() : kurs.data.kategorie;
+}
+
+// ---------------------------------------------------------------------------
+// Ergänzungen Task 3 (Katalog, Kursseite, Termine) – bestehende Signaturen bleiben unverändert.
+
+/** Feste Reihenfolge der Säulen in Katalog, Terminen und Filtern. */
+export const SAEULEN_REIHENFOLGE: readonly Saeule[] = ['ihk-pruefung', 'ihk-weiterbildung', 'akademie'];
+
+/** Ein Satz je Säule für Katalog-Gruppen und Filter. */
+export const SAEULEN_TEXT: Record<Saeule, string> = {
+  'ihk-pruefung': 'Vorbereitung auf die Abschlussprüfung bei deiner IHK – für Azubis und Umschüler.',
+  'ihk-weiterbildung': 'Berufsbegleitende Aufstiegsfortbildungen – die Prüfung legst du bei deiner IHK ab.',
+  akademie: 'Praxiskurse in KI, Programmierung und IT mit Teilnahmezertifikat der waybuild Akademie.',
+};
+
+/** Adress-Parameter ?saeule=… (auch Kurzformen wie „pruefungsvorbereitung“) – siehe components/seiten/filter-parameter.ts. */
+export { saeuleAusParameter } from '../components/seiten/filter-parameter';
+
+/** Kategorie als Adress-Wert: "IT & Cloud" → "it-cloud", "Kaufmännische Berufe" → "kaufmaennische-berufe". */
+export function kategorieSlug(kategorie: string): string {
+  return kategorie
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/** Kurse je Säule (in fester Säulen-Reihenfolge, leere Säulen entfallen). Reihenfolge innerhalb: wie alleKurse(). */
+export function nachSaeule(kurse: Kurs[]): { saeule: Saeule; kurse: Kurs[] }[] {
+  return SAEULEN_REIHENFOLGE.map((saeule) => ({ saeule, kurse: kurse.filter((k) => k.data.saeule === saeule) })).filter(
+    (g) => g.kurse.length > 0,
+  );
+}
+
+/** Alle vorkommenden Kategorien (nur nicht leere, US-02 AK1), alphabetisch, mit Säule(n). */
+export function kategorienVon(kurse: Kurs[]): { name: string; slug: string; saeulen: Saeule[] }[] {
+  const map = new Map<string, Set<Saeule>>();
+  for (const k of kurse) {
+    const s = map.get(k.data.kategorie) ?? new Set<Saeule>();
+    s.add(k.data.saeule);
+    map.set(k.data.kategorie, s);
+  }
+  return [...map.entries()]
+    .map(([name, s]) => ({ name, slug: kategorieSlug(name), saeulen: SAEULEN_REIHENFOLGE.filter((x) => s.has(x)) }))
+    .sort((a, b) => a.name.localeCompare(b.name, 'de'));
+}
+
+/** IHK-bezogen (Prüfungsvorbereitung oder IHK-Weiterbildung) → IHK-Hinweis Pflicht (US-19). */
+export function istIhkKurs(kurs: Kurs): boolean {
+  return kurs.data.saeule !== 'akademie';
+}
+
+/** Adresse des Anmeldeformulars mit vorausgewähltem Termin (US-07 AK4). */
+export function anmeldeUrl(kurs: Kurs, termin: Termin): string {
+  return `/anmeldung/?kurs=${encodeURIComponent(kurs.id)}&termin=${encodeURIComponent(termin.id)}`;
+}
+
+/** Adresse „Interesse vormerken“ (US-14). */
+export function interesseUrl(kurs: Kurs): string {
+  return `/interesse/?kurs=${encodeURIComponent(kurs.id)}`;
+}
+
+/** Umfang für Kennzahlen: "35 UE" bzw. "je 60 Minuten" beim Coaching. */
+export function umfangText(kurs: Kurs): string | undefined {
+  if (kurs.data.art === 'coaching') return 'je 60 Minuten';
+  return kurs.data.ue ? `${kurs.data.ue} UE` : undefined;
+}
+
+/** "Januar 2027" */
+export function formatMonat(d: Date): string {
+  return new Intl.DateTimeFormat('de-DE', { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d);
+}
+
+/** Termine nach Monat des Starts gruppieren (Eingabe bereits sortiert). */
+export function nachMonat(liste: TerminMitKurs[]): { schluessel: string; titel: string; eintraege: TerminMitKurs[] }[] {
+  const gruppen: { schluessel: string; titel: string; eintraege: TerminMitKurs[] }[] = [];
+  for (const e of liste) {
+    const schluessel = isoDatum(e.termin.start).slice(0, 7);
+    let g = gruppen.find((x) => x.schluessel === schluessel);
+    if (!g) {
+      g = { schluessel, titel: formatMonat(e.termin.start), eintraege: [] };
+      gruppen.push(g);
+    }
+    g.eintraege.push(e);
+  }
+  return gruppen;
 }

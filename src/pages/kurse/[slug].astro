@@ -1,9 +1,29 @@
 ---
-// Platzhalter-Kursseite (Task 3 baut die vollständige Kursseite mit Sprungnavigation, Inhalten, Terminen, Preis, FAQ).
+// Kursdetailseite (US-04, US-05, US-28): Kopf mit Kerndaten, Sprungnavigation, Überblick, Inhalte (Akkordeon),
+// Termine, Preis und Leistungen, Voraussetzungen + Ablauf, FAQ. Mobil eine klebende Handlungsleiste unten.
+// Strukturierte Daten: Course + CourseInstance + Event je Termin + FAQPage (nur freigegebene Kurse, NFA-15).
+// Entwürfe (nur Vorschau) tragen oben ein gelbes Band und sind nicht buchbar (US-22).
+import { render } from 'astro:content';
 import Basis from '../../layouts/Basis.astro';
-import ImAufbau from '../../components/ImAufbau.astro';
-import { alleKurse, formatDatum, formatEuro, buchbareTermine, type Kurs } from '../../lib/kurse';
-import { IHK_HINWEIS } from '../../lib/site';
+import Ablauf from '../../components/seiten/Ablauf.astro';
+import Entwurfsband from '../../components/seiten/Entwurfsband.astro';
+import FaqListe from '../../components/seiten/FaqListe.astro';
+import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
+import TerminKarte from '../../components/seiten/TerminKarte.astro';
+import TerminWaechter from '../../components/seiten/TerminWaechter.astro';
+import { faqSchema, kursSchema } from '../../components/seiten/schema';
+import {
+  alleKurse,
+  buchbareTermine,
+  formatDatum,
+  formatEuro,
+  interesseUrl,
+  istIhkKurs,
+  saeulenName,
+  umfangText,
+  type Kurs,
+} from '../../lib/kurse';
+import { href } from '../../lib/pfad';
 
 export async function getStaticPaths() {
   const kurse = await alleKurse();
@@ -14,25 +34,378 @@ interface Props {
 }
 const { kurs } = Astro.props;
 const d = kurs.data;
+const { Content } = await render(kurs);
+
+const entwurf = d.status === 'entwurf';
+const coaching = d.art === 'coaching';
+const ihk = istIhkKurs(kurs);
 const termine = buchbareTermine(kurs);
+const naechster = termine[0];
+const pruefungskurs = d.saeule === 'ihk-pruefung' && !coaching;
+const umfang = umfangText(kurs);
+const preisLabel = entwurf ? 'Preisvorschlag' : coaching ? 'ab' : 'Teilnahmegebühr';
+const hinweisEnthaeltIhk = /IHK/.test(d.preis.hinweis ?? '');
+
+// Haupt-Handlung: Coaching anfragen | Termin wählen | Interesse vormerken
+const aktion = coaching
+  ? { text: 'Coaching anfragen', url: href(`/anmeldung/?kurs=${kurs.id}`), daten: 'coaching' }
+  : termine.length > 0
+    ? { text: entwurf ? 'Termine ansehen' : 'Termin wählen & anmelden', url: '#termine', daten: 'termine' }
+    : { text: 'Interesse vormerken', url: href(interesseUrl(kurs)), daten: 'interesse' };
+const aktionKurz = aktion.daten === 'termine' ? (entwurf ? 'Termine ansehen' : 'Termin wählen') : aktion.text;
+
+const abschnitte = [
+  { id: 'ueberblick', name: 'Überblick' },
+  { id: 'inhalte', name: 'Inhalte' },
+  { id: 'termine', name: 'Termine' },
+  { id: 'preis', name: 'Preis' },
+  { id: 'voraussetzungen', name: 'Voraussetzungen' },
+  ...(d.faq.length > 0 ? [{ id: 'faq', name: 'FAQ' }] : []),
+];
+
+const kerndaten: { name: string; wert: string; breit?: boolean }[] = [
+  ...(umfang ? [{ name: 'Umfang', wert: umfang }] : []),
+  coaching ? { name: 'Pakete', wert: `${d.pakete?.length ?? 1} zur Wahl` } : { name: 'Dauer', wert: d.dauer },
+  { name: 'Format', wert: 'live-online' },
+  { name: entwurf ? 'Preisvorschlag' : 'Preis', wert: `${coaching ? 'ab ' : ''}${formatEuro(d.preis.betrag)}${entwurf ? '' : ' – alles inklusive'}` },
+  { name: coaching ? 'Termine' : 'Zeiten', wert: d.zeiten, breit: true },
+];
+
+const leistungen = coaching
+  ? ['1:1 per Videokonferenz, je 60 Minuten', 'Termine flexibel nach Vereinbarung', 'Rückmeldung zu deinen selbst erstellten Unterlagen', 'Rechnung per E-Mail – keine Online-Zahlung']
+  : [
+      'Live-Unterricht in einer festen Gruppe',
+      'Unterlagen für den Kurs',
+      'Fragen direkt live klären – per Mikrofon oder Chat',
+      'Rechnung per E-Mail – an dich oder deinen Betrieb',
+    ];
+
+const schema = entwurf ? [] : [...kursSchema(kurs, termine, Astro.site), ...(d.faq.length > 0 ? [faqSchema(d.faq)] : [])];
 ---
 
-<Basis titel={d.titel} beschreibung={d.kurzbeschreibung}>
-  <ImAufbau titel={d.titel} text={d.kurzbeschreibung}>
-    <p class="mt-4 font-semibold text-tief">{d.untertitel}</p>
-    <p class="mt-4"><span class="font-serif text-3xl font-semibold">{formatEuro(d.preis.betrag)}</span> <span class="text-gedaempft">Endpreis, alles inklusive</span></p>
-    {
-      termine.length > 0 && (
-        <ul id="termine" class="mt-6 grid gap-2">
-          {termine.map((t) => (
-            <li class="rounded-xl bg-white p-4 ring-1 ring-base-300">
-              {formatDatum(t.start)}–{formatDatum(t.ende)} · {d.zeiten}
-              {t.pruefung && <span class="block text-sm text-gedaempft">Prüfung {formatDatum(t.pruefung)}. {t.pruefungHinweis}</span>}
-            </li>
-          ))}
+<Basis titel={d.titel} beschreibung={d.kurzbeschreibung} schema={schema}>
+  {entwurf && <Entwurfsband />}
+
+  <!-- Kopf -->
+  <header class="border-b border-base-300" data-kurs-kopf>
+    <div class="rahmen pt-6 pb-10 sm:pt-8 sm:pb-12">
+      <nav aria-label="Brotkrumen" class="text-sm">
+        <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-gedaempft">
+          <li><a href={href('/kurse/')} class="link-fliess">Kurse</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href={href(`/kurse/?saeule=${d.saeule}`)} class="link-fliess">{saeulenName(d.saeule)}</a></li>
+        </ol>
+      </nav>
+
+      <div class="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-end">
+        <div class="min-w-0">
+          <p class="flex flex-wrap gap-2 text-xs font-semibold">
+            <span class="rounded-full bg-white px-3 py-1 ring-1 ring-base-300">{saeulenName(d.saeule)}</span>
+            <span class="rounded-full bg-white px-3 py-1 ring-1 ring-base-300">{d.kategorie}</span>
+          </p>
+          <h1 class="trennen mt-4 text-[2.2rem] leading-[1.06] sm:text-5xl lg:text-[3.4rem]">{d.titel}</h1>
+          <p class="trennen mt-3 text-lg font-semibold text-tief sm:text-xl">{d.untertitel}</p>
+          <p class="mt-5 max-w-2xl text-lg text-gedaempft">{d.kurzbeschreibung}</p>
+        </div>
+
+        <div class="rounded-3xl bg-navy p-6 text-white" data-start-kopf>
+          {
+            coaching ? (
+              <p>
+                <span class="block text-sm text-white/75">Termine</span>
+                <span class="font-serif text-2xl leading-tight">flexibel nach Vereinbarung</span>
+              </p>
+            ) : naechster ? (
+              <p>
+                <span class="block text-sm text-white/75">Nächster Start</span>
+                <span class="font-serif text-3xl leading-tight">{formatDatum(naechster.start, 'wochentag')}</span>
+                {naechster.pruefung && <span class="mt-1 block text-sm text-white/85">Prüfung {formatDatum(naechster.pruefung)} · {termine.length > 1 ? `${termine.length} Termine zur Wahl` : '1 Termin'}</span>}
+                {!naechster.pruefung && termine.length > 1 && <span class="mt-1 block text-sm text-white/85">{termine.length} Termine zur Wahl</span>}
+              </p>
+            ) : (
+              <p>
+                <span class="block text-sm text-white/75">Nächster Start</span>
+                <span class="font-serif text-2xl leading-tight">Termin in Planung</span>
+                <span class="mt-1 block text-sm text-white/85">Merk dir den Kurs unverbindlich vor.</span>
+              </p>
+            )
+          }
+          <a href={aktion.url} class="btn btn-accent mt-5 w-full rounded-full" data-hauptaktion={aktion.daten}>{aktion.text}</a>
+        </div>
+      </div>
+
+      <dl class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-base-300 ring-1 ring-base-300 md:grid-cols-3 lg:grid-cols-6" data-kerndaten>
+        {
+          kerndaten.map((k) => (
+            <div class:list={['bg-white p-4 sm:p-5', k.breit && 'col-span-2']}>
+              <dt class="text-xs font-semibold tracking-wide text-gedaempft uppercase">{k.name}</dt>
+              <dd class="trennen mt-1 font-semibold">{k.wert}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </header>
+
+  <!-- Sprungnavigation -->
+  <nav aria-label="Auf dieser Seite" class="border-b border-base-300 bg-white" data-sprungnavigation>
+    <ul class="rahmen flex flex-wrap gap-x-1 gap-y-1 py-3">
+      {
+        abschnitte.map((a) => (
+          <li>
+            <a href={`#${a.id}`} class="inline-flex min-h-11 items-center rounded-full px-4 font-semibold text-navy hover:bg-base-200">
+              {a.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <div class="rahmen grid grid-cols-1 gap-14 py-14 sm:py-16 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16">
+    <div class="trennen grid min-w-0 grid-cols-1 gap-16 sm:gap-20">
+      <!-- Überblick -->
+      <section id="ueberblick" aria-labelledby="ueberblick-titel" class="abschnitt">
+        <h2 id="ueberblick-titel" class="text-3xl sm:text-4xl">Überblick</h2>
+        <div class="fliesstext mt-6 max-w-2xl text-lg"><Content /></div>
+        <div class="mt-10 grid gap-5 md:grid-cols-2">
+          <div class="rounded-2xl bg-white p-6 ring-1 ring-base-300">
+            <h3 class="font-sans text-base font-semibold">Geeignet für</h3>
+            <ul class="mt-3 grid gap-2.5">
+              {
+                d.zielgruppe.map((z) => (
+                  <li class="flex gap-3">
+                    <svg viewBox="0 0 20 20" class="mt-1 size-4 shrink-0 text-tief" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                    <span>{z}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="rounded-2xl bg-base-200 p-6">
+            <h3 class="font-sans text-base font-semibold">Abschluss</h3>
+            <p class="mt-3">{d.abschluss}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Inhalte -->
+      <section id="inhalte" aria-labelledby="inhalte-titel" class="abschnitt">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <h2 id="inhalte-titel" class="text-3xl sm:text-4xl">Inhalte</h2>
+          <p class="text-sm font-semibold text-gedaempft">{d.inhalte.length} {d.inhalte.length === 1 ? 'Themenblock' : 'Themenblöcke'}</p>
+        </div>
+        <div class="mt-6 grid gap-3" data-module>
+          {
+            d.inhalte.map((m, i) => (
+              <details class="modul group rounded-2xl bg-white ring-1 ring-base-300 open:ring-petrol/40" open={i === 0}>
+                <summary class="flex min-h-16 cursor-pointer list-none items-center gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
+                  <span class="font-serif text-2xl leading-none text-petrol tabular-nums" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="trennen flex-1 text-lg font-semibold">{m.titel}</span>
+                  <svg viewBox="0 0 20 20" class="size-5 shrink-0 transition-transform group-open:rotate-180" aria-hidden="true"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </summary>
+                <ul class="grid gap-2 px-5 pb-5 sm:pl-[4.25rem]">
+                  {m.punkte.map((pkt) => (
+                    <li class="flex gap-3 text-gedaempft">
+                      <span class="mt-2.5 size-1.5 shrink-0 rounded-full bg-petrol" aria-hidden="true" />
+                      <span>{pkt}</span>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Termine -->
+      <section id="termine" aria-labelledby="termine-titel" class="abschnitt">
+        <h2 id="termine-titel" class="text-3xl sm:text-4xl">Termine</h2>
+        {
+          coaching ? (
+            <div class="mt-6 rounded-2xl bg-white p-6 ring-1 ring-base-300" data-termine-coaching>
+              <p class="text-lg font-semibold">Flexibel nach Vereinbarung</p>
+              <p class="mt-2 text-gedaempft">
+                Du schilderst dein Anliegen und deinen Prüfungszeitraum, wir stimmen passende Online-Termine ab. Die Anfrage ist unverbindlich – der Vertrag kommt erst mit der Terminabstimmung zustande.
+              </p>
+              <a href={href(`/anmeldung/?kurs=${kurs.id}`)} class="btn btn-secondary mt-5 rounded-full px-6">
+                Coaching anfragen
+              </a>
+            </div>
+          ) : (
+            <div data-termine-liste>
+              {termine.length > 0 && (
+                <>
+                  {pruefungskurs && <p class="mt-3 max-w-2xl text-gedaempft">Jeder Kurs endet kurz vor dem bundesweiten schriftlichen Prüfungstag. Verbindlich ist die Einladung deiner IHK.</p>}
+                  <ul class="mt-6 grid gap-4">
+                    {termine.map((t) => (
+                      <TerminKarte kurs={kurs} termin={t} />
+                    ))}
+                  </ul>
+                </>
+              )}
+              <div class="mt-6 rounded-2xl bg-white p-6 ring-1 ring-base-300" data-termine-leer hidden={termine.length > 0}>
+                <p class="text-lg font-semibold">Termin in Planung</p>
+                <p class="mt-2 text-gedaempft">Für diesen Kurs steht noch kein Termin fest. Merk dir den Kurs unverbindlich vor – wir melden uns, sobald es einen Termin gibt.</p>
+                {(termine.length === 0 || !entwurf) && (
+                  <a href={href(interesseUrl(kurs))} class="btn btn-secondary mt-5 rounded-full px-6" data-interesse>
+                    Interesse vormerken<span class="sr-only">: {d.titel}</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          )
+        }
+      </section>
+
+      <!-- Preis -->
+      <section id="preis" aria-labelledby="preis-titel" class="abschnitt">
+        <h2 id="preis-titel" class="text-3xl sm:text-4xl">Preis und Leistungen</h2>
+        {
+          coaching && d.pakete && (
+            <ul class="mt-6 grid gap-4 md:grid-cols-3" data-pakete>
+              {d.pakete.map((p, i) => (
+                <li class:list={['flex flex-col rounded-2xl p-6 ring-1', i === 1 ? 'bg-navy text-white ring-navy' : 'bg-white ring-base-300']}>
+                  <p class="font-semibold">{p.name}</p>
+                  <p class:list={['text-sm', i === 1 ? 'text-white/80' : 'text-gedaempft']}>{p.beschreibung}</p>
+                  <p class="mt-4 font-serif text-4xl font-semibold tabular-nums">{formatEuro(p.betrag)}</p>
+                  <p class:list={['text-xs', i === 1 ? 'text-white/80' : 'text-gedaempft']}>Endpreis, alles inklusive</p>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+        <div class="mt-6 grid overflow-hidden rounded-3xl ring-1 ring-base-300 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]" data-preisbox>
+          <div class:list={['p-6 sm:p-7', coaching ? 'bg-base-200' : 'bg-navy text-white']}>
+            {
+              !coaching && (
+                <>
+                  <p class="text-sm text-white/75">{preisLabel} je Person</p>
+                  <p class="font-serif text-5xl leading-none font-semibold tabular-nums">{formatEuro(d.preis.betrag)}</p>
+                  <p class="mt-2 font-semibold text-bernstein">{entwurf ? 'Vorschlag – noch nicht freigegeben' : 'Endpreis, alles inklusive'}</p>
+                </>
+              )
+            }
+            <div class:list={['grid gap-3 text-sm', !coaching && 'mt-5 border-t border-white/20 pt-5 text-white/85', coaching && 'text-gedaempft']}>
+              {d.preis.hinweis && <p>{d.preis.hinweis}</p>}
+              {ihk && !coaching && !hinweisEnthaeltIhk && <p>Die Prüfungsgebühr deiner IHK ist nicht enthalten.</p>}
+              {!coaching && <p>Ab 3 Personen in einer Anmeldung gibt es 10 % Rabatt.</p>}
+              {d.preis.raten && <p class="rounded-xl bg-white/10 p-3 font-semibold text-white" data-raten>Ratenzahlung ohne Aufpreis möglich – den Ratenplan findest du in deiner Rechnung.</p>}
+            </div>
+          </div>
+          <div class="bg-white p-6 sm:p-7">
+            <h3 class="font-sans text-base font-semibold">Im Preis enthalten</h3>
+            <ul class="mt-4 grid gap-2.5">
+              {
+                leistungen.map((l) => (
+                  <li class="flex gap-3">
+                    <svg viewBox="0 0 20 20" class="mt-1 size-4 shrink-0 text-tief" aria-hidden="true"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                    <span>{l}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Voraussetzungen + Ablauf -->
+      <section id="voraussetzungen" aria-labelledby="voraussetzungen-titel" class="abschnitt">
+        <h2 id="voraussetzungen-titel" class="text-3xl sm:text-4xl">Voraussetzungen</h2>
+        <ul class="mt-6 grid gap-3">
+          {
+            d.voraussetzungen.map((v) => (
+              <li class="flex gap-3 rounded-xl bg-white p-4 ring-1 ring-base-300">
+                <svg viewBox="0 0 20 20" class="mt-1 size-4 shrink-0 text-petrol" aria-hidden="true"><circle cx="10" cy="10" r="4" fill="currentColor" /></svg>
+                <span>{v}</span>
+              </li>
+            ))
+          }
         </ul>
-      )
-    }
-    {d.saeule !== 'akademie' && <p class="mt-6 rounded-xl bg-base-200 p-4 text-sm">{IHK_HINWEIS}</p>}
-  </ImAufbau>
+        {d.saeule === 'ihk-weiterbildung' && <p class="mt-4 text-gedaempft">Über die Zulassung zur Prüfung entscheidet deine IHK.</p>}
+        <h3 class="mt-12 text-2xl">So läuft's ab</h3>
+        <div class="mt-5"><Ablauf coaching={coaching} /></div>
+        <p class="mt-4 text-sm text-gedaempft">
+          Mehr Antworten zu Anmeldung, Zahlung und Live-Unterricht findest du in den <a href={href('/faq/')} class="link-fliess">häufigen Fragen</a>.
+        </p>
+      </section>
+
+      <!-- FAQ -->
+      {
+        d.faq.length > 0 && (
+          <section id="faq" aria-labelledby="faq-titel" class="abschnitt">
+            <h2 id="faq-titel" class="text-3xl sm:text-4xl">Häufige Fragen</h2>
+            <div class="mt-6">
+              <FaqListe eintraege={d.faq} />
+            </div>
+          </section>
+        )
+      }
+
+      {ihk && <IhkHinweis zusatz={coaching ? 'Projektantrag, Dokumentation und alle Prüfungsleistungen erstellst du selbst. Eine Einflussnahme auf die Prüfung oder deren Bewertung erfolgt nicht.' : undefined} />}
+    </div>
+
+    <!-- Begleitende Preisbox (Desktop) -->
+    <aside class="hidden lg:block" aria-label="Kurz zusammengefasst">
+      <div class="sticky top-28 rounded-3xl bg-white p-6 ring-1 ring-base-300">
+        <p class="trennen font-serif text-xl leading-snug">{d.titel}</p>
+        <p class="mt-4 text-sm text-gedaempft">{preisLabel}</p>
+        <p class="font-serif text-4xl font-semibold tabular-nums">{formatEuro(d.preis.betrag)}</p>
+        <p class="text-xs text-gedaempft">{entwurf ? 'Vorschlag' : 'Endpreis, alles inklusive'}</p>
+        <ul class="mt-4 grid gap-1.5 border-t border-base-300 pt-4 text-sm">
+          {umfang && <li>{umfang}</li>}
+          {!coaching && <li>{d.dauer}</li>}
+          <li>live-online</li>
+          {naechster && <li class="font-semibold">Start {formatDatum(naechster.start)}</li>}
+        </ul>
+        <a href={aktion.url} class="btn btn-secondary mt-5 w-full rounded-full">{aktionKurz}</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Klebende Handlungsleiste (mobil) – sitzt am Ende des Inhalts, damit sie den Fuß nicht verdeckt -->
+  <div class="cta-leiste sticky bottom-0 z-40 border-t border-base-300 bg-white/95 backdrop-blur lg:hidden" data-cta-leiste>
+    <div class="rahmen flex items-center justify-between gap-3 py-3">
+      <p class="min-w-0 leading-tight">
+        <span class="font-serif text-2xl font-semibold tabular-nums">{coaching ? `ab ${formatEuro(d.preis.betrag)}` : formatEuro(d.preis.betrag)}</span>
+        <span class="block truncate text-xs text-gedaempft">{naechster ? `Start ${formatDatum(naechster.start)}` : entwurf ? 'Preisvorschlag' : 'Endpreis, alles inklusive'}</span>
+      </p>
+      <a href={aktion.url} class="btn btn-accent shrink-0 rounded-full px-5">{aktionKurz}</a>
+    </div>
+  </div>
+  <TerminWaechter />
 </Basis>
+
+<style>
+  .fliesstext :global(p + p) {
+    margin-top: 1.1em;
+  }
+  .fliesstext :global(a) {
+    color: var(--color-petrol);
+    text-decoration: underline;
+  }
+  .abschnitt {
+    scroll-margin-top: 6rem;
+  }
+  .cta-leiste {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .cta-leiste.ist-verdeckt {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  // Mobile Handlungsleiste erst zeigen, wenn der Knopf im Kopf aus dem Bild ist (ohne JS: immer sichtbar).
+  const leiste = document.querySelector<HTMLElement>('[data-cta-leiste]');
+  const kopfKnopf = document.querySelector<HTMLElement>('[data-hauptaktion]');
+  if (leiste && kopfKnopf && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => {
+      const verdeckt = e.isIntersecting || e.boundingClientRect.top > 0;
+      leiste.classList.toggle('ist-verdeckt', verdeckt);
+      leiste.toggleAttribute('inert', verdeckt);
+    }).observe(kopfKnopf);
+  }
+</script>
