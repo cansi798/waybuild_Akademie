@@ -6,7 +6,8 @@ import Basis from '../../layouts/Basis.astro';
 import Ablauf from '../../components/seiten/Ablauf.astro';
 import FaqListe from '../../components/seiten/FaqListe.astro';
 import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
-import { faqSchema } from '../../components/seiten/schema';
+import { brotkrumenSchema, faqSchema, kursSchema } from '../../components/seiten/schema';
+import { kursSeo } from '../../lib/seo';
 import { formatEuro, kategorieSlug } from '../../lib/kurse';
 import { href } from '../../lib/pfad';
 
@@ -42,9 +43,13 @@ const FAQ = [
 ---
 
 <Basis
-  titel="Prüfungscoaching und Projektbegleitung"
-  beschreibung="1:1-Prüfungscoaching für IT-Berufe: Projektantrag, Dokumentation, Präsentation und Fachgespräch – online, flexibel, ab 69 € je 60 Minuten."
-  schema={[faqSchema(FAQ)]}
+  titel="Prüfungscoaching Fachinformatiker online"
+  beschreibung={kursSeo(kurs).beschreibung}
+  schema={[
+    ...kursSchema(kurs, [], Astro.site, '/coaching/'),
+    faqSchema(FAQ),
+    brotkrumenSchema([['Start', '/'], ['Prüfungsvorbereitung', '/pruefungsvorbereitung/'], ['Prüfungscoaching', '/coaching/']], Astro.site),
+  ]}
 >
   <!-- Kopf -->
   <section class="border-b border-base-300">

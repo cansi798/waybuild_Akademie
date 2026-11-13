@@ -5,7 +5,7 @@ export const AKADEMIE = {
   mailInfo: 'info@waybuild-akademie.de',
   mailAnmeldung: 'anmeldung@waybuild-akademie.de',
   beschreibung:
-    'Live-Online-Kurse der waybuild Akademie: Vorbereitung auf die IHK-Abschlussprüfung für IT-Berufe, Prüfungscoaching und berufsbegleitende Weiterbildungen – mit fairen, klaren Preisen.',
+    'Live-Online-Kurse der waybuild Akademie: IHK-Prüfungsvorbereitung, Prüfungscoaching und berufsbegleitende Weiterbildung – mit festen Terminen und Endpreisen.',
 } as const;
 
 /** Pflichthinweis (Fuß + IHK-Kursseiten, US-19) – wörtlich laut Plan. */

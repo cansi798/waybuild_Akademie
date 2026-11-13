@@ -8,6 +8,7 @@ import KursKarte from '../components/KursKarte.astro';
 import Lernpfad from '../components/Lernpfad.astro';
 import WarumBuehne from '../components/WarumBuehne.astro';
 import TerminWaechter from '../components/seiten/TerminWaechter.astro';
+import { websiteSchema } from '../components/seiten/schema';
 import { alleTermine, buchbareTermine, formatDatum, isoDatum, formatEuro, freigegebeneKurse, kurzname, naechsterTermin, saeulenName, type Saeule } from '../lib/kurse';
 import { href } from '../lib/pfad';
 import { AKADEMIE } from '../lib/site';
@@ -56,9 +57,9 @@ const faqSchema = {
 ---
 
 <Basis
-  titel="waybuild Akademie – Live-Online-Kurse und IHK-Prüfungsvorbereitung"
-  beschreibung="Vorbereitung auf die IHK-Abschlussprüfung für IT-Berufe (AP1, AP2), Prüfungscoaching und Weiterbildungen – live online, mit festen Terminen und klaren Endpreisen."
-  schema={[faqSchema]}
+  titel="waybuild Akademie – Live-Online-Kurse und Weiterbildung"
+  beschreibung="Live-Online-Kurse der waybuild Akademie: IHK-Prüfungsvorbereitung für IT-Berufe, Prüfungscoaching und Weiterbildung – abends, feste Termine, klare Endpreise."
+  schema={[websiteSchema(Astro.site), faqSchema]}
 >
   <!-- Hero: Botschaft + Reise-Bühne (Anmeldung → Abschluss) + Prüfungs-Countdown -->
   <Hero countdown={countdown} kurse={freigegeben} />

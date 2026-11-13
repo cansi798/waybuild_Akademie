@@ -71,7 +71,7 @@ const GRUPPEN: { id: string; titel: string; fragen: FaqEintrag[] }[] = [
 const alle = GRUPPEN.flatMap((g) => g.fragen);
 ---
 
-<Basis titel="Häufige Fragen" beschreibung="Antworten zu Anmeldung, Bezahlung, Live-Unterricht, Prüfung und Weiterbildung bei der waybuild Akademie." schema={[faqSchema(alle)]}>
+<Basis titel="Häufige Fragen zu Kursen und Anmeldung" beschreibung="Antworten zu Anmeldung, Rechnung, Live-Unterricht, IHK-Prüfung und Weiterbildung bei der waybuild Akademie – kurz und klar. Deine Frage fehlt? Schreib uns." schema={[faqSchema(alle)]}>
   <Seitenkopf kicker="FAQ" titel="Häufige Fragen" text="Kurze Antworten auf das, was andere vor der Anmeldung wissen wollten.">
     <nav aria-label="Themen" class="mt-7">
       <ul class="flex flex-wrap gap-2">
