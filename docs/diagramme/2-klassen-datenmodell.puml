@@ -1,0 +1,177 @@
+@startuml 2-klassen-datenmodell
+!include _stil.iuml
+title waybuild Akademie – Datenmodell (UML-Klassendiagramm)
+skinparam classBorderColor #003a70
+skinparam classBackgroundColor #e8f2fa
+skinparam classHeaderBackgroundColor #d3e6f5
+skinparam classAttributeFontSize 12
+skinparam stereotypeCBackgroundColor #FFF8E1
+skinparam nodesep 40
+skinparam ranksep 50
+hide empty methods
+
+package "Inhalte (Inhaltsdatei je Kurs, beim Bau geprüft)" as Inhalte {
+  enum Saeule <<Aufzählung>> {
+    ihk-pruefung
+    ihk-weiterbildung
+    akademie
+  }
+  enum KursStatus <<Aufzählung>> {
+    entwurf
+    freigegeben
+  }
+  enum KursArt <<Aufzählung>> {
+    kurs
+    coaching
+  }
+
+  class Kurs {
+    slug : Text {eindeutig, = Dateiname}
+    saeule : Saeule
+    kategorie : Text
+    titel : Text
+    untertitel : Text
+    kurzbeschreibung : Text {max. 220 Zeichen}
+    status : KursStatus
+    art : KursArt
+    ue : Ganzzahl [0..1] {> 0}
+    dauer : Text
+    zeiten : Text
+    zielgruppe : Text [1..*]
+    voraussetzungen : Text [1..*]
+    abschluss : Text
+    reihenfolge : Ganzzahl = 100
+    beschreibung : Markdown
+    --
+    naechsterTermin() : Termin [0..1]
+    istBuchbar() : Wahrheitswert
+  }
+
+  class Preis {
+    betrag : Euro {Endpreis}
+    hinweis : Text [0..1]
+    raten : Wahrheitswert = falsch
+  }
+
+  class Paket <<nur Coaching>> {
+    name : Text
+    betrag : Euro {Endpreis}
+    beschreibung : Text
+  }
+
+  class Modul <<Inhaltsblock>> {
+    titel : Text
+    punkte : Text [1..*]
+  }
+
+  class FAQ {
+    frage : Text
+    antwort : Text
+  }
+
+  class Termin <<Durchführung>> {
+    id : Text {eindeutig je Kurs}
+    start : Datum
+    ende : Datum {>= start}
+    pruefung : Datum [0..1]
+    pruefungHinweis : Text [0..1]
+    anmeldeschluss : Datum {= start − 7 Tage}
+    ausfall : Datum [0..*]
+    --
+    istBuchbar(heute) : Wahrheitswert
+  }
+}
+
+package "Formulardaten (nur in der E-Mail, keine Datenbank)" as Formular {
+  enum Zahlweg <<Aufzählung>> {
+    selbst
+    betrieb
+  }
+
+  abstract class Anfrage {
+    vorgangsnummer : Text {eindeutig}
+    eingang : Zeitpunkt
+    art : Text
+  }
+
+  class Anmeldung {
+    zahlweg : Zahlweg
+    anzahlPersonen : Ganzzahl {1..5}
+    gesamtpreis : Euro
+    rabattProzent : Ganzzahl {0 oder 10}
+    nachricht : Text [0..1]
+    agbAkzeptiert : Wahrheitswert {= wahr}
+    datenschutzWiderrufGelesen : Wahrheitswert {= wahr}
+  }
+
+  class Teilnehmer {
+    vorname : Text
+    nachname : Text
+    email : E-Mail
+    telefon : Text [0..1]
+  }
+
+  abstract class Rechnungsempfaenger {
+    strasse : Text
+    plz : Text
+    ort : Text
+  }
+  class Privatperson
+  class Firma {
+    firmenname : Text
+    ansprechperson : Text
+    rechnungsEmail : E-Mail
+    bestellnummer : Text [0..1]
+  }
+
+  class Interesse {
+    name : Text
+    email : E-Mail
+    wunschzeitraum : Text [0..1]
+    einwilligungBenachrichtigung : Wahrheitswert {= wahr}
+  }
+
+  class CoachingAnfrage {
+    anliegen : Text
+    pruefungszeitraum : Text
+    wunschzeiten : Text [0..1]
+    zahlweg : Zahlweg
+  }
+}
+
+Kurs "1" *-- "1" Preis
+Kurs "1" *-- "0..*" Paket : bietet >
+Kurs "1" *-- "1..*" Modul : inhalte >
+Kurs "1" *-- "0..*" FAQ
+Kurs "1" *-- "0..*" Termin : termine >
+Saeule -[hidden]- KursStatus
+KursStatus -[hidden]- KursArt
+Kurs -[hidden]right- Saeule
+
+Anfrage <|-- Anmeldung
+Anfrage <|-- Interesse
+Anfrage <|-- CoachingAnfrage
+Rechnungsempfaenger <|-- Privatperson
+Rechnungsempfaenger <|-- Firma
+
+Anmeldung "0..*" -up-> "1" Termin : für >
+Anmeldung "1" *-- "1..5" Teilnehmer : meldet an >
+Anmeldung "1" *-- "1" Rechnungsempfaenger : Rechnung an >
+Interesse "0..*" -up-> "1" Kurs : für >
+CoachingAnfrage "0..*" -up-> "1" Paket : wählt >
+Zahlweg -[hidden]- Anfrage
+CoachingAnfrage "1" *-- "1" Teilnehmer
+CoachingAnfrage "1" *-- "1" Rechnungsempfaenger
+
+note bottom of Termin
+  buchbar, wenn: Kurs freigegeben
+  und heute <= anmeldeschluss
+  (vergangene Termine werden ausgeblendet)
+end note
+
+note bottom of Firma
+  Pflicht bei Zahlweg „betrieb“:
+  Firmenname, Ansprechperson,
+  Anschrift, Rechnungs-E-Mail
+end note
+@enduml

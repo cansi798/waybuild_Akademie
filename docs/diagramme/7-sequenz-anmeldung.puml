@@ -1,0 +1,59 @@
+@startuml 7-sequenz-anmeldung
+!include _stil.iuml
+title Verhalten „Anmeldung absenden“ (UML-Sequenzdiagramm)
+hide footbox
+autonumber "<b>0."
+skinparam maxMessageSize 220
+skinparam ParticipantPadding 12
+
+actor "Teilnehmer/in" as T
+participant "Browser\n(Formular-Prüfung)" as B
+participant "anmeldung.php\n(ALL-INKL)" as P
+participant "Mailserver\n(mail())" as M
+database "Postfach\nanmeldung@" as A
+participant "Postfach\nTeilnehmer/in" as TP
+
+T -> B : Formular ausfüllen,\n„Zahlungspflichtig anmelden“
+activate B
+B -> B : Pflichtfelder je Zahlweg,\nFormate, 1–5 Personen prüfen
+alt Eingaben ungültig (Browser)
+  B --> T : Fehlertext am Feld,\nFokus auf erstes Fehlerfeld
+else Eingaben gültig
+  B -> P : POST /api/anmeldung.php\n(Formulardaten, Lockfeld, Zeitstempel)
+  deactivate B
+  activate P
+  P -> P : Lockfeld (Honeypot) prüfen
+  alt Lockfeld ausgefüllt (Bot)
+    P --> B : 303 → /danke/ (kein Versand)
+  else Lockfeld leer
+    P -> P : Zeitfalle (< 3 s seit Laden)\nund Anfragen je Stunde prüfen
+    alt zu schnell oder zu viele Anfragen
+      P --> B : 429 „Bitte versuche es\nin einer Minute erneut.“
+    else in Ordnung
+      P -> P : serverseitig validieren\n(Pflichtfelder, Längen, E-Mail,\nZeilenumbrüche entfernen,\nTermin buchbar?)
+      alt Validierung fehlgeschlagen
+        P --> B : 422 Fehlerliste je Feld\n(ohne JS: Fehlerseite mit „Zurück“)
+        B --> T : Fehler am Feld,\nEingaben bleiben erhalten
+      else gültig
+        P -> P : Gesamtpreis berechnen\n(ab 3 Personen 10 % Rabatt),\nVorgangsnummer erzeugen
+        P -> M : mail() an anmeldung@\n(Text + JSON-Block, Reply-To Teilnehmer)
+        activate M
+        alt Versand an anmeldung@ fehlgeschlagen
+          M --> P : false
+          P --> B : 500 „Senden hat nicht geklappt –\nschreib uns an anmeldung@…“
+          B --> T : Fehlermeldung mit\nE-Mail-Adresse, Eingaben bleiben
+        else Versand ok
+          M -> A : Anmelde-E-Mail
+          M --> P : true
+          P -> M : mail() Eingangsbestätigung
+          M -> TP : Bestätigung mit Zusammenfassung
+          deactivate M
+          P --> B : 303 → /danke/?art=anmeldung
+          deactivate P
+          B --> T : Danke-Seite:\n„Rechnung kommt per E-Mail“
+        end
+      end
+    end
+  end
+end
+@enduml

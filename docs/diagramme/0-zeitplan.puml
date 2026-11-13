@@ -1,0 +1,49 @@
+@startgantt 0-zeitplan
+!include _stil.iuml
+title waybuild Akademie – Zeitplan bis zum ersten Kursstart (AP1 Frühjahr 2027)
+language de
+printscale weekly
+Project starts 2026-11-09
+today is 2026-11-13 and is colored in #FFE0B2
+
+-- Phase 1 Konzeption --
+[AP-01 Konzeption: Projekt-, Anforderungs-, Spezifikationsdokument] as [AP01] starts 2026-11-12 and ends 2026-11-13
+[AP01] is colored in #e8f2fa/#003a70
+[M1 Konzeption freigegeben] happens 2026-11-13
+
+-- Phase 2 Erarbeitung --
+[AP-02 Grundgerüst, Design, Startseite] as [AP02] starts 2026-11-13 and ends 2026-11-17
+[AP-03 Katalog-, Kurs-, Termin- und Infoseiten] as [AP03] starts 2026-11-16 and ends 2026-11-20
+[AP-04 Anmeldung, Interesse, PHP-Versand] as [AP04] starts 2026-11-17 and ends 2026-11-20
+[AP-05 Kursentwürfe (Inhalte, Preisvorschläge)] as [AP05] starts 2026-11-13 and ends 2026-11-20
+[AP-06 Rechtstexte als Entwurf] as [AP06] starts 2026-11-18 and ends 2026-11-20
+[AP-07 Architektur und Technical Debt dokumentieren] as [AP07] starts 2026-11-13 and ends 2026-11-20
+[AP02] is colored in #e8f2fa/#003a70
+[AP03] is colored in #e8f2fa/#003a70
+[AP04] is colored in #e8f2fa/#003a70
+[AP05] is colored in #e8f2fa/#003a70
+[AP06] is colored in #e8f2fa/#003a70
+[AP07] is colored in #e8f2fa/#003a70
+[M2 Vorschau online] happens 2026-11-20
+
+-- Freigaben und Einrichtung --
+[AP-08 Inhalte, Preise, Termine prüfen und freigeben] as [AP08] starts 2026-11-23 and ends 2026-12-04
+[AP-09 Rechtsprüfung (AGB, Widerruf, Fernunterricht, Umsatzsteuer)] as [AP09] starts 2026-11-23 and ends 2026-12-11
+[AP-10 Domain, Hosting, Postfächer, Weiterleitung] as [AP10] starts 2026-11-30 and ends 2026-12-11
+[AP08] is colored in #FFF8E1/#C9A227
+[AP09] is colored in #FFF8E1/#C9A227
+[AP10] is colored in #FFF8E1/#C9A227
+[M3 Inhalte freigegeben] happens 2026-12-04
+[M4 Rechtsprüfung abgeschlossen] happens 2026-12-11
+
+-- Phase 3 Finalisierung --
+[AP-11 Tests, Benutzeranleitung, Abschlussbericht] as [AP11] starts 2026-12-07 and ends 2026-12-14
+[AP11] is colored in #e8f2fa/#003a70
+[M5 Livegang waybuild-akademie.de] happens 2026-12-15
+
+-- Betrieb --
+[AP-12 Anmeldephase AP1 Frühjahr] as [AP12] starts 2026-12-15 and ends 2027-01-12
+[AP12] is colored in #e3f4ea/#2e7d4f
+[Anmeldeschluss AP1 Frühjahr] happens 2027-01-12
+[Kursstart AP1 Frühjahr] happens 2027-01-19
+@endgantt
