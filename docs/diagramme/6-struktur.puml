@@ -1,0 +1,117 @@
+@startuml 6-struktur
+!include _stil.iuml
+title waybuild Akademie – Struktur der Website (UML-Klassendiagramm der Module)
+skinparam classBorderColor #003a70
+skinparam classBackgroundColor #e8f2fa
+skinparam classHeaderBackgroundColor #d3e6f5
+skinparam classAttributeFontSize 12
+skinparam stereotypeCBackgroundColor #FFF8E1
+skinparam nodesep 30
+skinparam ranksep 45
+hide empty members
+hide circle
+
+package "src/pages (Seiten)" {
+  class "index.astro" as PStart <<Seite>>
+  class "kurse/index.astro" as PKatalog <<Seite>>
+  class "kurse/[slug].astro" as PKurs <<Seite>> {
+    getStaticPaths()
+  }
+  class "termine.astro" as PTermine <<Seite>>
+  class "anmeldung.astro\ninteresse.astro" as PForm <<Seite>>
+  class "danke.astro" as PDanke <<Seite>>
+  class "weitere Seiten\n(Prüfungsvorbereitung, Coaching,\nFAQ, Über uns, Kontakt,\nRechtsseiten, 404)" as PWeitere <<Seite>>
+}
+
+package "src/layouts" {
+  class "Basis.astro" as Basis <<Layout>> {
+    titel, beschreibung, kanonisch
+    --
+    SEO-Meta, noindex (Vorschau)
+    Vorschau-Banner
+  }
+}
+
+package "src/components (Bausteine)" {
+  class "Kopf.astro" as Kopf <<Komponente>> {
+    Menü, mobil per Tastatur
+  }
+  class "Fuss.astro" as Fuss <<Komponente>> {
+    Rechtslinks, IHK-Hinweis
+  }
+  class "Countdown.astro" as Countdown <<Komponente>> {
+    termine : TerminMitKurs[]
+  }
+  class "Lernpfad.astro" as Lernpfad <<Komponente>>
+  class "KursKarte.astro" as KursKarte <<Komponente>> {
+    kurs : Kurs
+    Entwurf-Band
+  }
+  class "Formular-Bausteine\n(Felder, Fehlertexte,\nZahlweg-Umschalter)" as FormTeile <<Komponente>>
+}
+
+package "src/lib" {
+  class "kurse.ts" as LibKurse <<Modul>> {
+    alleKurse() : Promise<Kurs[]>
+    naechsterTermin(kurs) : Termin | undefined
+    alleTermine() : TerminMitKurs[]
+    formatEuro(n) : string
+    formatDatum(d) : string
+    saeulenName(s) : string
+  }
+}
+
+package "src/content" {
+  class "content.config.ts" as Schema <<Schema (Zod)>> {
+    Collection „kurse“
+    Pflichtfelder, Typen,
+    Aufzählungen prüfen
+  }
+  class "kurse/*.md" as Dateien <<Inhaltsdatei>> {
+    Frontmatter (Daten)
+    Markdown (Beschreibung)
+  }
+}
+
+package "Browser-Skripte (klein, optional)" {
+  class "Filter" as JsFilter <<Skript>> {
+    Säule/Kategorie in der Adresse
+  }
+  class "Formular-Prüfung" as JsForm <<Skript>> {
+    Pflichtfelder je Zahlweg
+    Personen hinzufügen (max. 5)
+    Zeitstempel (Zeitfalle)
+  }
+}
+
+package "public/api" {
+  class "anmeldung.php" as Php <<Server-Skript>> {
+    pruefeSpam()
+    validiere()
+    berechnePreis()
+    baueMail()
+    sende()
+  }
+}
+
+PWeitere ..> Basis : alle Seiten\nnutzen das Layout
+Basis *-- Kopf
+Basis *-- Fuss
+
+PStart ..> Countdown
+PStart ..> Lernpfad
+PStart ..> KursKarte
+PKatalog ..> KursKarte
+PKatalog ..> JsFilter
+PForm ..> FormTeile
+PForm ..> JsForm
+JsForm ..> Php : POST
+
+PStart ..> LibKurse
+PKatalog ..> LibKurse
+PKurs ..> LibKurse
+PTermine ..> LibKurse
+PForm ..> LibKurse
+LibKurse ..> Schema : getCollection("kurse")
+Schema ..> Dateien : lädt + prüft
+@enduml

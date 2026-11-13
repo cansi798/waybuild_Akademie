@@ -1,0 +1,53 @@
+@startsalt 4-mockup-anmeldung
+skinparam dpi 150
+skinparam defaultFontName "DejaVu Sans"
+title Wireframe „Anmeldung“ (/anmeldung/?kurs=…&termin=…) – Zahlweg „Mein Betrieb zahlt“\n(schematisch; auf dem Handy stehen die Beschriftungen über den Feldern)
+{+
+  {/ <b>Kurse | Termine | Coaching | Kontakt | ☰ }
+  ==
+  <b><size:16>Anmeldung
+  {+
+    <b>Vorbereitung auf die IHK-Prüfung AP1 – IT-Berufe
+    Di + Do, 18:00–20:45 Uhr · Live-Online
+    Termin: { ^19.01.–18.02.2027 (Prüfung 24.02.2027)^ }
+    Teilnahmegebühr je Person: <b>[Preis aus Kursdatei]
+  }
+  .
+  <b>1 · Wer nimmt teil?
+  Vorname *          | "Lena             "
+  Nachname *         | "Muster           "
+  E-Mail *           | "lena@beispiel.de "
+  Telefon (freiwillig) | "                 "
+  .
+  <b>2 · Wer bekommt die Rechnung? *
+  {
+    () Ich zahle selbst
+    (X) Mein Betrieb zahlt (Rechnung an die Firma)
+  }
+  Firmenname *       | "Beispiel GmbH    "
+  Ansprechperson *   | "                 "
+  <color:#B00020>Bitte gib an, wer bei euch die Rechnung bearbeitet.
+  Straße und Nr. *   | "                 "
+  PLZ * / Ort *      | { "     " | "            " }
+  Rechnungs-E-Mail * | "                 "
+  Bestellnummer (freiwillig) | "             "
+  .
+  <b>3 · Weitere Teilnehmende (freiwillig, bis 5 Personen)
+  { [+ Person hinzufügen] | <i>ab 3 Personen 10 % Rabatt }
+  .
+  Nachricht (freiwillig) | {+ "                 " }
+  .
+  [X] Ich akzeptiere die <u>Teilnahmebedingungen</u>. *
+  [X] Ich habe <u>Datenschutzerklärung</u> und <u>Widerrufsbelehrung</u> gelesen. *
+  .
+  {+
+    Personen: 1 · Gesamt: <b>[Preis]
+    Die Rechnung kommt per E-Mail – keine Online-Zahlung.
+  }
+  [   <b>Zahlungspflichtig anmelden   ]
+  <size:11>* Pflichtfeld
+  ==
+  <size:11>Unabhängiges Bildungsangebot – keine Veranstaltung der IHK.
+  <size:11>Impressum · Datenschutz · Teilnahmebedingungen · Widerruf
+}
+@endsalt

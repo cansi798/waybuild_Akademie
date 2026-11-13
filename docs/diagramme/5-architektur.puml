@@ -1,0 +1,58 @@
+@startuml 5-architektur
+!include _stil.iuml
+title waybuild Akademie – Architekturübersicht (Komponenten und Verteilung)
+skinparam nodeBorderColor #003a70
+skinparam nodeBackgroundColor #FFFFFF
+skinparam componentBorderColor #003a70
+skinparam componentBackgroundColor #e8f2fa
+skinparam artifactBorderColor #003a70
+skinparam artifactBackgroundColor #FFFFFF
+skinparam cloudBorderColor #003a70
+skinparam cloudBackgroundColor #FFFFFF
+skinparam nodesep 45
+skinparam ranksep 55
+left to right direction
+
+actor "Redaktion /\nGeschäftsführung" as Team
+actor "Besucher/in,\nTeilnehmer/in" as Nutzer
+actor "Backoffice" as Backoffice
+
+node "GitHub" as GitHub {
+  component "Repository\n(Quelltext, Inhaltsdateien\nsrc/content/kurse/*.md)" as Repo
+  component "GitHub Actions\n(Docker node:22)" as Actions {
+    component "Astro-Build\n+ Zod-Prüfung\nder Kursdaten" as Build
+    component "Playwright-Tests\n(Docker)" as Tests
+  }
+  component "GitHub Pages\nVorschau (Entwürfe sichtbar,\nnoindex, Vorschau-Banner)" as Pages
+}
+
+node "ALL-INKL Webspace (Live)" as AllInkl {
+  artifact "Statische Seiten\nHTML, CSS, wenig JS,\nFonts (selbst gehostet)" as Statisch
+  component "api/anmeldung.php\n(Prüfung, Spam-Schutz,\nVersand)" as Php
+  component "Mailserver\n(mail())" as Mta
+  database "Postfächer\nanmeldung@ / info@" as Postfach
+  component "Weiterleitung 301\ntop-abschluss.de" as Weiterleitung
+}
+
+cloud "Videokonferenz /\nLive-Raum\n(außerhalb der Website)" as LiveRaum
+cloud "CRM (später)" as CRM
+cloud "E-Mail-Postfach\nTeilnehmer/in\nbzw. Betrieb" as PostfachT
+
+Team --> Repo : pflegt Inhalte,\ngibt frei (Status)
+Repo --> Build : Push / täglich
+Build --> Tests
+Actions --> Pages : Vorschau-Build
+Build --> Statisch : Live-Build\n(nur freigegeben)
+Statisch <-- Nutzer : Seiten (HTTPS)
+Nutzer --> Weiterleitung : top-abschluss.de
+Weiterleitung --> Statisch : /pruefungsvorbereitung/
+Nutzer --> Php : Formular (POST)
+Php --> Mta
+Mta --> Postfach : Anmeldung / Anfrage
+Mta --> PostfachT : Eingangsbestätigung
+Postfach --> Backoffice
+Backoffice --> PostfachT : Rechnung,\nZugangsdaten
+Backoffice ..> LiveRaum : richtet ein
+Nutzer ..> LiveRaum : nimmt teil
+Postfach ..> CRM : später (JSON-Block)
+@enduml

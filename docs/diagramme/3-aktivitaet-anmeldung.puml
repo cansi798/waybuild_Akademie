@@ -1,0 +1,89 @@
+@startuml 3-aktivitaet-anmeldung
+!include _stil.iuml
+title Kernprozess „Anmeldung zu einem Kurstermin“ (UML-Aktivitätsdiagramm)
+skinparam swimlaneBorderColor #003a70
+skinparam swimlaneTitleFontColor #003a70
+skinparam swimlaneWidth 300
+
+|Teilnehmer/in bzw. Betrieb|
+start
+:Kurs und Termin auswählen
+(Kursseite oder Terminübersicht);
+if (Termin buchbar?\n(freigegeben, Anmeldeschluss\nnoch nicht erreicht)) then (nein)
+  :„Interesse vormerken“\nstatt Anmeldung;
+  stop
+else (ja)
+endif
+:Anmeldeformular ausfüllen
+(Termin ist vorausgewählt);
+:Zahlweg wählen;
+if (Zahlweg?) then (Ich zahle selbst)
+  :Privatanschrift angeben;
+else (Mein Betrieb zahlt)
+  :Firmendaten angeben
+  (Firma, Ansprechperson,
+  Anschrift, Rechnungs-E-Mail);
+  :optional weitere Teilnehmende
+  (insgesamt bis 5 Personen);
+endif
+:Teilnahmebedingungen bestätigen,
+Datenschutz und Widerruf gelesen;
+:„Zahlungspflichtig anmelden“;
+
+|Website (Formular + PHP)|
+repeat
+  :Eingaben prüfen
+  (Pflichtfelder, Formate,
+  Spam-Schutz);
+  backward :Fehler am Feld erklären,
+  Eingaben bleiben erhalten;
+repeat while (Eingaben gültig?) is (nein) not (ja)
+:Gesamtpreis berechnen
+(ab 3 Personen 10 % Rabatt);
+:Vorgangsnummer vergeben;
+fork
+  :Anmelde-E-Mail an
+  anmeldung@ senden;
+fork again
+  :Eingangsbestätigung an
+  Teilnehmer/in senden;
+end fork
+if (Versand erfolgreich?) then (ja)
+  :Danke-Seite mit Zusammenfassung
+  „Rechnung kommt per E-Mail“;
+else (nein)
+  :Fehlerseite mit E-Mail-Adresse
+  als Ausweg;
+  stop
+endif
+
+|Backoffice|
+:Anmelde-E-Mail im Postfach
+anmeldung@ prüfen;
+if (Angaben vollständig und plausibel?) then (nein)
+  :Rückfrage per E-Mail;
+  :Antwort abwarten;
+else (ja)
+endif
+if (Kurs findet statt?\n(Entscheidung spätestens\n10 Tage vor Start)) then (nein)
+  :Absage mit voller Erstattung
+  oder Wechsel auf anderen Termin;
+  stop
+else (ja)
+endif
+:Rechnung erstellen und per E-Mail
+senden (bei langen Weiterbildungen
+auf Wunsch in Raten);
+|Teilnehmer/in bzw. Betrieb|
+:Rechnung bezahlen
+(Zahlungsziel laut Rechnung);
+
+|Backoffice|
+:Zahlungseingang prüfen;
+:Zugangsdaten zum Live-Raum
+vor Kursbeginn per E-Mail senden;
+
+|Teilnehmer/in bzw. Betrieb|
+:Am Live-Online-Kurs teilnehmen;
+stop
+@enduml
