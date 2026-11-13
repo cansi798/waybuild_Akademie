@@ -1,0 +1,200 @@
+---
+// Erklärung zur Barrierefreiheit – ENTWURF. Informationen nach § 14 Abs. 1 Nr. 2 BFSG i. V. m. Anlage 3 BFSG
+// (Dienstleistungen im elektronischen Geschäftsverkehr). Beschrieben ist nur, was umgesetzt und geprüft ist
+// (Prüfstand 13.11.2026: axe-core 4.10, Playwright-Tests). Offene Punkte stehen als <mark>[…]</mark>.
+import RechtSeite from '../../components/recht/RechtSeite.astro';
+import Luecke from '../../components/recht/Luecke.astro';
+import { FIRMA } from '../../components/recht/status';
+import { AKADEMIE } from '../../lib/site';
+import { href } from '../../lib/pfad';
+
+const abschnitte = [
+  { id: 'geltungsbereich', titel: 'Geltungsbereich' },
+  { id: 'angebot', titel: 'Unser Angebot' },
+  { id: 'ablauf', titel: 'So läuft eine Buchung ab' },
+  { id: 'umsetzung', titel: 'So setzen wir Barrierefreiheit um' },
+  { id: 'einschraenkungen', titel: 'Bekannte Einschränkungen' },
+  { id: 'feedback', titel: 'Barriere melden' },
+  { id: 'behoerde', titel: 'Zuständige Marktüberwachungsbehörde' },
+  { id: 'kleinstunternehmen', titel: 'Ausnahme für Kleinstunternehmen' },
+  { id: 'stand', titel: 'Stand dieser Erklärung' },
+];
+
+const PRUEFDATUM = '13.11.2026';
+---
+
+<RechtSeite
+  titel="Erklärung zur Barrierefreiheit"
+  beschreibung="Wie barrierefrei die Website der waybuild Akademie ist, welche Einschränkungen es noch gibt und wo du Barrieren melden kannst."
+  {abschnitte}
+>
+  <p slot="einleitung" class="mt-5 text-lg">
+    Du sollst unsere Kurse finden, verstehen und buchen können – ganz gleich, wie du das Internet nutzt. Hier steht, was
+    wir dafür tun und wo es noch hakt.
+  </p>
+
+  <h2 id="geltungsbereich">Geltungsbereich</h2>
+  <p>
+    Diese Erklärung gilt für die Website <strong>{AKADEMIE.domain}</strong> mit allen Unterseiten: Kurskatalog,
+    Kursseiten, Terminübersicht, Coaching, häufige Fragen, Kontakt, Anmelde- und Interesseformular, Widerrufsfunktion und
+    Rechtstexte.
+  </p>
+  <p>
+    Anbieter ist die {FIRMA.name}, {FIRMA.strasse}, {FIRMA.plz} {FIRMA.ort}. Die Angaben folgen § 14 und Anlage 3 des
+    Barrierefreiheitsstärkungsgesetzes (BFSG) für Dienstleistungen im elektronischen Geschäftsverkehr.
+  </p>
+
+  <h2 id="angebot">Unser Angebot</h2>
+  <p>
+    Die waybuild Akademie bietet Live-Online-Kurse an: Vorbereitung auf IHK-Abschlussprüfungen, Prüfungscoaching und
+    berufsbegleitende Weiterbildungen. Der Unterricht findet ausschließlich live per Videokonferenz zu festen Terminen
+    statt. Es gibt keine Aufzeichnungen und kein reines Selbststudium.
+  </p>
+  <p>
+    Über die Website informierst du dich über Inhalte, Termine und Endpreise und meldest dich verbindlich an. Eine
+    Online-Zahlung gibt es nicht – du bekommst eine Rechnung per E-Mail.
+  </p>
+
+  <h2 id="ablauf">So läuft eine Buchung ab</h2>
+  <ol>
+    <li>Du suchst deinen Kurs im <a href={href('/kurse/')}>Kurskatalog</a> oder in der <a href={href('/termine/')}>Terminübersicht</a>.</li>
+    <li>Auf der Kursseite wählst du einen Termin und öffnest das Anmeldeformular.</li>
+    <li>Du füllst das Formular aus und klickst auf „Zahlungspflichtig anmelden“.</li>
+    <li>Du bekommst eine Eingangsbestätigung per E-Mail. Danach folgen die Anmeldebestätigung und die Rechnung.</li>
+    <li>Für den Live-Unterricht bekommst du von uns einen Zugangslink.</li>
+  </ol>
+  <p>
+    Wenn du lieber schreibst als ein Formular nutzt: Eine E-Mail an
+    <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a> genügt, wir helfen dir bei der Anmeldung.
+  </p>
+
+  <h2 id="umsetzung">So setzen wir Barrierefreiheit um</h2>
+  <p>
+    Unser Ziel sind die Web-Richtlinien <strong>WCAG 2.2 auf Stufe AA</strong>. Sie bilden auch die Grundlage der
+    europäischen Norm EN 301 549. Konkret haben wir umgesetzt:
+  </p>
+  <ul>
+    <li>
+      <strong>Bedienung per Tastatur:</strong> Menüs, Filter, Formulare und Knöpfe erreichst du mit der Tab-Taste. Der
+      Fokus ist deutlich sichtbar. Ein Link „Zum Inhalt springen“ führt am Menü vorbei. Menüs schließt du mit Esc.
+    </li>
+    <li>
+      <strong>Kontraste:</strong> Fließtext und Links erreichen mindestens ein Kontrastverhältnis von 4,5 : 1.
+    </li>
+    <li>
+      <strong>Bilder und Grafiken:</strong> Inhaltlich wichtige Bilder haben einen Alternativtext. Rein schmückende
+      Grafiken sind für Screenreader ausgeblendet.
+    </li>
+    <li>
+      <strong>Bewegung:</strong> Animationen auf der Startseite haben einen Knopf zum Anhalten. Wenn du in deinem System
+      „Bewegung reduzieren“ eingestellt hast, laufen sie nicht automatisch ab.
+    </li>
+    <li>
+      <strong>Formulare:</strong> Jedes Feld hat eine sichtbare Beschriftung. Pflichtfelder sind gekennzeichnet. Fehler
+      erscheinen als Text direkt am Feld und sind mit dem Feld verknüpft, damit Screenreader sie vorlesen.
+    </li>
+    <li>
+      <strong>Ohne JavaScript nutzbar:</strong> Katalog, Kursseiten, Termine, häufige Fragen und alle Formulare
+      funktionieren auch ohne JavaScript.
+    </li>
+    <li>
+      <strong>Klare Struktur:</strong> Jede Seite hat eine Hauptüberschrift, eine geordnete Überschriften-Folge und
+      Bereiche wie Kopf, Hauptinhalt und Fuß. Die Sprache der Seite ist als Deutsch hinterlegt.
+    </li>
+    <li>
+      <strong>Kleine Bildschirme:</strong> Alle Seiten passen ab 320 Pixel Breite ohne seitliches Scrollen. Knöpfe sind
+      mindestens 44 Pixel hoch.
+    </li>
+    <li>
+      <strong>Verständliche Sprache:</strong> kurze Sätze, Fachbegriffe erklärt, klare Preise.
+    </li>
+  </ul>
+
+  <h3>Wie wir geprüft haben</h3>
+  <p>
+    Am {PRUEFDATUM} haben wir 21 Seitentypen in zwei Bildschirmbreiten automatisch mit <strong>axe-core 4.10</strong>
+    geprüft (Regeln für WCAG 2.0, 2.1 und 2.2, Stufen A und AA). Ergebnis: <strong>keine Verstöße</strong>. Dazu kommen
+    automatische Tests für Tastaturbedienung, Bedienung ohne JavaScript und die Darstellung bei 320 Pixel Breite in den
+    Browsern Chromium und WebKit (Safari).
+  </p>
+  <p>
+    Das ist eine Selbstbewertung. Eine Prüfung durch eine unabhängige Stelle gibt es bisher nicht.
+  </p>
+
+  <h2 id="einschraenkungen">Bekannte Einschränkungen</h2>
+  <p>Nach unserem Kenntnisstand sind diese Teile noch nicht oder nicht vollständig barrierefrei geprüft:</p>
+  <ul>
+    <li>
+      <strong>Live-Unterricht per Videokonferenz:</strong> Das Videokonferenz-Werkzeug ist noch nicht endgültig
+      festgelegt, seine Barrierefreiheit haben wir noch nicht geprüft.{' '}
+      <Luecke text="bitte ergänzen: Videokonferenz-Werkzeug und Ergebnis der Prüfung (Tastatur, Screenreader, Untertitel)" />
+    </li>
+    <li>
+      <strong>Kursunterlagen als PDF:</strong> Skripte und Übungsaufgaben, die du im Kurs bekommst, sind noch nicht auf
+      Barrierefreiheit geprüft. Wenn du eine Unterlage in einer anderen Form brauchst, schreib uns.{' '}
+      <Luecke text="bitte ergänzen: Format der Kursunterlagen und Stand der Prüfung" />
+    </li>
+    <li>
+      <strong>Test mit Screenreader:</strong> Ein vollständiger Test der Anmeldung mit einem Screenreader (NVDA oder
+      VoiceOver) steht noch aus.{' '}
+      <Luecke text="bitte ergänzen: Datum und Ergebnis des Screenreader-Tests" />
+    </li>
+  </ul>
+
+  <h2 id="feedback">Barriere melden</h2>
+  <p>
+    Ist dir eine Barriere aufgefallen, oder brauchst du Informationen in einer anderen Form? Schreib uns an
+    <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a>. Nenn uns bitte die Seite und beschreib kurz, was
+    nicht geklappt hat.
+  </p>
+  <p>
+    Wir antworten in der Regel innerhalb von zwei Werktagen.{' '}
+    <Luecke text="Annahme – bitte bestätigen: Antwortzeit" />
+  </p>
+
+  <h2 id="behoerde">Zuständige Marktüberwachungsbehörde</h2>
+  <p>
+    Zuständig für die Überwachung nach dem BFSG ist die gemeinsame Marktüberwachungsstelle der Bundesländer. Bei ihr
+    kannst du dich auch melden, wenn du meinst, dass wir die Anforderungen nicht erfüllen.
+  </p>
+  <div class="recht-kasten" data-mlbf>
+    <address>
+      <strong>Marktüberwachungsstelle der Länder für die Barrierefreiheit von Produkten und Dienstleistungen (MLBF), Anstalt
+      des öffentlichen Rechts</strong><br />
+      Carl-Miller-Straße 6<br />
+      39112 Magdeburg
+    </address>
+    <p>
+      Telefon: <a href="tel:+4939128923023">+49 391 289 230 23</a><br />
+      E-Mail: <a href="mailto:kontakt@mlbf-barrierefrei.de">kontakt@mlbf-barrierefrei.de</a><br />
+      Website: <a href="https://www.mlbf-barrierefrei.de">www.mlbf-barrierefrei.de</a>
+    </p>
+  </div>
+  <p class="text-sm text-gedaempft">
+    Quelle: Impressum der MLBF,
+    <a href="https://www.mlbf-barrierefrei.de/impressum">www.mlbf-barrierefrei.de/impressum</a>, abgerufen am
+    {PRUEFDATUM}.
+  </p>
+
+  <h2 id="kleinstunternehmen">Ausnahme für Kleinstunternehmen</h2>
+  <p>
+    Das BFSG nimmt Kleinstunternehmen, die Dienstleistungen anbieten, von seinen Anforderungen aus (§ 3 Abs. 3 BFSG).
+    Kleinstunternehmen sind Unternehmen mit weniger als zehn Beschäftigten und höchstens 2 Millionen Euro Jahresumsatz
+    oder Jahresbilanzsumme (§ 2 Nr. 17 BFSG).
+  </p>
+  <p>
+    Die {FIRMA.name} erfüllt diese Grenzen nach unserer Einschätzung.{' '}
+    <Luecke text="Anwalt prüfen: Ausnahme für Kleinstunternehmen (§ 3 Abs. 3 BFSG), auch Zurechnung verbundener Unternehmen" />{' '}
+    Wir machen die Angaben auf dieser Seite trotzdem freiwillig, weil uns eine barrierefreie Website wichtig ist.
+  </p>
+
+  <h2 id="stand">Stand dieser Erklärung</h2>
+  <p>
+    Diese Erklärung wurde am {PRUEFDATUM} erstellt. Sie beruht auf der Selbstbewertung und den Prüfungen vom
+    {PRUEFDATUM}.
+  </p>
+  <p>
+    Wir prüfen die Erklärung bei jeder größeren Änderung der Website und mindestens einmal im Jahr.{' '}
+    <Luecke text="Annahme – bitte bestätigen: jährliche Prüfung" />
+  </p>
+</RechtSeite>
