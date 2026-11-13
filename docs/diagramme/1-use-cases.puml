@@ -1,0 +1,98 @@
+@startuml 1-use-cases
+!include _stil.iuml
+title waybuild Akademie – Use-Case-Diagramm (Website, erster Release)
+left to right direction
+skinparam packageStyle rectangle
+skinparam nodesep 16
+skinparam ranksep 60
+
+' ---------- Akteure links (Besucher und Team) ----------
+actor "Besucher/in\n(Interessent)" as Besucher
+actor "Azubi /\nUmschüler/in" as Azubi
+actor "Berufstätige/r\n(Fachwirt, Betriebswirt,\nKI/IT-Weiterbildung)" as Beruf
+actor "Ausbildungsbetrieb /\nPersonaler\n(zahlt)" as Betrieb
+actor "Redaktion\n(Team, KI-Assistent)" as Redaktion
+actor "Geschäftsführung\n(Freigabe)" as GF
+
+Azubi --|> Besucher
+Beruf --|> Besucher
+Betrieb --|> Besucher
+
+rectangle "waybuild Akademie Website" {
+  package "Informieren" {
+    usecase "Kurskatalog\nansehen" as UC01
+    usecase "Nach Säule /\nKategorie filtern" as UC02
+    usecase "Kursdetails ansehen\n(Inhalte, UE, Preis,\nVoraussetzungen, FAQ)" as UC03
+    usecase "Terminübersicht\nansehen" as UC04
+    usecase "Termin in Kalender\nübernehmen (Kann)" as UC05
+    usecase "FAQ und rechtliche\nSeiten lesen" as UC06
+  }
+  package "Anfragen und Anmelden" {
+    usecase "Zu einem Termin\nanmelden" as UC10
+    usecase "Zahlweg wählen\n(selbst / Betrieb)" as UC11
+    usecase "Rechnungsdaten des\nBetriebs angeben\n(wenn Betrieb zahlt)" as UC12
+    usecase "Weitere Teilnehmende\nhinzufügen (Soll)" as UC13
+    usecase "Interesse vormerken\n(Kurs ohne Termin)" as UC14
+    usecase "Coaching-Paket\nanfragen" as UC15
+    usecase "Kontakt- /\nBeratungsanfrage" as UC16
+    usecase "Formular absenden\n(mit Spam-Schutz)" as UC17
+  }
+  package "Pflegen und Freigeben" {
+    usecase "Kurse, Termine, Preise\nin Inhaltsdateien pflegen" as UC20
+    usecase "Kursentwurf\nanlegen" as UC21
+    usecase "Entwurf in der\nVorschau prüfen" as UC22
+    usecase "Entwurf\nfreigeben" as UC23
+    usecase "Website\nveröffentlichen" as UC24
+  }
+}
+
+' ---------- Externe Systeme rechts ----------
+actor "E-Mail-Postfach\nAnmeldung" as Postfach <<extern>>
+actor "Organisation /\nBackoffice\n(Rechnung per Mail)" as Backoffice
+actor "Domain\ntop-abschluss.de\n(Weiterleitung)" as TopAbschluss <<extern>>
+actor "CRM\n(später)" as CRM <<extern>>
+
+' ---------- Beziehungen Besucher ----------
+Besucher --> UC01
+Besucher --> UC03
+Besucher --> UC04
+Besucher --> UC06
+Besucher --> UC10
+Besucher --> UC14
+Besucher --> UC16
+Azubi --> UC15
+
+UC02 .> UC01 : <<extend>>
+UC05 .> UC04 : <<extend>>
+UC10 ..> UC11 : <<include>>
+UC12 .> UC11 : <<extend>>
+UC13 .> UC10 : <<extend>>
+
+UC10 ..> UC17 : <<include>>
+UC14 ..> UC17 : <<include>>
+UC15 ..> UC17 : <<include>>
+UC16 ..> UC17 : <<include>>
+
+' ---------- Beziehungen Team ----------
+Redaktion --> UC20
+Redaktion --> UC21
+Redaktion --> UC22
+GF --> UC22
+GF --> UC23
+Redaktion --> UC24
+UC21 .> UC20 : <<extend>>
+UC24 ..> UC23 : «setzt Freigabe\nvoraus»
+
+' ---------- Externe ----------
+UC17 --> Postfach
+Postfach -- Backoffice
+TopAbschluss ..> UC01 : leitet weiter
+UC17 ..> CRM : später
+
+legend bottom right
+  Keine Online-Zahlung, kein Nutzerkonto.
+  Rechnung kommt nach der Anmeldung per E-Mail.
+  Ausbildungsbetrieb nutzt alle Besucher-Funktionen
+  und gibt bei „Mein Betrieb zahlt“ die Rechnungsdaten an.
+endlegend
+@enduml

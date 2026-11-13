@@ -1,0 +1,8 @@
+# Interne Unterlagen (Konzept, Rechtsfragen, Preise-Entwürfe) – nie ins öffentliche Repo
+docs/intern/
+docs/recherche/recht-risiken.md
+node_modules/
+dist/
+.astro/
+.superpowers/
+.env

@@ -1,0 +1,35 @@
+' Gemeinsamer Stil: waybuild-Akademie-Farben (Blau), deutsche Beschriftung
+skinparam defaultFontName "DejaVu Sans"
+skinparam defaultFontSize 13
+skinparam shadowing false
+skinparam roundCorner 10
+skinparam dpi 150
+skinparam backgroundColor #FFFFFF
+skinparam ArrowColor #003a70
+skinparam ArrowFontColor #1b2633
+skinparam TitleFontColor #003a70
+skinparam TitleFontSize 18
+skinparam NoteBackgroundColor #FFF8E1
+skinparam NoteBorderColor #C9A227
+skinparam actorBorderColor #003a70
+skinparam actorBackgroundColor #e8f2fa
+skinparam usecaseBorderColor #0077b6
+skinparam usecaseBackgroundColor #e8f2fa
+skinparam rectangleBorderColor #003a70
+skinparam rectangleFontColor #003a70
+skinparam packageBorderColor #003a70
+skinparam participantBorderColor #003a70
+skinparam participantBackgroundColor #e8f2fa
+skinparam databaseBorderColor #003a70
+skinparam databaseBackgroundColor #e8f2fa
+skinparam sequenceLifeLineBorderColor #7fb3dc
+skinparam sequenceGroupBorderColor #003a70
+skinparam sequenceGroupHeaderFontColor #003a70
+skinparam sequenceBoxBorderColor #b8d6ee
+skinparam activityBorderColor #003a70
+skinparam activityBackgroundColor #e8f2fa
+skinparam activityDiamondBorderColor #003a70
+skinparam activityDiamondBackgroundColor #FFFFFF
+skinparam activityStartColor #003a70
+skinparam activityEndColor #003a70
+skinparam partitionBorderColor #0077b6
