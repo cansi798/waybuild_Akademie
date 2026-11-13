@@ -2,64 +2,67 @@
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
 titel: Fachwirt/in für Güterverkehr und Logistik
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in für Güterverkehr und Logistik“
-kurzbeschreibung: 'Mach den nächsten Schritt in Spedition und Logistik: Du lernst Logistikleistungen entwickeln, kalkulieren, vermarkten und Teams führen – berufsbegleitend live-online an zwei Abenden pro Woche.'
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in für Güterverkehr und Logistik – Bachelor Professional in Transport Management and Logistics“
+kurzbeschreibung: 'Vom Disponieren zum Steuern: Du entwickelst und vermarktest Transport- und Logistikleistungen, kalkulierst Angebote, sicherst Lieferketten und führst Teams – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
 ue: 560
-dauer: ca. 17 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr
+dauer: ca. 12 Monate
+zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
 preis:
   betrag: 3390
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Kaufleute für Spedition und Logistikdienstleistung mit Berufserfahrung
 - Disponentinnen und Disponenten in Transport und Logistik
 - Fachkräfte aus Logistikunternehmen, die Führungsaufgaben übernehmen wollen
 voraussetzungen:
-- Zum Beispiel eine kaufmännische Ausbildung in Güterverkehr und Logistik, eine andere kaufmännische Ausbildung mit Berufspraxis oder mehrere Jahre einschlägige Praxis
+- 'Einer dieser Wege: eine kaufmännische Ausbildung für den Bereich Güterverkehr und Logistik, etwa Spedition und Logistikdienstleistung – eine andere dreijährige kaufmännische oder verwaltende Ausbildung und danach mindestens ein Jahr Berufspraxis – mindestens 90 ECTS-Punkte in einem fachverwandten Studium und mindestens zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
+- Wo Berufspraxis verlangt wird, muss sie Bezug zu Güterverkehr und Logistik haben
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
-- titel: Logistikleistungen entwickeln und vermarkten
+- titel: Entwickeln und Vermarkten von Güterverkehrs- und Logistikdienstleistungen
   punkte:
-  - Markt und Wettbewerb analysieren
-  - Leistungsangebote kalkulieren und Angebote erstellen
-  - Vertrieb, Verträge und Kundenbeziehungen
-- titel: Logistikleistungen erstellen
+  - Nationale und internationale Logistikmärkte bewerten
+  - Kundenbedarf ermitteln, Ausschreibungen analysieren
+  - Prozessabläufe entwickeln, Angebote erarbeiten, präsentieren und verhandeln
+  - Marketingplan, Qualitäts- und Umweltmanagement
+- titel: Erstellen von Güterverkehrs- und Logistikdienstleistungen
   punkte:
-  - Verkehrsträger und multimodale Transportketten
-  - Lager- und Kontraktlogistik
-  - Recht, Haftung und Versicherung
-  - Zoll und internationale Transporte
-- titel: Kommunikation, Führung und Zusammenarbeit
+  - Transport- und Logistikleistungen planen, steuern und optimieren
+  - Ausschreibungen erstellen und Angebote von Partnern bewerten
+  - Kosten, Erträge, Kennzahlen und Budgets
+  - Lieferkettensicherheit und außenwirtschaftliche Vorschriften
+- titel: Kommunikation, Führung und Zusammenarbeit sicherstellen
   punkte:
-  - Mitarbeitende führen und entwickeln
-  - Gespräche führen und Konflikte lösen
-  - Projekte und Veränderungen begleiten
+  - Kommunizieren und präsentieren
+  - Personalauswahl, Personaleinsatz und Führungsmethoden
+  - Ausbildung planen, Mitarbeitende entwickeln, Arbeits- und Gesundheitsschutz
 - titel: Prüfungstraining
   punkte:
-  - Situationsaufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Vorbereitung auf das Fachgespräch
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Zwei Aufgabenstellungen zu einer betrieblichen Situation, je 300 Minuten
+  - Präsentationsthema finden, das einen Fachbereich mit Führung und Zusammenarbeit verknüpft
+  - Präsentation (höchstens 10 Minuten) und Fachgespräch (höchstens 20 Minuten) proben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Fachwirt/in für Güterverkehr und Logistik – Bachelor Professional in Transport Management and Logistics“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
+- frage: Wie ist die Prüfung aufgebaut?
+  antwort: Zuerst schreibst du zwei Aufgabenstellungen zu einer betrieblichen Situation, je 300 Minuten. Danach folgt die mündliche Prüfung mit Präsentation und Fachgespräch. Das ganze Verfahren muss innerhalb von zwei Jahren ab der ersten Prüfungsleistung abgeschlossen sein.
 - frage: Ich komme aus der Lagerlogistik. Ist das der richtige Fachwirt?
-  antwort: Wenn dein Schwerpunkt auf Transport und Spedition liegt, ja. Geht es dir eher um die Planung ganzer Logistiksysteme, passt der Fachwirt für Logistiksysteme oft besser. Die Zulassung prüft in beiden Fällen deine IHK.
-- frage: Wie viel Zeit brauche ich neben dem Unterricht?
-  antwort: Plane etwas Zeit zum Wiederholen ein, vor allem vor den Prüfungen. Der Unterricht selbst findet vollständig live statt.
+  antwort: Wenn dein Schwerpunkt auf Transport und Spedition liegt, ja. Geht es dir eher um die Planung ganzer Logistiksysteme, passt der Fachwirt für Logistiksysteme oft besser – dort ist die Ausbildung zur Fachkraft für Lagerlogistik mit einem Jahr Praxis ausdrücklich als Zugang genannt.
 - frage: Wird in der Prüfung auch gerechnet?
-  antwort: Ja, etwa bei Kalkulationen und Angeboten. Solche Aufgaben üben wir regelmäßig im Live-Unterricht.
-- frage: Steht schon ein Termin fest?
-  antwort: Noch nicht. Trag dich unverbindlich ein, dann melden wir uns, sobald der Start geplant ist.
+  antwort: Ja, etwa bei Kosten- und Ertragsanalysen, Kennzahlen und Budgets. Solche Aufgaben rechnen wir regelmäßig gemeinsam im Unterricht.
+- frage: Was ist mit der AEVO?
+  antwort: Die Fortbildungsordnung sieht eine Befreiung vom schriftlichen Teil der Ausbildereignungsprüfung vor, wenn du diese Prüfung bestanden hast.
+- frage: Kann ich in Raten zahlen?
+  antwort: Ja, ohne Aufpreis. Bei rund 12 Monaten Kursdauer zahlst du zum Beispiel 12 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 41
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Güterverkehr und Logistik vor. Im Mittelpunkt stehen drei Bereiche: Logistikleistungen entwickeln und vermarkten, Logistikleistungen erstellen sowie Kommunikation, Führung und Zusammenarbeit.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Güterverkehr und Logistik vor, seit 2023 mit der Bezeichnung Bachelor Professional in Transport Management and Logistics. Er folgt den drei Prüfungsbereichen der Fortbildungsordnung: Logistikleistungen entwickeln und vermarkten, Logistikleistungen erstellen sowie Kommunikation, Führung und Zusammenarbeit.
 
-Der Unterricht läuft live-online an zwei Abenden pro Woche. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen anhand typischer Situationen aus dem Speditionsalltag. Aufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht.
+Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Spedition, Kontraktlogistik und internationalem Transport – von der Ausschreibung über die Kalkulation bis zur Verhandlung, die wir in der Gruppe durchspielen. An den Samstagen trainierst du die langen schriftlichen Aufgaben.
 
-Der Lehrgang passt zu dir, wenn du in Spedition, Transport oder Logistik arbeitest und künftig Kunden, Projekte oder Teams verantworten willst.
-
-Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du in Spedition, Transport oder Logistik arbeitest und künftig Kunden, Projekte oder Teams verantworten willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

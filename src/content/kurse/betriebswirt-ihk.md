@@ -2,71 +2,74 @@
 saeule: ihk-weiterbildung
 kategorie: Betriebswirte
 titel: Betriebswirt/in
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Betriebswirt/in – Master Professional in Business Management“
-kurzbeschreibung: 'Bau auf deinem Fachwirt auf: Du lernst Strategie, Finanzen, Organisation, internationales Geschäft und Unternehmenssteuerung für die Betriebswirt-Prüfung – berufsbegleitend live-online.'
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Betriebswirt/in nach dem Berufsbildungsgesetz – Master Professional in Business Management nach dem Berufsbildungsgesetz“
+kurzbeschreibung: 'Bau auf deinem Fachwirt auf: Du bereitest strategische Entscheidungen vor, bewertest Recht und Finanzen, steuerst Leistungsprozesse und schreibst eine Projektarbeit – live-online.'
 status: entwurf
 art: kurs
-ue: 580
-dauer: ca. 18 Monate
-zeiten: Mo + Mi, 18:00–21:15 Uhr
+ue: 640
+dauer: ca. 14 Monate
+zeiten: Mo + Mi, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
 preis:
   betrag: 3890
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
-- Fachwirte und Fachkaufleute, die weiterkommen wollen
+- Fachwirtinnen, Fachwirte und Fachkaufleute, die ins Management wollen
 - Führungskräfte im mittleren Management
-- Fachkräfte mit kaufmännischem Studium und Berufspraxis
+- Absolventinnen und Absolventen eines Wirtschaftsstudiums mit Berufspraxis
 voraussetzungen:
-- Zum Beispiel ein bestandener Fachwirt- oder Fachkaufmann-Abschluss, ein kaufmännischer Fachschulabschluss mit Praxis oder ein wirtschaftswissenschaftliches Studium mit Berufspraxis
-- Gute Englischkenntnisse sind hilfreich, weil Aufgaben teils englische Texte enthalten
+- 'Einer dieser Wege: ein bestandener Fachwirt, Fachkaufmann oder vergleichbarer kaufmännischer Fortbildungsabschluss nach dem BBiG – ein Kaufmännischer Fachwirt nach der Handwerksordnung – eine kaufmännische Fachschule und danach mindestens ein Jahr Berufspraxis – oder ein wirtschaftswissenschaftliches Studium und danach mindestens ein Jahr Berufspraxis'
+- Gute Englischkenntnisse, denn in jeder schriftlichen Aufgabenstellung ist ein Handlungsbereich auf Englisch zu bearbeiten
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
-- titel: Strategie und Unternehmensführung
+- titel: Unternehmensspezifische Strategiefelder erkennen und ausgestalten
   punkte:
-  - Unternehmensstrategie entwickeln
-  - Strategisches Marketing
-  - Innovationsmanagement
-- titel: Rechtliche und finanzwirtschaftliche Rahmenbedingungen
+  - Unternehmenspolitik und Leitbild, nachhaltige Unternehmensführung
+  - Erfolgs- und Risikopotenziale analysieren
+  - Strategien entwickeln und bewerten
+- titel: Normenbestimmte und finanzwirtschaftliche Rahmenbedingungen bewerten
   punkte:
-  - Wirtschaftsrecht und Steuern
-  - Finanzierung und Investition
-  - Jahresabschluss und Bilanzanalyse
-- titel: Internationale Leistungsprozesse
+  - Rechtliche und steuerliche Rahmenbedingungen, auch bei Auslandsgeschäften
+  - Finanzierung und Investition optimieren
+  - Grundsätze verantwortungsvoller Unternehmensführung
+- titel: Nationale und internationale Leistungsprozesse organisieren
   punkte:
-  - Internationale Märkte und Handel
-  - Interkulturelle Zusammenarbeit
-- titel: Organisation und Personal
+  - Marketingstrategien und -instrumente
+  - Personalmanagement und Führung im Leistungsprozess
+  - Beschaffung, Produktion und Absatz international ausrichten
+- titel: Unternehmensorganisation gestalten
   punkte:
-  - Organisationsentwicklung und Veränderung
-  - Personalmanagement und Führung
-- titel: Unternehmensprozesse planen und steuern
+  - Strukturen und Prozesse auf Strategie prüfen
+  - Veränderungen ableiten und umsetzen
+- titel: Planung, Steuerung und Überwachung von Unternehmensprozessen
   punkte:
-  - Controlling und Kennzahlen
-  - Projekt- und Prozessmanagement
-  - Risikomanagement
+  - Integriertes Managementsystem (Qualität, Arbeits-, Umwelt- und Datenschutz)
+  - Strategisches Controlling und Risikomanagement
+  - Innovation als Wertschöpfungspotenzial
 - titel: Prüfungstraining
   punkte:
-  - Aufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Lösungswege besprechen und Lücken schließen
-  - Vorbereitung auf den mündlichen Teil
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Drei abgestimmte Aufgabenstellungen zu einer betrieblichen Situation, je 240 Minuten, mit englischen Aufgaben
+  - Mündlichen Prüfungsteil üben (höchstens 45 Minuten, Schwerpunkt Unternehmenssteuerung)
+  - Thema der Projektarbeit finden, Entscheidungsvorlage aufbauen, Präsentation (höchstens 15 Minuten) proben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Betriebswirt/in nach dem Berufsbildungsgesetz – Master Professional in Business Management“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
-- frage: Wann startet der Lehrgang?
-  antwort: Wir planen den Betriebswirt als Folgelehrgang nach den Fachwirt-Lehrgängen. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
+- frage: Wie ist die Prüfung aufgebaut?
+  antwort: 'In drei Schritten: Zuerst der schriftliche Prüfungsteil mit drei Aufgabenstellungen zu einer betrieblichen Situation, dann der mündliche Prüfungsteil, zuletzt der projektbezogene Teil mit Projektarbeit, Präsentation und Fachgespräch. Das ganze Verfahren musst du innerhalb von drei Jahren abschließen.'
+- frage: Worum geht es in der Projektarbeit?
+  antwort: Du bearbeitest eine zukunftsorientierte Aufgabe aus der betrieblichen Praxis – auch eine Unternehmensgründung ist möglich – und bereitest sie als Entscheidungsvorlage auf. Mindestens zwei Handlungsbereiche müssen vorkommen. Das Thema schlägst du dem Prüfungsausschuss vor, für die Ausarbeitung hast du 30 Kalendertage.
+- frage: Wie viel Englisch brauche ich?
+  antwort: In jeder der drei schriftlichen Aufgabenstellungen sind die Aufgaben zu einem Handlungsbereich auf Englisch gestellt und auf Englisch zu beantworten. Wir arbeiten deshalb regelmäßig mit englischen Fällen und Fachbegriffen.
+- frage: Reichen 640 Unterrichtseinheiten?
+  antwort: Die Fortbildungsordnung nennt einen Lernumfang von in der Regel mindestens 1.600 Stunden. Er umfasst neben dem Unterricht auch dein Wissen aus der Fachwirt-Stufe und deine eigene Vorbereitung. Unsere 640 Live-Einheiten decken alle fünf Handlungsbereiche ab; wie viel Zeit du zusätzlich einplanst, entscheidest du selbst.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja. Bei dieser Weiterbildung ist Ratenzahlung ohne Aufpreis möglich. Die Einzelheiten stimmen wir nach deiner Anmeldung mit dir ab.
+  antwort: Ja, ohne Aufpreis. Bei rund 14 Monaten Kursdauer zahlst du zum Beispiel 14 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 23
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Betriebswirt bzw. zur Geprüften Betriebswirtin vor. Du beschäftigst dich mit Unternehmensstrategie, Finanzen und Recht, internationalen Geschäften, Organisation und Personal sowie der Steuerung von Unternehmensprozessen.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Betriebswirt bzw. zur Geprüften Betriebswirtin nach dem Berufsbildungsgesetz vor. Er folgt den fünf Handlungsbereichen der Fortbildungsordnung: Strategie, rechtliche und finanzielle Rahmenbedingungen, nationale und internationale Leistungsprozesse, Organisation sowie Planung, Steuerung und Überwachung von Unternehmensprozessen.
 
-Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Unterricht läuft live per Video am Montag- und Mittwochabend und an jedem zweiten Samstagvormittag in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit zusammenhängenden Unternehmensfällen, wie sie auch die Prüfung verwendet: Eine Situation, mehrere Handlungsbereiche, ein Teil auf Englisch. Die langen Aufgabenstellungen lösen wir an den Samstagen und werten sie gemeinsam aus.
 
-Der Lehrgang passt zu dir, wenn du bereits einen Fachwirt- oder vergleichbaren Abschluss hast und Verantwortung im Management übernehmen willst. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du schon einen Fachwirt- oder vergleichbaren Abschluss hast und Verantwortung in der Unternehmensführung übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

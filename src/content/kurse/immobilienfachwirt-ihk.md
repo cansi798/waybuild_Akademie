@@ -3,77 +3,72 @@ saeule: ihk-weiterbildung
 kategorie: Fachwirte
 titel: Immobilienfachwirt/in
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Immobilienfachwirt/in“
-kurzbeschreibung: 'Übernimm Verantwortung in der Immobilienwirtschaft: Du lernst Bewirtschaftung, Bauprojekte, Vertrieb, Unternehmenssteuerung und Führung – berufsbegleitend live-online an zwei Abenden pro Woche.'
+kurzbeschreibung: 'Übernimm Verantwortung in der Immobilienwirtschaft: Du lernst Rahmenbedingungen, Steuerung, Bewirtschaftung, Bauprojekte, Vertrieb und Maklertätigkeit sowie Führung – live-online.'
 status: entwurf
 art: kurs
 ue: 600
-dauer: ca. 18 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr
+dauer: ca. 13 Monate
+zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
 preis:
   betrag: 3590
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Immobilienkaufleute mit Berufserfahrung
 - Mitarbeitende aus Hausverwaltung, Vermietung, Makler- oder Bauträgerunternehmen
 - Quereinsteigerinnen und Quereinsteiger mit mehrjähriger Praxis in der Immobilienwirtschaft
 voraussetzungen:
-- Zum Beispiel eine Ausbildung in der Immobilienwirtschaft mit Berufspraxis, eine andere kaufmännische Ausbildung mit längerer Praxis oder mehrere Jahre einschlägige Berufspraxis
+- 'Einer dieser Wege: eine dreijährige Ausbildung der Immobilienwirtschaft und danach mindestens ein Jahr Praxis – eine andere dreijährige kaufmännische oder verwaltende Ausbildung und danach mindestens zwei Jahre Praxis – eine andere Ausbildung und danach mindestens drei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
+- Die Berufspraxis muss Bezug zu Aufgaben in der Immobilienwirtschaft haben
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
 - titel: Rahmenbedingungen der Immobilienwirtschaft
   punkte:
   - Immobilienmarkt und Volkswirtschaft
-  - Rechtliche Grundlagen
-  - Steuern rund um Immobilien
+  - Rechtliche und steuerliche Grundlagen
 - titel: Unternehmenssteuerung und Kontrolle
   punkte:
   - Rechnungswesen und Jahresabschluss
-  - Finanzierung und Investition
-  - Controlling und Kennzahlen
+  - Finanzierung, Investition, Controlling und Kennzahlen
 - titel: Personal, Arbeitsorganisation und Qualifizierung
   punkte:
-  - Personal planen und führen
-  - Arbeitsabläufe organisieren
-  - Ausbildung und Weiterbildung
+  - Personal planen und führen, Arbeitsabläufe organisieren
+  - Ausbildung und Weiterbildung im Immobilienunternehmen
 - titel: Immobilienbewirtschaftung
   punkte:
   - Miet- und Wohnungseigentumsverwaltung
-  - Betriebskosten und Instandhaltung
-  - Gewerbeimmobilien
+  - Betriebskosten, Instandhaltung, Gewerbeimmobilien
 - titel: Bauprojektmanagement
   punkte:
   - Projektentwicklung und Planung
-  - Bauverträge und Bauabwicklung
-  - Kosten und Termine steuern
-- titel: Marktorientierung, Vertrieb und Maklertätigkeit
+  - Bauverträge, Kosten und Termine steuern
+- titel: Marktorientierung und Vertrieb, Maklertätigkeit
   punkte:
-  - Immobilienmarketing
-  - Bewertung und Vermittlung
+  - Immobilienmarketing, Bewertung und Vermittlung
   - Kundenberatung und Vertragsabschluss
 - titel: Prüfungstraining
   punkte:
-  - Situationsaufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Vorbereitung auf die mündliche Prüfung
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Anwendungsbezogene Aufgaben je Handlungsbereich unter Zeitvorgabe (in der Prüfung 60 bis 120 Minuten je Bereich, zusammen 600 bis 660 Minuten)
+  - Präsentation (höchstens 10 Minuten) und Fachgespräch proben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Immobilienfachwirt/in“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
+- frage: Wie ist die Prüfung aufgebaut?
+  antwort: Jeder der sechs Handlungsbereiche wird schriftlich mit anwendungsbezogenen Aufgaben geprüft, von 60 Minuten für die Rahmenbedingungen bis 120 Minuten für Bewirtschaftung, Bauprojekte und Vertrieb. Danach folgen Präsentation und Fachgespräch. Bei höchstens zwei mangelhaften schriftlichen Leistungen gibt es eine mündliche Ergänzungsprüfung.
 - frage: Ich arbeite nur in der Verwaltung. Brauche ich Wissen zum Bauen und Verkaufen?
-  antwort: Für die Prüfung ja, denn sie deckt die ganze Immobilienwirtschaft ab. Im Lehrgang bauen wir das Wissen in Bauprojektmanagement und Vertrieb deshalb von Grund auf auf.
-- frage: Muss ich Immobilienkaufmann oder -kauffrau sein?
-  antwort: Nicht unbedingt. Auch andere Ausbildungen oder mehrjährige Praxis können für die Zulassung reichen. Das prüft deine IHK im Einzelfall.
-- frage: Wie läuft der Unterricht ab?
-  antwort: Live-online an zwei festen Abenden pro Woche in einer festen Gruppe. Fragen stellst du direkt im Unterricht.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Lehrgang und die Unterlagen. Die Prüfung rechnet deine IHK getrennt ab.
+  antwort: Für die Prüfung ja, denn Bauprojektmanagement sowie Vertrieb und Maklertätigkeit sind eigene Handlungsbereiche mit je 120 Minuten Prüfungszeit. Im Lehrgang bauen wir dieses Wissen deshalb von Grund auf auf.
+- frage: Wann muss ich das Präsentationsthema einreichen?
+  antwort: Schon bei der ersten schriftlichen Prüfungsleistung. Das Thema darf aus jedem Handlungsbereich kommen. Mögliche Themen sammeln wir rechtzeitig vorher im Live-Unterricht.
+- frage: Was ist mit der AEVO?
+  antwort: Wer die Prüfung bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
+- frage: Kann ich in Raten zahlen?
+  antwort: Ja, ohne Aufpreis. Bei rund 13 Monaten Kursdauer zahlst du zum Beispiel 13 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 44
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Immobilienfachwirt bzw. zur Geprüften Immobilienfachwirtin vor. Du lernst die ganze Breite der Immobilienwirtschaft kennen – von den rechtlichen und wirtschaftlichen Rahmenbedingungen über Bewirtschaftung und Bauprojekte bis zu Vertrieb, Unternehmenssteuerung und Personalführung.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Immobilienfachwirt bzw. zur Geprüften Immobilienfachwirtin vor. Er folgt den sechs Handlungsbereichen der Prüfungsverordnung und deckt damit die ganze Breite der Immobilienwirtschaft ab – von Recht und Markt über Bewirtschaftung und Bauprojekte bis zu Vertrieb, Unternehmenssteuerung und Personal.
 
-Der Unterricht läuft live-online an zwei Abenden pro Woche. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen und arbeiten mit Fällen, wie sie in der Prüfung vorkommen. Fragen klärst du direkt live.
+Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Hausverwaltung, Maklerbüro und Bauträger – etwa einer Betriebskostenabrechnung, einer Projektkalkulation oder einem Vermittlungsauftrag. Die schriftlichen Prüfungsteile üben wir an den Samstagen unter Zeitvorgabe.
 
-Der Lehrgang passt zu dir, wenn du in Verwaltung, Vermietung, Vertrieb oder Projektentwicklung arbeitest und eine Fach- oder Führungsrolle anstrebst.
-
-Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du in Verwaltung, Vermietung, Vertrieb oder Projektentwicklung arbeitest und eine Fach- oder Führungsrolle anstrebst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

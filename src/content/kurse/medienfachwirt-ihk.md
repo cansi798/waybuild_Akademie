@@ -2,66 +2,71 @@
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
 titel: Medienfachwirt/in
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Medienfachwirt/in“
-kurzbeschreibung: 'Verbinde Medienproduktion und Management: Du lernst Print- und Digitalproduktion, Kalkulation, Vertrieb und Personalführung für die IHK-Prüfung – berufsbegleitend live-online.'
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Medienfachwirt/in – Bachelor Professional in Media“
+kurzbeschreibung: 'Verbinde Medienproduktion und Management: Du lernst Recht, BWL und Planung, danach Print- und Digitalproduktion, Personal, Vertrieb und Kosten – mit Projektarbeit, live-online.'
 status: entwurf
 art: kurs
 ue: 640
-dauer: ca. 22 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr
+dauer: ca. 14 Monate
+zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
 preis:
   betrag: 4490
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Mediengestalterinnen und Mediengestalter mit Berufserfahrung
 - Fachkräfte aus Druck, Verlag, Agentur oder Digitalproduktion
 - Mitarbeitende, die Produktionsprojekte leiten wollen
 voraussetzungen:
-- Für den ersten Teil zum Beispiel eine Ausbildung in der Druck- und Medienwirtschaft, eine andere Ausbildung mit Berufspraxis oder mehrere Jahre Berufspraxis
-- Für den zweiten Teil brauchst du den bestandenen ersten Teil
-- Bis zur letzten Prüfungsleistung brauchst du den Nachweis der Ausbildereignung (AEVO)
+- 'Einer dieser Wege: eine Ausbildung in einem Beruf der Druck- und Medienwirtschaft – eine andere Ausbildung und danach mindestens ein Jahr Berufspraxis – oder mindestens vier Jahre Berufspraxis'
+- Die Berufspraxis soll Bezug zu Aufgaben in der Medienproduktion haben
+- Vor Beginn des letzten Prüfungsbestandteils brauchst du den Nachweis der Ausbildereignung (AEVO) oder eine vergleichbare Prüfung
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
-- titel: Basisqualifikationen
+- titel: 'Grundlegende Qualifikationen'
   punkte:
-  - Rechtsbewusst handeln
-  - Betriebswirtschaftlich handeln
-  - Methoden der Information, Kommunikation und Planung
+  - Rechtsbewusstes Handeln
+  - Betriebswirtschaftliches Handeln
+  - Anwenden von Methoden der Information, Kommunikation und Planung
   - Zusammenarbeit im Betrieb
-- titel: Medienproduktion
+- titel: 'Handlungsbereich „Medienproduktion“'
   punkte:
-  - Produkte und Abläufe der Print- und Digitalproduktion
-  - Schwerpunkt Digitalmedien
-  - Qualität, Daten und Workflows
-- titel: Führung und Organisation
+  - Produkte und Prozesse der Print- und Digitalmedienproduktion
+  - Wahlpflichtschwerpunkt Printmedien oder Digitalmedien
+  - Produktionsmittel, Qualitätssicherung, Investitionsentscheidungen
+- titel: 'Handlungsbereich „Führung und Organisation“'
   punkte:
   - Personalmanagement
   - Vertriebs- und Geschäftsprozesse
   - Kostenmanagement und Kalkulation
+- titel: Projektarbeit
+  punkte:
+  - Praxisorientierte Gesamtplanung von Projekt, Produkt und Produktion
+  - Ablauf-, Termin-, Personal-, Material- und Kostenplanung, Recht im Vertrieb und in den Medien
+  - Präsentation (höchstens 15 Minuten) und Fachgespräch proben
 - titel: Prüfungstraining
   punkte:
-  - Situationsaufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Vorbereitung auf den mündlichen Prüfungsteil
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Anwendungsbezogene Aufgaben je Prüfungsbereich der Grundlagen (in der Prüfung mindestens 90 Minuten je Bereich)
+  - Situationsaufgaben zu Medienproduktion sowie Führung und Organisation
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Medienfachwirt/in – Bachelor Professional in Media“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
-- frage: Gibt es den Lehrgang auch mit Schwerpunkt Print?
-  antwort: Wir planen zunächst den Schwerpunkt Digitalmedien. Print-Themen kommen in der Produktion trotzdem vor. Wenn du den Schwerpunkt Print brauchst, sag uns Bescheid.
-- frage: Warum brauche ich den Ausbilderschein?
-  antwort: Die Prüfungsordnung verlangt den Nachweis der Ausbildereignung bis zur letzten Prüfungsleistung. Unseren AEVO-Kurs kannst du vorher oder nebenbei belegen.
 - frage: Wie ist die Prüfung aufgebaut?
-  antwort: Zuerst legst du die Basisqualifikationen ab, später die handlungsspezifischen Qualifikationen. Termine und Ablauf bestimmt deine IHK.
-- frage: Kann ich die Teilnahmegebühr aufteilen?
-  antwort: Ja, Ratenzahlung ist ohne Aufpreis möglich. Wir sprechen die Raten nach deiner Anmeldung mit dir ab.
+  antwort: 'In zwei aufeinander aufbauenden Teilen. In den „Grundlegenden Qualifikationen“ schreibst du Aufgaben zu vier Prüfungsbereichen. Die „Handlungsspezifischen Qualifikationen“ bestehen aus einem schriftlichen Teil zu Medienproduktion sowie Führung und Organisation und einer Projektarbeit mit Präsentation und Fachgespräch.'
+- frage: Print oder Digital – welchen Schwerpunkt behandelt ihr?
+  antwort: Im Handlungsbereich Medienproduktion wählst du für die Prüfung Printmedien oder Digitalmedien. Wir planen zunächst mit dem Schwerpunkt Digitalmedien; wenn du Printmedien brauchst, sag es uns bei der Anmeldung, dann prüfen wir eine eigene Vertiefung.
+- frage: Warum brauche ich den Ausbilderschein?
+  antwort: Die Fortbildungsordnung macht den Nachweis der berufs- und arbeitspädagogischen Qualifikationen zum Teil des Abschlusses. Du musst ihn vor Beginn des letzten Prüfungsbestandteils vorlegen. Unseren AEVO-Kurs kannst du vorher oder nebenbei belegen.
+- frage: Wie läuft die Projektarbeit?
+  antwort: Der Prüfungsausschuss stellt das Thema passend zu deinem Wahlschwerpunkt, du kannst Vorschläge machen. Für die Gesamtplanung hast du 30 Kalendertage. Wie du sie aufbaust – von der Produktplanung bis zur Kalkulation –, üben wir im Kurs an einem gemeinsamen Beispiel.
+- frage: Kann ich in Raten zahlen?
+  antwort: Ja, ohne Aufpreis. Bei rund 14 Monaten Kursdauer zahlst du zum Beispiel 14 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 45
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Medienfachwirt bzw. zur Geprüften Medienfachwirtin vor. Im ersten Teil geht es um die Basisqualifikationen wie Recht, Betriebswirtschaft und Zusammenarbeit, im zweiten um Medienproduktion sowie Führung und Organisation.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Medienfachwirt bzw. zur Geprüften Medienfachwirtin – Bachelor Professional in Media vor. Im ersten Teil geht es um Recht, Betriebswirtschaft, Planungsmethoden und Zusammenarbeit, im zweiten um Medienproduktion sowie Führung und Organisation, zum Schluss um deine Projektarbeit.
 
-Der Unterricht läuft live-online an zwei Abenden pro Woche. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen anhand von Beispielen aus Druck, Verlag und Digitalproduktion und üben mit dir Aufgaben im Stil der Prüfung. Fragen klärst du direkt im Live-Unterricht.
+Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Beispielen aus Druckerei, Verlag, Agentur und Digitalproduktion – vom Produktionsablauf über die Kalkulation bis zum Personaleinsatz. Eine Gesamtplanung bauen wir gemeinsam Schritt für Schritt, damit du die Form der Projektarbeit kennst.
 
-Der Lehrgang passt zu dir, wenn du in der Medienproduktion arbeitest und künftig Projekte, Budgets und Teams verantworten willst.
-
-Die Zulassung prüft deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du in der Medienproduktion arbeitest und künftig Projekte, Budgets und Teams verantworten willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

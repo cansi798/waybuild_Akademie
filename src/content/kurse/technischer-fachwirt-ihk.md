@@ -3,77 +3,65 @@ saeule: ihk-weiterbildung
 kategorie: Fachwirte
 titel: Technische/r Fachwirt/in
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Technische/r Fachwirt/in“
-kurzbeschreibung: 'Verbinde Technik und Betriebswirtschaft: Du lernst BWL, technische Grundlagen, Produktion, Logistik, Qualität und Führung für die Fachwirt-Prüfung – berufsbegleitend live-online.'
+kurzbeschreibung: 'Verbinde Technik und Betriebswirtschaft: Du lernst BWL, Recht und Rechnungswesen, technische Grundlagen und Fertigung und steuerst Produktion, Logistik, Qualität und Teams – live-online.'
 status: entwurf
 art: kurs
-ue: 640
-dauer: ca. 20 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr
+ue: 700
+dauer: ca. 15 Monate
+zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
 preis:
   betrag: 4390
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
-- Fachkräfte mit technischer Ausbildung
-- Mitarbeitende aus Produktion, Technik und Instandhaltung
-- Technikerinnen und Techniker, die kaufmännisches Wissen brauchen
+- Fachkräfte aus Technik und Produktion, die Kaufmännisches dazulernen wollen
+- Kaufleute in Industriebetrieben, die technische Zusammenhänge verstehen wollen
+- Mitarbeitende an der Schnittstelle von Fertigung, Einkauf und Vertrieb
 voraussetzungen:
-- Zum Beispiel eine abgeschlossene Ausbildung in einem technischen oder kaufmännischen Beruf mit Berufspraxis oder mehrere Jahre Berufspraxis
+- 'Für die ersten beiden Prüfungsteile einer dieser Wege: eine mindestens dreijährige kaufmännische, verwaltende oder gewerblich-technische Ausbildung – eine andere Ausbildung und danach mindestens ein Jahr Praxis im kaufmännischen oder gewerblich-technischen Bereich – oder mindestens vier Jahre Berufspraxis'
+- 'Für die handlungsspezifischen Qualifikationen: die beiden ersten Prüfungsteile, abgelegt innerhalb der letzten fünf Jahre, und ein weiteres Jahr Berufspraxis'
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
-- titel: Volks- und Betriebswirtschaft
+- titel: Wirtschaftsbezogene Qualifikationen
   punkte:
-  - Markt, Preisbildung und Wirtschaftspolitik
-  - Unternehmensziele und betriebliche Funktionen
-  - Rechtsformen und Unternehmenszusammenschlüsse
-- titel: Rechnungswesen
-  punkte:
-  - Buchführung und Jahresabschluss
-  - Kosten- und Leistungsrechnung
-  - Auswertung von Zahlen und Kennzahlen
-- titel: Recht und Steuern
-  punkte:
-  - Vertragsrecht und Handelsrecht
-  - Arbeitsrecht in Grundzügen
-  - Unternehmensbezogene Steuern
-- titel: Unternehmensführung
-  punkte:
-  - Organisation und Planung
-  - Personalführung
-  - Personalentwicklung
+  - Volks- und Betriebswirtschaft
+  - Rechnungswesen
+  - Recht und Steuern
+  - Unternehmensführung
 - titel: Technische Qualifikationen
   punkte:
   - Naturwissenschaftliche und technische Grundlagen
-  - Technische Kommunikation
-  - Werkstoffe und Fertigungstechnik
+  - Technische Kommunikation und Werkstofftechnologie
+  - Fertigungs- und Betriebstechnik
 - titel: Handlungsspezifische Qualifikationen
   punkte:
-  - Absatz und Materialwirtschaft
-  - Produktionsplanung und -steuerung
-  - Qualität, Umweltschutz und Arbeitssicherheit
+  - Absatz-, Materialwirtschaft und Logistik
+  - Produktionsplanung, -steuerung und -kontrolle
+  - Qualitäts- und Umweltmanagement sowie Arbeitsschutz
   - Führung und Zusammenarbeit
 - titel: Prüfungstraining
   punkte:
-  - Aufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Lösungswege besprechen und Lücken schließen
-  - Vorbereitung auf den mündlichen Teil
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Anwendungsbezogene Aufgaben für alle drei schriftlichen Prüfungsteile unter Zeitvorgabe
+  - Situationsbezogenes Fachgespräch mit Präsentation (höchstens 30 Minuten, Schwerpunkt Logistik und Produktion) mit Vorbereitungszeit üben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Technische/r Fachwirt/in“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
-- frage: Wann startet der nächste Lehrgang?
-  antwort: Für diesen Lehrgang steht noch kein Starttermin fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
+- frage: Wie ist die Prüfung aufgebaut?
+  antwort: 'In drei Prüfungsteilen: wirtschaftsbezogene, technische und handlungsspezifische Qualifikationen, jeweils schriftlich. Nach den bestandenen schriftlichen Leistungen folgt ein situationsbezogenes Fachgespräch mit Präsentation, Schwerpunkt Absatz, Logistik und Produktionsplanung.'
+- frage: Ich bin Kaufmann bzw. Kauffrau. Schaffe ich den technischen Teil?
+  antwort: Die technischen Qualifikationen beginnen bei naturwissenschaftlichen Grundlagen. Wir rechnen und erklären die Themen Schritt für Schritt; die Zulassung ist mit einer kaufmännischen Ausbildung ausdrücklich möglich.
+- frage: Kann ich danach weitermachen?
+  antwort: Ja. Ein bestandener Technischer Fachwirt (IHK) ist einer der Zugänge zur Prüfung Technische/r Betriebswirt/in. Auch dafür gibt es bei uns einen Lehrgang.
+- frage: Was ist mit der AEVO?
+  antwort: Nach bestandenen handlungsspezifischen Qualifikationen kannst du bei der IHK eine zusätzliche praktische Prüfung beantragen. Bestehst du sie, bekommst du ein zusätzliches Zeugnis über die berufs- und arbeitspädagogische Qualifikation.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja. Bei dieser Weiterbildung ist Ratenzahlung ohne Aufpreis möglich. Die Einzelheiten stimmen wir nach deiner Anmeldung mit dir ab.
+  antwort: Ja, ohne Aufpreis. Bei rund 15 Monaten Kursdauer zahlst du zum Beispiel 15 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 34
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Technischen Fachwirt bzw. zur Geprüften Technischen Fachwirtin vor. Du verbindest wirtschaftsbezogene Grundlagen mit technischen Themen und lernst, Produktion, Logistik, Qualität und Teams zu steuern.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Technischen Fachwirt bzw. zur Geprüften Technischen Fachwirtin vor. Er folgt den drei Prüfungsteilen der Verordnung: den wirtschaftsbezogenen Grundlagen, den technischen Qualifikationen von Naturwissenschaft bis Fertigung und den handlungsspezifischen Qualifikationen in Logistik, Produktion, Qualität und Führung.
 
-Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung verbinden Rechenwege mit Beispielen aus Werk und Büro, etwa einer Kapazitätsplanung oder einer Werkstoffauswahl. Klausuren trainieren wir an den Samstagen unter Zeitvorgabe und werten sie gemeinsam aus.
 
-Der Lehrgang passt zu dir, wenn du aus der Technik kommst und Verantwortung an der Schnittstelle zum Kaufmännischen übernehmen willst. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du an der Schnittstelle von Technik und Kaufmännischem arbeitest und dort mehr Verantwortung übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

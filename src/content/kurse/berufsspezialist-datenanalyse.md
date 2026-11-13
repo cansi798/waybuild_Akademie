@@ -3,71 +3,70 @@ saeule: ihk-weiterbildung
 kategorie: IT-Fortbildung
 titel: Berufsspezialist/in für Datenanalyse
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Fortbildungsprüfung
-kurzbeschreibung: 'Mach aus Daten Entscheidungen: Du lernst Anforderungen klären, Geschäftsdaten aufbereiten, analysieren, bewerten und Prozesse verbessern – für die IHK-Fortbildungsprüfung, live-online.'
+kurzbeschreibung: 'Mach aus Daten Entscheidungen: Du klärst Fragestellungen, bereitest Geschäfts- und Produktionsdaten auf, analysierst sie und leitest Verbesserungen ab – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
 ue: 240
-dauer: ca. 12 Monate
-zeiten: Di, 18:00–21:15 Uhr, dazu einzelne Samstage
+dauer: ca. 11 Monate
+zeiten: Di, 18:00–21:15 Uhr, dazu ein Samstag im Monat 09:00–14:15 Uhr
 preis:
   betrag: 3790
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Fachinformatikerinnen und Fachinformatiker für Daten- und Prozessanalyse nach der Ausbildung
 - Fachkräfte aus Controlling, Vertrieb oder Produktion, die viel mit Daten arbeiten
 - IT-Fachkräfte, die sich auf Datenanalyse spezialisieren wollen
 voraussetzungen:
-- Zum Beispiel eine abgeschlossene IT-Ausbildung, eine andere Ausbildung mit Berufspraxis in der IT, ein Teilstudium mit Praxis oder mehrere Jahre Berufspraxis in der IT
+- 'Einer dieser Wege: eine abgeschlossene Ausbildung in einem IT-Beruf – eine andere abgeschlossene Ausbildung und danach mindestens ein Jahr Berufspraxis – mindestens 60 ECTS-Leistungspunkte aus einem Studium und mindestens zwei Jahre Berufspraxis – oder mindestens vier Jahre Berufspraxis'
+- 'Die Berufspraxis muss inhaltlich zum Abschluss passen: Analyse von Daten aus betriebs- oder produktionswirtschaftlichen Prozessen'
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
-- titel: Anforderungen an die Datenanalyse ermitteln
+- titel: 'Anforderungen an die Datenanalyse ermitteln'
   punkte:
-  - Fragestellungen mit dem Fachbereich klären
-  - Datenquellen und Datenqualität bewerten
-- titel: Analysen vorbereiten
+  - Fragestellung mit den Beteiligten klären
+  - Berechtigung zur Datennutzung rechtlich und ethisch prüfen
+  - Zugriff auf Datenbestände und Datenmodelle klären
+- titel: 'Datenanalyse betriebs- und produktionswirtschaftlicher Geschäftsprozesse vorbereiten'
   punkte:
-  - Geschäfts- und Produktionsprozesse verstehen
-  - Daten bereinigen und zusammenführen
-  - Datenbanken und Abfragen
-- titel: Daten analysieren und Ergebnisse bewerten
+  - Geschäftsprozesse analysieren
+  - Daten bereinigen, Formate anpassen
+  - Datenbankarchitektur, Schnittstellen und Datenfluss
+- titel: 'Daten analysieren und Ergebnisse bewerten'
   punkte:
-  - Statistische Grundlagen
-  - Visualisierung und Berichte
-  - Ergebnisse verständlich erklären
-- titel: Evaluation und Optimierung
+  - Statistische Methoden und Algorithmen
+  - Verfahren des maschinellen Lernens einsetzen
+  - Ergebnisse visualisieren und bewerten
+- titel: 'Evaluation als Basis kontinuierlicher Optimierung durchführen'
   punkte:
-  - Wirkung von Maßnahmen messen
-  - Prozesse kontinuierlich verbessern
-- titel: Organisatorische und rechtliche Vorgaben
+  - Analyseprozess auswerten, Verbesserungen ableiten
+- titel: 'Organisatorische und rechtliche Vorgaben'
   punkte:
-  - Verträge, Lizenzen und Haftung in IT-Projekten
-  - Datenschutz und Informationssicherheit
-  - Normen und Qualitätsvorgaben
-- titel: Projektunterstützung und -koordination
+  - Datenschutz, Datensicherheit, betriebliche Regeln
+- titel: 'Projektunterstützung und -koordination'
   punkte:
-  - Projekte planen und dokumentieren
-  - Aufgaben im Team abstimmen
-  - Ergebnisse präsentieren
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Projektleitung bei Planung, Durchführung und Abschluss unterstützen
+- titel: Prüfungstraining
+  punkte:
+  - 'Schriftliche Prüfung: zwei Aufgaben zu einer betrieblichen Situation, je mindestens 90 Minuten (zusammen höchstens 240 Minuten)'
+  - 'Mündliche Prüfung: Thema für deine Präsentation finden und beschreiben, Präsentation (höchstens 15 Minuten) und Fachgespräch (höchstens 30 Minuten) proben'
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Berufsspezialist/in für Datenanalyse“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Muss ich programmieren können?
-  antwort: Grundkenntnisse in Datenbankabfragen helfen dir sehr. Wenn du dich vorher in Python oder Tabellenauswertung einarbeiten willst, passen unsere Kurse „Python-Programmierung“ und „Datenanalyse mit Excel und Power BI“.
-- frage: Mit welchen Werkzeugen arbeiten wir?
-  antwort: Wir zeigen Beispiele mit verbreiteten Werkzeugen. Die Prüfung fragt vor allem Vorgehen, Methoden und Bewertung ab – nicht ein bestimmtes Programm.
+  antwort: Grundkenntnisse in SQL helfen. Für Auswertungen und erste Modelle des maschinellen Lernens nutzen wir Python im Unterricht und bauen die Schritte gemeinsam auf.
 - frage: Ich komme nicht aus der IT. Kann ich trotzdem zugelassen werden?
-  antwort: Mit mehrjähriger einschlägiger Praxis kann das klappen. Ob deine Erfahrung reicht, entscheidet deine IHK.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Die Raten legen wir nach deiner Anmeldung gemeinsam fest.
+  antwort: Möglich ist das zum Beispiel über eine andere Ausbildung mit mindestens einem Jahr passender Praxis oder über mindestens vier Jahre Berufspraxis mit Bezug zur Datenanalyse. Ob deine Praxis reicht, entscheidet deine IHK.
+- frage: Wie läuft die Prüfung ab?
+  antwort: 'Geprüft wird ein einziger Prüfungsbereich: „Datenanalysen zur Optimierung von betriebs- und produktionswirtschaftlichen Prozessen planen, durchführen und evaluieren“. Zuerst schreibst du zwei Aufgaben zu einer betrieblichen Situation. Danach hältst du eine Präsentation zu einem selbst gewählten, von der IHK genehmigten Thema und beantwortest im Fachgespräch Fragen dazu. Das ganze Prüfungsverfahren muss innerhalb von zwei Jahren abgeschlossen sein.'
+- frage: Reichen 240 Unterrichtseinheiten?
+  antwort: Die Fortbildungsordnung geht von einem Lernumfang von in der Regel mindestens 400 Stunden aus. Darin steckt neben dem Unterricht auch deine eigene Vorbereitung, zum Beispiel eigene Auswertungen mit Daten aus deinem Betrieb. Unsere 240 Live-Einheiten decken alle Qualifikationsschwerpunkte ab; wie viel Zeit du zusätzlich einplanst, entscheidest du selbst.
 reihenfolge: 28
 ---
 
-Der Lehrgang bereitet dich auf die Fortbildungsprüfung zum Berufsspezialisten bzw. zur Berufsspezialistin für Datenanalyse vor. Du lernst, Fragestellungen mit Fachbereichen zu klären, Daten aus Geschäftsprozessen aufzubereiten, auszuwerten und die Ergebnisse so zu bewerten, dass daraus Verbesserungen entstehen.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten bzw. zur Geprüften Berufsspezialistin für Datenanalyse vor. Er folgt den sechs Qualifikationsschwerpunkten der Fortbildungsordnung: Anforderungen klären, Daten und Prozesse vorbereiten, analysieren und bewerten, den Analyseprozess verbessern, dazu Recht und Projektarbeit.
 
-Der Lehrgang läuft live-online an einem Abend pro Woche und an einzelnen Samstagen. Dozenten mit IHK-Prüfer-Erfahrung erklären Methoden an realistischen Datensätzen, und Aufgaben im Stil der Prüfung besprechen wir gemeinsam live.
+Du lernst jeden Dienstagabend und an einem Samstag im Monat live per Video in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Datensätzen aus Vertrieb, Einkauf und Produktion. Abfragen, Auswertungen und Diagramme entstehen gemeinsam im Unterricht; an den Samstagen übst du Situationsaufgaben unter Zeitvorgabe.
 
-Der Lehrgang passt zu dir, wenn du regelmäßig mit Daten arbeitest und diese Rolle mit einem anerkannten Abschluss festigen willst.
-
-Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du regelmäßig mit Daten arbeitest und daraus belastbare Entscheidungen ableiten willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

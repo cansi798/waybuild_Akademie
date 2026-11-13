@@ -3,7 +3,7 @@ saeule: akademie
 kategorie: Programmierung
 titel: Softwareentwicklung mit Python und Web
 untertitel: Von den Grundlagen bis zur eigenen Webanwendung
-kurzbeschreibung: 'Werde fit für die Softwareentwicklung: Du lernst Python, objektorientiertes Programmieren, SQL, Webgrundlagen, Tests und agiles Arbeiten und baust eine eigene Anwendung – live-online.'
+kurzbeschreibung: 'Werde fit für die Softwareentwicklung: Du lernst Python, Objektorientierung, SQL, Web-APIs, Tests, Git und Container und baust im Team eine eigene Webanwendung – live-online.'
 status: entwurf
 art: kurs
 ue: 180
@@ -11,46 +11,48 @@ dauer: ca. 7 Monate
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
   betrag: 2590
-  hinweis: Ratenzahlung ohne Aufpreis möglich
+  hinweis: Inklusive Kursunterlagen, Beispielprojekte und Zertifikat
   raten: true
 zielgruppe:
-- Quereinsteiger, die in die Softwareentwicklung wechseln wollen
+- Quereinsteigerinnen und Quereinsteiger, die in die Softwareentwicklung wechseln wollen
 - Fachkräfte mit ersten Programmiererfahrungen
-- Auszubildende und Umschüler in IT-Berufen
+- Auszubildende in IT-Berufen, die Praxis vertiefen wollen
 voraussetzungen:
-- Erste Programmiererfahrung ist hilfreich, aber nicht nötig
+- Erste Programmiererfahrung ist hilfreich, etwa aus unserem Kurs Python-Programmierung, aber nicht nötig
 - Sicherer Umgang mit dem Computer
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+- Rechner oder Laptop mit mindestens 8 GB Arbeitsspeicher, Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
 - titel: Python-Grundlagen
   punkte:
   - Datentypen, Kontrollstrukturen, Funktionen
-  - Module und Pakete
-  - Fehlerbehandlung
+  - Module, Pakete und Projektverwaltung
+  - Fehlerbehandlung und Typangaben (Type Hints)
 - titel: Objektorientierung
   punkte:
   - Klassen und Objekte
-  - Vererbung und Schnittstellen
+  - Vererbung, Komposition und Schnittstellen
   - Entwurfsmuster in Grundzügen
 - titel: Datenbanken und SQL
   punkte:
   - Datenmodell entwerfen
-  - SQL-Abfragen
+  - SQL-Abfragen mit PostgreSQL oder SQLite
   - Datenbanken aus Python ansprechen
-- titel: Webgrundlagen
+- titel: Web und Schnittstellen
   punkte:
   - HTML, CSS und JavaScript in Grundzügen
-  - Webanwendung mit einem Python-Framework
-  - Schnittstellen (REST)
-- titel: Qualität und Zusammenarbeit
+  - REST-Schnittstelle mit einem Python-Framework wie FastAPI bauen
+  - Anmeldung, Eingabeprüfung und typische Sicherheitslücken
+- titel: Qualität, Zusammenarbeit und Betrieb
   punkte:
-  - Tests und sauberer Code
-  - Versionsverwaltung mit Git
+  - Automatisierte Tests mit pytest, sauberer Code
+  - Versionsverwaltung mit Git, Pull Requests und Code-Reviews
+  - Container mit Docker, automatisierte Prüfungen (CI)
   - Agiles Arbeiten mit Scrum
+  - KI-Assistenten beim Entwickeln verantwortungsvoll nutzen
 - titel: Abschlussprojekt
   punkte:
-  - Eigene Anwendung planen und umsetzen
-  - Ergebnis präsentieren
+  - Eigene Webanwendung im Team planen und umsetzen
+  - Ergebnis in einem Sprint-Review präsentieren
 abschluss: Zertifikat der waybuild Akademie
 termine:
 - id: softwareentwicklung-2027-herbst
@@ -63,16 +65,26 @@ termine:
   - 2027-12-30
 faq:
 - frage: Bekomme ich danach einen Berufsabschluss?
-  antwort: Nein. Der Kurs vermittelt Praxiswissen und endet mit einem Zertifikat der waybuild Akademie. Wenn du einen anerkannten Abschluss anstrebst, beraten wir dich gern zu den passenden Wegen.
-- frage: Ist das ein IHK-Abschluss?
-  antwort: Nein. Du bekommst ein Zertifikat der waybuild Akademie, das Inhalte und Umfang des Kurses beschreibt. Es ist kein öffentlich-rechtlicher Abschluss.
+  antwort: Nein. Der Kurs vermittelt Praxiswissen und endet mit einem Zertifikat der waybuild Akademie, das Inhalte und Umfang beschreibt. Wenn du einen IHK-Abschluss anstrebst, schau dir unseren Lehrgang zum Berufsspezialisten für Softwareentwicklung an.
+- frage: Was baue ich im Abschlussprojekt?
+  antwort: In kleinen Teams entwickelt ihr eine Webanwendung mit Datenbank und Schnittstelle, zum Beispiel eine Termin- oder Inventarverwaltung. Ihr arbeitet wie im echten Projekt mit Git, Tests und kurzen Sprints und stellt das Ergebnis zum Schluss vor.
+- frage: Welche Rolle spielt KI beim Programmieren?
+  antwort: Wir zeigen, wie KI-Assistenten beim Schreiben, Erklären und Testen von Code helfen. Genauso wichtig ist, ihre Vorschläge zu prüfen – deshalb lernst du zuerst die Grundlagen selbst.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja. Bei dieser Weiterbildung ist Ratenzahlung ohne Aufpreis möglich. Die Einzelheiten stimmen wir nach deiner Anmeldung mit dir ab.
+  antwort: Ja, ohne Aufpreis. Bei rund 7 Monaten Kursdauer zahlst du zum Beispiel 7 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 23
 ---
 
-In diesem Kurs lernst du die Werkzeuge der Softwareentwicklung im Zusammenhang: Python und Objektorientierung, Datenbanken und SQL, Webgrundlagen, Tests und Versionsverwaltung. Im Live-Unterricht planst und baust du Schritt für Schritt eine eigene kleine Webanwendung.
+In diesem Kurs lernst du die Werkzeuge der Softwareentwicklung im Zusammenhang: Python und Objektorientierung, Datenbanken und SQL, Web-Schnittstellen, Tests, Versionsverwaltung und Container. Zum Schluss baut ihr im Team eine eigene Webanwendung.
 
-Der Kurs läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit langjähriger Praxis erklären jedes Thema an Beispielen, danach probierst du es direkt im Live-Unterricht aus und wir besprechen die Ergebnisse gemeinsam. Fragen klärst du direkt live. Im Live-Unterricht entsteht Schritt für Schritt eine eigene kleine Anwendung. Die Unterlagen bekommst du zum Download.
+**Das kannst du nach dem Kurs:**
+
+- strukturierte Python-Programme mit Klassen, Modulen und Tests schreiben
+- ein Datenmodell entwerfen und mit SQL abfragen
+- eine REST-Schnittstelle bauen und gegen typische Sicherheitslücken absichern
+- mit Git im Team arbeiten, Code prüfen und eine Anwendung im Container starten
+- KI-Assistenten beim Entwickeln nutzen, ohne die Kontrolle abzugeben
+
+Der Kurs läuft an zwei Abenden pro Woche live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis entwickeln jedes Thema am geteilten Bildschirm, danach programmierst du selbst und wir besprechen Lösungen und Fehler gemeinsam. Im letzten Abschnitt arbeitet ihr in Teams an eurem Abschlussprojekt.
 
 Der Kurs passt zu dir, wenn du ernsthaft in die Softwareentwicklung einsteigen oder dein Wissen aus der Ausbildung praktisch vertiefen willst.

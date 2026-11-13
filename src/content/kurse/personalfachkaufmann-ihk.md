@@ -3,83 +3,77 @@ saeule: ihk-weiterbildung
 kategorie: Fachkaufleute
 titel: Personalfachkaufmann/-frau
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Personalfachkaufmann/-frau“
-kurzbeschreibung: 'Werde Profi für Personalarbeit: Du lernst Arbeitsrecht, Entgelt, Personalplanung, Personalmarketing und Personalentwicklung für die IHK-Prüfung – berufsbegleitend live-online.'
+kurzbeschreibung: 'Werde Profi für Personalarbeit: Du organisierst Personalprozesse, handelst arbeits- und sozialrechtlich sicher, planst und gewinnst Personal und steuerst Entwicklung – live-online.'
 status: entwurf
 art: kurs
-ue: 550
-dauer: ca. 17 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr
+ue: 564
+dauer: ca. 12 Monate
+zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
 preis:
   betrag: 3490
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Mitarbeitende aus Personalabteilungen
-- Sachbearbeitung Personal und Lohn
+- Sachbearbeitung Personal und Entgelt
 - Fachkräfte, die in den Personalbereich wechseln wollen
 voraussetzungen:
-- Zum Beispiel eine abgeschlossene Ausbildung mit Berufspraxis im Personalbereich oder mehrere Jahre einschlägige Berufspraxis
-- Bis zur letzten Prüfungsleistung brauchst du den Nachweis der Ausbildereignung (AEVO)
+- 'Einer dieser Wege: eine dreijährige Ausbildung der Personaldienstleistung und danach mindestens ein Jahr Praxis – eine kaufmännische oder verwaltende Ausbildung und danach mindestens zwei Jahre Praxis – eine andere Ausbildung und danach mindestens drei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
+- Die Berufspraxis muss Bezug zu Aufgaben im Personalwesen haben
+- Bis zur letzten Prüfungsleistung brauchst du den Nachweis der Ausbildereignung (AEVO) oder einen gleichwertigen Nachweis
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
 - titel: Personalarbeit organisieren und durchführen
   punkte:
   - Aufgaben und Organisation der Personalabteilung
-  - Personalverwaltung und Prozesse
-  - Digitale Personalarbeit
-- titel: Personalarbeit auf rechtlicher Grundlage
+  - Personalverwaltung und Prozesse, digitale Personalarbeit
+- titel: Personalarbeit auf Grundlage rechtlicher Bestimmungen durchführen
   punkte:
   - Individual- und Kollektivarbeitsrecht
   - Sozialversicherung
   - Entgeltabrechnung und Lohnsteuer
-- titel: Personalplanung, -marketing und -controlling
+- titel: Personalplanung, -marketing und -controlling gestalten und umsetzen
   punkte:
   - Personalbedarf planen
-  - Arbeitgebermarke und Recruiting
+  - Arbeitgebermarke und Personalgewinnung
   - Kennzahlen im Personalbereich
-- titel: Personal- und Organisationsentwicklung
+- titel: Personal- und Organisationsentwicklung steuern
   punkte:
   - Weiterbildung planen und steuern
-  - Veränderungsprozesse begleiten
-  - Führung und Zusammenarbeit
+  - Veränderungsprozesse begleiten, Führung und Zusammenarbeit
 - titel: Prüfungstraining
   punkte:
-  - Aufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Lösungswege besprechen und Lücken schließen
-  - Vorbereitung auf den mündlichen Teil
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Komplexe Situationsaufgaben je Handlungsbereich unter Zeitvorgabe (in der Prüfung 100 bis 120 Minuten für den ersten Bereich, zusammen mindestens 420 Minuten für die übrigen drei)
+  - Beratungsauftrag als Entscheidungsvorlage für die Geschäftsleitung aufbauen, Vorstellung (rund 10 Minuten) und Prüfungsgespräch proben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Personalfachkaufmann/-frau“ erwirbst du mit der Prüfung bei deiner IHK
 termine:
 - id: personalfachkaufmann-2027-herbst
   start: 2027-09-07
-  ende: 2029-01-30
+  ende: 2028-09-09
   anmeldeschluss: 2027-08-31
   ausfall:
   - 2027-12-23
   - 2027-12-28
   - 2027-12-30
+  - 2028-01-01
   - 2028-05-25
-  - 2028-10-03
-  - 2028-10-31
-  - 2028-12-26
-  - 2028-12-28
-  - 2029-01-02
 faq:
+- frage: Wie ist die Prüfung aufgebaut?
+  antwort: Schriftlich bearbeitest du je Handlungsbereich komplexe Situationsaufgaben. Danach folgt ein situationsbezogenes Fachgespräch von höchstens 30 Minuten zu einem betrieblichen Beratungsauftrag – du legst der Geschäftsleitung einen personalpolitischen Entscheidungsvorschlag vor.
+- frage: Wie läuft der Beratungsauftrag ab?
+  antwort: Du reichst zwei Themenvorschläge mit Grobgliederung ein, der Prüfungsausschuss stellt dir 14 Kalendertage vor der Prüfung das Thema. In etwa zehn Minuten stellst du deine Lösung vor, danach folgt das Prüfungsgespräch. Wie du Themen findest und die Vorlage aufbaust, üben wir live im Kurs.
 - frage: Ich habe noch keinen Ausbilderschein. Ist das ein Problem?
-  antwort: Nein, du brauchst den Nachweis erst bis zur letzten Prüfungsleistung. Du kannst unseren AEVO-Kurs vorher oder parallel besuchen.
-- frage: Was ist, wenn ich einen Abend verpasse?
-  antwort: Gib uns kurz Bescheid. Die Unterlagen des Abends bekommst du trotzdem, und den Stoff kannst du nach Absprache in einem späteren Live-Termin nachholen.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
+  antwort: Nein, den Nachweis brauchst du erst bis zur letzten Prüfungsleistung. Du kannst unseren AEVO-Kurs vorher oder parallel besuchen.
+- frage: Was ist, wenn ich einen Termin verpasse?
+  antwort: Gib uns kurz Bescheid. Die Kursunterlagen bekommst du trotzdem, und den Stoff kannst du nach Absprache in einem späteren Live-Termin nachholen.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja. Bei dieser Weiterbildung ist Ratenzahlung ohne Aufpreis möglich. Die Einzelheiten stimmen wir nach deiner Anmeldung mit dir ab.
+  antwort: Ja, ohne Aufpreis. Bei rund 12 Monaten Kursdauer zahlst du zum Beispiel 12 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 21
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Personalfachkaufmann bzw. zur Geprüften Personalfachkauffrau vor. Du lernst, Personalarbeit zu organisieren, rechtssicher zu handeln, Personal zu planen und zu gewinnen und die Entwicklung von Mitarbeitenden und Organisation zu steuern.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Personalfachkaufmann bzw. zur Geprüften Personalfachkauffrau vor. Er folgt den vier Handlungsbereichen der Prüfungsverordnung: Personalarbeit organisieren, rechtssicher handeln, Personal planen, gewinnen und steuern sowie Personal- und Organisationsentwicklung.
 
-Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus dem Personalalltag – vom Arbeitsvertrag über die Entgeltabrechnung bis zur Personalbedarfsplanung. Die Situationsaufgaben trainieren wir an den Samstagen unter Zeitvorgabe.
 
-Der Lehrgang passt zu dir, wenn du im Personalbereich arbeitest oder dorthin wechseln willst. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du im Personalbereich arbeitest oder dorthin wechseln willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

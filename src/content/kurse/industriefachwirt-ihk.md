@@ -3,84 +3,80 @@ saeule: ihk-weiterbildung
 kategorie: Fachwirte
 titel: Industriefachwirt/in
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Industriefachwirt/in“
-kurzbeschreibung: 'Werde Bindeglied zwischen Technik und Kaufmännischem: Du lernst BWL, Finanzen, Produktion, Marketing und Führung im Industrieunternehmen für die Fachwirt-Prüfung – live-online.'
+kurzbeschreibung: 'Werde Bindeglied zwischen Technik und Kaufmännischem: Du lernst BWL, Rechnungswesen und Recht, danach Finanzen, Produktion, Vertrieb, Wissensmanagement und Führung – live-online.'
 status: entwurf
 art: kurs
 ue: 600
-dauer: ca. 18 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr
+dauer: ca. 13 Monate
+zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
 preis:
   betrag: 3190
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Kaufmännische Fachkräfte in Industrieunternehmen
 - Mitarbeitende aus Einkauf, Vertrieb, Produktion und Controlling
 - Fachkräfte, die eine Führungsrolle in der Industrie anstreben
 voraussetzungen:
-- Zum Beispiel eine abgeschlossene kaufmännische oder verwaltende Ausbildung, eine andere Ausbildung mit Berufspraxis oder mehrere Jahre Berufspraxis
-- 'Für den zweiten Teil: bestandener erster Teil und zusätzliche Berufspraxis'
+- 'Für Teil 1 einer dieser Wege: eine dreijährige kaufmännische oder verwaltende Ausbildung – eine andere mindestens dreijährige Ausbildung und danach ein Jahr Praxis – eine andere Ausbildung und danach zwei Jahre Praxis – oder mindestens drei Jahre Berufspraxis'
+- 'Für Teil 2: der abgelegte Teil 1 (höchstens fünf Jahre zurück) und ein weiteres Jahr Berufspraxis'
+- Die Praxis soll im kaufmännischen oder verwaltenden Bereich liegen
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
-- titel: Volks- und Betriebswirtschaft
+- titel: 'Teil 1: Volks- und Betriebswirtschaft'
   punkte:
   - Markt, Preisbildung und Wirtschaftspolitik
-  - Unternehmensziele und betriebliche Funktionen
-  - Rechtsformen und Unternehmenszusammenschlüsse
-- titel: Rechnungswesen
+  - Unternehmensziele, Funktionen und Rechtsformen
+- titel: 'Teil 1: Rechnungswesen'
   punkte:
   - Buchführung und Jahresabschluss
-  - Kosten- und Leistungsrechnung
-  - Auswertung von Zahlen und Kennzahlen
-- titel: Recht und Steuern
+  - Kosten- und Leistungsrechnung, Kennzahlen
+- titel: 'Teil 1: Recht und Steuern'
   punkte:
-  - Vertragsrecht und Handelsrecht
-  - Arbeitsrecht in Grundzügen
+  - Vertrags-, Handels- und Arbeitsrecht
   - Unternehmensbezogene Steuern
-- titel: Unternehmensführung
+- titel: 'Teil 1: Unternehmensführung'
   punkte:
-  - Organisation und Planung
-  - Personalführung
-  - Personalentwicklung
-- titel: Finanzwirtschaft im Industrieunternehmen
+  - Organisation und Planung, Personalführung und -entwicklung
+- titel: 'Teil 2: Finanzwirtschaft im Industrieunternehmen'
   punkte:
-  - Investition und Finanzierung
-  - Kostenrechnung und Controlling
-- titel: Produktion und Logistik
+  - Investition, Finanzierung, Kostenrechnung und Controlling
+- titel: 'Teil 2: Produktionsprozesse'
   punkte:
-  - Produktionsplanung und -steuerung
-  - Materialwirtschaft
+  - Produktionsplanung und -steuerung, Materialwirtschaft
   - Qualität in der Produktion
-- titel: Marketing und Vertrieb
+- titel: 'Teil 2: Marketing und Vertrieb'
   punkte:
-  - Marktanalyse im Industriegütermarkt
-  - Vertriebsorganisation
-- titel: Führung und Zusammenarbeit
+  - Marktanalyse im Industriegütermarkt, Vertriebsorganisation
+- titel: 'Teil 2: Wissens- und Transfermanagement im Industrieunternehmen'
   punkte:
-  - Mitarbeitende führen
-  - Wissen im Unternehmen sichern und weitergeben
+  - Organisations- und Personalentwicklung, Projektmanagement
+  - Instrumente des Informations- und Wissensmanagements
+- titel: 'Teil 2: Führung und Zusammenarbeit'
+  punkte:
+  - Kommunikation, Konfliktlösung, Mitarbeitende führen und entwickeln
 - titel: Prüfungstraining
   punkte:
-  - Aufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Lösungswege besprechen und Lücken schließen
-  - Vorbereitung auf den mündlichen Teil
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - 'Teil 1: je eine Klausur pro Qualifikationsbereich unter Zeitvorgabe'
+  - 'Teil 2: Situationsbeschreibung mit zwei Aufgabenstellungen (in der Prüfung 480 bis 510 Minuten)'
+  - Präsentation (höchstens 10 Minuten) und situationsbezogenes Fachgespräch proben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Industriefachwirt/in“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
-- frage: Wann startet der nächste Lehrgang?
-  antwort: Für diesen Lehrgang steht noch kein Starttermin fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
+- frage: Wie unterscheidet sich der Industriefachwirt vom Wirtschaftsfachwirt?
+  antwort: Teil 1 ist bei beiden gleich aufgebaut. In Teil 2 geht es beim Industriefachwirt um Finanzwirtschaft, Produktionsprozesse, Vertrieb sowie Wissens- und Transfermanagement im Industrieunternehmen; der Wirtschaftsfachwirt bleibt branchenübergreifend.
+- frage: Welches Thema nehme ich für die Präsentation?
+  antwort: Es muss mindestens zwei Handlungsbereiche aus Teil 2 verbinden, etwa die Kostenwirkung einer Produktionsumstellung. Kurzbeschreibung, Ziel und Gliederung reichst du bei der ersten schriftlichen Prüfungsleistung von Teil 2 ein.
+- frage: Bin ich danach von der AEVO befreit?
+  antwort: Teilweise. Wer Teil 2 bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Mit einer zusätzlichen praktischen Prüfung bei der IHK kannst du die Ausbildereignung vollständig nachweisen.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja. Bei dieser Weiterbildung ist Ratenzahlung ohne Aufpreis möglich. Die Einzelheiten stimmen wir nach deiner Anmeldung mit dir ab.
+  antwort: Ja, ohne Aufpreis. Bei rund 13 Monaten Kursdauer zahlst du zum Beispiel 13 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 30
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Industriefachwirt bzw. zur Geprüften Industriefachwirtin vor. Auf die wirtschaftsbezogenen Grundlagen folgen die Besonderheiten im Industrieunternehmen: Finanzen, Produktion, Marketing und Führung.
+Der Lehrgang bereitet dich auf beide Teilprüfungen zum Geprüften Industriefachwirt bzw. zur Geprüften Industriefachwirtin vor. Auf die vier wirtschaftsbezogenen Qualifikationsbereiche folgen die fünf Handlungsbereiche im Industrieunternehmen – Finanzen, Produktion, Vertrieb, Wissensmanagement und Führung.
 
-Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Fertigung, Einkauf und Vertrieb, zum Beispiel einer Investitionsentscheidung für eine neue Anlage. Die Klausuren beider Teile trainieren wir an den Samstagen unter Zeitvorgabe.
 
-Der Lehrgang passt zu dir, wenn du kaufmännisch in einem Industrieunternehmen arbeitest und mehr Verantwortung übernehmen willst. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du kaufmännisch in einem Industrieunternehmen arbeitest und mehr Verantwortung übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

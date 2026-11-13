@@ -3,67 +3,69 @@ saeule: ihk-weiterbildung
 kategorie: Fachwirte
 titel: Fachwirt/in für Büro- und Projektorganisation
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in für Büro- und Projektorganisation“
-kurzbeschreibung: 'Vom Büro in die Organisationsleitung: Du lernst Prozesse steuern, Projekte führen, Kundenbeziehungen gestalten und Teams anleiten – berufsbegleitend live-online an zwei Abenden pro Woche.'
+kurzbeschreibung: 'Vom Büro in die Organisationsleitung: Du bereitest Entscheidungen vor, führst Projekte und Veranstaltungen, betreust Kunden und leitest Teams und Auszubildende an – live-online.'
 status: entwurf
 art: kurs
 ue: 560
-dauer: ca. 17 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr
+dauer: ca. 12 Monate
+zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
 preis:
   betrag: 3190
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Kaufleute für Büromanagement mit Berufserfahrung
-- Assistenzen, Teamassistenzen und Office-Managerinnen und -Manager
-- Fachkräfte, die Projekte im Büro koordinieren oder koordinieren wollen
+- Assistenzen, Teamassistenzen sowie Office-Managerinnen und -Manager
+- Fachkräfte, die Projekte und Veranstaltungen im Büro koordinieren
 voraussetzungen:
-- Zum Beispiel eine kaufmännische oder verwaltende Ausbildung mit Berufspraxis, eine andere Ausbildung mit längerer Praxis oder mehrere Jahre Berufspraxis im Büro
+- 'Einer dieser Wege: eine dreijährige kaufmännische oder verwaltende Ausbildung und danach mindestens ein Jahr Berufspraxis – eine andere Ausbildung und danach mindestens zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
+- Die Berufspraxis muss Bezug zu Büro-, Organisations- oder Projektaufgaben haben
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
-- titel: Entscheidungen in der Organisation vorbereiten
+- titel: Koordinieren von Entscheidungsprozessen im Rahmen betrieblicher Organisationsstrukturen
   punkte:
-  - Aufbau- und Ablauforganisation analysieren
-  - Entscheidungsvorlagen erstellen und begleiten
-  - Informations- und Wissensmanagement
-- titel: Kundenbeziehungen gestalten
+  - Informationen bewerten und für Entscheidungen aufbereiten
+  - Prozesse beurteilen und verbessern, Qualitätsmanagement
+  - Projekte verantwortlich durchführen
+  - Zeit- und Selbstmanagement in der Büroorganisation
+- titel: Gestalten und Pflegen von Kundenbeziehungen in betrieblichen Leistungsprozessen
   punkte:
-  - Interne und externe Kunden betreuen
-  - Kommunikation und Marketing nach außen
-  - Beschwerden aufnehmen und Kundenbindung stärken
-- titel: Führen, betreuen, verwalten und ausbilden
+  - Kundenorientierte Projekte organisieren und dokumentieren
+  - Zielgruppen- und Marktanalysen unterstützen, Werbemittel planen
+  - Veranstaltungen planen und durchführen
+  - Kundenkommunikation und Beschwerdemanagement
+- titel: Führen, Betreuen, Verwalten und Ausbilden im büro- und personalwirtschaftlichen Umfeld
   punkte:
-  - Personal planen und verwalten
-  - Mitarbeitende führen und entwickeln
-  - Ausbildung im Büro planen und begleiten
-- titel: Geschäftsprozesse im Büro steuern
+  - Personalplanung, -beschaffung, -betreuung und -entwicklung
+  - Ausbildung planen, durchführen und kontrollieren
+  - Konflikte erkennen und lösen, Projektgruppen moderieren
+- titel: Steuern von Geschäftsprozessen im bürowirtschaftlichen Umfeld
   punkte:
-  - Projekte klassisch und agil planen und steuern
-  - Budget, Kosten und Controlling
-  - Abläufe digitalisieren und verbessern
+  - Bürowirtschaftliche Kennzahlen ermitteln und auswerten
+  - Kosten und Budgets im Blick behalten
 - titel: Prüfungstraining
   punkte:
-  - Situationsaufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Vorbereitung auf die mündliche Prüfung
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Situationsbeschreibung mit zwei offenen Aufgabenstellungen unter Zeitvorgabe (in der Prüfung zusammen 600 Minuten)
+  - Präsentationsthema mit Bezug zu Führen und Ausbilden finden, Präsentation (höchstens 10 Minuten) und Fachgespräch proben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Fachwirt/in für Büro- und Projektorganisation“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
-- frage: Ist der Abschluss etwas für mich, wenn ich „nur“ im Sekretariat arbeite?
-  antwort: Gerade dann. Der Lehrgang macht aus deiner Büropraxis Organisations- und Projektwissen auf Fachwirt-Niveau. Ob deine Praxis für die Zulassung reicht, prüft deine IHK.
-- frage: Geht es auch um Ausbildung im Büro?
-  antwort: Ja. Ein Handlungsbereich dreht sich um Führen, Betreuen und Ausbilden. Wir behandeln dabei auch, wie du Auszubildende im Büro anleitest.
-- frage: Wann startet der nächste Lehrgang?
-  antwort: Der Starttermin steht noch nicht fest. Merk dich unverbindlich vor – wir informieren dich, sobald ein Termin geplant ist.
+- frage: Wie ist die Prüfung aufgebaut?
+  antwort: Schriftlich bearbeitest du eine betriebliche Situationsbeschreibung mit zwei gleich gewichteten, offenen Aufgabenstellungen, die alle vier Handlungsbereiche berühren – zusammen rund 600 Minuten. Nach bestandener schriftlicher Prüfung folgen Präsentation und Fachgespräch.
+- frage: Bekomme ich damit auch den Ausbilderschein?
+  antwort: Ja. Nach der Fortbildungsordnung weist du mit der bestandenen Prüfung auch die berufs- und arbeitspädagogische Eignung nach und erhältst das Zeugnis nach der Ausbilder-Eignungsverordnung. Eine eigene AEVO-Prüfung brauchst du dann nicht.
+- frage: Welches Thema nehme ich für die Präsentation?
+  antwort: Das Thema muss sich auf „Führen, Betreuen, Verwalten und Ausbilden“ und einen weiteren Handlungsbereich beziehen, zum Beispiel die Einarbeitung neuer Teammitglieder in ein Projekt. Kurzbeschreibung, Ziel und Gliederung reichst du zur schriftlichen Prüfung ein. Im Kurs besprechen wir deine Idee live.
+- frage: Ist der Abschluss etwas für mich, wenn ich im Sekretariat arbeite?
+  antwort: Gut möglich. Der Lehrgang baut auf Büropraxis auf und erweitert sie um Projekt-, Veranstaltungs- und Personalaufgaben. Ob deine Praxis für die Zulassung reicht, prüft deine IHK.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Wie viele Raten passen, besprechen wir nach deiner Anmeldung mit dir.
+  antwort: Ja, ohne Aufpreis. Bei rund 12 Monaten Kursdauer zahlst du zum Beispiel 12 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 40
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Büro- und Projektorganisation vor. Du lernst, Entscheidungen in der Organisation vorzubereiten, Kundenbeziehungen zu gestalten, Mitarbeitende zu führen und Geschäftsprozesse im Büro zu steuern.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Büro- und Projektorganisation vor. Er folgt den vier Handlungsbereichen der Fortbildungsordnung: Entscheidungen in der Organisation vorbereiten, Kundenbeziehungen und Veranstaltungen gestalten, Personal betreuen und ausbilden sowie Geschäftsprozesse im Büro steuern.
 
-Der Unterricht läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen, und du klärst deine Fragen direkt im Unterricht. Aufgaben im Stil der Prüfung lösen und besprechen wir gemeinsam live.
+Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Situationen aus Assistenz, Projektbüro und Veranstaltungsorganisation. Die lange schriftliche Prüfung trainieren wir an den Samstagen in Etappen, die Präsentation probst du in kleinen Runden.
 
-Der Abschluss passt zu dir, wenn du schon im Büro arbeitest und mehr Verantwortung für Abläufe, Projekte und Menschen übernehmen willst – ohne deinen Job zu unterbrechen.
-
-Über deine Zulassung entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du schon im Büro arbeitest und mehr Verantwortung für Abläufe, Projekte und Menschen übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

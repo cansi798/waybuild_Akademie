@@ -3,82 +3,83 @@ saeule: ihk-weiterbildung
 kategorie: Fachwirte
 titel: Fachwirt/in im Gesundheits- und Sozialwesen
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in im Gesundheits- und Sozialwesen“
-kurzbeschreibung: 'Übernimm Leitungsaufgaben in Pflege, Gesundheit oder Sozialem: Du lernst Steuerung, Finanzen, Qualität, Personal und Marketing für die Fachwirt-Prüfung – berufsbegleitend live-online.'
+kurzbeschreibung: 'Übernimm Leitungsaufgaben in Pflege, Gesundheit oder Sozialem: Du steuerst Abläufe, Qualität, Projekte, Finanzen, Personal und Marketing einer Einrichtung – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
-ue: 600
-dauer: ca. 18 Monate
-zeiten: Mo + Mi, 18:00–21:15 Uhr
+ue: 604
+dauer: ca. 13 Monate
+zeiten: Mo + Mi, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
 preis:
   betrag: 3490
-  hinweis: Ratenzahlung ohne Aufpreis möglich; Gebühren deiner IHK sind nicht enthalten
+  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
-- Fachkräfte aus Pflege, Praxis, Klinik und Sozialeinrichtungen
+- Fachkräfte aus Pflege, Arztpraxis, Klinik und Sozialeinrichtungen
 - Verwaltungskräfte im Gesundheits- und Sozialwesen
 - Mitarbeitende, die eine Leitungsaufgabe anstreben
 voraussetzungen:
-- Zum Beispiel eine Ausbildung in einem Gesundheits-, Sozial- oder kaufmännischen Beruf mit Berufspraxis, ein Studium mit Praxis oder mehrere Jahre Berufspraxis
-- Ehrenamtliche Tätigkeit kann je nach IHK teilweise angerechnet werden
+- 'Einer dieser Wege: eine Ausbildung in einem kaufmännischen, verwaltenden, medizinischen oder handwerklichen Beruf des Gesundheits- und Sozialwesens oder in einem bundes- bzw. dreijährigen landesrechtlich geregelten Gesundheits- oder Sozialberuf, jeweils mit mindestens einem Jahr Berufspraxis – ein einschlägiges Studium mit mindestens zwei Jahren Praxis – eine andere kaufmännische, verwaltende oder hauswirtschaftliche Ausbildung mit mindestens zwei Jahren Praxis – oder mindestens fünf Jahre Berufspraxis'
+- Die Praxis muss Bezug zu Aufgaben im Gesundheits- und Sozialwesen haben; ehrenamtliche Tätigkeiten werden laut Verordnung berücksichtigt
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
-- titel: Prozesse im Gesundheits- und Sozialwesen planen
+- titel: Planen, Steuern und Organisieren betrieblicher Prozesse
   punkte:
-  - Gesundheits- und Sozialpolitik
-  - Rechtliche Grundlagen der Einrichtungen
-  - Abläufe organisieren
-- titel: Wirtschaftlich steuern
+  - Gesundheits- und Sozialpolitik, Rechtsgrundlagen der Einrichtungen
+  - Abläufe in Praxis, Pflege und sozialen Diensten organisieren
+- titel: Steuern von Qualitätsmanagementprozessen
   punkte:
-  - Jahresabschluss in Grundzügen
-  - Kosten- und Leistungsrechnung
-  - Controlling und Budget
-- titel: Schnittstellen und Projekte
-  punkte:
-  - Vernetzte Versorgung
-  - Projekte planen und umsetzen
-- titel: Qualitäts- und Risikomanagement
-  punkte:
-  - Qualitätsmanagement-Systeme
+  - Qualitätsmanagementsysteme im Gesundheits- und Sozialwesen
   - Risiken erkennen und steuern
-- titel: Personal und Marketing
+- titel: Gestalten von Schnittstellen und Projekten
   punkte:
-  - Personal führen und entwickeln
-  - Marketing für Einrichtungen
+  - Zusammenarbeit in vernetzter Versorgung
+  - Projekte planen, umsetzen und auswerten
+- titel: Steuern und Überwachen betriebswirtschaftlicher Prozesse und Ressourcen
+  punkte:
+  - Jahresabschluss in Grundzügen, Kosten- und Leistungsrechnung
+  - Controlling, Budget und Finanzierung von Einrichtungen
+- titel: Führen und Entwickeln von Personal
+  punkte:
+  - Personalplanung, Dienstplan und Personalentwicklung
+  - Mitarbeitende führen und motivieren
+- titel: Planen und Durchführen von Marketingmaßnahmen
+  punkte:
+  - Marketing für Einrichtungen und Dienste
+  - Öffentlichkeitsarbeit und Zielgruppen
 - titel: Prüfungstraining
   punkte:
-  - Aufgaben im Stil der Prüfung unter Zeitvorgabe
-  - Lösungswege besprechen und Lücken schließen
-  - Vorbereitung auf den mündlichen Teil
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - Situationsbeschreibung mit zwei Aufgabenstellungen unter Zeitvorgabe (in der Prüfung zusammen 600 bis 630 Minuten)
+  - Präsentationsthema mit Bezug zur Personalführung finden, Präsentation (10 Minuten) und Fachgespräch proben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Fachwirt/in im Gesundheits- und Sozialwesen“ erwirbst du mit der Prüfung bei deiner IHK
 termine:
 - id: fachwirt-gesundheit-2027-mai
   start: 2027-05-03
-  ende: 2028-10-25
+  ende: 2028-06-03
   anmeldeschluss: 2027-04-26
   ausfall:
   - 2027-05-17
   - 2027-12-27
   - 2027-12-29
+  - 2028-01-01
   - 2028-04-17
   - 2028-05-01
-  - 2028-06-05
 faq:
-- frage: Wie läuft die Prüfung ab?
-  antwort: Es gibt einen schriftlichen Teil mit situationsbezogenen Aufgaben und einen mündlichen Teil mit Präsentation und Fachgespräch. Beides üben wir im Lehrgang. Die Termine legt deine IHK fest.
-- frage: Was ist, wenn ich einen Abend verpasse?
-  antwort: Gib uns kurz Bescheid. Die Unterlagen des Abends bekommst du trotzdem, und den Stoff kannst du nach Absprache in einem späteren Live-Termin nachholen.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
+- frage: Wie ist die Prüfung aufgebaut?
+  antwort: Schriftlich bearbeitest du eine betriebliche Situationsbeschreibung mit zwei abgestimmten Aufgabenstellungen, die alle sechs Handlungsbereiche berühren – zusammen 600 bis 630 Minuten. Wer mindestens ausreichend abschneidet, kommt zur mündlichen Prüfung mit Präsentation und Fachgespräch.
+- frage: Welches Thema nehme ich für die Präsentation?
+  antwort: Es muss sich auf „Führen und Entwickeln von Personal“ und einen weiteren Handlungsbereich beziehen, zum Beispiel die Einarbeitung neuer Pflegekräfte mit einem Qualitätskonzept. Das Thema reichst du mit einer Kurzbeschreibung zur ersten schriftlichen Prüfungsleistung ein. Im Kurs besprechen wir deine Idee live.
+- frage: Zählt mein Ehrenamt bei der Zulassung?
+  antwort: Die Fortbildungsordnung sagt ausdrücklich, dass ehrenamtliche Tätigkeiten bei der Berufspraxis zu berücksichtigen sind. Wie viel davon angerechnet wird, entscheidet deine IHK.
+- frage: Was ist mit der AEVO?
+  antwort: Nach bestandener Prüfung bist du vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Du kannst bei der IHK zusätzlich eine praktische Prüfung beantragen; mit ihr hast du die Ausbildereignung vollständig nachgewiesen.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja. Bei dieser Weiterbildung ist Ratenzahlung ohne Aufpreis möglich. Die Einzelheiten stimmen wir nach deiner Anmeldung mit dir ab.
+  antwort: Ja, ohne Aufpreis. Bei rund 13 Monaten Kursdauer zahlst du zum Beispiel 13 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 22
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin im Gesundheits- und Sozialwesen vor. Du lernst, Einrichtungen wirtschaftlich zu steuern, Qualität zu sichern, Projekte umzusetzen und Mitarbeitende zu führen.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin im Gesundheits- und Sozialwesen vor. Er folgt den sechs Handlungsbereichen der Fortbildungsordnung – von der Organisation der Abläufe über Qualität, Schnittstellen und Finanzen bis zu Personalführung und Marketing.
 
-Der Lehrgang läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen im Live-Unterricht, und du klärst Fragen direkt live. Übungsaufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht. Die Unterlagen bekommst du zum Download.
+Der Unterricht läuft live per Video am Montag- und Mittwochabend und an jedem zweiten Samstagvormittag, immer in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Pflegedienst, Arztpraxis, Klinikverwaltung und sozialer Einrichtung. Die lange schriftliche Prüfung üben wir an den Samstagen in Etappen und werten die Lösungen gemeinsam aus.
 
-Der Lehrgang passt zu dir, wenn du in Pflege, Gesundheit oder im sozialen Bereich arbeitest und mehr Verantwortung übernehmen willst. Ob du zugelassen wirst, entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.
+Der Lehrgang passt zu dir, wenn du in Pflege, Gesundheit oder im sozialen Bereich arbeitest und mehr Verantwortung für Team, Qualität und Budget übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.
