@@ -30,6 +30,7 @@ export const FEHLER = {
   emailDoppelt: 'Diese E-Mail-Adresse ist schon eingetragen.',
   nachricht: 'Deine Nachricht ist zu lang – bitte kürze sie auf 2.000 Zeichen.',
   agb: 'Bitte bestätige die Teilnahmebedingungen.',
+  alter: 'Bitte bestätige, dass du volljährig bist – oder dass deine Erziehungsberechtigten einverstanden sind bzw. dein Ausbildungsbetrieb dich anmeldet.',
   datenschutz: 'Bitte bestätige, dass du Datenschutzerklärung und Widerrufsbelehrung gelesen hast.',
   wertersatz:
     'Dein Kurs startet innerhalb der 14-tägigen Widerrufsfrist. Bitte bestätige, dass wir schon vorher mit dem Kurs beginnen dürfen.',
@@ -48,7 +49,9 @@ export const FEHLER = {
   kontaktNachricht: 'Bitte schreib uns kurz, worum es geht.',
   einwilligungKontakt: 'Bitte bestätige, dass wir deine Angaben zur Beantwortung deiner Anfrage nutzen dürfen.',
   // Widerruf (§ 356a BGB: nur Name, Vertragsangabe und E-Mail sind Pflicht, kein Grund)
-  vertrag: 'Bitte gib an, welchen Vertrag du widerrufen möchtest – z. B. Kurs und Termin, Anmeldedatum oder Vorgangsnummer.',
+  vertrag: 'Bitte wähle den Kurs aus oder gib die Vorgangsnummer aus deiner Bestätigungs-E-Mail an.',
+  vorgang: 'Die Vorgangsnummer findest du in deiner Bestätigungs-E-Mail, z. B. A-20261113-7F3K.',
+  anmeldedatum: 'Bitte gib ein gültiges Anmeldedatum ein – es darf nicht in der Zukunft liegen.',
 } as const;
 
 /** Muster wie im PHP-Endpunkt. */
@@ -56,6 +59,7 @@ export const MUSTER = {
   email: '^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$',
   telefon: '^[0-9 +/()\\-]{6,30}$',
   plz: '^[A-Za-z0-9 ]{4,10}$',
+  vorgang: '^[AaCc]-\\d{8}-[A-HJ-NP-Za-hj-np-z2-9]{4}$',
 } as const;
 
 export const KONTAKT_THEMEN = [

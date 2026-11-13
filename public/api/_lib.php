@@ -33,6 +33,7 @@ const FEHLER = [
     'emailDoppelt' => 'Diese E-Mail-Adresse ist schon eingetragen.',
     'nachricht' => 'Deine Nachricht ist zu lang – bitte kürze sie auf 2.000 Zeichen.',
     'agb' => 'Bitte bestätige die Teilnahmebedingungen.',
+    'alter' => 'Bitte bestätige, dass du volljährig bist – oder dass deine Erziehungsberechtigten einverstanden sind bzw. dein Ausbildungsbetrieb dich anmeldet.',
     'datenschutz' => 'Bitte bestätige, dass du Datenschutzerklärung und Widerrufsbelehrung gelesen hast.',
     'wertersatz' => 'Dein Kurs startet innerhalb der 14-tägigen Widerrufsfrist. Bitte bestätige, dass wir schon vorher mit dem Kurs beginnen dürfen.',
     'zuSchnell' => 'Das ging sehr schnell – bitte versuche es in einer Minute erneut.',
@@ -46,7 +47,9 @@ const FEHLER = [
     'thema' => 'Bitte wähle ein Thema aus.',
     'kontaktNachricht' => 'Bitte schreib uns kurz, worum es geht.',
     'einwilligungKontakt' => 'Bitte bestätige, dass wir deine Angaben zur Beantwortung deiner Anfrage nutzen dürfen.',
-    'vertrag' => 'Bitte gib an, welchen Vertrag du widerrufen möchtest – z. B. Kurs und Termin, Anmeldedatum oder Vorgangsnummer.',
+    'vertrag' => 'Bitte wähle den Kurs aus oder gib die Vorgangsnummer aus deiner Bestätigungs-E-Mail an.',
+    'vorgang' => 'Die Vorgangsnummer findest du in deiner Bestätigungs-E-Mail, z. B. A-20261113-7F3K.',
+    'anmeldedatum' => 'Bitte gib ein gültiges Anmeldedatum ein – es darf nicht in der Zukunft liegen.',
 ];
 
 const MAX_PERSONEN = 5;
@@ -249,27 +252,27 @@ function spam_pruefen(): bool
     return false;
 }
 
-function rate_limit_pruefen(): void
+/**
+ * Zähler je Schlüssel-Hash und Stunde (Rate-Limit). Gespeichert werden nur ein nicht rückrechenbarer HMAC-Hash
+ * und die Zeitpunkte der letzten Stunde; ältere Einträge werden gelöscht (TTL 1 h). true = noch erlaubt (und gezählt).
+ */
+function zaehler(string $bereich, string $schluessel, int $max): bool
 {
-    $dir = datenverzeichnis('ratelimit');
+    $dir = datenverzeichnis($bereich);
     if ($dir === null) {
-        return; // lieber annehmen als echte Anmeldungen verlieren
+        return true; // lieber annehmen als echte Anmeldungen verlieren
     }
-    $k = konfig();
-    $fenster = (int) $k['rate_limit_fenster'];
-    $max = (int) $k['rate_limit_max'];
-    $ip = (string) ($_SERVER['REMOTE_ADDR'] ?? 'unbekannt');
-    // Nicht rückrechenbarer Wert der Adresse – gespeichert werden nur Hash und Zeitpunkte der letzten Stunde
-    $hash = hash_hmac('sha256', $ip, geheimnis() ?? 'waybuild-akademie-rate-limit');
+    $fenster = (int) konfig()['rate_limit_fenster'];
+    $hash = hash_hmac('sha256', $bereich . ':' . $schluessel, geheimnis() ?? 'waybuild-akademie-rate-limit');
     $jetzt = time();
-    $zuViel = false;
+    $erlaubt = true;
     $fp = @fopen($dir . '/' . $hash . '.json', 'c+');
     if ($fp !== false) {
         flock($fp, LOCK_EX);
         $liste = json_decode((string) stream_get_contents($fp), true);
         $liste = array_values(array_filter(is_array($liste) ? $liste : [], fn ($t) => is_int($t) && $t > $jetzt - $fenster));
-        $zuViel = count($liste) >= $max;
-        if (!$zuViel) {
+        $erlaubt = count($liste) < $max;
+        if ($erlaubt) {
             $liste[] = $jetzt;
         }
         ftruncate($fp, 0);
@@ -279,7 +282,6 @@ function rate_limit_pruefen(): void
         flock($fp, LOCK_UN);
         fclose($fp);
     }
-    // Aufräumen: Einträge älter als eine Stunde löschen (TTL 1 h)
     if (random_int(1, 20) === 1) {
         foreach (glob($dir . '/*.json') ?: [] as $datei) {
             if (@filemtime($datei) < $jetzt - $fenster) {
@@ -287,11 +289,48 @@ function rate_limit_pruefen(): void
             }
         }
     }
-    if ($zuViel) {
+    return $erlaubt;
+}
+
+function rate_limit_pruefen(): void
+{
+    $ip = (string) ($_SERVER['REMOTE_ADDR'] ?? 'unbekannt');
+    if (!zaehler('ratelimit', $ip, (int) konfig()['rate_limit_max'])) {
         $mail = konfig()['empfaenger']['kontakt'];
         fehler_antwort(429, 'zu_viele', "Von deinem Anschluss kamen gerade sehr viele Anfragen. Bitte versuche es in einer Stunde noch einmal oder schreib uns an {$mail}.");
     }
 }
+
+/**
+ * Höchstens 3 Eingangsbestätigungen je Empfängeradresse und Stunde (Schutz gegen Missbrauch als Mail-Schleuder).
+ * Die Mail an das Team geht trotzdem raus.
+ */
+function bestaetigung_erlaubt(string $email): bool
+{
+    return zaehler('empfaenger', mb_strtolower(kopf($email)), (int) konfig()['bestaetigungen_je_adresse']);
+}
+
+/**
+ * Eingangsbestätigung an die (unbestätigte) Absender-Adresse: nur feste Textbausteine und serverseitig geprüfte,
+ * strukturierte Werte – nie Freitext aus dem Formular (kein Spam-/Phishing-Relay). Gibt zurück, ob versendet wurde.
+ */
+function bestaetigung_senden(string $an, string $betreff, array $zeilen, string $von): bool
+{
+    if (!bestaetigung_erlaubt($an)) {
+        error_log('[waybuild-akademie] Eingangsbestätigung nicht versendet: Limit je Empfängeradresse erreicht.');
+        return false;
+    }
+    return mail_senden($an, $betreff, implode("\n", $zeilen), $von, $von, true);
+}
+
+/** Fester Schluss jeder Eingangsbestätigung. */
+const BESTAETIGUNG_FUSS = [
+    '',
+    'Fragen oder etwas falsch eingetragen? Antworte einfach auf diese E-Mail.',
+    '',
+    'Viele Grüße',
+    'dein Team der waybuild Akademie',
+];
 
 function zeitfalle_pruefen(): void
 {

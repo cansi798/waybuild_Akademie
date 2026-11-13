@@ -1,16 +1,18 @@
 ---
 // Elektronische Widerrufsfunktion nach § 356a BGB – eingebunden auf /widerruf/ (per import.meta.glob, ohne Props).
-// Schritt 1: Name, E-Mail für die Bestätigung, Vertrag (Kurs/Termin, Anmeldedatum oder Vorgangsnummer), optional Nachricht –
-// kein Grund nötig – Knopf „Vertrag jetzt widerrufen“. Schritt 2: Angaben prüfen, Knopf „Widerruf bestätigen“.
+// Schritt 1: Name, E-Mail für die Bestätigung, Vertrag (Kurs aus der Liste und/oder Vorgangsnummer, optional Anmeldedatum),
+// optional Nachricht ans Team – kein Grund nötig – Knopf „Vertrag jetzt widerrufen“. Schritt 2: Angaben prüfen, Knopf „Widerruf bestätigen“.
 // Danach Meldung mit Datum und Uhrzeit des Eingangs; der PHP-Endpunkt schickt die Eingangsbestätigung per E-Mail.
 // Ohne JavaScript übernimmt /api/widerruf.php den zweiten Schritt als eigene Seite.
 import Feld from './Feld.astro';
 import Grundlagen from './Grundlagen.astro';
 import { FEHLER } from '../../lib/formular';
+import { formularDaten } from './daten';
 import { IS_PREVIEW } from '../../lib/env';
 import { href } from '../../lib/pfad';
 
 const F = 'widerruf';
+const kurse = (await formularDaten()).kurse;
 ---
 
 <section class="widerruf-formular" aria-labelledby={`${F}-titel`} data-widerruf-formular>
@@ -40,8 +42,19 @@ const F = 'widerruf';
           <Feld form={F} name="name" label="Dein Name" pflicht nativ min={2} max={100} fehler={FEHLER.name} autocomplete="name" />
           <Feld form={F} name="email" label="E-Mail für die Bestätigung" typ="email" pflicht nativ regel="email" max={254} fehler={FEHLER.email} autocomplete="email" inputmode="email" />
         </div>
-        <Feld form={F} name="vertrag" label="Welcher Vertrag?" pflicht nativ min={3} max={200} fehler={FEHLER.vertrag} hinweis="Kurs und Termin, Anmeldedatum oder Vorgangsnummer aus deiner Bestätigungs-E-Mail." platzhalter="z. B. AP1, Start 19.01.2027" />
-        <Feld form={F} name="nachricht" label="Nachricht" typ="textarea" max={2000} zeilen={3} fehler={FEHLER.nachricht} hinweis="Ein Grund ist nicht nötig." />
+        <fieldset class="grid gap-5 rounded-2xl bg-base-200/60 p-4 sm:p-5">
+          <legend class="sr-only">Welchen Vertrag möchtest du widerrufen?</legend>
+          <p class="font-semibold">Welchen Vertrag möchtest du widerrufen? <span class="font-normal text-gedaempft">Kurs oder Vorgangsnummer genügt.</span></p>
+          <Feld form={F} name="kurs" label="Kurs" typ="select" fehler={FEHLER.vertrag} ohneZusatz>
+            <option value="">Bitte Kurs wählen</option>
+            {kurse.map((k) => <option value={k.id}>{k.titel}{k.status === 'entwurf' ? ' (Entwurf)' : ''}</option>)}
+          </Feld>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <Feld form={F} name="anmeldedatum" label="Anmeldedatum" typ="date" fehler={FEHLER.anmeldedatum} />
+            <Feld form={F} name="vorgang" label="Vorgangsnummer" regel="vorgang" max={15} fehler={FEHLER.vorgang} platzhalter="z. B. A-20261113-7F3K" hinweis="Steht in deiner Bestätigungs-E-Mail." />
+          </div>
+        </fieldset>
+        <Feld form={F} name="nachricht" label="Nachricht an unser Team" typ="textarea" max={2000} zeilen={3} fehler={FEHLER.nachricht} hinweis="Ein Grund ist nicht nötig." />
         <div>
           <button type="submit" class="btn btn-secondary btn-lg rounded-full px-8" data-widerruf-weiter>Vertrag jetzt widerrufen</button>
         </div>
@@ -88,11 +101,15 @@ const F = 'widerruf';
       s2.hidden = n === 1;
       if (n === 2) {
         const dl = form.querySelector('[data-widerruf-zusammenfassung]')!;
+        const kursSel = form.elements.namedItem('kurs') as HTMLSelectElement;
         const zeilen: [string, string][] = [
           ['Name', wert(form, 'name')],
           ['E-Mail für die Bestätigung', wert(form, 'email')],
-          ['Vertrag', wert(form, 'vertrag')],
         ];
+        if (kursSel.value) zeilen.push(['Kurs', kursSel.selectedOptions[0]?.textContent?.trim() ?? '']);
+        const datum = wert(form, 'anmeldedatum');
+        if (datum) zeilen.push(['Anmeldedatum', datum.split('-').reverse().join('.')]);
+        if (wert(form, 'vorgang')) zeilen.push(['Vorgangsnummer', wert(form, 'vorgang').toUpperCase()]);
         if (wert(form, 'nachricht')) zeilen.push(['Nachricht', wert(form, 'nachricht')]);
         dl.replaceChildren(
           ...zeilen.flatMap(([a, b]) => {
@@ -115,6 +132,16 @@ const F = 'widerruf';
 
     formularEinrichten(form, {
       art: () => 'widerruf',
+      // Vertragsangabe: Kurs aus der Liste oder Vorgangsnummer; Datum nicht in der Zukunft
+      zusatz: () => {
+        const f: Record<string, string> = {};
+        if (!wert(form, 'kurs') && !wert(form, 'vorgang')) f.kurs = form.querySelector<HTMLElement>('[name="kurs"]')!.dataset.fehlerPflicht!;
+        const d = wert(form, 'anmeldedatum');
+        if (d && (!/^\d{4}-\d{2}-\d{2}$/.test(d) || d > new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Berlin' }))) {
+          f.anmeldedatum = form.querySelector<HTMLElement>('[name="anmeldedatum"]')!.dataset.fehlerPflicht!;
+        }
+        return f;
+      },
       vorSenden: () => {
         if (schritt.value !== '2') {
           zeigeSchritt(2);

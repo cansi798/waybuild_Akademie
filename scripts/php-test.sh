@@ -57,7 +57,7 @@ file_put_contents(API . '/termine.json', json_encode(['version' => 1, 'erzeugt' 
         ]],
 ]], JSON_UNESCAPED_UNICODE));
 
-function limit_leeren(): void { foreach (glob(DATEN . '/ratelimit/*.json') ?: [] as $d) unlink($d); }
+function limit_leeren(): void { foreach (array_merge(glob(DATEN . '/ratelimit/*.json') ?: [], glob(DATEN . '/empfaenger/*.json') ?: []) as $d) unlink($d); }
 function mails_leeren(): void { foreach (glob('/t/mails/*.eml') ?: [] as $d) unlink($d); }
 /** @return list<array{kopf:string,text:string,an:string,betreff:string}> */
 function mails(): array {
@@ -89,7 +89,7 @@ function anfrage(string $pfad, array $felder = [], bool $json = false, string $m
 }
 
 $gueltig = ['kurs' => 'testkurs', 'termin' => 'spaet', 'personen' => '1', 'p1_vorname' => 'Lena', 'p1_nachname' => 'Muster', 'p1_email' => 'lena@beispiel.de',
-    'p1_telefon' => '+49 40 123456', 'zahlweg' => 'selbst', 'strasse' => 'Hauptstraße 1', 'plz' => '22846', 'ort' => 'Norderstedt', 'agb' => '1', 'datenschutz' => '1'];
+    'p1_telefon' => '+49 40 123456', 'zahlweg' => 'selbst', 'strasse' => 'Hauptstraße 1', 'plz' => '22846', 'ort' => 'Norderstedt', 'agb' => '1', 'alter' => '1', 'datenschutz' => '1'];
 $betrieb = array_merge($gueltig, ['zahlweg' => 'betrieb', 'personen' => '3', 'firma' => 'Beispiel GmbH', 'ansprechperson' => 'Frau Kaya', 'firma_strasse' => 'Werkweg 5',
     'firma_plz' => '20095', 'firma_ort' => 'Hamburg', 'rechnung_email' => 'rechnung@beispiel.de', 'bestellnummer' => 'PO-77',
     'p2_vorname' => 'Ali', 'p2_nachname' => 'Demir', 'p2_email' => 'ali@beispiel.de', 'p3_vorname' => 'Mia', 'p3_nachname' => 'Roth', 'p3_email' => 'mia@beispiel.de']);
@@ -120,12 +120,12 @@ pruefe(str_contains($m[0]['kopf'] ?? '', 'Reply-To: lena@beispiel.de'), 'Reply-T
 pruefe(str_contains($m[0]['kopf'] ?? '', 'Content-Type: text/plain; charset=UTF-8'), 'Klartext UTF-8');
 $t0 = $m[0]['text'] ?? '';
 foreach (['RECHNUNG AN: PRIVAT', 'Hauptstraße 1', '22846 Norderstedt', '1. Lena Muster <lena@beispiel.de> – Ansprechperson, Tel. +49 40 123456',
-    'Endpreis (alles inklusive): 349,00 €', 'Teilnahmebedingungen akzeptiert: ja', '"gesamtpreis": 349', '"termin": "spaet"', '----- DATEN (JSON, für CRM) -----'] as $s) {
+    'Endpreis (alles inklusive): 349,00 €', 'Teilnahmebedingungen akzeptiert: ja', 'Volljährig oder mit Einverständnis der Erziehungsberechtigten bzw. Anmeldung durch den Ausbildungsbetrieb: ja', '"volljaehrigOderEinverstaendnis": true', '"gesamtpreis": 349', '"termin": "spaet"', '----- DATEN (JSON, für CRM) -----'] as $s) {
     pruefe(str_contains($t0, $s), "Team-Mail enthält „{$s}“");
 }
 $t1 = $m[1]['text'] ?? '';
 pruefe(($m[1]['an'] ?? '') === 'lena@beispiel.de', 'Bestätigung an die Ansprechperson');
-foreach (['Hallo Lena,', 'Rechnung folgt per E-Mail', 'Endpreis: 349,00 € – alles inklusive', 'https://waybuild-akademie.de/widerruf/',
+foreach (['Hallo,', 'Teilnehmende: 1 Person', 'Rechnung an: dich (Ich zahle selbst)', 'Rechnung folgt per E-Mail', 'Endpreis: 349,00 € – alles inklusive', 'https://waybuild-akademie.de/widerruf/',
     'https://waybuild-akademie.de/teilnahmebedingungen/', 'Zugang zum Live-Raum', 'noch keine Annahme'] as $s) {
     pruefe(str_contains($t1, $s), "Bestätigung enthält „{$s}“");
 }
@@ -158,8 +158,10 @@ foreach (['Bitte gib deinen Vornamen ein.', 'Bitte gib deinen Nachnamen ein.', '
 $r = anfrage('/api/anmeldung.php', ['kurs' => 'testkurs', 'termin' => 'spaet'], true);
 $f = $r['json']['fehler'] ?? [];
 pruefe($r['status'] === 422 && ($r['json']['ok'] ?? null) === false, 'mit JS: 422 als JSON');
-pruefe(array_keys($f) == ['p1_vorname', 'p1_nachname', 'p1_email', 'zahlweg', 'agb', 'datenschutz'], 'Fehler je Feld: Pflichtfelder ohne Zahlweg');
+pruefe(array_keys($f) == ['p1_vorname', 'p1_nachname', 'p1_email', 'zahlweg', 'agb', 'datenschutz', 'alter'], 'Fehler je Feld: Pflichtfelder ohne Zahlweg');
 pruefe(($f['p1_email'] ?? '') === 'Bitte gib eine gültige E-Mail-Adresse ein, z. B. name@beispiel.de.', 'Fehlertext E-Mail laut Spezifikation');
+$r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['alter' => '']), true);
+pruefe(array_keys($r['json']['fehler'] ?? []) == ['alter'] && str_starts_with($r['json']['fehler']['alter'], 'Bitte bestätige, dass du volljährig bist'), 'Altersbestätigung Pflicht (Anmeldung)');
 $r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['zahlweg' => 'selbst', 'strasse' => '', 'plz' => '1', 'ort' => '']), true);
 pruefe(array_keys($r['json']['fehler'] ?? []) == ['strasse', 'plz', 'ort'], 'Ich zahle selbst: Straße, PLZ, Ort Pflicht');
 $r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['zahlweg' => 'betrieb']), true);
@@ -238,7 +240,7 @@ pruefe(count($dateien) === 1 && preg_match('/^[0-9a-f]{64}\.json$/', basename($d
 $inhalt = json_decode((string) file_get_contents($dateien[0]), true);
 pruefe(is_array($inhalt) && count($inhalt) === 15 && array_filter($inhalt, 'is_int') === $inhalt, 'Rate-Limit-Datei enthält nur Zeitpunkte');
 $alles = array_map(fn ($p) => substr($p, strlen(DATEN) + 1), array_merge(glob(DATEN . '/*') ?: [], glob(DATEN . '/.*') ?: [], $dateien));
-pruefe(!array_filter($alles, fn ($p) => !in_array($p, ['.', '..', '.htaccess', 'formular-geheimnis.txt', 'ratelimit'], true) && !str_starts_with($p, 'ratelimit/')), 'keine Formulardaten auf dem Server gespeichert');
+pruefe(!array_filter($alles, fn ($p) => !in_array($p, ['.', '..', '.htaccess', 'formular-geheimnis.txt', 'ratelimit', 'empfaenger'], true) && !str_starts_with($p, 'ratelimit/')), 'keine Formulardaten auf dem Server gespeichert');
 limit_leeren();
 
 gruppe('Header-Injection');
@@ -283,20 +285,67 @@ pruefe(($r['json']['fehler']['thema'] ?? '') === 'Bitte wähle ein Thema aus.' &
 
 gruppe('Widerruf (§ 356a BGB)');
 mails_leeren();
-$wid = ['name' => 'Lena Muster', 'email' => 'lena@beispiel.de', 'vertrag' => 'AP1, Start 19.01.2027, Vorgang A-20261113-7F3K'];
+$wid = ['name' => 'Lena Muster', 'email' => 'lena@beispiel.de', 'kurs' => 'testkurs', 'anmeldedatum' => tag(-2), 'vorgang' => 'a-20261113-7f3k',
+    'nachricht' => 'Bitte hier klicken: http://phish.example/login'];
 $r = anfrage('/api/widerruf.php', $wid);
 pruefe($r['status'] === 200 && str_contains($r['text'], 'Widerruf bestätigen') && str_contains($r['text'], 'name="schritt" value="2"'), 'ohne JS Schritt 1 → Bestätigungsseite „Widerruf bestätigen“');
+pruefe(str_contains($r['text'], 'Zurück zum Formular'), 'Bestätigungsseite mit Link zurück');
 pruefe(count(mails()) === 0, 'Schritt 1 sendet noch nichts');
-$r = anfrage('/api/widerruf.php', ['name' => '', 'email' => 'x', 'vertrag' => ''], true);
-pruefe(array_keys($r['json']['fehler'] ?? []) == ['name', 'email', 'vertrag'], 'nur Name, E-Mail, Vertrag sind Pflicht');
+$r = anfrage('/api/widerruf.php', ['name' => '', 'email' => 'x'], true);
+pruefe(array_keys($r['json']['fehler'] ?? []) == ['name', 'email', 'kurs'], 'Pflicht: Name, E-Mail und Kurs oder Vorgangsnummer');
+pruefe(anfrage('/api/widerruf.php', array_merge($wid, ['kurs' => '']), true)['status'] === 200, 'Vorgangsnummer allein genügt');
+$r = anfrage('/api/widerruf.php', array_merge($wid, ['vorgang' => 'irgendwas', 'anmeldedatum' => tag(3)]), true);
+pruefe(isset($r['json']['fehler']['vorgang']) && isset($r['json']['fehler']['anmeldedatum']), 'Vorgangsnummer-Format und Datum (nicht in der Zukunft) geprüft');
+$r = anfrage('/api/widerruf.php', array_merge($wid, ['kurs' => 'erfunden']), true);
+pruefe(isset($r['json']['fehler']['kurs']), 'Kurs nur aus der Liste');
 $r = anfrage('/api/widerruf.php', array_merge($wid, ['schritt' => '2']));
 $m = mails();
+$datumDe = (new DateTimeImmutable(tag(-2)))->format('d.m.Y');
 pruefe($r['status'] === 200 && str_contains($r['text'], 'Dein Widerruf ist eingegangen') && preg_match('/\d{2}\.\d{2}\.\d{4} um \d{2}:\d{2} Uhr/', $r['text']), 'Schritt 2 → Bestätigung mit Datum und Uhrzeit');
-pruefe(($m[0]['an'] ?? '') === 'anmeldung@waybuild-akademie.de' && str_contains($m[0]['text'] ?? '', 'Hiermit widerrufe ich'), 'Widerruf an anmeldung@');
-pruefe(($m[1]['an'] ?? '') === 'lena@beispiel.de' && preg_match('/Eingang: \d{2}\.\d{2}\.\d{4} um \d{2}:\d{2} Uhr/', $m[1]['text'] ?? '') && str_contains($m[1]['text'] ?? '', 'AP1, Start 19.01.2027'), 'Eingangsbestätigung mit Inhalt, Datum, Uhrzeit');
-pruefe(!preg_match('/angenommen|wirksam/i', $m[1]['text'] ?? ''), 'Bestätigung behauptet keine Wirksamkeit');
+pruefe(($m[0]['an'] ?? '') === 'anmeldung@waybuild-akademie.de' && str_contains($m[0]['text'] ?? '', 'Hiermit widerrufe ich') && str_contains($m[0]['text'] ?? '', 'http://phish.example/login') && str_contains($m[0]['text'] ?? '', 'Name: Lena Muster'), 'Team-Mail enthält alles (auch Freitext)');
+$t1 = $m[1]['text'] ?? '';
+pruefe(($m[1]['an'] ?? '') === 'lena@beispiel.de' && preg_match('/Eingang: \d{2}\.\d{2}\.\d{4} um \d{2}:\d{2} Uhr/', $t1), 'Eingangsbestätigung mit Datum und Uhrzeit');
+pruefe(str_contains($t1, 'Kurs: Vorbereitung auf die IHK-Prüfung AP1') && str_contains($t1, 'Anmeldedatum: ' . $datumDe) && str_contains($t1, 'Vorgangsnummer der Anmeldung: A-20261113-7F3K'), 'Inhalt aus strukturierten Feldern');
+pruefe(!str_contains($t1, 'phish') && !str_contains($t1, 'http://') && !str_contains($t1, 'Lena'), 'kein Freitext und kein Name in der Bestätigung');
+pruefe(!preg_match('/angenommen|wirksam/i', $t1), 'Bestätigung behauptet keine Wirksamkeit');
 $r = anfrage('/api/widerruf.php', array_merge($wid, ['schritt' => '2']), true);
 pruefe(($r['json']['ok'] ?? false) === true && preg_match('/^\d{2}\.\d{2}\.\d{4} um \d{2}:\d{2} Uhr$/', $r['json']['eingang'] ?? ''), 'JSON mit Eingangszeit');
+
+gruppe('Eingangsbestätigungen ohne Freitext (kein Spam-Relay)');
+$boese = 'Gewinn! Jetzt hier: http://phish.example/login www.boese.example';
+mails_leeren();
+anfrage('/api/kontakt.php', ['name' => 'www.boese.example Gewinnspiel', 'email' => 'opfer@beispiel.de', 'thema' => 'allgemein', 'nachricht' => $boese, 'einwilligung' => '1']);
+$m = mails();
+pruefe(str_contains($m[0]['text'] ?? '', 'phish.example') && str_contains($m[0]['text'] ?? '', 'www.boese.example Gewinnspiel'), 'Kontakt: Team-Mail mit Nachricht und Name');
+pruefe(($m[1]['an'] ?? '') === 'opfer@beispiel.de' && str_starts_with($m[1]['text'] ?? '', 'Hallo,') && !preg_match('~phish|boese|http://|www\.|Gewinn~i', ($m[1]['text'] ?? '') . ($m[1]['betreff'] ?? '')), 'Kontakt: Bestätigung ohne Nachricht, Name, URL');
+mails_leeren();
+anfrage('/api/interesse.php', ['name' => 'Klick www.boese.example', 'email' => 'opfer@beispiel.de', 'kurs' => 'testkurs', 'wunschzeitraum' => 'http://phish.example', 'nachricht' => $boese, 'einwilligung' => '1']);
+$m = mails();
+pruefe(count($m) === 2 && !preg_match('~phish|boese|http://|www\.~i', ($m[1]['text'] ?? '') . ($m[1]['betreff'] ?? '')), 'Interesse: Bestätigung ohne Freitext');
+mails_leeren();
+anfrage('/api/anmeldung.php', array_merge($betrieb, ['p1_vorname' => 'www.boese.example', 'nachricht' => $boese, 'bestellnummer' => 'http://phish.example', 'firma' => 'Gewinn GmbH www.boese.example']));
+$m = mails();
+pruefe(count($m) === 2 && str_contains($m[0]['text'] ?? '', 'Bestellnummer: http://phish.example'), 'Anmeldung: Team-Mail mit allen Angaben');
+pruefe(!preg_match('~phish|boese|http://p|www\.|Gewinn|Lena|Ali~i', ($m[1]['text'] ?? '') . ($m[1]['betreff'] ?? '')) && str_contains($m[1]['text'] ?? '', 'Teilnehmende: 3 Personen'), 'Anmeldung: Bestätigung nur mit festen Bausteinen und geprüften Werten');
+
+gruppe('Höchstens 3 Bestätigungen je Empfängeradresse und Stunde');
+limit_leeren();
+mails_leeren();
+$codes = [];
+for ($i = 1; $i <= 4; $i++) {
+    $codes[] = anfrage('/api/kontakt.php', ['name' => 'Test', 'email' => 'ziel@beispiel.de', 'thema' => 'allgemein', 'nachricht' => "Nachricht Nummer $i", 'einwilligung' => '1'], false, 'POST', 8080, true)['status'];
+}
+$m = mails();
+$anTeam = count(array_filter($m, fn ($x) => $x['an'] === 'info@waybuild-akademie.de'));
+$anZiel = count(array_filter($m, fn ($x) => $x['an'] === 'ziel@beispiel.de'));
+pruefe($codes === [303, 303, 303, 303], 'alle vier Anfragen angenommen (303)');
+pruefe($anTeam === 4, 'Team bekommt alle 4 Mails');
+pruefe($anZiel === 3, '4. Bestätigung an dieselbe Adresse wird nicht versendet');
+$r = anfrage('/api/interesse.php', ['name' => 'Test', 'email' => 'ZIEL@beispiel.de', 'kurs' => 'testkurs', 'einwilligung' => '1'], false, 'POST', 8080, true);
+pruefe(count(array_filter(mails(), fn ($x) => strtolower($x['an']) === 'ziel@beispiel.de')) === 3, 'Limit gilt formularübergreifend und ohne Groß-/Kleinschreibung');
+$dateien = glob(DATEN . '/empfaenger/*') ?: [];
+pruefe(count($dateien) === 1 && preg_match('/^[0-9a-f]{64}\.json$/', basename($dateien[0])) && !str_contains((string) file_get_contents($dateien[0]), '@'), 'gespeichert wird nur ein Hash der Adresse');
+limit_leeren();
 
 if (is_file('/t/dist-termine.json')) {
     gruppe('Gebaute Terminliste dist/api/termine.json (S-06)');
@@ -324,6 +373,6 @@ docker run --rm -v "$T":/t -u "$(id -u):$(id -g)" "$IMAGE" sh -c '
   php -S 127.0.0.1:8081 -t /t/konto/web -d sendmail_path=/bin/false -d display_errors=0 -d log_errors=1 -d error_log=/t/php.log >/t/server2.log 2>&1 &
   sleep 1
   php /t/test.php; s=$?
-  if [ -s /t/php.log ] && grep -v "Formular-Geheimnis neu erzeugt" /t/php.log | grep -q .; then echo "--- PHP-Protokoll:"; cat /t/php.log; fi
+  if [ -s /t/php.log ] && grep -vE "Formular-Geheimnis neu erzeugt|Limit je Empfängeradresse erreicht" /t/php.log | grep -q .; then echo "--- PHP-Protokoll:"; cat /t/php.log; fi
   exit $s
 '

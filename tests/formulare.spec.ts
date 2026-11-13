@@ -26,6 +26,7 @@ async function gueltigSelbst(page: Page) {
   await feld(page, 'plz').fill('22846');
   await feld(page, 'ort').fill('Norderstedt');
   await feld(page, 'agb').check();
+  await feld(page, 'alter').check();
   await feld(page, 'datenschutz').check();
 }
 
@@ -81,6 +82,10 @@ test.describe('Anmeldung', () => {
     await expect(fehler(page, 'ort')).toHaveText('Bitte gib deinen Ort ein.');
     await expect(fehler(page, 'agb')).toHaveText('Bitte bestätige die Teilnahmebedingungen.');
     await expect(fehler(page, 'datenschutz')).toHaveText('Bitte bestätige, dass du Datenschutzerklärung und Widerrufsbelehrung gelesen hast.');
+    await expect(fehler(page, 'alter')).toContainText('Bitte bestätige, dass du volljährig bist');
+    await expect(page.locator('[data-feld-rahmen="alter"] label')).toContainText(
+      'Ich bin volljährig – oder meine Erziehungsberechtigten sind mit der Anmeldung einverstanden, oder mein Ausbildungsbetrieb meldet mich an.',
+    );
     await expect(fehler(page, 'firma')).toBeHidden();
     await expect(fehler(page, 'wertersatz')).toBeHidden(); // Start nach Ablauf der Frist → freiwillig
     await expect(feld(page, 'firma')).toBeHidden();
@@ -91,7 +96,7 @@ test.describe('Anmeldung', () => {
     const summary = page.locator('#anmeldung [data-fehler-summary]');
     await expect(summary).toBeVisible();
     await expect(summary).toHaveAttribute('role', 'alert');
-    await expect(summary).toContainText('Bitte prüfe 8 Angaben');
+    await expect(summary).toContainText('Bitte prüfe 9 Angaben');
     // Fehler verschwindet nach Korrektur
     await feld(page, 'p1_vorname').fill('Lena');
     await expect(fehler(page, 'p1_vorname')).toBeHidden();
@@ -220,6 +225,7 @@ test.describe('Coaching', () => {
     await expect(feld(page, 'termin')).toBeHidden();
     await expect(feld(page, 'personen')).toBeHidden();
     await expect(feld(page, 'wertersatz')).toBeHidden();
+    await expect(feld(page, 'alter')).toBeHidden();
     await expect(page.locator('input[name="paket"][value="coaching-paket"]')).toBeChecked();
     await expect(page.locator('[data-preis-gesamt]')).toHaveText('189,00 €');
     await expect(page.locator('#anmeldung [data-absenden]')).toHaveText('Paket anfragen');
@@ -294,15 +300,22 @@ test.describe('Widerruf (§ 356a BGB)', () => {
     test.skip((await page.locator('[data-widerruf-formular]').count()) === 0, 'Seite /widerruf/ bindet das Formular noch nicht ein');
     const w = page.locator('[data-widerruf-formular]');
     await w.getByRole('button', { name: 'Vertrag jetzt widerrufen' }).click();
-    await expect(fehler(page, 'vertrag', 'widerruf')).toBeVisible();
+    await expect(fehler(page, 'kurs', 'widerruf')).toHaveText('Bitte wähle den Kurs aus oder gib die Vorgangsnummer aus deiner Bestätigungs-E-Mail an.');
     await feld(page, 'name', 'widerruf').fill('Lena Muster');
     await feld(page, 'email', 'widerruf').fill('lena@beispiel.de');
-    await feld(page, 'vertrag', 'widerruf').fill('AP1, Start 19.01.2027');
+    await feld(page, 'vorgang', 'widerruf').fill('falsch');
+    await w.getByRole('button', { name: 'Vertrag jetzt widerrufen' }).click();
+    await expect(fehler(page, 'vorgang', 'widerruf')).toBeVisible();
+    await feld(page, 'vorgang', 'widerruf').fill('A-20261113-7F3K');
+    await feld(page, 'kurs', 'widerruf').selectOption('ap1-it-berufe');
+    await feld(page, 'anmeldedatum', 'widerruf').fill('2026-11-20');
     await w.getByRole('button', { name: 'Vertrag jetzt widerrufen' }).click();
     const bestaetigen = w.getByRole('button', { name: 'Widerruf bestätigen' });
     await expect(bestaetigen).toBeVisible();
     await expect(bestaetigen).toBeFocused();
-    await expect(w.locator('[data-widerruf-zusammenfassung]')).toContainText('AP1, Start 19.01.2027');
+    await expect(w.locator('[data-widerruf-zusammenfassung]')).toContainText('Vorbereitung auf die IHK-Abschlussprüfung Teil 1');
+    await expect(w.locator('[data-widerruf-zusammenfassung]')).toContainText('20.11.2026');
+    await expect(w.locator('[data-widerruf-zusammenfassung]')).toContainText('A-20261113-7F3K');
     await bestaetigen.click();
     await expect(w.locator('[data-widerruf-erfolg]')).toBeVisible();
     await expect(w.locator('[data-widerruf-zeit]')).toHaveText('01.12.2026 um 14:05 Uhr');

@@ -6,12 +6,12 @@ interface Props {
   form: string;
   name: string;
   label: string;
-  typ?: 'text' | 'email' | 'tel' | 'textarea' | 'select';
+  typ?: 'text' | 'email' | 'tel' | 'date' | 'textarea' | 'select';
   /** Pflichtfeld (Stern + Browser-Prüfung). */
   pflicht?: boolean;
   /** Natives `required` (nur für immer sichtbare Pflichtfelder – ohne JavaScript prüft dann der Browser). */
   nativ?: boolean;
-  regel?: 'email' | 'telefon' | 'plz' | 'vorname';
+  regel?: 'email' | 'telefon' | 'plz' | 'vorname' | 'vorgang';
   min?: number;
   max?: number;
   fehler: string;

@@ -42,6 +42,11 @@ Neues Geheimnis = Datei löschen; offene Formulare müssen danach einmal neu gel
 - **Zeitfalle**: Absenden frühestens 3 Sekunden und höchstens 2 Tage nach dem Laden (nur mit JavaScript, ohne JavaScript entfällt sie).
 - **Rate-Limit**: höchstens 15 Absendungen je Stunde und Anschluss. Gespeichert wird nur ein HMAC-Hash der IP-Adresse
   mit den Zeitpunkten der letzten Stunde (`akademie-daten/ratelimit/<hash>.json`); ältere Einträge werden gelöscht (TTL 1 h).
+- **Eingangsbestätigungen an die Absender-Adresse** enthalten nur feste Textbausteine, die Vorgangsnummer und geprüfte
+  Werte (Kurstitel, Termin, Paket, Preis aus `termine.json`, Thema aus fester Liste, Personenzahl) – **nie Freitext und
+  keine Namen** aus dem Formular, damit niemand die Formulare als Spam-/Phishing-Schleuder nutzen kann. Je
+  Empfängeradresse höchstens **3 Bestätigungen pro Stunde** (`akademie-daten/empfaenger/<hash>.json`, nur HMAC-Hash,
+  TTL 1 h); die Mail ans Team geht immer raus. Mails ans Team enthalten alle Angaben, Reply-To = geprüfte Absender-Adresse.
 - **Keine Formulardaten auf dem Server** – sie gehen nur per E-Mail über das ALL-INKL-Postfach raus.
 - Alle Eingaben werden serverseitig geprüft (gleiche Regeln und Texte wie im Browser, `src/lib/formular.ts`),
   Zeilenumbrüche aus einzeiligen Feldern entfernt (keine eingeschleusten Mail-Kopfzeilen), Ausgaben escaped.

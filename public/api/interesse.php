@@ -59,20 +59,21 @@ if (!mail_senden($postfach, 'Interesse · ' . $kurs['titel'], $text, $k['absende
     versand_fehler($postfach);
 }
 
-mail_senden($email, 'Dein Interesse ist vorgemerkt (' . $vorgang . ')', implode("\n", [
-    'Hallo ' . $name . ',',
+// Bestätigung ohne Freitext und ohne Namen (kein Spam-Relay): nur Kurstitel aus der Terminliste und Vorgangsnummer
+bestaetigung_senden($email, 'Dein Interesse ist vorgemerkt (' . $vorgang . ')', [
+    'Hallo,',
     '',
     'danke für dein Interesse an „' . $kurs['titel'] . '“. Wir melden uns, sobald Termine feststehen.',
     'Die Vormerkung ist unverbindlich und kostenlos.',
     '',
     'Vorgangsnummer: ' . $vorgang,
-    'Wunschzeitraum: ' . ($wunschzeitraum !== '' ? $wunschzeitraum : '–'),
+    'Eingang: ' . jetzt_text($eingang),
     '',
     'Du möchtest keine Nachricht mehr von uns? Antworte einfach auf diese E-Mail – dann löschen wir deine Vormerkung.',
     'Datenschutzerklärung: ' . link_zu('datenschutz/'),
     '',
     'Viele Grüße',
     'dein Team der waybuild Akademie',
-]), $k['absender']['info'], $k['absender']['info'], true);
+], $k['absender']['info']);
 
 weiter('danke/?art=interesse&vorgang=' . rawurlencode($vorgang), ['vorgang' => $vorgang]);

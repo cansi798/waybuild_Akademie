@@ -56,6 +56,9 @@ export function feldPruefen(el: Steuer, form: HTMLFormElement): string {
     case 'plz':
       if (!new RegExp(MUSTER.plz).test(wert)) return formatText;
       break;
+    case 'vorgang':
+      if (!new RegExp(MUSTER.vorgang).test(wert)) return formatText;
+      break;
     case 'vorname':
       if (/^\d+$/.test(wert)) return formatText;
       break;

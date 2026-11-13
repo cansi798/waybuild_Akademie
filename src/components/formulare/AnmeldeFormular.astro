@@ -233,6 +233,11 @@ const kartenKlasse = 'rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8'
             Ich habe die <a class="link-fliess" href={href('/teilnahmebedingungen/')} target="_blank">Teilnahmebedingungen</a> gelesen und akzeptiere sie.
           </Haken>
         </div>
+        <div data-bereich="kurs">
+          <Haken form={F} name="alter" pflicht nativ fehler={FEHLER.alter}>
+            Ich bin volljährig – oder meine Erziehungsberechtigten sind mit der Anmeldung einverstanden, oder mein Ausbildungsbetrieb meldet mich an.
+          </Haken>
+        </div>
         <Haken form={F} name="datenschutz" pflicht nativ fehler={FEHLER.datenschutz}>
           Ich habe die <a class="link-fliess" href={href('/datenschutz/')} target="_blank">Datenschutzerklärung</a> und die{' '}
           <a class="link-fliess" href={href('/widerruf/')} target="_blank">Widerrufsbelehrung</a> gelesen.

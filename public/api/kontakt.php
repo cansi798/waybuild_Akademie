@@ -65,19 +65,20 @@ if (!mail_senden($postfach, 'Kontakt · ' . THEMEN[$thema] . ' · ' . $name, $te
     versand_fehler($postfach);
 }
 
-mail_senden($email, 'Deine Nachricht ist angekommen (' . $vorgang . ')', implode("\n", [
-    'Hallo ' . $name . ',',
+// Bestätigung ohne Freitext und ohne Namen (kein Spam-Relay): nur Thema aus der festen Liste und Vorgangsnummer
+bestaetigung_senden($email, 'Deine Nachricht ist angekommen (' . $vorgang . ')', [
+    'Hallo,',
     '',
     'danke für deine Nachricht. Wir antworten dir in der Regel innerhalb von zwei Werktagen.',
     '',
     'Thema: ' . THEMEN[$thema],
-    'Deine Nachricht:',
-    $nachricht,
+    'Vorgangsnummer: ' . $vorgang,
+    'Eingang: ' . jetzt_text($eingang),
     '',
     'Datenschutzerklärung: ' . link_zu('datenschutz/'),
     '',
     'Viele Grüße',
     'dein Team der waybuild Akademie',
-]), $k['absender']['info'], $k['absender']['info'], true);
+], $k['absender']['info']);
 
 weiter('danke/?art=kontakt&vorgang=' . rawurlencode($vorgang), ['vorgang' => $vorgang]);

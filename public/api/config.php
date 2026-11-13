@@ -40,4 +40,5 @@ return [
     'max_alter'        => 2 * 86400,  // Formular-Zeitstempel gilt 2 Tage
     'rate_limit_max'   => 15,         // höchstens 15 Absendungen je Stunde und Anschluss (IP-Hash)
     'rate_limit_fenster' => 3600,
+    'bestaetigungen_je_adresse' => 3, // höchstens 3 Eingangsbestätigungen je Empfängeradresse und Stunde
 ];

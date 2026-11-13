@@ -152,6 +152,10 @@ if (!$coaching && !$agb) {
 if (!$datenschutz) {
     $f['datenschutz'] = FEHLER['datenschutz'];
 }
+$volljaehrig = angehakt('alter');
+if (!$coaching && !$volljaehrig) {
+    $f['alter'] = FEHLER['alter']; // Minderjährige: Einverständnis der Erziehungsberechtigten oder Anmeldung durch den Betrieb
+}
 $tageBisStart = $termin !== null ? tage_bis((string) $termin['start']) : null;
 $wertersatzPflicht = $tageBisStart !== null && $tageBisStart <= WIDERRUFSFRIST_TAGE;
 if ($wertersatzPflicht && !$wertersatz) {
@@ -230,6 +234,7 @@ $zeilen[] = '';
 $zeilen[] = 'BESTÄTIGUNGEN';
 if (!$coaching) {
     $zeilen[] = 'Teilnahmebedingungen akzeptiert: ja';
+    $zeilen[] = 'Volljährig oder mit Einverständnis der Erziehungsberechtigten bzw. Anmeldung durch den Ausbildungsbetrieb: ja';
 }
 $zeilen[] = 'Datenschutzerklärung und Widerrufsbelehrung gelesen: ja';
 if (!$coaching) {
@@ -260,6 +265,7 @@ $zeilen[] = json_block([
     'rabattProzent' => $rabattProzent,
     'gesamtpreis' => $gesamt,
     'wertersatzVerlangt' => $wertersatz,
+    'volljaehrigOderEinverstaendnis' => $coaching ? null : $volljaehrig,
     'nachricht' => $nachricht,
 ] + ($coaching ? ['anliegen' => $anliegen, 'pruefungszeitraum' => $pruefungszeitraum, 'wunschzeiten' => $wunschzeiten] : []));
 
@@ -272,9 +278,10 @@ if (!mail_senden($postfach, $betreff, implode("\n", $zeilen), $k['absender']['an
     versand_fehler($postfach);
 }
 
-// ---- Eingangsbestätigung an die Ansprechperson (Mailtext = Bestätigung auf dauerhaftem Datenträger)
+// ---- Eingangsbestätigung an die Ansprechperson (Mailtext = Bestätigung auf dauerhaftem Datenträger).
+// Nur feste Bausteine und geprüfte Werte aus der Terminliste – kein Freitext aus dem Formular (auch keine Namen).
 $b = [];
-$b[] = 'Hallo ' . $erste['vorname'] . ',';
+$b[] = 'Hallo,';
 $b[] = '';
 if ($coaching) {
     $b[] = 'danke für deine Coaching-Anfrage. Sie ist bei uns eingegangen und noch unverbindlich: Der Vertrag kommt erst zustande, wenn wir gemeinsam die Termine abgestimmt haben.';
@@ -285,23 +292,18 @@ $b[] = '';
 $b[] = 'Vorgangsnummer: ' . $vorgang;
 $b[] = 'Eingang: ' . jetzt_text($eingang);
 $b[] = '';
-$b[] = 'DEINE ANGABEN';
+$b[] = 'DEINE ANMELDUNG';
 $b[] = 'Kurs: ' . $kurs['titel'];
 if ($coaching) {
     $b[] = 'Paket: ' . $paket['name'] . ' (' . $paket['beschreibung'] . ')';
-    if ($wunschzeiten !== '') {
-        $b[] = 'Wunschzeiten: ' . $wunschzeiten;
-    }
 } else {
     $b[] = 'Termin: ' . datum_de($termin['start']) . ' – ' . datum_de($termin['ende']) . ', ' . $kurs['zeiten'] . ', live online';
     if (!empty($kurs['ue'])) {
         $b[] = 'Umfang: ' . $kurs['ue'] . ' Unterrichtseinheiten (' . $kurs['dauer'] . ')';
     }
+    $b[] = 'Teilnehmende: ' . $anzahl . ($anzahl === 1 ? ' Person' : ' Personen');
 }
-$b[] = 'Teilnehmende: ' . implode(', ', array_map(fn ($p) => $p['vorname'] . ' ' . $p['nachname'], $personen));
-$b[] = 'Rechnung an: ' . ($zahlweg === 'selbst'
-    ? $erste['vorname'] . ' ' . $erste['nachname'] . ', ' . $rechnung['strasse'] . ', ' . $rechnung['plz'] . ' ' . $rechnung['ort']
-    : $rechnung['firma'] . ', ' . $rechnung['ansprechperson'] . ', ' . $rechnung['strasse'] . ', ' . $rechnung['plz'] . ' ' . $rechnung['ort'] . ' (' . $rechnung['email'] . ')');
+$b[] = 'Rechnung an: ' . ($zahlweg === 'selbst' ? 'dich (Ich zahle selbst)' : 'deinen Betrieb (Mein Betrieb zahlt)');
 if (!$coaching && $rabattProzent > 0) {
     $b[] = 'Preis: ' . $anzahl . ' × ' . euro($einzel) . ' = ' . euro($zwischensumme) . ', abzüglich ' . $rabattProzent . ' % Gruppenrabatt';
 }
@@ -320,7 +322,7 @@ if ($coaching) {
     $b[] = '2. Nach der Terminabstimmung: Rechnung folgt per E-Mail. Eine Online-Zahlung ist nicht nötig.';
     $b[] = 'Projektantrag, Dokumentation und alle Prüfungsleistungen erstellst du selbst – das Coaching ist Beratung, Rückmeldung und Training.';
 } else {
-    $b[] = '1. Rechnung folgt per E-Mail' . ($zahlweg === 'betrieb' ? ' an ' . $rechnung['email'] : '') . '. Eine Online-Zahlung ist nicht nötig.';
+    $b[] = '1. Rechnung folgt per E-Mail' . ($zahlweg === 'betrieb' ? ' an die angegebene Rechnungsadresse deines Betriebs' : '') . '. Eine Online-Zahlung ist nicht nötig.';
     $b[] = '2. Vor Kursstart bekommt jede teilnehmende Person den Zugang zum Live-Raum per E-Mail.';
 }
 $b[] = '';
@@ -328,19 +330,12 @@ $b[] = 'WICHTIGE LINKS';
 $b[] = 'Teilnahmebedingungen: ' . link_zu('teilnahmebedingungen/');
 $b[] = 'Widerrufsbelehrung und Online-Widerruf: ' . link_zu('widerruf/');
 $b[] = 'Datenschutzerklärung: ' . link_zu('datenschutz/');
-$b[] = '';
-$b[] = 'Fragen oder etwas falsch eingetragen? Antworte einfach auf diese E-Mail.';
-$b[] = '';
-$b[] = 'Viele Grüße';
-$b[] = 'dein Team der waybuild Akademie';
 
-mail_senden(
+bestaetigung_senden(
     $erste['email'],
     ($coaching ? 'Deine Coaching-Anfrage ist angekommen' : 'Deine Anmeldung ist angekommen') . ' (' . $vorgang . ')',
-    implode("\n", $b),
+    array_merge($b, BESTAETIGUNG_FUSS),
     $k['absender']['anmeldung'],
-    $k['absender']['anmeldung'],
-    true,
 ); // Schlägt nur die Bestätigung fehl, gilt die Anmeldung trotzdem als eingegangen (Architektur, Schritt 19–20)
 
 weiter('danke/?art=' . $art . '&vorgang=' . rawurlencode($vorgang), ['vorgang' => $vorgang, 'gesamtpreis' => $gesamt]);
