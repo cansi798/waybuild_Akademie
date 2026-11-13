@@ -87,11 +87,11 @@ const n = STATIONEN.length;
     <span class="hr-spur" aria-hidden="true"><span class="hr-fuell"></span><span class="hr-lauf" data-hr-lauf></span></span>
     {
       STATIONEN.map((s, i) => (
-        <button type="button" class:list={['hr-punkt', { 'ist-jetzt': i === 0 }]} data-hr-punkt={i} aria-label={`Schritt ${i + 1}: ${s.titel}`} aria-current={i === 0 ? 'step' : undefined}>
+        <button type="button" class:list={['hr-punkt', { 'ist-jetzt': i === 0 }]} data-hr-punkt={i} aria-label={`${i + 1} ${s.kurz}${s.kurz === s.titel ? '' : ` – ${s.titel}`}`} aria-current={i === 0 ? 'step' : undefined}>
           <span class="hr-knoten" aria-hidden="true">
             <span class="hr-knoten-nr">{i + 1}</span>
             <svg viewBox="0 0 20 20" class="hr-knoten-ok"><path d="M5 10.5l3.2 3.2L15 6.8" /></svg>
-          </span>
+          </span>{' '}
           <span class="hr-etikett" aria-hidden="true">{s.kurz}</span>
         </button>
       ))

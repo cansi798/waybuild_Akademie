@@ -191,3 +191,53 @@ export function nachMonat(liste: TerminMitKurs[]): { schluessel: string; titel: 
   }
   return gruppen;
 }
+
+// ---------------------------------------------------------------------------
+// Ergänzungen Kursübersicht (Liste, Sprungleiste, Mega-Menü) – bestehende Signaturen bleiben unverändert.
+
+/** Schnellsuche: gleiche Normalisierung im Build und im Browser (components/uebersicht/suche.ts). */
+export { suchNormal } from '../components/uebersicht/suche';
+import { suchNormal } from '../components/uebersicht/suche';
+
+/** Höchstens so viele Kurse je Kategorie im Mega-Menü, danach „alle N ansehen“. */
+export const MENUE_KURSE_JE_KATEGORIE = 6;
+
+export interface KategorieGruppe {
+  name: string;
+  slug: string;
+  /** Sprungziel auf /kurse/ – eindeutig auch, wenn eine Kategorie in zwei Säulen vorkommt */
+  anker: string;
+  saeule: Saeule;
+  kurse: Kurs[];
+}
+
+/** Sprungziel einer Kategorie in einer Säule: "kat-ihk-pruefung-it-berufe". */
+export function kategorieAnker(saeule: Saeule, kategorie: string): string {
+  return `kat-${saeule}-${kategorieSlug(kategorie)}`;
+}
+
+/** Gefilterte Übersicht einer Kategorie: "/kurse/?saeule=ihk-pruefung&kategorie=it-berufe" (ohne Basis-Pfad, für href()). */
+export function kategorieUrl(saeule: Saeule, kategorie: string): string {
+  return `/kurse/?saeule=${saeule}&kategorie=${kategorieSlug(kategorie)}`;
+}
+
+/** Säule → Kategorie → Kurse. Kategorien in der Reihenfolge ihres ersten Kurses (reihenfolge, dann Titel), leere entfallen. */
+export function nachSaeuleUndKategorie(kurse: Kurs[]): { saeule: Saeule; kurse: Kurs[]; kategorien: KategorieGruppe[] }[] {
+  return nachSaeule(kurse).map((g) => {
+    const kategorien: KategorieGruppe[] = [];
+    for (const k of g.kurse) {
+      let kat = kategorien.find((x) => x.name === k.data.kategorie);
+      if (!kat) {
+        kat = { name: k.data.kategorie, slug: kategorieSlug(k.data.kategorie), anker: kategorieAnker(g.saeule, k.data.kategorie), saeule: g.saeule, kurse: [] };
+        kategorien.push(kat);
+      }
+      kat.kurse.push(k);
+    }
+    return { ...g, kategorien };
+  });
+}
+
+/** Suchtext eines Kurses (Titel, Untertitel, Kategorie) für data-suche. */
+export function suchText(kurs: Kurs): string {
+  return [kurs.data.titel, kurs.data.untertitel, kurs.data.kategorie].map(suchNormal).join(' ');
+}

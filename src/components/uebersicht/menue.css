@@ -1,0 +1,93 @@
+/* Menü „Kurse“: Mega-Menü (Desktop) und Kategorien im mobilen Menü. Steuerung und Daten: Kopf.astro, MegaMenue.astro. */
+
+/* Ersatz ohne JavaScript (z. B. der einfache Link „Kurse“ statt des Menü-Knopfs) */
+@media (scripting: enabled) {
+  .nur-ohne-js {
+    display: none !important;
+  }
+}
+
+.mega-panel {
+  box-shadow: 0 28px 48px -28px rgba(0, 52, 107, 0.4);
+}
+@media (max-width: 63.99rem) {
+  .mega-panel {
+    display: none !important;
+  }
+}
+.mega-rollen {
+  max-height: calc(100dvh - 7.5rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.mega-chevron {
+  transition: transform 0.2s ease;
+}
+[aria-expanded='true'] > .mega-chevron {
+  transform: rotate(180deg);
+}
+.mega-saeule:hover,
+.mega-kat:hover,
+.mega-kurs:hover,
+.mega-mehr:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.mega-kat {
+  display: inline-flex;
+  min-height: 1.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 650;
+  color: var(--color-navy);
+}
+.mega-zahl {
+  display: inline-grid;
+  min-width: 1.5rem;
+  height: 1.4rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--color-base-200);
+  padding: 0 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.mega-kurs,
+.mega-mehr {
+  display: block;
+  padding: 0.22rem 0;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  color: var(--color-navy);
+}
+.mega-kurs {
+  opacity: 0.92;
+}
+.mega-mehr {
+  font-weight: 600;
+  color: var(--color-petrol-text);
+}
+.mega-punkt {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-left: 0.35rem;
+  border-radius: 999px;
+  background: var(--color-bernstein);
+  vertical-align: 0.12em;
+}
+
+/* Mobil: Kategorien unter „Kurse“ (details/summary) */
+.kurse-kat > summary {
+  list-style: none;
+}
+.kurse-kat > summary::-webkit-details-marker {
+  display: none;
+}
+.kurse-kat[open] .kurse-kat-chevron {
+  transform: rotate(180deg);
+}
+.kurse-kat-chevron {
+  transition: transform 0.2s ease;
+}

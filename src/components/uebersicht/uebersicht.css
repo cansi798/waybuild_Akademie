@@ -1,0 +1,320 @@
+/* Kursübersicht /kurse/: Liste (Standard bei vielen Kursen) und Karten, Sprungleiste, Schnellsuche.
+   Ansicht steht als data-ansicht am Katalog ([data-katalog]) – vom Build vorgegeben, vor dem ersten Zeichnen
+   per Inline-Skript aus localStorage übernommen (kein Layout-Sprung). Ohne JavaScript: Vorgabe des Builds. */
+
+/* ---------- Umschalten Liste/Karten ---------- */
+[data-ansicht='liste'] .ue-karte,
+[data-ansicht='karten'] .ue-zeile,
+[data-ansicht='karten'] .ue-kopfzeile {
+  display: none;
+}
+
+/* ---------- Kategorie-Block ---------- */
+.ue-kat {
+  scroll-margin-top: 5.5rem;
+}
+.ue-kat + .ue-kat {
+  margin-top: 2.5rem;
+}
+.ue-kat[hidden] + .ue-kat {
+  margin-top: 0;
+}
+
+/* ---------- Liste ---------- */
+[data-ansicht='liste'] .ue-liste {
+  margin-top: 0.75rem;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--color-base-300);
+}
+[data-ansicht='liste'] .ue-liste > li:not([hidden]) ~ li:not([hidden]) {
+  border-top: 1px solid var(--color-base-300);
+}
+[data-ansicht='karten'] .ue-liste {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+@media (min-width: 48rem) {
+  [data-ansicht='karten'] .ue-liste {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 64rem) {
+  [data-ansicht='karten'] .ue-liste {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.ue-karte {
+  height: 100%;
+}
+
+.ue-zeile {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.3rem 1rem;
+  padding: 0.95rem 1.1rem;
+  transition: background-color 0.15s;
+}
+.ue-zeile:hover {
+  background: color-mix(in oklab, var(--color-base-200) 55%, #fff);
+}
+.ue-zeile:focus-within {
+  background: color-mix(in oklab, var(--color-base-200) 55%, #fff);
+}
+.ue-titel {
+  min-width: 0;
+  line-height: 1.35;
+}
+.ue-link {
+  font-weight: 600;
+  color: var(--color-navy);
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+}
+.ue-zeile:hover .ue-link {
+  text-decoration: underline;
+}
+/* ganze Zeile klickbar, Fokusrahmen um die ganze Zeile */
+.ue-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.ue-link:focus-visible {
+  outline: none;
+}
+.ue-link:focus-visible::after {
+  outline: 3px solid var(--color-petrol);
+  outline-offset: -3px;
+}
+.ue-marke {
+  display: inline-block;
+  margin-left: 0.4rem;
+  vertical-align: 0.1em;
+  border-radius: 999px;
+  background: var(--color-bernstein);
+  padding: 0.05rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--color-navy);
+  white-space: nowrap;
+}
+.ue-unter {
+  display: none;
+}
+.ue-werte {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 1.1rem;
+  overflow: hidden; /* Trennpunkt am Zeilenanfang (nach Umbruch) liegt links außerhalb und wird abgeschnitten */
+  font-size: 0.875rem;
+  color: var(--color-grau);
+}
+.ue-wert {
+  position: relative;
+}
+.ue-wert + .ue-wert::before {
+  content: '';
+  position: absolute;
+  left: -0.68rem;
+  top: 50%;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 999px;
+  background: var(--color-grau);
+  opacity: 0.55;
+}
+.ue-preis {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: right;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--color-navy);
+}
+.ue-pfeil {
+  display: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-petrol);
+  transition: transform 0.15s;
+}
+.ue-zeile:hover .ue-pfeil {
+  transform: translateX(3px);
+}
+.ue-etikett {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.ue-kopfzeile {
+  display: none;
+}
+
+/* Desktop: Spalten wie eine Tabelle */
+@media (min-width: 48rem) {
+  .ue-zeile,
+  .ue-kopfzeile {
+    grid-template-columns: minmax(0, 1fr) 5rem 10.5rem 6rem 5rem 1.25rem;
+    align-items: center;
+    column-gap: 1.25rem;
+  }
+  .ue-zeile {
+    padding: 0.85rem 1.25rem;
+  }
+  .ue-werte {
+    display: contents;
+    font-size: 0.9rem;
+  }
+  .ue-wert {
+    color: var(--color-navy);
+  }
+  .ue-wert + .ue-wert::before {
+    content: none;
+  }
+  .ue-werte {
+    overflow: visible;
+  }
+  .ue-etikett-mobil {
+    display: none;
+  }
+  .ue-preis {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .ue-pfeil {
+    display: block;
+  }
+  .ue-unter {
+    display: block;
+    margin-top: 0.15rem;
+    overflow: hidden;
+    font-size: 0.85rem;
+    color: var(--color-grau);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  [data-ansicht='liste'] .ue-kopfzeile {
+    display: grid;
+    margin-top: 1rem;
+    padding: 0 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-grau);
+  }
+  .ue-kopfzeile .ue-rechts {
+    text-align: right;
+  }
+}
+
+/* ---------- Sprungleiste ---------- */
+.ue-sprung {
+  position: relative; /* hält die Screenreader-Texte (sr-only) in der waagerecht scrollenden Leiste */
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background: #fff;
+  padding: 0.35rem 0.5rem 0.35rem 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-navy);
+  white-space: nowrap;
+  box-shadow: 0 0 0 1px var(--color-base-300);
+  transition: box-shadow 0.15s, background-color 0.15s;
+}
+.ue-sprung:hover {
+  box-shadow: 0 0 0 1.5px var(--color-navy);
+}
+.ue-sprung-zahl {
+  display: inline-grid;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--color-base-200);
+  padding: 0 0.4rem;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+.ue-sprung[hidden],
+.ue-sprung-zeile[hidden] {
+  display: none;
+}
+
+/* ---------- Umschalter ---------- */
+.ue-umschalter {
+  display: inline-flex;
+  gap: 0.25rem;
+  border-radius: 999px;
+  background: var(--color-base-200);
+  padding: 0.25rem;
+}
+.ue-umschalter button {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  padding: 0 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  cursor: pointer;
+  transition: background-color 0.15s, box-shadow 0.15s;
+}
+.ue-umschalter button[aria-pressed='true'] {
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 52, 107, 0.18);
+}
+
+/* ---------- Suche ---------- */
+.ue-suche {
+  position: relative;
+}
+.ue-suche svg {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  width: 1.15rem;
+  height: 1.15rem;
+  transform: translateY(-50%);
+  color: var(--color-grau);
+  pointer-events: none;
+}
+.ue-suche input {
+  width: 100%;
+  min-height: 3rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-base-300);
+  background: var(--color-base-100);
+  padding: 0 1.1rem 0 2.75rem;
+  font-size: 1rem;
+  color: var(--color-navy);
+}
+.ue-suche input::placeholder {
+  color: var(--color-grau);
+}
+.ue-suche input:focus-visible {
+  outline: 3px solid var(--color-petrol);
+  outline-offset: 2px;
+  border-color: var(--color-petrol);
+}
