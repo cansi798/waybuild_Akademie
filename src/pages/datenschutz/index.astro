@@ -98,13 +98,15 @@ const abschnitte = [
     Formular abgeschickt wurde. Außerdem begrenzt es die Zahl der Anfragen je Absender: Dafür speichert es nicht deine
     IP-Adresse selbst, sondern nur einen daraus berechneten, nicht umkehrbaren Prüfwert (Hash) mit Zeitpunkt. Genauso
     begrenzt es die Zahl der automatischen Bestätigungs-Mails je E-Mail-Adresse und speichert dafür nur einen Prüfwert
-    (Hash) der Adresse mit Zeitpunkt. Beide Einträge werden nach einer Stunde automatisch gelöscht. Ein Captcha oder einen fremden Prüfdienst nutzen wir nicht.
+    (Hash) der Adresse mit Zeitpunkt. Beide Einträge werden nach einer Stunde automatisch gelöscht. Zusätzlich zählt das
+    Skript, wie viele Mails insgesamt in 24 Stunden verschickt wurden – dafür speichert es nur Zeitpunkte, keine
+    Personendaten; sie werden nach 24 Stunden gelöscht. Ein Captcha oder einen fremden Prüfdienst nutzen wir nicht.
     Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (Schutz vor Spam und Missbrauch).
   </p>
 
   <h3>Kontaktformular und Coaching-Anfrage</h3>
   <ul>
-    <li><strong>Daten:</strong> Name, E-Mail-Adresse, deine Nachricht; freiwillig Telefonnummer. Bei der Coaching-Anfrage zusätzlich Paket, Anliegen, Zahlweg und Rechnungsangaben.</li>
+    <li><strong>Daten:</strong> Name, E-Mail-Adresse, Thema und deine Nachricht; freiwillig Telefonnummer. Bei der Coaching-Anfrage zusätzlich Paket, Anliegen, Prüfungszeitraum, Wunschzeiten, Zahlweg und Rechnungsangaben.</li>
     <li><strong>Zweck:</strong> deine Anfrage beantworten, beim Coaching einen Termin abstimmen und ein Angebot machen.</li>
     <li><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Anfrage zu einem Vertrag bzw. vorvertragliche Maßnahmen), sonst Art. 6 Abs. 1 lit. f DSGVO (Beantwortung allgemeiner Anfragen).</li>
     <li><strong>Speicherdauer:</strong> Wir löschen die Anfrage, wenn sie erledigt ist, spätestens nach 6 Monaten <Luecke text="Annahme – bitte bestätigen" />, es sei denn, daraus wird ein Vertrag – dann gilt die Aufbewahrung für Vertragsdaten (siehe <a href="#rechnung">Rechnung und Aufbewahrung</a>).</li>
@@ -112,7 +114,7 @@ const abschnitte = [
 
   <h3>Interesse vormerken</h3>
   <ul>
-    <li><strong>Daten:</strong> Name, E-Mail-Adresse, gewünschter Kurs; freiwillig Wunschzeitraum.</li>
+    <li><strong>Daten:</strong> Name, E-Mail-Adresse, gewünschter Kurs; freiwillig Wunschzeitraum und eine Nachricht.</li>
     <li><strong>Zweck:</strong> dich per E-Mail zu benachrichtigen, sobald es für den Kurs einen Termin gibt.</li>
     <li><strong>Rechtsgrundlage:</strong> deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du im Formular ausdrücklich erteilst. Du kannst sie jederzeit per E-Mail an {AKADEMIE.mailInfo} widerrufen; die bis dahin erfolgte Verarbeitung bleibt rechtmäßig.</li>
     <li><strong>Speicherdauer:</strong> bis zu deinem Widerruf oder bis wir dich über den Termin informiert haben, spätestens 12 Monate nach deiner Vormerkung <Luecke text="Annahme – bitte bestätigen" />.</li>
@@ -120,7 +122,7 @@ const abschnitte = [
 
   <h3>Anmeldung zu einem Kurs</h3>
   <ul>
-    <li><strong>Daten:</strong> Vor- und Nachname, E-Mail-Adresse, Kurs und Termin, Zahlweg, deine Bestätigungen (Teilnahmebedingungen, Datenschutz, Widerruf); bei „Ich zahle selbst“ deine Anschrift; bei „Mein Betrieb zahlt“ Firmenname, Ansprechperson, Anschrift und Rechnungs-E-Mail der Firma, freiwillig eine Bestellnummer; freiwillig Telefon und Nachricht; bei Gruppenanmeldungen Name und E-Mail weiterer Teilnehmender.</li>
+    <li><strong>Daten:</strong> Vor- und Nachname, E-Mail-Adresse, Kurs und Termin, Zahlweg, deine Bestätigungen (Teilnahmebedingungen, Datenschutz, Volljährigkeit bzw. Einverständnis, bei Kursstart innerhalb der Widerrufsfrist dein Verlangen nach vorzeitigem Beginn); bei „Ich zahle selbst“ deine Anschrift; bei „Mein Betrieb zahlt“ Firmenname, Ansprechperson, Anschrift und Rechnungs-E-Mail der Firma, freiwillig eine Bestellnummer; freiwillig Telefon und Nachricht; bei Gruppenanmeldungen Name und E-Mail weiterer Teilnehmender.</li>
     <li><strong>Zweck:</strong> Vertragsschluss und -abwicklung: Bestätigung, Rechnung, Kursorganisation, Zugang zum Live-Unterricht, Teilnahmebescheinigung, Rückfragen und Terminänderungen.</li>
     <li><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertrag); für Rechnungen und Belege Art. 6 Abs. 1 lit. c DSGVO (gesetzliche Aufbewahrungspflichten); bei Gruppenanmeldungen durch einen Betrieb zusätzlich Art. 6 Abs. 1 lit. f DSGVO (Organisation der vom Betrieb gebuchten Schulung).</li>
     <li><strong>Speicherdauer:</strong> für die Dauer des Vertrags; danach bewahren wir Vertrags- und Rechnungsdaten nach den gesetzlichen Fristen auf (siehe <a href="#rechnung">Rechnung und Aufbewahrung</a>).</li>
@@ -138,13 +140,14 @@ const abschnitte = [
     Datenschutzerklärung. Wer andere anmeldet, versichert, dazu berechtigt zu sein.
   </p>
   <p>
-    <strong>Alter:</strong> Die Anmeldung ist ab 18 Jahren möglich; Minderjährige melden sich nur mit Zustimmung ihrer
-    Eltern bzw. gesetzlichen Vertreter an. <Luecke text="Entscheidung offen: Mindestalter 18 oder Eltern-Einwilligung" />
+    <strong>Alter:</strong> Bei der Anmeldung bestätigst du, dass du volljährig bist – oder dass deine Eltern bzw.
+    gesetzlichen Vertreter einverstanden sind oder dein Ausbildungsbetrieb dich anmeldet. Diese Bestätigung speichern wir
+    mit der Anmeldung. <Luecke text="Anwalt prüfen: Verträge mit Minderjährigen" />
   </p>
 
   <h3>Widerrufsformular („Vertrag widerrufen“)</h3>
   <ul>
-    <li><strong>Daten:</strong> Name, Angabe zum Vertrag (zum Beispiel Anmelde- oder Rechnungsnummer, Kurs und Termin), E-Mail-Adresse für die Bestätigung, freiwillige weitere Angaben, sowie Datum und Uhrzeit des Eingangs.</li>
+    <li><strong>Daten:</strong> Name, E-Mail-Adresse, Angabe zum Vertrag (Kurs aus der Liste und/oder Vorgangsnummer, freiwillig das Anmeldedatum), freiwillig eine Nachricht, sowie Datum und Uhrzeit des Eingangs. Die Eingangsbestätigung an dich enthält nur Kurs, Vorgangsnummer, Anmeldedatum und Eingangszeitpunkt.</li>
     <li><strong>Zweck:</strong> deinen Widerruf entgegennehmen, dir den Eingang unverzüglich auf einem dauerhaften Datenträger (E-Mail) bestätigen und den Vertrag rückabwickeln.</li>
     <li><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. c DSGVO in Verbindung mit §§ 355, 356a BGB (gesetzliche Pflicht zur Widerrufsfunktion und Eingangsbestätigung) sowie Art. 6 Abs. 1 lit. f DSGVO (Nachweis, dass und wann der Widerruf eingegangen ist).</li>
     <li><strong>Speicherdauer:</strong> bis zum Ende der Verjährungsfrist für Ansprüche aus dem Vertrag (in der Regel 3 Jahre zum Jahresende) <Luecke text="Annahme – bitte bestätigen" />; Buchungsbelege einer Rückzahlung nach den gesetzlichen Aufbewahrungsfristen.</li>
