@@ -28,18 +28,22 @@ Die Zeitfalle braucht ein Geheimnis, mit dem `token.php` den Zeitstempel signier
 2. Datei **außerhalb des Webroots**: `config.php` → `geheimnis_datei`, Standard
    `…/akademie-daten/formular-geheimnis.txt` zwei Ebenen über diesem Ordner
    (Beispiel: Webroot `/www/htdocs/w0123456/waybuild-akademie.de/` → `/www/htdocs/w0123456/akademie-daten/`).
-3. Fehlt die Datei, erzeugt das erste Formular sie automatisch (64 Hex-Zeichen, Rechte 0600) und schreibt
-   „Formular-Geheimnis neu erzeugt“ ins PHP-Fehlerprotokoll.
-4. Ist nichts beschreibbar, laufen die Formulare **ohne Zeitfalle** weiter; im Fehlerprotokoll steht dann
-   „HINWEIS: Kein Formular-Geheimnis verfügbar“. Abhilfe: Ordner `akademie-daten` per FTP neben dem Webroot anlegen
-   (beschreibbar für PHP) oder die Datei selbst anlegen, z. B. mit dem Inhalt von `openssl rand -hex 32`.
+3. Fehlt die Datei, erzeugt der erste Aufruf sie automatisch: `random_bytes(32)` (64 Hex-Zeichen), Rechte 0600,
+   atomar über eine temporäre Datei + `rename`, gesperrt mit `flock`; das Verzeichnis bekommt eine sperrende `.htaccess`.
+   Im PHP-Fehlerprotokoll steht dann „Formular-Geheimnis neu erzeugt“.
+4. **Es gibt keinen festen Ersatzschlüssel** (er stünde im öffentlichen Repository). Gelingt das Erzeugen nicht, arbeiten
+   alle Formulare **„fail closed“**: Antwort 503 „Gerade technisch nicht erreichbar – schreib uns an info@…“, es wird
+   nichts versendet; im Fehlerprotokoll steht „FEHLER: Kein Formular-Geheimnis verfügbar“. Abhilfe: Ordner
+   `akademie-daten` per FTP neben dem Webroot anlegen (beschreibbar für PHP) oder die Datei selbst anlegen, z. B. mit
+   dem Inhalt von `openssl rand -hex 32`.
 
 Neues Geheimnis = Datei löschen; offene Formulare müssen danach einmal neu geladen werden.
 
 ## Spam-Schutz und Datenschutz
 
 - **Lockfeld** `website`: für Menschen unsichtbar; ist es ausgefüllt, antwortet der Endpunkt wie bei Erfolg, sendet aber nichts.
-- **Zeitfalle**: Absenden frühestens 3 Sekunden und höchstens 2 Tage nach dem Laden (nur mit JavaScript, ohne JavaScript entfällt sie).
+- **Zeitfalle**: Absenden frühestens 3 Sekunden und höchstens 6 Stunden nach dem Laden des Formulars (HMAC-Zeitstempel aus
+  `token.php`; das Formular holt ihn alle 5 Stunden neu). Nur mit JavaScript, ohne JavaScript entfällt sie.
 - **Rate-Limit**: höchstens 15 Absendungen je Stunde und Anschluss (IPv6: je /64-Netz). Gespeichert wird nur ein
   HMAC-Hash der (bei IPv6 gekürzten) IP-Adresse mit den Zeitpunkten der letzten Stunde
   (`akademie-daten/ratelimit/<hash>.json`); ältere Einträge werden gelöscht (TTL 1 h).
@@ -55,6 +59,9 @@ Neues Geheimnis = Datei löschen; offene Formulare müssen danach einmal neu gel
   selbst bestätigen). Widerrufe zählen getrennt (`akademie-daten/empfaenger-widerruf/`), damit andere Formulare die
   gesetzliche Eingangsbestätigung nicht blockieren können. Mails ans Team enthalten alle Angaben, Reply-To = geprüfte
   Absender-Adresse. E-Mail-Adressen müssen eine gewöhnliche Form haben (keine Anführungszeichen, Kommas, IP-Adressen).
+- **Globales Mail-Limit** je Installation: höchstens 300 Mails (Team + Bestätigungen) in 24 Stunden – darüber gehen nur
+  noch die Team-Mails raus (mit Hinweis „Bestätigung NICHT versendet“); ab 500 Mails in 24 Stunden gilt es als Flut:
+  Antwort 503, gar kein Versand. Zähler `akademie-daten/mails-24h.json` (nur Zeitpunkte, `flock`).
 - **Keine Formulardaten auf dem Server** – sie gehen nur per E-Mail über das ALL-INKL-Postfach raus.
 - Alle Eingaben werden serverseitig geprüft (gleiche Regeln und Texte wie im Browser, `src/lib/formular.ts`),
   Zeilenumbrüche aus einzeiligen Feldern entfernt (keine eingeschleusten Mail-Kopfzeilen), Ausgaben escaped.
@@ -67,6 +74,7 @@ Neues Geheimnis = Datei löschen; offene Formulare müssen danach einmal neu gel
 | Erfolg | `303` → `/danke/?art=…&vorgang=…` | `200 {"ok":true,"weiter":"…"}` |
 | Eingaben fehlerhaft | `422` Seite mit allen Fehlern und „Zurück“ | `422 {"ok":false,"fehler":{"feld":"Text"}}` |
 | zu schnell / zu viele | `429` | `429` |
+| kein Geheimnis / Mail-Flut | `503` | `503` |
 | Versand fehlgeschlagen | `500` mit E-Mail-Adresse als Ausweg | `500` |
 | GET o. ä. | `405` | `405` |
 

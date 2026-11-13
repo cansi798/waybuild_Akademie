@@ -37,8 +37,10 @@ return [
     'geheimnis_datei'  => $ausserhalb . '/formular-geheimnis.txt',
     // Spam-Schutz
     'min_sekunden'     => 3,          // Zeitfalle: frühestens 3 s nach dem Laden absenden
-    'max_alter'        => 2 * 86400,  // Formular-Zeitstempel gilt 2 Tage
+    'max_alter'        => 6 * 3600,   // Formular-Zeitstempel gilt 6 Stunden (das Formular holt ihn alle 5 h neu)
     'rate_limit_max'   => 15,         // höchstens 15 Absendungen je Stunde und Anschluss (IP-Hash)
     'rate_limit_fenster' => 3600,
+    'mail_tag_max'     => 300,        // je Installation und 24 h (Team + Bestätigungen); darüber nur noch Team-Mails
+    'mail_tag_flut'    => 500,        // ab hier offensichtliche Flut: 503, gar kein Versand
     'bestaetigungen_je_adresse' => 3, // höchstens 3 Eingangsbestätigungen je Empfängeradresse und Stunde
 ];

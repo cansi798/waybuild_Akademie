@@ -170,7 +170,9 @@ export function formularEinrichten(form: HTMLFormElement, opt: FormularOptionen)
   let versucht = false;
 
   // Zeitfalle: signierten Zeitstempel holen (nur live – in der Vorschau gibt es kein PHP)
-  if (!demo && form.dataset.token) {
+  // Der Zeitstempel gilt 6 Stunden – bei lange offenen Seiten alle 5 Stunden neu holen
+  const holeToken = () => {
+    if (demo || !form.dataset.token) return;
     fetch(form.dataset.token, { headers: { Accept: 'application/json' }, cache: 'no-store' })
       .then((r) => (r.ok ? r.json() : null))
       .then((j: { ts?: string | null; sig?: string | null } | null) => {
@@ -180,7 +182,9 @@ export function formularEinrichten(form: HTMLFormElement, opt: FormularOptionen)
         }
       })
       .catch(() => {});
-  }
+  };
+  holeToken();
+  if (!demo) setInterval(holeToken, 5 * 60 * 60 * 1000);
 
   // Wird gerade ein Absenden-Knopf gedrückt, nicht beim Verlassen des Feldes prüfen: Ein eingeblendeter Fehlertext
   // würde den Knopf zwischen Drücken und Loslassen verschieben – der Klick ginge ins Leere. Das Absenden prüft ohnehin alles.

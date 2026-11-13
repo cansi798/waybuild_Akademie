@@ -206,14 +206,15 @@ function verzeichnis_sperren(string $basis): void
 }
 
 /**
- * Formular-Geheimnis für die signierte Zeitfalle. Reihenfolge: Umgebungsvariable AKADEMIE_FORM_SECRET →
- * Datei außerhalb des Webroots (config 'geheimnis_datei') → einmalig zufällig erzeugen und dort ablegen.
- * Gelingt nichts, läuft das Formular ohne Zeitfalle weiter (Hinweis im PHP-Fehlerprotokoll, siehe LIESMICH.md).
+ * Formular-Geheimnis für HMAC (Zeitfalle, Rate-Limit-Hashes). Reihenfolge: Umgebungsvariable AKADEMIE_FORM_SECRET →
+ * Datei außerhalb des Webroots (config 'geheimnis_datei') → beim ersten Aufruf zufällig erzeugen (random_bytes(32),
+ * Rechte 0600, atomar über temporäre Datei + rename, gesperrt mit flock). Es gibt KEINEN festen Ersatzschlüssel
+ * (der stünde im öffentlichen Repository). Gelingt nichts, antwortet jedes Formular mit 503 und versendet nichts.
  */
-function geheimnis(): ?string
+function geheimnis(): string
 {
-    static $g = false;
-    if ($g !== false) {
+    static $g = null;
+    if ($g !== null) {
         return $g;
     }
     $env = getenv('AKADEMIE_FORM_SECRET');
@@ -221,11 +222,12 @@ function geheimnis(): ?string
         return $g = $env;
     }
     $datei = (string) konfig()['geheimnis_datei'];
-    if (is_readable($datei)) {
-        $s = trim((string) file_get_contents($datei));
-        if (strlen($s) >= 32) {
-            return $g = $s;
-        }
+    $lesen = function () use ($datei): ?string {
+        $s = is_readable($datei) ? trim((string) @file_get_contents($datei)) : '';
+        return strlen($s) >= 64 && ctype_xdigit($s) ? $s : null;
+    };
+    if (($s = $lesen()) !== null) {
+        return $g = $s;
     }
     $dir = dirname($datei);
     if (!is_dir($dir)) {
@@ -233,25 +235,44 @@ function geheimnis(): ?string
     }
     if (is_dir($dir) && is_writable($dir)) {
         verzeichnis_sperren($dir); // token.php kann vor dem ersten Formular laufen – auch dann schon sperren
-        $umask = umask(0077);      // Datei von Anfang an nur für das eigene Konto lesbar (nicht erst nach chmod)
-        $fp = @fopen($datei, 'x');
-        umask($umask);
-        if ($fp !== false) {
-            $s = bin2hex(random_bytes(32));
-            fwrite($fp, $s . "\n");
-            fclose($fp);
-            @chmod($datei, 0600);
-            error_log('[waybuild-akademie] Formular-Geheimnis neu erzeugt: ' . $datei);
-            return $g = $s;
-        }
-        // Gleichzeitig von einer anderen Anfrage erzeugt
-        $s = is_readable($datei) ? trim((string) file_get_contents($datei)) : '';
-        if (strlen($s) >= 32) {
-            return $g = $s;
+        $umask = umask(0077);      // alle neuen Dateien nur für das eigene Konto lesbar
+        $sperre = @fopen($dir . '/.geheimnis.lock', 'c');
+        if ($sperre !== false && flock($sperre, LOCK_EX)) {
+            $s = $lesen(); // inzwischen von einer anderen Anfrage erzeugt?
+            if ($s === null) {
+                $tmp = @tempnam($dir, '.geheimnis-');
+                if ($tmp !== false && dirname($tmp) === $dir) {
+                    $neu = bin2hex(random_bytes(32));
+                    if (@file_put_contents($tmp, $neu . "\n") !== false && @chmod($tmp, 0600) && @rename($tmp, $datei)) {
+                        $s = $neu;
+                        error_log('[waybuild-akademie] Formular-Geheimnis neu erzeugt: ' . $datei);
+                    }
+                    if (is_file($tmp)) {
+                        @unlink($tmp);
+                    }
+                } elseif ($tmp !== false) {
+                    @unlink($tmp); // tempnam ist in ein anderes Verzeichnis ausgewichen
+                }
+            }
+            flock($sperre, LOCK_UN);
+            fclose($sperre);
+            umask($umask);
+            if ($s !== null) {
+                return $g = $s;
+            }
+        } else {
+            umask($umask);
         }
     }
-    error_log('[waybuild-akademie] HINWEIS: Kein Formular-Geheimnis verfügbar – Zeitfalle ist aus. Siehe api/LIESMICH.md.');
-    return $g = null;
+    error_log('[waybuild-akademie] FEHLER: Kein Formular-Geheimnis verfügbar – Formulare antworten mit 503. Siehe api/LIESMICH.md.');
+    nicht_erreichbar();
+}
+
+/** „Fail closed“: freundliche 503-Antwort, nichts wird versendet. */
+function nicht_erreichbar(): never
+{
+    header('Retry-After: 3600');
+    fehler_antwort(503, 'technik', 'Gerade technisch nicht erreichbar – schreib uns an ' . konfig()['empfaenger']['kontakt'] . '.');
 }
 
 function zeitstempel_signatur(string $ts, string $geheimnis): string
@@ -267,6 +288,8 @@ function zeitstempel_signatur(string $ts, string $geheimnis): string
  */
 function spam_pruefen(): bool
 {
+    geheimnis();           // fail closed, bevor irgendetwas passiert
+    mail_flut_pruefen();   // offensichtliche Flut: gar nichts mehr annehmen
     $lockfeld = roh('website') !== '';
     rate_limit_pruefen();
     if ($lockfeld) {
@@ -287,7 +310,7 @@ function zaehler(string $bereich, string $schluessel, int $max): bool
         return true; // lieber annehmen als echte Anmeldungen verlieren
     }
     $fenster = (int) konfig()['rate_limit_fenster'];
-    $hash = hash_hmac('sha256', $bereich . ':' . $schluessel, geheimnis() ?? 'waybuild-akademie-rate-limit');
+    $hash = hash_hmac('sha256', $bereich . ':' . $schluessel, geheimnis());
     $jetzt = time();
     $erlaubt = true;
     $fp = @fopen($dir . '/' . $hash . '.json', 'c+');
@@ -349,15 +372,69 @@ function rate_limit_pruefen(): void
  */
 function bestaetigung_erlaubt(string $email, string $bereich = 'empfaenger'): bool
 {
-    return zaehler($bereich, mb_strtolower(kopf($email)), (int) konfig()['bestaetigungen_je_adresse']);
+    global $bestaetigungGrund;
+    // Globales Tageslimit: Team-Mail dieser Anfrage mitgerechnet; darüber nur noch Team-Mails
+    if (mails_heute() + 1 >= (int) konfig()['mail_tag_max']) {
+        $bestaetigungGrund = 'Tageslimit von ' . (int) konfig()['mail_tag_max'] . ' Mails erreicht';
+        return false;
+    }
+    if (!zaehler($bereich, mb_strtolower(kopf($email)), (int) konfig()['bestaetigungen_je_adresse'])) {
+        $bestaetigungGrund = 'Limit je Empfängeradresse erreicht';
+        return false;
+    }
+    return true;
 }
 
 /** Zeile für die Team-Mail: wird die Eingangsbestätigung versendet? */
 function bestaetigung_vermerk(bool $erlaubt): string
 {
+    global $bestaetigungGrund;
     return 'Eingangsbestätigung an die Person: ' . ($erlaubt
         ? 'wird automatisch versendet'
-        : 'NICHT versendet (Limit je Empfängeradresse erreicht) – bitte selbst bestätigen, falls die Anfrage echt ist');
+        : 'NICHT versendet (' . ($bestaetigungGrund ?? 'Limit erreicht') . ') – bitte selbst bestätigen, falls die Anfrage echt ist');
+}
+
+// ---------------------------------------------------------------- Globales Mail-Limit (je Installation, 24 h)
+
+/** Zeitpunkte der versendeten Mails der letzten 24 h lesen bzw. (mit $plus) einen hinzufügen – mit flock. */
+function mail_zaehler(bool $plus): int
+{
+    $dir = datenverzeichnis();
+    if ($dir === null) {
+        return 0;
+    }
+    $jetzt = time();
+    $fp = @fopen($dir . '/mails-24h.json', 'c+');
+    if ($fp === false) {
+        return 0;
+    }
+    flock($fp, $plus ? LOCK_EX : LOCK_SH);
+    $liste = json_decode((string) stream_get_contents($fp), true);
+    $liste = array_values(array_filter(is_array($liste) ? $liste : [], fn ($t) => is_int($t) && $t > $jetzt - 86400));
+    if ($plus) {
+        $liste[] = $jetzt;
+        ftruncate($fp, 0);
+        rewind($fp);
+        fwrite($fp, json_encode($liste));
+        fflush($fp);
+    }
+    flock($fp, LOCK_UN);
+    fclose($fp);
+    return count($liste);
+}
+
+function mails_heute(): int
+{
+    return mail_zaehler(false);
+}
+
+/** Mehr als 'mail_tag_flut' Mails in 24 h: offensichtliche Flut → 503, nichts wird versendet. */
+function mail_flut_pruefen(): void
+{
+    if (mails_heute() >= (int) konfig()['mail_tag_flut']) {
+        error_log('[waybuild-akademie] Mail-Flut: Tagesgrenze ' . (int) konfig()['mail_tag_flut'] . ' erreicht – Formulare antworten mit 503.');
+        nicht_erreichbar();
+    }
 }
 
 /**
@@ -391,9 +468,6 @@ function zeitfalle_pruefen(): void
         return; // ohne JavaScript gibt es keinen Zeitstempel (Spezifikation 5.4)
     }
     $g = geheimnis();
-    if ($g === null) {
-        return;
-    }
     if (!ctype_digit($ts) || !hash_equals(zeitstempel_signatur($ts, $g), $sig)) {
         fehler_antwort(400, 'zeitstempel', 'Da ist etwas durcheinandergeraten. Bitte lade die Seite neu und sende das Formular noch einmal.');
     }
@@ -496,7 +570,11 @@ function mail_senden(string $an, string $betreff, string $text, string $von, ?st
     $betreffKodiert = mb_encode_mimeheader(kopf($betreff), 'UTF-8', 'B', "\r\n", 9);
     // Zeilen unter 998 Zeichen halten (RFC 5322)
     $zeilen = array_map(fn ($z) => wordwrap($z, 900, "\n", true), explode("\n", str_replace(["\r\n", "\r"], "\n", $text)));
-    return mail($an, $betreffKodiert, implode("\n", $zeilen) . "\n", implode("\r\n", $kopfzeilen), '-f' . $von);
+    $ok = mail($an, $betreffKodiert, implode("\n", $zeilen) . "\n", implode("\r\n", $kopfzeilen), '-f' . $von);
+    if ($ok) {
+        mail_zaehler(true); // globales Tageslimit
+    }
+    return $ok;
 }
 
 function json_block(array $daten): string

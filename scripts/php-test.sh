@@ -11,9 +11,11 @@ IMAGE=php:8.3-cli
 docker image inspect "$IMAGE" >/dev/null 2>&1 || docker pull "$IMAGE"
 
 T=$(mktemp -d)
-trap 'rm -rf "$T"' EXIT
+trap 'chmod -R u+w "$T" 2>/dev/null; rm -rf "$T"' EXIT
 mkdir -p "$T/konto/web/api" "$T/mails"
 cp -a public/api/. "$T/konto/web/api/"
+# Zweite Installation ohne beschreibbares Konto-Verzeichnis: Geheimnis kann nicht entstehen → „fail closed“ (503)
+mkdir -p "$T/konto2/web/api" && cp -a public/api/. "$T/konto2/web/api/" && chmod 555 "$T/konto2"
 [[ -f dist/api/termine.json ]] && cp dist/api/termine.json "$T/dist-termine.json"
 
 cat > "$T/sendmail.sh" <<'SH'
@@ -57,7 +59,7 @@ file_put_contents(API . '/termine.json', json_encode(['version' => 1, 'erzeugt' 
         ]],
 ]], JSON_UNESCAPED_UNICODE));
 
-function limit_leeren(): void { foreach (glob(DATEN . '/{ratelimit,empfaenger,empfaenger-widerruf}/*.json', GLOB_BRACE) ?: [] as $d) unlink($d); }
+function limit_leeren(): void { foreach (glob(DATEN . '/{ratelimit,empfaenger,empfaenger-widerruf}/*.json', GLOB_BRACE) ?: [] as $d) unlink($d); @unlink(DATEN . '/mails-24h.json'); }
 function mails_leeren(): void { foreach (glob('/t/mails/*.eml') ?: [] as $d) unlink($d); }
 /** @return list<array{kopf:string,text:string,an:string,betreff:string}> */
 function mails(): array {
@@ -226,9 +228,11 @@ $r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['ts' => $ts, 'sig' => 
 pruefe($r['status'] === 303, 'Zeitfalle: nach 10 s → 303');
 $r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['ts' => $ts, 'sig' => str_repeat('0', 64)]), true);
 pruefe($r['status'] === 400 && ($r['json']['code'] ?? '') === 'zeitstempel', 'gefälschte Signatur → 400');
-$alt = (string) (time() - 3 * 86400);
+$alt = (string) (time() - 7 * 3600);
 $r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['ts' => $alt, 'sig' => hash_hmac('sha256', 'zeit:' . $alt, $geheim)]), true);
-pruefe($r['status'] === 422 && ($r['json']['code'] ?? '') === 'abgelaufen', 'Zeitstempel älter als 2 Tage → 422');
+pruefe($r['status'] === 422 && ($r['json']['code'] ?? '') === 'abgelaufen', 'Zeitstempel älter als 6 Stunden → 422');
+$fuenf = (string) (time() - 5 * 3600);
+pruefe(anfrage('/api/anmeldung.php', array_merge($gueltig, ['ts' => $fuenf, 'sig' => hash_hmac('sha256', 'zeit:' . $fuenf, $geheim)]))['status'] === 303, 'Zeitstempel 5 Stunden alt → 303');
 limit_leeren();
 $codes = [];
 for ($i = 1; $i <= 16; $i++) {
@@ -240,7 +244,7 @@ pruefe(count($dateien) === 1 && preg_match('/^[0-9a-f]{64}\.json$/', basename($d
 $inhalt = json_decode((string) file_get_contents($dateien[0]), true);
 pruefe(is_array($inhalt) && count($inhalt) === 15 && array_filter($inhalt, 'is_int') === $inhalt, 'Rate-Limit-Datei enthält nur Zeitpunkte');
 $alles = array_map(fn ($p) => substr($p, strlen(DATEN) + 1), array_merge(glob(DATEN . '/*') ?: [], glob(DATEN . '/.*') ?: [], $dateien));
-pruefe(!array_filter($alles, fn ($p) => !in_array($p, ['.', '..', '.htaccess', 'formular-geheimnis.txt', 'ratelimit', 'empfaenger', 'empfaenger-widerruf'], true) && !str_starts_with($p, 'ratelimit/')), 'keine Formulardaten auf dem Server gespeichert');
+pruefe(!array_filter($alles, fn ($p) => !in_array($p, ['.', '..', '.htaccess', '.geheimnis.lock', 'formular-geheimnis.txt', 'mails-24h.json', 'ratelimit', 'empfaenger', 'empfaenger-widerruf'], true) && !str_starts_with($p, 'ratelimit/')), 'keine Formulardaten auf dem Server gespeichert');
 limit_leeren();
 
 gruppe('Header-Injection');
@@ -447,6 +451,39 @@ pruefe($r['status'] === 200 && !preg_match('/<script>|<img src=x/i', $r['text'])
 $r = anfrage('/api/kontakt.php', ['name' => 'x'], true);
 pruefe(!isset($r['kopf']['access-control-allow-origin']) && str_starts_with($r['kopf']['content-type'] ?? '', 'application/json') && ($r['kopf']['x-content-type-options'] ?? '') === 'nosniff', 'JSON-Antwort ohne CORS-Freigabe, mit nosniff');
 
+gruppe('Globales Mail-Limit (300 bzw. 500 je 24 h)');
+$kon24 = ['name' => 'Jan Peters', 'email' => 'jan@beispiel.de', 'thema' => 'allgemein', 'nachricht' => 'Frage zur AP1-Vorbereitung', 'einwilligung' => '1'];
+limit_leeren();
+mails_leeren();
+anfrage('/api/kontakt.php', $kon24, false, 'POST', 8080, true);
+$stand = json_decode((string) file_get_contents(DATEN . '/mails-24h.json'), true);
+pruefe(is_array($stand) && count($stand) === 2 && array_filter($stand, 'is_int') === $stand, 'Zähler zählt Team-Mail + Bestätigung (nur Zeitpunkte)');
+file_put_contents(DATEN . '/mails-24h.json', json_encode(array_fill(0, 299, time() - 60)));
+mails_leeren();
+$r = anfrage('/api/kontakt.php', $kon24, false, 'POST', 8080, true);
+$m = mails();
+pruefe($r['status'] === 303 && count($m) === 1 && ($m[0]['an'] ?? '') === 'info@waybuild-akademie.de', 'ab 300 Mails: nur noch die Team-Mail');
+pruefe(str_contains($m[0]['text'] ?? '', 'NICHT versendet (Tageslimit von 300 Mails erreicht)'), 'Team-Mail mit Hinweis auf das Tageslimit');
+file_put_contents(DATEN . '/mails-24h.json', json_encode(array_merge(array_fill(0, 500, time() - 60), array_fill(0, 50, time() - 90000))));
+mails_leeren();
+$r = anfrage('/api/kontakt.php', $kon24, true, 'POST', 8080, true);
+pruefe($r['status'] === 503 && ($r['json']['code'] ?? '') === 'technik' && count(mails()) === 0, 'ab 500 Mails in 24 h (Flut): 503, kein Versand');
+file_put_contents(DATEN . '/mails-24h.json', json_encode(array_fill(0, 600, time() - 90000)));
+mails_leeren();
+pruefe(anfrage('/api/kontakt.php', $kon24, false, 'POST', 8080, true)['status'] === 303 && count(mails()) === 2, 'Einträge älter als 24 h zählen nicht');
+limit_leeren();
+
+gruppe('Ohne Geheimnis: „fail closed“');
+mails_leeren();
+$r = anfrage('/api/kontakt.php', $kon24, false, 'POST', 8082);
+pruefe($r['status'] === 503 && str_contains($r['text'], 'Gerade technisch nicht erreichbar – schreib uns an info@waybuild-akademie.de'), '503 mit freundlichem Text (ohne JS)');
+$r = anfrage('/api/anmeldung.php', $gueltig, true, 'POST', 8082);
+pruefe($r['status'] === 503 && ($r['json']['code'] ?? '') === 'technik', '503 als JSON (mit JS)');
+pruefe(anfrage('/api/token.php', [], true, 'GET', 8082)['status'] === 503, 'token.php: 503 statt ungesichertem Zeitstempel');
+pruefe(anfrage('/api/anmeldung.php', array_merge($gueltig, ['website' => 'x']), false, 'POST', 8082)['status'] === 503, 'auch das Lockfeld bekommt keinen Erfolg vorgetäuscht');
+pruefe(count(mails()) === 0, 'kein Versand ohne Geheimnis');
+pruefe(!is_dir('/t/konto2/akademie-daten'), 'kein Datenverzeichnis angelegt');
+
 gruppe('Einheiten: IP-Schlüssel, Datenverzeichnis');
 require API . '/_lib.php';
 pruefe(ip_schluessel('203.0.113.7') === '203.0.113.7', 'IPv4 unverändert');
@@ -480,8 +517,9 @@ docker run --rm -v "$T":/t -u "$(id -u):$(id -g)" "$IMAGE" sh -c '
   echo "php -l: alle Dateien ohne Syntaxfehler"
   php -S 127.0.0.1:8080 -t /t/konto/web -d sendmail_path=/t/sendmail.sh -d display_errors=1 -d error_reporting=-1 -d log_errors=1 -d error_log=/t/php.log >/t/server.log 2>&1 &
   php -S 127.0.0.1:8081 -t /t/konto/web -d sendmail_path=/bin/false -d display_errors=0 -d log_errors=1 -d error_log=/t/php.log >/t/server2.log 2>&1 &
+  php -S 127.0.0.1:8082 -t /t/konto2/web -d sendmail_path=/t/sendmail.sh -d display_errors=1 -d error_reporting=-1 -d log_errors=1 -d error_log=/t/php.log >/t/server3.log 2>&1 &
   sleep 1
   php /t/test.php; s=$?
-  if [ -s /t/php.log ] && grep -vE "Formular-Geheimnis neu erzeugt|Limit je Empfängeradresse erreicht" /t/php.log | grep -q .; then echo "--- PHP-Protokoll (Warnungen = Fehler):"; cat /t/php.log; s=1; fi
+  if [ -s /t/php.log ] && grep -vE "Formular-Geheimnis neu erzeugt|Limit je Empfängeradresse erreicht|Kein Formular-Geheimnis verfügbar|Mail-Flut" /t/php.log | grep -q .; then echo "--- PHP-Protokoll (Warnungen = Fehler):"; cat /t/php.log; s=1; fi
   exit $s
 '
