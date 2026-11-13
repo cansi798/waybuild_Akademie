@@ -165,8 +165,9 @@ Schritte im Backoffice (außerhalb der Website):
 | GR-18 | **Prüfungstermin als Orientierung:** Jede Durchführung einer Prüfungsvorbereitung nennt den zugehörigen schriftlichen Prüfungstag mit dem Hinweis „Verbindlich ist die Einladung deiner IHK“. | Kursseite, Termine | US-28 |
 | GR-19 | **Coaching:** Projektantrag, Dokumentation und alle Prüfungsleistungen erstellen die Teilnehmenden selbst; Coaching ist Beratung, Rückmeldung und Training; keine Einflussnahme auf Prüfung oder Bewertung. | Coaching-Seite, Formular | US-15 AK3, US-19 AK3 |
 | GR-20 | **Keine Plätze- und Mindestzahl-Angaben:** Mindestteilnehmerzahl und freie Plätze werden nicht öffentlich genannt (kein Plätze-Zähler). | alle Seiten | Entscheidung, TD-03 |
+| GR-21 | **Format und Wortwahl (FernUSG):** Alle Kurse sind synchroner Live-Unterricht per Videokonferenz. Aufzeichnungen, abrufbare Mitschnitte und Selbstlern- oder Korrekturleistungen sind nicht Vertragsbestandteil und werden weder angeboten noch beworben. Texte sagen „live“, „gemeinsam“, „in Echtzeit“ – nie „Selbstlernkurs“, „jederzeit abrufbar“ oder „Fernkurs“. | alle Texte, Teilnahmebedingungen | R-01, TD-08 |
 
-**Summe:** 20 Geschäftsregeln (GR-01 bis GR-20).
+**Summe:** 21 Geschäftsregeln (GR-01 bis GR-21).
 
 ---
 
@@ -250,7 +251,7 @@ Nach der Umsetzung werden diese Entwürfe in Phase 3 durch Screenshots der Vorsc
 │ Nächste Starttermine         │  3–5 Karten: Kurs, Datum, Preis
 │ ┌──────────────────────────┐ │
 │ │ AP1 IT-Berufe · 19.01.   │ │
-│ │ [UE] · [Preis] [Anmelden]│ │
+│ │ 35 UE [Preis] [Anmelden] │ │
 │ └──────────────────────────┘ │
 ├──────────────────────────────┤
 │ So läuft es ab: 1 → 2 → 3 → 4│  Lernpfad (Linie zeichnet sich)
@@ -272,7 +273,7 @@ Nach der Umsetzung werden diese Entwürfe in Phase 3 durch Screenshots der Vorsc
 │ │ IHK-Prüfung · IT-Berufe  │ │  Kurskarte
 │ │ Vorbereitung auf die IHK-│ │
 │ │ Prüfung AP1 – IT-Berufe  │ │
-│ │ [UE] · ca. 5 Wochen      │ │
+│ │ 35 UE · ca. 5 Wochen     │ │
 │ │ [Preis] · ab 19.01.2027  │ │
 │ │ [ Details ]  [ Anmelden ]│ │
 │ └──────────────────────────┘ │
@@ -292,7 +293,7 @@ Nach der Umsetzung werden diese Entwürfe in Phase 3 durch Screenshots der Vorsc
 │ IHK-Prüfung · IT-Berufe      │
 │ Vorbereitung auf die IHK-    │  H1
 │ Prüfung AP1 – IT-Berufe      │
-│ [UE] | ca. 5 Wochen | Live-  │  Kennzahlen
+│ 35 UE | ca. 5 Wochen | Live- │  Kennzahlen
 │ Online | [Preis]             │
 │ [ Termin wählen & anmelden ] │
 │ Inhalte · Termine · Preis ·  │  Sprungnavigation
@@ -399,7 +400,7 @@ führende und folgende Leerzeichen werden entfernt.
 | Wunschzeitraum | nein | max. 100 Zeichen | „Bitte fasse deinen Wunschzeitraum kürzer (höchstens 100 Zeichen).“ |
 | Einwilligung Benachrichtigung | ja | Häkchen gesetzt, nicht vorausgewählt | „Bitte bestätige, dass wir dich per E-Mail benachrichtigen dürfen.“ |
 
-**Coaching-Anfrage** und **Kontakt** verwenden dieselben Regeln für Name, E-Mail, Telefon, Zahlweg und Rechnungsfelder;
+**Coaching-Anfrage** und **Kontakt** verwenden dieselben Regeln für Name, E-Mail und Telefon, die Coaching-Anfrage zusätzlich für Zahlweg und Rechnungsfelder;
 zusätzlich Pflicht: Paket und Anliegen (Coaching, „Bitte wähle ein Paket aus.“ / „Beschreib kurz, wobei wir dir helfen sollen.“)
 bzw. Nachricht (Kontakt, 10–2.000 Zeichen, „Bitte schreib uns kurz, worum es geht.“).
 
@@ -414,7 +415,7 @@ Reichweitenmessung (zunächst keine), Weiterleitung top-abschluss.de (auf die Pr
 
 Noch offen:
 
-1. Rechtliche Prüfung von GR-05 bis GR-08, der Button-Beschriftung (GR-14) und der Fernunterrichtsfrage (Risiko R-01).
+1. Rechtliche Prüfung von GR-05 bis GR-08, der Button-Beschriftung (GR-14), der Widerrufsfunktion und der Einstufung der Kurse als synchroner Live-Unterricht (GR-21, Risiko R-01).
 2. Umsatzsteuerliche Behandlung (Risiko R-03) – bestimmt nur die Formulierung des Preishinweises, nicht das Datenmodell.
 3. Dürfen auch Selbstzahler weitere Personen anmelden (GR-02)? Vorschlag: nein, nur bei Zahlweg „Betrieb“.
 4. Umgang mit einem Kursbeginn innerhalb der Widerrufsfrist (Anmeldung weniger als 14 Tage vor Start) – Text und ggf.
