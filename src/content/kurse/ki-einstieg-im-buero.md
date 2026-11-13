@@ -56,9 +56,9 @@ faq:
 - frage: Was ist die KI-Arbeitsmappe?
   antwort: Über die vier Abende sammelst du deine eigenen Prompt-Vorlagen für drei bis fünf echte Aufgaben aus deinem Job, zum Beispiel Antwortmails oder Protokolle. Am letzten Abend stellst du sie in der Gruppe vor und nimmst sie danach direkt mit in deinen Alltag.
 - frage: Hilft mir der Kurs bei der Pflicht zur KI-Kompetenz?
-  antwort: Seit Februar 2025 müssen Unternehmen, die KI einsetzen, für ausreichende KI-Kompetenz ihrer Beschäftigten sorgen. Der Kurs vermittelt dafür Grundlagen und Regeln für den sicheren Einsatz; das Zertifikat beschreibt Inhalte und Umfang. Ob das für euren Betrieb reicht, entscheidet ihr intern.
+  antwort: Die EU-KI-Verordnung verlangt in Art. 4, dass Unternehmen, die KI einsetzen, die KI-Kompetenz ihrer Beschäftigten fördern; der Umfang dieser Pflicht wurde 2026 angepasst. Der Kurs vermittelt Grundlagen und Regeln für den sicheren Einsatz, und das Zertifikat beschreibt Inhalte und Umfang. Ob das für euren Betrieb reicht, entscheidet ihr intern; Rechtsberatung ersetzt der Kurs nicht.
 - frage: Ist das ein IHK-Abschluss?
-  antwort: Nein. Du bekommst ein Zertifikat der waybuild Akademie, das Inhalte und Umfang des Kurses beschreibt. Es ist kein öffentlich-rechtlicher Abschluss.
+  antwort: Nein. Das Zertifikat der waybuild Akademie beschreibt Inhalte und Umfang der 16 Unterrichtseinheiten. Es ist kein öffentlich-rechtlicher Abschluss.
 reihenfolge: 20
 ---
 
@@ -71,6 +71,6 @@ In diesem Kurs lernst du, KI-Assistenten im Büroalltag sinnvoll und sicher zu n
 - entscheiden, welche Daten du einem KI-Werkzeug geben darfst
 - drei bis fünf eigene Vorlagen für deine häufigsten Büroaufgaben nutzen
 
-Der Kurs läuft an vier Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis zeigen jedes Thema an einem Beispiel aus dem Büro, danach probierst du es sofort selbst aus und wir vergleichen die Ergebnisse gemeinsam. Als Projekt baust du über die Abende deine persönliche KI-Arbeitsmappe auf und stellst sie zum Schluss vor.
+Der Kurs läuft an vier Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis zeigen jedes Thema an einem Beispiel aus dem Büro, danach probierst du es sofort im Live-Termin selbst aus und wir vergleichen die Ergebnisse gemeinsam. Als Projekt baust du über die Abende deine persönliche KI-Arbeitsmappe auf und stellst sie zum Schluss vor.
 
 Der Kurs passt zu dir, wenn du im Büro arbeitest und KI im Alltag sicher einsetzen willst. Er ist auch ein guter Einstieg vor dem Kurs KI-Manager/in.

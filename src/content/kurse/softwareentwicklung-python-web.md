@@ -71,7 +71,7 @@ faq:
 - frage: Welche Rolle spielt KI beim Programmieren?
   antwort: Wir zeigen, wie KI-Assistenten beim Schreiben, Erklären und Testen von Code helfen. Genauso wichtig ist, ihre Vorschläge zu prüfen – deshalb lernst du zuerst die Grundlagen selbst.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 7 Monaten Kursdauer zahlst du zum Beispiel 7 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 7 Monaten sind 7 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
 reihenfolge: 23
 ---
 
@@ -85,6 +85,6 @@ In diesem Kurs lernst du die Werkzeuge der Softwareentwicklung im Zusammenhang: 
 - mit Git im Team arbeiten, Code prüfen und eine Anwendung im Container starten
 - KI-Assistenten beim Entwickeln nutzen, ohne die Kontrolle abzugeben
 
-Der Kurs läuft an zwei Abenden pro Woche live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis entwickeln jedes Thema am geteilten Bildschirm, danach programmierst du selbst und wir besprechen Lösungen und Fehler gemeinsam. Im letzten Abschnitt arbeitet ihr in Teams an eurem Abschlussprojekt.
+Der Kurs läuft an zwei Abenden pro Woche live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis entwickeln jedes Thema am geteilten Bildschirm, danach programmierst du im Live-Termin selbst und wir besprechen Lösungen und Fehler gemeinsam. Im letzten Abschnitt arbeitet ihr in Teams an eurem Abschlussprojekt.
 
 Der Kurs passt zu dir, wenn du ernsthaft in die Softwareentwicklung einsteigen oder dein Wissen aus der Ausbildung praktisch vertiefen willst.

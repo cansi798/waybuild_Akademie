@@ -60,7 +60,7 @@ faq:
 - frage: Bin ich danach von der AEVO befreit?
   antwort: Teilweise. Wer die Prüfung bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Den praktischen Teil legst du bei Bedarf noch ab.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 13 Monaten Kursdauer zahlst du zum Beispiel 13 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Fachwirt/in im E-Commerce“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 13 gleiche Monatsraten über die Kursdauer von rund 13 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
 reihenfolge: 43
 ---
 

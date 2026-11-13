@@ -68,7 +68,7 @@ faq:
 - frage: Was ist, wenn ich einen Termin verpasse?
   antwort: Gib uns kurz Bescheid. Die Kursunterlagen bekommst du trotzdem, und den Stoff kannst du nach Absprache in einem späteren Live-Termin nachholen.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 12 Monaten Kursdauer zahlst du zum Beispiel 12 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Personalfachkaufmann/-frau“ in 12 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
 reihenfolge: 21
 ---
 

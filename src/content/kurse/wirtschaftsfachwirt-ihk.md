@@ -86,7 +86,7 @@ faq:
 - frage: Was ist, wenn ich einen Termin verpasse?
   antwort: Gib uns kurz Bescheid. Die Kursunterlagen des Termins bekommst du trotzdem, und den Stoff kannst du nach Absprache in einem späteren Live-Termin nachholen.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 13 Monaten Kursdauer zahlst du zum Beispiel 13 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Wirtschaftsfachwirt/in“ lässt sich in 13 gleiche Monatsraten aufteilen, passend zu den rund 13 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 11
 ---
 

@@ -63,7 +63,7 @@ faq:
 - frage: Bin ich danach von der AEVO befreit?
   antwort: Teilweise. Wer die Prüfung bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 12 Monaten Kursdauer zahlst du zum Beispiel 12 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Fachwirt/in für Einkauf“ bieten wir 12 gleiche Monatsraten an, eine pro Monat des rund 12-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
 reihenfolge: 32
 ---
 

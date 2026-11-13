@@ -60,7 +60,7 @@ faq:
 - frage: Reichen 720 Unterrichtseinheiten?
   antwort: Die Fortbildungsordnung nennt einen Lernumfang von in der Regel mindestens 1.200 Stunden. Darin steckt neben dem Unterricht auch die Arbeit an deinem eigenen IT-Projekt, die ohnehin im Betrieb stattfindet. Unsere 720 Live-Einheiten decken alle Prüfungsteile ab; wie viel Zeit du darüber hinaus einplanst, entscheidest du selbst.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 16 Monaten Kursdauer zahlst du zum Beispiel 16 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Bachelor Professional in IT“ in 16 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
 reihenfolge: 36
 ---
 

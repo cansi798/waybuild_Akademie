@@ -11,7 +11,7 @@ dauer: ca. 4 Wochen
 zeiten: Di + Do, 18:00–21:15 Uhr
 preis:
   betrag: 790
-  hinweis: Inklusive Kursunterlagen, Übungsumgebung für die Kursdauer und Zertifikat
+  hinweis: Inklusive Kursunterlagen, Übungsumgebung für den Live-Unterricht und Zertifikat
   raten: false
 zielgruppe:
 - Einsteigerinnen und Einsteiger in die IT
@@ -51,11 +51,11 @@ faq:
 - frage: Bereitet der Kurs auf eine Hersteller-Zertifizierung vor?
   antwort: Die Grundlagen decken viele Themen gängiger Einsteiger-Zertifizierungen der großen Cloud-Anbieter ab. Eine gezielte Prüfungsvorbereitung für ein bestimmtes Zertifikat ist der Kurs nicht; die Prüfung legst du gegebenenfalls beim Anbieter ab, sie ist nicht im Preis enthalten.
 - frage: Entstehen Kosten bei einem Cloud-Anbieter?
-  antwort: Nein. Für die Übungen stellen wir für die Kursdauer eine Übungsumgebung bereit. Du musst kein eigenes Konto mit Zahlungsdaten anlegen.
+  antwort: Nein. Für die Übungen im Live-Unterricht stellen wir eine Übungsumgebung bereit. Du musst kein eigenes Konto mit Zahlungsdaten anlegen. Aufgaben außerhalb der Termine gibt es nicht.
 - frage: Was ist das Projekt?
   antwort: Am letzten Abend skizzierst du in einer kleinen Gruppe eine Cloud-Lösung für ein Beispielunternehmen – mit Diensten, Sicherheit und grober Kostenschätzung – und stellst sie vor.
 - frage: Ist das ein IHK-Abschluss?
-  antwort: Nein. Du bekommst ein Zertifikat der waybuild Akademie, das Inhalte und Umfang des Kurses beschreibt. Es ist kein öffentlich-rechtlicher Abschluss.
+  antwort: Nein. Das Zertifikat der waybuild Akademie nennt Inhalte und Umfang der 32 Unterrichtseinheiten. Ein öffentlich-rechtlicher Abschluss oder eine Herstellerzertifizierung ist es nicht.
 reihenfolge: 31
 ---
 
@@ -68,6 +68,6 @@ In diesem Kurs lernst du die Grundlagen moderner IT-Infrastruktur und der Cloud.
 - Verantwortung, Datenschutz und Standortfragen in Angeboten erkennen
 - Kosten eines Cloud-Dienstes grob schätzen und begrenzen
 
-Der Kurs läuft an acht Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis zeigen jeden Schritt am geteilten Bildschirm, danach probierst du ihn in der Übungsumgebung selbst aus und wir besprechen die Ergebnisse gemeinsam. Am letzten Abend stellt ihr eure Projektskizzen vor.
+Der Kurs läuft an acht Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis zeigen jeden Schritt am geteilten Bildschirm, danach probierst du ihn noch im selben Live-Termin in der Übungsumgebung selbst aus und wir besprechen die Ergebnisse gemeinsam. Am letzten Abend stellt ihr eure Projektskizzen vor.
 
 Der Kurs passt zu dir, wenn du mit Cloud-Themen zu tun hast oder in die IT einsteigen willst und einen verständlichen Überblick mit Praxis brauchst.

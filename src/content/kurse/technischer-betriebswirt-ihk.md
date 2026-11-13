@@ -52,7 +52,7 @@ faq:
 - frage: Ich bin Ingenieurin bzw. Ingenieur. Kann ich teilnehmen?
   antwort: Ja, mit einem staatlich anerkannten Ingenieurabschluss und mindestens zwei Jahren einschlägiger Praxis nennt die Verordnung diesen Weg ausdrücklich. Über deine Zulassung entscheidet deine IHK.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 12 Monaten Kursdauer zahlst du zum Beispiel 12 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Technische/r Betriebswirt/in“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 12 gleiche Monatsraten über die Kursdauer von rund 12 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
 reihenfolge: 35
 ---
 

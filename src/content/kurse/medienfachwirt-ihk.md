@@ -61,7 +61,7 @@ faq:
 - frage: Wie läuft die Projektarbeit?
   antwort: Der Prüfungsausschuss stellt das Thema passend zu deinem Wahlschwerpunkt, du kannst Vorschläge machen. Für die Gesamtplanung hast du 30 Kalendertage. Wie du sie aufbaust – von der Produktplanung bis zur Kalkulation –, üben wir im Kurs an einem gemeinsamen Beispiel.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 14 Monaten Kursdauer zahlst du zum Beispiel 14 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Medienfachwirt/in“ bieten wir 14 gleiche Monatsraten an, eine pro Monat des rund 14-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
 reihenfolge: 45
 ---
 

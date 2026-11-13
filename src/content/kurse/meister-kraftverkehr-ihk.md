@@ -61,7 +61,7 @@ faq:
 - frage: Brauche ich den Ausbilderschein?
   antwort: Ja, die Ausbildereignung gehört zur Meisterqualifikation. Den Nachweis brauchst du vor Beginn der letzten Prüfungsleistung; unser AEVO-Kurs lässt sich vorher oder nebenbei belegen.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 16 Monaten Kursdauer zahlst du zum Beispiel 16 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Meister/in für Kraftverkehr“ lässt sich in 16 gleiche Monatsraten aufteilen, passend zu den rund 16 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 53
 ---
 

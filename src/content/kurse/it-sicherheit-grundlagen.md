@@ -65,7 +65,7 @@ faq:
 - frage: Was ist das Projekt?
   antwort: Du erstellst Schritt für Schritt ein Sicherheitskonzept mit Schutzbedarf, Maßnahmen und Notfallplan – für ein Beispielunternehmen oder, wenn du magst, angelehnt an deinen Betrieb. Am Ende stellst du es der Gruppe vor.
 - frage: Ist das ein IHK-Abschluss?
-  antwort: Nein. Du bekommst ein Zertifikat der waybuild Akademie, das Inhalte und Umfang des Kurses beschreibt. Es ist kein öffentlich-rechtlicher Abschluss.
+  antwort: Nein. Das Zertifikat der waybuild Akademie beschreibt, was du in den 60 Unterrichtseinheiten bearbeitet hast. Ein öffentlich-rechtlicher Abschluss ist es nicht.
 - frage: Kann ich in Raten zahlen?
   antwort: Ja, ohne Aufpreis – zum Beispiel in drei Monatsraten über die Kursdauer. Den Ratenplan findest du in deiner Rechnung.
 reihenfolge: 24
@@ -81,6 +81,6 @@ In diesem Kurs lernst du, die IT-Sicherheit in einem Unternehmen zu verbessern. 
 - einschätzen, welche gesetzlichen Pflichten für dein Unternehmen gelten
 - einen einfachen Notfallplan erstellen
 
-Der Kurs läuft an 20 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis zeigen jedes Thema an echten Vorfällen, danach wendest du es an Übungsfällen an und wir besprechen die Ergebnisse gemeinsam. Über den Kurs hinweg entsteht dein Sicherheitskonzept als Projekt.
+Der Kurs läuft an 20 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis zeigen jedes Thema an echten Vorfällen, danach wendest du es im Live-Termin an Übungsfällen an und wir besprechen die Ergebnisse gemeinsam. Über den Kurs hinweg entsteht in den Live-Terminen dein Sicherheitskonzept als Projekt.
 
 Der Kurs passt zu dir, wenn du in deinem Unternehmen für IT-Sicherheit zuständig bist oder werden sollst. Er ist auch ein guter Einstieg vor dem IHK-Lehrgang zum Berufsspezialisten für Informationssicherheit.

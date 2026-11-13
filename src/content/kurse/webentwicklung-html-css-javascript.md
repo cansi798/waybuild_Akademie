@@ -53,9 +53,9 @@ faq:
 - frage: Was ist das Praxisprojekt?
   antwort: Du baust eine kleine Website mit mehreren Seiten, einem Formular und etwas JavaScript – für dich, deinen Verein oder deinen Betrieb. In den letzten Terminen veröffentlichst du sie und stellst sie der Gruppe vor.
 - frage: Ist das ein IHK-Abschluss?
-  antwort: Nein. Du bekommst ein Zertifikat der waybuild Akademie, das Inhalte und Umfang des Kurses beschreibt. Es ist kein öffentlich-rechtlicher Abschluss.
+  antwort: Nein. Das Zertifikat der waybuild Akademie beschreibt Inhalte und Umfang der 48 Unterrichtseinheiten. Es ist kein öffentlich-rechtlicher Abschluss.
 - frage: Wann startet der nächste Kurs?
-  antwort: Wir legen den Termin nach Nachfrage fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin steht.
+  antwort: Einen Starttermin gibt es noch nicht. Über die unverbindliche Vormerkung erfährst du als Erste oder Erster, sobald die 16 Abende angesetzt sind.
 reihenfolge: 30
 ---
 
@@ -69,6 +69,6 @@ In diesem Kurs lernst du, Webseiten selbst zu bauen. Du strukturierst Inhalte mi
 - Ladezeit und Barrierefreiheit prüfen und verbessern
 - eine eigene kleine Website veröffentlichen
 
-Der Kurs läuft an 16 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis bauen jedes Thema am geteilten Bildschirm vor, danach setzt du es selbst um und wir schauen uns die Ergebnisse gemeinsam im Browser an. In den letzten Terminen entsteht dein Praxisprojekt.
+Der Kurs läuft an 16 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis bauen jedes Thema am geteilten Bildschirm vor, danach setzt du es im Live-Termin selbst um und wir schauen uns die Ergebnisse gemeinsam im Browser an. In den letzten Terminen entsteht dein Praxisprojekt.
 
 Der Kurs passt zu dir, wenn du verstehen willst, wie Webseiten funktionieren, und eigene Seiten umsetzen möchtest – im Beruf oder für eigene Projekte.

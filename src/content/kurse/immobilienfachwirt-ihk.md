@@ -61,9 +61,9 @@ faq:
 - frage: Wann muss ich das Präsentationsthema einreichen?
   antwort: Schon bei der ersten schriftlichen Prüfungsleistung. Das Thema darf aus jedem Handlungsbereich kommen. Mögliche Themen sammeln wir rechtzeitig vorher im Live-Unterricht.
 - frage: Was ist mit der AEVO?
-  antwort: Wer die Prüfung bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
+  antwort: Nach der Fortbildungsordnung ersetzt die bestandene Prüfung den schriftlichen Teil der Ausbildereignungsprüfung. Wenn du den AEVO-Nachweis möchtest, legst du bei der IHK noch den praktischen Teil ab.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 13 Monaten Kursdauer zahlst du zum Beispiel 13 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Immobilienfachwirt/in“ in 13 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
 reihenfolge: 44
 ---
 

@@ -66,7 +66,7 @@ faq:
 - frage: Was baue ich im Projekt?
   antwort: Einen Workflow für eine Aufgabe, die dich heute Zeit kostet – zum Beispiel Anfragen aus einem Formular sortieren, Rechnungsdaten aus PDFs übernehmen oder einen Wochenbericht erstellen. Du baust ihn in den letzten Terminen im Unterricht und stellst ihn der Gruppe vor.
 - frage: Ist das ein IHK-Abschluss?
-  antwort: Nein. Du bekommst ein Zertifikat der waybuild Akademie, das Inhalte und Umfang des Kurses beschreibt. Es ist kein öffentlich-rechtlicher Abschluss.
+  antwort: Nein. Das Zertifikat der waybuild Akademie hält Inhalte und Umfang der 36 Unterrichtseinheiten fest. Es ist kein öffentlich-rechtlicher Abschluss.
 reihenfolge: 21
 ---
 
@@ -80,6 +80,6 @@ In diesem Kurs lernst du, wiederkehrende Abläufe mit Automatisierungs-Werkzeuge
 - einschätzen, wo ein Agent hilft und wo ein Mensch freigeben muss
 - Zugangsdaten, Datenschutz und Kosten im Betrieb im Griff behalten
 
-Der Kurs läuft an zwölf Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis bauen jeden Schritt am geteilten Bildschirm vor, danach baust du ihn selbst nach und wir besprechen Fehler direkt gemeinsam. In den letzten Terminen entsteht dein eigenes Projekt.
+Der Kurs läuft an zwölf Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis bauen jeden Schritt am geteilten Bildschirm vor, danach baust du ihn im Live-Termin selbst nach und wir besprechen Fehler direkt gemeinsam. In den letzten Terminen entsteht dein eigenes Projekt.
 
 Der Kurs passt zu dir, wenn du viele Routineaufgaben hast und sie Schritt für Schritt automatisieren willst – auch ohne Programmierkenntnisse.

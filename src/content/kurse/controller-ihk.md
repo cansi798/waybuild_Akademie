@@ -65,7 +65,7 @@ faq:
 - frage: Brauche ich Vorkenntnisse in Buchführung?
   antwort: Ja, sichere Grundlagen im Rechnungswesen solltest du mitbringen. Wenn sie eingerostet sind, hilft dir unser Kurs „Rechnungswesen kompakt“ vorab.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 11 Monaten Kursdauer zahlst du zum Beispiel 11 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Controller/in“ lässt sich in 11 gleiche Monatsraten aufteilen, passend zu den rund 11 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 34
 ---
 

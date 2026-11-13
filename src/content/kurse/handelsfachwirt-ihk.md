@@ -71,9 +71,9 @@ faq:
 - frage: Zählt meine Praxis im Onlinehandel?
   antwort: Die Verordnung verlangt Praxis im Verkauf oder in anderen kaufmännischen Tätigkeiten im Handel. Onlinehandel gehört in der Regel dazu; ob deine Tätigkeit reicht, prüft deine IHK.
 - frage: Was ist mit der AEVO?
-  antwort: Wer die Prüfung bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
+  antwort: Teilweise. Mit der bestandenen Fortbildungsprüfung entfällt der schriftliche Teil der Ausbildereignungsprüfung; für den Nachweis der Ausbildereignung bleibt der praktische Teil.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 13 Monaten Kursdauer zahlst du zum Beispiel 13 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Handelsfachwirt/in“ lässt sich in 13 gleiche Monatsraten aufteilen, passend zu den rund 13 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 20
 ---
 

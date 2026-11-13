@@ -63,7 +63,7 @@ faq:
 - frage: Reichen 600 Unterrichtseinheiten?
   antwort: Die Fortbildungsordnung nennt einen Lernumfang von in der Regel mindestens 1.200 Stunden. Dazu zählt neben dem Unterricht auch deine eigene Vorbereitung und deine Praxis im Rechnungswesen. Unsere 600 Live-Einheiten decken alle sieben Handlungsbereiche ab; wie viel Zeit du zusätzlich einplanst, entscheidest du selbst.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 13 Monaten Kursdauer zahlst du zum Beispiel 13 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Bilanzbuchhalter/in“ bieten wir 13 gleiche Monatsraten an, eine pro Monat des rund 13-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
 reihenfolge: 33
 ---
 

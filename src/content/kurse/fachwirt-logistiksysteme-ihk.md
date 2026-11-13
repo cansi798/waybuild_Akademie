@@ -59,7 +59,7 @@ faq:
 - frage: Brauche ich den Ausbilderschein?
   antwort: Nicht für die Zulassung. Nach bestandener Prüfung bist du laut Fortbildungsordnung sogar vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 12 Monaten Kursdauer zahlst du zum Beispiel 12 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 12 Monaten sind 12 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
 reihenfolge: 42
 ---
 

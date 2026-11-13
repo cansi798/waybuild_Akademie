@@ -59,7 +59,7 @@ faq:
 - frage: Was ist mit der AEVO?
   antwort: Wer die Prüfung bestanden hat, ist laut Fortbildungsordnung vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 12 Monaten Kursdauer zahlst du zum Beispiel 12 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Fachwirt/in für Marketing“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 12 gleiche Monatsraten über die Kursdauer von rund 12 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
 reihenfolge: 31
 ---
 

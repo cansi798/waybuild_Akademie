@@ -71,7 +71,7 @@ faq:
 - frage: Bin ich danach von der AEVO befreit?
   antwort: Teilweise. Wer Teil 2 bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Mit einer zusätzlichen praktischen Prüfung bei der IHK kannst du die Ausbildereignung vollständig nachweisen.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 13 Monaten Kursdauer zahlst du zum Beispiel 13 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 13 Monaten sind 13 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
 reihenfolge: 30
 ---
 

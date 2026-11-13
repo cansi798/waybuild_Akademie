@@ -53,7 +53,7 @@ faq:
 - frage: Welche Funktion kann ich für die Projektarbeit wählen?
   antwort: Die Verordnung nennt lehrende, entwickelnde, leitende, beratende und prüfende Funktionen, zum Beispiel Ausbildungsleitung, Bildungscontrolling oder Weiterbildungsberatung. Das Thema schlägst du dem Prüfungsausschuss vor; im Kurs besprechen wir mögliche Themen live in der Gruppe.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 14 Monaten Kursdauer zahlst du zum Beispiel 14 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 14 Monaten sind 14 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
 reihenfolge: 13
 ---
 

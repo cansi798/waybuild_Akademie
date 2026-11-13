@@ -59,7 +59,7 @@ faq:
 - frage: Ersetzt der Kurs eine Rechtsberatung?
   antwort: Nein. Du lernst, Datenschutz im Alltag zu organisieren und Risiken zu erkennen. In schwierigen Einzelfällen solltest du juristischen Rat einholen.
 - frage: Ist das ein IHK-Abschluss?
-  antwort: Nein. Du bekommst ein Zertifikat der waybuild Akademie, das Inhalte und Umfang des Kurses beschreibt. Es ist kein öffentlich-rechtlicher Abschluss.
+  antwort: Nein. Mit dem Zertifikat der waybuild Akademie halten wir Inhalte und Umfang der 48 Unterrichtseinheiten fest. Einen öffentlich-rechtlichen Abschluss und eine Benennung zur Datenschutzbeauftragten Person ersetzt es nicht.
 - frage: Kann ich in Raten zahlen?
   antwort: Ja, ohne Aufpreis – zum Beispiel in zwei Monatsraten über die Kursdauer. Den Ratenplan findest du in deiner Rechnung.
 reihenfolge: 32
@@ -75,6 +75,6 @@ In diesem Kurs lernst du, Datenschutz in einem Unternehmen sicher zu organisiere
 - eine Datenpanne bewerten und den Meldeweg einhalten
 - den Einsatz von KI-Werkzeugen datenschutzrechtlich einordnen
 
-Der Kurs läuft an 16 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis erklären jede Regel an einem Fall aus dem Unternehmensalltag, danach löst du ähnliche Fälle selbst und wir besprechen die Lösungen gemeinsam. Über den Kurs hinweg entsteht dein Projekt für einen Beispielbetrieb.
+Der Kurs läuft an 16 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis erklären jede Regel an einem Fall aus dem Unternehmensalltag, danach löst du im Live-Termin ähnliche Fälle selbst und wir besprechen die Lösungen gemeinsam. Über den Kurs hinweg entsteht in den Live-Terminen dein Projekt für einen Beispielbetrieb.
 
 Der Kurs passt zu dir, wenn du Datenschutz in deinem Unternehmen koordinierst oder diese Aufgabe übernehmen sollst.

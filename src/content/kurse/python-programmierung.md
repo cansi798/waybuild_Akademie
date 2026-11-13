@@ -60,7 +60,7 @@ faq:
 - frage: Was baue ich im Praxisprojekt?
   antwort: Ein kleines Programm für eine Aufgabe, die du sonst von Hand machst – etwa Dateien umbenennen, Tabellen zusammenführen oder eine Auswertung erstellen. Es entsteht in den letzten Terminen im Unterricht.
 - frage: Ist das ein IHK-Abschluss?
-  antwort: Nein. Du bekommst ein Zertifikat der waybuild Akademie, das Inhalte und Umfang des Kurses beschreibt. Es ist kein öffentlich-rechtlicher Abschluss.
+  antwort: Nein. Das Zertifikat der waybuild Akademie führt auf, was du in den 36 Unterrichtseinheiten gelernt hast. Ein öffentlich-rechtlicher Abschluss ist es nicht.
 reihenfolge: 22
 ---
 
@@ -73,6 +73,6 @@ In diesem Kurs lernst du die Grundlagen der Programmierung mit Python. Du schrei
 - Bibliotheken einbinden und KI-Vorschläge für Code kritisch prüfen
 - eine wiederkehrende Aufgabe mit einem eigenen Skript erledigen
 
-Der Kurs läuft an zwölf Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis schreiben den Code am geteilten Bildschirm vor, danach programmierst du selbst und wir schauen uns Lösungen und Fehler gemeinsam an. In den letzten Terminen entsteht dein Praxisprojekt.
+Der Kurs läuft an zwölf Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis schreiben den Code am geteilten Bildschirm vor, danach programmierst du im Live-Termin selbst und wir schauen uns Lösungen und Fehler gemeinsam an. In den letzten Terminen entsteht dein Praxisprojekt.
 
 Der Kurs passt zu dir, wenn du ohne Vorkenntnisse programmieren lernen willst – für den Beruf, für eine Ausbildung in der IT oder als Vorbereitung auf den Kurs Softwareentwicklung mit Python und Web.

@@ -53,11 +53,11 @@ faq:
 - frage: Was ist das Praxisprojekt?
   antwort: Du wählst eine Frage aus deinem Arbeitsbereich, zum Beispiel Umsatz nach Region oder Lieferzeiten im Einkauf, und baust dazu ein Dashboard mit Übungs- oder eigenen, anonymisierten Daten. In den letzten Terminen stellst du es der Gruppe vor.
 - frage: Ist das ein IHK-Abschluss?
-  antwort: Nein. Du bekommst ein Zertifikat der waybuild Akademie, das Inhalte und Umfang des Kurses beschreibt. Es ist kein öffentlich-rechtlicher Abschluss.
+  antwort: Nein. Das Zertifikat der waybuild Akademie beschreibt, welche Inhalte du in den 96 Unterrichtseinheiten bearbeitet hast. Es ist kein öffentlich-rechtlicher Abschluss.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 3 Monaten Kursdauer zahlst du zum Beispiel 3 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Datenanalyse mit Excel und Power BI“ in 3 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
 - frage: Wann startet der nächste Kurs?
-  antwort: Wir legen den Termin nach Nachfrage fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin steht.
+  antwort: Noch steht kein Starttermin fest. Wenn du dich unverbindlich vormerkst, melden wir uns, sobald die Abende für die Gruppe geplant sind.
 reihenfolge: 33
 ---
 
@@ -71,6 +71,6 @@ In diesem Kurs lernst du, Daten aus verschiedenen Quellen aufzubereiten, auszuwe
 - Trends und Ausreißer richtig deuten
 - KI-Funktionen in Excel und Power BI nutzen, ohne ihren Ergebnissen blind zu vertrauen
 
-Der Kurs läuft an 24 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis bauen jede Auswertung am geteilten Bildschirm vor, danach arbeitest du mit den Übungsdaten selbst und wir besprechen die Ergebnisse gemeinsam. In den letzten Terminen entsteht dein Praxisprojekt.
+Der Kurs läuft an 24 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis bauen jede Auswertung am geteilten Bildschirm vor, danach arbeitest du im Live-Termin mit den Übungsdaten selbst und wir besprechen die Ergebnisse gemeinsam. In den letzten Terminen entsteht dein Praxisprojekt.
 
 Der Kurs passt zu dir, wenn du regelmäßig mit Zahlen arbeitest und Berichte schneller und klarer erstellen willst. Wer danach tiefer einsteigen möchte, findet im IHK-Lehrgang zum Berufsspezialisten für Datenanalyse den nächsten Schritt.

@@ -55,7 +55,7 @@ faq:
 - frage: Was bringt mir der Abschluss gegenüber dem Ausbilderschein?
   antwort: Die AEVO ist die Grundlage, um ausbilden zu dürfen. Hier geht es weiter – um Lernberatung, die Planung ganzer Bildungsmaßnahmen, das Gestalten von Prüfungen und die Qualitätssicherung in Aus- und Weiterbildung.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 11 Monaten Kursdauer zahlst du zum Beispiel 11 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Aus- und Weiterbildungspädagoge/-pädagogin“ lässt sich in 11 gleiche Monatsraten aufteilen, passend zu den rund 11 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 12
 ---
 

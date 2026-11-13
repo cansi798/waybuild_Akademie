@@ -56,7 +56,7 @@ faq:
 - frage: Was ist mit der AEVO?
   antwort: Nach bestandenen handlungsspezifischen Qualifikationen kannst du bei der IHK eine zusätzliche praktische Prüfung beantragen. Bestehst du sie, bekommst du ein zusätzliches Zeugnis über die berufs- und arbeitspädagogische Qualifikation.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 15 Monaten Kursdauer zahlst du zum Beispiel 15 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Technische/r Fachwirt/in“ bieten wir 15 gleiche Monatsraten an, eine pro Monat des rund 15-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
 reihenfolge: 34
 ---
 

@@ -74,7 +74,7 @@ faq:
 - frage: Was ist mit der AEVO?
   antwort: Nach bestandener Prüfung bist du vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Du kannst bei der IHK zusätzlich eine praktische Prüfung beantragen; mit ihr hast du die Ausbildereignung vollständig nachgewiesen.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 13 Monaten Kursdauer zahlst du zum Beispiel 13 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Fachwirt/in im Gesundheits- und Sozialwesen“ lässt sich in 13 gleiche Monatsraten aufteilen, passend zu den rund 13 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 22
 ---
 

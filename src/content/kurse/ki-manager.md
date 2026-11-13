@@ -34,7 +34,7 @@ inhalte:
   - Grenzen, Halluzinationen und typische Fehler
 - titel: Recht, Risiken und Verantwortung
   punkte:
-  - EU-KI-Verordnung (AI Act) – Risikoklassen, Pflicht zur KI-Kompetenz, Pflichten als Betreiber
+  - EU-KI-Verordnung (AI Act) – Risikoklassen, Förderung der KI-Kompetenz, Pflichten als Betreiber
   - Datenschutz, Urheberrecht und Geschäftsgeheimnisse
   - Eine KI-Richtlinie für das eigene Unternehmen entwerfen
 - titel: Anwendungsfälle finden und bewerten
@@ -73,11 +73,11 @@ faq:
 - frage: Was ist mein Projekt im Kurs?
   antwort: Du wählst einen konkreten Anwendungsfall aus deinem Unternehmen, etwa die Beantwortung von Kundenanfragen oder die Auswertung von Verträgen. Dazu erstellst du Bewertung, Fahrplan und Regeln für den Einsatz und stellst alles in den letzten Terminen in der Gruppe vor.
 - frage: Wie aktuell ist der Rechtsteil?
-  antwort: Die EU-KI-Verordnung gilt schrittweise; seit Februar 2025 müssen Unternehmen zum Beispiel für ausreichende KI-Kompetenz ihrer Beschäftigten sorgen. Wir arbeiten mit dem Stand zum Kursbeginn. Eine Rechtsberatung für deinen Einzelfall ersetzt der Kurs nicht.
+  antwort: Die EU-KI-Verordnung gilt schrittweise, und einzelne Pflichten wurden 2026 angepasst – etwa die zur KI-Kompetenz der Beschäftigten in Art. 4. Wir arbeiten mit dem Stand zum Kursbeginn. Eine Rechtsberatung für deinen Einzelfall ersetzt der Kurs nicht.
 - frage: Wie bekomme ich das Zertifikat?
   antwort: Das Zertifikat bekommst du nach regelmäßiger Teilnahme am Live-Unterricht und der Vorstellung deines Vorhabens in der Gruppe.
 - frage: Ist das ein IHK-Abschluss?
-  antwort: Nein. Du bekommst ein Zertifikat der waybuild Akademie, das Inhalte und Umfang des Kurses beschreibt. Es ist kein öffentlich-rechtlicher Abschluss.
+  antwort: Nein. Das Zertifikat der waybuild Akademie beschreibt Inhalte und Umfang der 64 Unterrichtseinheiten und ist kein öffentlich-rechtlicher Abschluss.
 - frage: Kann ich in Raten zahlen?
   antwort: Ja, ohne Aufpreis – zum Beispiel in zwei Monatsraten über die Kursdauer. Den Ratenplan findest du in deiner Rechnung.
 reihenfolge: 10
@@ -93,6 +93,6 @@ In diesem Kurs lernst du, wie KI funktioniert, wo sie im Unternehmen sinnvoll hi
 - eine KI-Richtlinie und einen Einführungsfahrplan entwerfen
 - ein KI-Vorhaben vor Geschäftsführung oder Team überzeugend vorstellen
 
-Der Kurs läuft an 16 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis erklären jedes Thema an Beispielen, danach probierst du es direkt aus und wir besprechen die Ergebnisse gemeinsam. Ab der Mitte des Kurses arbeitest du an deinem eigenen KI-Vorhaben und stellst es zum Schluss in der Gruppe vor.
+Der Kurs läuft an 16 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis erklären jedes Thema an Beispielen, danach probierst du es direkt im Live-Termin aus und wir besprechen die Ergebnisse gemeinsam. Ab der Mitte des Kurses arbeitest du an deinem eigenen KI-Vorhaben und stellst es zum Schluss in der Gruppe vor.
 
 Der Kurs passt zu dir, wenn du KI in deinem Team oder Unternehmen einführen oder begleiten sollst und dafür einen klaren Plan brauchst – ganz ohne Programmierkenntnisse.

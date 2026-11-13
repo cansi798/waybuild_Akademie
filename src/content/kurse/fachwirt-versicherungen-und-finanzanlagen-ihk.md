@@ -55,7 +55,7 @@ faq:
 - frage: Bekomme ich damit auch die Ausbildereignung?
   antwort: Ja. Laut Fortbildungsordnung weist du mit der bestandenen Prüfung auch die berufs- und arbeitspädagogische Eignung nach und erhältst das Zeugnis nach der Ausbilder-Eignungsverordnung.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 12 Monaten Kursdauer zahlst du zum Beispiel 12 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Bachelor Professional in Versicherungen und Finanzanlagen“ bieten wir 12 gleiche Monatsraten an, eine pro Monat des rund 12-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
 reihenfolge: 46
 ---
 

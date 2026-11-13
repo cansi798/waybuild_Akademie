@@ -64,7 +64,7 @@ faq:
 - frage: Reichen 640 Unterrichtseinheiten?
   antwort: Die Fortbildungsordnung nennt einen Lernumfang von in der Regel mindestens 1.600 Stunden. Er umfasst neben dem Unterricht auch dein Wissen aus der Fachwirt-Stufe und deine eigene Vorbereitung. Unsere 640 Live-Einheiten decken alle fünf Handlungsbereiche ab; wie viel Zeit du zusätzlich einplanst, entscheidest du selbst.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 14 Monaten Kursdauer zahlst du zum Beispiel 14 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Betriebswirt/in“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 14 gleiche Monatsraten über die Kursdauer von rund 14 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
 reihenfolge: 23
 ---
 

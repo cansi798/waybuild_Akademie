@@ -62,7 +62,7 @@ faq:
 - frage: Wann sollte ich die AEVO machen?
   antwort: Die Verordnung sieht vor, dass du die berufs- und arbeitspädagogischen Qualifikationen in der Regel vor der Zulassung zu den Basisqualifikationen erwirbst; nachweisen musst du sie spätestens vor der letzten Prüfungsleistung. Unser AEVO-Kurs passt deshalb gut vor den Start.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei rund 17 Monaten Kursdauer zahlst du zum Beispiel 17 gleiche Monatsraten; jede Rate deckt den folgenden Unterrichtsabschnitt. Den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Industriemeister/in Elektrotechnik“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 17 gleiche Monatsraten über die Kursdauer von rund 17 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
 reihenfolge: 51
 ---
 
