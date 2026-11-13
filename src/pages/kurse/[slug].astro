@@ -290,7 +290,7 @@ const schema = entwurf ? [] : [...kursSchema(kurs, termine, Astro.site), ...(d.f
               {d.preis.hinweis && <p>{d.preis.hinweis}</p>}
               {ihk && !coaching && !hinweisEnthaeltIhk && <p>Die Prüfungsgebühr deiner IHK ist nicht enthalten.</p>}
               {!coaching && <p>Ab 3 Personen in einer Anmeldung gibt es 10 % Rabatt.</p>}
-              {d.preis.raten && <p class="rounded-xl bg-white/10 p-3 font-semibold text-white" data-raten>Ratenzahlung ohne Aufpreis möglich – den Ratenplan findest du in deiner Rechnung.</p>}
+              {d.preis.raten && <p class="rounded-xl bg-white/10 p-3 font-semibold text-white" data-raten>Ratenzahlung ohne Aufpreis möglich – gib es bei der Anmeldung an; den Ratenplan findest du in deiner Rechnung.</p>}
             </div>
           </div>
           <div class="bg-white p-6 sm:p-7">
