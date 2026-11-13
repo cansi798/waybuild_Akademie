@@ -49,7 +49,7 @@ faq:
 - frage: Welche Ausbildungsordnung gilt für mich?
   antwort: Das hängt vom Beginn deiner Ausbildung ab. Wer seit August 2024 begonnen hat, wird in zwei Teilen geprüft – dafür gibt es unsere Kurse Teil 1 und Teil 2. Im Zweifel fragst du deine IHK.
 - frage: Warum steht noch kein Termin da?
-  antwort: Nach der alten Ordnung prüfen nur noch wenige. Wir legen einen Termin fest, sobald genug Anfragen da sind. Merk dich unverbindlich vor, dann melden wir uns.
+  antwort: Wir legen den Termin nach Nachfrage fest. Merk dich unverbindlich vor, dann melden wir uns, sobald er feststeht.
 - frage: Hilft mir der Kurs auch bei einer Wiederholungsprüfung?
   antwort: Ja. Sag uns bei der Anmeldung, welche Bereiche du wiederholst. Dann kannst du dich im Kurs auf diese Themen konzentrieren.
 - frage: Ist die waybuild Akademie Teil der IHK?

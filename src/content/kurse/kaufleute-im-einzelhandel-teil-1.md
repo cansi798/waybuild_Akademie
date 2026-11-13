@@ -72,4 +72,4 @@ Jeder Abend hat einen Schwerpunkt: kurze Erklärung, dann Aufgaben im Stil der P
 
 Der Kurs eignet sich auch, wenn du zur Verkäuferin oder zum Verkäufer ausgebildet wirst, denn die Prüfungsinhalte überschneiden sich stark.
 
-Für die weiteren Prüfungsbereiche gibt es unseren Kurs „Kaufleute im Einzelhandel“. Die Anmeldung zur Prüfung läuft über deinen Betrieb bei deiner IHK.
+Für die weiteren Prüfungsbereiche gibt es unseren Kurs „Kaufleute im Einzelhandel – Teil 2“. Die Anmeldung zur Prüfung läuft über deinen Betrieb bei deiner IHK.

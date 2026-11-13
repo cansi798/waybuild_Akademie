@@ -1,8 +1,8 @@
 ---
 saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
-titel: Kaufleute im E-Commerce
-untertitel: Vorbereitung auf die IHK-Abschlussprüfung
+titel: Kaufleute im E-Commerce – Teil 2
+untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung
 kurzbeschreibung: 'Bereite dich gezielt auf deine Abschlussprüfung vor: Du übst Sortiment, Online-Vertrieb, Geschäftsprozesse im E-Commerce und WiSo an prüfungsnahen Aufgaben – live-online am Abend.'
 status: entwurf
 art: kurs

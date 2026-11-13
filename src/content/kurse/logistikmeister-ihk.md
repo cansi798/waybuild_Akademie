@@ -20,7 +20,7 @@ zielgruppe:
 voraussetzungen:
 - Für den ersten Teil zum Beispiel eine Ausbildung in der Logistik, eine andere Ausbildung mit Berufspraxis oder mehrere Jahre Berufspraxis
 - Für den zweiten Teil brauchst du den bestandenen ersten Teil und weitere einschlägige Praxis
-- Den Nachweis der Ausbildereignung (AEVO) brauchst du spätestens vor dem letzten Prüfungsteil
+- Bis zur letzten Prüfungsleistung brauchst du den Nachweis der Ausbildereignung (AEVO)
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
@@ -58,7 +58,7 @@ faq:
 - frage: Logistikmeister oder Fachwirt für Logistiksysteme – was passt besser?
   antwort: Der Meister ist stark auf Führung im operativen Bereich ausgerichtet, der Fachwirt eher auf Planung und Konzepte. Wir beraten dich gern, die Zulassung prüft deine IHK.
 - frage: Brauche ich den Ausbilderschein?
-  antwort: Ja, spätestens vor dem letzten Prüfungsteil. Unser AEVO-Kurs lässt sich gut vorher oder nebenbei belegen.
+  antwort: Ja, aber erst bis zur letzten Prüfungsleistung. Unser AEVO-Kurs lässt sich gut vorher oder nebenbei belegen.
 - frage: Kann mein Betrieb die Kosten übernehmen?
   antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“. Raten ohne Aufpreis sind ebenfalls möglich.
 reihenfolge: 52
@@ -66,8 +66,8 @@ reihenfolge: 52
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Logistikmeister bzw. zur Geprüften Logistikmeisterin vor. Nach den grundlegenden Qualifikationen geht es um Logistikprozesse, betriebliche Organisation und Kostenwesen sowie Führung und Personal.
 
-Der Unterricht läuft live-online an zwei Abenden pro Woche und an einzelnen Samstagen. Erfahrene IHK-Prüfer und Dozenten mit langjähriger Praxis üben mit dir Situationsaufgaben aus Lager, Umschlag und Transport.
+Der Unterricht läuft live-online an zwei Abenden pro Woche und an einzelnen Samstagen. Dozenten mit IHK-Prüfer-Erfahrung üben mit dir Situationsaufgaben aus Lager, Umschlag und Transport.
 
-Wichtig: Praktische Prüfungsanteile und Übungen an Maschinen, Anlagen oder in der Werkstatt sind nicht Teil des Kurses. Wir bereiten dich auf die schriftlichen Situationsaufgaben und das Fachgespräch vor.
+Wichtig: Praktische Prüfungsanteile und Übungen an Geräten, Fahrzeugen oder im Lager sind nicht Teil des Kurses. Wir bereiten dich auf die schriftlichen Situationsaufgaben und das Fachgespräch vor.
 
 Über deine Zulassung entscheidet deine IHK; zur Prüfung meldest du dich selbst dort an.

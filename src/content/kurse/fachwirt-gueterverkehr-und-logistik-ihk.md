@@ -58,7 +58,7 @@ reihenfolge: 41
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Güterverkehr und Logistik vor. Im Mittelpunkt stehen drei Bereiche: Logistikleistungen entwickeln und vermarkten, Logistikleistungen erstellen sowie Kommunikation, Führung und Zusammenarbeit.
 
-Der Unterricht läuft live-online an zwei Abenden pro Woche. Erfahrene IHK-Prüfer und Dozenten mit langjähriger Praxis erklären die Themen anhand typischer Situationen aus dem Speditionsalltag. Aufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht.
+Der Unterricht läuft live-online an zwei Abenden pro Woche. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen anhand typischer Situationen aus dem Speditionsalltag. Aufgaben im Stil der Prüfung besprechen wir gemeinsam im Live-Unterricht.
 
 Der Lehrgang passt zu dir, wenn du in Spedition, Transport oder Logistik arbeitest und künftig Kunden, Projekte oder Teams verantworten willst.
 

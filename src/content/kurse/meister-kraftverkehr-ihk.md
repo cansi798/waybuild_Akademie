@@ -20,7 +20,7 @@ zielgruppe:
 voraussetzungen:
 - Für den ersten Teil zum Beispiel eine Ausbildung als Berufskraftfahrer/in oder Fachkraft im Fahrbetrieb, eine andere Ausbildung mit Berufspraxis oder mehrere Jahre Berufspraxis
 - Für den zweiten Teil brauchst du den bestandenen ersten Teil und weitere Berufspraxis
-- Für das Fachgespräch brauchst du den Nachweis der Ausbildereignung (AEVO)
+- Bis zur letzten Prüfungsleistung brauchst du den Nachweis der Ausbildereignung (AEVO)
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:

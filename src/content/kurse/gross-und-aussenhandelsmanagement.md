@@ -1,8 +1,8 @@
 ---
 saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
-titel: Kaufleute für Groß- und Außenhandelsmanagement
-untertitel: Vorbereitung auf die IHK-Abschlussprüfung
+titel: Kaufleute für Groß- und Außenhandelsmanagement – Teil 2 Großhandel
+untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung, Fachrichtung Großhandel
 kurzbeschreibung: 'Bereite dich gezielt auf deine Abschlussprüfung vor: Du übst Sortiment, Beschaffung, Vertrieb, kaufmännische Steuerung und WiSo an prüfungsnahen Aufgaben – live-online am Abend.'
 status: entwurf
 art: kurs

@@ -20,7 +20,7 @@ zielgruppe:
 voraussetzungen:
 - Für die Basisqualifikationen zum Beispiel eine Ausbildung in einem Metallberuf, eine andere Ausbildung mit Berufspraxis oder mehrere Jahre Berufspraxis
 - Für den zweiten Teil brauchst du die bestandenen Basisqualifikationen und weitere Berufspraxis
-- Den Nachweis der Ausbildereignung (AEVO) brauchst du spätestens vor dem letzten Prüfungsteil
+- Bis zur letzten Prüfungsleistung brauchst du den Nachweis der Ausbildereignung (AEVO)
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
@@ -58,7 +58,7 @@ faq:
 - frage: Ich habe Probleme mit Mathe und Physik. Was kann ich tun?
   antwort: Vor dem Start hilft dir unser Vorkurs „Naturwissenschaftliche und technische Grundlagen“. Dort frischst du Rechnen, Formeln und Physik gezielt auf.
 - frage: Brauche ich den Ausbilderschein schon zu Beginn?
-  antwort: Nein. Du brauchst ihn spätestens vor dem letzten Prüfungsteil. Unseren AEVO-Kurs kannst du vorher oder nebenbei belegen.
+  antwort: Nein. Du brauchst den Nachweis erst bis zur letzten Prüfungsleistung. Unseren AEVO-Kurs kannst du vorher oder nebenbei belegen.
 - frage: Wie zahle ich die Teilnahmegebühr?
   antwort: Auf Wunsch in Raten ohne Aufpreis. Zahlt dein Arbeitgeber, stellen wir die Rechnung an das Unternehmen.
 reihenfolge: 50
@@ -66,7 +66,7 @@ reihenfolge: 50
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Industriemeister bzw. zur Geprüften Industriemeisterin der Fachrichtung Metall vor. Im ersten Teil geht es um die Basisqualifikationen wie Recht, Betriebswirtschaft und naturwissenschaftlich-technische Grundlagen, im zweiten um Technik, Organisation sowie Führung und Personal.
 
-Der Unterricht läuft live-online an zwei Abenden pro Woche und an einzelnen Samstagen. Erfahrene IHK-Prüfer und Dozenten mit langjähriger Praxis rechnen mit dir Aufgaben im Stil der Prüfung und besprechen Lösungswege gemeinsam.
+Der Unterricht läuft live-online an zwei Abenden pro Woche und an einzelnen Samstagen. Dozenten mit IHK-Prüfer-Erfahrung rechnen mit dir Aufgaben im Stil der Prüfung und besprechen Lösungswege gemeinsam.
 
 Wichtig: Praktische Prüfungsanteile und Übungen an Maschinen, Anlagen oder in der Werkstatt sind nicht Teil des Kurses. Wir bereiten dich auf die schriftlichen Situationsaufgaben und das Fachgespräch vor.
 

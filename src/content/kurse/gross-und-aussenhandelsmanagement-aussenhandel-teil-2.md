@@ -78,4 +78,4 @@ Wir arbeiten an typischen Prüfungsfällen: Lieferbedingungen auswählen, Zahlun
 
 Am Ende bekommst du Hinweise für das Fachgespräch. Die Unterlagen stehen zum Download bereit.
 
-Für die Fachrichtung Großhandel nutze bitte unseren Kurs „Kaufleute für Groß- und Außenhandelsmanagement“.
+Für die Fachrichtung Großhandel nutze bitte unseren Kurs „Kaufleute für Groß- und Außenhandelsmanagement – Teil 2 Großhandel“.

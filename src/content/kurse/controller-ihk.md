@@ -67,7 +67,7 @@ reihenfolge: 34
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Controller bzw. zur Geprüften Controllerin vor. Du lernst Kosten zu analysieren und zu steuern, Planungen und Budgets aufzubauen, Jahresabschlüsse auszuwerten und Ergebnisse so aufzubereiten, dass andere damit entscheiden können.
 
-Der Unterricht läuft live-online an zwei Abenden pro Woche. Erfahrene IHK-Prüfer und Dozenten mit langjähriger Praxis rechnen mit dir Fälle durch, wie sie in der Prüfung vorkommen, und besprechen die Lösungswege live.
+Der Unterricht läuft live-online an zwei Abenden pro Woche. Dozenten mit IHK-Prüfer-Erfahrung rechnen mit dir Fälle durch, wie sie in der Prüfung vorkommen, und besprechen die Lösungswege live.
 
 Der Lehrgang passt zu dir, wenn du schon mit Zahlen arbeitest und künftig Unternehmensbereiche beraten und steuern willst.
 

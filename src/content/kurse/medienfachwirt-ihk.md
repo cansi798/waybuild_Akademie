@@ -19,7 +19,8 @@ zielgruppe:
 - Mitarbeitende, die Produktionsprojekte leiten wollen
 voraussetzungen:
 - Für den ersten Teil zum Beispiel eine Ausbildung in der Druck- und Medienwirtschaft, eine andere Ausbildung mit Berufspraxis oder mehrere Jahre Berufspraxis
-- Für den zweiten Teil brauchst du den bestandenen ersten Teil und den Nachweis der Ausbildereignung (AEVO)
+- Für den zweiten Teil brauchst du den bestandenen ersten Teil
+- Bis zur letzten Prüfungsleistung brauchst du den Nachweis der Ausbildereignung (AEVO)
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:
@@ -49,7 +50,7 @@ faq:
 - frage: Gibt es den Lehrgang auch mit Schwerpunkt Print?
   antwort: Wir planen zunächst den Schwerpunkt Digitalmedien. Print-Themen kommen in der Produktion trotzdem vor. Wenn du den Schwerpunkt Print brauchst, sag uns Bescheid.
 - frage: Warum brauche ich den Ausbilderschein?
-  antwort: Die Prüfungsordnung verlangt den Nachweis der Ausbildereignung vor dem letzten Prüfungsteil. Unseren AEVO-Kurs kannst du vorher oder nebenbei belegen.
+  antwort: Die Prüfungsordnung verlangt den Nachweis der Ausbildereignung bis zur letzten Prüfungsleistung. Unseren AEVO-Kurs kannst du vorher oder nebenbei belegen.
 - frage: Wie ist die Prüfung aufgebaut?
   antwort: Zuerst legst du die Basisqualifikationen ab, später die handlungsspezifischen Qualifikationen. Termine und Ablauf bestimmt deine IHK.
 - frage: Kann ich die Teilnahmegebühr aufteilen?
@@ -59,7 +60,7 @@ reihenfolge: 45
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Medienfachwirt bzw. zur Geprüften Medienfachwirtin vor. Im ersten Teil geht es um die Basisqualifikationen wie Recht, Betriebswirtschaft und Zusammenarbeit, im zweiten um Medienproduktion sowie Führung und Organisation.
 
-Der Unterricht läuft live-online an zwei Abenden pro Woche. Erfahrene IHK-Prüfer und Dozenten mit langjähriger Praxis erklären die Themen anhand von Beispielen aus Druck, Verlag und Digitalproduktion und üben mit dir Aufgaben im Stil der Prüfung. Fragen klärst du direkt im Live-Unterricht.
+Der Unterricht läuft live-online an zwei Abenden pro Woche. Dozenten mit IHK-Prüfer-Erfahrung erklären die Themen anhand von Beispielen aus Druck, Verlag und Digitalproduktion und üben mit dir Aufgaben im Stil der Prüfung. Fragen klärst du direkt im Live-Unterricht.
 
 Der Lehrgang passt zu dir, wenn du in der Medienproduktion arbeitest und künftig Projekte, Budgets und Teams verantworten willst.
 

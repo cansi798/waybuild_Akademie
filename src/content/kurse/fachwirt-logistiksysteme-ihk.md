@@ -53,8 +53,8 @@ faq:
   antwort: Hier geht es stärker um die Planung und Verbesserung ganzer Logistiksysteme – Lager, Materialfluss, Distribution. Der Güterverkehrs-Fachwirt legt den Schwerpunkt auf Transport- und Speditionsleistungen.
 - frage: Kann ich als Fachkraft für Lagerlogistik zugelassen werden?
   antwort: In der Regel mit zusätzlicher Berufspraxis. Die genauen Voraussetzungen und die Entscheidung liegen bei deiner IHK.
-- frage: Wird der Ausbilderschein angerechnet?
-  antwort: 'Umgekehrt kann es eine Erleichterung geben: Nach bestandener Fachwirt-Prüfung entfällt oft der schriftliche Teil der AEVO-Prüfung. Das entscheidet deine IHK.'
+- frage: Brauche ich den Ausbilderschein?
+  antwort: Ob und wann du den Nachweis der Ausbildereignung brauchst, regelt die Prüfungsordnung deiner IHK. Falls du ihn noch nicht hast, kannst du unseren AEVO-Kurs vorher oder nebenbei belegen.
 - frage: Kann mein Arbeitgeber zahlen?
   antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“. Auch Raten ohne Aufpreis sind möglich.
 reihenfolge: 42

@@ -14,7 +14,7 @@ preis:
   hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
   raten: false
 zielgruppe:
-- Fachkräfte vor einem Lehrgang zum Industriemeister oder Logistikmeister
+- Fachkräfte vor einem Lehrgang zum Industriemeister
 - Alle, deren Schulmathe schon länger zurückliegt
 - Teilnehmende technischer Fortbildungen, die sicherer rechnen wollen
 voraussetzungen:
@@ -43,13 +43,13 @@ faq:
 - frage: Ist der Vorkurs Pflicht für den Meisterlehrgang?
   antwort: Nein. Er ist ein freiwilliges Angebot für alle, die Mathe und Physik vor dem Start auffrischen wollen.
 - frage: Gibt es am Ende eine Prüfung?
-  antwort: Nein. Du bekommst eine Teilnahmebescheinigung. Die naturwissenschaftlichen Grundlagen werden später in deiner Meisterprüfung bei der IHK geprüft.
+  antwort: Nein. Du bekommst eine Teilnahmebescheinigung. Die naturwissenschaftlichen und technischen Grundlagen sind später Teil deiner Industriemeister-Prüfung bei der IHK.
 - frage: Brauche ich einen bestimmten Taschenrechner?
   antwort: Ein normaler wissenschaftlicher Taschenrechner reicht. Welche Hilfsmittel in deiner Prüfung erlaubt sind, legt deine IHK fest.
 reihenfolge: 54
 ---
 
-Der Vorkurs frischt die mathematischen und physikalischen Grundlagen auf, die du in einem Industriemeister- oder Logistikmeister-Lehrgang brauchst. Du rechnest wieder sicher mit Prozenten, Formeln und Flächen und verstehst die wichtigsten Gesetze aus Mechanik und Elektrotechnik.
+Der Vorkurs frischt die mathematischen und physikalischen Grundlagen auf, die du in einem Industriemeister-Lehrgang brauchst. Du rechnest wieder sicher mit Prozenten, Formeln und Flächen und verstehst die wichtigsten Gesetze aus Mechanik und Elektrotechnik.
 
 Der Kurs läuft live-online an acht Abenden. Jeder Abend beginnt mit einer kurzen Erklärung, danach rechnest du Aufgaben und wir besprechen die Lösungswege gemeinsam. Die Unterlagen bekommst du zum Download.
 

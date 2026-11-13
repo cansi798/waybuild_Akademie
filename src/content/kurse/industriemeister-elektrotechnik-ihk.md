@@ -20,7 +20,7 @@ zielgruppe:
 voraussetzungen:
 - Für die Basisqualifikationen zum Beispiel eine Ausbildung in einem Elektroberuf, eine andere Ausbildung mit Berufspraxis oder mehrere Jahre Berufspraxis
 - Für den zweiten Teil brauchst du die bestandenen Basisqualifikationen und weitere Berufspraxis
-- Den Nachweis der Ausbildereignung (AEVO) brauchst du spätestens vor dem letzten Prüfungsteil
+- Bis zur letzten Prüfungsleistung brauchst du den Nachweis der Ausbildereignung (AEVO)
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
 inhalte:

@@ -57,7 +57,7 @@ faq:
 - frage: Spielt es eine Rolle, welches Shopsystem mein Betrieb nutzt?
   antwort: Nein. Die Prüfung ist unabhängig von bestimmten Programmen. Wir arbeiten mit allgemeinen Beispielen aus dem Onlinehandel.
 - frage: Gibt es auch einen Kurs für Teil 2?
-  antwort: Ja, unser Kurs „Kaufleute im E-Commerce“ bereitet dich auf die weiteren Prüfungsbereiche vor.
+  antwort: Ja, unser Kurs „Kaufleute im E-Commerce – Teil 2“ bereitet dich auf die weiteren Prüfungsbereiche vor.
 - frage: Zahlt die IHK den Kurs?
   antwort: Nein. Wir sind ein unabhängiger Anbieter. Den Kurs zahlst du selbst oder dein Betrieb; die Prüfung rechnet die IHK getrennt ab.
 reihenfolge: 63

@@ -1,8 +1,8 @@
 ---
 saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
-titel: Kaufleute im Einzelhandel
-untertitel: Vorbereitung auf die IHK-Abschlussprüfung
+titel: Kaufleute im Einzelhandel – Teil 2
+untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung
 kurzbeschreibung: 'Bereite dich gezielt auf deine Abschlussprüfung vor: Du übst Verkauf, Warenwirtschaft, Geschäftsprozesse im Handel und WiSo an prüfungsnahen Aufgaben – live-online am Abend.'
 status: entwurf
 art: kurs

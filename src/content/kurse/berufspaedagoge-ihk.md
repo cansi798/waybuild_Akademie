@@ -58,7 +58,7 @@ reihenfolge: 13
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufspädagogen bzw. zur Geprüften Berufspädagogin vor. Du lernst, die Kernprozesse der beruflichen Bildung zu steuern, Aus- und Weiterbildung zu leiten und Personalentwicklung im Unternehmen zu gestalten.
 
-Der Unterricht läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Erfahrene IHK-Prüfer und Dozenten mit langjähriger Praxis arbeiten mit Fällen aus Ausbildungsleitung und Bildungsmanagement, die ihr gemeinsam live besprecht.
+Der Unterricht läuft live-online an zwei Abenden pro Woche in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Ausbildungsleitung und Bildungsmanagement, die ihr gemeinsam live besprecht.
 
 Der Lehrgang passt zu dir, wenn du Bildung in deinem Unternehmen verantwortest oder diese Rolle anstrebst.
 
