@@ -2,6 +2,7 @@
 // Mit JavaScript: Umschalter Liste/Karten (gemerkt in localStorage), Schnellsuche, Filter Säule + Kategorie
 // (Adresse ?saeule=…&kategorie=…), Trefferzahl (aria-live), Zähler in Gruppen und Sprungleiste, leere Meldung.
 import { saeuleAusParameter } from '../seiten/filter-parameter';
+import { druecke, setzeAdresse } from '../seiten/katalog-filter';
 import { suchNormal } from './suche';
 
 export const ANSICHT_SCHLUESSEL = 'akademie-kursansicht';
@@ -65,7 +66,7 @@ export function initUebersicht() {
       auswahl.replaceChildren(...angeboten.map((o) => new Option(o.text, o.wert, false, o.wert === kategorie)));
       auswahl.value = kategorie;
     }
-    saeulenKnoepfe.forEach((b) => b.setAttribute('aria-pressed', String((b.dataset.filterSaeule ?? '') === saeule)));
+    druecke(saeulenKnoepfe, 'data-filter-saeule', saeule);
     const woerter = (suche?.value ?? '').split(/\s+/).map(suchNormal).filter(Boolean);
 
     let n = 0;
@@ -98,14 +99,7 @@ export function initUebersicht() {
     if (leerBegriff) leerBegriff.textContent = suche?.value.trim() ? ` zu „${suche.value.trim()}“` : '';
     const gefiltert = !!(saeule || kategorie || woerter.length);
     zurueck.forEach((b) => (b.hidden = !gefiltert && !!b.closest('[data-filter]')));
-    if (adresse) {
-      const url = new URL(location.href);
-      for (const [k, v] of Object.entries({ saeule, kategorie })) {
-        if (v) url.searchParams.set(k, v);
-        else url.searchParams.delete(k);
-      }
-      history.replaceState(null, '', url);
-    }
+    if (adresse) setzeAdresse({ saeule, kategorie });
   };
 
   saeulenKnoepfe.forEach((b) =>

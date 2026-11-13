@@ -51,7 +51,7 @@ const zahl = (n: number) => `${n} ${n === 1 ? 'Kurs' : 'Kurse'}`;
         <div class="ue-suche flex-1" role="search">
           <label for="kurs-suche" class="sr-only">Kurse durchsuchen</label>
           <svg aria-hidden="true" viewBox="0 0 20 20"><circle cx="8.5" cy="8.5" r="5.75" fill="none" stroke="currentColor" stroke-width="2" /><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
-          <input id="kurs-suche" type="search" autocomplete="off" enterkeyhint="search" placeholder="Kurs suchen, z. B. Fachwirt, AP1, Python" data-suche-feld />
+          <input id="kurs-suche" type="search" autocomplete="off" enterkeyhint="search" placeholder="Kurs suchen, z. B. Fachwirt, AP1" data-suche-feld />
         </div>
         <div class="ue-umschalter self-start sm:self-auto" role="group" aria-label="Ansicht">
           <button type="button" data-ansicht-wahl="liste" aria-pressed={standard === 'liste' ? 'true' : 'false'}>
@@ -66,7 +66,7 @@ const zahl = (n: number) => `${n} ${n === 1 ? 'Kurs' : 'Kurse'}`;
       <div class="mt-5 grid gap-5 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end lg:gap-8">
         <fieldset>
           <legend class="text-sm font-semibold text-gedaempft">Bereich</legend>
-          <div class="mt-2 flex flex-wrap gap-2" role="group" aria-label="Nach Bereich filtern">
+          <div class="mt-2 flex flex-wrap gap-2">
             <button type="button" class="chip" data-filter-saeule="" aria-pressed="true">Alle</button>
             {
               gruppen.map((g) => (
