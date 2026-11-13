@@ -2,79 +2,76 @@
 saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute für Spedition und Logistikdienstleistung
-untertitel: Vorbereitung auf die IHK-Abschlussprüfung
-kurzbeschreibung: 'Bereite dich gezielt auf die Abschlussprüfung vor: Du übst Speditionsaufträge, Verkehrsträger, Frachtberechnung, Kostenkontrolle und WiSo an Prüfungsaufgaben – live-online an 12 Abenden.'
+untertitel: Leistungserstellung, kaufmännische Steuerung und Kontrolle, WiSo (Abschlussprüfung)
+kurzbeschreibung: Übe die schriftlichen Bereiche der Abschlussprüfung – Leistungserstellung in Spedition und Logistik, kaufmännische Steuerung und WiSo – mit Fracht- und Kalkulationsfällen. Live online.
 status: entwurf
 art: kurs
 ue: 36
-dauer: ca. 6 Wochen
+dauer: ca. 6 Wochen (12 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
-  betrag: 359
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  betrag: 349
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende in Spedition und Logistik vor der Abschlussprüfung
-- Umschülerinnen und Umschüler in diesem Beruf
-- Alle, die Fracht- und Kalkulationsaufgaben sicherer lösen wollen
+  - Auszubildende Kaufleute für Spedition und Logistikdienstleistung vor der Abschlussprüfung
+  - Umschülerinnen und Umschüler in Spedition und Logistik
+  - Prüflinge, die einen schriftlichen Bereich wiederholen
 voraussetzungen:
-- Du bist in der Ausbildung oder Umschulung zur Kauffrau oder zum Kaufmann für Spedition und Logistikdienstleistung
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Fachwissen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Taschenrechner und Englisch auf Schulniveau
+  - Computer mit stabiler Internetverbindung und aktuellem Browser, Headset oder Kopfhörer mit Mikrofon
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Leistungserstellung in Spedition und Logistik
-  punkte:
-  - Verkehrsträger Straße, Schiene, See und Luft vergleichen
-  - Speditionsauftrag, Frachtpapiere und Haftung
-  - Lagerei und logistische Zusatzleistungen
-  - Zoll und grenzüberschreitende Transporte in Grundzügen
-- titel: Kaufmännische Steuerung und Kontrolle
-  punkte:
-  - Angebote kalkulieren und Frachten berechnen
-  - Kosten- und Leistungsrechnung
-  - Buchführung und Kennzahlen
-- titel: Wirtschafts- und Sozialkunde
-  punkte:
-  - Ausbildungsvertrag, Rechte und Pflichten in der Ausbildung
-  - Arbeitsvertrag, Kündigung, Arbeitsschutz und Jugendarbeitsschutz
-  - Sozialversicherung und Entgeltabrechnung in Grundzügen
-  - Betriebsrat, Tarifvertrag und Mitbestimmung
-  - Rechtsformen von Unternehmen und wirtschaftliche Zusammenhänge
-- titel: Fallbezogenes Fachgespräch
-  punkte:
-  - Ablauf und Bewertung
-  - Einen Fall aus deinem Einsatzgebiet überzeugend darstellen
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - titel: Leistungserstellung in Spedition und Logistik (180 Minuten)
+    punkte:
+      - Transport, Umschlag und Lagerleistungen verkehrsträgerübergreifend planen
+      - Speditionsaufträge für einen Verkehrsträger durchführen – Straße, Schiene, Luft, Binnen- oder Seeschifffahrt
+      - Transportbestimmungen, Haftung und Frachtdokumente
+      - Englischsprachige Formulare bearbeiten
+      - Logistische Dienstleistungen und Marketing
+  - titel: Kaufmännische Steuerung und Kontrolle (90 Minuten)
+    punkte:
+      - Preisangebote für Speditionsleistungen erstellen
+      - Kosten- und Leistungsrechnung, Deckungsbeitrag
+      - Controlling und Erfolgsrechnung
+  - titel: Wirtschafts- und Sozialkunde
+    punkte:
+      - Ausbildungs- und Arbeitsvertrag, Kündigung, Arbeitsschutz
+      - Sozialversicherung, Tarifvertrag und Mitbestimmung im Betrieb
+      - Die Speditions- und Logistikbranche als Wirtschaftsfaktor
+  - titel: Fallbezogenes Fachgespräch
+    punkte:
+      - Ablauf – zwei Aufgaben zur Wahl, bis zu 20 Minuten Vorbereitung, bis zu 30 Minuten Gespräch
+      - Lösungsvorschläge aus deinem Ausbildungsschwerpunkt begründen
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
-- id: spedition-2027-sommer
-  start: 2027-03-11
-  ende: 2027-04-20
-  pruefung: 2027-04-27
-  pruefungHinweis: Schriftliche Abschlussprüfung voraussichtlich am 27./28.04.2027 – verbindlich ist die Einladung deiner IHK
-  anmeldeschluss: 2027-03-04
-  ausfall: []
-- id: spedition-2027-winter
-  start: 2027-10-07
-  ende: 2027-11-16
-  pruefung: 2027-11-23
-  pruefungHinweis: Schriftliche Abschlussprüfung voraussichtlich am 23./24.11.2027 – verbindlich ist die Einladung deiner IHK
-  anmeldeschluss: 2027-09-30
-  ausfall: []
+  - id: spedition-2027-sommer
+    start: 2027-03-09
+    ende: 2027-04-20
+    pruefung: 2027-04-27
+    pruefungHinweis: Schriftliche Prüfung am 27. und 28.04.2027 – Leistungserstellung am ersten Tag. Verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-03-02
+    ausfall:
+      - 2027-04-01
+  - id: spedition-2027-winter
+    start: 2027-10-07
+    ende: 2027-11-16
+    pruefung: 2027-11-23
+    pruefungHinweis: Schriftliche Prüfung am 23. und 24.11.2027 – Leistungserstellung am ersten Tag. Verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-09-30
 faq:
-- frage: Behandelt ihr alle Verkehrsträger?
-  antwort: Ja, Straße, Schiene, See und Luft kommen in der Prüfung vor – auch wenn dein Betrieb vielleicht nur einen davon nutzt. Wir legen den Schwerpunkt auf typische Prüfungsfälle.
-- frage: Wie bereite ich mich auf das Fachgespräch vor?
-  antwort: Wir zeigen dir den Ablauf, gehen typische Fragen durch und üben, einen Fall klar zu gliedern. Zusätzlich kannst du ein Einzelcoaching buchen.
-- frage: Wer stellt die Rechnung aus und an wen?
-  antwort: Die Rechnung kommt von uns. Du entscheidest bei der Anmeldung, ob sie an dich oder an deinen Betrieb geht.
-- frage: Ist das ein Angebot der IHK?
-  antwort: Nein. Die waybuild Akademie ist unabhängig. Deine Prüfung legst du bei deiner zuständigen IHK ab.
-reihenfolge: 58
+  - frage: Welcher Verkehrsträger kommt in meiner Prüfung dran?
+    antwort: Bei der Anmeldung nennst du zwei Verkehrsträger. Welchen davon du bearbeitest, legt der Prüfungsausschuss fest – du erfährst es erst mit der Aufgabe am Prüfungstag. Im Kurs üben wir deshalb alle Verkehrsträger.
+  - frage: Muss ich jeden Prüfungsbereich bestehen?
+    antwort: Für das Bestehen brauchst du im Gesamtergebnis und in mindestens drei Bereichen ein „ausreichend“, darunter zwingend die Leistungserstellung in Spedition und Logistik. Ein „ungenügend“ in einem Bereich führt zum Nichtbestehen.
+  - frage: Wie bereite ich mich auf das Fachgespräch vor?
+    antwort: Wir zeigen dir den Ablauf, gehen typische Fragen durch und üben, einen Fall klar zu gliedern. Für ein intensives Training kannst du zusätzlich unser Prüfungscoaching buchen.
+reihenfolge: 64
 ---
 
-Der Kurs bereitet dich auf die schriftlichen Prüfungsbereiche der Abschlussprüfung vor: Leistungserstellung in Spedition und Logistik, kaufmännische Steuerung und Kontrolle sowie Wirtschafts- und Sozialkunde.
+Die Abschlussprüfung in Spedition und Logistik wird nicht gestreckt. Am ersten Tag schreibst du „Leistungserstellung in Spedition und Logistik“ mit 180 Minuten, am zweiten Tag „Kaufmännische Steuerung und Kontrolle“ und Wirtschafts- und Sozialkunde. Mündlich folgt das fallbezogene Fachgespräch.
 
-Im Mittelpunkt stehen Aufgaben, wie sie in der Prüfung gestellt werden: Transporte planen, Verkehrsträger vergleichen, Frachten und Angebote kalkulieren, Haftungsfälle beurteilen. Nach einer kurzen Erklärung löst ihr Aufgaben und besprecht die Lösungswege gemeinsam im Live-Unterricht.
+Die Leistungserstellung ist der entscheidende Bereich: Ohne mindestens „ausreichend“ hier ist die Prüfung nicht bestanden. Die Aufgaben verlangen, Transporte verkehrsträgerübergreifend zu planen, Frachtdokumente auszufüllen – teils auf Englisch – und Haftungsfälle zu beurteilen. Dazu kommt ein Speditionsauftrag für einen der beiden Verkehrsträger, die du bei der Anmeldung genannt hast.
 
-Am letzten Abend geht es um das fallbezogene Fachgespräch. Alle Unterlagen kannst du herunterladen.
-
-Der Kurs passt zu dir, wenn du die Abschlussprüfung in Spedition und Logistik vor dir hast. Zur Prüfung meldet dich dein Betrieb bei deiner IHK an.
+In der kaufmännischen Steuerung rechnest du Preisangebote und Deckungsbeiträge. Wir üben beide Bereiche an Fällen im Stil der Prüfung gemeinsam live und besprechen typische Fehler wie fehlende Zuschläge in der Frachtberechnung.

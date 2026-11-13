@@ -2,69 +2,78 @@
 saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: AP2 Fachinformatiker/in Daten- und Prozessanalyse
-untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung
-kurzbeschreibung: 'Bereite dich gezielt auf Teil 2 vor: Du übst Prozessanalyse, Datenqualität, Datenbanken und WiSo an prüfungsnahen Aufgaben – live-online, berufsbegleitend am Abend.'
+untertitel: Fachinformatiker/in Fachrichtung Daten- und Prozessanalyse – schriftliche Prüfung Teil 2
+kurzbeschreibung: Übe „Durchführen einer Prozessanalyse“, „Sicherstellen der Datenqualität“ und WiSo an Fällen im Stil der Prüfung – live online an 15 Abenden.
 status: entwurf
 art: kurs
 ue: 45
-dauer: ca. 7,5 Wochen
+dauer: ca. 7,5 Wochen (15 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
   betrag: 369
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende zum/zur Fachinformatiker/in Daten- und Prozessanalyse kurz vor Teil 2 der Abschlussprüfung
-- Umschülerinnen und Umschüler zum/zur Fachinformatiker/in Daten- und Prozessanalyse
-- Alle, die Prüfungsaufgaben unter Anleitung üben wollen
+  - Auszubildende Fachinformatiker/innen Daten- und Prozessanalyse vor der AP2
+  - Umschülerinnen und Umschüler der Fachrichtung Daten- und Prozessanalyse
+  - Prüflinge, die einen schriftlichen Prüfungsbereich der AP2 wiederholen
 voraussetzungen:
-- Du bist in der Ausbildung oder Umschulung zum/zur Fachinformatiker/in Daten- und Prozessanalyse und stehst vor Teil 2
-- Teil 1 der Abschlussprüfung hast du abgelegt oder legst ihn vorher ab
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Grundwissen zu Datenbanken, SQL und Prozessmodellierung aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Computer mit stabiler Internetverbindung und aktuellem Browser
+  - Headset oder Kopfhörer mit Mikrofon, Kamera optional
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Arbeits- und Geschäftsprozesse analysieren
-  punkte:
-  - Prozesse aufnehmen und modellieren (z. B. BPMN, EPK)
-  - Schwachstellen erkennen und Kennzahlen ableiten
-  - Optimierung und Digitalisierung von Abläufen
-- titel: Daten aufbereiten und Datenqualität sichern
-  punkte:
-  - Datenquellen, Datenformate und Datenmodelle
-  - Daten bereinigen, prüfen und zusammenführen
-  - Auswertungen und Visualisierung
-- titel: Datenbanken und Abfragen
-  punkte:
-  - ER-Modell und Normalisierung
-  - SQL-Abfragen für Auswertungen
-  - Datenschutz und Informationssicherheit beim Umgang mit Daten
-- titel: Wirtschafts- und Sozialkunde
-  punkte:
-  - Ausbildungsvertrag, Rechte und Pflichten in der Ausbildung
-  - Arbeitsvertrag, Kündigung, Arbeitsschutz und Jugendarbeitsschutz
-  - Sozialversicherung und Entgeltabrechnung in Grundzügen
-  - Betriebsrat, Tarifvertrag und Mitbestimmung
-  - Rechtsformen von Unternehmen und wirtschaftliche Zusammenhänge
-- titel: Projekt und Fachgespräch
-  punkte:
-  - Aufbau einer Projektdokumentation
-  - Präsentation vorbereiten und üben
-  - Typische Fragen im Fachgespräch
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
-termine: []
+  - titel: Durchführen einer Prozessanalyse (90 Minuten)
+    punkte:
+      - Geschäftsprozesse darstellen, etwa als BPMN-Diagramm oder ereignisgesteuerte Prozesskette
+      - Anforderungen und Schwachstellen im Prozess erkennen
+      - Analysewerkzeuge auswählen und Kennzahlen wie Durchlaufzeit oder Fehlerrate auswerten
+      - Optimierungen vorschlagen und ihre rechtlichen Folgen für Abläufe einschätzen
+      - Qualitäts- und Wirtschaftlichkeitskontrolle planen
+  - titel: Sicherstellen der Datenqualität (90 Minuten)
+    punkte:
+      - Daten identifizieren, klassifizieren und bereitstellen
+      - Qualitätsmerkmale wie Vollständigkeit, Aktualität und Eindeutigkeit prüfen
+      - Dubletten und Ausreißer finden, Daten bereinigen und zusammenführen
+      - Zugriffsrechte und Verfügbarkeit von Daten sicherstellen
+      - Datenschutz und Datensicherheit, Pseudonymisierung und Anonymisierung
+  - titel: Datenbanken und Abfragen
+    punkte:
+      - Datenmodell, ER-Diagramm und Normalisierung
+      - SQL-Abfragen für Auswertungen mit JOIN, GROUP BY und Aggregatfunktionen
+  - titel: Wirtschafts- und Sozialkunde (60 Minuten)
+    punkte:
+      - Ausbildungs- und Arbeitsvertrag, Kündigung, Arbeitsschutz
+      - Sozialversicherung, Tarifvertrag und Mitbestimmung im Betrieb
+      - Rechtsformen und wirtschaftliche Zusammenhänge
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
+termine:
+  - id: ap2-fidp-2027-sommer
+    start: 2027-03-02
+    ende: 2027-04-22
+    pruefung: 2027-04-28
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-02-23
+    ausfall:
+      - 2027-04-01
+  - id: ap2-fidp-2027-winter
+    start: 2027-09-28
+    ende: 2027-11-16
+    pruefung: 2027-11-24
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-09-21
 faq:
-- frage: Warum gibt es noch keinen Termin?
-  antwort: Wir legen die Termine nach Nachfrage fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
-- frage: Kann mein Betrieb die Rechnung bekommen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per Mail an die Firma.
-reihenfolge: 41
+  - frage: Muss ich programmieren können?
+    antwort: Für die schriftliche Prüfung brauchst du vor allem sicheres SQL und das Lesen einfacher Skripte. Wir arbeiten mit Fallbeispielen und Abfragen, nicht mit einer bestimmten Analyse-Software.
+  - frage: Kommt Statistik in der schriftlichen Prüfung vor?
+    antwort: Statistische Verfahren und Vorhersagemodelle gehören vor allem zur Projektarbeit. In den schriftlichen Bereichen stehen Prozesse, Datenqualität und Datenschutz im Mittelpunkt. Grundbegriffe wie Mittelwert und Ausreißer wiederholen wir trotzdem.
+  - frage: Hilft mir der Kurs bei meiner Projektarbeit?
+    antwort: Dafür ist der Kurs nicht gedacht. Deine Projektarbeit mit Datenanalyse, Dokumentation und Präsentation macht die Hälfte der Note aus – sie begleiten wir im individuellen Prüfungscoaching.
+reihenfolge: 22
 ---
 
-Der Kurs bereitet dich auf die schriftliche Prüfung Teil 2 in der Fachrichtung Daten- und Prozessanalyse vor. Du analysierst Geschäftsprozesse, bereitest Daten auf, sicherst ihre Qualität und wiederholst Wirtschafts- und Sozialkunde an Aufgaben im Stil der Prüfung.
+Die Fachrichtung Daten- und Prozessanalyse gibt es erst seit der Neuordnung der IT-Berufe 2020. In Teil 2 schreibst du „Durchführen einer Prozessanalyse“ und „Sicherstellen der Datenqualität“ mit je 90 Minuten sowie Wirtschafts- und Sozialkunde mit 60 Minuten. Jeder Bereich zählt 10 % der Gesamtnote, die Projektarbeit 50 %.
 
-Der Kurs läuft live-online im virtuellen Klassenraum, zweimal pro Woche am Abend. Jeder Termin hat einen Schwerpunkt: kurze Erklärung, dann Aufgaben im Stil früherer Prüfungen, die wir gemeinsam lösen und besprechen. Fragen klärst du direkt live. Die Unterlagen bekommst du zum Download.
+Typisch sind Fallaufgaben aus einem Unternehmen: Du modellierst einen Bestellprozess, findest die Engstelle und schlägst eine Verbesserung vor. Oder du bekommst einen Datenauszug und sollst Qualitätsmängel benennen, eine Bereinigung begründen und eine passende Abfrage schreiben. Viele Punkte gehen verloren, wenn Antworten allgemein bleiben – wir üben deshalb, immer konkret am Fall zu argumentieren.
 
-Er passt zu dir, wenn du in der Ausbildung oder Umschulung in dieser Fachrichtung bist und Teil 2 vor dir hast. Die Anmeldung zur Prüfung läuft über deinen Betrieb bzw. deinen Bildungsträger bei deiner IHK.
+Wir wechseln zwischen Prozess- und Datenabenden, damit beide Prüfungsbereiche gleich viel Übung bekommen. Rückfragen klärst du direkt im Live-Unterricht.

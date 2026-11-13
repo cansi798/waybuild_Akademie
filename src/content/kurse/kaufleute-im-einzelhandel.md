@@ -2,63 +2,71 @@
 saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute im Einzelhandel – Teil 2
-untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung
-kurzbeschreibung: 'Bereite dich gezielt auf deine Abschlussprüfung vor: Du übst Verkauf, Warenwirtschaft, Geschäftsprozesse im Handel und WiSo an prüfungsnahen Aufgaben – live-online am Abend.'
+untertitel: Geschäftsprozesse im Einzelhandel und Fachgespräch (Teil 2 der Abschlussprüfung)
+kurzbeschreibung: Übe den schriftlichen Bereich „Geschäftsprozesse im Einzelhandel“ und bereite das Fachgespräch in deiner Wahlqualifikation vor. Live online an acht Abenden.
 status: entwurf
 art: kurs
 ue: 24
-dauer: ca. 4 Wochen
+dauer: ca. 4 Wochen (8 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
-  betrag: 279
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  betrag: 249
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende zur Kauffrau oder zum Kaufmann im Einzelhandel vor der Prüfung
-- Umschülerinnen und Umschüler zur Kauffrau oder zum Kaufmann im Einzelhandel
-- Alle, die Prüfungsaufgaben unter Anleitung üben wollen
+  - Auszubildende Kaufleute im Einzelhandel vor Teil 2
+  - Umschülerinnen und Umschüler im Einzelhandel
+  - Verkäuferinnen und Verkäufer, die die Ausbildung zur Kauffrau oder zum Kaufmann fortsetzen
 voraussetzungen:
-- Du bist in der Ausbildung oder Umschulung zur Kauffrau oder zum Kaufmann im Einzelhandel
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Fachwissen aus der Ausbildung und Teil 1 abgelegt – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Taschenrechner
+  - Computer oder Tablet mit stabiler Internetverbindung, Headset oder Kopfhörer mit Mikrofon
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Verkauf und Kundenberatung
-  punkte:
-  - Beratungsgespräche und Kundenservice
-  - Werbung und Verkaufsförderung
-  - Reklamationen und Umtausch
-- titel: Warenwirtschaft und Kalkulation
-  punkte:
-  - Bestellung, Wareneingang und Lager
-  - Preise kalkulieren
-  - Kennzahlen im Handel
-- titel: Geschäftsprozesse im Einzelhandel
-  punkte:
-  - Personal und Organisation im Geschäft
-  - Kosten und Erfolg steuern
-  - Vorbereitung auf das Fachgespräch
-- titel: Wirtschafts- und Sozialkunde
-  punkte:
-  - Ausbildungsvertrag, Rechte und Pflichten in der Ausbildung
-  - Arbeitsvertrag, Kündigung, Arbeitsschutz und Jugendarbeitsschutz
-  - Sozialversicherung und Entgeltabrechnung in Grundzügen
-  - Betriebsrat, Tarifvertrag und Mitbestimmung
-  - Rechtsformen von Unternehmen und wirtschaftliche Zusammenhänge
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
-termine: []
+  - titel: Geschäftsprozesse im Einzelhandel (120 Minuten)
+    punkte:
+      - Einkauf und Sortimentsgestaltung – Lieferanten, Sortimentspolitik, Eigenmarken
+      - Logistische Prozesse – Bestellung, Lager, Inventur, Warenfluss
+      - Verkauf und Marketing – Aktionen planen, Erfolg messen, Kundenbindung
+      - Personalwirtschaft – Personalbedarf, Einsatzplanung, Arbeitszeit, Entgelt
+      - Betriebswirtschaftliche Steuerung – Kalkulation, Kennzahlen, Erfolgsrechnung
+  - titel: Fachgespräch in der Wahlqualifikation
+    punkte:
+      - Ablauf – zwei Aufgaben zur Wahl, 15 Minuten Vorbereitung, bis zu 20 Minuten Gespräch
+      - Den Lösungsweg zu Beginn klar darstellen
+      - Fragen zu deinem Warenbereich sicher beantworten
+  - titel: Prüfungstechnik
+    punkte:
+      - Lange Fallaufgaben gliedern und Zusammenhänge zwischen den Gebieten erkennen
+      - Antworten konkret auf den Betrieb im Fall beziehen
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
+termine:
+  - id: einzelhandel-t2-2027-sommer
+    start: 2027-03-25
+    ende: 2027-04-22
+    pruefung: 2027-04-28
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-03-18
+    ausfall:
+      - 2027-04-01
+  - id: einzelhandel-t2-2027-winter
+    start: 2027-10-26
+    ende: 2027-11-18
+    pruefung: 2027-11-24
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-10-19
 faq:
-- frage: Warum gibt es noch keinen Termin?
-  antwort: Wir legen die Termine nach Nachfrage fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
-- frage: Kann mein Betrieb die Rechnung bekommen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per Mail an die Firma.
-reihenfolge: 53
+  - frage: Warum gibt es in Teil 2 kein WiSo?
+    antwort: Im Einzelhandel wird Wirtschafts- und Sozialkunde schon in Teil 1 geprüft. In Teil 2 schreibst du nur „Geschäftsprozesse im Einzelhandel“, dazu kommt das Fachgespräch.
+  - frage: Was passiert, wenn ich einen Bereich nicht bestehe?
+    antwort: Sowohl „Geschäftsprozesse im Einzelhandel“ als auch das Fachgespräch musst du mindestens mit „ausreichend“ abschließen. Deshalb üben wir beide gezielt. Bei den Geschäftsprozessen ist auf Antrag eine mündliche Ergänzungsprüfung möglich.
+  - frage: Wie bereite ich mich auf das Fachgespräch vor?
+    antwort: Grundlage ist eine deiner Wahlqualifikationen, dazu kommen Fragen zu dem Warenbereich, den du im Betrieb gelernt hast. Wir üben den Ablauf und typische Fragen; die Warenkunde deines Sortiments bringst du aus dem Betrieb mit.
+reihenfolge: 56
 ---
 
-Der Kurs bereitet dich auf die schriftlichen Prüfungsbereiche im Einzelhandel vor. Du wiederholst Verkauf und Beratung, Warenwirtschaft und Kalkulation, Geschäftsprozesse sowie Wirtschafts- und Sozialkunde an Aufgaben im Stil der Prüfung.
+In Teil 2 schreibst du nur noch einen Prüfungsbereich: „Geschäftsprozesse im Einzelhandel“ mit 120 Minuten. Er zählt 25 % deiner Abschlussnote. Das größte Gewicht hat mit 40 % das Fachgespräch in deiner Wahlqualifikation. Beide Bereiche musst du mindestens mit „ausreichend“ abschließen.
 
-Der Kurs läuft live-online im virtuellen Klassenraum, zweimal pro Woche am Abend. Jeder Termin hat einen Schwerpunkt: kurze Erklärung, dann Aufgaben im Stil früherer Prüfungen, die wir gemeinsam lösen und besprechen. Fragen klärst du direkt live. Die Unterlagen bekommst du zum Download.
+Die schriftliche Prüfung verbindet in jedem Fall mehrere Gebiete: Einkauf, Sortimentsgestaltung, Logistik und Verkauf. Typisch ist eine Filiale, die ihr Sortiment umstellt – du entscheidest über Lieferanten, planst die Personaleinsätze für eine Aktion und bewertest das Ergebnis anhand von Kennzahlen. Wer nur einzelne Fakten kennt, kommt hier schnell ins Stocken. Wir üben deshalb, die Zusammenhänge zu sehen und Antworten konkret auf den Fall zu beziehen.
 
-Er passt zu dir, wenn du in der Ausbildung oder Umschulung zur Kauffrau oder zum Kaufmann im Einzelhandel bist. Die Anmeldung zur Prüfung läuft über deinen Betrieb bzw. deinen Bildungsträger bei deiner IHK.
+An den letzten Abenden bereiten wir das Fachgespräch vor: Ablauf, Einstieg mit der eigenen Lösung und Rückfragen zum Warenbereich.

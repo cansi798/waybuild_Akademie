@@ -2,85 +2,76 @@
 saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Automobilkaufleute – Teil 2
-untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung
-kurzbeschreibung: 'Geh vorbereitet in Teil 2: Du übst Fahrzeugvertrieb, Finanzdienstleistungen, Kundendienst und kaufmännische Abläufe im Autohaus an prüfungsnahen Aufgaben – live-online an 12 Abenden.'
+untertitel: Fahrzeugvertrieb, Finanzdienstleistungen, kaufmännische Unterstützungsprozesse und WiSo
+kurzbeschreibung: Übe die schriftlichen Bereiche von Teil 2 – Fahrzeugvertrieb und Finanzdienstleistungen, kaufmännische Unterstützungsprozesse, WiSo – mit Rechenfällen aus dem Autohaus. Live online.
 status: entwurf
 art: kurs
 ue: 36
-dauer: ca. 6 Wochen
+dauer: ca. 6 Wochen (12 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
-  betrag: 359
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  betrag: 349
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende zur Automobilkauffrau oder zum Automobilkaufmann vor Teil 2 der Abschlussprüfung
-- Umschülerinnen und Umschüler in diesem Beruf
-- Alle, die Rechen- und Fallaufgaben aus dem Autohaus gezielt trainieren wollen
+  - Auszubildende Automobilkaufleute vor Teil 2
+  - Umschülerinnen und Umschüler im Autohaus
+  - Prüflinge, die einen schriftlichen Bereich von Teil 2 wiederholen
 voraussetzungen:
-- Du bist in der Ausbildung oder Umschulung zur Automobilkauffrau oder zum Automobilkaufmann
-- Teil 1 der Abschlussprüfung hast du abgelegt oder legst ihn vorher ab
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Fachwissen aus der Ausbildung und Teil 1 abgelegt – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Taschenrechner
+  - Computer mit stabiler Internetverbindung und aktuellem Browser, Headset oder Kopfhörer mit Mikrofon
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Fahrzeugvertrieb und Finanzdienstleistungen
-  punkte:
-  - Neu- und Gebrauchtwagen verkaufen, Inzahlungnahme bewerten
-  - Fahrzeugpreise kalkulieren
-  - Finanzierung, Leasing und Versicherung rund ums Fahrzeug
-  - Kaufvertrag, Gewährleistung und Garantie
-- titel: Kundendienstprozesse
-  punkte:
-  - Werkstattauftrag annehmen und abrechnen
-  - Teile und Zubehör beschaffen und verkaufen
-  - Reklamationen und Kulanz
-- titel: Kaufmännische Unterstützungsprozesse
-  punkte:
-  - Typische Buchungen im Autohaus
-  - Kosten- und Leistungsrechnung, Kennzahlen
-  - Personal und Controlling in Grundzügen
-- titel: Wirtschafts- und Sozialkunde
-  punkte:
-  - Ausbildungsvertrag, Rechte und Pflichten in der Ausbildung
-  - Arbeitsvertrag, Kündigung, Arbeitsschutz und Jugendarbeitsschutz
-  - Sozialversicherung und Entgeltabrechnung in Grundzügen
-  - Betriebsrat, Tarifvertrag und Mitbestimmung
-  - Rechtsformen von Unternehmen und wirtschaftliche Zusammenhänge
-- titel: Mündlicher Prüfungsteil
-  punkte:
-  - Ablauf des Fachgesprächs
-  - Fälle strukturiert darstellen und begründen
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - titel: Fahrzeugvertriebsprozesse und Finanzdienstleistungen (90 Minuten)
+    punkte:
+      - Neu- und Gebrauchtwagenverkauf kundenorientiert abwickeln
+      - Inzahlungnahme bewerten und Fahrzeugpreise kalkulieren
+      - Finanzierung, Leasing und Versicherung bedarfsgerecht anbieten und vergleichen
+      - Kaufvertrag, Zulassung, Gewährleistung und Garantie
+  - titel: Kaufmännische Unterstützungsprozesse (90 Minuten)
+    punkte:
+      - Rechnungswesen für Planung, Steuerung und Kontrolle nutzen
+      - Verkaufspreise für Fahrzeuge, Teile und Werkstattleistungen kalkulieren
+      - Personaleinsatz organisieren und bei der Personalplanung mitwirken
+      - Kennzahlen der Geschäftsfelder auswerten und Vorschläge ableiten
+  - titel: Wirtschafts- und Sozialkunde (60 Minuten)
+    punkte:
+      - Ausbildungs- und Arbeitsvertrag, Kündigung, Arbeitsschutz
+      - Sozialversicherung, Tarifvertrag und Mitbestimmung im Betrieb
+      - Rechtsformen und wirtschaftliche Zusammenhänge
+  - titel: Kundendienstprozesse – fallbezogenes Fachgespräch
+    punkte:
+      - Ablauf – zwei Aufgaben zur Wahl, 20 Minuten Vorbereitung, bis zu 20 Minuten Gespräch
+      - Kundendienstfälle mit Werkstatt und Marketing strukturiert lösen
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
-- id: automobilkaufleute-t2-2027-sommer
-  start: 2027-03-11
-  ende: 2027-04-20
-  pruefung: 2027-04-27
-  pruefungHinweis: Schriftliche Prüfung Teil 2 voraussichtlich am 27./28.04.2027 – verbindlich ist die Einladung deiner IHK
-  anmeldeschluss: 2027-03-04
-  ausfall: []
-- id: automobilkaufleute-t2-2027-winter
-  start: 2027-10-07
-  ende: 2027-11-16
-  pruefung: 2027-11-23
-  pruefungHinweis: Schriftliche Prüfung Teil 2 voraussichtlich am 23./24.11.2027 – verbindlich ist die Einladung deiner IHK
-  anmeldeschluss: 2027-09-30
-  ausfall: []
+  - id: automobilkaufleute-t2-2027-sommer
+    start: 2027-03-09
+    ende: 2027-04-20
+    pruefung: 2027-04-27
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am 27. und 28.04.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-03-02
+    ausfall:
+      - 2027-04-01
+  - id: automobilkaufleute-t2-2027-winter
+    start: 2027-10-07
+    ende: 2027-11-16
+    pruefung: 2027-11-23
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am 23. und 24.11.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-09-30
 faq:
-- frage: Rechnen wir auch Leasing- und Finanzierungsbeispiele?
-  antwort: Ja. Finanzierung und Leasing kommen in der Prüfung regelmäßig vor. Wir rechnen solche Fälle Schritt für Schritt gemeinsam und vergleichen die Angebote.
-- frage: Muss ich Teil 1 schon bestanden haben?
-  antwort: Teil 1 solltest du abgelegt haben, weil das Ergebnis in deine Gesamtnote einfließt. Für den Kurs selbst brauchst du kein bestimmtes Ergebnis.
-- frage: Kann das Autohaus die Rechnung übernehmen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und trag die Firmendaten ein. Die Rechnung geht dann direkt an dein Autohaus.
-- frage: Gehört der Kurs zur IHK?
-  antwort: Nein, wir sind ein unabhängiger Bildungsanbieter. Geprüft wirst du von deiner zuständigen IHK – ihre Termine und Regeln sind verbindlich.
-reihenfolge: 55
+  - frage: Rechnen wir auch Leasing- und Finanzierungsbeispiele?
+    antwort: Ja. Finanzierungs- und Leasingangebote zu vergleichen gehört zu den typischen Aufgaben im Fahrzeugvertrieb. Wir rechnen solche Fälle Schritt für Schritt gemeinsam.
+  - frage: Wie verteilen sich die Noten?
+    antwort: Fahrzeugvertrieb und Finanzdienstleistungen sowie kaufmännische Unterstützungsprozesse zählen je 25 %, WiSo 10 %. Das Fachgespräch zu den Kundendienstprozessen zählt 20 %, Teil 1 die übrigen 20 %.
+  - frage: Bereitet der Kurs auch auf das Fachgespräch vor?
+    antwort: Ja, an einem Abend gehen wir Ablauf und typische Kundendienstfälle durch. Für ein intensives Training kannst du zusätzlich unser Prüfungscoaching buchen.
+reihenfolge: 62
 ---
 
-Der Kurs bereitet dich auf die schriftlichen Prüfungsbereiche von Teil 2 vor. Du gehst Fahrzeugvertrieb und Finanzdienstleistungen, Kundendienst, kaufmännische Abläufe im Autohaus sowie Wirtschafts- und Sozialkunde durch.
+In Teil 2 schreibst du drei Prüfungsbereiche: „Fahrzeugvertriebsprozesse und Finanzdienstleistungen“ und „Kaufmännische Unterstützungsprozesse“ mit je 90 Minuten sowie Wirtschafts- und Sozialkunde mit 60 Minuten. Die beiden Fachbereiche zählen je 25 % deiner Abschlussnote. Die Kundendienstprozesse werden mündlich im fallbezogenen Fachgespräch geprüft.
 
-Wir arbeiten an Aufgaben, wie sie in der Prüfung vorkommen: Preise kalkulieren, Finanzierungsangebote vergleichen, Werkstattaufträge abrechnen. Jeder Abend beginnt mit einer kurzen Erklärung, dann löst ihr Aufgaben und besprecht die Lösungswege gemeinsam im Live-Unterricht.
+Die Aufgaben kommen direkt aus dem Autohaus: Ein Kunde möchte einen Neuwagen, gibt seinen Gebrauchten in Zahlung und schwankt zwischen Finanzierung und Leasing. Du bewertest das Altfahrzeug, kalkulierst den Preis und vergleichst die Angebote. In den Unterstützungsprozessen geht es um Kalkulation, Kennzahlen und die Personalplanung über alle Geschäftsfelder. Ein häufiger Stolperstein sind Kalkulationsschemata, bei denen Zwischenschritte fehlen.
 
-Am Ende bekommst du Hinweise zum mündlichen Prüfungsteil. Die Unterlagen zu jedem Abend stehen dir zum Download bereit.
-
-Der Kurs passt zu dir, wenn du im Autohaus ausgebildet wirst und Teil 2 vor dir hast. Angemeldet wirst du zur Prüfung über deinen Betrieb bei deiner IHK.
+Wir lösen solche Fälle gemeinsam live und besprechen die Lösungswege. Zum Schluss bereiten wir das Fachgespräch zu den Kundendienstprozessen vor.

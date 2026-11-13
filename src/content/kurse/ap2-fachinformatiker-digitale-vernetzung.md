@@ -2,69 +2,76 @@
 saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: AP2 Fachinformatiker/in Digitale Vernetzung
-untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung
-kurzbeschreibung: 'Bereite dich gezielt auf Teil 2 vor: Du übst Netzwerke, vernetzte Systeme, IT-Sicherheit und WiSo an prüfungsnahen Aufgaben – live-online, berufsbegleitend am Abend.'
+untertitel: Fachinformatiker/in Fachrichtung Digitale Vernetzung – schriftliche Prüfung Teil 2
+kurzbeschreibung: Übe Diagnose und Störungsbeseitigung, Betrieb und Erweiterung vernetzter Systeme sowie WiSo an prüfungsnahen Fällen – live online an 15 Abenden.
 status: entwurf
 art: kurs
 ue: 45
-dauer: ca. 7,5 Wochen
+dauer: ca. 7,5 Wochen (15 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
   betrag: 369
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende zum/zur Fachinformatiker/in Digitale Vernetzung kurz vor Teil 2 der Abschlussprüfung
-- Umschülerinnen und Umschüler zum/zur Fachinformatiker/in Digitale Vernetzung
-- Alle, die Prüfungsaufgaben unter Anleitung üben wollen
+  - Auszubildende Fachinformatiker/innen Digitale Vernetzung vor der AP2
+  - Umschülerinnen und Umschüler der Fachrichtung Digitale Vernetzung
+  - Prüflinge, die einen schriftlichen Prüfungsbereich der AP2 wiederholen
 voraussetzungen:
-- Du bist in der Ausbildung oder Umschulung zum/zur Fachinformatiker/in Digitale Vernetzung und stehst vor Teil 2
-- Teil 1 der Abschlussprüfung hast du abgelegt oder legst ihn vorher ab
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Netzwerkgrundlagen aus der Ausbildung (Adressierung, Routing, gängige Protokolle) – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Computer mit stabiler Internetverbindung und aktuellem Browser
+  - Headset oder Kopfhörer mit Mikrofon, Kamera optional
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Vernetzte Systeme planen
-  punkte:
-  - Sensoren, Aktoren und Steuerungen im Zusammenspiel
-  - Netzwerktopologien, Protokolle und Adressierung
-  - Anforderungen aufnehmen und Lösungen auswählen
-- titel: Systeme in Betrieb nehmen und überwachen
-  punkte:
-  - Kommunikation zwischen Geräten und Diensten
-  - Fehler eingrenzen und beheben
-  - Überwachung und Dokumentation
-- titel: Sicherheit vernetzter Systeme
-  punkte:
-  - Bedrohungen erkennen und Schutzmaßnahmen planen
-  - Zugriffsschutz und Verschlüsselung
-  - Datenschutz in vernetzten Anwendungen
-- titel: Wirtschafts- und Sozialkunde
-  punkte:
-  - Ausbildungsvertrag, Rechte und Pflichten in der Ausbildung
-  - Arbeitsvertrag, Kündigung, Arbeitsschutz und Jugendarbeitsschutz
-  - Sozialversicherung und Entgeltabrechnung in Grundzügen
-  - Betriebsrat, Tarifvertrag und Mitbestimmung
-  - Rechtsformen von Unternehmen und wirtschaftliche Zusammenhänge
-- titel: Projekt und Fachgespräch
-  punkte:
-  - Aufbau einer Projektdokumentation
-  - Präsentation vorbereiten und üben
-  - Typische Fragen im Fachgespräch
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
-termine: []
+  - titel: Diagnose und Störungsbeseitigung in vernetzten Systemen (90 Minuten)
+    punkte:
+      - Störungen in der Gesamtinfrastruktur systematisch eingrenzen, Schicht für Schicht
+      - Diagnosewerkzeuge, Testergebnisse und Protokolldateien auswerten
+      - Diagnose- und Prozessdaten analysieren und Maßnahmen ableiten
+      - Schwachstellen bewerten und IT-Sicherheitsmaßnahmen im Gesamtsystem festlegen
+  - titel: Betrieb und Erweiterung von vernetzten Systemen (90 Minuten)
+    punkte:
+      - Heterogene Systeme und Protokolle, auch aus Industrie und IoT, in ein Gesamtsystem einbinden
+      - Kommunikation zwischen Prozessebenen prüfen und dokumentieren
+      - Systemressourcen überwachen, Kennzahlen wie Verfügbarkeit und Auslastung bewerten
+      - Netzwerkinfrastrukturen anpassen und erweitern – VLAN, Routing, WLAN, Segmentierung
+  - titel: Wirtschafts- und Sozialkunde (60 Minuten)
+    punkte:
+      - Ausbildungs- und Arbeitsvertrag, Kündigung, Arbeitsschutz
+      - Sozialversicherung, Tarifvertrag und Mitbestimmung im Betrieb
+      - Rechtsformen und wirtschaftliche Zusammenhänge
+  - titel: Prüfungstechnik
+    punkte:
+      - Fehlerbilder aus Netzplänen und Konfigurationsauszügen herauslesen
+      - Lösungen begründet und in der verlangten Form darstellen
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
+termine:
+  - id: ap2-fidv-2027-sommer
+    start: 2027-03-02
+    ende: 2027-04-22
+    pruefung: 2027-04-28
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-02-23
+    ausfall:
+      - 2027-04-01
+  - id: ap2-fidv-2027-winter
+    start: 2027-09-28
+    ende: 2027-11-16
+    pruefung: 2027-11-24
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-09-21
 faq:
-- frage: Warum gibt es noch keinen Termin?
-  antwort: Wir legen die Termine nach Nachfrage fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
-- frage: Kann mein Betrieb die Rechnung bekommen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per Mail an die Firma.
-reihenfolge: 42
+  - frage: Worin unterscheidet sich die Prüfung von der Systemintegration?
+    antwort: Bei der Systemintegration geht es um Server, Speicher und klassische Netzwerke. In der Digitalen Vernetzung kommen vernetzte Anlagen, Maschinen und Sensorik dazu – die Aufgaben drehen sich stärker um Schnittstellen, Prozessdaten und den laufenden Betrieb.
+  - frage: Muss ich mich mit Steuerungstechnik auskennen?
+    antwort: Grundbegriffe aus der Ausbildung reichen. Im Kurs geht es um das Zusammenspiel der Systeme im Netzwerk, nicht um das Programmieren einer bestimmten Steuerung.
+  - frage: Hilft mir der Kurs bei meiner Projektarbeit?
+    antwort: Nein, der Kurs übt die schriftlichen Bereiche. Die Projektarbeit zu einem vernetzten System zählt 50 % der Note – bei Planung, Dokumentation und Präsentation unterstützt dich unser individuelles Prüfungscoaching.
+reihenfolge: 23
 ---
 
-Der Kurs bereitet dich auf die schriftliche Prüfung Teil 2 in der Fachrichtung Digitale Vernetzung vor. Du planst vernetzte Systeme, wiederholst Netzwerk- und Sicherheitsthemen und übst Wirtschafts- und Sozialkunde an Aufgaben im Stil der Prüfung.
+In Teil 2 schreibst du „Diagnose und Störungsbeseitigung in vernetzten Systemen“ und „Betrieb und Erweiterung von vernetzten Systemen“ mit je 90 Minuten sowie Wirtschafts- und Sozialkunde mit 60 Minuten. Jeder dieser Bereiche zählt 10 % deiner Gesamtnote, die betriebliche Projektarbeit 50 %.
 
-Der Kurs läuft live-online im virtuellen Klassenraum, zweimal pro Woche am Abend. Jeder Termin hat einen Schwerpunkt: kurze Erklärung, dann Aufgaben im Stil früherer Prüfungen, die wir gemeinsam lösen und besprechen. Fragen klärst du direkt live. Die Unterlagen bekommst du zum Download.
+Die Aufgaben beschreiben meist eine konkrete Anlage: eine Produktionslinie, deren Daten nicht mehr im Leitstand ankommen, oder ein Standort, der neue Sensoren und ein eigenes Netzsegment bekommen soll. Du liest Netzpläne und Auszüge aus Konfigurationen, grenzt den Fehler ein und begründest deine Maßnahmen. Wer hier nur Fachbegriffe aufzählt, verschenkt Punkte – gefragt ist der Weg vom Symptom zur Ursache.
 
-Er passt zu dir, wenn du in der Ausbildung oder Umschulung in dieser Fachrichtung bist und Teil 2 vor dir hast. Die Anmeldung zur Prüfung läuft über deinen Betrieb bzw. deinen Bildungsträger bei deiner IHK.
+Im Kurs bearbeiten wir solche Fälle gemeinsam live. Jeder Abend hat einen Schwerpunkt, Fragen klärst du direkt per Mikrofon oder Chat.

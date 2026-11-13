@@ -2,74 +2,72 @@
 saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute für Büromanagement – Teil 2
-untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung
-kurzbeschreibung: 'Geh vorbereitet in Teil 2: Du übst Kundenbeziehungsprozesse und WiSo an prüfungsnahen Aufgaben und bereitest dich auf das Fachgespräch vor – live-online an 9 Abenden.'
+untertitel: Kundenbeziehungsprozesse und WiSo (Teil 2 der Abschlussprüfung)
+kurzbeschreibung: Übe die schriftlichen Bereiche von Teil 2 – Kundenbeziehungsprozesse und WiSo – und bereite dich auf das Fachgespräch in deiner Wahlqualifikation vor. Live online an zehn Abenden.
 status: entwurf
 art: kurs
-ue: 27
-dauer: ca. 4,5 Wochen
+ue: 30
+dauer: ca. 5 Wochen (10 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
-  betrag: 329
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  betrag: 299
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende zur Kauffrau oder zum Kaufmann für Büromanagement vor der Prüfung
-- Umschülerinnen und Umschüler zur Kauffrau oder zum Kaufmann für Büromanagement
-- Alle, die Prüfungsaufgaben unter Anleitung üben wollen
+  - Auszubildende Kaufleute für Büromanagement vor Teil 2
+  - Umschülerinnen und Umschüler im Büromanagement
+  - Prüflinge, die Kundenbeziehungsprozesse oder WiSo wiederholen
 voraussetzungen:
-- Du bist in der Ausbildung oder Umschulung zur Kauffrau oder zum Kaufmann für Büromanagement
-- Sicherer Umgang mit Textverarbeitung und Tabellenkalkulation
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Fachwissen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Taschenrechner
+  - Computer mit stabiler Internetverbindung und aktuellem Browser, Headset oder Kopfhörer mit Mikrofon
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Kundenbeziehungsprozesse
-  punkte:
-  - 'Aufträge bearbeiten: Anfrage, Angebot, Auftrag, Rechnung'
-  - Kundenkommunikation und Reklamationen
-  - Marketing und Kundenbindung
-  - Zahlungsverkehr und Mahnwesen
-- titel: Wirtschafts- und Sozialkunde
-  punkte:
-  - Ausbildungsvertrag, Rechte und Pflichten in der Ausbildung
-  - Arbeitsvertrag, Kündigung, Arbeitsschutz und Jugendarbeitsschutz
-  - Sozialversicherung und Entgeltabrechnung in Grundzügen
-  - Betriebsrat, Tarifvertrag und Mitbestimmung
-  - Rechtsformen von Unternehmen und wirtschaftliche Zusammenhänge
-- titel: Fachaufgabe in der Wahlqualifikation
-  punkte:
-  - Aufbau des Fachgesprächs
-  - Eigene Praxisbeispiele vorbereiten
-  - Fragen und Antworten üben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - titel: Kundenbeziehungsprozesse (150 Minuten)
+    punkte:
+      - "Aufträge abwickeln: Anfrage, Angebot, Kaufvertrag, Lieferung und Rechnung"
+      - Störungen bearbeiten – Lieferverzug, mangelhafte Lieferung, Zahlungsverzug und Mahnwesen
+      - Kundengespräche, Beschwerden und Maßnahmen zur Kundenbindung
+      - Personalbezogene Aufgaben – Personalbedarf, Arbeitszeit, Urlaub, Entgeltabrechnung
+      - Kaufmännische Steuerung – Kalkulation, Kosten- und Leistungsrechnung, Kennzahlen
+  - titel: Wirtschafts- und Sozialkunde (60 Minuten)
+    punkte:
+      - Ausbildungs- und Arbeitsvertrag, Kündigung, Arbeitsschutz
+      - Sozialversicherung, Tarifvertrag und Mitbestimmung im Betrieb
+      - Rechtsformen und wirtschaftliche Zusammenhänge
+  - titel: Fachaufgabe in der Wahlqualifikation
+    punkte:
+      - Die zwei Varianten verstehen – Reporte oder Fachaufgabe am Prüfungstag
+      - Den Einstieg ins Fachgespräch vorbereiten – Aufgabe und Lösungsweg darstellen
+      - Typische Rückfragen im Fachgespräch üben
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
-- id: bueromanagement-t2-2027-sommer
-  start: 2027-03-23
-  ende: 2027-04-20
-  pruefung: 2027-04-27
-  pruefungHinweis: Schriftliche Prüfung Teil 2 voraussichtlich am 27./28.04.2027 – verbindlich ist die Einladung deiner IHK
-  anmeldeschluss: 2027-03-16
-  ausfall: []
-- id: bueromanagement-t2-2027-winter
-  start: 2027-10-19
-  ende: 2027-11-16
-  pruefung: 2027-11-23
-  pruefungHinweis: Schriftliche Prüfung Teil 2 voraussichtlich am 23./24.11.2027 – verbindlich ist die Einladung deiner IHK
-  anmeldeschluss: 2027-10-12
-  ausfall: []
+  - id: bueromanagement-t2-2027-sommer
+    start: 2027-03-18
+    ende: 2027-04-22
+    pruefung: 2027-04-28
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-03-11
+    ausfall:
+      - 2027-04-01
+  - id: bueromanagement-t2-2027-winter
+    start: 2027-10-19
+    ende: 2027-11-18
+    pruefung: 2027-11-24
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-10-12
 faq:
-- frage: Brauche ich Office-Kenntnisse?
-  antwort: Ja, sicherer Umgang mit Textverarbeitung und Tabellenkalkulation hilft dir. Im Kurs geht es aber vor allem um die Prüfungsthemen, nicht um eine Office-Schulung.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
-- frage: Kann mein Betrieb die Rechnung bekommen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per Mail an die Firma.
-reihenfolge: 30
+  - frage: Was zählt in Teil 2 am meisten?
+    antwort: Das Fachgespräch in der Wahlqualifikation mit 35 %, danach die Kundenbeziehungsprozesse mit 30 %. WiSo zählt 10 %. Den Rest von 25 % hast du in Teil 1 erreicht.
+  - frage: Wählen wir Reporte oder Fachaufgabe?
+    antwort: Die Variante legt dein Ausbildungsbetrieb bei der Anmeldung zur Prüfung fest. Im Kurs zeigen wir dir beide Wege, damit du weißt, worauf es jeweils ankommt.
+  - frage: Gilt der Kurs für die alte oder die neue Ausbildungsordnung?
+    antwort: Für beide. Teil 2 schreiben 2027 vor allem Auszubildende nach der Ordnung von 2013. In der neuen Ordnung von 2025 sind Prüfungsbereiche, Prüfungszeiten und Gewichtung von Teil 2 gleich.
+reihenfolge: 51
 ---
 
-In diesem Kurs wiederholst du die Themen der schriftlichen Prüfung Teil 2: Kundenbeziehungsprozesse sowie Wirtschafts- und Sozialkunde. Du löst Aufgaben im Stil der Prüfung und bereitest dich zusätzlich auf das Fachgespräch in deiner Wahlqualifikation vor.
+In Teil 2 schreibst du zwei Prüfungsbereiche: „Kundenbeziehungsprozesse“ mit 150 Minuten und Wirtschafts- und Sozialkunde mit 60 Minuten. Mündlich folgt das fallbezogene Fachgespräch zu einer deiner Wahlqualifikationen. Es zählt mit 35 % am stärksten, die Kundenbeziehungsprozesse folgen mit 30 %.
 
-Der Kurs läuft live-online im virtuellen Klassenraum, zweimal pro Woche am Abend. Jeder Termin hat einen Schwerpunkt: kurze Erklärung, dann Aufgaben im Stil früherer Prüfungen, die wir gemeinsam lösen und besprechen. Fragen klärst du direkt live. Die Unterlagen bekommst du zum Download.
+Die Kundenbeziehungsprozesse verbinden viele Themen in einem Fall: Ein Kunde bestellt, die Lieferung verzögert sich, die Rechnung bleibt offen – dazu kommen Fragen zur Personalplanung und eine Kalkulation. Wer hier sicher punkten will, muss Rechtsfolgen wie Rücktritt oder Schadensersatz sauber begründen und Rechenwege vollständig zeigen. Genau das üben wir gemeinsam live an Aufgaben im Stil der Prüfung.
 
-Der Kurs passt zu dir, wenn du in der Ausbildung oder Umschulung zur Kauffrau oder zum Kaufmann für Büromanagement bist und Teil 2 vor dir hast. Die Anmeldung zur Prüfung läuft über deinen Betrieb bzw. deinen Bildungsträger bei deiner IHK.
+An den letzten Abenden geht es um das Fachgespräch: wie du Aufgabe und Lösungsweg zu Beginn klar darstellst und auf Rückfragen ruhig reagierst.

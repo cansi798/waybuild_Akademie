@@ -3,61 +3,76 @@ saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute für Groß- und Außenhandelsmanagement – Teil 2 Großhandel
 untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung, Fachrichtung Großhandel
-kurzbeschreibung: 'Bereite dich gezielt auf deine Abschlussprüfung vor: Du übst Sortiment, Beschaffung, Vertrieb, kaufmännische Steuerung und WiSo an prüfungsnahen Aufgaben – live-online am Abend.'
+kurzbeschreibung: Übe die schriftlichen Bereiche von Teil 2 im Großhandel – Großhandelsgeschäfte, kaufmännische Steuerung und WiSo – und bereite das Fachgespräch vor. Live online an zehn Abenden.
 status: entwurf
 art: kurs
-ue: 24
-dauer: ca. 4 Wochen
+ue: 30
+dauer: ca. 5 Wochen (10 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
-  betrag: 279
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  betrag: 299
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende zur Kauffrau oder zum Kaufmann für Groß- und Außenhandelsmanagement vor der Prüfung
-- Umschülerinnen und Umschüler zur Kauffrau oder zum Kaufmann für Groß- und Außenhandelsmanagement
-- Alle, die Prüfungsaufgaben unter Anleitung üben wollen
+  - Auszubildende in der Fachrichtung Großhandel vor Teil 2
+  - Umschülerinnen und Umschüler mit Schwerpunkt Großhandel
+  - Prüflinge, die einen schriftlichen Bereich von Teil 2 wiederholen
 voraussetzungen:
-- Du bist in der Ausbildung oder Umschulung zur Kauffrau oder zum Kaufmann für Groß- und Außenhandelsmanagement
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Fachwissen aus der Ausbildung und Teil 1 abgelegt – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Taschenrechner
+  - Computer mit stabiler Internetverbindung und aktuellem Browser, Headset oder Kopfhörer mit Mikrofon
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Sortiment und Beschaffung
-  punkte:
-  - Warensortiment planen und pflegen
-  - Lieferanten auswählen und Waren beschaffen
-  - Lager und Logistik
-- titel: Vertrieb und Kundenbeziehungen
-  punkte:
-  - Angebote, Kaufverträge und Auftragsabwicklung
-  - Kundenberatung und Reklamationen
-  - Grundlagen des Außenhandels
-- titel: Kaufmännische Steuerung
-  punkte:
-  - Kalkulation und Kosten
-  - Kennzahlen und Controlling in Grundzügen
-- titel: Wirtschafts- und Sozialkunde
-  punkte:
-  - Ausbildungsvertrag, Rechte und Pflichten in der Ausbildung
-  - Arbeitsvertrag, Kündigung, Arbeitsschutz und Jugendarbeitsschutz
-  - Sozialversicherung und Entgeltabrechnung in Grundzügen
-  - Betriebsrat, Tarifvertrag und Mitbestimmung
-  - Rechtsformen von Unternehmen und wirtschaftliche Zusammenhänge
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
-termine: []
+  - titel: Prozessorientierte Organisation von Großhandelsgeschäften (120 Minuten)
+    punkte:
+      - Logistische Prozesse von der Beschaffung bis zur Distribution steuern
+      - Lagerlogistik von der Warenannahme bis zum Versand, auch mit Lagerverwaltungssystem
+      - Einkauf mit Risiken und Besonderheiten des internationalen Handels
+      - Verkauf mit zielgruppenorientiertem Marketing unterstützen
+      - Reklamationen, Retouren und Kundenkonflikte lösen
+  - titel: Kaufmännische Steuerung von Geschäftsprozessen (60 Minuten)
+    punkte:
+      - Geschäftsvorgänge buchen und Zahlungen bearbeiten
+      - Kosten- und Leistungsrechnung anwenden, Kennzahlen ermitteln und deuten
+      - Daten- und Warenfluss eines Kundenauftrags im Warenwirtschaftssystem nachvollziehen
+      - Arbeit projekt- und teamorientiert planen
+  - titel: Wirtschafts- und Sozialkunde (60 Minuten)
+    punkte:
+      - Ausbildungs- und Arbeitsvertrag, Kündigung, Arbeitsschutz
+      - Sozialversicherung, Tarifvertrag und Mitbestimmung im Betrieb
+      - Rechtsformen und wirtschaftliche Zusammenhänge
+  - titel: Fallbezogenes Fachgespräch
+    punkte:
+      - Ablauf und die drei möglichen Gebiete im Überblick
+      - Geschäftsgespräche strukturiert führen und Lösungen begründen
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
+termine:
+  - id: grosshandel-t2-2027-sommer
+    start: 2027-03-16
+    ende: 2027-04-20
+    pruefung: 2027-04-27
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am 27. und 28.04.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-03-09
+    ausfall:
+      - 2027-04-01
+  - id: grosshandel-t2-2027-winter
+    start: 2027-10-14
+    ende: 2027-11-16
+    pruefung: 2027-11-23
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am 23. und 24.11.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-10-07
 faq:
-- frage: Warum gibt es noch keinen Termin?
-  antwort: Wir legen die Termine nach Nachfrage fest. Merk dich unverbindlich vor – wir melden uns, sobald ein Termin feststeht.
-- frage: Ist der Kurs eine Veranstaltung der IHK?
-  antwort: Nein. Die waybuild Akademie ist ein unabhängiger Bildungsanbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine und Regeln.
-- frage: Ist die Gebühr der IHK im Preis enthalten?
-  antwort: Nein. Die Teilnahmegebühr deckt den Kurs und die Unterlagen. Die Gebühr für die Prüfung rechnet deine IHK direkt mit dir oder deinem Betrieb ab.
-- frage: Kann mein Betrieb die Rechnung bekommen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Firmendaten an. Die Rechnung geht dann per Mail an die Firma.
-reihenfolge: 52
+  - frage: Wie verteilen sich die Noten?
+    antwort: Großhandelsgeschäfte zählen 30 %, kaufmännische Steuerung 15 %, WiSo 10 % und das Fachgespräch 20 %. Die übrigen 25 % stammen aus Teil 1.
+  - frage: Wie unterscheidet sich der Kurs vom Kurs für den Außenhandel?
+    antwort: Kaufmännische Steuerung und WiSo sind gleich. Im Fachteil geht es hier um Lager, Logistik und Verkauf im Inland, beim Außenhandel um Auslandsmärkte, Handelsklauseln und Zahlungssicherung.
+  - frage: Worüber wird im Fachgespräch gesprochen?
+    antwort: Über eine praxisbezogene Fachaufgabe aus einem von drei Gebieten – Verkauf und Distribution, Warensortiment und Marketing oder Einkauf und Beschaffungslogistik. Das Gespräch dauert 30 Minuten.
+reihenfolge: 60
 ---
 
-Der Kurs bereitet dich auf die schriftlichen Prüfungsbereiche im Groß- und Außenhandel vor. Du wiederholst Sortiment und Beschaffung, Vertrieb, kaufmännische Steuerung sowie Wirtschafts- und Sozialkunde an Aufgaben im Stil der Prüfung.
+In Teil 2 der Fachrichtung Großhandel schreibst du drei Prüfungsbereiche: „Prozessorientierte Organisation von Großhandelsgeschäften“ mit 120 Minuten, „Kaufmännische Steuerung von Geschäftsprozessen“ mit 60 Minuten und Wirtschafts- und Sozialkunde mit 60 Minuten. Dazu kommt das fallbezogene Fachgespräch.
 
-Der Kurs läuft live-online im virtuellen Klassenraum, zweimal pro Woche am Abend. Jeder Termin hat einen Schwerpunkt: kurze Erklärung, dann Aufgaben im Stil früherer Prüfungen, die wir gemeinsam lösen und besprechen. Fragen klärst du direkt live. Die Unterlagen bekommst du zum Download.
+Der große Fachbereich folgt einer Ware durch das ganze Unternehmen: Einkauf, Wareneingang, Lager, Kommissionierung, Versand und am Ende vielleicht eine Retoure. In der kaufmännischen Steuerung musst du in nur 60 Minuten buchen, rechnen und Kennzahlen deuten – hier kommt es auf ein zügiges Vorgehen an. Wir üben beides an Fällen im Stil der Prüfung gemeinsam live.
 
-Er passt zu dir, wenn du in der Ausbildung oder Umschulung in diesem Beruf bist. Welche Prüfungsteile du schon abgelegt hast, berücksichtigen wir gern – sag uns bei der Anmeldung kurz Bescheid. Die Anmeldung zur Prüfung läuft über deinen Betrieb bzw. deinen Bildungsträger bei deiner IHK.
+An den letzten Abenden geht es um das Fachgespräch. Für die Fachrichtung Außenhandel nutze bitte unseren Kurs „Kaufleute für Groß- und Außenhandelsmanagement – Teil 2 Außenhandel“.

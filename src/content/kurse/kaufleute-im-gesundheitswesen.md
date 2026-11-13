@@ -2,84 +2,76 @@
 saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute im Gesundheitswesen
-untertitel: Vorbereitung auf die IHK-Abschlussprüfung
-kurzbeschreibung: 'Geh vorbereitet in deine Abschlussprüfung: Du übst Abläufe im Gesundheitswesen, Leistungsabrechnung, Rechnungswesen und WiSo an prüfungsnahen Aufgaben – live-online an 12 Abenden.'
+untertitel: Geschäfts- und Leistungsprozesse, Gesundheitswesen, WiSo (Abschlussprüfung)
+kurzbeschreibung: Übe die drei schriftlichen Bereiche der Abschlussprüfung – Geschäfts- und Leistungsprozesse, Gesundheitswesen und WiSo – an Fällen aus Klinik, Praxis, Pflege und Krankenkasse. Live online.
 status: entwurf
 art: kurs
 ue: 36
-dauer: ca. 6 Wochen
+dauer: ca. 6 Wochen (12 Abende)
 zeiten: Di + Do, 18:00–20:30 Uhr
 preis:
-  betrag: 329
-  hinweis: Inkl. Unterlagen; Gebühren deiner IHK sind nicht enthalten
+  betrag: 349
+  hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
-- Auszubildende zur Kauffrau oder zum Kaufmann im Gesundheitswesen vor der Abschlussprüfung
-- Umschülerinnen und Umschüler aus Klinik, Praxis, Pflege oder Krankenkasse
-- Alle, die Prüfungsaufgaben aus dem Gesundheitswesen gezielt üben wollen
+  - Auszubildende Kaufleute im Gesundheitswesen vor der Abschlussprüfung
+  - Umschülerinnen und Umschüler aus Klinik, Praxis, Pflege oder Krankenkasse
+  - Prüflinge, die einen schriftlichen Bereich wiederholen
 voraussetzungen:
-- Du bist in der Ausbildung oder Umschulung zur Kauffrau oder zum Kaufmann im Gesundheitswesen
-- Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
+  - Fachwissen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
+  - Taschenrechner
+  - Computer mit stabiler Internetverbindung und aktuellem Browser, Headset oder Kopfhörer mit Mikrofon
+  - Teilnahme live an den Kursabenden
 inhalte:
-- titel: Gesundheitswesen
-  punkte:
-  - Aufbau des Gesundheitssystems und Kostenträger
-  - Kranken- und Pflegeversicherung
-  - Rechtliche Grundlagen und Datenschutz im Gesundheitswesen
-- titel: Geschäfts- und Leistungsprozesse
-  punkte:
-  - Patienten- und Klientenverwaltung
-  - Leistungen dokumentieren und abrechnen
-  - Beschaffung und Materialwirtschaft
-  - Qualitätsmanagement und Marketing in Einrichtungen
-- titel: Rechnungswesen und Controlling
-  punkte:
-  - Buchführung in Einrichtungen des Gesundheitswesens
-  - Kosten- und Leistungsrechnung
-  - Kennzahlen auswerten
-- titel: Wirtschafts- und Sozialkunde
-  punkte:
-  - Ausbildungsvertrag, Rechte und Pflichten in der Ausbildung
-  - Arbeitsvertrag, Kündigung, Arbeitsschutz und Jugendarbeitsschutz
-  - Sozialversicherung und Entgeltabrechnung in Grundzügen
-  - Betriebsrat, Tarifvertrag und Mitbestimmung
-  - Rechtsformen von Unternehmen und wirtschaftliche Zusammenhänge
-- titel: Fallbezogenes Fachgespräch
-  punkte:
-  - Ablauf und typische Fragen
-  - Fälle aus deinem Einsatzbereich vorbereiten
-abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner IHK ab
+  - titel: Gesundheitswesen
+    punkte:
+      - Aufgaben und Aufbau des Gesundheitswesens
+      - Rechtliche Grundlagen des Gesundheits- und Sozialwesens
+      - Finanzierung, Leistungserbringer und Leistungsträger
+      - Qualitätsmanagement im Gesundheitswesen
+  - titel: Geschäfts- und Leistungsprozesse in Einrichtungen des Gesundheitswesens
+    punkte:
+      - Dienstleistungen erstellen, Marketing und Kundenorientierung
+      - Leistungen dokumentieren und abrechnen
+      - Beschaffung und Materialwirtschaft
+      - Kaufmännische Steuerung und Kontrolle – Kosten, Erlöse, Kennzahlen
+  - titel: Wirtschafts- und Sozialkunde
+    punkte:
+      - Ausbildungs- und Arbeitsvertrag, Kündigung, Arbeitsschutz
+      - Sozialversicherung, Tarifvertrag und Mitbestimmung
+      - Das Gesundheitswesen als Wirtschaftsfaktor
+  - titel: Fallbezogenes Fachgespräch
+    punkte:
+      - Ablauf – zwei Aufgaben zur Wahl, bis zu 15 Minuten Vorbereitung, bis zu 20 Minuten Gespräch
+      - Interne Abstimmung und kundenorientierte Kommunikation, etwa bei Beschwerden
+abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
-- id: gesundheitswesen-2027-sommer
-  start: 2027-03-11
-  ende: 2027-04-20
-  pruefung: 2027-04-27
-  pruefungHinweis: Schriftliche Abschlussprüfung voraussichtlich am 27./28.04.2027 – verbindlich ist die Einladung deiner IHK
-  anmeldeschluss: 2027-03-04
-  ausfall: []
-- id: gesundheitswesen-2027-winter
-  start: 2027-10-07
-  ende: 2027-11-16
-  pruefung: 2027-11-23
-  pruefungHinweis: Schriftliche Abschlussprüfung voraussichtlich am 23./24.11.2027 – verbindlich ist die Einladung deiner IHK
-  anmeldeschluss: 2027-09-30
-  ausfall: []
+  - id: gesundheitswesen-2027-sommer
+    start: 2027-03-09
+    ende: 2027-04-20
+    pruefung: 2027-04-27
+    pruefungHinweis: Schriftliche Prüfung am 27. und 28.04.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-03-02
+    ausfall:
+      - 2027-04-01
+  - id: gesundheitswesen-2027-winter
+    start: 2027-10-07
+    ende: 2027-11-16
+    pruefung: 2027-11-23
+    pruefungHinweis: Schriftliche Prüfung am 23. und 24.11.2027 – verbindlich ist die Einladung deiner IHK.
+    anmeldeschluss: 2027-09-30
 faq:
-- frage: Ich arbeite in einer Praxis, nicht in einer Klinik. Passt der Kurs trotzdem?
-  antwort: Ja. Die Prüfung ist für alle Einsatzbereiche gleich. Wir üben Fälle aus Klinik, Praxis, Pflege und Krankenkasse, damit du auf alle Aufgaben vorbereitet bist.
-- frage: Geht es auch um Abrechnungssysteme?
-  antwort: Wir behandeln die Grundlagen der Leistungsabrechnung so, wie sie in der Prüfung gefragt sind. Eine Schulung für ein bestimmtes Programm ist der Kurs nicht.
-- frage: Kann meine Einrichtung den Kurs bezahlen?
-  antwort: Ja. Wähle bei der Anmeldung „Mein Betrieb zahlt“ und gib die Daten deiner Einrichtung an.
-- frage: Sind die Gebühren der IHK enthalten?
-  antwort: Nein. Die Teilnahmegebühr gilt für Kurs und Unterlagen. Die Prüfung rechnet deine IHK eigenständig ab.
-reihenfolge: 59
+  - frage: Welche Bereiche zählen am meisten?
+    antwort: Der Prüfungsbereich „Gesundheitswesen“ und das fallbezogene Fachgespräch zählen jeweils doppelt so viel wie die übrigen Bereiche. Deshalb nehmen Recht, Finanzierung und Akteure des Gesundheitswesens im Kurs viel Raum ein.
+  - frage: Ich arbeite in einer Praxis, nicht in einer Klinik. Passt der Kurs trotzdem?
+    antwort: Ja. Die Prüfung ist für alle Einsatzbereiche gleich. Wir üben Fälle aus Klinik, Praxis, Pflege und Krankenkasse, damit du auf alle Aufgaben vorbereitet bist.
+  - frage: Geht es auch um Abrechnungssysteme?
+    antwort: Wir behandeln die Grundlagen der Leistungsabrechnung so, wie sie in der Prüfung gefragt sind. Eine Schulung für ein bestimmtes Programm ist der Kurs nicht.
+reihenfolge: 65
 ---
 
-Der Kurs bereitet dich auf die schriftlichen Prüfungsbereiche der Abschlussprüfung vor. Du wiederholst Aufbau und Recht des Gesundheitswesens, Geschäfts- und Leistungsprozesse in Einrichtungen, Rechnungswesen sowie Wirtschafts- und Sozialkunde.
+Die Abschlussprüfung im Gesundheitswesen wird nicht gestreckt. Schriftlich geprüft werden „Geschäfts- und Leistungsprozesse in Einrichtungen des Gesundheitswesens“, „Gesundheitswesen“ und Wirtschafts- und Sozialkunde, verteilt auf zwei Tage. Der Bereich „Gesundheitswesen“ zählt doppelt – ebenso das fallbezogene Fachgespräch im mündlichen Teil.
 
-Wir arbeiten an Fällen, wie sie in der Prüfung gestellt werden: Leistungen abrechnen, Kosten vergleichen, Abläufe in Klinik, Praxis oder Pflegeeinrichtung beurteilen. Jeder Abend verbindet eine kurze Erklärung mit Aufgaben, die ihr gemeinsam live löst.
+Die Fälle wechseln zwischen den Einrichtungen: Eine Klinik plant ein neues Leistungsangebot, eine Pflegeeinrichtung prüft ihre Kosten, ein Patient beschwert sich über eine Rechnung. Häufige Stolpersteine sind die Zuständigkeiten der Kostenträger – wer zahlt was, nach welchem Gesetzbuch? – und die Abgrenzung zwischen Leistungserbringern und Leistungsträgern. Wir ordnen diese Strukturen mit dir und wenden sie an Aufgaben im Stil der Prüfung an.
 
-Zum Abschluss bereiten wir dich auf das fallbezogene Fachgespräch vor. Die Unterlagen bekommst du zum Download.
-
-Der Kurs passt zu dir, wenn du die Abschlussprüfung im Gesundheitswesen vor dir hast. Die Anmeldung zur Prüfung erledigt dein Ausbildungsbetrieb bei deiner IHK.
+Am letzten Abend üben wir das Fachgespräch, etwa den Umgang mit einer Beschwerde oder eine interne Abstimmung zwischen Abteilungen.
