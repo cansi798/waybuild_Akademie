@@ -57,7 +57,7 @@ file_put_contents(API . '/termine.json', json_encode(['version' => 1, 'erzeugt' 
         ]],
 ]], JSON_UNESCAPED_UNICODE));
 
-function limit_leeren(): void { foreach (array_merge(glob(DATEN . '/ratelimit/*.json') ?: [], glob(DATEN . '/empfaenger/*.json') ?: []) as $d) unlink($d); }
+function limit_leeren(): void { foreach (glob(DATEN . '/{ratelimit,empfaenger,empfaenger-widerruf}/*.json', GLOB_BRACE) ?: [] as $d) unlink($d); }
 function mails_leeren(): void { foreach (glob('/t/mails/*.eml') ?: [] as $d) unlink($d); }
 /** @return list<array{kopf:string,text:string,an:string,betreff:string}> */
 function mails(): array {
@@ -240,7 +240,7 @@ pruefe(count($dateien) === 1 && preg_match('/^[0-9a-f]{64}\.json$/', basename($d
 $inhalt = json_decode((string) file_get_contents($dateien[0]), true);
 pruefe(is_array($inhalt) && count($inhalt) === 15 && array_filter($inhalt, 'is_int') === $inhalt, 'Rate-Limit-Datei enthält nur Zeitpunkte');
 $alles = array_map(fn ($p) => substr($p, strlen(DATEN) + 1), array_merge(glob(DATEN . '/*') ?: [], glob(DATEN . '/.*') ?: [], $dateien));
-pruefe(!array_filter($alles, fn ($p) => !in_array($p, ['.', '..', '.htaccess', 'formular-geheimnis.txt', 'ratelimit', 'empfaenger'], true) && !str_starts_with($p, 'ratelimit/')), 'keine Formulardaten auf dem Server gespeichert');
+pruefe(!array_filter($alles, fn ($p) => !in_array($p, ['.', '..', '.htaccess', 'formular-geheimnis.txt', 'ratelimit', 'empfaenger', 'empfaenger-widerruf'], true) && !str_starts_with($p, 'ratelimit/')), 'keine Formulardaten auf dem Server gespeichert');
 limit_leeren();
 
 gruppe('Header-Injection');
@@ -341,11 +341,120 @@ $anZiel = count(array_filter($m, fn ($x) => $x['an'] === 'ziel@beispiel.de'));
 pruefe($codes === [303, 303, 303, 303], 'alle vier Anfragen angenommen (303)');
 pruefe($anTeam === 4, 'Team bekommt alle 4 Mails');
 pruefe($anZiel === 3, '4. Bestätigung an dieselbe Adresse wird nicht versendet');
+$teamTexte = array_values(array_map(fn ($x) => $x['text'], array_filter($m, fn ($x) => $x['an'] === 'info@waybuild-akademie.de')));
+pruefe(str_contains($teamTexte[0] ?? '', 'Eingangsbestätigung an die Person: wird automatisch versendet') && str_contains($teamTexte[3] ?? '', 'Eingangsbestätigung an die Person: NICHT versendet'), 'Team-Mail vermerkt, ob die Bestätigung versendet wurde');
 $r = anfrage('/api/interesse.php', ['name' => 'Test', 'email' => 'ZIEL@beispiel.de', 'kurs' => 'testkurs', 'einwilligung' => '1'], false, 'POST', 8080, true);
 pruefe(count(array_filter(mails(), fn ($x) => strtolower($x['an']) === 'ziel@beispiel.de')) === 3, 'Limit gilt formularübergreifend und ohne Groß-/Kleinschreibung');
 $dateien = glob(DATEN . '/empfaenger/*') ?: [];
 pruefe(count($dateien) === 1 && preg_match('/^[0-9a-f]{64}\.json$/', basename($dateien[0])) && !str_contains((string) file_get_contents($dateien[0]), '@'), 'gespeichert wird nur ein Hash der Adresse');
+$wid2 = ['name' => 'Ziel Person', 'email' => 'ziel@beispiel.de', 'vorgang' => 'A-20261113-7F3K', 'schritt' => '2'];
+mails_leeren();
+$r = anfrage('/api/widerruf.php', $wid2, true, 'POST', 8080, true);
+pruefe(($r['json']['bestaetigung'] ?? null) === true && count(array_filter(mails(), fn ($x) => $x['an'] === 'ziel@beispiel.de')) === 1, 'Widerruf: eigener Zähler – Bestätigung kommt trotz ausgeschöpftem Formular-Limit');
+for ($i = 0; $i < 3; $i++) { $r = anfrage('/api/widerruf.php', $wid2, true, 'POST', 8080, true); }
+pruefe(($r['json']['bestaetigung'] ?? null) === false && count(array_filter(mails(), fn ($x) => $x['an'] === 'ziel@beispiel.de')) === 3, 'Widerruf: 4. Bestätigung je Stunde unterbleibt, Antwort meldet bestaetigung=false');
+$r = anfrage('/api/widerruf.php', $wid2, false, 'POST', 8080, true);
+pruefe($r['status'] === 200 && str_contains($r['text'], 'schicken wir dir gesondert'), 'Widerruf ohne JS: Seite sagt ehrlich, dass die Bestätigung gesondert kommt');
 limit_leeren();
+
+gruppe('Angriffe (Review)');
+mails_leeren();
+// Header-Injection in Feldern, die im Betreff landen (Kontakt: Name; Coaching: Name)
+$r = anfrage('/api/kontakt.php', ['name' => "Jan\r\nBcc: boese@example.com\r\nSubject: Gewinn", 'email' => 'jan@beispiel.de', 'thema' => 'allgemein', 'nachricht' => 'Eine ganz normale Frage.', 'einwilligung' => '1']);
+$m = mails();
+pruefe($r['status'] === 303 && count($m) === 2, 'Kontakt: Name mit CR/LF → Versand ok, Umbruch entfernt');
+pruefe(!preg_match('/^(Bcc|Subject: Gewinn)/mi', ($m[0]['kopf'] ?? '') . "\n" . ($m[1]['kopf'] ?? '')) && substr_count($m[0]['kopf'] ?? '', "\nSubject:") + (str_starts_with($m[0]['kopf'] ?? '', 'Subject:') ? 1 : 0) <= 1, 'Betreff: keine eingeschleuste Kopfzeile');
+pruefe(str_contains($m[0]['betreff'] ?? '', 'Jan Bcc: boese@example.com Subject: Gewinn'), 'Betreff enthält den Namen einzeilig (MIME-kodiert)');
+mails_leeren();
+$r = anfrage('/api/anmeldung.php', ['kurs' => 'coaching', 'paket' => 'einzelcoaching', 'p1_vorname' => "Tom\nCc: boese@example.com", 'p1_nachname' => "Berg\r\n\r\nText", 'p1_email' => 'tom@beispiel.de', 'zahlweg' => 'selbst',
+    'strasse' => 'Weg 2', 'plz' => '22846', 'ort' => 'Norderstedt', 'anliegen' => 'Feedback zu meinem Projektantrag', 'datenschutz' => '1']);
+$m = mails();
+pruefe($r['status'] === 303 && !preg_match('/^Cc:/mi', ($m[0]['kopf'] ?? '') . "\n" . ($m[1]['kopf'] ?? '')), 'Coaching: Name im Betreff ohne Header-Injection');
+// E-Mail-Adressen, die filter_var durchlässt, die aber in To:/Reply-To: mehrdeutig sind
+foreach (['"a@evil.example>,<b"@beispiel.de', '"x,y@evil.example"@beispiel.de', 'lena@[127.0.0.1]', "lena@beispiel.de\nBcc: boese@example.com", 'lena@beispiel.de%0ABcc:x@y.de', 'lena@beispiel'] as $adr) {
+    $r = anfrage('/api/kontakt.php', ['name' => 'Test', 'email' => $adr, 'thema' => 'allgemein', 'nachricht' => 'Eine ganz normale Frage.', 'einwilligung' => '1'], true);
+    pruefe($r['status'] === 422 && isset($r['json']['fehler']['email']), 'E-Mail abgelehnt: ' . json_encode($adr));
+}
+foreach (['o\'brien@beispiel.de', 'vor.name+tag@sub.beispiel.de', 'x@xn--bcher-kva.de'] as $adr) {
+    $r = anfrage('/api/kontakt.php', ['name' => 'Test', 'email' => $adr, 'thema' => 'allgemein', 'nachricht' => 'Eine ganz normale Frage.', 'einwilligung' => '1'], true);
+    pruefe($r['status'] === 200, 'E-Mail angenommen: ' . $adr);
+}
+$r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['rechnung_email' => 'x', 'p1_email' => '"a,b@evil.example"@beispiel.de']), true);
+pruefe(isset($r['json']['fehler']['p1_email']), 'Anmeldung: mehrdeutige Adresse als Empfänger abgelehnt');
+// Überlange Felder
+$lang = ['p1_vorname' => str_repeat('a', 61), 'p1_nachname' => str_repeat('b', 61), 'p1_email' => str_repeat('c', 250) . '@x.de', 'strasse' => str_repeat('s', 101), 'ort' => str_repeat('o', 61), 'p1_telefon' => str_repeat('1', 31)];
+$r = anfrage('/api/anmeldung.php', array_merge($gueltig, $lang), true);
+pruefe(array_keys($r['json']['fehler'] ?? []) == ['p1_vorname', 'p1_nachname', 'p1_email', 'p1_telefon', 'strasse', 'ort'], 'Anmeldung: alle Längengrenzen greifen');
+$r = anfrage('/api/anmeldung.php', array_merge($betrieb, ['firma' => str_repeat('f', 121), 'ansprechperson' => str_repeat('a', 101), 'p2_vorname' => str_repeat('v', 61)]), true);
+pruefe(isset($r['json']['fehler']['firma'], $r['json']['fehler']['ansprechperson'], $r['json']['fehler']['p2_vorname']), 'Betrieb/Person 2: Längengrenzen');
+$r = anfrage('/api/kontakt.php', ['name' => str_repeat('n', 101), 'email' => 'jan@beispiel.de', 'thema' => 'allgemein', 'nachricht' => str_repeat('m', 2001), 'einwilligung' => '1'], true);
+pruefe(isset($r['json']['fehler']['name'], $r['json']['fehler']['nachricht']), 'Kontakt: Name max. 100, Nachricht max. 2.000');
+$r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['p1_vorname' => ['Array'], 'kurs' => ['testkurs']]), true);
+pruefe($r['status'] === 422 && isset($r['json']['fehler']['p1_vorname'], $r['json']['fehler']['kurs']), 'Felder als Array → wie leer behandelt (keine PHP-Warnung)');
+// Manipulierter Preis und Personenzahl
+mails_leeren();
+$r = anfrage('/api/anmeldung.php', array_merge($betrieb, ['gesamtpreis' => '0', 'rabattProzent' => '100', 'preis' => '-349']));
+pruefe($r['status'] === 303 && str_contains(mails()[0]['text'] ?? '', 'Endpreis (alles inklusive): 942,30 €'), 'Preisfelder aus dem Formular ignoriert (3 Personen = 942,30 €)');
+foreach (['0' => 1, '-3' => 1, '99999999999999999999' => null, '3abc' => 1] as $wert => $erwartet) {
+    mails_leeren();
+    $r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['personen' => (string) $wert]), true);
+    pruefe($erwartet === null ? isset($r['json']['fehler']['personen']) : ($r['status'] === 200 && str_contains(mails()[0]['text'] ?? '', 'TEILNEHMENDE (1)')), "Personenzahl „{$wert}“ sicher behandelt");
+}
+// Fremder Termin, Grenzfälle Anmeldeschluss, Pfade im Kurs-Slug
+$r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['termin' => 'e1']), true);
+pruefe(($r['json']['fehler']['termin'] ?? '') === 'Bitte wähle einen Termin aus.', 'Termin eines anderen Kurses abgelehnt');
+foreach (['../config', '../../etc/passwd', 'testkurs/../coaching', '%2e%2e%2fconfig', "testkurs\0", 'testkurs '] as $slug) {
+    $r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['kurs' => $slug]), true);
+    $bereinigt = in_array($slug, ['testkurs ', "testkurs\0"], true); // Steuerzeichen/Leerzeichen werden entfernt → gültiger Slug
+    $erfuellt = $bereinigt ? $r['status'] === 200 : ($r['status'] === 422 && isset($r['json']['fehler']['kurs']));
+    pruefe($erfuellt, 'Kurs-Slug ' . json_encode($slug) . ($bereinigt ? ' bereinigt und angenommen' : ' abgelehnt'));
+}
+$r = anfrage('/api/interesse.php', ['name' => 'Sara', 'email' => 'sara@beispiel.de', 'kurs' => '../config', 'einwilligung' => '1'], true);
+pruefe(isset($r['json']['fehler']['kurs']), 'Interesse: Pfad als Kurs abgelehnt');
+// Zeitfalle: manipulierte HMAC-Varianten
+$ts = (string) (time() - 10);
+$sig = hash_hmac('sha256', 'zeit:' . $ts, $geheim);
+foreach ([
+    'andere Zeit, alte Signatur' => ['ts' => (string) (time() - 20), 'sig' => $sig],
+    'Großbuchstaben' => ['ts' => $ts, 'sig' => strtoupper($sig)],
+    'gekürzt' => ['ts' => $ts, 'sig' => substr($sig, 0, 63)],
+    'nur Signatur' => ['ts' => '', 'sig' => $sig],
+    'nur Zeit' => ['ts' => $ts, 'sig' => ''],
+    'Zeit mit Vorzeichen' => ['ts' => '+' . $ts, 'sig' => hash_hmac('sha256', 'zeit:+' . $ts, $geheim)],
+    'Zukunft' => ['ts' => (string) (time() + 3600), 'sig' => 'x'],
+    'Signatur als Array' => ['ts' => $ts, 'sig' => [$sig]],
+    'ohne Geheimnis signiert' => ['ts' => $ts, 'sig' => hash_hmac('sha256', 'zeit:' . $ts, '')],
+] as $fall => $felder) {
+    $r = anfrage('/api/anmeldung.php', array_merge($gueltig, $felder), true);
+    pruefe($r['status'] === 400 && ($r['json']['code'] ?? '') === 'zeitstempel', "Zeitfalle manipuliert ({$fall}) → 400");
+}
+$zukunft = (string) (time() + 3600);
+$r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['ts' => $zukunft, 'sig' => hash_hmac('sha256', 'zeit:' . $zukunft, $geheim)]), true);
+pruefe($r['status'] === 429, 'gültig signierter Zeitstempel aus der Zukunft → zu schnell (429)');
+// Zurück-Link nur pfad-relativ (kein //fremd.example)
+foreach (['http://127.0.0.1:8080//boese.example/x' => '/', 'http://127.0.0.1:8080/\\boese.example' => '/', 'http://boese.example/anmeldung/' => '/', 'http://127.0.0.1:8080/anmeldung/?kurs=testkurs' => '/anmeldung/?kurs=testkurs'] as $ref => $ziel) {
+    $ctx = stream_context_create(['http' => ['method' => 'POST', 'header' => "Content-Type: application/x-www-form-urlencoded\r\nReferer: $ref", 'content' => 'kurs=x', 'ignore_errors' => true]]);
+    limit_leeren();
+    $html = (string) @file_get_contents('http://127.0.0.1:8080/api/anmeldung.php', false, $ctx);
+    pruefe(str_contains($html, 'href="' . htmlspecialchars($ziel, ENT_QUOTES | ENT_HTML5) . '">Zurück zum Formular'), "Zurück-Link bei Referer {$ref} → {$ziel}");
+}
+// XSS über Fehlerseite und Widerruf-Bestätigungsseite
+$r = anfrage('/api/widerruf.php', ['name' => '"><img src=x onerror=alert(1)>', 'email' => 'lena@beispiel.de', 'vorgang' => 'A-20261113-7F3K', 'nachricht' => '</dd><script>alert(1)</script>', 'ts' => '"><script>', 'sig' => '']);
+pruefe($r['status'] === 400 || ($r['status'] === 200 && !preg_match('/<script>|<img src=x/i', $r['text'])), 'Widerruf Schritt 1: Eingaben escaped');
+$r = anfrage('/api/widerruf.php', ['name' => '"><img src=x onerror=alert(1)>', 'email' => 'lena@beispiel.de', 'vorgang' => 'A-20261113-7F3K', 'nachricht' => '</dd><script>alert(1)</script>']);
+pruefe($r['status'] === 200 && !preg_match('/<script>|<img src=x/i', $r['text']) && str_contains($r['text'], '&lt;/dd&gt;&lt;script&gt;'), 'Widerruf Schritt 1 ohne Zeitfalle: Eingaben escaped');
+// Keine CORS-Freigabe, JSON mit nosniff
+$r = anfrage('/api/kontakt.php', ['name' => 'x'], true);
+pruefe(!isset($r['kopf']['access-control-allow-origin']) && str_starts_with($r['kopf']['content-type'] ?? '', 'application/json') && ($r['kopf']['x-content-type-options'] ?? '') === 'nosniff', 'JSON-Antwort ohne CORS-Freigabe, mit nosniff');
+
+gruppe('Einheiten: IP-Schlüssel, Datenverzeichnis');
+require API . '/_lib.php';
+pruefe(ip_schluessel('203.0.113.7') === '203.0.113.7', 'IPv4 unverändert');
+pruefe(ip_schluessel('2001:db8:1:2:aaaa::1') === ip_schluessel('2001:db8:1:2:ffff:1:2:3') && ip_schluessel('2001:db8:1:2::1') !== ip_schluessel('2001:db8:1:3::1'), 'IPv6 auf /64 gekürzt');
+pruefe(ip_schluessel('::ffff:203.0.113.7') === '203.0.113.7', 'IPv4-mapped IPv6 zählt als IPv4');
+pruefe(ip_schluessel('unbekannt') === 'unbekannt', 'unlesbare Adresse bleibt Schlüssel');
+pruefe(is_file(DATEN . '/.htaccess') && trim((string) file_get_contents(DATEN . '/.htaccess')) === 'Require all denied', 'Datenverzeichnis per .htaccess gesperrt');
+pruefe((fileperms(DATEN . '/formular-geheimnis.txt') & 0077) === 0, 'Geheimnis-Datei nur für das eigene Konto lesbar (0600)');
 
 if (is_file('/t/dist-termine.json')) {
     gruppe('Gebaute Terminliste dist/api/termine.json (S-06)');
@@ -369,10 +478,10 @@ docker run --rm -v "$T":/t -u "$(id -u):$(id -g)" "$IMAGE" sh -c '
   set -e
   for f in /t/konto/web/api/*.php; do php -l "$f" >/dev/null || exit 1; done
   echo "php -l: alle Dateien ohne Syntaxfehler"
-  php -S 127.0.0.1:8080 -t /t/konto/web -d sendmail_path=/t/sendmail.sh -d display_errors=0 -d log_errors=1 -d error_log=/t/php.log >/t/server.log 2>&1 &
+  php -S 127.0.0.1:8080 -t /t/konto/web -d sendmail_path=/t/sendmail.sh -d display_errors=1 -d error_reporting=-1 -d log_errors=1 -d error_log=/t/php.log >/t/server.log 2>&1 &
   php -S 127.0.0.1:8081 -t /t/konto/web -d sendmail_path=/bin/false -d display_errors=0 -d log_errors=1 -d error_log=/t/php.log >/t/server2.log 2>&1 &
   sleep 1
   php /t/test.php; s=$?
-  if [ -s /t/php.log ] && grep -vE "Formular-Geheimnis neu erzeugt|Limit je Empfängeradresse erreicht" /t/php.log | grep -q .; then echo "--- PHP-Protokoll:"; cat /t/php.log; fi
+  if [ -s /t/php.log ] && grep -vE "Formular-Geheimnis neu erzeugt|Limit je Empfängeradresse erreicht" /t/php.log | grep -q .; then echo "--- PHP-Protokoll (Warnungen = Fehler):"; cat /t/php.log; s=1; fi
   exit $s
 '

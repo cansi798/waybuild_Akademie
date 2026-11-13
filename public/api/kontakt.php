@@ -45,9 +45,11 @@ if ($f) {
 
 $vorgang = vorgangsnummer('K');
 $eingang = time();
+$bestaetigen = bestaetigung_erlaubt($email);
 $text = implode("\n", [
     'KONTAKT – Vorgang ' . $vorgang,
     'Eingang: ' . jetzt_text($eingang),
+    bestaetigung_vermerk($bestaetigen),
     '',
     'Thema: ' . THEMEN[$thema],
     'Name: ' . $name,
@@ -79,6 +81,6 @@ bestaetigung_senden($email, 'Deine Nachricht ist angekommen (' . $vorgang . ')',
     '',
     'Viele Grüße',
     'dein Team der waybuild Akademie',
-], $k['absender']['info']);
+], $k['absender']['info'], $bestaetigen);
 
 weiter('danke/?art=kontakt&vorgang=' . rawurlencode($vorgang), ['vorgang' => $vorgang]);

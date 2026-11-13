@@ -76,7 +76,7 @@ const kurse = (await formularDaten()).kurse;
     <div class="mt-6 rounded-2xl border-2 border-tief bg-white p-5" role="status" tabindex="-1" data-widerruf-erfolg hidden>
       <h3 class="text-2xl">Dein Widerruf ist eingegangen</h3>
       <p class="mt-2">Wir haben deinen Widerruf am <strong data-widerruf-zeit></strong> erhalten.</p>
-      <p class="mt-2">
+      <p class="mt-2" data-widerruf-bestaetigung-text>
         Eine Eingangsbestätigung mit dem Inhalt deines Widerrufs schicken wir an <strong data-widerruf-mail></strong>. Wir prüfen deinen Widerruf und melden uns bei dir.
       </p>
       <p class="mt-2 text-sm text-gedaempft" data-widerruf-vorgang hidden></p>
@@ -153,6 +153,11 @@ const kurse = (await formularDaten()).kurse;
         form.hidden = true;
         sektion.querySelector('[data-widerruf-zeit]')!.textContent = String(antwort.eingang ?? '');
         sektion.querySelector('[data-widerruf-mail]')!.textContent = wert(form, 'email');
+        if (antwort.bestaetigung === false) {
+          // Limit je Adresse erreicht: Bestätigung kommt gesondert vom Team – Seite als Nachweis aufbewahren
+          sektion.querySelector('[data-widerruf-bestaetigung-text]')!.textContent =
+            `Die Eingangsbestätigung per E-Mail an ${wert(form, 'email')} schicken wir dir gesondert. Bitte bewahre diese Meldung (oder einen Screenshot) mit Datum, Uhrzeit und Vorgangsnummer auf. Wir prüfen deinen Widerruf und melden uns bei dir.`;
+        }
         const v = sektion.querySelector<HTMLElement>('[data-widerruf-vorgang]')!;
         if (typeof antwort.vorgang === 'string') {
           v.textContent = `Vorgangsnummer: ${antwort.vorgang}`;

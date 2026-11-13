@@ -177,11 +177,13 @@ $art = $coaching ? 'coaching' : 'anmeldung';
 $vorgang = vorgangsnummer($coaching ? 'C' : 'A');
 $eingang = time();
 $erste = $personen[0];
+$bestaetigen = bestaetigung_erlaubt($erste['email']);
 
 // ---- Text der Anmeldung (feste Reihenfolge, US-24)
 $zeilen = [];
 $zeilen[] = ($coaching ? 'COACHING-ANFRAGE (unverbindlich)' : 'ANMELDUNG (verbindlich, zahlungspflichtig)') . ' – Vorgang ' . $vorgang;
 $zeilen[] = 'Eingang: ' . jetzt_text($eingang);
+$zeilen[] = bestaetigung_vermerk($bestaetigen);
 $zeilen[] = '';
 $zeilen[] = 'KURS';
 $zeilen[] = 'Kurs: ' . $kurs['titel'] . ' (' . $kursId . ')';
@@ -336,6 +338,7 @@ bestaetigung_senden(
     ($coaching ? 'Deine Coaching-Anfrage ist angekommen' : 'Deine Anmeldung ist angekommen') . ' (' . $vorgang . ')',
     array_merge($b, BESTAETIGUNG_FUSS),
     $k['absender']['anmeldung'],
+    $bestaetigen,
 ); // Schlägt nur die Bestätigung fehl, gilt die Anmeldung trotzdem als eingegangen (Architektur, Schritt 19–20)
 
 weiter('danke/?art=' . $art . '&vorgang=' . rawurlencode($vorgang), ['vorgang' => $vorgang, 'gesamtpreis' => $gesamt]);

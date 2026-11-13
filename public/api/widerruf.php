@@ -91,11 +91,13 @@ if (einzeilig('schritt') !== '2') {
 $vorgang = vorgangsnummer('W');
 $eingang = time();
 $eingangText = jetzt_text($eingang);
+$bestaetigen = bestaetigung_erlaubt($email, 'empfaenger-widerruf'); // eigener Zähler, siehe _lib.php
 
 $postfach = $k['empfaenger']['widerruf'];
 $text = implode("\n", array_merge([
     'WIDERRUF über die Online-Widerrufsfunktion – Vorgang ' . $vorgang,
     'Eingang: ' . $eingangText,
+    bestaetigung_vermerk($bestaetigen),
     '',
     'Name: ' . $name,
     'E-Mail: ' . $email,
@@ -112,7 +114,7 @@ if (!mail_senden($postfach, 'Widerruf · Eingang ' . date('d.m.Y H:i', $eingang)
 }
 
 // Eingangsbestätigung (dauerhafter Datenträger): Inhalt, Datum und Uhrzeit – ohne Freitext und ohne Namen
-bestaetigung_senden($email, 'Eingangsbestätigung deines Widerrufs (' . $vorgang . ')', array_merge([
+$gesendet = bestaetigung_senden($email, 'Eingangsbestätigung deines Widerrufs (' . $vorgang . ')', array_merge([
     'Hallo,',
     '',
     'wir haben deinen Widerruf am ' . $eingangText . ' erhalten.',
@@ -127,11 +129,13 @@ bestaetigung_senden($email, 'Eingangsbestätigung deines Widerrufs (' . $vorgang
     '',
     'Viele Grüße',
     'dein Team der waybuild Akademie',
-]), $k['absender']['anmeldung']);
+]), $k['absender']['anmeldung'], $bestaetigen);
 
 if (will_json()) {
-    json_antwort(200, ['ok' => true, 'eingang' => $eingangText, 'vorgang' => $vorgang]);
+    json_antwort(200, ['ok' => true, 'eingang' => $eingangText, 'vorgang' => $vorgang, 'bestaetigung' => $gesendet]);
 }
 html_seite(200, 'Dein Widerruf ist eingegangen', '<p>Wir haben deinen Widerruf am <strong>' . e($eingangText) . '</strong> erhalten.</p>'
-    . '<p>Eine Eingangsbestätigung mit dem Inhalt deines Widerrufs haben wir an <strong>' . e($email) . '</strong> geschickt. Wir prüfen deinen Widerruf und melden uns bei dir.</p>'
+    . ($gesendet
+        ? '<p>Eine Eingangsbestätigung mit dem Inhalt deines Widerrufs haben wir an <strong>' . e($email) . '</strong> geschickt. Wir prüfen deinen Widerruf und melden uns bei dir.</p>'
+        : '<p>Die Eingangsbestätigung per E-Mail an <strong>' . e($email) . '</strong> schicken wir dir gesondert. Bitte bewahre diese Seite (oder einen Screenshot) mit Datum, Uhrzeit und Vorgangsnummer auf. Wir prüfen deinen Widerruf und melden uns bei dir.</p>')
     . '<p>Vorgangsnummer: <strong>' . e($vorgang) . '</strong></p><p><a class="knopf" href="' . e(pfad('')) . '">Zur Startseite</a></p>');

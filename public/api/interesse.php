@@ -38,9 +38,11 @@ if ($f) {
 
 $vorgang = vorgangsnummer('I');
 $eingang = time();
+$bestaetigen = bestaetigung_erlaubt($email);
 $text = implode("\n", [
     'INTERESSE (unverbindlich) – Vorgang ' . $vorgang,
     'Eingang: ' . jetzt_text($eingang),
+    bestaetigung_vermerk($bestaetigen),
     '',
     'Kurs: ' . $kurs['titel'] . ' (' . $kursId . ')',
     'Name: ' . $name,
@@ -74,6 +76,6 @@ bestaetigung_senden($email, 'Dein Interesse ist vorgemerkt (' . $vorgang . ')', 
     '',
     'Viele Grüße',
     'dein Team der waybuild Akademie',
-], $k['absender']['info']);
+], $k['absender']['info'], $bestaetigen);
 
 weiter('danke/?art=interesse&vorgang=' . rawurlencode($vorgang), ['vorgang' => $vorgang]);

@@ -40,13 +40,21 @@ Neues Geheimnis = Datei löschen; offene Formulare müssen danach einmal neu gel
 
 - **Lockfeld** `website`: für Menschen unsichtbar; ist es ausgefüllt, antwortet der Endpunkt wie bei Erfolg, sendet aber nichts.
 - **Zeitfalle**: Absenden frühestens 3 Sekunden und höchstens 2 Tage nach dem Laden (nur mit JavaScript, ohne JavaScript entfällt sie).
-- **Rate-Limit**: höchstens 15 Absendungen je Stunde und Anschluss. Gespeichert wird nur ein HMAC-Hash der IP-Adresse
-  mit den Zeitpunkten der letzten Stunde (`akademie-daten/ratelimit/<hash>.json`); ältere Einträge werden gelöscht (TTL 1 h).
+- **Rate-Limit**: höchstens 15 Absendungen je Stunde und Anschluss (IPv6: je /64-Netz). Gespeichert wird nur ein
+  HMAC-Hash der (bei IPv6 gekürzten) IP-Adresse mit den Zeitpunkten der letzten Stunde
+  (`akademie-daten/ratelimit/<hash>.json`); ältere Einträge werden gelöscht (TTL 1 h).
+- `akademie-daten/` bekommt automatisch eine `.htaccess` mit `Require all denied` – falls das Konto-Verzeichnis über
+  eine Domain (z. B. `w0123456.kasserver.com`) erreichbar ist. Nach dem ersten Formular einmal prüfen:
+  `https://<konto-domain>/akademie-daten/formular-geheimnis.txt` muss **403** liefern.
+- PHP-Fehler gehen nur ins Fehlerprotokoll (`display_errors` wird in `_lib.php` abgeschaltet).
 - **Eingangsbestätigungen an die Absender-Adresse** enthalten nur feste Textbausteine, die Vorgangsnummer und geprüfte
   Werte (Kurstitel, Termin, Paket, Preis aus `termine.json`, Thema aus fester Liste, Personenzahl) – **nie Freitext und
   keine Namen** aus dem Formular, damit niemand die Formulare als Spam-/Phishing-Schleuder nutzen kann. Je
   Empfängeradresse höchstens **3 Bestätigungen pro Stunde** (`akademie-daten/empfaenger/<hash>.json`, nur HMAC-Hash,
-  TTL 1 h); die Mail ans Team geht immer raus. Mails ans Team enthalten alle Angaben, Reply-To = geprüfte Absender-Adresse.
+  TTL 1 h); die Mail ans Team geht immer raus und vermerkt, ob die Bestätigung versendet wurde („NICHT versendet“ →
+  selbst bestätigen). Widerrufe zählen getrennt (`akademie-daten/empfaenger-widerruf/`), damit andere Formulare die
+  gesetzliche Eingangsbestätigung nicht blockieren können. Mails ans Team enthalten alle Angaben, Reply-To = geprüfte
+  Absender-Adresse. E-Mail-Adressen müssen eine gewöhnliche Form haben (keine Anführungszeichen, Kommas, IP-Adressen).
 - **Keine Formulardaten auf dem Server** – sie gehen nur per E-Mail über das ALL-INKL-Postfach raus.
 - Alle Eingaben werden serverseitig geprüft (gleiche Regeln und Texte wie im Browser, `src/lib/formular.ts`),
   Zeilenumbrüche aus einzeiligen Feldern entfernt (keine eingeschleusten Mail-Kopfzeilen), Ausgaben escaped.

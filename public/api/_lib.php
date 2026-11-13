@@ -10,6 +10,10 @@ if (isset($_SERVER['SCRIPT_FILENAME']) && realpath((string) $_SERVER['SCRIPT_FIL
     exit;
 }
 
+// Nie PHP-Warnungen, Pfade oder Stacktraces an Besucher ausgeben – nur ins Fehlerprotokoll (ALL-INKL: KAS → Logs).
+ini_set('display_errors', '0');
+ini_set('log_errors', '1');
+
 date_default_timezone_set('Europe/Berlin');
 mb_internal_encoding('UTF-8');
 
@@ -134,9 +138,16 @@ function pruefe_text(array &$f, string $feld, string $wert, int $min, int $max, 
     }
 }
 
+/**
+ * Nur „gewöhnliche“ Adressen (dot-atom, Domain mit Punkt und Buchstaben-TLD). filter_var allein lässt Anführungszeichen,
+ * Kommas, spitze Klammern und IP-Literale zu (z. B. "a@evil.example>,<b"@x.de) – solche Adressen legen Mailserver und
+ * Mailprogramme in To:/Reply-To: unterschiedlich aus. Deshalb zusätzlich ein strenges Muster.
+ */
 function email_ok(string $s): bool
 {
-    return $s !== '' && strlen($s) <= 254 && filter_var($s, FILTER_VALIDATE_EMAIL) !== false;
+    return $s !== '' && strlen($s) <= 254
+        && preg_match('/^[A-Za-z0-9.!#$%&\'*+\/=?^_`{|}~-]{1,64}@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+(?:[A-Za-z]{2,63}|xn--[A-Za-z0-9-]{1,59})$/D', $s) === 1
+        && filter_var($s, FILTER_VALIDATE_EMAIL) !== false;
 }
 
 function pruefe_email(array &$f, string $feld, string $wert, string $text, bool $pflicht = true): void
@@ -175,13 +186,23 @@ function datenverzeichnis(string $unter = ''): ?string
             @mkdir($dir, 0700, true);
         }
         if (is_dir($dir) && is_writable($dir)) {
-            if (!is_file($basis . '/.htaccess')) {
-                @file_put_contents($basis . '/.htaccess', "Require all denied\n");
-            }
+            verzeichnis_sperren($basis);
             return $dir;
         }
     }
     return null;
+}
+
+/**
+ * Sperrt das Datenverzeichnis zusätzlich per .htaccess. Bei ALL-INKL ist das Konto-Verzeichnis oberhalb des Webroots
+ * je nach Einrichtung selbst über eine Domain (z. B. w0123456.kasserver.com) erreichbar – dann schützt nur diese Datei
+ * Geheimnis und Hashes vor dem Abruf über das Web.
+ */
+function verzeichnis_sperren(string $basis): void
+{
+    if (is_dir($basis) && !is_file($basis . '/.htaccess')) {
+        @file_put_contents($basis . '/.htaccess', "Require all denied\n");
+    }
 }
 
 /**
@@ -211,7 +232,10 @@ function geheimnis(): ?string
         @mkdir($dir, 0700, true);
     }
     if (is_dir($dir) && is_writable($dir)) {
+        verzeichnis_sperren($dir); // token.php kann vor dem ersten Formular laufen – auch dann schon sperren
+        $umask = umask(0077);      // Datei von Anfang an nur für das eigene Konto lesbar (nicht erst nach chmod)
         $fp = @fopen($datei, 'x');
+        umask($umask);
         if ($fp !== false) {
             $s = bin2hex(random_bytes(32));
             fwrite($fp, $s . "\n");
@@ -292,9 +316,25 @@ function zaehler(string $bereich, string $schluessel, int $max): bool
     return $erlaubt;
 }
 
+/**
+ * Schlüssel für das Rate-Limit: IPv4 unverändert, IPv6 auf das /64-Netz gekürzt (ein Anschluss bekommt meist ein ganzes
+ * /64 – sonst könnte ein Absender mit jeder Anfrage eine neue Adresse nehmen). IPv4-mapped IPv6 zählt als IPv4.
+ */
+function ip_schluessel(string $ip): string
+{
+    $bin = @inet_pton($ip);
+    if ($bin === false || strlen($bin) !== 16) {
+        return $ip;
+    }
+    if (str_starts_with($bin, str_repeat("\0", 10) . "\xff\xff")) {
+        return (string) inet_ntop(substr($bin, 12));
+    }
+    return bin2hex(substr($bin, 0, 8)) . '::/64';
+}
+
 function rate_limit_pruefen(): void
 {
-    $ip = (string) ($_SERVER['REMOTE_ADDR'] ?? 'unbekannt');
+    $ip = ip_schluessel((string) ($_SERVER['REMOTE_ADDR'] ?? 'unbekannt'));
     if (!zaehler('ratelimit', $ip, (int) konfig()['rate_limit_max'])) {
         $mail = konfig()['empfaenger']['kontakt'];
         fehler_antwort(429, 'zu_viele', "Von deinem Anschluss kamen gerade sehr viele Anfragen. Bitte versuche es in einer Stunde noch einmal oder schreib uns an {$mail}.");
@@ -303,20 +343,31 @@ function rate_limit_pruefen(): void
 
 /**
  * Höchstens 3 Eingangsbestätigungen je Empfängeradresse und Stunde (Schutz gegen Missbrauch als Mail-Schleuder).
- * Die Mail an das Team geht trotzdem raus.
+ * Die Mail an das Team geht trotzdem raus und sagt, ob die Bestätigung versendet wird.
+ * Widerrufe zählen in einem eigenen Bereich: Die gesetzlich vorgeschriebene Eingangsbestätigung (§ 356a BGB) darf nicht
+ * dadurch ausfallen, dass jemand vorher Kontakt- oder Interesse-Formulare mit derselben Adresse abgeschickt hat.
  */
-function bestaetigung_erlaubt(string $email): bool
+function bestaetigung_erlaubt(string $email, string $bereich = 'empfaenger'): bool
 {
-    return zaehler('empfaenger', mb_strtolower(kopf($email)), (int) konfig()['bestaetigungen_je_adresse']);
+    return zaehler($bereich, mb_strtolower(kopf($email)), (int) konfig()['bestaetigungen_je_adresse']);
+}
+
+/** Zeile für die Team-Mail: wird die Eingangsbestätigung versendet? */
+function bestaetigung_vermerk(bool $erlaubt): string
+{
+    return 'Eingangsbestätigung an die Person: ' . ($erlaubt
+        ? 'wird automatisch versendet'
+        : 'NICHT versendet (Limit je Empfängeradresse erreicht) – bitte selbst bestätigen, falls die Anfrage echt ist');
 }
 
 /**
  * Eingangsbestätigung an die (unbestätigte) Absender-Adresse: nur feste Textbausteine und serverseitig geprüfte,
- * strukturierte Werte – nie Freitext aus dem Formular (kein Spam-/Phishing-Relay). Gibt zurück, ob versendet wurde.
+ * strukturierte Werte – nie Freitext aus dem Formular (kein Spam-/Phishing-Relay). $erlaubt kommt aus
+ * bestaetigung_erlaubt() (vor der Team-Mail geprüft). Gibt zurück, ob versendet wurde.
  */
-function bestaetigung_senden(string $an, string $betreff, array $zeilen, string $von): bool
+function bestaetigung_senden(string $an, string $betreff, array $zeilen, string $von, bool $erlaubt): bool
 {
-    if (!bestaetigung_erlaubt($an)) {
+    if (!$erlaubt) {
         error_log('[waybuild-akademie] Eingangsbestätigung nicht versendet: Limit je Empfängeradresse erreicht.');
         return false;
     }
@@ -524,7 +575,10 @@ function zurueck_adresse(): string
     if ($ref !== '' && $host !== '' && parse_url($ref, PHP_URL_HOST) === explode(':', $host)[0]) {
         $p = (string) parse_url($ref, PHP_URL_PATH);
         $q = parse_url($ref, PHP_URL_QUERY);
-        return $p . ($q ? '?' . $q : '');
+        // Nur pfad-relative Ziele: "//fremd.example" oder "/\fremd.example" würde der Browser als fremde Domain lesen
+        if (preg_match('~^/(?![/\\\\])~', $p)) {
+            return $p . ($q ? '?' . $q : '');
+        }
     }
     return pfad('');
 }
