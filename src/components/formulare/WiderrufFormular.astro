@@ -58,6 +58,10 @@ const kurse = (await formularDaten()).kurse;
         <div>
           <button type="submit" class="btn btn-secondary btn-lg rounded-full px-8" data-widerruf-weiter>Vertrag jetzt widerrufen</button>
         </div>
+        <p class="text-sm text-gedaempft">
+          Was mit deinen Angaben passiert, steht in der{' '}
+          <a class="link-fliess" href={href('/datenschutz/#formulare')} target="_blank">Datenschutzerklärung</a>.
+        </p>
       </div>
 
       <div class="grid gap-5" data-widerruf-schritt="2" hidden>

@@ -35,6 +35,10 @@ ENV: `SITE`, `BASE` (`/waybuild_Akademie` bzw. `/`), `PUBLIC_PREVIEW` (`true` = 
      „technisch nicht erreichbar“ (503): Ordner `akademie-daten` neben dem Webroot anlegen (LIESMICH).
    - `https://waybuild-akademie.de/api/config.php` und `…/api/LIESMICH.md` liefern **403**.
    - Eine echte Testanmeldung schicken: Mail an `anmeldung@` und Eingangsbestätigung kommen an.
+   - Datenschutz: Im Mailprogramm bei beiden Mails die **Kopfzeilen (Quelltext)** öffnen. Steht dort die IP-Adresse des
+     eigenen Anschlusses (z. B. in `X-PHP-Script`, `X-Originating-IP` oder einer `Received`-Zeile mit der Besucher-IP),
+     speichert der Mailversand mehr als die Datenschutzerklärung sagt – dann Datenschutzerklärung anpassen bzw. bei
+     ALL-INKL abschalten lassen. Ergebnis im Prüfprotokoll festhalten.
 5. **Jede Änderung** an Kursen, Terminen oder Preisen braucht einen neuen Upload – live verschwinden abgelaufene Termine
    erst damit (die Seiten blenden sie im Browser aus, `anmeldung.php` lehnt sie ab; Technical Debt TD-10).
 

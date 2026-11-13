@@ -329,14 +329,31 @@ function zaehler(string $bereich, string $schluessel, int $max): bool
         flock($fp, LOCK_UN);
         fclose($fp);
     }
-    if (random_int(1, 20) === 1) {
-        foreach (glob($dir . '/*.json') ?: [] as $datei) {
-            if (@filemtime($datei) < $jetzt - $fenster) {
-                @unlink($datei);
+    abgelaufene_loeschen();
+    return $erlaubt;
+}
+
+/** Bereiche mit Hash-Dateien (Rate-Limit, Bestätigungen je Adresse) – TTL 'rate_limit_fenster' (1 h). */
+const ZAEHLER_BEREICHE = ['ratelimit', 'empfaenger', 'empfaenger-widerruf'];
+
+/**
+ * Löscht abgelaufene Hash-Dateien (letzte Änderung älter als das Fenster) – bei jedem Zähler-Aufruf und bei jedem
+ * Abruf von token.php, also spätestens beim nächsten Formularaufruf nach Ablauf der Stunde (Datenschutzerklärung).
+ * Ohne Besucher läuft nichts; die Datenschutzerklärung beschreibt das so.
+ */
+function abgelaufene_loeschen(): void
+{
+    $basis = rtrim((string) konfig()['datenverzeichnis'], '/');
+    $grenze = time() - (int) konfig()['rate_limit_fenster'];
+    foreach ([$basis, rtrim(sys_get_temp_dir(), '/') . '/akademie-daten'] as $wurzel) {
+        foreach (ZAEHLER_BEREICHE as $bereich) {
+            foreach (glob($wurzel . '/' . $bereich . '/*.json') ?: [] as $datei) {
+                if (@filemtime($datei) < $grenze) {
+                    @unlink($datei);
+                }
             }
         }
     }
-    return $erlaubt;
 }
 
 /**

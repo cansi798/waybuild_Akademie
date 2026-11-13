@@ -6,5 +6,6 @@ declare(strict_types=1);
 require __DIR__ . '/_lib.php';
 
 $g = geheimnis(); // ohne Geheimnis: 503 („fail closed“)
+abgelaufene_loeschen(); // Hash-Dateien älter als 1 h entfernen (jedes Laden eines Formulars räumt auf)
 $ts = (string) time();
 json_antwort(200, ['ts' => $ts, 'sig' => zeitstempel_signatur($ts, $g)]);
