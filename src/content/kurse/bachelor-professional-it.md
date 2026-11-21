@@ -17,8 +17,8 @@ preis:
     abende: 12
     betrag: 299
 zielgruppe:
-- Fachinformatikerinnen und Fachinformatiker sowie andere IT-Fachkräfte mit Berufspraxis
-- Berufsspezialistinnen und Berufsspezialisten im IT-Bereich
+- Fachinformatiker sowie andere IT-Fachkräfte mit Berufspraxis
+- Berufsspezialisten im IT-Bereich
 - IT-Fachkräfte, die Projekt- oder Teamleitung übernehmen wollen
 voraussetzungen:
 - 'Einer dieser Wege: eine abgeschlossene Ausbildung in einem IT-Beruf – ein bestandener Berufsspezialist im IT-Bereich – eine andere abgeschlossene Ausbildung und danach mindestens ein Jahr Berufspraxis – mindestens 90 ECTS-Leistungspunkte aus einem fachverwandten Studium und mindestens zwei Jahre Berufspraxis – oder mindestens fünf Jahre Berufspraxis'
@@ -37,10 +37,10 @@ inhalte:
   - 'Management von Prozessen mit IT-Bezug: Prozessanalyse, Digitalisierung, Workflow-Systeme'
   - 'Management der Einführung und des Betriebs von IT-Lösungen: Marktanalyse, Beschaffung, Kosten, Recht'
   - Fallaufgaben auch auf Englisch
-- titel: 'Prüfungsteil „Mitarbeitendenführung und Personalmanagement“'
+- titel: 'Prüfungsteil „Mitarbeiterführung und Personalmanagement“'
   punkte:
   - 'Personalplanung und -entwicklung: Bedarf, Anforderungsprofile, Ausbildung organisieren, Arbeitsrecht'
-  - 'Führen von Mitarbeitenden und Teams: Führungsmethoden, Beurteilung, Konflikte, Diversity'
+  - 'Führen von Mitarbeitern und Teams: Führungsmethoden, Beurteilung, Konflikte, Diversity'
   - Gesprächssimulation mit anschließender Reflexion
 - titel: 'Prüfungsteil „IT-Projekt“'
   punkte:
@@ -55,7 +55,7 @@ abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Bachel
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
-  antwort: 'Es gibt vier Prüfungsteile. Du beginnst mit der „Fachlichen Spezialisierung“ (schriftlich, dazu Präsentation und Fachgespräch). Erst wenn du dort mindestens 50 Punkte erreichst, folgen die „IT-spezifischen Handlungsfelder“ (schriftlich, eine Aufgabe auf Englisch), „Mitarbeitendenführung und Personalmanagement“ (schriftlich und Gesprächssimulation) und das „IT-Projekt“. Das Verfahren muss innerhalb von drei Jahren abgeschlossen sein.'
+  antwort: 'Es gibt vier Prüfungsteile. Du beginnst mit der „Fachlichen Spezialisierung“ (schriftlich, dazu Präsentation und Fachgespräch). Erst wenn du dort mindestens 50 Punkte erreichst, folgen die „IT-spezifischen Handlungsfelder“ (schriftlich, eine Aufgabe auf Englisch), „Mitarbeiterführung und Personalmanagement“ (schriftlich und Gesprächssimulation) und das „IT-Projekt“. Das Verfahren muss innerhalb von drei Jahren abgeschlossen sein.'
 - frage: Brauche ich vorher den Berufsspezialisten?
   antwort: Nein. Der Berufsspezialist im IT-Bereich ist ein möglicher Zugang, aber auch eine IT-Ausbildung genügt. Wer schon einen Berufsspezialisten hat, kennt den Prüfungsteil „Fachliche Spezialisierung“ bereits in ähnlicher Form.
 - frage: Was ist mit der AEVO?
@@ -67,7 +67,7 @@ faq:
 reihenfolge: 36
 ---
 
-Der Lehrgang bereitet dich auf die Fortbildungsprüfung Bachelor Professional in IT vor. Er folgt den vier Prüfungsteilen der Fortbildungsordnung: deiner fachlichen Spezialisierung, dem Management von IT-Projekten, Prozessen und IT-Lösungen, der Führung von Mitarbeitenden und Teams sowie deinem eigenen IT-Projekt.
+Der Lehrgang bereitet dich auf die Fortbildungsprüfung Bachelor Professional in IT vor. Er folgt den vier Prüfungsteilen der Fortbildungsordnung: deiner fachlichen Spezialisierung, dem Management von IT-Projekten, Prozessen und IT-Lösungen, der Führung von Mitarbeitern und Teams sowie deinem eigenen IT-Projekt.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus IT-Abteilungen und Dienstleistern – vom Projektstart über die Einführung beim Kunden bis zum Mitarbeitergespräch. Englische Fallaufgaben und Gesprächssimulationen üben wir regelmäßig live, damit du die Prüfungsformen kennst.
 

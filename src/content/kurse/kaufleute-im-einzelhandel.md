@@ -14,8 +14,8 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende Kaufleute im Einzelhandel vor Teil 2
-  - Umschülerinnen und Umschüler im Einzelhandel
-  - Verkäuferinnen und Verkäufer, die die Ausbildung zur Kauffrau oder zum Kaufmann fortsetzen
+  - Umschüler im Einzelhandel
+  - Verkäufer, die die Ausbildung zum Kaufmann (m/w/d) im Einzelhandel fortsetzen
 voraussetzungen:
   - Fachwissen aus der Ausbildung und Teil 1 abgelegt – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
   - Taschenrechner

@@ -319,7 +319,7 @@ $m = mails();
 pruefe($r['status'] === 303 && str_starts_with($r['kopf']['location'] ?? '', '/danke/?art=anfrage&vorgang=K-'), '303 → /danke/?art=anfrage (ohne Thema, Nachricht und Haken)');
 pruefe(($m[0]['an'] ?? '') === 'info@waybuild-akademie.de' && str_starts_with($m[0]['betreff'] ?? '', 'Kursanfrage · Vorbereitung auf die IHK-Prüfung AP1 · Mia Roth') && str_contains($m[0]['text'] ?? '', 'KURSANFRAGE (unverbindlich'), 'Team-Mail „Kursanfrage“ mit Kurs');
 pruefe(str_starts_with($m[1]['betreff'] ?? '', 'Deine unverbindliche Kursanfrage (K-'), 'Betreff „Deine unverbindliche Kursanfrage“');
-foreach (['unverbindliche Kursanfrage', 'Wir prüfen den passenden Termin', 'Verbindlich wird es erst mit unserer Buchungsbestätigung per E-Mail', 'Zustimmung deiner Eltern', 'Ausbildungsbetrieb meldet dich an', 'Kurs: Vorbereitung auf die IHK-Prüfung AP1', 'HRB 29883 KI'] as $s) {
+foreach (['unverbindliche Kursanfrage', 'Wir prüfen den passenden Termin', 'Verbindlich wird es erst mit deiner Zusage und unserer Buchungsbestätigung per E-Mail', 'du sagst per Antwort-Mail zu', 'Zustimmung deiner Eltern', 'Ausbildungsbetrieb meldet dich an', 'Kurs: Vorbereitung auf die IHK-Prüfung AP1', 'HRB 29883 KI'] as $s) {
     pruefe(str_contains($m[1]['text'] ?? '', $s), "Kursanfrage-Bestätigung enthält „{$s}“");
 }
 pruefe(!str_contains($m[1]['text'] ?? '', 'Mia'), 'Kursanfrage-Bestätigung ohne Namen');

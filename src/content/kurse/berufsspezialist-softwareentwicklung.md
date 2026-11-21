@@ -1,7 +1,7 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: IT-Fortbildung
-titel: Berufsspezialist/in für Softwareentwicklung
+titel: Berufsspezialist für Softwareentwicklung
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Fortbildungsprüfung
 kurzbeschreibung: 'Entwickle Software auf dem nächsten Level: Du planst Architekturen, sicherst Qualität, dokumentierst und führst Software beim Kunden ein – berufsbegleitend live-online.'
 status: entwurf
@@ -17,8 +17,8 @@ preis:
     abende: 12
     betrag: 299
 zielgruppe:
-- Fachinformatikerinnen und Fachinformatiker für Anwendungsentwicklung nach der Ausbildung
-- Entwicklerinnen und Entwickler ohne formalen IT-Abschluss mit mehrjähriger Praxis
+- Fachinformatiker für Anwendungsentwicklung nach der Ausbildung
+- Entwickler ohne formalen IT-Abschluss mit mehrjähriger Praxis
 - Fachkräfte, die Softwareprojekte fachlich mitgestalten
 voraussetzungen:
 - 'Einer dieser Wege: eine abgeschlossene Ausbildung in einem IT-Beruf – eine andere abgeschlossene Ausbildung und danach mindestens ein Jahr Berufspraxis – mindestens 60 ECTS-Leistungspunkte aus einem Studium und mindestens zwei Jahre Berufspraxis – oder mindestens vier Jahre Berufspraxis'
@@ -59,7 +59,7 @@ inhalte:
   punkte:
   - 'Schriftliche Prüfung: zwei Aufgaben zu einer betrieblichen Situation, je mindestens 90 Minuten (zusammen höchstens 240 Minuten)'
   - 'Mündliche Prüfung: Thema für deine Präsentation finden und beschreiben, Präsentation (höchstens 15 Minuten) und Fachgespräch (höchstens 30 Minuten) proben'
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Berufsspezialist/in für Softwareentwicklung“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Berufsspezialist (m/w/d) für Softwareentwicklung“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: In welcher Programmiersprache arbeiten wir?
@@ -73,7 +73,7 @@ faq:
 reihenfolge: 25
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten bzw. zur Geprüften Berufsspezialistin für Softwareentwicklung vor. Die acht Qualifikationsschwerpunkte der Fortbildungsordnung führen dich durch den ganzen Lebenszyklus einer Software: Anforderungen und Architektur, Entwicklung, Qualität, Dokumentation, Einführung und Auswertung.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten (m/w/d) für Softwareentwicklung vor. Die acht Qualifikationsschwerpunkte der Fortbildungsordnung führen dich durch den ganzen Lebenszyklus einer Software: Anforderungen und Architektur, Entwicklung, Qualität, Dokumentation, Einführung und Auswertung.
 
 Der Unterricht läuft am Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr live per Video. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fallbeispielen aus echten Entwicklungsprojekten: Wir zerlegen Anforderungen, skizzieren Architekturen und Datenmodelle und besprechen Teststrategien gemeinsam am Bildschirm. Eigene Übungsabende nutzen wir für Prüfungsaufgaben unter Zeitvorgabe.
 

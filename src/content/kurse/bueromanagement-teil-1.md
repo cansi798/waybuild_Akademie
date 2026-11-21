@@ -14,7 +14,7 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende Kaufleute für Büromanagement vor Teil 1
-  - Umschülerinnen und Umschüler im Büromanagement
+  - Umschüler im Büromanagement
   - Prüflinge, die schneller und sicherer am PC arbeiten wollen
 voraussetzungen:
   - Grundkenntnisse in Textverarbeitung und Tabellenkalkulation aus Betrieb und Berufsschule

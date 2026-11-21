@@ -14,8 +14,8 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende Kaufleute im Einzelhandel am Ende des zweiten Ausbildungsjahres
-  - Auszubildende Verkäuferinnen und Verkäufer vor der Abschlussprüfung
-  - Umschülerinnen und Umschüler im Handel
+  - Auszubildende Verkäufer vor der Abschlussprüfung
+  - Umschüler im Handel
 voraussetzungen:
   - Wissen aus den ersten beiden Ausbildungsjahren – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
   - Taschenrechner

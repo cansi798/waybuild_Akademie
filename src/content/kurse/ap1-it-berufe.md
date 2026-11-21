@@ -14,7 +14,7 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die Prüfungsgebühr deiner IHK ist nicht enthalten."
 zielgruppe:
   - Auszubildende der sieben IT-Berufe vor der AP1
-  - Umschülerinnen und Umschüler in einem IT-Beruf
+  - Umschüler in einem IT-Beruf
   - Alle, die vor der Prüfung Wissenslücken gezielt schließen möchten
 voraussetzungen:
   - Grundwissen aus der ersten Ausbildungshälfte – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
@@ -62,7 +62,7 @@ termine:
     anmeldeschluss: 2027-08-19
 faq:
   - frage: Für welche Berufe ist der Kurs?
-    antwort: Für alle sieben IT-Berufe. Die AP1 ist für Fachinformatikerinnen und Fachinformatiker aller Fachrichtungen, IT-System-Elektronik sowie IT-System- und Digitalisierungsmanagement gleich.
+    antwort: Für alle sieben IT-Berufe. Die AP1 ist für Fachinformatiker aller Fachrichtungen, IT-System-Elektronik sowie IT-System- und Digitalisierungsmanagement gleich.
   - frage: Brauche ich zusätzliche Bücher?
     antwort: Nein. Die Unterlagen für den Kurs sind inklusive. Die Übungsaufgaben besprechen wir gemeinsam live.
   - frage: Ist der Kurs eine offizielle IHK-Veranstaltung?
@@ -74,6 +74,6 @@ reihenfolge: 10
 
 Die Abschlussprüfung Teil 1 ist ein wichtiger Meilenstein deiner IT-Ausbildung. Geprüft wird der gemeinsame Bereich „Einrichten eines IT-gestützten Arbeitsplatzes“ – das Ergebnis zählt mit 20 % für deine gesamte Abschlussprüfung.
 
-Im Kurs wiederholen und vertiefen wir die zentralen Themen der ersten Ausbildungshälfte. Jeder Abend hat ein Schwerpunktthema: Die Dozentin oder der Dozent führt kurz ein, danach besprechen wir prüfungsnahe Übungsaufgaben gemeinsam live: Wir analysieren Aufgabenstellungen, entwickeln Lösungswege und sprechen über typische Fehler.
+Im Kurs wiederholen und vertiefen wir die zentralen Themen der ersten Ausbildungshälfte. Jeder Abend hat ein Schwerpunktthema: Der Dozent führt kurz ein, danach besprechen wir prüfungsnahe Übungsaufgaben gemeinsam live: Wir analysieren Aufgabenstellungen, entwickeln Lösungswege und sprechen über typische Fehler.
 
 Fragen klärst du direkt live – per Mikrofon oder Chat. So verstehst du die Zusammenhänge, statt Lösungen auswendig zu lernen.

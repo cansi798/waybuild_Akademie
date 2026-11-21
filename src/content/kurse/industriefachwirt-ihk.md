@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
-titel: Industriefachwirt/in
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Industriefachwirt/in“
+titel: Industriefachwirt
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Industriefachwirt (m/w/d)“
 kurzbeschreibung: 'Werde Bindeglied zwischen Technik und Kaufmännischem: Du lernst BWL, Rechnungswesen und Recht, danach Finanzen, Produktion, Vertrieb, Wissensmanagement und Führung – live-online.'
 status: entwurf
 art: kurs
@@ -21,7 +21,7 @@ preis:
       betrag: 149
 zielgruppe:
 - Kaufmännische Fachkräfte in Industrieunternehmen
-- Mitarbeitende aus Einkauf, Vertrieb, Produktion und Controlling
+- Mitarbeiter aus Einkauf, Vertrieb, Produktion und Controlling
 - Fachkräfte, die eine Führungsrolle in der Industrie anstreben
 voraussetzungen:
 - 'Für Teil 1 einer dieser Wege: eine dreijährige kaufmännische oder verwaltende Ausbildung – eine andere mindestens dreijährige Ausbildung und danach ein Jahr Praxis – eine andere Ausbildung und danach zwei Jahre Praxis – oder mindestens drei Jahre Berufspraxis'
@@ -61,13 +61,13 @@ inhalte:
   - Instrumente des Informations- und Wissensmanagements
 - titel: 'Teil 2: Führung und Zusammenarbeit'
   punkte:
-  - Kommunikation, Konfliktlösung, Mitarbeitende führen und entwickeln
+  - Kommunikation, Konfliktlösung, Mitarbeiter führen und entwickeln
 - titel: Prüfungstraining
   punkte:
   - 'Teil 1: je eine Klausur pro Qualifikationsbereich unter Zeitvorgabe'
   - 'Teil 2: Situationsbeschreibung mit zwei Aufgabenstellungen (in der Prüfung 480 bis 510 Minuten)'
   - Präsentation (höchstens 10 Minuten) und situationsbezogenes Fachgespräch proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Industriefachwirt/in“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Industriefachwirt (m/w/d)“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie unterscheidet sich der Industriefachwirt vom Wirtschaftsfachwirt?
@@ -81,7 +81,7 @@ faq:
 reihenfolge: 30
 ---
 
-Der Lehrgang bereitet dich auf beide Teilprüfungen zum Geprüften Industriefachwirt bzw. zur Geprüften Industriefachwirtin vor. Auf die vier wirtschaftsbezogenen Qualifikationsbereiche folgen die fünf Handlungsbereiche im Industrieunternehmen – Finanzen, Produktion, Vertrieb, Wissensmanagement und Führung.
+Der Lehrgang bereitet dich auf beide Teilprüfungen zum Geprüften Industriefachwirt (m/w/d) vor. Auf die vier wirtschaftsbezogenen Qualifikationsbereiche folgen die fünf Handlungsbereiche im Industrieunternehmen – Finanzen, Produktion, Vertrieb, Wissensmanagement und Führung.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Fertigung, Einkauf und Vertrieb, zum Beispiel einer Investitionsentscheidung für eine neue Anlage. Die Klausuren beider Teile trainieren wir an eigenen Übungsabenden unter Zeitvorgabe.
 

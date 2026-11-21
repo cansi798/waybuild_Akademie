@@ -1,9 +1,9 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Ausbilder
-titel: Aus- und Weiterbildungspädagoge/-pädagogin
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Aus- und Weiterbildungspädagoge/-pädagogin“
-kurzbeschreibung: 'Vom Ausbilderschein zur pädagogischen Fachkraft: Du lernst, Lernende zu begleiten, Bildungsmaßnahmen zu planen und eine Projektarbeit aufzusetzen – berufsbegleitend live-online.'
+titel: Aus- und Weiterbildungspädagoge
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Aus- und Weiterbildungspädagoge (m/w/d)“
+kurzbeschreibung: 'Vom Ausbilderschein zur pädagogischen Fachkraft: Du lernst, Auszubildende und Teilnehmer zu begleiten, Bildungsmaßnahmen zu planen und eine Projektarbeit aufzusetzen – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
 ue: 480
@@ -17,9 +17,9 @@ preis:
     abende: 12
     betrag: 299
 zielgruppe:
-- Ausbilderinnen und Ausbilder mit AEVO, die mehr Verantwortung übernehmen wollen
+- Ausbilder mit AEVO, die mehr Verantwortung übernehmen wollen
 - Ausbildungsbeauftragte und Lernbegleiter in Betrieben
-- Mitarbeitende aus Personalentwicklung und betrieblicher Weiterbildung
+- Mitarbeiter aus Personalentwicklung und betrieblicher Weiterbildung
 voraussetzungen:
 - 'Eine von zwei Kombinationen: Abschluss in einem mindestens dreijährigen Ausbildungsberuf und danach mindestens ein Jahr Berufspraxis – oder Abschluss in einem anderen anerkannten Ausbildungsberuf und danach mindestens zwei Jahre Berufspraxis'
 - Dazu die bestandene Ausbildereignungsprüfung (AEVO) oder eine vergleichbare berufs- und arbeitspädagogische Qualifikation
@@ -48,7 +48,7 @@ inhalte:
   punkte:
   - Komplexe Situationsbeschreibungen mit zwei Aufgaben unter Zeitvorgabe (in der Prüfung 250 bis 280 Minuten je Teil)
   - Situationsbezogenes Fachgespräch mit Fallauswahl und Vorbereitungszeit üben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Aus- und Weiterbildungspädagoge/-pädagogin“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Aus- und Weiterbildungspädagoge (m/w/d)“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -62,8 +62,8 @@ faq:
 reihenfolge: 12
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Aus- und Weiterbildungspädagogen bzw. zur Geprüften Aus- und Weiterbildungspädagogin vor. Er folgt den drei Prüfungsteilen der Fortbildungsordnung: zuerst Lernbegleitung und Lernberatung, dann die Planung von Bildungsprozessen bis hin zu Prüfung und Qualitätssicherung, zum Schluss die Vorbereitung deiner Projektarbeit.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Aus- und Weiterbildungspädagogen (m/w/d) vor. Er folgt den drei Prüfungsteilen der Fortbildungsordnung: zuerst Lernbegleitung und Lernberatung, dann die Planung von Bildungsprozessen bis hin zu Prüfung und Qualitätssicherung, zum Schluss die Vorbereitung deiner Projektarbeit.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr, immer in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Ausbildungswerkstatt, Büro und Weiterbildung. Lange Situationsaufgaben lösen wir gemeinsam an eigenen Übungsabenden, das Fachgespräch probst du in kleinen Runden.
 
-Der Lehrgang passt zu dir, wenn du bereits ausbildest oder Lernende begleitest und diese Aufgabe auf ein pädagogisch fundiertes Niveau heben willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.
+Der Lehrgang passt zu dir, wenn du bereits ausbildest oder Auszubildende begleitest und diese Aufgabe auf ein pädagogisch fundiertes Niveau heben willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

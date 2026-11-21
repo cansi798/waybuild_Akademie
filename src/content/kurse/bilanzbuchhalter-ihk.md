@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachkaufleute
-titel: Bilanzbuchhalter/in
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Bilanzbuchhalter/in – Bachelor Professional in Bilanzbuchhaltung“
+titel: Bilanzbuchhalter
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Bilanzbuchhalter (m/w/d) – Bachelor Professional in Bilanzbuchhaltung“
 kurzbeschreibung: 'Werde Fachkraft für Abschluss und Finanzen: Du erstellst und analysierst Jahresabschlüsse, löst Steuerfälle, steuerst Finanzen und sicherst das interne Kontrollsystem – live-online.'
 status: entwurf
 art: kurs
@@ -22,9 +22,9 @@ preis:
 zielgruppe:
 - Fachkräfte aus Buchhaltung und Rechnungswesen
 - Steuerfachangestellte, die in ein Unternehmen wechseln wollen
-- Mitarbeitende, die Abschlüsse künftig eigenständig verantworten wollen
+- Mitarbeiter, die Abschlüsse künftig eigenständig verantworten wollen
 voraussetzungen:
-- 'Einer dieser Wege: eine bestandene Abschlussprüfung in einem dreijährigen kaufmännischen oder verwaltenden Ausbildungsberuf – ein Fachwirt oder Fachkaufmann nach dem BBiG – ein Abschluss als Staatlich geprüfte/r Betriebswirt/in – ein wirtschaftswissenschaftliches Studium und danach mindestens ein Jahr Berufspraxis – oder mindestens fünf Jahre Berufspraxis'
+- 'Einer dieser Wege: eine bestandene Abschlussprüfung in einem dreijährigen kaufmännischen oder verwaltenden Ausbildungsberuf – ein Fachwirt oder Fachkaufmann nach dem BBiG – ein Abschluss als Staatlich geprüfter Betriebswirt (m/w/d) – ein wirtschaftswissenschaftliches Studium und danach mindestens ein Jahr Berufspraxis – oder mindestens fünf Jahre Berufspraxis'
 - Wo Berufspraxis verlangt wird, muss sie überwiegend im Finanz- und Rechnungswesen liegen
 - Sichere Kenntnisse in Buchführung erleichtern dir den Einstieg
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
@@ -57,7 +57,7 @@ inhalte:
   - Drei Aufgabenstellungen zu einer betrieblichen Situation, je 240 Minuten – Schwerpunkte Abschluss, Auswertung und Steuern
   - Präsentationsthema aus dem Bereich Jahresabschlussanalyse finden und gliedern
   - Präsentation (höchstens 15 Minuten) und Fachgespräch (höchstens 30 Minuten) proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Bilanzbuchhalter/in – Bachelor Professional in Bilanzbuchhaltung“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Bilanzbuchhalter (m/w/d) – Bachelor Professional in Bilanzbuchhaltung“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -73,7 +73,7 @@ faq:
 reihenfolge: 33
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Bilanzbuchhalter bzw. zur Geprüften Bilanzbuchhalterin – Bachelor Professional in Bilanzbuchhaltung vor. Er folgt den sieben Handlungsbereichen der Fortbildungsordnung, mit dem größten Gewicht auf Jahresabschluss, Abschlussanalyse und Steuern, denn diese drei bilden die Schwerpunkte der schriftlichen Prüfung.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Bilanzbuchhalter (m/w/d) – Bachelor Professional in Bilanzbuchhaltung vor. Er folgt den sieben Handlungsbereichen der Fortbildungsordnung, mit dem größten Gewicht auf Jahresabschluss, Abschlussanalyse und Steuern, denn diese drei bilden die Schwerpunkte der schriftlichen Prüfung.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung rechnen Buchungs-, Bewertungs- und Steuerfälle Schritt für Schritt mit dir durch. An eigenen Übungsabenden bearbeitest du lange Aufgabenstellungen unter Zeitvorgabe, und wir gehen die Lösungswege anschließend gemeinsam durch.
 

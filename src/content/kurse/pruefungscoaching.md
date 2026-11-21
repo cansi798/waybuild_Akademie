@@ -22,7 +22,7 @@ pakete:
     betrag: 299
     beschreibung: 5 × 60 Minuten
 zielgruppe:
-  - Auszubildende und Umschüler/innen in IT-Berufen vor der Projektarbeit
+  - Auszubildende und Umschüler in IT-Berufen vor der Projektarbeit
   - Alle, die Präsentation und Fachgespräch realistisch üben möchten
   - Alle, die bei einer bestimmten Prüfungsfrage gezielt Unterstützung brauchen
 voraussetzungen:

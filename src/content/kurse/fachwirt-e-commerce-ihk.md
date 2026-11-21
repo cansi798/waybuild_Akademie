@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
-titel: Fachwirt/in im E-Commerce
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in im E-Commerce“
+titel: Fachwirt im E-Commerce
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Fachwirt (m/w/d) im E-Commerce“
 kurzbeschreibung: 'Steuere das Onlinegeschäft: Du entwickelst E-Commerce-Strategien, gestaltest Prozesse über mehrere Vertriebskanäle, wertest Kennzahlen aus und führst Teams und Partner – live-online.'
 status: entwurf
 art: kurs
@@ -21,7 +21,7 @@ preis:
       betrag: 149
 zielgruppe:
 - Kaufleute im E-Commerce oder im Einzelhandel mit Berufserfahrung
-- Mitarbeitende aus Onlineshop, Online-Marketing oder Marktplatzmanagement
+- Mitarbeiter aus Onlineshop, Online-Marketing oder Marktplatzmanagement
 - Fachkräfte, die ein Onlinegeschäft aufbauen oder leiten wollen
 voraussetzungen:
 - 'Einer dieser Wege: eine dreijährige kaufmännisch-verwaltende Ausbildung und danach mindestens ein Jahr Berufspraxis – eine andere Ausbildung und danach mindestens zwei Jahre Praxis – mindestens 90 ECTS-Punkte in einem betriebswirtschaftlichen Studium und mindestens zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
@@ -47,14 +47,14 @@ inhalte:
 - titel: Kommunikation, Zusammenarbeit und Führung von internen und externen Partnern
   punkte:
   - Mit Teams, Dienstleistern und Kunden zielorientiert zusammenarbeiten
-  - Mitarbeitende, Auszubildende und Projektgruppen führen
+  - Mitarbeiter, Auszubildende und Projektgruppen führen
   - Veränderungs- und Konfliktmanagement
 - titel: Prüfungstraining
   punkte:
   - Zwei abgestimmte Aufgabenstellungen zu einer betrieblichen Situation, je 300 Minuten
   - Präsentationsthema aus Strategie, Prozessgestaltung oder Prozessanalyse wählen
   - Präsentation (höchstens 10 Minuten) und Fachgespräch (höchstens 20 Minuten) proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Fachwirt/in im E-Commerce“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Fachwirt (m/w/d) im E-Commerce“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -70,7 +70,7 @@ faq:
 reihenfolge: 43
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin im E-Commerce vor. Er folgt den vier Handlungsbereichen der Fortbildungsordnung: Strategien entwickeln, Prozesse gestalten, Prozesse analysieren und verbessern sowie mit Teams und Partnern zusammenarbeiten und sie führen.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt (m/w/d) im E-Commerce vor. Er folgt den vier Handlungsbereichen der Fortbildungsordnung: Strategien entwickeln, Prozesse gestalten, Prozesse analysieren und verbessern sowie mit Teams und Partnern zusammenarbeiten und sie führen.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Onlineshops, Marktplätzen und Multichannel-Händlern – vom Sortiment über Zahlungsarten bis zu den Retouren im Kennzahlenbericht. An eigenen Übungsabenden trainierst du die langen Aufgabenstellungen unter Zeitvorgabe.
 

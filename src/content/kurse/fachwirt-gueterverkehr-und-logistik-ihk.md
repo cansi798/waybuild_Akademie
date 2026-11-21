@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
-titel: Fachwirt/in für Güterverkehr und Logistik
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in für Güterverkehr und Logistik – Bachelor Professional in Transport Management and Logistics“
+titel: Fachwirt für Güterverkehr und Logistik
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Fachwirt (m/w/d) für Güterverkehr und Logistik – Bachelor Professional in Transport Management and Logistics“
 kurzbeschreibung: 'Vom Disponieren zum Steuern: Du entwickelst und vermarktest Transport- und Logistikleistungen, kalkulierst Angebote, sicherst Lieferketten und führst Teams – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
@@ -21,7 +21,7 @@ preis:
       betrag: 199
 zielgruppe:
 - Kaufleute für Spedition und Logistikdienstleistung mit Berufserfahrung
-- Disponentinnen und Disponenten in Transport und Logistik
+- Disponenten in Transport und Logistik
 - Fachkräfte aus Logistikunternehmen, die Führungsaufgaben übernehmen wollen
 voraussetzungen:
 - 'Einer dieser Wege: eine kaufmännische Ausbildung für den Bereich Güterverkehr und Logistik, etwa Spedition und Logistikdienstleistung – eine andere dreijährige kaufmännische oder verwaltende Ausbildung und danach mindestens ein Jahr Berufspraxis – mindestens 90 ECTS-Punkte in einem fachverwandten Studium und mindestens zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
@@ -45,13 +45,13 @@ inhalte:
   punkte:
   - Kommunizieren und präsentieren
   - Personalauswahl, Personaleinsatz und Führungsmethoden
-  - Ausbildung planen, Mitarbeitende entwickeln, Arbeits- und Gesundheitsschutz
+  - Ausbildung planen, Mitarbeiter entwickeln, Arbeits- und Gesundheitsschutz
 - titel: Prüfungstraining
   punkte:
   - Zwei Aufgabenstellungen zu einer betrieblichen Situation, je 300 Minuten
   - Präsentationsthema finden, das einen Fachbereich mit Führung und Zusammenarbeit verknüpft
   - Präsentation (höchstens 10 Minuten) und Fachgespräch (höchstens 20 Minuten) proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Fachwirt/in für Güterverkehr und Logistik – Bachelor Professional in Transport Management and Logistics“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Fachwirt (m/w/d) für Güterverkehr und Logistik – Bachelor Professional in Transport Management and Logistics“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -67,7 +67,7 @@ faq:
 reihenfolge: 41
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Güterverkehr und Logistik vor, seit 2023 mit der Bezeichnung Bachelor Professional in Transport Management and Logistics. Er folgt den drei Prüfungsbereichen der Fortbildungsordnung: Logistikleistungen entwickeln und vermarkten, Logistikleistungen erstellen sowie Kommunikation, Führung und Zusammenarbeit.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt (m/w/d) für Güterverkehr und Logistik vor, seit 2023 mit der Bezeichnung Bachelor Professional in Transport Management and Logistics. Er folgt den drei Prüfungsbereichen der Fortbildungsordnung: Logistikleistungen entwickeln und vermarkten, Logistikleistungen erstellen sowie Kommunikation, Führung und Zusammenarbeit.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Spedition, Kontraktlogistik und internationalem Transport – von der Ausschreibung über die Kalkulation bis zur Verhandlung, die wir in der Gruppe durchspielen. An eigenen Übungsabenden trainierst du die langen schriftlichen Aufgaben.
 

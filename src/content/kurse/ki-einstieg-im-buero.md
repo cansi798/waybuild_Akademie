@@ -71,4 +71,4 @@ In diesem Kurs lernst du, KI-Assistenten im Büroalltag sinnvoll und sicher zu n
 
 Der Kurs läuft an vier Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis zeigen jedes Thema an einem Beispiel aus dem Büro, danach probierst du es sofort im Live-Termin selbst aus und wir vergleichen die Ergebnisse gemeinsam. Als Projekt baust du über die Abende deine persönliche KI-Arbeitsmappe auf und stellst sie zum Schluss vor.
 
-Der Kurs passt zu dir, wenn du im Büro arbeitest und KI im Alltag sicher einsetzen willst. Er ist auch ein guter Einstieg vor dem Kurs KI-Manager/in.
+Der Kurs passt zu dir, wenn du im Büro arbeitest und KI im Alltag sicher einsetzen willst. Er ist auch ein guter Einstieg vor dem Kurs KI-Manager.

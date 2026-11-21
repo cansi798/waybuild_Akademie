@@ -1,8 +1,8 @@
 ---
 saeule: ihk-pruefung
 kategorie: IT-Berufe
-titel: AP2 IT-System-Elektroniker/in
-untertitel: IT-System-Elektroniker/in – schriftliche Prüfung Teil 2
+titel: AP2 IT-System-Elektroniker
+untertitel: IT-System-Elektroniker (m/w/d) – schriftliche Prüfung Teil 2
 kurzbeschreibung: Übe Installation und Service an IT-Systemen, die Anbindung an die Stromversorgung und WiSo an prüfungsnahen Aufgaben – live online an 10 Abenden.
 status: entwurf
 art: kurs
@@ -13,8 +13,8 @@ preis:
   betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
-  - Auszubildende IT-System-Elektroniker/innen vor der AP2
-  - Umschülerinnen und Umschüler zum/zur IT-System-Elektroniker/in
+  - Auszubildende IT-System-Elektroniker vor der AP2
+  - Umschüler zum IT-System-Elektroniker (m/w/d)
   - Prüflinge, die einen schriftlichen Prüfungsbereich der AP2 wiederholen
 voraussetzungen:
   - Grundlagen der Elektrotechnik und der Netzwerktechnik aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung

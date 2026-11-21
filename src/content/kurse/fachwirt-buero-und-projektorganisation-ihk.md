@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
-titel: Fachwirt/in für Büro- und Projektorganisation
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in für Büro- und Projektorganisation“
+titel: Fachwirt für Büro- und Projektorganisation
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Fachwirt (m/w/d) für Büro- und Projektorganisation“
 kurzbeschreibung: 'Vom Büro in die Organisationsleitung: Du bereitest Entscheidungen vor, führst Projekte und Veranstaltungen, betreust Kunden und leitest Teams und Auszubildende an – live-online.'
 status: entwurf
 art: kurs
@@ -21,7 +21,7 @@ preis:
       betrag: 199
 zielgruppe:
 - Kaufleute für Büromanagement mit Berufserfahrung
-- Assistenzen, Teamassistenzen sowie Office-Managerinnen und -Manager
+- Assistenzen, Teamassistenzen sowie Office-Manager
 - Fachkräfte, die Projekte und Veranstaltungen im Büro koordinieren
 voraussetzungen:
 - 'Einer dieser Wege: eine dreijährige kaufmännische oder verwaltende Ausbildung und danach mindestens ein Jahr Berufspraxis – eine andere Ausbildung und danach mindestens zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
@@ -54,7 +54,7 @@ inhalte:
   punkte:
   - Situationsbeschreibung mit zwei offenen Aufgabenstellungen unter Zeitvorgabe (in der Prüfung zusammen 600 Minuten)
   - Präsentationsthema mit Bezug zu Führen und Ausbilden finden, Präsentation (höchstens 10 Minuten) und Fachgespräch proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Fachwirt/in für Büro- und Projektorganisation“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Fachwirt (m/w/d) für Büro- und Projektorganisation“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -70,7 +70,7 @@ faq:
 reihenfolge: 40
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Büro- und Projektorganisation vor. Er folgt den vier Handlungsbereichen der Fortbildungsordnung: Entscheidungen in der Organisation vorbereiten, Kundenbeziehungen und Veranstaltungen gestalten, Personal betreuen und ausbilden sowie Geschäftsprozesse im Büro steuern.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt (m/w/d) für Büro- und Projektorganisation vor. Er folgt den vier Handlungsbereichen der Fortbildungsordnung: Entscheidungen in der Organisation vorbereiten, Kundenbeziehungen und Veranstaltungen gestalten, Personal betreuen und ausbilden sowie Geschäftsprozesse im Büro steuern.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Situationen aus Assistenz, Projektbüro und Veranstaltungsorganisation. Die lange schriftliche Prüfung trainieren wir an eigenen Übungsabenden in Etappen, die Präsentation probst du in kleinen Runden.
 

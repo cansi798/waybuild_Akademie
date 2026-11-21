@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
-titel: Immobilienfachwirt/in
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Immobilienfachwirt/in“
+titel: Immobilienfachwirt
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Immobilienfachwirt (m/w/d)“
 kurzbeschreibung: 'Übernimm Verantwortung in der Immobilienwirtschaft: Du lernst Rahmenbedingungen, Steuerung, Bewirtschaftung, Bauprojekte, Vertrieb und Maklertätigkeit sowie Führung – live-online.'
 status: entwurf
 art: kurs
@@ -21,8 +21,8 @@ preis:
       betrag: 149
 zielgruppe:
 - Immobilienkaufleute mit Berufserfahrung
-- Mitarbeitende aus Hausverwaltung, Vermietung, Makler- oder Bauträgerunternehmen
-- Quereinsteigerinnen und Quereinsteiger mit mehrjähriger Praxis in der Immobilienwirtschaft
+- Mitarbeiter aus Hausverwaltung, Vermietung, Makler- oder Bauträgerunternehmen
+- Quereinsteiger mit mehrjähriger Praxis in der Immobilienwirtschaft
 voraussetzungen:
 - 'Einer dieser Wege: eine dreijährige Ausbildung der Immobilienwirtschaft und danach mindestens ein Jahr Praxis – eine andere dreijährige kaufmännische oder verwaltende Ausbildung und danach mindestens zwei Jahre Praxis – eine andere Ausbildung und danach mindestens drei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
 - Die Berufspraxis muss Bezug zu Aufgaben in der Immobilienwirtschaft haben
@@ -57,7 +57,7 @@ inhalte:
   punkte:
   - Anwendungsbezogene Aufgaben je Handlungsbereich unter Zeitvorgabe (in der Prüfung 60 bis 120 Minuten je Bereich, zusammen 600 bis 660 Minuten)
   - Präsentation (höchstens 10 Minuten) und Fachgespräch proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Immobilienfachwirt/in“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Immobilienfachwirt (m/w/d)“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -73,7 +73,7 @@ faq:
 reihenfolge: 44
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Immobilienfachwirt bzw. zur Geprüften Immobilienfachwirtin vor. Er folgt den sechs Handlungsbereichen der Prüfungsverordnung und deckt damit die ganze Breite der Immobilienwirtschaft ab – von Recht und Markt über Bewirtschaftung und Bauprojekte bis zu Vertrieb, Unternehmenssteuerung und Personal.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Immobilienfachwirt (m/w/d) vor. Er folgt den sechs Handlungsbereichen der Prüfungsverordnung und deckt damit die ganze Breite der Immobilienwirtschaft ab – von Recht und Markt über Bewirtschaftung und Bauprojekte bis zu Vertrieb, Unternehmenssteuerung und Personal.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Hausverwaltung, Maklerbüro und Bauträger – etwa einer Betriebskostenabrechnung, einer Projektkalkulation oder einem Vermittlungsauftrag. Die schriftlichen Prüfungsteile üben wir an eigenen Übungsabenden unter Zeitvorgabe.
 

@@ -14,7 +14,7 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende Kaufleute für Spedition und Logistikdienstleistung vor der Abschlussprüfung
-  - Umschülerinnen und Umschüler in Spedition und Logistik
+  - Umschüler in Spedition und Logistik
   - Prüflinge, die einen schriftlichen Bereich wiederholen
 voraussetzungen:
   - Fachwissen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung

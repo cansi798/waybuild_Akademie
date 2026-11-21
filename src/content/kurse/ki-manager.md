@@ -1,7 +1,7 @@
 ---
 saeule: akademie
 kategorie: KI
-titel: KI-Manager/in
+titel: KI-Manager
 untertitel: KI im Unternehmen sinnvoll einführen, steuern und verantworten
 kurzbeschreibung: 'Bring KI sicher in dein Unternehmen: Du lernst Grundlagen, EU-KI-Verordnung, Anwendungsfälle, Agenten und die Planung einer Einführung und entwickelst ein eigenes Vorhaben – live-online an 16 Abenden.'
 status: entwurf
@@ -44,7 +44,7 @@ inhalte:
 - titel: KI-Einführung planen
   punkte:
   - Ziele, Fahrplan und Verantwortlichkeiten
-  - Mitarbeitende einbinden und schulen
+  - Mitarbeiter einbinden und schulen
   - Kosten und Wirkung messen
 - titel: Umsetzung und Betrieb
   punkte:

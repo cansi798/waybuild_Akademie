@@ -15,7 +15,7 @@ preis:
 zielgruppe:
   - Auszubildende in kaufmännischen Berufen, denen Buchführung und Kostenrechnung schwerfallen
   - Alle, die eine Fortbildung wie den Fachwirt planen
-  - Quereinsteigerinnen und Quereinsteiger ohne kaufmännische Ausbildung
+  - Quereinsteiger ohne kaufmännische Ausbildung
 voraussetzungen:
   - Keine Vorkenntnisse im Rechnungswesen nötig
   - Taschenrechner

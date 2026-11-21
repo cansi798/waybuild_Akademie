@@ -14,8 +14,8 @@ preis:
   hinweis: Inklusive Kursunterlagen, Mustervorlagen für Verzeichnis, Informationspflichten und Datenpannen sowie Zertifikat
 zielgruppe:
 - Angehende Datenschutzbeauftragte
-- Datenschutzkoordinatorinnen und -koordinatoren in Unternehmen
-- Führungskräfte und Mitarbeitende aus Personal, IT und Verwaltung
+- Datenschutzkoordinatoren in Unternehmen
+- Führungskräfte und Mitarbeiter aus Personal, IT und Verwaltung
 voraussetzungen:
 - Keine juristischen Vorkenntnisse nötig
 - Berufserfahrung im Unternehmen ist hilfreich
@@ -47,14 +47,14 @@ inhalte:
 - titel: Projekt
   punkte:
   - Verzeichnis und Maßnahmen für einen Beispielbetrieb ausarbeiten
-  - Kurzschulung für Mitarbeitende entwerfen und vorstellen
+  - Kurzschulung für Mitarbeiter entwerfen und vorstellen
 abschluss: Zertifikat der waybuild Akademie
 termine: []
 faq:
-- frage: Reicht der Kurs, um Datenschutzbeauftragte/r zu werden?
+- frage: Reicht der Kurs, um Datenschutzbeauftragter (m/w/d) zu werden?
   antwort: Der Kurs vermittelt die Grundlagen der Fachkunde. Welche Fachkunde für eine Benennung nötig ist, hängt nach der DSGVO von Art und Umfang der Datenverarbeitung im Unternehmen ab. Für komplexe Fälle empfehlen wir, dein Wissen später zu vertiefen.
 - frage: Was ist das Projekt?
-  antwort: Du erstellst für einen Beispielbetrieb ein Verzeichnis von Verarbeitungstätigkeiten mit passenden Maßnahmen und entwirfst eine kurze Schulung für Mitarbeitende. Beides stellst du in den letzten Terminen vor.
+  antwort: Du erstellst für einen Beispielbetrieb ein Verzeichnis von Verarbeitungstätigkeiten mit passenden Maßnahmen und entwirfst eine kurze Schulung für Mitarbeiter. Beides stellst du in den letzten Terminen vor.
 - frage: Ersetzt der Kurs eine Rechtsberatung?
   antwort: Nein. Du lernst, Datenschutz im Alltag zu organisieren und Risiken zu erkennen. In schwierigen Einzelfällen solltest du juristischen Rat einholen.
 - frage: Ist das ein IHK-Abschluss?

@@ -2,7 +2,7 @@
 saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: AP2 Kaufleute für IT-System-Management
-untertitel: Kaufmann/Kauffrau für IT-System-Management – schriftliche Prüfung Teil 2
+untertitel: Kaufmann (m/w/d) für IT-System-Management – schriftliche Prüfung Teil 2
 kurzbeschreibung: Übe „Einführen einer IT-Systemlösung“, „Kaufmännische Unterstützungsprozesse“ und WiSo an prüfungsnahen Kundenfällen – live online an 10 Abenden.
 status: entwurf
 art: kurs
@@ -14,7 +14,7 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende Kaufleute für IT-System-Management vor der AP2
-  - Umschülerinnen und Umschüler in diesem Beruf
+  - Umschüler in diesem Beruf
   - Prüflinge, die einen schriftlichen Prüfungsbereich der AP2 wiederholen
 voraussetzungen:
   - Kaufmännisches und technisches Grundwissen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
@@ -34,7 +34,7 @@ inhalte:
     punkte:
       - Kosten- und Leistungsrechnung, Deckungsbeitrag und Kennzahlen für Entscheidungen nutzen
       - Vertrags- und Finanzierungsarten unterscheiden, etwa Kauf, Miete oder Leasing
-      - Kundinnen und Kunden beraten und Verträge vorbereiten
+      - Kunden beraten und Verträge vorbereiten
       - Marketing- und Vertriebsinstrumente zielgruppengerecht einsetzen
       - Leistungserbringung kontrollieren, Störungen und Mängel bearbeiten
   - titel: Wirtschafts- und Sozialkunde (60 Minuten)

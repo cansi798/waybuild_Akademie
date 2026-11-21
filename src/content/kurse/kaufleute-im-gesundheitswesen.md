@@ -14,7 +14,7 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende Kaufleute im Gesundheitswesen vor der Abschlussprüfung
-  - Umschülerinnen und Umschüler aus Klinik, Praxis, Pflege oder Krankenkasse
+  - Umschüler aus Klinik, Praxis, Pflege oder Krankenkasse
   - Prüflinge, die einen schriftlichen Bereich wiederholen
 voraussetzungen:
   - Fachwissen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung

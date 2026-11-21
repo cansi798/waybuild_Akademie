@@ -1,8 +1,8 @@
 ---
 saeule: ihk-pruefung
 kategorie: IT-Berufe
-titel: AP2 Fachinformatiker/in Digitale Vernetzung
-untertitel: Fachinformatiker/in Fachrichtung Digitale Vernetzung – schriftliche Prüfung Teil 2
+titel: AP2 Fachinformatiker Digitale Vernetzung
+untertitel: Fachinformatiker (m/w/d) Fachrichtung Digitale Vernetzung – schriftliche Prüfung Teil 2
 kurzbeschreibung: Übe Diagnose und Störungsbeseitigung, Betrieb und Erweiterung vernetzter Systeme sowie WiSo an prüfungsnahen Fällen – live online an 10 Abenden.
 status: entwurf
 art: kurs
@@ -13,8 +13,8 @@ preis:
   betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
-  - Auszubildende Fachinformatiker/innen Digitale Vernetzung vor der AP2
-  - Umschülerinnen und Umschüler der Fachrichtung Digitale Vernetzung
+  - Auszubildende Fachinformatiker Digitale Vernetzung vor der AP2
+  - Umschüler der Fachrichtung Digitale Vernetzung
   - Prüflinge, die einen schriftlichen Prüfungsbereich der AP2 wiederholen
 voraussetzungen:
   - Netzwerkgrundlagen aus der Ausbildung (Adressierung, Routing, gängige Protokolle) – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung

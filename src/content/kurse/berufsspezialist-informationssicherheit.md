@@ -1,7 +1,7 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: IT-Fortbildung
-titel: Berufsspezialist/in für Informationssicherheit
+titel: Berufsspezialist für Informationssicherheit
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Fortbildungsprüfung
 kurzbeschreibung: 'Mach Informationssicherheit zu deinem Schwerpunkt: Du analysierst Bedrohungen, planst Schutzmaßnahmen und sorgst für einen sicheren IT-Betrieb – berufsbegleitend live-online.'
 status: entwurf
@@ -18,8 +18,8 @@ preis:
     betrag: 299
 zielgruppe:
 - IT-Fachkräfte, die sich auf Sicherheit spezialisieren wollen
-- Administratorinnen und Administratoren mit Sicherheitsaufgaben
-- Mitarbeitende, die im Betrieb ein Informationssicherheits-Managementsystem mit aufbauen
+- Administratoren mit Sicherheitsaufgaben
+- Mitarbeiter, die im Betrieb ein Informationssicherheits-Managementsystem mit aufbauen
 voraussetzungen:
 - 'Einer dieser Wege: eine abgeschlossene Ausbildung in einem IT-Beruf – eine andere abgeschlossene Ausbildung und danach mindestens ein Jahr Berufspraxis – mindestens 60 ECTS-Leistungspunkte aus einem Studium und mindestens zwei Jahre Berufspraxis – oder mindestens vier Jahre Berufspraxis'
 - 'Die Berufspraxis muss inhaltlich zum Abschluss passen: Analysieren, Planen und Betreiben von Maßnahmen der Informationssicherheit'
@@ -54,7 +54,7 @@ inhalte:
   punkte:
   - 'Schriftliche Prüfung: zwei Aufgaben zu einer betrieblichen Situation, je mindestens 90 Minuten (zusammen höchstens 240 Minuten)'
   - 'Mündliche Prüfung: Thema für deine Präsentation finden und beschreiben, Präsentation (höchstens 15 Minuten) und Fachgespräch (höchstens 30 Minuten) proben'
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Berufsspezialist/in für Informationssicherheit“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Berufsspezialist (m/w/d) für Informationssicherheit“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Brauche ich Vorwissen in IT-Sicherheit?
@@ -68,7 +68,7 @@ faq:
 reihenfolge: 26
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten bzw. zur Geprüften Berufsspezialistin für Informationssicherheit vor. Er folgt den sechs Qualifikationsschwerpunkten der Fortbildungsordnung: Bedrohungen analysieren, Maßnahmen planen, den sicheren Betrieb gewährleisten, Maßnahmen einleiten und prüfen, dazu Recht und Projektarbeit.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten (m/w/d) für Informationssicherheit vor. Er folgt den sechs Qualifikationsschwerpunkten der Fortbildungsordnung: Bedrohungen analysieren, Maßnahmen planen, den sicheren Betrieb gewährleisten, Maßnahmen einleiten und prüfen, dazu Recht und Projektarbeit.
 
 Du lernst am Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr live per Video in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung zeigen dir an realistischen Vorfällen, wie du Risiken bewertest und ein Sicherheitskonzept aufbaust. Rollen- und Notfallkonzepte entwerfen wir gemeinsam im Unterricht, an eigenen Übungsabenden übst du Situationsaufgaben unter Zeitvorgabe.
 

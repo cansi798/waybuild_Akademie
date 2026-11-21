@@ -14,7 +14,7 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende im Groß- und Außenhandelsmanagement beider Fachrichtungen vor Teil 1
-  - Umschülerinnen und Umschüler in diesem Beruf
+  - Umschüler in diesem Beruf
   - Auszubildende mit verkürzter Ausbildung, die Teil 1 bald schreiben
 voraussetzungen:
   - Wissen aus der ersten Ausbildungshälfte – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung

@@ -2,7 +2,7 @@
 saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: Vorbereitung auf die IHK-Abschlussprüfung Teil 2 (AP2)
-untertitel: Fachinformatiker/in Fachrichtung Systemintegration
+untertitel: Fachinformatiker (m/w/d) Fachrichtung Systemintegration
 kurzbeschreibung: Gezielte Vorbereitung auf die schriftlichen Prüfungsbereiche der AP2 Systemintegration – IT-Systeme, Netzwerke sowie Wirtschafts- und Sozialkunde – live online an 10 Abenden.
 status: freigegeben
 art: kurs
@@ -13,8 +13,8 @@ preis:
   betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die Prüfungsgebühr deiner IHK ist nicht enthalten."
 zielgruppe:
-  - Auszubildende Fachinformatiker/innen Systemintegration vor der AP2
-  - Umschülerinnen und Umschüler der Fachrichtung Systemintegration
+  - Auszubildende Fachinformatiker Systemintegration vor der AP2
+  - Umschüler der Fachrichtung Systemintegration
 voraussetzungen:
   - Fachwissen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
   - Computer mit stabiler Internetverbindung und aktuellem Browser

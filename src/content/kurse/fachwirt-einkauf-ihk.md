@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
-titel: Fachwirt/in für Einkauf
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in für Einkauf – Bachelor Professional in Procurement“
+titel: Fachwirt für Einkauf
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Fachwirt (m/w/d) für Einkauf – Bachelor Professional in Procurement“
 kurzbeschreibung: 'Bring den Einkauf auf Strategieniveau: Du ermittelst Bedarfe, entwickelst Einkaufsstrategien, steuerst Lieferanten und Risiken und führst mit Kennzahlen – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
@@ -21,7 +21,7 @@ preis:
       betrag: 199
 zielgruppe:
 - Fachkräfte aus Einkauf und Beschaffung
-- Mitarbeitende aus Disposition und Materialwirtschaft
+- Mitarbeiter aus Disposition und Materialwirtschaft
 - Fachkräfte, die in den strategischen Einkauf wechseln wollen
 voraussetzungen:
 - 'Einer dieser Wege: eine bestandene Abschlussprüfung in einem dreijährigen kaufmännischen oder verwaltenden Ausbildungsberuf – eine andere Ausbildung und danach mindestens ein Jahr Berufspraxis – oder mindestens fünf Jahre Berufspraxis'
@@ -52,12 +52,12 @@ inhalte:
 - titel: Kommunikation, Führung und Zusammenarbeit
   punkte:
   - Mit internen Kunden und Lieferanten zusammenarbeiten
-  - Mitarbeitende führen, Ausbildung organisieren, Teams und Projekte leiten
+  - Mitarbeiter führen, Ausbildung organisieren, Teams und Projekte leiten
 - titel: Prüfungstraining
   punkte:
   - Situationsbeschreibung mit zwei offenen Aufgabenstellungen unter Zeitvorgabe (in der Prüfung zusammen 600 Minuten)
   - Präsentationsthema mit Bezug zu Führung und Zusammenarbeit finden, Präsentation (höchstens 10 Minuten) und Fachgespräch proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Fachwirt/in für Einkauf – Bachelor Professional in Procurement“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Fachwirt (m/w/d) für Einkauf – Bachelor Professional in Procurement“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -73,7 +73,7 @@ faq:
 reihenfolge: 32
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Einkauf – Bachelor Professional in Procurement vor. Er folgt den sechs Handlungsbereichen der Fortbildungsordnung, vom Ermitteln der Bedarfe über Strategie, Lieferanten und Einkaufsprozess bis zu Controlling und Führung.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt (m/w/d) für Einkauf – Bachelor Professional in Procurement vor. Er folgt den sechs Handlungsbereichen der Fortbildungsordnung, vom Ermitteln der Bedarfe über Strategie, Lieferanten und Einkaufsprozess bis zu Controlling und Führung.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Einkaufsfällen aus Industrie und Handel: Du bewertest Angebote, baust eine Lieferantenbewertung auf und bereitest Verhandlungen vor, die wir in der Gruppe durchspielen. An eigenen Übungsabenden trainierst du die lange schriftliche Prüfung in Etappen.
 

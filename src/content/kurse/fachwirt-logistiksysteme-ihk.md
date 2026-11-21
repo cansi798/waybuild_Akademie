@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
-titel: Fachwirt/in für Logistiksysteme
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in für Logistiksysteme – Bachelor Professional in Logistiksysteme“
+titel: Fachwirt für Logistiksysteme
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Fachwirt (m/w/d) für Logistiksysteme – Bachelor Professional in Logistiksysteme“
 kurzbeschreibung: 'Plane Logistik als System: Du analysierst Abläufe, entwickelst und bewertest Logistikkonzepte, führst Lösungen mit Kennzahlen ein und leitest Teams – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
@@ -24,7 +24,7 @@ zielgruppe:
 - Kaufleute aus Spedition, Industrie oder Groß- und Außenhandel mit Logistikaufgaben
 - Teamleitungen in Lager, Versand oder Distribution
 voraussetzungen:
-- 'Einer dieser Wege: eine Ausbildung als Kaufmann/-frau für Spedition und Logistikdienstleistung, Industriekaufmann/-frau, Kaufmann/-frau für Groß- und Außenhandelsmanagement oder Schifffahrtskaufmann/-frau – eine andere dreijährige kaufmännische oder verwaltende Ausbildung oder die Ausbildung zur Fachkraft für Lagerlogistik, jeweils mit mindestens einem Jahr Praxis – eine andere dreijährige Ausbildung mit mindestens zwei Jahren Praxis – mindestens 90 ECTS-Punkte in einem fachverwandten Studium und zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
+- 'Einer dieser Wege: eine Ausbildung als Kaufmann für Spedition und Logistikdienstleistung, Industriekaufmann, Kaufmann für Groß- und Außenhandelsmanagement oder Schifffahrtskaufmann (m/w/d) – eine andere dreijährige kaufmännische oder verwaltende Ausbildung oder die Ausbildung zur Fachkraft für Lagerlogistik, jeweils mit mindestens einem Jahr Praxis – eine andere dreijährige Ausbildung mit mindestens zwei Jahren Praxis – mindestens 90 ECTS-Punkte in einem fachverwandten Studium und zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
 - Wo Berufspraxis verlangt wird, muss sie Bezug zu logistischen Aufgaben haben
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
@@ -47,13 +47,13 @@ inhalte:
   punkte:
   - Kommunizieren, präsentieren, Konflikte lösen
   - Personalauswahl, Personaleinsatz und Führungsmethoden
-  - Ausbildung planen, Mitarbeitende entwickeln, Arbeits- und Gesundheitsschutz
+  - Ausbildung planen, Mitarbeiter entwickeln, Arbeits- und Gesundheitsschutz
 - titel: Prüfungstraining
   punkte:
   - Zwei Aufgabenstellungen zu einer betrieblichen Situation, je 300 Minuten
   - Präsentationsthema finden, das einen Fachbereich mit Führung und Zusammenarbeit verknüpft
   - Präsentation (höchstens 10 Minuten) und Fachgespräch (höchstens 20 Minuten) proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Fachwirt/in für Logistiksysteme – Bachelor Professional in Logistiksysteme“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Fachwirt (m/w/d) für Logistiksysteme – Bachelor Professional in Logistiksysteme“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Was unterscheidet diesen Fachwirt vom Fachwirt für Güterverkehr und Logistik?
@@ -69,7 +69,7 @@ faq:
 reihenfolge: 42
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Logistiksysteme vor, seit 2023 mit der Bezeichnung Bachelor Professional in Logistiksysteme. Er folgt den vier Prüfungsbereichen der Fortbildungsordnung: Anforderungen analysieren, Lösungen entwickeln, Lösungen umsetzen und verbessern sowie Kommunikation, Führung und Zusammenarbeit.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt (m/w/d) für Logistiksysteme vor, seit 2023 mit der Bezeichnung Bachelor Professional in Logistiksysteme. Er folgt den vier Prüfungsbereichen der Fortbildungsordnung: Anforderungen analysieren, Lösungen entwickeln, Lösungen umsetzen und verbessern sowie Kommunikation, Führung und Zusammenarbeit.
 
 Der Unterricht findet live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr statt. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Lager, Materialfluss und Distribution: Wir analysieren ein Logistiksystem, vergleichen Konzepte und rechnen Kennzahlen gemeinsam durch. An eigenen Übungsabenden trainierst du die langen schriftlichen Aufgaben.
 

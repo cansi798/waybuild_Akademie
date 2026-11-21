@@ -13,7 +13,7 @@ preis:
   betrag: 1129
   hinweis: "Entspricht rund 299 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Beispielprojekte und Zertifikat"
 zielgruppe:
-- Quereinsteigerinnen und Quereinsteiger, die in die Softwareentwicklung wechseln wollen
+- Quereinsteiger, die in die Softwareentwicklung wechseln wollen
 - Fachkräfte mit ersten Programmiererfahrungen
 - Auszubildende in IT-Berufen, die Praxis vertiefen wollen
 voraussetzungen:

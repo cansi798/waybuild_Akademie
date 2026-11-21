@@ -14,7 +14,7 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende Automobilkaufleute vor Teil 2
-  - Umschülerinnen und Umschüler im Autohaus
+  - Umschüler im Autohaus
   - Prüflinge, die einen schriftlichen Bereich von Teil 2 wiederholen
 voraussetzungen:
   - Fachwissen aus der Ausbildung und Teil 1 abgelegt – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung

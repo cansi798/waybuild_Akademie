@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachkaufleute
-titel: Personalfachkaufmann/-frau
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Personalfachkaufmann/-frau“
+titel: Personalfachkaufmann
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Personalfachkaufmann (m/w/d)“
 kurzbeschreibung: 'Werde Profi für Personalarbeit: Du organisierst Personalprozesse, handelst arbeits- und sozialrechtlich sicher, planst und gewinnst Personal und steuerst Entwicklung – live-online.'
 status: entwurf
 art: kurs
@@ -20,7 +20,7 @@ preis:
       abende: 9
       betrag: 229
 zielgruppe:
-- Mitarbeitende aus Personalabteilungen
+- Mitarbeiter aus Personalabteilungen
 - Sachbearbeitung Personal und Entgelt
 - Fachkräfte, die in den Personalbereich wechseln wollen
 voraussetzungen:
@@ -52,7 +52,7 @@ inhalte:
   punkte:
   - Komplexe Situationsaufgaben je Handlungsbereich unter Zeitvorgabe (in der Prüfung 100 bis 120 Minuten für den ersten Bereich, zusammen mindestens 420 Minuten für die übrigen drei)
   - Beratungsauftrag als Entscheidungsvorlage für die Geschäftsleitung aufbauen, Vorstellung (rund 10 Minuten) und Prüfungsgespräch proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Personalfachkaufmann/-frau“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Personalfachkaufmann (m/w/d)“ erwirbst du mit der Prüfung bei deiner IHK
 termine:
 - id: personalfachkaufmann-2027-herbst
   start: 2027-09-07
@@ -82,7 +82,7 @@ faq:
 reihenfolge: 21
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Personalfachkaufmann bzw. zur Geprüften Personalfachkauffrau vor. Er folgt den vier Handlungsbereichen der Prüfungsverordnung: Personalarbeit organisieren, rechtssicher handeln, Personal planen, gewinnen und steuern sowie Personal- und Organisationsentwicklung.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Personalfachkaufmann (m/w/d) vor. Er folgt den vier Handlungsbereichen der Prüfungsverordnung: Personalarbeit organisieren, rechtssicher handeln, Personal planen, gewinnen und steuern sowie Personal- und Organisationsentwicklung.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus dem Personalalltag – vom Arbeitsvertrag über die Entgeltabrechnung bis zur Personalbedarfsplanung. Die Situationsaufgaben trainieren wir an eigenen Übungsabenden unter Zeitvorgabe.
 

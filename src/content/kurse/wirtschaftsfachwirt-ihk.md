@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
-titel: Wirtschaftsfachwirt/in
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Wirtschaftsfachwirt/in“
+titel: Wirtschaftsfachwirt
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Wirtschaftsfachwirt (m/w/d)“
 kurzbeschreibung: 'Mach den nächsten Karriereschritt: Du lernst die wirtschaftsbezogenen Grundlagen und danach Management, Controlling, Logistik, Marketing und Führung – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
@@ -21,8 +21,8 @@ preis:
       betrag: 179
 zielgruppe:
 - Kaufmännische Fachkräfte mit Berufserfahrung aus allen Branchen
-- Mitarbeitende, die Führungsaufgaben übernehmen wollen
-- Quereinsteigerinnen und Quereinsteiger mit mehrjähriger Berufspraxis
+- Mitarbeiter, die Führungsaufgaben übernehmen wollen
+- Quereinsteiger mit mehrjähriger Berufspraxis
 voraussetzungen:
 - 'Für Teil 1 einer dieser Wege: eine mindestens dreijährige kaufmännische oder verwaltende Ausbildung – eine andere mindestens dreijährige Ausbildung und danach ein Jahr Praxis – eine andere Ausbildung und danach zwei Jahre Praxis – oder mindestens drei Jahre Berufspraxis'
 - 'Für Teil 2: der abgelegte Teil 1 (höchstens fünf Jahre zurück) und ein weiteres Jahr Berufspraxis'
@@ -62,14 +62,14 @@ inhalte:
   - Marketingkonzept, Marktforschung, Vertriebswege, Kundenbindung
 - titel: 'Teil 2: Führung und Zusammenarbeit'
   punkte:
-  - Kommunikation, Konfliktlösung, Mitarbeitende führen und entwickeln
+  - Kommunikation, Konfliktlösung, Mitarbeiter führen und entwickeln
   - Präsentation und Moderation
 - titel: Prüfungstraining
   punkte:
   - 'Teil 1: je eine Klausur pro Qualifikationsbereich unter Zeitvorgabe'
   - 'Teil 2: Situationsbeschreibung mit zwei Aufgabenstellungen (in der Prüfung 480 bis 510 Minuten)'
   - Situationsbezogenes Fachgespräch mit Präsentation und Vorbereitungszeit üben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Wirtschaftsfachwirt/in“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Wirtschaftsfachwirt (m/w/d)“ erwirbst du mit der Prüfung bei deiner IHK
 termine:
 - id: wirtschaftsfachwirt-2027-maerz
   start: 2027-03-02
@@ -98,7 +98,7 @@ faq:
 reihenfolge: 11
 ---
 
-Der Lehrgang bereitet dich auf beide Teilprüfungen zum Geprüften Wirtschaftsfachwirt bzw. zur Geprüften Wirtschaftsfachwirtin vor. Im ersten Abschnitt arbeitest du die vier wirtschaftsbezogenen Qualifikationsbereiche durch, im zweiten die fünf Handlungsbereiche von betrieblichem Management über Controlling, Logistik und Marketing bis zu Führung und Zusammenarbeit.
+Der Lehrgang bereitet dich auf beide Teilprüfungen zum Geprüften Wirtschaftsfachwirt (m/w/d) vor. Im ersten Abschnitt arbeitest du die vier wirtschaftsbezogenen Qualifikationsbereiche durch, im zweiten die fünf Handlungsbereiche von betrieblichem Management über Controlling, Logistik und Marketing bis zu Führung und Zusammenarbeit.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung rechnen, diskutieren und präsentieren mit dir an Fällen aus Unternehmen verschiedener Branchen. Vor jeder Teilprüfung trainierst du an eigenen Übungsabenden Klausuren unter Zeitvorgabe, und wir besprechen die Lösungswege anschließend gemeinsam.
 

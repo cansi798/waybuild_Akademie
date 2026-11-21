@@ -1,8 +1,8 @@
 ---
 saeule: ihk-pruefung
 kategorie: IT-Berufe
-titel: AP2 Fachinformatiker/in Anwendungsentwicklung
-untertitel: Fachinformatiker/in Fachrichtung Anwendungsentwicklung – schriftliche Prüfung Teil 2
+titel: AP2 Fachinformatiker Anwendungsentwicklung
+untertitel: Fachinformatiker (m/w/d) Fachrichtung Anwendungsentwicklung – schriftliche Prüfung Teil 2
 kurzbeschreibung: Trainiere „Planen eines Softwareproduktes“, „Entwicklung und Umsetzung von Algorithmen“ sowie WiSo an prüfungsnahen Aufgaben – live online an 10 Abenden.
 status: entwurf
 art: kurs
@@ -13,8 +13,8 @@ preis:
   betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
-  - Auszubildende Fachinformatiker/innen Anwendungsentwicklung vor der AP2
-  - Umschülerinnen und Umschüler der Fachrichtung Anwendungsentwicklung
+  - Auszubildende Fachinformatiker Anwendungsentwicklung vor der AP2
+  - Umschüler der Fachrichtung Anwendungsentwicklung
   - Prüflinge, die einen schriftlichen Prüfungsbereich der AP2 wiederholen
 voraussetzungen:
   - Programmiergrundlagen aus der Ausbildung (Schleifen, Bedingungen, Klassen, einfache SQL-Abfragen) – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung

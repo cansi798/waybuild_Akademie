@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachkaufleute
-titel: Controller/in
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Controller/in“
+titel: Controller
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Controller (m/w/d)“
 kurzbeschreibung: 'Mach Zahlen zur Grundlage von Entscheidungen: Du lernst Kostenmanagement, Planung und Budgetierung, Abschlussanalyse und Berichtswesen mit Tabellenkalkulation – live-online.'
 status: entwurf
 art: kurs
@@ -21,8 +21,8 @@ preis:
       betrag: 249
 zielgruppe:
 - Fachkräfte aus Rechnungswesen, Buchhaltung und Finanzen
-- Mitarbeitende, die ins Controlling wechseln wollen
-- Fachwirtinnen und Fachwirte mit Schwerpunkt Zahlen
+- Mitarbeiter, die ins Controlling wechseln wollen
+- Fachwirte mit Schwerpunkt Zahlen
 voraussetzungen:
 - 'Einer dieser Wege: eine dreijährige kaufmännische oder verwaltende Ausbildung und danach mindestens drei Jahre Berufspraxis – ein wirtschaftswissenschaftliches Studium oder ein betriebswirtschaftlicher Berufsakademie-Abschluss und danach mindestens zwei Jahre Praxis – eine andere Ausbildung und danach mindestens vier Jahre Praxis – oder mindestens sechs Jahre Berufspraxis'
 - Die Berufspraxis muss Bezug zu Controlling-Aufgaben wie Planung, Steuerung oder Berichtswesen haben
@@ -59,7 +59,7 @@ inhalte:
   - Situationsaufgaben unter Zeitvorgabe (in der Prüfung 180 Minuten für Kosten und Planung, 90 bis 120 Minuten für die Abschlussanalyse)
   - Übungen am Rechner für die 240-minütige Prüfung im Berichtswesen
   - Präsentation (in der Regel höchstens 15 Minuten) und Fachgespräch proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Controller/in“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Controller (m/w/d)“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -75,7 +75,7 @@ faq:
 reihenfolge: 34
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Controller bzw. zur Geprüften Controllerin vor. Er folgt den sechs Handlungsbereichen der Prüfungsverordnung: Kostenmanagement, Planung und Budgetierung, Jahresabschlussanalyse und Berichtswesen für die schriftlichen Teile, Beratung sowie Führung und Moderation für Projektarbeit und Fachgespräch.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Controller (m/w/d) vor. Er folgt den sechs Handlungsbereichen der Prüfungsverordnung: Kostenmanagement, Planung und Budgetierung, Jahresabschlussanalyse und Berichtswesen für die schriftlichen Teile, Beratung sowie Führung und Moderation für Projektarbeit und Fachgespräch.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung rechnen Fälle mit dir durch, wie sie in der Prüfung vorkommen. Weil das Berichtswesen am Rechner geprüft wird, baust du Berichte und Auswertungen in der Tabellenkalkulation selbst auf, und wir besprechen die Ergebnisse gemeinsam am geteilten Bildschirm.
 

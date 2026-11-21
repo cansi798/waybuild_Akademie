@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Meister
-titel: Meister/in für Kraftverkehr
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Meister/in für Kraftverkehr“
+titel: Meister für Kraftverkehr
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Meister (m/w/d) für Kraftverkehr“
 kurzbeschreibung: 'Leite Fuhrpark und Fahrpersonal: Du lernst die grundlegenden Qualifikationen, Fuhrparktechnik und -management, Organisation, Kosten und Qualität sowie Führung – live-online.'
 status: entwurf
 art: kurs
@@ -17,11 +17,11 @@ preis:
     abende: 12
     betrag: 299
 zielgruppe:
-- Berufskraftfahrerinnen und Berufskraftfahrer mit Berufserfahrung
+- Berufskraftfahrer mit Berufserfahrung
 - Fachkräfte im Fahrbetrieb
-- Disponentinnen und Disponenten, die Fuhrpark und Personal verantworten wollen
+- Disponenten, die Fuhrpark und Personal verantworten wollen
 voraussetzungen:
-- 'Für die grundlegenden Qualifikationen einer dieser Wege: eine Ausbildung als Berufskraftfahrer/in oder Fachkraft im Fahrbetrieb – eine andere Ausbildung und danach mindestens ein Jahr Berufspraxis – oder mindestens vier Jahre Berufspraxis'
+- 'Für die grundlegenden Qualifikationen einer dieser Wege: eine Ausbildung als Berufskraftfahrer (m/w/d) oder Fachkraft im Fahrbetrieb – eine andere Ausbildung und danach mindestens ein Jahr Berufspraxis – oder mindestens vier Jahre Berufspraxis'
 - 'Für die handlungsspezifischen Qualifikationen: die abgelegten grundlegenden Qualifikationen (höchstens fünf Jahre zurück) und mindestens ein weiteres Jahr Berufspraxis'
 - Vor Beginn der letzten Prüfungsleistung brauchst du den Nachweis der Ausbildereignung (AEVO) oder eine vergleichbare Prüfung
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
@@ -52,7 +52,7 @@ inhalte:
   - Anwendungsbezogene Aufgaben für die vier Prüfungsbereiche der grundlegenden Qualifikationen (in der Prüfung je mindestens 90 Minuten)
   - Zwei schriftliche Situationsaufgaben unter Zeitvorgabe (in der Prüfung je mindestens drei Stunden)
   - Situationsbezogenes Fachgespräch proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Meister/in für Kraftverkehr“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Meister (m/w/d) für Kraftverkehr“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -68,7 +68,7 @@ faq:
 reihenfolge: 53
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Meister bzw. zur Geprüften Meisterin für Kraftverkehr vor. Im ersten Teil geht es um die vier grundlegenden Qualifikationen, im zweiten um die Handlungsbereiche Fuhrparktechnik und Fuhrparkmanagement, Organisation und Kommunikation sowie Führung und Personal.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Meister (m/w/d) für Kraftverkehr vor. Im ersten Teil geht es um die vier grundlegenden Qualifikationen, im zweiten um die Handlungsbereiche Fuhrparktechnik und Fuhrparkmanagement, Organisation und Kommunikation sowie Führung und Personal.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Speditionen, Werkverkehr und Busbetrieben – zum Beispiel einer Kostenrechnung pro Fahrzeug oder einer Dienstplanung unter den Lenk- und Ruhezeitregeln. Die Situationsaufgaben trainieren wir an eigenen Übungsabenden unter Zeitvorgabe.
 

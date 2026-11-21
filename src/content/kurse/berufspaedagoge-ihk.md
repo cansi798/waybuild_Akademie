@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Ausbilder
-titel: Berufspädagoge/-pädagogin
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Berufspädagoge/-pädagogin“
+titel: Berufspädagoge
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Berufspädagoge (m/w/d)“
 kurzbeschreibung: 'Übernimm Leitung in der beruflichen Bildung: Du steuerst Lern-, Planungs- und Managementprozesse, leitest Aus- und Weiterbildung und bereitest deine Projektarbeit vor – live-online.'
 status: entwurf
 art: kurs
@@ -20,9 +20,9 @@ preis:
       abende: 4
       betrag: 99
 zielgruppe:
-- Ausbildungsleitungen und erfahrene Ausbilderinnen und Ausbilder
+- Ausbildungsleitungen und erfahrene Ausbilder
 - Fachkräfte aus Personalentwicklung und Bildungsmanagement
-- Aus- und Weiterbildungspädagoginnen und -pädagogen, die die nächste Stufe anstreben
+- Aus- und Weiterbildungspädagogen, die die nächste Stufe anstreben
 voraussetzungen:
 - 'Einer dieser Wege: ein Fortbildungsabschluss wie Aus- und Weiterbildungspädagoge, Fachwirt, Fachkaufmann oder Meister und danach mindestens ein Jahr Berufspraxis – ein Hochschulstudium oder ein staatlich anerkannter Fachschulabschluss und danach mindestens zwei Jahre Praxis – oder eine abgeschlossene Ausbildung und danach mindestens fünf Jahre Praxis'
 - Dazu die bestandene Ausbildereignungsprüfung (AEVO) oder eine vergleichbare berufs- und arbeitspädagogische Qualifikation
@@ -49,7 +49,7 @@ inhalte:
   punkte:
   - Situationsaufgaben je Handlungsbereich unter Zeitvorgabe (in der Prüfung 150 bis 180 Minuten je Aufgabe)
   - Situationsbezogenes Fachgespräch mit Fallauswahl und Vorbereitungszeit
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Berufspädagoge/-pädagogin“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Berufspädagoge (m/w/d)“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Worin unterscheidet sich der Abschluss vom Aus- und Weiterbildungspädagogen?
@@ -63,7 +63,7 @@ faq:
 reihenfolge: 13
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufspädagogen bzw. zur Geprüften Berufspädagogin vor. Er ist nach den drei Prüfungsteilen der Fortbildungsordnung aufgebaut: erst die Kernprozesse von Lernen, Planen und Management, dann das Handeln in Ausbildung, Weiterbildung und Personalentwicklung, zum Schluss eine spezialisierte Funktion als Grundlage deiner Projektarbeit.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufspädagogen (m/w/d) vor. Er ist nach den drei Prüfungsteilen der Fortbildungsordnung aufgebaut: erst die Kernprozesse von Lernen, Planen und Management, dann das Handeln in Ausbildung, Weiterbildung und Personalentwicklung, zum Schluss eine spezialisierte Funktion als Grundlage deiner Projektarbeit.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Ausbildungsleitung, Bildungsabteilung und Weiterbildungsträger. Die langen Situationsaufgaben bearbeiten wir an eigenen Übungsabenden und werten sie direkt gemeinsam aus.
 

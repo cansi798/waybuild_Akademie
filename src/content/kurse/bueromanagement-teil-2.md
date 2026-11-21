@@ -14,7 +14,7 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende Kaufleute für Büromanagement vor Teil 2
-  - Umschülerinnen und Umschüler im Büromanagement
+  - Umschüler im Büromanagement
   - Prüflinge, die Kundenbeziehungsprozesse oder WiSo wiederholen
 voraussetzungen:
   - Fachwissen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung

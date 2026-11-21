@@ -14,7 +14,7 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende in der Fachrichtung Außenhandel vor Teil 2
-  - Umschülerinnen und Umschüler mit Schwerpunkt Außenhandel
+  - Umschüler mit Schwerpunkt Außenhandel
   - Prüflinge, die einen schriftlichen Bereich von Teil 2 wiederholen
 voraussetzungen:
   - Fachwissen aus der Ausbildung und Teil 1 abgelegt – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung

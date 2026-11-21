@@ -1,7 +1,7 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: IT-Fortbildung
-titel: Berufsspezialist/in für IT-Beratung
+titel: Berufsspezialist für IT-Beratung
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Fortbildungsprüfung
 kurzbeschreibung: 'Berate Kunden auf Augenhöhe: Du gewinnst und betreust Kunden, steuerst Interessengruppen, begleitest Angebote und Verträge und unterstützt im laufenden Betrieb – live-online.'
 status: entwurf
@@ -53,7 +53,7 @@ inhalte:
   punkte:
   - 'Schriftliche Prüfung: zwei Aufgaben zu einer betrieblichen Situation, je mindestens 90 Minuten (zusammen höchstens 240 Minuten)'
   - 'Mündliche Prüfung: Thema für deine Präsentation finden und beschreiben, Präsentation (höchstens 15 Minuten) und Fachgespräch (höchstens 30 Minuten) proben'
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Berufsspezialist/in für IT-Beratung“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Berufsspezialist (m/w/d) für IT-Beratung“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Ist das eher ein technischer oder ein kaufmännischer Abschluss?
@@ -67,7 +67,7 @@ faq:
 reihenfolge: 27
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten bzw. zur Geprüften Berufsspezialistin für IT-Beratung vor. Die sechs Qualifikationsschwerpunkte der Fortbildungsordnung reichen von Kundengewinnung und Stakeholdermanagement über Angebote und Verträge bis zur Betreuung im laufenden Betrieb.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten (m/w/d) für IT-Beratung vor. Die sechs Qualifikationsschwerpunkte der Fortbildungsordnung reichen von Kundengewinnung und Stakeholdermanagement über Angebote und Verträge bis zur Betreuung im laufenden Betrieb.
 
 Der Unterricht läuft am Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr live per Video. Dozenten mit IHK-Prüfer-Erfahrung bringen Fälle aus Beratungsprojekten mit: Du analysierst Kundenbedarf, baust ein Angebot auf und übst Beratungsgespräche in kleinen Runden. Eigene Übungsabende nutzen wir für Prüfungsaufgaben unter Zeitvorgabe.
 

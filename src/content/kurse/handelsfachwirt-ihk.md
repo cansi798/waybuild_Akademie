@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
-titel: Handelsfachwirt/in
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Handelsfachwirt/in“
+titel: Handelsfachwirt
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Handelsfachwirt (m/w/d)“
 kurzbeschreibung: 'Übernimm mehr Verantwortung im Handel: Du steuerst Umsatz und Ertrag, führst Teams, planst Handelsmarketing, Beschaffung und Logistik und vertiefst einen Wahlbereich – live-online.'
 status: entwurf
 art: kurs
@@ -22,9 +22,9 @@ preis:
 zielgruppe:
 - Fachkräfte aus Einzel-, Groß- und Onlinehandel
 - Filial-, Abteilungs- und Teamleitungen
-- Mitarbeitende, die eine Führungsrolle im Handel anstreben
+- Mitarbeiter, die eine Führungsrolle im Handel anstreben
 voraussetzungen:
-- 'Einer dieser Wege: eine dreijährige kaufmännische Ausbildung im Handel und danach mindestens ein Jahr Praxis – eine Ausbildung als Verkäufer/in oder eine andere dreijährige kaufmännisch-verwaltende Ausbildung und danach mindestens zwei Jahre Praxis – eine Ausbildung als Fachlagerist/in und danach mindestens drei Jahre Praxis – mindestens 90 ECTS-Punkte in einem betriebswirtschaftlichen Studium und zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
+- 'Einer dieser Wege: eine dreijährige kaufmännische Ausbildung im Handel und danach mindestens ein Jahr Praxis – eine Ausbildung als Verkäufer (m/w/d) oder eine andere dreijährige kaufmännisch-verwaltende Ausbildung und danach mindestens zwei Jahre Praxis – eine Ausbildung als Fachlagerist (m/w/d) und danach mindestens drei Jahre Praxis – mindestens 90 ECTS-Punkte in einem betriebswirtschaftlichen Studium und zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
 - Die Berufspraxis muss im Verkauf oder in anderen kaufmännischen Tätigkeiten im Handel liegen
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
@@ -37,7 +37,7 @@ inhalte:
 - titel: Führung, Personalmanagement, Kommunikation und Kooperation
   punkte:
   - Personalplanung und -einsatz, Personalentwicklung
-  - Mitarbeitende führen, Berufsausbildung organisieren
+  - Mitarbeiter führen, Berufsausbildung organisieren
   - Mit Kunden und Partnern kommunizieren und kooperieren
 - titel: Handelsmarketing
   punkte:
@@ -56,7 +56,7 @@ inhalte:
   - Erste schriftliche Teilprüfung (Unternehmensführung, Führung und Personal) unter Zeitvorgabe, in der Prüfung 240 Minuten
   - Zweite schriftliche Teilprüfung mit Wahlbereich, in der Prüfung 300 Minuten
   - Präsentation (15 Minuten) und situationsbezogenes Fachgespräch proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Handelsfachwirt/in“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Handelsfachwirt (m/w/d)“ erwirbst du mit der Prüfung bei deiner IHK
 termine:
 - id: handelsfachwirt-2027-herbst
   start: 2027-09-06
@@ -86,7 +86,7 @@ faq:
 reihenfolge: 20
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Handelsfachwirt bzw. zur Geprüften Handelsfachwirtin vor. Die Reihenfolge folgt der Prüfung: zuerst Unternehmensführung sowie Führung und Personal für die erste schriftliche Teilprüfung, danach Handelsmarketing, Beschaffung und Logistik und die Vertiefung im Wahlbereich für die zweite.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Handelsfachwirt (m/w/d) vor. Die Reihenfolge folgt der Prüfung: zuerst Unternehmensführung sowie Führung und Personal für die erste schriftliche Teilprüfung, danach Handelsmarketing, Beschaffung und Logistik und die Vertiefung im Wahlbereich für die zweite.
 
 Der Unterricht läuft live per Video am Montag-, Mittwoch- und Donnerstagabend von 17:00 bis 20:00 Uhr, immer in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Filiale, Großhandel und Onlineshop – von der Kennzahlenanalyse bis zum Personaleinsatzplan. Die Teilprüfungen trainieren wir an eigenen Übungsabenden unter Zeitvorgabe.
 

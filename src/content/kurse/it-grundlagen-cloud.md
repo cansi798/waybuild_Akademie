@@ -13,7 +13,7 @@ preis:
   betrag: 249
   hinweis: Inklusive Kursunterlagen, Übungsumgebung für den Live-Unterricht und Zertifikat
 zielgruppe:
-- Einsteigerinnen und Einsteiger in die IT
+- Einsteiger in die IT
 - Fachkräfte aus Einkauf, Projekt und Verwaltung, die mit Cloud-Projekten zu tun haben
 - Auszubildende in IT- und kaufmännischen Berufen
 voraussetzungen:

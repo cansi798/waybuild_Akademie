@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Meister
-titel: Industriemeister/in Metall
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Industriemeister/in – Fachrichtung Metall“
+titel: Industriemeister Metall
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Industriemeister (m/w/d) – Fachrichtung Metall“
 kurzbeschreibung: 'Vom Facharbeiter zur Führungskraft in der Metallindustrie: Du lernst die Basisqualifikationen und danach Technik, Organisation sowie Führung und Personal – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
@@ -21,7 +21,7 @@ preis:
       betrag: 249
 zielgruppe:
 - Fachkräfte aus Metallberufen mit Berufserfahrung
-- Vorarbeiterinnen und Vorarbeiter, Schichtleitungen
+- Vorarbeiter, Schichtleitungen
 - Fachkräfte aus Fertigung, Montage und Instandhaltung, die Führungsverantwortung übernehmen wollen
 voraussetzungen:
 - 'Für die Basisqualifikationen einer dieser Wege: eine Ausbildung in einem Metallberuf – eine andere Ausbildung und danach mindestens zwei Jahre Berufspraxis – oder mindestens vier Jahre Berufspraxis'
@@ -57,7 +57,7 @@ inhalte:
   - Anwendungsbezogene Aufgaben für die fünf Prüfungsbereiche der Basisqualifikationen unter Zeitvorgabe
   - Integrierte Situationsaufgaben aus Betriebserhaltung, Fertigung und Montage (in der Prüfung je mindestens vier Stunden)
   - Situationsbezogenes Fachgespräch proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Industriemeister/in – Fachrichtung Metall“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Industriemeister (m/w/d) – Fachrichtung Metall“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -73,7 +73,7 @@ faq:
 reihenfolge: 50
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Industriemeister bzw. zur Geprüften Industriemeisterin der Fachrichtung Metall vor. Im ersten Teil arbeitest du die fünf Basisqualifikationen durch, von Recht und Betriebswirtschaft bis zu naturwissenschaftlich-technischen Gesetzmäßigkeiten. Im zweiten Teil geht es um die Handlungsbereiche Technik, Organisation sowie Führung und Personal.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Industriemeister (m/w/d) der Fachrichtung Metall vor. Im ersten Teil arbeitest du die fünf Basisqualifikationen durch, von Recht und Betriebswirtschaft bis zu naturwissenschaftlich-technischen Gesetzmäßigkeiten. Im zweiten Teil geht es um die Handlungsbereiche Technik, Organisation sowie Führung und Personal.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung rechnen mit dir Aufgaben aus Betriebstechnik, Kostenwesen und Arbeitsschutz und besprechen Lösungswege gemeinsam. Die langen Situationsaufgaben trainieren wir an eigenen Übungsabenden.
 

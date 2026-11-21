@@ -14,7 +14,7 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende Industriekaufleute nach der Ausbildungsordnung 2024 vor Teil 2
-  - Umschülerinnen und Umschüler nach der neuen Ordnung
+  - Umschüler nach der neuen Ordnung
   - Auszubildende mit verkürzter Ausbildung
 voraussetzungen:
   - Fachwissen aus der Ausbildung und Teil 1 abgelegt – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung

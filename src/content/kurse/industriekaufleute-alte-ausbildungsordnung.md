@@ -15,7 +15,7 @@ preis:
 zielgruppe:
   - Auszubildende, die vor August 2024 begonnen haben und noch nach der alten Ordnung geprüft werden
   - Prüflinge, die die Abschlussprüfung nach der Ordnung von 2002 wiederholen
-  - Umschülerinnen und Umschüler mit Prüfung nach der bisherigen Ordnung
+  - Umschüler mit Prüfung nach der bisherigen Ordnung
 voraussetzungen:
   - Deine Prüfung richtet sich nach der Ausbildungsordnung von 2002 – das steht in deinem Ausbildungsvertrag, im Zweifel fragst du deine IHK
   - Taschenrechner

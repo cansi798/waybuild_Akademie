@@ -15,7 +15,7 @@ preis:
 zielgruppe:
 - Fachkräfte vor einem Lehrgang zum Industriemeister oder Logistikmeister
 - Alle, deren Schulmathe schon länger zurückliegt
-- Teilnehmende technischer Fortbildungen, die sicherer rechnen wollen
+- Teilnehmer technischer Fortbildungen, die sicherer rechnen wollen
 voraussetzungen:
 - Keine besonderen Vorkenntnisse – die Grundrechenarten genügen
 - Ein wissenschaftlicher Taschenrechner

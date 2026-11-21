@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
-titel: Medienfachwirt/in
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Medienfachwirt/in – Bachelor Professional in Media“
+titel: Medienfachwirt
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Medienfachwirt (m/w/d) – Bachelor Professional in Media“
 kurzbeschreibung: 'Verbinde Medienproduktion und Management: Du lernst Recht, BWL und Planung, danach Print- und Digitalproduktion, Personal, Vertrieb und Kosten – mit Projektarbeit, live-online.'
 status: entwurf
 art: kurs
@@ -20,9 +20,9 @@ preis:
       abende: 4
       betrag: 99
 zielgruppe:
-- Mediengestalterinnen und Mediengestalter mit Berufserfahrung
+- Mediengestalter mit Berufserfahrung
 - Fachkräfte aus Druck, Verlag, Agentur oder Digitalproduktion
-- Mitarbeitende, die Produktionsprojekte leiten wollen
+- Mitarbeiter, die Produktionsprojekte leiten wollen
 voraussetzungen:
 - 'Einer dieser Wege: eine Ausbildung in einem Beruf der Druck- und Medienwirtschaft – eine andere Ausbildung und danach mindestens ein Jahr Berufspraxis – oder mindestens vier Jahre Berufspraxis'
 - Die Berufspraxis soll Bezug zu Aufgaben in der Medienproduktion haben
@@ -55,7 +55,7 @@ inhalte:
   punkte:
   - Anwendungsbezogene Aufgaben je Prüfungsbereich der Grundlagen (in der Prüfung mindestens 90 Minuten je Bereich)
   - Situationsaufgaben zu Medienproduktion sowie Führung und Organisation
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Medienfachwirt/in – Bachelor Professional in Media“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Medienfachwirt (m/w/d) – Bachelor Professional in Media“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -71,7 +71,7 @@ faq:
 reihenfolge: 45
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Medienfachwirt bzw. zur Geprüften Medienfachwirtin – Bachelor Professional in Media vor. Im ersten Teil geht es um Recht, Betriebswirtschaft, Planungsmethoden und Zusammenarbeit, im zweiten um Medienproduktion sowie Führung und Organisation, zum Schluss um deine Projektarbeit.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Medienfachwirt (m/w/d) – Bachelor Professional in Media vor. Im ersten Teil geht es um Recht, Betriebswirtschaft, Planungsmethoden und Zusammenarbeit, im zweiten um Medienproduktion sowie Führung und Organisation, zum Schluss um deine Projektarbeit.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Beispielen aus Druckerei, Verlag, Agentur und Digitalproduktion – vom Produktionsablauf über die Kalkulation bis zum Personaleinsatz. Eine Gesamtplanung bauen wir gemeinsam Schritt für Schritt, damit du die Form der Projektarbeit kennst.
 

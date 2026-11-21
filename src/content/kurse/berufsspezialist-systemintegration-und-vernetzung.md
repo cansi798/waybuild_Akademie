@@ -1,7 +1,7 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: IT-Fortbildung
-titel: Berufsspezialist/in für Systemintegration und Vernetzung
+titel: Berufsspezialist für Systemintegration und Vernetzung
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Fortbildungsprüfung
 kurzbeschreibung: 'Bau dein IT-Wissen nach der Ausbildung aus: Du planst und vernetzt Systeme bis in Produktion und Gebäudetechnik, sicherst den Betrieb und die IT-Sicherheit – berufsbegleitend live-online.'
 status: entwurf
@@ -17,9 +17,9 @@ preis:
     abende: 12
     betrag: 299
 zielgruppe:
-- Fachinformatikerinnen und Fachinformatiker für Systemintegration oder Digitale Vernetzung nach der Ausbildung
-- IT-System-Elektronikerinnen und -Elektroniker mit Praxis
-- Administratorinnen und Administratoren, die ihre Praxis mit einem IHK-Abschluss belegen wollen
+- Fachinformatiker für Systemintegration oder Digitale Vernetzung nach der Ausbildung
+- IT-System-Elektroniker mit Praxis
+- Administratoren, die ihre Praxis mit einem IHK-Abschluss belegen wollen
 voraussetzungen:
 - 'Einer dieser Wege: eine abgeschlossene Ausbildung in einem IT-Beruf – eine andere abgeschlossene Ausbildung und danach mindestens ein Jahr Berufspraxis – mindestens 60 ECTS-Leistungspunkte aus einem Studium und mindestens zwei Jahre Berufspraxis – oder mindestens vier Jahre Berufspraxis'
 - 'Die Berufspraxis muss inhaltlich zum Abschluss passen: Planen, Vernetzen und Betreiben von IT-Systemen, auch in Produktion oder Gebäudetechnik'
@@ -53,7 +53,7 @@ inhalte:
   punkte:
   - 'Schriftliche Prüfung: zwei Aufgaben zu einer betrieblichen Situation, je mindestens 90 Minuten (zusammen höchstens 240 Minuten)'
   - 'Mündliche Prüfung: Thema für deine Präsentation finden und beschreiben, Präsentation (höchstens 15 Minuten) und Fachgespräch (höchstens 30 Minuten) proben'
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Berufsspezialist/in für Systemintegration und Vernetzung“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Berufsspezialist (m/w/d) für Systemintegration und Vernetzung“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Was ist neu gegenüber meiner Ausbildung?
@@ -67,7 +67,7 @@ faq:
 reihenfolge: 24
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten bzw. zur Geprüften Berufsspezialistin für Systemintegration und Vernetzung vor. Er folgt den fünf Qualifikationsschwerpunkten der Fortbildungsordnung – von der Planung und Integration über den laufenden Betrieb bis zu IT-Sicherheit, Recht und Projektarbeit.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten (m/w/d) für Systemintegration und Vernetzung vor. Er folgt den fünf Qualifikationsschwerpunkten der Fortbildungsordnung – von der Planung und Integration über den laufenden Betrieb bis zu IT-Sicherheit, Recht und Projektarbeit.
 
 Du lernst am Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr live per Video in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Szenarien aus Netzwerk, Server-Betrieb und vernetzter Produktion. An eigenen Übungsabenden löst ihr Situationsaufgaben unter Prüfungsbedingungen und besprecht die Lösungen direkt im Anschluss.
 

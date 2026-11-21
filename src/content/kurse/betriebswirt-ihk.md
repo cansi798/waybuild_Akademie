@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Betriebswirte
-titel: Betriebswirt/in
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Betriebswirt/in nach dem Berufsbildungsgesetz – Master Professional in Business Management nach dem Berufsbildungsgesetz“
+titel: Betriebswirt
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Betriebswirt (m/w/d) nach dem Berufsbildungsgesetz – Master Professional in Business Management nach dem Berufsbildungsgesetz“
 kurzbeschreibung: 'Bau auf deinem Fachwirt auf: Du bereitest strategische Entscheidungen vor, bewertest Recht und Finanzen, steuerst Leistungsprozesse und schreibst eine Projektarbeit – live-online.'
 status: entwurf
 art: kurs
@@ -20,9 +20,9 @@ preis:
       abende: 4
       betrag: 99
 zielgruppe:
-- Fachwirtinnen, Fachwirte und Fachkaufleute, die ins Management wollen
+- Fachwirte und Fachkaufleute, die ins Management wollen
 - Führungskräfte im mittleren Management
-- Absolventinnen und Absolventen eines Wirtschaftsstudiums mit Berufspraxis
+- Absolventen eines Wirtschaftsstudiums mit Berufspraxis
 voraussetzungen:
 - 'Einer dieser Wege: ein bestandener Fachwirt, Fachkaufmann oder vergleichbarer kaufmännischer Fortbildungsabschluss nach dem BBiG – ein Kaufmännischer Fachwirt nach der Handwerksordnung – eine kaufmännische Fachschule und danach mindestens ein Jahr Berufspraxis – oder ein wirtschaftswissenschaftliches Studium und danach mindestens ein Jahr Berufspraxis'
 - Gute Englischkenntnisse, denn in jeder schriftlichen Aufgabenstellung ist ein Handlungsbereich auf Englisch zu bearbeiten
@@ -58,7 +58,7 @@ inhalte:
   - Drei abgestimmte Aufgabenstellungen zu einer betrieblichen Situation, je 240 Minuten, mit englischen Aufgaben
   - Mündlichen Prüfungsteil üben (höchstens 45 Minuten, Schwerpunkt Unternehmenssteuerung)
   - Thema der Projektarbeit finden, Entscheidungsvorlage aufbauen, Präsentation (höchstens 15 Minuten) proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Betriebswirt/in nach dem Berufsbildungsgesetz – Master Professional in Business Management“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Betriebswirt (m/w/d) nach dem Berufsbildungsgesetz – Master Professional in Business Management“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -74,7 +74,7 @@ faq:
 reihenfolge: 23
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Betriebswirt bzw. zur Geprüften Betriebswirtin nach dem Berufsbildungsgesetz vor. Er folgt den fünf Handlungsbereichen der Fortbildungsordnung: Strategie, rechtliche und finanzielle Rahmenbedingungen, nationale und internationale Leistungsprozesse, Organisation sowie Planung, Steuerung und Überwachung von Unternehmensprozessen.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Betriebswirt (m/w/d) nach dem Berufsbildungsgesetz vor. Er folgt den fünf Handlungsbereichen der Fortbildungsordnung: Strategie, rechtliche und finanzielle Rahmenbedingungen, nationale und internationale Leistungsprozesse, Organisation sowie Planung, Steuerung und Überwachung von Unternehmensprozessen.
 
 Der Unterricht läuft live per Video am Montag-, Mittwoch- und Donnerstagabend von 17:00 bis 20:00 Uhr in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit zusammenhängenden Unternehmensfällen, wie sie auch die Prüfung verwendet: Eine Situation, mehrere Handlungsbereiche, ein Teil auf Englisch. Die langen Aufgabenstellungen lösen wir an eigenen Übungsabenden und werten sie gemeinsam aus.
 

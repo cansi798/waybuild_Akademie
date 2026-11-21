@@ -14,8 +14,8 @@ preis:
   hinweis: "Entspricht rund 399 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Übungsdatensätze und Zertifikat"
 zielgruppe:
 - Fachkräfte aus Controlling, Vertrieb, Einkauf und Verwaltung
-- Mitarbeitende, die regelmäßig Berichte erstellen
-- Einsteigerinnen und Einsteiger in die Datenanalyse
+- Mitarbeiter, die regelmäßig Berichte erstellen
+- Einsteiger in die Datenanalyse
 voraussetzungen:
 - Grundkenntnisse in Excel
 - Keine Programmierkenntnisse nötig

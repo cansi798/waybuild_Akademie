@@ -1,7 +1,7 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: IT-Fortbildung
-titel: Berufsspezialist/in für Datenanalyse
+titel: Berufsspezialist für Datenanalyse
 untertitel: Berufsbegleitende Vorbereitung auf die IHK-Fortbildungsprüfung
 kurzbeschreibung: 'Mach aus Daten Entscheidungen: Du klärst Fragestellungen, bereitest Geschäfts- und Produktionsdaten auf, analysierst sie und leitest Verbesserungen ab – berufsbegleitend live-online.'
 status: entwurf
@@ -17,7 +17,7 @@ preis:
     abende: 12
     betrag: 299
 zielgruppe:
-- Fachinformatikerinnen und Fachinformatiker für Daten- und Prozessanalyse nach der Ausbildung
+- Fachinformatiker für Daten- und Prozessanalyse nach der Ausbildung
 - Fachkräfte aus Controlling, Vertrieb oder Produktion, die viel mit Daten arbeiten
 - IT-Fachkräfte, die sich auf Datenanalyse spezialisieren wollen
 voraussetzungen:
@@ -54,7 +54,7 @@ inhalte:
   punkte:
   - 'Schriftliche Prüfung: zwei Aufgaben zu einer betrieblichen Situation, je mindestens 90 Minuten (zusammen höchstens 240 Minuten)'
   - 'Mündliche Prüfung: Thema für deine Präsentation finden und beschreiben, Präsentation (höchstens 15 Minuten) und Fachgespräch (höchstens 30 Minuten) proben'
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Berufsspezialist/in für Datenanalyse“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Berufsspezialist (m/w/d) für Datenanalyse“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Muss ich programmieren können?
@@ -68,7 +68,7 @@ faq:
 reihenfolge: 28
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten bzw. zur Geprüften Berufsspezialistin für Datenanalyse vor. Er folgt den sechs Qualifikationsschwerpunkten der Fortbildungsordnung: Anforderungen klären, Daten und Prozesse vorbereiten, analysieren und bewerten, den Analyseprozess verbessern, dazu Recht und Projektarbeit.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten (m/w/d) für Datenanalyse vor. Er folgt den sechs Qualifikationsschwerpunkten der Fortbildungsordnung: Anforderungen klären, Daten und Prozesse vorbereiten, analysieren und bewerten, den Analyseprozess verbessern, dazu Recht und Projektarbeit.
 
 Du lernst am Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr live per Video in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Datensätzen aus Vertrieb, Einkauf und Produktion. Abfragen, Auswertungen und Diagramme entstehen gemeinsam im Unterricht; an eigenen Übungsabenden übst du Situationsaufgaben unter Zeitvorgabe.
 

@@ -13,7 +13,7 @@ preis:
   betrag: 399
   hinweis: Inklusive Kursunterlagen, Beispielcode und Zertifikat
 zielgruppe:
-- Einsteigerinnen und Einsteiger ins Web
+- Einsteiger ins Web
 - Fachkräfte aus Marketing und Kommunikation, die Webseiten pflegen
 - Auszubildende in IT- und Medienberufen
 voraussetzungen:

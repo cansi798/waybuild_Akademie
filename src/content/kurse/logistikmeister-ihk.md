@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Meister
-titel: Logistikmeister/in
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Logistikmeister/in“
+titel: Logistikmeister
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Logistikmeister (m/w/d)“
 kurzbeschreibung: 'Führe Lager, Umschlag und Transport: Du lernst die grundlegenden Qualifikationen, danach Logistikprozesse, Organisation und Kostenwesen sowie Führung und Personal – live-online.'
 status: entwurf
 art: kurs
@@ -53,7 +53,7 @@ inhalte:
   - Anwendungsbezogene Aufgaben für die fünf Prüfungsbereiche der grundlegenden Qualifikationen
   - Zwei schriftliche Situationsaufgaben unter Zeitvorgabe (in der Prüfung je mindestens drei Stunden)
   - Situationsbezogenes Fachgespräch proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Logistikmeister/in“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Logistikmeister (m/w/d)“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -69,7 +69,7 @@ faq:
 reihenfolge: 52
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Logistikmeister bzw. zur Geprüften Logistikmeisterin vor. Im ersten Teil arbeitest du die fünf grundlegenden Qualifikationen durch, im zweiten die Handlungsbereiche Logistikprozesse, betriebliche Organisation und Kostenwesen sowie Führung und Personal.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Logistikmeister (m/w/d) vor. Im ersten Teil arbeitest du die fünf grundlegenden Qualifikationen durch, im zweiten die Handlungsbereiche Logistikprozesse, betriebliche Organisation und Kostenwesen sowie Führung und Personal.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Lager, Umschlag und Distribution – etwa einer Kapazitätsplanung im Wareneingang oder einem Kostenvergleich zweier Lagerlösungen. Die Situationsaufgaben trainieren wir an eigenen Übungsabenden unter Zeitvorgabe.
 

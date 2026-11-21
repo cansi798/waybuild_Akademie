@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Meister
-titel: Industriemeister/in Elektrotechnik
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Industriemeister/in – Fachrichtung Elektrotechnik“
+titel: Industriemeister Elektrotechnik
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Industriemeister (m/w/d) – Fachrichtung Elektrotechnik“
 kurzbeschreibung: 'Übernimm Führung in Elektrotechnik und Automatisierung: Du lernst die Basisqualifikationen, Infrastruktur- und Automatisierungstechnik, Kosten und Personalführung – live-online.'
 status: entwurf
 art: kurs
@@ -20,7 +20,7 @@ preis:
       abende: 10
       betrag: 249
 zielgruppe:
-- Elektronikerinnen und Elektroniker mit Berufserfahrung
+- Elektroniker mit Berufserfahrung
 - Fachkräfte aus Instandhaltung und Automatisierung
 - Elektrofachkräfte, die ein Team leiten wollen
 voraussetzungen:
@@ -56,7 +56,7 @@ inhalte:
   - Anwendungsbezogene Aufgaben für die fünf Prüfungsbereiche der Basisqualifikationen unter Zeitvorgabe
   - Situationsaufgaben aus Betriebserhaltung Produktion, Betriebserhaltung Infrastruktur sowie Fertigung und Montage
   - Situationsbezogenes Fachgespräch proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Industriemeister/in – Fachrichtung Elektrotechnik“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Industriemeister (m/w/d) – Fachrichtung Elektrotechnik“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -72,7 +72,7 @@ faq:
 reihenfolge: 51
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Industriemeister bzw. zur Geprüften Industriemeisterin der Fachrichtung Elektrotechnik vor. Nach den fünf Basisqualifikationen geht es um die Handlungsbereiche Technik mit Infrastruktur-, Automatisierungs- und Informationstechnik, Organisation sowie Führung und Personal.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Industriemeister (m/w/d) der Fachrichtung Elektrotechnik vor. Nach den fünf Basisqualifikationen geht es um die Handlungsbereiche Technik mit Infrastruktur-, Automatisierungs- und Informationstechnik, Organisation sowie Führung und Personal.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Instandhaltung, Gebäudetechnik und automatisierter Fertigung – etwa einer Störungsanalyse oder einer Kostenrechnung für eine Modernisierung. Die Situationsaufgaben trainieren wir an eigenen Übungsabenden unter Zeitvorgabe.
 

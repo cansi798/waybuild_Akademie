@@ -14,7 +14,7 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende Immobilienkaufleute vor der Abschlussprüfung
-  - Umschülerinnen und Umschüler in der Immobilienwirtschaft
+  - Umschüler in der Immobilienwirtschaft
   - Prüflinge, die einen schriftlichen Bereich wiederholen
 voraussetzungen:
   - Fachwissen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung

@@ -2,7 +2,7 @@
 saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: AP2 Kaufleute für Digitalisierungsmanagement
-untertitel: Kaufmann/Kauffrau für Digitalisierungsmanagement – schriftliche Prüfung Teil 2
+untertitel: Kaufmann (m/w/d) für Digitalisierungsmanagement – schriftliche Prüfung Teil 2
 kurzbeschreibung: Übe „Entwicklung eines digitalen Geschäftsmodells“, „Kaufmännische Unterstützungsprozesse“ und WiSo an prüfungsnahen Fällen – live online an 10 Abenden.
 status: entwurf
 art: kurs
@@ -14,7 +14,7 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende Kaufleute für Digitalisierungsmanagement vor der AP2
-  - Umschülerinnen und Umschüler in diesem Beruf
+  - Umschüler in diesem Beruf
   - Prüflinge, die einen schriftlichen Prüfungsbereich der AP2 wiederholen
 voraussetzungen:
   - Kaufmännisches Grundwissen und Erfahrung mit Geschäftsprozessen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung

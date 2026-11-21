@@ -112,7 +112,7 @@ $bausteine = $anfrage ? [
     'SO GEHT ES WEITER',
     '1. Wir prüfen den passenden Termin und melden uns in der Regel innerhalb von zwei Werktagen per E-Mail.',
     '2. Möchtest du buchen, schicken wir dir ein Buchungsangebot mit allen Unterlagen; du sagst per Antwort-Mail zu.',
-    '3. Verbindlich wird es erst mit unserer Buchungsbestätigung per E-Mail. Bis dahin kannst du jederzeit formlos absagen.',
+    '3. Verbindlich wird es erst mit deiner Zusage und unserer Buchungsbestätigung per E-Mail. Bis dahin kannst du jederzeit formlos absagen.',
     '',
     'Bist du noch nicht volljährig? Dann brauchen wir für die Buchung die Zustimmung deiner Eltern – oder dein Ausbildungsbetrieb meldet dich an.',
     '',

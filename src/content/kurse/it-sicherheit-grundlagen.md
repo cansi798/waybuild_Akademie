@@ -13,7 +13,7 @@ preis:
   betrag: 499
   hinweis: "Entspricht rund 399 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Vorlagen für Schutzbedarf, Notfallplan und Richtlinien sowie Zertifikat"
 zielgruppe:
-- Mitarbeitende, die IT-Sicherheit im Unternehmen koordinieren
+- Mitarbeiter, die IT-Sicherheit im Unternehmen koordinieren
 - IT-Einsteiger und Administratoren kleiner Firmen
 - Führungskräfte, die Risiken besser einschätzen wollen
 voraussetzungen:
@@ -35,7 +35,7 @@ inhalte:
   - Schutzbedarf feststellen
   - IT-Grundschutz des BSI in Grundzügen
   - NIS-2 und weitere Pflichten im Überblick – wen sie betreffen
-  - Richtlinien und Schulung der Mitarbeitenden
+  - Richtlinien und Schulung der Mitarbeiter
 - titel: Verfügbarkeit und Notfall
   punkte:
   - Datensicherung nach der 3-2-1-Regel und Wiederherstellung testen
@@ -73,7 +73,7 @@ In diesem Kurs lernst du, die IT-Sicherheit in einem Unternehmen zu verbessern. 
 
 **Das kannst du nach dem Kurs:**
 
-- typische Angriffe erkennen und Kolleginnen und Kollegen dafür sensibilisieren
+- typische Angriffe erkennen und Kollegen dafür sensibilisieren
 - den Schutzbedarf von Daten und Systemen einschätzen
 - wirksame Grundmaßnahmen auswählen – von Mehrfaktor-Anmeldung bis Datensicherung
 - einschätzen, welche gesetzlichen Pflichten für dein Unternehmen gelten

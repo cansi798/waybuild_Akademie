@@ -106,3 +106,17 @@ checks: {build: pass, chromium_voll: 119 pass / 5 skip}
 qa_gate: PASS_WITH_LIMITATIONS
 offen: "kontakt.php-Mailtext (PHP, recht-Bereich) nicht geändert; /coaching/ Kopf → /#anfrage ohne Coaching-Bereich (Kurzanfrage kennt keinen Bereich Coaching)"
 ```
+
+Jan 22:55: Signal „kalk in main“ (6a611e5, 17–20 Uhr in Kursdaten, neue Preise/Termine, Videos). Loop per Fast-Forward auf 6a611e5.
+
+## Runde 8 – Entgendern der Kursdateien + Kurzanfrage-Mail (22:47–23:08)
+
+```yaml
+round: 8
+focus: "Regel „nie gendern“ in allen 70 Kursdateien (MKT-014); Kunden-Mail nach Kurzanfrage nennt die Zusage"
+method: "Skript (Paarformen → generisches Maskulinum, „Geprüfte/r X/in“ → „Geprüfter X (m/w/d)“, „/innen“ → Plural, „Mitarbeitende“ → „Mitarbeiter“, Titelzeilen ohne (m/w/d)) + Lektorats-QA (FAIL → 8 Korrekturen: 29× „bzw. zur Geprüften …in“, Kasus „Mitarbeitern“, Kaufmann/Kauffrau, Mehrfach-(m/w/d))"
+files_changed: ["src/content/kurse/*.md (68 Dateien, nur Text – Zahlen/Preise/Zeiten/Termine unverändert laut QA)", public/api/kontakt.php (Schritt 3 mit Zusage), scripts/php-test.sh (Erwartung)]
+checks: {build: pass, chromium_voll: 119 pass / 5 skip, php_test: 236/236}
+qa_gate: "PASS_WITH_LIMITATIONS (Lektorat nach Korrektur nicht erneut durch Agent, Rest-Grep 0 echte Treffer)"
+impact: "Regelkonformität; Conversion-Wirkung nicht messbar"
+```

@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
-titel: Fachwirt/in im Gesundheits- und Sozialwesen
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in im Gesundheits- und Sozialwesen“
+titel: Fachwirt im Gesundheits- und Sozialwesen
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Fachwirt (m/w/d) im Gesundheits- und Sozialwesen“
 kurzbeschreibung: 'Übernimm Leitungsaufgaben in Pflege, Gesundheit oder Sozialem: Du steuerst Abläufe, Qualität, Projekte, Finanzen, Personal und Marketing einer Einrichtung – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
@@ -22,7 +22,7 @@ preis:
 zielgruppe:
 - Fachkräfte aus Pflege, Arztpraxis, Klinik und Sozialeinrichtungen
 - Verwaltungskräfte im Gesundheits- und Sozialwesen
-- Mitarbeitende, die eine Leitungsaufgabe anstreben
+- Mitarbeiter, die eine Leitungsaufgabe anstreben
 voraussetzungen:
 - 'Einer dieser Wege: eine Ausbildung in einem kaufmännischen, verwaltenden, medizinischen oder handwerklichen Beruf des Gesundheits- und Sozialwesens oder in einem bundes- bzw. dreijährigen landesrechtlich geregelten Gesundheits- oder Sozialberuf, jeweils mit mindestens einem Jahr Berufspraxis – ein einschlägiges Studium mit mindestens zwei Jahren Praxis – eine andere kaufmännische, verwaltende oder hauswirtschaftliche Ausbildung mit mindestens zwei Jahren Praxis – oder mindestens fünf Jahre Berufspraxis'
 - Die Praxis muss Bezug zu Aufgaben im Gesundheits- und Sozialwesen haben; ehrenamtliche Tätigkeiten werden laut Verordnung berücksichtigt
@@ -48,7 +48,7 @@ inhalte:
 - titel: Führen und Entwickeln von Personal
   punkte:
   - Personalplanung, Dienstplan und Personalentwicklung
-  - Mitarbeitende führen und motivieren
+  - Mitarbeiter führen und motivieren
 - titel: Planen und Durchführen von Marketingmaßnahmen
   punkte:
   - Marketing für Einrichtungen und Dienste
@@ -57,7 +57,7 @@ inhalte:
   punkte:
   - Situationsbeschreibung mit zwei Aufgabenstellungen unter Zeitvorgabe (in der Prüfung zusammen 600 bis 630 Minuten)
   - Präsentationsthema mit Bezug zur Personalführung finden, Präsentation (10 Minuten) und Fachgespräch proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Fachwirt/in im Gesundheits- und Sozialwesen“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Fachwirt (m/w/d) im Gesundheits- und Sozialwesen“ erwirbst du mit der Prüfung bei deiner IHK
 termine:
 - id: fachwirt-gesundheit-2027-mai
   start: 2027-05-03
@@ -87,7 +87,7 @@ faq:
 reihenfolge: 22
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin im Gesundheits- und Sozialwesen vor. Er folgt den sechs Handlungsbereichen der Fortbildungsordnung – von der Organisation der Abläufe über Qualität, Schnittstellen und Finanzen bis zu Personalführung und Marketing.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt (m/w/d) im Gesundheits- und Sozialwesen vor. Er folgt den sechs Handlungsbereichen der Fortbildungsordnung – von der Organisation der Abläufe über Qualität, Schnittstellen und Finanzen bis zu Personalführung und Marketing.
 
 Der Unterricht läuft live per Video am Montag-, Mittwoch- und Donnerstagabend von 17:00 bis 20:00 Uhr, immer in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Pflegedienst, Arztpraxis, Klinikverwaltung und sozialer Einrichtung. Die lange schriftliche Prüfung üben wir an eigenen Übungsabenden in Etappen und werten die Lösungen gemeinsam aus.
 

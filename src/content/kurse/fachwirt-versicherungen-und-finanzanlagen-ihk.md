@@ -21,10 +21,10 @@ preis:
       betrag: 199
 zielgruppe:
 - Kaufleute für Versicherungen und Finanzanlagen mit Berufserfahrung
-- Mitarbeitende aus Versicherungsunternehmen, Vermittlung und Maklerbetrieben
+- Mitarbeiter aus Versicherungsunternehmen, Vermittlung und Maklerbetrieben
 - Fachkräfte mit Sachkundeprüfung, die sich weiterentwickeln wollen
 voraussetzungen:
-- 'Einer dieser Wege: eine Ausbildung als Kaufmann/-frau für Versicherungen und Finanzanlagen – eine andere Ausbildung und danach mindestens ein Jahr Praxis – ein Hochschulabschluss und danach mindestens ein Jahr Praxis – die Sachkundeprüfung Versicherungsvermittlung (IHK) und danach mindestens zwei Jahre Praxis – mindestens 90 ECTS-Punkte und danach zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
+- 'Einer dieser Wege: eine Ausbildung als Kaufmann (m/w/d) für Versicherungen und Finanzanlagen – eine andere Ausbildung und danach mindestens ein Jahr Praxis – ein Hochschulabschluss und danach mindestens ein Jahr Praxis – die Sachkundeprüfung Versicherungsvermittlung (IHK) und danach mindestens zwei Jahre Praxis – mindestens 90 ECTS-Punkte und danach zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
 - Wo Berufspraxis verlangt wird, muss sie Bezug zu Aufgaben in der Versicherungswirtschaft haben
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
@@ -42,7 +42,7 @@ inhalte:
 - titel: Steuerung, Zusammenarbeit und Leadership
   punkte:
   - Prozesse auf Veränderungspotenzial prüfen, Produkt- und Vertriebsstrategien anstoßen
-  - Mitarbeitende führen und durch Veränderungen begleiten
+  - Mitarbeiter führen und durch Veränderungen begleiten
   - Projekte organisieren, Ausbildung und Personalentwicklung
 - titel: Prüfungstraining
   punkte:

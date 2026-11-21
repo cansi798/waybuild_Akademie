@@ -1,8 +1,8 @@
 ---
 saeule: ihk-weiterbildung
 kategorie: Fachwirte
-titel: Fachwirt/in für Marketing
-untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r Fachwirt/in für Marketing – Bachelor Professional in Marketing“
+titel: Fachwirt für Marketing
+untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfter Fachwirt (m/w/d) für Marketing – Bachelor Professional in Marketing“
 kurzbeschreibung: 'Vom Umsetzen zum Steuern: Du entwickelst Marketingstrategien, planst Konzepte und Projekte, wertest sie mit Marketingcontrolling aus und führst Teams – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
@@ -22,9 +22,9 @@ preis:
 zielgruppe:
 - Kaufleute für Marketingkommunikation mit ersten Berufsjahren
 - Fachkräfte aus Marketing, Kommunikation und Vertrieb
-- Mitarbeitende aus Agenturen und Marketingabteilungen
+- Mitarbeiter aus Agenturen und Marketingabteilungen
 voraussetzungen:
-- 'Einer dieser Wege: eine Ausbildung als Kaufmann/-frau für Marketingkommunikation – eine andere dreijährige kaufmännische oder verwaltende Ausbildung und danach mindestens ein Jahr Praxis – eine andere Ausbildung und danach mindestens zwei Jahre Praxis – mindestens 90 ECTS-Punkte in einem betriebswirtschaftlichen Studium und mindestens zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
+- 'Einer dieser Wege: eine Ausbildung als Kaufmann (m/w/d) für Marketingkommunikation – eine andere dreijährige kaufmännische oder verwaltende Ausbildung und danach mindestens ein Jahr Praxis – eine andere Ausbildung und danach mindestens zwei Jahre Praxis – mindestens 90 ECTS-Punkte in einem betriebswirtschaftlichen Studium und mindestens zwei Jahre Praxis – oder mindestens fünf Jahre Berufspraxis'
 - Wo Berufspraxis verlangt wird, muss sie Bezug zu Marketingaufgaben haben
 - Die Zulassung prüft deine IHK – kläre sie am besten vor Kursbeginn
 - Rechner oder Laptop mit Kamera, Mikrofon und stabiler Internetverbindung
@@ -47,13 +47,13 @@ inhalte:
   punkte:
   - Kommunizieren, präsentieren, Konflikte lösen
   - Personalauswahl, Personaleinsatz und Führungsmethoden
-  - Ausbildung planen, Mitarbeitende entwickeln, Arbeits- und Gesundheitsschutz
+  - Ausbildung planen, Mitarbeiter entwickeln, Arbeits- und Gesundheitsschutz
 - titel: Prüfungstraining
   punkte:
   - Zwei Aufgabenstellungen zu einer betrieblichen Situation, je 300 Minuten
   - Präsentationsthema finden, das einen Marketingbereich mit Führung und Zusammenarbeit verknüpft
   - Präsentation (höchstens 10 Minuten) und Fachgespräch (höchstens 20 Minuten) proben
-abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfte/r Fachwirt/in für Marketing – Bachelor Professional in Marketing“ erwirbst du mit der Prüfung bei deiner IHK
+abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprüfter Fachwirt (m/w/d) für Marketing – Bachelor Professional in Marketing“ erwirbst du mit der Prüfung bei deiner IHK
 termine: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
@@ -69,7 +69,7 @@ faq:
 reihenfolge: 31
 ---
 
-Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Marketing vor, seit 2023 mit der Bezeichnung Bachelor Professional in Marketing. Er folgt den vier Prüfungsbereichen der Fortbildungsordnung: Strategie, Konzepte und Projekte, Marketingcontrolling sowie Kommunikation, Führung und Zusammenarbeit.
+Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt (m/w/d) für Marketing vor, seit 2023 mit der Bezeichnung Bachelor Professional in Marketing. Er folgt den vier Prüfungsbereichen der Fortbildungsordnung: Strategie, Konzepte und Projekte, Marketingcontrolling sowie Kommunikation, Führung und Zusammenarbeit.
 
 Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Unternehmen und Agenturen: Du leitest aus Marktdaten eine Strategie ab, baust ein Konzept mit Budget und Kennzahlen und stellst es der Gruppe vor. An eigenen Übungsabenden trainierst du die langen schriftlichen Aufgaben.
 

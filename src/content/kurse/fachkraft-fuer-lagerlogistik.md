@@ -14,8 +14,8 @@ preis:
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
   - Auszubildende Fachkräfte für Lagerlogistik vor der Abschlussprüfung
-  - Umschülerinnen und Umschüler in der Lagerlogistik
-  - Fachlageristinnen und Fachlageristen, die den Abschluss als Fachkraft anstreben
+  - Umschüler in der Lagerlogistik
+  - Fachlageristen, die den Abschluss als Fachkraft anstreben
 voraussetzungen:
   - Fachwissen aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
   - Grundrechenarten und Prozentrechnung, Taschenrechner

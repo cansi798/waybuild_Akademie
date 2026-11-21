@@ -13,7 +13,7 @@ preis:
   betrag: 299
   hinweis: Inklusive Kursunterlagen, Beispielcode und Zertifikat
 zielgruppe:
-- Einsteigerinnen und Einsteiger ohne Programmiererfahrung
+- Einsteiger ohne Programmiererfahrung
 - Fachkräfte, die Aufgaben mit Tabellen und Dateien automatisieren wollen
 - Auszubildende, die Programmierpraxis sammeln wollen
 voraussetzungen:

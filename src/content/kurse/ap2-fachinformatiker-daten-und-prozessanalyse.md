@@ -1,8 +1,8 @@
 ---
 saeule: ihk-pruefung
 kategorie: IT-Berufe
-titel: AP2 Fachinformatiker/in Daten- und Prozessanalyse
-untertitel: Fachinformatiker/in Fachrichtung Daten- und Prozessanalyse – schriftliche Prüfung Teil 2
+titel: AP2 Fachinformatiker Daten- und Prozessanalyse
+untertitel: Fachinformatiker (m/w/d) Fachrichtung Daten- und Prozessanalyse – schriftliche Prüfung Teil 2
 kurzbeschreibung: Übe „Durchführen einer Prozessanalyse“, „Sicherstellen der Datenqualität“ und WiSo an Fällen im Stil der Prüfung – live online an 10 Abenden.
 status: entwurf
 art: kurs
@@ -13,8 +13,8 @@ preis:
   betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
 zielgruppe:
-  - Auszubildende Fachinformatiker/innen Daten- und Prozessanalyse vor der AP2
-  - Umschülerinnen und Umschüler der Fachrichtung Daten- und Prozessanalyse
+  - Auszubildende Fachinformatiker Daten- und Prozessanalyse vor der AP2
+  - Umschüler der Fachrichtung Daten- und Prozessanalyse
   - Prüflinge, die einen schriftlichen Prüfungsbereich der AP2 wiederholen
 voraussetzungen:
   - Grundwissen zu Datenbanken, SQL und Prozessmodellierung aus der Ausbildung – der Kurs wiederholt und vertieft, er ersetzt keine Ausbildung
