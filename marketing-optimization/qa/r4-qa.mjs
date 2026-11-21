@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 const B='http://127.0.0.1:4399/waybuild_Akademie';
 const srv=spawn('node',['tests/server.mjs','4399'],{env:{...process.env,BASE:'/waybuild_Akademie'},stdio:'inherit'});
 await new Promise(r=>setTimeout(r,1500));
-const axe=readFileSync('marketing-optimization/qa/axe.min.js','utf8');
+const axe=readFileSync('marketing-optimization/node_modules/axe-core/axe.min.js','utf8');
 const br=await chromium.launch();
 const out=[];
 for (const w of []) for (const p of ['/kurse/ap1-it-berufe/','/404.html','/ueber-uns/']) {
