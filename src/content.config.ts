@@ -21,7 +21,7 @@ const kurse = defineCollection({
     ue: z.number().int().positive().optional(),
     /** "ca. 5 Wochen", "ca. 14 Monate" */
     dauer: z.string(),
-    /** "Di + Do, 18:00–20:45 Uhr" */
+    /** "Di + Do, 17:00–20:00 Uhr" (Abendraster: 4 UE je Abend) */
     zeiten: z.string(),
     preis: z.object({ betrag: z.number(), hinweis: z.string().optional(), raten: z.boolean().default(false) }),
     /** nur Coaching */

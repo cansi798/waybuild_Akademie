@@ -7,11 +7,11 @@ kurzbeschreibung: 'Verbinde Technik und Betriebswirtschaft: Du lernst BWL, Recht
 status: entwurf
 art: kurs
 ue: 700
-dauer: ca. 15 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 14 Monate (175 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4390
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 4369
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Fachkräfte aus Technik und Produktion, die Kaufmännisches dazulernen wollen
@@ -56,12 +56,12 @@ faq:
 - frage: Was ist mit der AEVO?
   antwort: Nach bestandenen handlungsspezifischen Qualifikationen kannst du bei der IHK eine zusätzliche praktische Prüfung beantragen. Bestehst du sie, bekommst du ein zusätzliches Zeugnis über die berufs- und arbeitspädagogische Qualifikation.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Technische/r Fachwirt/in“ bieten wir 15 gleiche Monatsraten an, eine pro Monat des rund 15-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Technische/r Fachwirt/in“ bieten wir 14 gleiche Monatsraten an, eine pro Monat des rund 14-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
 reihenfolge: 34
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Technischen Fachwirt bzw. zur Geprüften Technischen Fachwirtin vor. Er folgt den drei Prüfungsteilen der Verordnung: den wirtschaftsbezogenen Grundlagen, den technischen Qualifikationen von Naturwissenschaft bis Fertigung und den handlungsspezifischen Qualifikationen in Logistik, Produktion, Qualität und Führung.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung verbinden Rechenwege mit Beispielen aus Werk und Büro, etwa einer Kapazitätsplanung oder einer Werkstoffauswahl. Klausuren trainieren wir an den Samstagen unter Zeitvorgabe und werten sie gemeinsam aus.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung verbinden Rechenwege mit Beispielen aus Werk und Büro, etwa einer Kapazitätsplanung oder einer Werkstoffauswahl. Klausuren trainieren wir an eigenen Übungsabenden unter Zeitvorgabe und werten sie gemeinsam aus.
 
 Der Lehrgang passt zu dir, wenn du an der Schnittstelle von Technik und Kaufmännischem arbeitest und dort mehr Verantwortung übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

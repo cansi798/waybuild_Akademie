@@ -7,11 +7,11 @@ kurzbeschreibung: 'Vom Disponieren zum Steuern: Du entwickelst und vermarktest T
 status: entwurf
 art: kurs
 ue: 560
-dauer: ca. 12 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 11 Monate (140 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3390
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 3489
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Kaufleute für Spedition und Logistikdienstleistung mit Berufserfahrung
@@ -57,12 +57,12 @@ faq:
 - frage: Was ist mit der AEVO?
   antwort: Die Fortbildungsordnung sieht eine Befreiung vom schriftlichen Teil der Ausbildereignungsprüfung vor, wenn du diese Prüfung bestanden hast.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Fachwirt/in für Güterverkehr und Logistik“ in 12 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Fachwirt/in für Güterverkehr und Logistik“ in 11 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
 reihenfolge: 41
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Güterverkehr und Logistik vor, seit 2023 mit der Bezeichnung Bachelor Professional in Transport Management and Logistics. Er folgt den drei Prüfungsbereichen der Fortbildungsordnung: Logistikleistungen entwickeln und vermarkten, Logistikleistungen erstellen sowie Kommunikation, Führung und Zusammenarbeit.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Spedition, Kontraktlogistik und internationalem Transport – von der Ausschreibung über die Kalkulation bis zur Verhandlung, die wir in der Gruppe durchspielen. An den Samstagen trainierst du die langen schriftlichen Aufgaben.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Spedition, Kontraktlogistik und internationalem Transport – von der Ausschreibung über die Kalkulation bis zur Verhandlung, die wir in der Gruppe durchspielen. An eigenen Übungsabenden trainierst du die langen schriftlichen Aufgaben.
 
 Der Lehrgang passt zu dir, wenn du in Spedition, Transport oder Logistik arbeitest und künftig Kunden, Projekte oder Teams verantworten willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

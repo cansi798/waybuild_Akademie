@@ -50,7 +50,7 @@ test('Countdown zeigt positive Tageszahl bis zur AP1 am 24.02.2027', async ({ pa
   await expect(tafel).toBeVisible();
   await expect(tafel.locator('[data-cd-datum]')).toHaveText('24.02.2027');
   await expect(tafel.locator('[data-cd-tage]')).toHaveText('85');
-  await expect(tafel).toContainText('Dein Kurs startet am 19.01.2027');
+  await expect(tafel).toContainText('Dein Kurs startet am 21.01.2027');
   // Umschalter auf AP2
   await page.getByText('AP2', { exact: true }).click();
   await expect(page.locator('[data-cd-tafel="1"]')).toBeVisible();

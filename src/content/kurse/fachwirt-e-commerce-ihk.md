@@ -7,11 +7,11 @@ kurzbeschreibung: 'Steuere das Onlinegeschäft: Du entwickelst E-Commerce-Strate
 status: entwurf
 art: kurs
 ue: 600
-dauer: ca. 13 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 12 Monate (150 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3890
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 3739
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Kaufleute im E-Commerce oder im Einzelhandel mit Berufserfahrung
@@ -60,12 +60,12 @@ faq:
 - frage: Bin ich danach von der AEVO befreit?
   antwort: Teilweise. Wer die Prüfung bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Den praktischen Teil legst du bei Bedarf noch ab.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Fachwirt/in im E-Commerce“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 13 gleiche Monatsraten über die Kursdauer von rund 13 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Fachwirt/in im E-Commerce“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 12 gleiche Monatsraten über die Kursdauer von rund 12 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
 reihenfolge: 43
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin im E-Commerce vor. Er folgt den vier Handlungsbereichen der Fortbildungsordnung: Strategien entwickeln, Prozesse gestalten, Prozesse analysieren und verbessern sowie mit Teams und Partnern zusammenarbeiten und sie führen.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Onlineshops, Marktplätzen und Multichannel-Händlern – vom Sortiment über Zahlungsarten bis zu den Retouren im Kennzahlenbericht. An den Samstagen trainierst du die langen Aufgabenstellungen unter Zeitvorgabe.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Onlineshops, Marktplätzen und Multichannel-Händlern – vom Sortiment über Zahlungsarten bis zu den Retouren im Kennzahlenbericht. An eigenen Übungsabenden trainierst du die langen Aufgabenstellungen unter Zeitvorgabe.
 
 Der Lehrgang passt zu dir, wenn du im Onlinehandel arbeitest und mehr Verantwortung für Umsatz, Prozesse und Teams übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

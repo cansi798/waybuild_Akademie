@@ -7,11 +7,11 @@ kurzbeschreibung: 'Triff Entscheidungen auf Basis von Daten: Du bereitest Daten 
 status: entwurf
 art: kurs
 ue: 96
-dauer: ca. 3 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr
+dauer: ca. 12 Wochen (24 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 1890
-  hinweis: Inklusive Kursunterlagen, Übungsdatensätze und Zertifikat
+  betrag: 599
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Übungsdatensätze und Zertifikat
   raten: true
 zielgruppe:
 - Fachkräfte aus Controlling, Vertrieb, Einkauf und Verwaltung

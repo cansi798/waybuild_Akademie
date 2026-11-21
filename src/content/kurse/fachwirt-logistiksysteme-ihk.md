@@ -7,11 +7,11 @@ kurzbeschreibung: 'Plane Logistik als System: Du analysierst Abläufe, entwickel
 status: entwurf
 art: kurs
 ue: 560
-dauer: ca. 12 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 11 Monate (140 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3290
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 3489
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Fachkräfte für Lagerlogistik mit Berufserfahrung
@@ -59,12 +59,12 @@ faq:
 - frage: Brauche ich den Ausbilderschein?
   antwort: Nicht für die Zulassung. Nach bestandener Prüfung bist du laut Fortbildungsordnung sogar vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 12 Monaten sind 12 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 11 Monaten sind 11 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
 reihenfolge: 42
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Logistiksysteme vor, seit 2023 mit der Bezeichnung Bachelor Professional in Logistiksysteme. Er folgt den vier Prüfungsbereichen der Fortbildungsordnung: Anforderungen analysieren, Lösungen entwickeln, Lösungen umsetzen und verbessern sowie Kommunikation, Führung und Zusammenarbeit.
 
-Der Unterricht findet live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag statt. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Lager, Materialfluss und Distribution: Wir analysieren ein Logistiksystem, vergleichen Konzepte und rechnen Kennzahlen gemeinsam durch. An den Samstagen trainierst du die langen schriftlichen Aufgaben.
+Der Unterricht findet live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr statt. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Lager, Materialfluss und Distribution: Wir analysieren ein Logistiksystem, vergleichen Konzepte und rechnen Kennzahlen gemeinsam durch. An eigenen Übungsabenden trainierst du die langen schriftlichen Aufgaben.
 
 Der Lehrgang passt zu dir, wenn du in der Logistik arbeitest und vom operativen Tagesgeschäft in Planung und Führung wechseln willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

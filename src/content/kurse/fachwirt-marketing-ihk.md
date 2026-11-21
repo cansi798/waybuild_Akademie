@@ -7,11 +7,11 @@ kurzbeschreibung: 'Vom Umsetzen zum Steuern: Du entwickelst Marketingstrategien,
 status: entwurf
 art: kurs
 ue: 560
-dauer: ca. 12 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 11 Monate (140 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3390
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 3489
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Kaufleute für Marketingkommunikation mit ersten Berufsjahren
@@ -59,12 +59,12 @@ faq:
 - frage: Was ist mit der AEVO?
   antwort: Wer die Prüfung bestanden hat, ist laut Fortbildungsordnung vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Fachwirt/in für Marketing“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 12 gleiche Monatsraten über die Kursdauer von rund 12 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Fachwirt/in für Marketing“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 11 gleiche Monatsraten über die Kursdauer von rund 11 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
 reihenfolge: 31
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Marketing vor, seit 2023 mit der Bezeichnung Bachelor Professional in Marketing. Er folgt den vier Prüfungsbereichen der Fortbildungsordnung: Strategie, Konzepte und Projekte, Marketingcontrolling sowie Kommunikation, Führung und Zusammenarbeit.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Unternehmen und Agenturen: Du leitest aus Marktdaten eine Strategie ab, baust ein Konzept mit Budget und Kennzahlen und stellst es der Gruppe vor. An den Samstagen trainierst du die langen schriftlichen Aufgaben.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Unternehmen und Agenturen: Du leitest aus Marktdaten eine Strategie ab, baust ein Konzept mit Budget und Kennzahlen und stellst es der Gruppe vor. An eigenen Übungsabenden trainierst du die langen schriftlichen Aufgaben.
 
 Der Lehrgang passt zu dir, wenn du im Marketing arbeitest und Strategie, Budget und Team verantworten willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

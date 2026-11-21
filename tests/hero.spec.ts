@@ -108,7 +108,7 @@ test.describe('Hero-Reise', () => {
     await expect(b.locator('time[data-hr-f="datum"]')).toHaveAttribute('datetime', ap1.pruefung!);
     const tage = String(tageZwischen(heute, ap1.pruefung!));
     for (const el of await b.locator('[data-hr-f="tage"]').all()) await expect(el).toHaveText(tage);
-    await expect(b.locator('[data-hr-f="uhr"]')).toHaveText('18:00 Uhr');
+    await expect(b.locator('[data-hr-f="uhr"]')).toHaveText('17:00 Uhr');
 
     // Countdown-Schalter auf AP2 → Bühne zeigt den AP2-Termin
     const ap2 = naechsterTermin('ap2-fachinformatiker-systemintegration');

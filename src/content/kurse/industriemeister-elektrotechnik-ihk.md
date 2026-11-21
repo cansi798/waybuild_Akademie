@@ -7,11 +7,11 @@ kurzbeschreibung: 'Übernimm Führung in Elektrotechnik und Automatisierung: Du 
 status: entwurf
 art: kurs
 ue: 760
-dauer: ca. 17 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 15 Monate (190 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4690
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 4739
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Elektronikerinnen und Elektroniker mit Berufserfahrung
@@ -62,12 +62,12 @@ faq:
 - frage: Wann sollte ich die AEVO machen?
   antwort: Die Verordnung sieht vor, dass du die berufs- und arbeitspädagogischen Qualifikationen in der Regel vor der Zulassung zu den Basisqualifikationen erwirbst; nachweisen musst du sie spätestens vor der letzten Prüfungsleistung. Unser AEVO-Kurs passt deshalb gut vor den Start.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Industriemeister/in Elektrotechnik“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 17 gleiche Monatsraten über die Kursdauer von rund 17 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Industriemeister/in Elektrotechnik“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 15 gleiche Monatsraten über die Kursdauer von rund 15 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
 reihenfolge: 51
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Industriemeister bzw. zur Geprüften Industriemeisterin der Fachrichtung Elektrotechnik vor. Nach den fünf Basisqualifikationen geht es um die Handlungsbereiche Technik mit Infrastruktur-, Automatisierungs- und Informationstechnik, Organisation sowie Führung und Personal.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Instandhaltung, Gebäudetechnik und automatisierter Fertigung – etwa einer Störungsanalyse oder einer Kostenrechnung für eine Modernisierung. Die Situationsaufgaben trainieren wir an den Samstagen unter Zeitvorgabe.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Instandhaltung, Gebäudetechnik und automatisierter Fertigung – etwa einer Störungsanalyse oder einer Kostenrechnung für eine Modernisierung. Die Situationsaufgaben trainieren wir an eigenen Übungsabenden unter Zeitvorgabe.
 
 Wichtig: Praxis- und Werkstattteile sind nicht Teil des Kurses. Es gibt keine Arbeiten an Anlagen oder in der Werkstatt; wir bereiten dich auf die schriftlichen Situationsaufgaben und das Fachgespräch vor. Zur Prüfung meldest du dich selbst bei deiner IHK an.

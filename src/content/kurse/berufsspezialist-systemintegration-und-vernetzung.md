@@ -7,11 +7,11 @@ kurzbeschreibung: 'Bau dein IT-Wissen nach der Ausbildung aus: Du planst und ver
 status: entwurf
 art: kurs
 ue: 240
-dauer: ca. 11 Monate
-zeiten: Di, 18:00–21:15 Uhr, dazu ein Samstag im Monat 09:00–14:15 Uhr
+dauer: ca. 7 Monate (60 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3790
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 1499
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Fachinformatikerinnen und Fachinformatiker für Systemintegration oder Digitale Vernetzung nach der Ausbildung
@@ -66,6 +66,6 @@ reihenfolge: 24
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten bzw. zur Geprüften Berufsspezialistin für Systemintegration und Vernetzung vor. Er folgt den fünf Qualifikationsschwerpunkten der Fortbildungsordnung – von der Planung und Integration über den laufenden Betrieb bis zu IT-Sicherheit, Recht und Projektarbeit.
 
-Du lernst jeden Dienstagabend und an einem Samstag im Monat live per Video in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Szenarien aus Netzwerk, Server-Betrieb und vernetzter Produktion. In den Samstagsterminen löst ihr Situationsaufgaben unter Prüfungsbedingungen und besprecht die Lösungen direkt im Anschluss.
+Du lernst am Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr live per Video in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Szenarien aus Netzwerk, Server-Betrieb und vernetzter Produktion. An eigenen Übungsabenden löst ihr Situationsaufgaben unter Prüfungsbedingungen und besprecht die Lösungen direkt im Anschluss.
 
 Der Lehrgang passt zu dir, wenn du Netze und Systeme betreust und den nächsten Schritt nach der Ausbildung gehen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

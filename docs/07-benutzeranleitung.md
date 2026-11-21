@@ -63,7 +63,7 @@ Jede Änderung wird mit Datum und Namen gespeichert. So ist zum Beispiel jede Fr
 - **Einrückungen sind wichtig.** Eingerückt wird nur mit Leerzeichen (zwei pro Stufe), nicht mit der Tab-Taste.
 - Ein Datum hat immer die Form **Jahr-Monat-Tag**, z. B. `2027-01-19`.
 - Beträge stehen ohne €-Zeichen. Cent werden mit Punkt geschrieben: `349` oder `59.90`.
-- Texte mit Doppelpunkt oder Anführungszeichen setzt man in Anführungszeichen: `zeiten: "Di + Do, 18:00–20:45 Uhr"`.
+- Texte mit Doppelpunkt oder Anführungszeichen setzt man in Anführungszeichen: `zeiten: "Di + Do, 17:00–20:00 Uhr"`.
 
 Wenn ein Feld fehlt oder falsch ist, **stoppt der Bau** mit einer Fehlermeldung. Die Website bleibt dann auf dem alten Stand. Es kann also nichts Halbfertiges online gehen (NFA-17). Mehr dazu in [A12](#a12-wenn-etwas-nicht-klappt).
 
@@ -238,7 +238,7 @@ Ein neuer Kurs entsteht durch eine **neue Datei**. Am Code muss nichts geändert
 | `art` | ja | `kurs` oder `coaching` |
 | `ue` | nein | Unterrichtseinheiten à 45 Minuten, ganze Zahl |
 | `dauer` | ja | z. B. „ca. 8 Wochen“ |
-| `zeiten` | ja | z. B. „Di + Do, 18:00–21:15 Uhr“ |
+| `zeiten` | ja | z. B. „Di + Do, 17:00–20:00 Uhr“ (Unterricht immer 17:00–20:00 Uhr = 4 UE je Abend) |
 | `preis` | ja | siehe [A3](#a3-preis-ändern) |
 | `pakete` | nein | nur beim Coaching |
 | `zielgruppe` | ja | Liste, je Zeile ein Punkt mit `-` |
@@ -262,7 +262,7 @@ status: entwurf
 art: kurs
 ue: 32
 dauer: ca. 4 Wochen
-zeiten: "Di + Do, 18:00–21:15 Uhr"
+zeiten: "Di + Do, 17:00–20:00 Uhr"
 preis:
   betrag: 590
   hinweis: "Endpreis, alles inklusive: Live-Unterricht und Unterlagen."

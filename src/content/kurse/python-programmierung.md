@@ -3,14 +3,14 @@ saeule: akademie
 kategorie: Programmierung
 titel: Python-Programmierung
 untertitel: Einstieg in die Programmierung mit Python
-kurzbeschreibung: 'Lern programmieren mit Python: Du schreibst eigene Programme, verarbeitest Dateien und Tabellen und automatisierst eine Aufgabe aus deinem Alltag – Schritt für Schritt, live-online an 12 Abenden.'
+kurzbeschreibung: 'Lern programmieren mit Python: Du schreibst eigene Programme, verarbeitest Dateien und Tabellen und automatisierst eine Aufgabe aus deinem Alltag – Schritt für Schritt, live-online an 9 Abenden.'
 status: entwurf
 art: kurs
 ue: 36
-dauer: ca. 6 Wochen
-zeiten: Mo + Mi, 18:00–20:30 Uhr
+dauer: ca. 5 Wochen (9 Abende)
+zeiten: Mo + Mi, 17:00–20:00 Uhr
 preis:
-  betrag: 690
+  betrag: 299
   hinweis: Inklusive Kursunterlagen, Beispielcode und Zertifikat
   raten: false
 zielgruppe:
@@ -48,7 +48,7 @@ abschluss: Zertifikat der waybuild Akademie
 termine:
 - id: python-2027-maerz
   start: 2027-03-01
-  ende: 2027-04-12
+  ende: 2027-03-31
   anmeldeschluss: 2027-02-22
   ausfall:
   - 2027-03-29
@@ -73,6 +73,6 @@ In diesem Kurs lernst du die Grundlagen der Programmierung mit Python. Du schrei
 - Bibliotheken einbinden und KI-Vorschläge für Code kritisch prüfen
 - eine wiederkehrende Aufgabe mit einem eigenen Skript erledigen
 
-Der Kurs läuft an zwölf Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis schreiben den Code am geteilten Bildschirm vor, danach programmierst du im Live-Termin selbst und wir schauen uns Lösungen und Fehler gemeinsam an. In den letzten Terminen entsteht dein Praxisprojekt.
+Der Kurs läuft an neun Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis schreiben den Code am geteilten Bildschirm vor, danach programmierst du im Live-Termin selbst und wir schauen uns Lösungen und Fehler gemeinsam an. In den letzten Terminen entsteht dein Praxisprojekt.
 
 Der Kurs passt zu dir, wenn du ohne Vorkenntnisse programmieren lernen willst – für den Beruf, für eine Ausbildung in der IT oder als Vorbereitung auf den Kurs Softwareentwicklung mit Python und Web.

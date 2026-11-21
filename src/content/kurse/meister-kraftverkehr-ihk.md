@@ -7,11 +7,11 @@ kurzbeschreibung: 'Leite Fuhrpark und Fahrpersonal: Du lernst die grundlegenden 
 status: entwurf
 art: kurs
 ue: 720
-dauer: ca. 16 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 14 Monate (180 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4690
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 4489
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Berufskraftfahrerinnen und Berufskraftfahrer mit Berufserfahrung
@@ -61,12 +61,12 @@ faq:
 - frage: Brauche ich den Ausbilderschein?
   antwort: Ja, die Ausbildereignung gehört zur Meisterqualifikation. Den Nachweis brauchst du vor Beginn der letzten Prüfungsleistung; unser AEVO-Kurs lässt sich vorher oder nebenbei belegen.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Meister/in für Kraftverkehr“ lässt sich in 16 gleiche Monatsraten aufteilen, passend zu den rund 16 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Meister/in für Kraftverkehr“ lässt sich in 14 gleiche Monatsraten aufteilen, passend zu den rund 14 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
 reihenfolge: 53
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Meister bzw. zur Geprüften Meisterin für Kraftverkehr vor. Im ersten Teil geht es um die vier grundlegenden Qualifikationen, im zweiten um die Handlungsbereiche Fuhrparktechnik und Fuhrparkmanagement, Organisation und Kommunikation sowie Führung und Personal.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Speditionen, Werkverkehr und Busbetrieben – zum Beispiel einer Kostenrechnung pro Fahrzeug oder einer Dienstplanung unter den Lenk- und Ruhezeitregeln. Die Situationsaufgaben trainieren wir an den Samstagen unter Zeitvorgabe.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Speditionen, Werkverkehr und Busbetrieben – zum Beispiel einer Kostenrechnung pro Fahrzeug oder einer Dienstplanung unter den Lenk- und Ruhezeitregeln. Die Situationsaufgaben trainieren wir an eigenen Übungsabenden unter Zeitvorgabe.
 
 Wichtig: Praxis- und Werkstattteile sind nicht Teil des Kurses. Es gibt keine Fahrpraxis und keine Arbeiten am Fahrzeug oder in der Werkstatt; wir bereiten dich auf die schriftlichen Situationsaufgaben und das Fachgespräch vor. Zur Prüfung meldest du dich selbst bei deiner IHK an.

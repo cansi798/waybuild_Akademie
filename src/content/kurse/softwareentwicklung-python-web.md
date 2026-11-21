@@ -7,11 +7,11 @@ kurzbeschreibung: 'Werde fit für die Softwareentwicklung: Du lernst Python, Obj
 status: entwurf
 art: kurs
 ue: 180
-dauer: ca. 7 Monate
-zeiten: Di + Do, 18:00–20:30 Uhr
+dauer: ca. 6 Monate (45 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 2590
-  hinweis: Inklusive Kursunterlagen, Beispielprojekte und Zertifikat
+  betrag: 1129
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Beispielprojekte und Zertifikat
   raten: true
 zielgruppe:
 - Quereinsteigerinnen und Quereinsteiger, die in die Softwareentwicklung wechseln wollen
@@ -57,7 +57,7 @@ abschluss: Zertifikat der waybuild Akademie
 termine:
 - id: softwareentwicklung-2027-herbst
   start: 2027-09-07
-  ende: 2028-04-11
+  ende: 2028-02-17
   anmeldeschluss: 2027-08-31
   ausfall:
   - 2027-12-23
@@ -71,7 +71,7 @@ faq:
 - frage: Welche Rolle spielt KI beim Programmieren?
   antwort: Wir zeigen, wie KI-Assistenten beim Schreiben, Erklären und Testen von Code helfen. Genauso wichtig ist, ihre Vorschläge zu prüfen – deshalb lernst du zuerst die Grundlagen selbst.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 7 Monaten sind 7 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 6 Monaten sind 6 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
 reihenfolge: 23
 ---
 

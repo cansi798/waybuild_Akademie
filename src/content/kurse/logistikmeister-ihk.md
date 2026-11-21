@@ -7,11 +7,11 @@ kurzbeschreibung: 'Führe Lager, Umschlag und Transport: Du lernst die grundlege
 status: entwurf
 art: kurs
 ue: 720
-dauer: ca. 16 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 14 Monate (180 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4690
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 4489
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Fachkräfte für Lagerlogistik mit Berufserfahrung
@@ -62,12 +62,12 @@ faq:
 - frage: Logistikmeister oder Fachwirt für Logistiksysteme – was passt besser?
   antwort: Der Meister richtet sich auf die Führung im operativen Bereich, der Fachwirt stärker auf Analyse und Planung ganzer Logistiksysteme. Für den Meister brauchst du außerdem die AEVO. Die Zulassung prüft in beiden Fällen deine IHK.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis – zum Beispiel in 16 Monatsraten über die rund 16 Monate Kursdauer. Zahlt dein Betrieb, wähle bei der Anmeldung „Mein Betrieb zahlt“.
+  antwort: Ja, ohne Aufpreis – zum Beispiel in 14 Monatsraten über die rund 14 Monate Kursdauer. Zahlt dein Betrieb, wähle bei der Anmeldung „Mein Betrieb zahlt“.
 reihenfolge: 52
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Logistikmeister bzw. zur Geprüften Logistikmeisterin vor. Im ersten Teil arbeitest du die fünf grundlegenden Qualifikationen durch, im zweiten die Handlungsbereiche Logistikprozesse, betriebliche Organisation und Kostenwesen sowie Führung und Personal.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Lager, Umschlag und Distribution – etwa einer Kapazitätsplanung im Wareneingang oder einem Kostenvergleich zweier Lagerlösungen. Die Situationsaufgaben trainieren wir an den Samstagen unter Zeitvorgabe.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Lager, Umschlag und Distribution – etwa einer Kapazitätsplanung im Wareneingang oder einem Kostenvergleich zweier Lagerlösungen. Die Situationsaufgaben trainieren wir an eigenen Übungsabenden unter Zeitvorgabe.
 
 Wichtig: Praxis- und Werkstattteile sind nicht Teil des Kurses. Es gibt keine Übungen an Geräten, Fahrzeugen oder im Lager; wir bereiten dich auf die schriftlichen Situationsaufgaben und das Fachgespräch vor. Zur Prüfung meldest du dich selbst bei deiner IHK an.

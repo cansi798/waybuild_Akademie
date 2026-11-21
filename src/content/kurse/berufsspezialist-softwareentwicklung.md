@@ -7,11 +7,11 @@ kurzbeschreibung: 'Entwickle Software auf dem nächsten Level: Du planst Archite
 status: entwurf
 art: kurs
 ue: 240
-dauer: ca. 11 Monate
-zeiten: Di, 18:00–21:15 Uhr, dazu ein Samstag im Monat 09:00–14:15 Uhr
+dauer: ca. 7 Monate (60 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3790
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 1499
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Fachinformatikerinnen und Fachinformatiker für Anwendungsentwicklung nach der Ausbildung
@@ -72,6 +72,6 @@ reihenfolge: 25
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten bzw. zur Geprüften Berufsspezialistin für Softwareentwicklung vor. Die acht Qualifikationsschwerpunkte der Fortbildungsordnung führen dich durch den ganzen Lebenszyklus einer Software: Anforderungen und Architektur, Entwicklung, Qualität, Dokumentation, Einführung und Auswertung.
 
-Der Unterricht läuft jeden Dienstagabend und an einem Samstag im Monat live per Video. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fallbeispielen aus echten Entwicklungsprojekten: Wir zerlegen Anforderungen, skizzieren Architekturen und Datenmodelle und besprechen Teststrategien gemeinsam am Bildschirm. Die Samstage nutzen wir für Prüfungsaufgaben unter Zeitvorgabe.
+Der Unterricht läuft am Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr live per Video. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fallbeispielen aus echten Entwicklungsprojekten: Wir zerlegen Anforderungen, skizzieren Architekturen und Datenmodelle und besprechen Teststrategien gemeinsam am Bildschirm. Eigene Übungsabende nutzen wir für Prüfungsaufgaben unter Zeitvorgabe.
 
 Der Lehrgang passt zu dir, wenn du Software entwickelst und mehr Verantwortung für Architektur und Qualität übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

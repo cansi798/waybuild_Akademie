@@ -3,14 +3,14 @@ saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: AP2 Kaufleute für Digitalisierungsmanagement
 untertitel: Kaufmann/Kauffrau für Digitalisierungsmanagement – schriftliche Prüfung Teil 2
-kurzbeschreibung: Übe „Entwicklung eines digitalen Geschäftsmodells“, „Kaufmännische Unterstützungsprozesse“ und WiSo an prüfungsnahen Fällen – live online an 15 Abenden.
+kurzbeschreibung: Übe „Entwicklung eines digitalen Geschäftsmodells“, „Kaufmännische Unterstützungsprozesse“ und WiSo an prüfungsnahen Fällen – live online an 12 Abenden.
 status: entwurf
 art: kurs
-ue: 45
-dauer: ca. 7,5 Wochen (15 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+ue: 48
+dauer: ca. 7 Wochen (12 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 369
+  betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
@@ -44,19 +44,19 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: ap2-kdm-2027-sommer
-    start: 2027-03-02
+    start: 2027-03-11
     ende: 2027-04-22
     pruefung: 2027-04-28
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-02-23
+    anmeldeschluss: 2027-03-04
     ausfall:
       - 2027-03-25
   - id: ap2-kdm-2027-winter
-    start: 2027-09-28
+    start: 2027-10-07
     ende: 2027-11-16
     pruefung: 2027-11-24
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-09-21
+    anmeldeschluss: 2027-09-30
 faq:
   - frage: Muss ich programmieren können?
     antwort: Nein. Im Beruf geht es um Prozesse, Daten und Geschäftsmodelle. Technisches Verständnis hilft, Programmieraufgaben kommen in den schriftlichen Bereichen von Teil 2 aber nicht vor.

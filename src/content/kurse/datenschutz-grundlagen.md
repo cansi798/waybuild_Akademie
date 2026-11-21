@@ -3,14 +3,14 @@ saeule: akademie
 kategorie: IT & Cloud
 titel: Datenschutz im Unternehmen
 untertitel: Grundlagen für Datenschutzkoordination und angehende Datenschutzbeauftragte
-kurzbeschreibung: 'Setz Datenschutz im Unternehmen sicher um: Du lernst DSGVO und BDSG, Verarbeitungsverzeichnis, Betroffenenrechte, Maßnahmen, Datenpannen und Datenschutz beim KI-Einsatz – live-online an 16 Abenden.'
+kurzbeschreibung: 'Setz Datenschutz im Unternehmen sicher um: Du lernst DSGVO und BDSG, Verarbeitungsverzeichnis, Betroffenenrechte, Maßnahmen, Datenpannen und Datenschutz beim KI-Einsatz – live-online an 12 Abenden.'
 status: entwurf
 art: kurs
 ue: 48
-dauer: ca. 8 Wochen
-zeiten: Mo + Mi, 18:00–20:30 Uhr
+dauer: ca. 6 Wochen (12 Abende)
+zeiten: Mo + Mi, 17:00–20:00 Uhr
 preis:
-  betrag: 1390
+  betrag: 299
   hinweis: Inklusive Kursunterlagen, Mustervorlagen für Verzeichnis, Informationspflichten und Datenpannen sowie Zertifikat
   raten: true
 zielgruppe:
@@ -75,6 +75,6 @@ In diesem Kurs lernst du, Datenschutz in einem Unternehmen sicher zu organisiere
 - eine Datenpanne bewerten und den Meldeweg einhalten
 - den Einsatz von KI-Werkzeugen datenschutzrechtlich einordnen
 
-Der Kurs läuft an 16 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis erklären jede Regel an einem Fall aus dem Unternehmensalltag, danach löst du im Live-Termin ähnliche Fälle selbst und wir besprechen die Lösungen gemeinsam. Über den Kurs hinweg entsteht in den Live-Terminen dein Projekt für einen Beispielbetrieb.
+Der Kurs läuft an 12 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis erklären jede Regel an einem Fall aus dem Unternehmensalltag, danach löst du im Live-Termin ähnliche Fälle selbst und wir besprechen die Lösungen gemeinsam. Über den Kurs hinweg entsteht in den Live-Terminen dein Projekt für einen Beispielbetrieb.
 
 Der Kurs passt zu dir, wenn du Datenschutz in deinem Unternehmen koordinierst oder diese Aufgabe übernehmen sollst.

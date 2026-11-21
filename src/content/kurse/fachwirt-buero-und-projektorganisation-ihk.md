@@ -7,11 +7,11 @@ kurzbeschreibung: 'Vom Büro in die Organisationsleitung: Du bereitest Entscheid
 status: entwurf
 art: kurs
 ue: 560
-dauer: ca. 12 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 11 Monate (140 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3190
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 3489
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Kaufleute für Büromanagement mit Berufserfahrung
@@ -60,12 +60,12 @@ faq:
 - frage: Ist der Abschluss etwas für mich, wenn ich im Sekretariat arbeite?
   antwort: Gut möglich. Der Lehrgang baut auf Büropraxis auf und erweitert sie um Projekt-, Veranstaltungs- und Personalaufgaben. Ob deine Praxis für die Zulassung reicht, prüft deine IHK.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 12 Monaten sind 12 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 11 Monaten sind 11 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
 reihenfolge: 40
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Büro- und Projektorganisation vor. Er folgt den vier Handlungsbereichen der Fortbildungsordnung: Entscheidungen in der Organisation vorbereiten, Kundenbeziehungen und Veranstaltungen gestalten, Personal betreuen und ausbilden sowie Geschäftsprozesse im Büro steuern.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Situationen aus Assistenz, Projektbüro und Veranstaltungsorganisation. Die lange schriftliche Prüfung trainieren wir an den Samstagen in Etappen, die Präsentation probst du in kleinen Runden.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Situationen aus Assistenz, Projektbüro und Veranstaltungsorganisation. Die lange schriftliche Prüfung trainieren wir an eigenen Übungsabenden in Etappen, die Präsentation probst du in kleinen Runden.
 
 Der Lehrgang passt zu dir, wenn du schon im Büro arbeitest und mehr Verantwortung für Abläufe, Projekte und Menschen übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

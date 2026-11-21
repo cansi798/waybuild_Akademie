@@ -7,10 +7,10 @@ kurzbeschreibung: 'Spare Zeit bei Routineaufgaben: Du lernst, KI-Assistenten im 
 status: entwurf
 art: kurs
 ue: 16
-dauer: ca. 2 Wochen
-zeiten: Di + Do, 18:00–21:15 Uhr
+dauer: ca. 2 Wochen (4 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 390
+  betrag: 149
   hinweis: Inklusive Kursunterlagen, Vorlagensammlung für Prompts und Zertifikat
   raten: false
 zielgruppe:
@@ -49,7 +49,6 @@ termine:
   start: 2027-03-02
   ende: 2027-03-11
   anmeldeschluss: 2027-02-23
-  ausfall: []
 faq:
 - frage: Welche KI-Werkzeuge nutzt ihr?
   antwort: Wir arbeiten mit verbreiteten Assistenten wie ChatGPT, Microsoft Copilot oder Gemini. Die Methoden sind so aufgebaut, dass du sie auf das Werkzeug übertragen kannst, das dein Unternehmen freigegeben hat.

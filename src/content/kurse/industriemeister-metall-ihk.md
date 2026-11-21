@@ -7,11 +7,11 @@ kurzbeschreibung: 'Vom Facharbeiter zur Führungskraft in der Metallindustrie: D
 status: entwurf
 art: kurs
 ue: 760
-dauer: ca. 17 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 15 Monate (190 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4690
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 4739
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Fachkräfte aus Metallberufen mit Berufserfahrung
@@ -63,12 +63,12 @@ faq:
 - frage: Brauche ich den Ausbilderschein schon zu Beginn?
   antwort: Nein. Den Nachweis brauchst du erst vor Beginn der letzten Prüfungsleistung. Unseren AEVO-Kurs kannst du vorher oder nebenbei belegen.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis – zum Beispiel in 17 Monatsraten über die rund 17 Monate Kursdauer. Zahlt dein Arbeitgeber, stellen wir die Rechnung an das Unternehmen.
+  antwort: Ja, ohne Aufpreis – zum Beispiel in 15 Monatsraten über die rund 15 Monate Kursdauer. Zahlt dein Arbeitgeber, stellen wir die Rechnung an das Unternehmen.
 reihenfolge: 50
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Industriemeister bzw. zur Geprüften Industriemeisterin der Fachrichtung Metall vor. Im ersten Teil arbeitest du die fünf Basisqualifikationen durch, von Recht und Betriebswirtschaft bis zu naturwissenschaftlich-technischen Gesetzmäßigkeiten. Im zweiten Teil geht es um die Handlungsbereiche Technik, Organisation sowie Führung und Personal.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung rechnen mit dir Aufgaben aus Betriebstechnik, Kostenwesen und Arbeitsschutz und besprechen Lösungswege gemeinsam. Die langen Situationsaufgaben trainieren wir an den Samstagen.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung rechnen mit dir Aufgaben aus Betriebstechnik, Kostenwesen und Arbeitsschutz und besprechen Lösungswege gemeinsam. Die langen Situationsaufgaben trainieren wir an eigenen Übungsabenden.
 
 Wichtig: Praxis- und Werkstattteile sind nicht Teil des Kurses. Es gibt keine Übungen an Maschinen, Anlagen oder in der Werkstatt; wir bereiten dich auf die schriftlichen Situationsaufgaben und das Fachgespräch vor. Zur Prüfung meldest du dich selbst bei deiner IHK an.

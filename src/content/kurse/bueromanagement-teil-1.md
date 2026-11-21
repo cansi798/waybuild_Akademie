@@ -3,14 +3,14 @@ saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute für Büromanagement – Teil 1
 untertitel: PC-Prüfung „Informationstechnisches Büromanagement“ (Teil 1 der Abschlussprüfung)
-kurzbeschreibung: Trainiere die PC-Prüfung in Teil 1 – Geschäftsbriefe nach DIN 5008, Tabellenkalkulation, Beschaffung und Recherche in einem durchgehenden Arbeitsauftrag. Live online an acht Abenden.
+kurzbeschreibung: Trainiere die PC-Prüfung in Teil 1 – Geschäftsbriefe nach DIN 5008, Tabellenkalkulation, Beschaffung und Recherche in einem durchgehenden Arbeitsauftrag. Live online an sechs Abenden.
 status: entwurf
 art: kurs
 ue: 24
-dauer: ca. 4 Wochen (8 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+dauer: ca. 3 Wochen (6 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 249
+  betrag: 199
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
   raten: false
 zielgruppe:
@@ -45,17 +45,17 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: bueromanagement-t1-2027-fruehjahr
-    start: 2027-01-26
+    start: 2027-02-02
     ende: 2027-02-18
     pruefung: 2027-02-25
     pruefungHinweis: PC-Prüfung Teil 1 am 25. oder 26.02.2027 – deinen Tag nennt dir die Einladung deiner IHK.
-    anmeldeschluss: 2027-01-19
+    anmeldeschluss: 2027-01-26
   - id: bueromanagement-t1-2027-herbst
-    start: 2027-08-31
+    start: 2027-09-07
     ende: 2027-09-23
     pruefung: 2027-09-30
     pruefungHinweis: PC-Prüfung Teil 1 am 30.09. oder 01.10.2027 – deinen Tag nennt dir die Einladung deiner IHK.
-    anmeldeschluss: 2027-08-24
+    anmeldeschluss: 2027-08-31
 faq:
   - frage: Wie läuft die Prüfung in Teil 1 ab?
     antwort: Du bearbeitest am Computer einen zusammenhängenden Arbeitsauftrag aus dem Büroalltag – mit Textverarbeitung und Tabellenkalkulation, 120 Minuten lang. Das Ergebnis zählt 25 % deiner Abschlussnote.

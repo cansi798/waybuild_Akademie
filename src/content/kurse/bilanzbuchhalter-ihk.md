@@ -7,11 +7,11 @@ kurzbeschreibung: 'Werde Fachkraft für Abschluss und Finanzen: Du erstellst und
 status: entwurf
 art: kurs
 ue: 600
-dauer: ca. 13 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 12 Monate (150 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3790
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 3739
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Fachkräfte aus Buchhaltung und Rechnungswesen
@@ -63,12 +63,12 @@ faq:
 - frage: Reichen 600 Unterrichtseinheiten?
   antwort: Die Fortbildungsordnung nennt einen Lernumfang von in der Regel mindestens 1.200 Stunden. Dazu zählt neben dem Unterricht auch deine eigene Vorbereitung und deine Praxis im Rechnungswesen. Unsere 600 Live-Einheiten decken alle sieben Handlungsbereiche ab; wie viel Zeit du zusätzlich einplanst, entscheidest du selbst.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Bilanzbuchhalter/in“ bieten wir 13 gleiche Monatsraten an, eine pro Monat des rund 13-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Bilanzbuchhalter/in“ bieten wir 12 gleiche Monatsraten an, eine pro Monat des rund 12-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
 reihenfolge: 33
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Bilanzbuchhalter bzw. zur Geprüften Bilanzbuchhalterin – Bachelor Professional in Bilanzbuchhaltung vor. Er folgt den sieben Handlungsbereichen der Fortbildungsordnung, mit dem größten Gewicht auf Jahresabschluss, Abschlussanalyse und Steuern, denn diese drei bilden die Schwerpunkte der schriftlichen Prüfung.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung rechnen Buchungs-, Bewertungs- und Steuerfälle Schritt für Schritt mit dir durch. An den Samstagen bearbeitest du lange Aufgabenstellungen unter Zeitvorgabe, und wir gehen die Lösungswege anschließend gemeinsam durch.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung rechnen Buchungs-, Bewertungs- und Steuerfälle Schritt für Schritt mit dir durch. An eigenen Übungsabenden bearbeitest du lange Aufgabenstellungen unter Zeitvorgabe, und wir gehen die Lösungswege anschließend gemeinsam durch.
 
 Der Lehrgang passt zu dir, wenn du im Rechnungswesen arbeitest und Abschlüsse künftig selbst verantworten willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

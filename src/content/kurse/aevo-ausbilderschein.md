@@ -7,11 +7,11 @@ kurzbeschreibung: 'Werde fit fürs Ausbilden: Du arbeitest die vier Handlungsfel
 status: entwurf
 art: kurs
 ue: 64
-dauer: ca. 4 Monate
-zeiten: Di, 18:00–21:15 Uhr
+dauer: ca. 9 Wochen (16 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 499
-  hinweis: Inklusive Kursunterlagen und Vorlagen für deine Präsentation
+  betrag: 399
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Inklusive Kursunterlagen und Vorlagen für deine Präsentation
   raten: false
 zielgruppe:
 - Fachkräfte, die künftig Auszubildende betreuen
@@ -56,14 +56,14 @@ abschluss: Teilnahmebescheinigung der waybuild Akademie; den Nachweis der Ausbil
 termine:
 - id: aevo-2027-fruehjahr
   start: 2027-02-02
-  ende: 2027-05-18
+  ende: 2027-03-30
   anmeldeschluss: 2027-01-26
-  ausfall: []
+  ausfall:
+  - 2027-03-25
 - id: aevo-2027-herbst
   start: 2027-09-07
-  ende: 2027-12-21
+  ende: 2027-10-28
   anmeldeschluss: 2027-08-31
-  ausfall: []
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
   antwort: 'Sie hat zwei Teile. Im schriftlichen Teil bearbeitest du fallbezogene Aufgaben aus allen vier Handlungsfeldern, angesetzt sind drei Stunden. Im praktischen Teil präsentierst du eine Ausbildungssituation, die du selbst auswählst, oder führst sie praktisch durch; danach folgt ein Fachgespräch. Zusammen dauert der praktische Teil höchstens 30 Minuten.'

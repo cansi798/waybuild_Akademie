@@ -7,10 +7,10 @@ kurzbeschreibung: 'Versteh, wie Cloud funktioniert: Du lernst Grundbegriffe, Die
 status: entwurf
 art: kurs
 ue: 32
-dauer: ca. 4 Wochen
-zeiten: Di + Do, 18:00–21:15 Uhr
+dauer: ca. 4 Wochen (8 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 790
+  betrag: 249
   hinweis: Inklusive Kursunterlagen, Übungsumgebung für den Live-Unterricht und Zertifikat
   raten: false
 zielgruppe:

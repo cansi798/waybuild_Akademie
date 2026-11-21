@@ -7,11 +7,11 @@ kurzbeschreibung: 'Bring KI sicher in dein Unternehmen: Du lernst Grundlagen, EU
 status: entwurf
 art: kurs
 ue: 64
-dauer: ca. 8 Wochen
-zeiten: Di + Do, 18:00–21:15 Uhr
+dauer: ca. 9 Wochen (16 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 1890
-  hinweis: Inklusive Kursunterlagen, Vorlagen für Anwendungsfall-Bewertung und KI-Richtlinie sowie Zertifikat
+  betrag: 399
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Vorlagen für Anwendungsfall-Bewertung und KI-Richtlinie sowie Zertifikat
   raten: true
 zielgruppe:
 - Fach- und Führungskräfte ohne KI-Vorkenntnisse
@@ -67,7 +67,6 @@ termine:
   start: 2027-09-07
   ende: 2027-10-28
   anmeldeschluss: 2027-08-31
-  ausfall: []
 faq:
 - frage: Brauche ich Programmierkenntnisse?
   antwort: Nein. Der Kurs richtet sich an Fach- und Führungskräfte. Du arbeitest mit gängigen KI-Werkzeugen und lernst, Vorhaben zu planen, zu bewerten und zu steuern.

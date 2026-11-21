@@ -3,14 +3,14 @@ saeule: akademie
 kategorie: Programmierung
 titel: Webentwicklung mit HTML, CSS und JavaScript
 untertitel: Eigene Webseiten bauen – modern, responsiv und barrierefrei
-kurzbeschreibung: 'Bau deine eigenen Webseiten: Du lernst HTML, CSS und JavaScript, gestaltest für Handy und Desktop, achtest auf Barrierefreiheit und veröffentlichst dein Projekt – live-online an 16 Abenden.'
+kurzbeschreibung: 'Bau deine eigenen Webseiten: Du lernst HTML, CSS und JavaScript, gestaltest für Handy und Desktop, achtest auf Barrierefreiheit und veröffentlichst dein Projekt – live-online an 12 Abenden.'
 status: entwurf
 art: kurs
 ue: 48
-dauer: ca. 2 Monate
-zeiten: Mo + Mi, 18:00–20:30 Uhr
+dauer: ca. 6 Wochen (12 Abende)
+zeiten: Mo + Mi, 17:00–20:00 Uhr
 preis:
-  betrag: 790
+  betrag: 299
   hinweis: Inklusive Kursunterlagen, Beispielcode und Zertifikat
   raten: false
 zielgruppe:
@@ -55,7 +55,7 @@ faq:
 - frage: Ist das ein IHK-Abschluss?
   antwort: Nein. Das Zertifikat der waybuild Akademie beschreibt Inhalte und Umfang der 48 Unterrichtseinheiten. Es ist kein öffentlich-rechtlicher Abschluss.
 - frage: Wann startet der nächste Kurs?
-  antwort: Einen Starttermin gibt es noch nicht. Über die unverbindliche Vormerkung erfährst du als Erste oder Erster, sobald die 16 Abende angesetzt sind.
+  antwort: Einen Starttermin gibt es noch nicht. Über die unverbindliche Vormerkung erfährst du als Erste oder Erster, sobald die 12 Abende angesetzt sind.
 reihenfolge: 30
 ---
 
@@ -69,6 +69,6 @@ In diesem Kurs lernst du, Webseiten selbst zu bauen. Du strukturierst Inhalte mi
 - Ladezeit und Barrierefreiheit prüfen und verbessern
 - eine eigene kleine Website veröffentlichen
 
-Der Kurs läuft an 16 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis bauen jedes Thema am geteilten Bildschirm vor, danach setzt du es im Live-Termin selbst um und wir schauen uns die Ergebnisse gemeinsam im Browser an. In den letzten Terminen entsteht dein Praxisprojekt.
+Der Kurs läuft an 12 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis bauen jedes Thema am geteilten Bildschirm vor, danach setzt du es im Live-Termin selbst um und wir schauen uns die Ergebnisse gemeinsam im Browser an. In den letzten Terminen entsteht dein Praxisprojekt.
 
 Der Kurs passt zu dir, wenn du verstehen willst, wie Webseiten funktionieren, und eigene Seiten umsetzen möchtest – im Beruf oder für eigene Projekte.

@@ -7,11 +7,11 @@ kurzbeschreibung: 'Übernimm Leitung in der beruflichen Bildung: Du steuerst Ler
 status: entwurf
 art: kurs
 ue: 640
-dauer: ca. 14 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 12 Monate (160 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4190
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 3989
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Ausbildungsleitungen und erfahrene Ausbilderinnen und Ausbilder
@@ -53,12 +53,12 @@ faq:
 - frage: Welche Funktion kann ich für die Projektarbeit wählen?
   antwort: Die Verordnung nennt lehrende, entwickelnde, leitende, beratende und prüfende Funktionen, zum Beispiel Ausbildungsleitung, Bildungscontrolling oder Weiterbildungsberatung. Das Thema schlägst du dem Prüfungsausschuss vor; im Kurs besprechen wir mögliche Themen live in der Gruppe.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 14 Monaten sind 14 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 12 Monaten sind 12 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
 reihenfolge: 13
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufspädagogen bzw. zur Geprüften Berufspädagogin vor. Er ist nach den drei Prüfungsteilen der Fortbildungsordnung aufgebaut: erst die Kernprozesse von Lernen, Planen und Management, dann das Handeln in Ausbildung, Weiterbildung und Personalentwicklung, zum Schluss eine spezialisierte Funktion als Grundlage deiner Projektarbeit.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Ausbildungsleitung, Bildungsabteilung und Weiterbildungsträger. Die langen Situationsaufgaben bearbeiten wir in den Samstagsterminen und werten sie direkt gemeinsam aus.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Ausbildungsleitung, Bildungsabteilung und Weiterbildungsträger. Die langen Situationsaufgaben bearbeiten wir an eigenen Übungsabenden und werten sie direkt gemeinsam aus.
 
 Der Lehrgang passt zu dir, wenn du Bildung in einem Unternehmen oder einer Bildungseinrichtung leitest oder diese Rolle anstrebst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

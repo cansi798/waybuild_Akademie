@@ -31,9 +31,9 @@ test.beforeEach(async ({ page }) => {
 test.describe.configure({ mode: 'default' }); // Datei in einem Worker nacheinander – entlastet parallele Läufe
 
 const AP1 = 'anmeldung/?kurs=ap1-it-berufe&termin=ap1-2027-fruehjahr';
-/** Start AP1 19.01.2027 – 49 Tage später: außerhalb der Widerrufsfrist */
+/** Start AP1 21.01.2027 – 51 Tage später: außerhalb der Widerrufsfrist */
 const VOR_FRIST = new Date('2026-12-01T10:00:00+01:00');
-/** 11 Tage vor Start: innerhalb der Widerrufsfrist, Anmeldeschluss (12.01.) noch offen */
+/** 13 Tage vor Start: innerhalb der Widerrufsfrist, Anmeldeschluss (14.01.) noch offen */
 const IN_FRIST = new Date('2027-01-08T10:00:00+01:00');
 
 const fehler = (page: Page, name: string, form = 'anmeldung') => page.locator(`#${form} [data-fehler-fuer="${name}"]`);
@@ -73,7 +73,7 @@ test.describe('Anmeldung', () => {
     const knopf = page.locator('#anmeldung [data-absenden]');
     await expect(knopf).toHaveText('Zahlungspflichtig anmelden');
     expect((await knopf.textContent())?.trim()).toBe('Zahlungspflichtig anmelden');
-    await expect(page.locator('[data-preis-gesamt]')).toHaveText('349,00 €');
+    await expect(page.locator('[data-preis-gesamt]')).toHaveText('299,00 €');
     if (istVorschau) await expect(page.locator('[data-demo-hinweis]').first()).toContainText('Demo-Modus');
     else await expect(page.locator('[data-demo-hinweis]')).toHaveCount(0);
     // Links an der Bestätigungsstelle (US-20 AK2)
@@ -169,18 +169,18 @@ test.describe('Anmeldung', () => {
     await personen.selectOption('2');
     await expect(page.locator('[data-person="2"]')).toBeVisible();
     await expect(page.locator('[data-person="3"]')).toBeHidden();
-    await expect(page.locator('[data-preis-gesamt]')).toHaveText('698,00 €');
+    await expect(page.locator('[data-preis-gesamt]')).toHaveText('598,00 €');
     await expect(page.locator('[data-preis-rabatt-zeile]')).toBeHidden();
 
     await personen.selectOption('3');
-    await expect(page.locator('[data-preis-gesamt]')).toHaveText('942,30 €');
+    await expect(page.locator('[data-preis-gesamt]')).toHaveText('807,30 €');
     await expect(page.locator('[data-preis-rabatt-zeile]')).toBeVisible();
-    await expect(page.locator('[data-preis-rabatt]')).toHaveText('−104,70 €');
-    await expect(page.locator('[data-auswahl-preis]')).toHaveText('942,30 €');
+    await expect(page.locator('[data-preis-rabatt]')).toHaveText('−89,70 €');
+    await expect(page.locator('[data-auswahl-preis]')).toHaveText('807,30 €');
 
     await personen.selectOption('5');
     for (const n of [1, 2, 3, 4, 5]) await expect(page.locator(`[data-person="${n}"]`)).toBeVisible();
-    await expect(page.locator('[data-preis-gesamt]')).toHaveText('1.570,50 €');
+    await expect(page.locator('[data-preis-gesamt]')).toHaveText('1.345,50 €');
 
     // weitere Personen sind Pflicht, keine doppelten E-Mail-Adressen
     await personen.selectOption('2');
@@ -195,7 +195,7 @@ test.describe('Anmeldung', () => {
   });
 
   test('Anmeldeschluss vorbei: Termin nicht wählbar', async ({ page }) => {
-    await page.clock.setFixedTime(new Date('2027-01-13T09:00:00+01:00'));
+    await page.clock.setFixedTime(new Date('2027-01-15T09:00:00+01:00'));
     await page.goto(AP1);
     await expect(feld(page, 'termin').locator('option[value="ap1-2027-fruehjahr"]')).toBeDisabled();
     await expect(feld(page, 'termin')).not.toHaveValue('ap1-2027-fruehjahr');
@@ -216,7 +216,7 @@ test.describe('Anmeldung', () => {
     await expect(page.locator('h1:visible')).toHaveText('Danke – deine Anmeldung ist angekommen');
     await expect(page.locator('[data-danke-demo]')).toBeVisible();
     await expect(page.locator('[data-danke-zeilen]')).toContainText('Lena Muster');
-    await expect(page.locator('[data-danke-zeilen]')).toContainText('349,00 €, alles inklusive');
+    await expect(page.locator('[data-danke-zeilen]')).toContainText('299,00 €, alles inklusive');
     await expect(page.locator('[data-danke-art="anmeldung"]').getByText('Du erhältst die Rechnung per E-Mail; eine Online-Zahlung ist nicht nötig.')).toBeVisible();
     expect(gesendet).toBe(false);
   });
@@ -228,7 +228,7 @@ test.describe('Wertersatz-Bestätigung', () => {
     await page.goto(AP1);
     await gueltigSelbst(page);
     await expect(feld(page, 'wertersatz')).toHaveAttribute('aria-required', 'true');
-    await expect(page.locator('[data-feld-rahmen="wertersatz"] [data-haken-hinweis]')).toContainText('Pflicht: Dein Kurs startet in 11 Tagen');
+    await expect(page.locator('[data-feld-rahmen="wertersatz"] [data-haken-hinweis]')).toContainText('Pflicht: Dein Kurs startet in 13 Tagen');
     await page.locator('#anmeldung [data-absenden]').click();
     await expect(fehler(page, 'wertersatz')).toContainText('Dein Kurs startet innerhalb der 14-tägigen Widerrufsfrist.');
     await expect(feld(page, 'wertersatz')).toBeFocused();

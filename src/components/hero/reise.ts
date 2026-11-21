@@ -16,8 +16,8 @@ export interface ReiseWerte {
   monat: string; // "Februar 2027"
   wochentag: string; // "Mittwoch"
   pruefungTitel: string; // "Prüfung AP1"
-  zeiten: string; // "Di + Do, 18:00–20:45 Uhr"
-  uhr: string; // "18:00 Uhr"
+  zeiten: string; // "Di + Do, 17:00–20:00 Uhr"
+  uhr: string; // "17:00 Uhr"
   tage: string; // Stand des Builds, im Browser neu gerechnet
   einheit: string; // "Tage" | "Tag"
 }

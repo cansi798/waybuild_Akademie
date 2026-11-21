@@ -7,11 +7,11 @@ kurzbeschreibung: 'Schütze dein Unternehmen besser: Du lernst Bedrohungen wie R
 status: entwurf
 art: kurs
 ue: 60
-dauer: ca. 10 Wochen
-zeiten: Mo + Mi, 18:00–20:30 Uhr
+dauer: ca. 8 Wochen (15 Abende)
+zeiten: Mo + Mi, 17:00–20:00 Uhr
 preis:
-  betrag: 1790
-  hinweis: Inklusive Kursunterlagen, Vorlagen für Schutzbedarf, Notfallplan und Richtlinien sowie Zertifikat
+  betrag: 379
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Vorlagen für Schutzbedarf, Notfallplan und Richtlinien sowie Zertifikat
   raten: true
 zielgruppe:
 - Mitarbeitende, die IT-Sicherheit im Unternehmen koordinieren
@@ -54,9 +54,8 @@ abschluss: Zertifikat der waybuild Akademie
 termine:
 - id: it-sicherheit-2027-herbst
   start: 2027-09-06
-  ende: 2027-11-10
+  ende: 2027-10-25
   anmeldeschluss: 2027-08-30
-  ausfall: []
 faq:
 - frage: Ist der Kurs auch für Nicht-Techniker geeignet?
   antwort: Ja, wenn du sicher mit Computer und Netzwerk umgehst. Technische Begriffe erklären wir an Beispielen aus dem Arbeitsalltag; der Schwerpunkt liegt auf Planen und Organisieren, nicht auf Konfigurieren.
@@ -81,6 +80,6 @@ In diesem Kurs lernst du, die IT-Sicherheit in einem Unternehmen zu verbessern. 
 - einschätzen, welche gesetzlichen Pflichten für dein Unternehmen gelten
 - einen einfachen Notfallplan erstellen
 
-Der Kurs läuft an 20 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis zeigen jedes Thema an echten Vorfällen, danach wendest du es im Live-Termin an Übungsfällen an und wir besprechen die Ergebnisse gemeinsam. Über den Kurs hinweg entsteht in den Live-Terminen dein Sicherheitskonzept als Projekt.
+Der Kurs läuft an 15 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis zeigen jedes Thema an echten Vorfällen, danach wendest du es im Live-Termin an Übungsfällen an und wir besprechen die Ergebnisse gemeinsam. Über den Kurs hinweg entsteht in den Live-Terminen dein Sicherheitskonzept als Projekt.
 
 Der Kurs passt zu dir, wenn du in deinem Unternehmen für IT-Sicherheit zuständig bist oder werden sollst. Er ist auch ein guter Einstieg vor dem IHK-Lehrgang zum Berufsspezialisten für Informationssicherheit.

@@ -7,11 +7,11 @@ kurzbeschreibung: 'Übernimm Verantwortung in der Immobilienwirtschaft: Du lerns
 status: entwurf
 art: kurs
 ue: 600
-dauer: ca. 13 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 12 Monate (150 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3590
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 3739
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Immobilienkaufleute mit Berufserfahrung
@@ -63,12 +63,12 @@ faq:
 - frage: Was ist mit der AEVO?
   antwort: Nach der Fortbildungsordnung ersetzt die bestandene Prüfung den schriftlichen Teil der Ausbildereignungsprüfung. Wenn du den AEVO-Nachweis möchtest, legst du bei der IHK noch den praktischen Teil ab.
 - frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Immobilienfachwirt/in“ in 13 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
+  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Immobilienfachwirt/in“ in 12 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
 reihenfolge: 44
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Immobilienfachwirt bzw. zur Geprüften Immobilienfachwirtin vor. Er folgt den sechs Handlungsbereichen der Prüfungsverordnung und deckt damit die ganze Breite der Immobilienwirtschaft ab – von Recht und Markt über Bewirtschaftung und Bauprojekte bis zu Vertrieb, Unternehmenssteuerung und Personal.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Hausverwaltung, Maklerbüro und Bauträger – etwa einer Betriebskostenabrechnung, einer Projektkalkulation oder einem Vermittlungsauftrag. Die schriftlichen Prüfungsteile üben wir an den Samstagen unter Zeitvorgabe.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Hausverwaltung, Maklerbüro und Bauträger – etwa einer Betriebskostenabrechnung, einer Projektkalkulation oder einem Vermittlungsauftrag. Die schriftlichen Prüfungsteile üben wir an eigenen Übungsabenden unter Zeitvorgabe.
 
 Der Lehrgang passt zu dir, wenn du in Verwaltung, Vermietung, Vertrieb oder Projektentwicklung arbeitest und eine Fach- oder Führungsrolle anstrebst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

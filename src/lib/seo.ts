@@ -17,11 +17,11 @@ interface KursSeo {
 const SEO_KURSE: Record<string, (k: Kurs) => KursSeo> = {
   'ap1-it-berufe': (k) => ({
     titel: 'AP1-Vorbereitung Fachinformatiker online',
-    beschreibung: `AP1-Vorbereitung für Fachinformatiker und alle IT-Berufe: prüfungsnahe Aufgaben zum IT-gestützten Arbeitsplatz, live online an 10 Abenden. ${formatEuro(k.data.preis.betrag)} Endpreis.`,
+    beschreibung: `AP1-Vorbereitung für Fachinformatiker und alle IT-Berufe: prüfungsnahe Aufgaben zum IT-gestützten Arbeitsplatz, live online an 9 Abenden. ${formatEuro(k.data.preis.betrag)} Endpreis.`,
   }),
   'ap2-fachinformatiker-systemintegration': (k) => ({
     titel: 'AP2 Fachinformatiker Systemintegration',
-    beschreibung: `AP2-Vorbereitung für Fachinformatiker Systemintegration: IT-Systeme, Netzwerke und WiSo gezielt prüfungsnah üben – live online an 15 Abenden, ${formatEuro(k.data.preis.betrag)} Endpreis.`,
+    beschreibung: `AP2-Vorbereitung für Fachinformatiker Systemintegration: IT-Systeme, Netzwerke und WiSo gezielt prüfungsnah üben – live online an 12 Abenden, ${formatEuro(k.data.preis.betrag)} Endpreis.`,
   }),
   pruefungscoaching: (k) => ({
     titel: 'Prüfungscoaching 1:1 für IT-Berufe',

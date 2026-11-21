@@ -7,11 +7,11 @@ kurzbeschreibung: 'Mach Informationssicherheit zu deinem Schwerpunkt: Du analysi
 status: entwurf
 art: kurs
 ue: 240
-dauer: ca. 11 Monate
-zeiten: Di, 18:00–21:15 Uhr, dazu ein Samstag im Monat 09:00–14:15 Uhr
+dauer: ca. 7 Monate (60 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3790
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 1499
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - IT-Fachkräfte, die sich auf Sicherheit spezialisieren wollen
@@ -67,6 +67,6 @@ reihenfolge: 26
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten bzw. zur Geprüften Berufsspezialistin für Informationssicherheit vor. Er folgt den sechs Qualifikationsschwerpunkten der Fortbildungsordnung: Bedrohungen analysieren, Maßnahmen planen, den sicheren Betrieb gewährleisten, Maßnahmen einleiten und prüfen, dazu Recht und Projektarbeit.
 
-Du lernst jeden Dienstagabend und an einem Samstag im Monat live per Video in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung zeigen dir an realistischen Vorfällen, wie du Risiken bewertest und ein Sicherheitskonzept aufbaust. Rollen- und Notfallkonzepte entwerfen wir gemeinsam im Unterricht, an den Samstagen übst du Situationsaufgaben unter Zeitvorgabe.
+Du lernst am Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr live per Video in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung zeigen dir an realistischen Vorfällen, wie du Risiken bewertest und ein Sicherheitskonzept aufbaust. Rollen- und Notfallkonzepte entwerfen wir gemeinsam im Unterricht, an eigenen Übungsabenden übst du Situationsaufgaben unter Zeitvorgabe.
 
 Der Lehrgang passt zu dir, wenn du in deinem Betrieb für Sicherheit sorgst oder diese Rolle übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

@@ -7,11 +7,11 @@ kurzbeschreibung: 'Werde Profi für Personalarbeit: Du organisierst Personalproz
 status: entwurf
 art: kurs
 ue: 564
-dauer: ca. 12 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 12 Monate (141 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3490
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
+  betrag: 3519
+  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
   raten: true
 zielgruppe:
 - Mitarbeitende aus Personalabteilungen
@@ -50,15 +50,18 @@ abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprü
 termine:
 - id: personalfachkaufmann-2027-herbst
   start: 2027-09-07
-  ende: 2028-09-12
+  ende: 2028-08-21
   anmeldeschluss: 2027-08-31
   ausfall:
   - 2027-12-23
+  - 2027-12-27
   - 2027-12-28
   - 2027-12-30
-  - 2028-01-01
   - 2028-04-13
+  - 2028-04-17
+  - 2028-05-01
   - 2028-05-25
+  - 2028-06-05
 faq:
 - frage: Wie ist die Prüfung aufgebaut?
   antwort: Schriftlich bearbeitest du je Handlungsbereich komplexe Situationsaufgaben. Danach folgt ein situationsbezogenes Fachgespräch von höchstens 30 Minuten zu einem betrieblichen Beratungsauftrag – du legst der Geschäftsleitung einen personalpolitischen Entscheidungsvorschlag vor.
@@ -75,6 +78,6 @@ reihenfolge: 21
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Personalfachkaufmann bzw. zur Geprüften Personalfachkauffrau vor. Er folgt den vier Handlungsbereichen der Prüfungsverordnung: Personalarbeit organisieren, rechtssicher handeln, Personal planen, gewinnen und steuern sowie Personal- und Organisationsentwicklung.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus dem Personalalltag – vom Arbeitsvertrag über die Entgeltabrechnung bis zur Personalbedarfsplanung. Die Situationsaufgaben trainieren wir an den Samstagen unter Zeitvorgabe.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus dem Personalalltag – vom Arbeitsvertrag über die Entgeltabrechnung bis zur Personalbedarfsplanung. Die Situationsaufgaben trainieren wir an eigenen Übungsabenden unter Zeitvorgabe.
 
 Der Lehrgang passt zu dir, wenn du im Personalbereich arbeitest oder dorthin wechseln willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.
