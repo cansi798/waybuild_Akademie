@@ -77,3 +77,32 @@ qa_gate: "PASS_WITH_LIMITATIONS (Selbstprüfung + Suite; Wortlaut ZUSAGEN.anfrag
 impact: hypothesis_only
 ```
 Hinweis: `ZUSAGEN.anfrage` war als „Wortlaut verbindlich (Audit #6771)“ markiert. Neu: „Deine Anfrage ist unverbindlich. Du bekommst ein Angebot per E-Mail – verbindlich wird es erst mit deiner Zusage und unserer Bestätigung.“ Das passt zum Rechtsmodell aus recht-6771 und folgt der Formulierung von Anmeldung und Danke-Seite. Bei Ablehnung: nur zusagen.ts:13 + Test zurücksetzen.
+
+Jan 22:30: R4–R5 in main (5a6ac62) gepusht; Wortlaut ZUSAGEN.anfrage freigegeben.
+
+## Runde 6 – Kopf-„Anfragen“ mit Seitenzusammenhang (22:30–22:35)
+
+```yaml
+round: 6
+focus: "decision: Kopf-Knopf springt von Kurs-/Berufsseite zur Startseite und verliert den Kurs (QA R4 #5)"
+hypothese: "Wer auf einer Kurs- oder Berufsseite oben „Anfragen“ tippt, landet im passenden Formular mit Vorauswahl → weniger Abbrüche"
+files_changed: [src/components/Kopf.astro (kleines Inline-Skript; ohne JS unverändert /#anfrage), tests/start-6771.spec.ts]
+checks: {build: pass, start-6771+startseite+conversion: 44 pass / 2 skip}
+qa_gate: "PASS_WITH_LIMITATIONS (Selbstprüfung + neuer Test; kein separater QA-Agent)"
+impact: hypothesis_only
+```
+
+### QA Runde 5+6 (unabhängig, 22:35–22:38) + Webkit-Gesamtlauf
+Webkit voll auf f7364cd: 119 pass / 5 skip. QA: G1/G3/G5 PASS_WITH_LIMITATIONS, G6 PASS. Befunde: (1) Text verspricht fest ein „Angebot“, die Kurzanfrage (kontakt.php) sagt „möchtest du buchen, schicken wir ein Angebot“ und erlaubt offenen Kurs; (2) Vorschau-Hinweis Danke „Bestätigung“; (3) Mobilmenü bleibt bei Sprung #anfrage offen; (4) Coaching-Kursseite: Kopf führte zur Kurzanfrage ohne Coaching-Bereich; (5) Enter ohne IME-Schutz.
+
+## Runde 7 – QA-Fixes (22:38–22:45)
+
+```yaml
+round: 7
+change_ids: [R5/R6-QA 1–5]
+files_changed: [src/lib/zusagen.ts, src/pages/index.astro, src/pages/pruefungsvorbereitung/[beruf].astro, src/pages/danke/index.astro, src/components/Kopf.astro, src/components/start/BerufWahl.astro, tests/start-6771.spec.ts]
+text: "ZUSAGEN.anfrage → „Deine Anfrage ist unverbindlich. Wir melden uns per E-Mail mit Termin und Angebot – verbindlich wird es erst mit deiner Zusage und unserer Bestätigung.“ (Feinschliff des freigegebenen Wortlauts: kein festes Angebot vor Prüfung)"
+checks: {build: pass, chromium_voll: 119 pass / 5 skip}
+qa_gate: PASS_WITH_LIMITATIONS
+offen: "kontakt.php-Mailtext (PHP, recht-Bereich) nicht geändert; /coaching/ Kopf → /#anfrage ohne Coaching-Bereich (Kurzanfrage kennt keinen Bereich Coaching)"
+```
