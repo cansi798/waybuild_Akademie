@@ -1,0 +1,23 @@
+---
+// Feste Leiste mobil (Can #6771): „Unverbindlich anfragen“ immer in Daumennähe; verschwindet, sobald das Formular im Blick ist.
+// Ab 1024 px übernimmt der Knopf „Anfragen“ im Kopf. Der Abstandhalter verhindert, dass die Leiste den Fuß verdeckt.
+interface Props {
+  bereich?: string;
+}
+const { bereich } = Astro.props;
+---
+
+<div class="h-20 lg:hidden" aria-hidden="true"></div>
+<div class="sticky-anfrage fixed inset-x-0 bottom-0 z-40 border-t border-base-300 bg-base-100/95 p-3 backdrop-blur lg:hidden" data-sticky-anfrage>
+  <a href="#anfrage" class="btn btn-accent btn-lg w-full rounded-full text-base" data-anfrage-bereich={bereich}>Unverbindlich anfragen</a>
+</div>
+
+<script>
+  const leiste = document.querySelector<HTMLElement>('[data-sticky-anfrage]');
+  const form = document.querySelector('[data-anfrage-formular]');
+  if (leiste && form && 'IntersectionObserver' in window) {
+    new IntersectionObserver((es) => {
+      leiste.hidden = es[0].isIntersecting;
+    }, { rootMargin: '0px 0px -10% 0px' }).observe(form);
+  }
+</script>

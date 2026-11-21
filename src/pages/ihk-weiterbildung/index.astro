@@ -1,0 +1,16 @@
+---
+// /ihk-weiterbildung/ – Menüziel „IHK-Weiterbildung“ (Audit #6771 Punkt 7): Kurse oder „in Vorbereitung“ + Kurzanfrage.
+import BereichSeite from '../../components/start/BereichSeite.astro';
+import { VIDEOS } from '../../lib/site';
+---
+
+<BereichSeite
+  saeule="ihk-weiterbildung"
+  bereich="ihk-weiterbildung"
+  pfad="/ihk-weiterbildung/"
+  titel="IHK-Weiterbildung"
+  seoTitel="IHK-Weiterbildung berufsbegleitend online"
+  beschreibung="Berufsbegleitend zum Fachwirt, Betriebswirt oder Bilanzbuchhalter: IHK-Weiterbildung abends live online. Die Prüfung legst du bei deiner IHK ab. Unverbindlich anfragen."
+  satz="Berufsbegleitend zum nächsten IHK-Abschluss – zum Beispiel Fachwirt, Betriebswirt oder Bilanzbuchhalter. Die Prüfung legst du bei deiner IHK ab."
+  video={VIDEOS.ihk}
+/>

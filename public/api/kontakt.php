@@ -24,6 +24,10 @@ const THEMEN = [
     'beratung' => 'Beratung zur Kurswahl',
     'betrieb' => 'Anmeldung für meinen Betrieb',
     'coaching' => 'Prüfungscoaching',
+    // Kurzanfrage der Startseite / Berufsseiten (Can #6771): Bereich + optional Kurs, Nachricht freiwillig
+    'pruefung' => 'Anfrage Prüfungsvorbereitung',
+    'ihk-weiterbildung' => 'Anfrage IHK-Weiterbildung',
+    'akademie' => 'Anfrage waybuild Weiterbildung',
 ];
 
 $f = [];
