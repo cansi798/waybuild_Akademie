@@ -111,6 +111,16 @@ const hatSeltene = !alle && berufe.some((b) => !b.oft);
       treffer.textContent = worte.length ? (n === 1 ? '1 Beruf gefunden' : `${n} Berufe gefunden`) : '';
     };
     eingabe.addEventListener('input', filtern);
+    // Loop 21.11.: Enter/„Suchen“ auf der Handytastatur bei genau einem Treffer öffnet direkt die Berufsseite (ein Schritt weniger)
+    eingabe.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      const sichtbar = zeilen.filter((z) => !z.hidden);
+      const ziel = sichtbar.length === 1 ? sichtbar[0].querySelector<HTMLAnchorElement>('a[href]') : null;
+      if (ziel && eingabe.value.trim()) {
+        e.preventDefault();
+        ziel.click();
+      }
+    });
     mehr?.addEventListener('click', () => {
       alleAuf = true;
       filtern();

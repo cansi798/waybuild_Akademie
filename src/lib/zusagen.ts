@@ -1,4 +1,4 @@
-// Risikoumkehr (Zusagen an Teilnehmende) – EINE Quelle für Kurskarte, Kursseite, Termine, Coaching und Anmeldung.
+// Risikoumkehr (Zusagen an Teilnehmer) – EINE Quelle für Kurskarte, Kursseite, Termine, Coaching und Anmeldung.
 // Grundlage: Teilnahmebedingungen #storno (Nr. 10), #ersatz (Nr. 11), #absage (Nr. 12), #coaching Abs. 3 (Nr. 5) – Fassung 21.11.2026.
 // Wortlaut noch nicht entschieden (Can, Frage 29) und Teilnahmebedingungen noch Entwurf (Anwalt prüft die Pauschalen):
 // Änderungen NUR hier, dann greifen sie überall gleichzeitig. Keine Zahl zur Mindestteilnehmerzahl nennen.
@@ -10,7 +10,7 @@ export const ZUSAGEN = {
   /** Prüfungscoaching (Teilnahmebedingungen Nr. 5 Abs. 3, Vertrag erst per E-Mail nach abgestimmten Terminen). */
   coaching: 'Anfrage unverbindlich · Termin bis 24 Stunden vorher kostenlos verschieben',
   /** Kurzanfrage (Startseite, Berufsseiten, FAQ, llms): Wortlaut verbindlich (Audit #6771). */
-  anfrage: 'Deine Anfrage ist unverbindlich – verbindlich wird es erst mit unserer Bestätigung per E-Mail.',
+  anfrage: 'Deine Anfrage ist unverbindlich. Du bekommst ein Angebot per E-Mail – verbindlich wird es erst mit deiner Zusage und unserer Bestätigung.',
   /** Verweis auf die vollständigen Regeln. */
   link: { text: 'Teilnahmebedingungen', pfad: '/teilnahmebedingungen/#storno', pfadCoaching: '/teilnahmebedingungen/#coaching' },
 } as const;

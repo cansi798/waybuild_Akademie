@@ -13,7 +13,7 @@ test.describe('Startseite: Berufsauswahl und Kurzanfrage', () => {
     await expect(page.locator('#bereich-pruefung [data-beruf-wahl]')).toBeVisible();
     await expect(page.locator('[data-video-platzhalter], [data-video]')).toHaveCount(3);
     await expect(page.locator('form#anfrage')).toBeVisible();
-    await expect(page.locator('[data-zusage-anfrage]')).toHaveText('Deine Anfrage ist unverbindlich – verbindlich wird es erst mit unserer Bestätigung per E-Mail.');
+    await expect(page.locator('[data-zusage-anfrage]')).toHaveText('Deine Anfrage ist unverbindlich. Du bekommst ein Angebot per E-Mail – verbindlich wird es erst mit deiner Zusage und unserer Bestätigung.');
     await expect(page.locator('main')).not.toContainText('Unverbindlich anmelden');
   });
 
@@ -138,4 +138,12 @@ test('Bildschirmfotos 390/1440 (nur Chromium)', async ({ page, browserName }) =>
       await page.screenshot({ path: `fotos-6771/${name}-${breite}-erste-ansicht.png` });
     }
   }
+});
+
+test('Berufssuche: Enter bei genau einem Treffer öffnet die Berufsseite (Loop 21.11.)', async ({ page }) => {
+  await page.goto('./');
+  const suche = page.locator('[data-beruf-eingabe]').first();
+  await suche.fill('FISI');
+  await suche.press('Enter');
+  await expect(page).toHaveURL(/\/pruefungsvorbereitung\/fachinformatiker-systemintegration\/$/);
 });

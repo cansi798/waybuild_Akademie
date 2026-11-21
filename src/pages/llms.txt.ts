@@ -34,9 +34,9 @@ export const GET: APIRoute = async ({ site }) => {
 Die ${AKADEMIE.name} bietet Live-Online-Kurse für ganz Deutschland in drei Bereichen: IHK-Prüfungsvorbereitung für Auszubildende (AP1/AP2), IHK-Weiterbildung (z. B. Fachwirt, Betriebswirt) und eigene Weiterbildung (KI, IT, Programmierung). ${UNTERRICHT.satz} Synchroner Unterricht in festen Gruppen – keine Aufzeichnungen, kein Selbstlernkurs. Zielgruppen sind Auszubildende und Umschüler vor der IHK-Abschlussprüfung sowie Berufstätige, die sich berufsbegleitend weiterbilden. Ansprache: Du.
 
 - Preise sind Endpreise, alles inklusive. Die Prüfungsgebühr der IHK ist nicht enthalten.
-- Bezahlung per Rechnung per E-Mail – an Teilnehmende oder ihren Betrieb. Keine Online-Zahlung.
+- Bezahlung per Rechnung per E-Mail – an Teilnehmer oder ihren Betrieb. Keine Online-Zahlung.
 - ${IHK_HINWEIS}
-- Lehrende in der Prüfungsvorbereitung: Dozenten mit IHK-Prüfer-Erfahrung.
+- Unterricht in der Prüfungsvorbereitung: Dozenten mit IHK-Prüfer-Erfahrung.
 - Anfrage: Formular auf der Startseite (${url('/#anfrage')}). ${ZUSAGEN.anfrage}
 - Ausführliche Fassung: ${url('/llms-full.txt')}
 

@@ -49,7 +49,7 @@ export const GET: APIRoute = async ({ site }) => {
 - Drei Bereiche: IHK-Prüfungsvorbereitung für Auszubildende (AP1/AP2), IHK-Weiterbildung (berufsbegleitend, z. B. Fachwirt, Betriebswirt), eigene Weiterbildung der Akademie (KI, IT, Programmierung).
 - ${IHK_HINWEIS}
 - Preise sind Endpreise, alles inklusive. Die Prüfungsgebühr der IHK ist nicht enthalten.
-- Bezahlung per Rechnung per E-Mail – an Teilnehmende oder ihren Betrieb. Keine Online-Zahlung.
+- Bezahlung per Rechnung per E-Mail – an Teilnehmer oder ihren Betrieb. Keine Online-Zahlung.
 - Anfrage: kostenlos über das Formular ${url('/#anfrage')}. ${ZUSAGEN.anfrage}
 - Kontakt: ${AKADEMIE.mailInfo}
 

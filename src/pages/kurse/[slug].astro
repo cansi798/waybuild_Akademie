@@ -26,6 +26,7 @@ import {
   type Kurs,
 } from '../../lib/kurse';
 import { href } from '../../lib/pfad';
+import { berufKurz, berufUrl, sichtbareBerufe } from '../../lib/berufe';
 import Risikoumkehr from '../../components/seiten/Risikoumkehr.astro';
 import { BEWEIS_DOZENTEN } from '../../lib/zusagen';
 import { fragen, ohneDoppelte, type FaqId } from '../../lib/faq';
@@ -48,6 +49,8 @@ const termine = buchbareTermine(kurs);
 const naechster = termine[0];
 const pruefungskurs = d.saeule === 'ihk-pruefung' && !coaching;
 const umfang = umfangText(kurs);
+// Loop 21.11. (MKT-008): Rücklinks zu den Berufsseiten, zu denen dieser Kurs gehört (interne Verlinkung, Orientierung)
+const passendeBerufe = (await sichtbareBerufe()).filter((b) => b.teile.some((t) => t.kurs === kurs.id));
 const preisLabel = entwurf ? 'Preisvorschlag' : coaching ? 'ab' : 'Teilnahmegebühr';
 const hinweisEnthaeltIhk = /IHK/.test(d.preis.hinweis ?? '');
 // Lange IHK-Weiterbildungen: einzeln buchbare und bezahlbare Abschnitte (Can #6801)
@@ -269,6 +272,22 @@ const schema =
             <p class="mt-3">{d.abschluss}</p>
           </div>
         </div>
+        {
+          passendeBerufe.length > 0 && (
+            <nav class="mt-8" aria-labelledby="berufe-titel" data-kurs-berufe>
+              <h3 id="berufe-titel" class="font-sans text-base font-semibold">Passt zu deinem Beruf</h3>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                {passendeBerufe.map((b) => (
+                  <li>
+                    <a href={href(berufUrl(b))} class="inline-flex min-h-11 items-center rounded-full bg-white px-4 font-semibold text-navy ring-1 ring-base-300 hover:bg-base-200">
+                      {berufKurz(b)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )
+        }
       </section>
 
       <!-- Inhalte -->
