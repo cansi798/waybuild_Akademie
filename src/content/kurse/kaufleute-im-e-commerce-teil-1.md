@@ -3,16 +3,15 @@ saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute im E-Commerce – Teil 1
 untertitel: Sortimentsbewirtschaftung und Vertragsanbahnung (Teil 1 der Abschlussprüfung)
-kurzbeschreibung: Übe den Prüfungsbereich von Teil 1 – Sortiment online bewirtschaften, Beschaffung unterstützen, Verträge im Onlinehandel rechtssicher anbahnen. Live online an acht Abenden.
+kurzbeschreibung: Übe den Prüfungsbereich von Teil 1 – Sortiment online bewirtschaften, Beschaffung unterstützen, Verträge im Onlinehandel rechtssicher anbahnen. Live online an sechs Abenden.
 status: entwurf
 art: kurs
 ue: 24
-dauer: ca. 4 Wochen (8 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+dauer: ca. 3 Wochen (6 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 249
+  betrag: 199
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende Kaufleute im E-Commerce im zweiten Ausbildungsjahr
   - Umschülerinnen und Umschüler im Onlinehandel
@@ -42,17 +41,17 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: e-commerce-t1-2027-fruehjahr
-    start: 2027-01-26
+    start: 2027-02-02
     ende: 2027-02-18
     pruefung: 2027-02-24
     pruefungHinweis: Schriftliche Prüfung Teil 1 am Mittwoch, 24.02.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-01-19
+    anmeldeschluss: 2027-01-26
   - id: e-commerce-t1-2027-herbst
-    start: 2027-08-31
+    start: 2027-09-07
     ende: 2027-09-23
     pruefung: 2027-09-29
     pruefungHinweis: Schriftliche Prüfung Teil 1 am Mittwoch, 29.09.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-08-24
+    anmeldeschluss: 2027-08-31
 faq:
   - frage: Was wird in Teil 1 geprüft?
     antwort: Ein Prüfungsbereich mit 90 Minuten – „Sortimentsbewirtschaftung und Vertragsanbahnung“. Etwa die Hälfte der Aufgaben ist gebunden, die andere Hälfte offen. Das Ergebnis zählt 25 % deiner Abschlussnote.

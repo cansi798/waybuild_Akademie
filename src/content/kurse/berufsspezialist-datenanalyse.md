@@ -7,12 +7,15 @@ kurzbeschreibung: 'Mach aus Daten Entscheidungen: Du klärst Fragestellungen, be
 status: entwurf
 art: kurs
 ue: 240
-dauer: ca. 11 Monate
-zeiten: Di, 18:00–21:15 Uhr, dazu ein Samstag im Monat 09:00–14:15 Uhr
+dauer: ca. 7 Monate (60 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3790
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 1495
+  hinweis: "Gesamtpreis für alle 5 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 5
+    abende: 12
+    betrag: 299
 zielgruppe:
 - Fachinformatikerinnen und Fachinformatiker für Daten- und Prozessanalyse nach der Ausbildung
 - Fachkräfte aus Controlling, Vertrieb oder Produktion, die viel mit Daten arbeiten
@@ -67,6 +70,6 @@ reihenfolge: 28
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten bzw. zur Geprüften Berufsspezialistin für Datenanalyse vor. Er folgt den sechs Qualifikationsschwerpunkten der Fortbildungsordnung: Anforderungen klären, Daten und Prozesse vorbereiten, analysieren und bewerten, den Analyseprozess verbessern, dazu Recht und Projektarbeit.
 
-Du lernst jeden Dienstagabend und an einem Samstag im Monat live per Video in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Datensätzen aus Vertrieb, Einkauf und Produktion. Abfragen, Auswertungen und Diagramme entstehen gemeinsam im Unterricht; an den Samstagen übst du Situationsaufgaben unter Zeitvorgabe.
+Du lernst am Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr live per Video in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Datensätzen aus Vertrieb, Einkauf und Produktion. Abfragen, Auswertungen und Diagramme entstehen gemeinsam im Unterricht; an eigenen Übungsabenden übst du Situationsaufgaben unter Zeitvorgabe.
 
 Der Lehrgang passt zu dir, wenn du regelmäßig mit Daten arbeitest und daraus belastbare Entscheidungen ableiten willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

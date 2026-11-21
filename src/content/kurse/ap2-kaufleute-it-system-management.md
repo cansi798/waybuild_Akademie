@@ -3,16 +3,15 @@ saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: AP2 Kaufleute für IT-System-Management
 untertitel: Kaufmann/Kauffrau für IT-System-Management – schriftliche Prüfung Teil 2
-kurzbeschreibung: Übe „Einführen einer IT-Systemlösung“, „Kaufmännische Unterstützungsprozesse“ und WiSo an prüfungsnahen Kundenfällen – live online an 15 Abenden.
+kurzbeschreibung: Übe „Einführen einer IT-Systemlösung“, „Kaufmännische Unterstützungsprozesse“ und WiSo an prüfungsnahen Kundenfällen – live online an 10 Abenden.
 status: entwurf
 art: kurs
-ue: 45
-dauer: ca. 7,5 Wochen (15 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+ue: 40
+dauer: ca. 6 Wochen (10 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 369
+  betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende Kaufleute für IT-System-Management vor der AP2
   - Umschülerinnen und Umschüler in diesem Beruf
@@ -46,19 +45,19 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: ap2-kitsm-2027-sommer
-    start: 2027-03-02
+    start: 2027-03-18
     ende: 2027-04-22
     pruefung: 2027-04-28
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-02-23
+    anmeldeschluss: 2027-03-11
     ausfall:
       - 2027-03-25
   - id: ap2-kitsm-2027-winter
-    start: 2027-09-28
+    start: 2027-10-14
     ende: 2027-11-16
     pruefung: 2027-11-24
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-09-21
+    anmeldeschluss: 2027-10-07
 faq:
   - frage: Ist der Kurs eher technisch oder kaufmännisch?
     antwort: Beides, so wie die Prüfung. Die Aufgaben beginnen meist beim Kundenbedarf, gehen über die passende IT-Lösung und enden bei Vertrag, Kalkulation und Rechnung.

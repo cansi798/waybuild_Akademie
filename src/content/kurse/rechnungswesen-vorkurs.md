@@ -7,12 +7,11 @@ kurzbeschreibung: Buchführung, Jahresabschluss in Grundzügen, Kosten- und Leis
 status: entwurf
 art: kurs
 ue: 32
-dauer: ca. 8 Wochen (8 Abende)
-zeiten: Mi, 18:00–21:15 Uhr
+dauer: ca. 4 Wochen (8 Abende)
+zeiten: Mo + Mi, 17:00–20:00 Uhr
 preis:
-  betrag: 299
+  betrag: 249
   hinweis: "Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Der Vorkurs endet ohne IHK-Prüfung."
-  raten: false
 zielgruppe:
   - Auszubildende in kaufmännischen Berufen, denen Buchführung und Kostenrechnung schwerfallen
   - Alle, die eine Fortbildung wie den Fachwirt planen
@@ -54,6 +53,6 @@ reihenfolge: 70
 
 In diesem Vorkurs lernst du die Grundlagen des Rechnungswesens, die in vielen kaufmännischen Prüfungen und Fortbildungen vorausgesetzt werden: Buchführung, Jahresabschluss in Grundzügen, Kosten- und Leistungsrechnung und wichtige Kennzahlen.
 
-Der Kurs läuft live online an einem Abend pro Woche. Jeder Termin beginnt mit einer kurzen Erklärung, danach rechnest du Beispiele im Live-Unterricht durch und wir besprechen die Lösungen gemeinsam. Typische Hürden wie das Soll und Haben beim Buchungssatz oder die Trennung von Kosten und Aufwand nehmen wir uns besonders vor.
+Der Kurs läuft live online an zwei Abenden pro Woche (Mo + Mi, 17:00–20:00 Uhr). Jeder Termin beginnt mit einer kurzen Erklärung, danach rechnest du Beispiele im Live-Unterricht durch und wir besprechen die Lösungen gemeinsam. Typische Hürden wie das Soll und Haben beim Buchungssatz oder die Trennung von Kosten und Aufwand nehmen wir uns besonders vor.
 
 Der Vorkurs passt zu dir, wenn du in der Ausbildung bist und Rechnungswesen von Grund auf wiederholen willst, oder wenn du eine Fortbildung wie den Fachwirt planst und noch keinen kaufmännischen Hintergrund hast.

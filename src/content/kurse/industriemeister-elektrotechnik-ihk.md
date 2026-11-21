@@ -7,12 +7,18 @@ kurzbeschreibung: 'Übernimm Führung in Elektrotechnik und Automatisierung: Du 
 status: entwurf
 art: kurs
 ue: 760
-dauer: ca. 17 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 15 Monate (190 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4690
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 4734
+  hinweis: "Gesamtpreis für alle 16 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 16
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 10
+      betrag: 249
 zielgruppe:
 - Elektronikerinnen und Elektroniker mit Berufserfahrung
 - Fachkräfte aus Instandhaltung und Automatisierung
@@ -61,13 +67,13 @@ faq:
   antwort: Rechtliche Pflichten und Arbeitsschutz behandeln wir so, wie sie in der Prüfung gefragt sind. Eine Bestellung zur verantwortlichen Elektrofachkraft ersetzt der Kurs nicht.
 - frage: Wann sollte ich die AEVO machen?
   antwort: Die Verordnung sieht vor, dass du die berufs- und arbeitspädagogischen Qualifikationen in der Regel vor der Zulassung zu den Basisqualifikationen erwirbst; nachweisen musst du sie spätestens vor der letzten Prüfungsleistung. Unser AEVO-Kurs passt deshalb gut vor den Start.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Industriemeister/in Elektrotechnik“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 17 gleiche Monatsraten über die Kursdauer von rund 17 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 16 Abschnitte aufgeteilt: 15 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 10 Abenden für 249 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 4.734 €.'
 reihenfolge: 51
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Industriemeister bzw. zur Geprüften Industriemeisterin der Fachrichtung Elektrotechnik vor. Nach den fünf Basisqualifikationen geht es um die Handlungsbereiche Technik mit Infrastruktur-, Automatisierungs- und Informationstechnik, Organisation sowie Führung und Personal.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Instandhaltung, Gebäudetechnik und automatisierter Fertigung – etwa einer Störungsanalyse oder einer Kostenrechnung für eine Modernisierung. Die Situationsaufgaben trainieren wir an den Samstagen unter Zeitvorgabe.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Instandhaltung, Gebäudetechnik und automatisierter Fertigung – etwa einer Störungsanalyse oder einer Kostenrechnung für eine Modernisierung. Die Situationsaufgaben trainieren wir an eigenen Übungsabenden unter Zeitvorgabe.
 
 Wichtig: Praxis- und Werkstattteile sind nicht Teil des Kurses. Es gibt keine Arbeiten an Anlagen oder in der Werkstatt; wir bereiten dich auf die schriftlichen Situationsaufgaben und das Fachgespräch vor. Zur Prüfung meldest du dich selbst bei deiner IHK an.

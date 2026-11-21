@@ -215,7 +215,7 @@ test.describe('Seiten (Vorschau-Build)', () => {
     const monate = await page.locator('[data-termin-gruppe]:visible').evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.terminGruppe!));
     expect(monate).toEqual([...monate].sort());
 
-    // Zeit läuft weiter: Anmeldeschluss AP1 Frühjahr (12.01.2027) ist vorbei
+    // Zeit läuft weiter: Anmeldeschluss AP1 Frühjahr (14.01.2027) ist vorbei
     await page.clock.setFixedTime(new Date('2027-02-01T10:00:00+01:00'));
     await page.reload();
     await expect(page.locator('li[data-termin="ap1-2027-fruehjahr"]')).toBeHidden();
@@ -300,14 +300,14 @@ test.describe('Seiten (Vorschau-Build)', () => {
       .flatMap((b) => JSON.parse(b))
       .find((o: Record<string, unknown>) => o['@type'] === 'Course');
     expect(kurs.hasCourseInstance[0].courseMode).toBe('online');
-    expect(kurs.offers.price).toBe(349);
+    expect(kurs.offers.price).toBe(299);
     expect(kurs.offers.priceCurrency).toBe('EUR');
   });
 
-  test('AP1: Zeiten mit 3- und 4-UE-Abenden', async ({ page }) => {
+  test('AP1: Abendraster 17:00–20:00 Uhr', async ({ page }) => {
     await page.goto('./kurse/ap1-it-berufe/');
-    await expect(page.locator('[data-kerndaten]')).toContainText('5 × 18:00–20:45 Uhr (3 UE) und 5 × 18:00–21:30 Uhr (4 UE)');
-    await expect(page.locator('[data-kerndaten]')).toContainText('35 UE');
+    await expect(page.locator('[data-kerndaten]')).toContainText('Di + Do, 17:00–20:00 Uhr');
+    await expect(page.locator('[data-kerndaten]')).toContainText('36 UE');
   });
 });
 

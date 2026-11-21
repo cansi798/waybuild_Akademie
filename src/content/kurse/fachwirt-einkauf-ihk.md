@@ -7,12 +7,18 @@ kurzbeschreibung: 'Bring den Einkauf auf Strategieniveau: Du ermittelst Bedarfe,
 status: entwurf
 art: kurs
 ue: 560
-dauer: ca. 12 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 11 Monate (140 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3490
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3488
+  hinweis: "Gesamtpreis für alle 12 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 12
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 8
+      betrag: 199
 zielgruppe:
 - Fachkräfte aus Einkauf und Beschaffung
 - Mitarbeitende aus Disposition und Materialwirtschaft
@@ -62,13 +68,13 @@ faq:
   antwort: Das ist Teil der offiziellen Abschlussbezeichnung nach der Fortbildungsordnung von 2020. Es handelt sich um eine berufliche Fortbildung bei der IHK, nicht um einen Hochschulabschluss.
 - frage: Bin ich danach von der AEVO befreit?
   antwort: Teilweise. Wer die Prüfung bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Fachwirt/in für Einkauf“ bieten wir 12 gleiche Monatsraten an, eine pro Monat des rund 12-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 12 Abschnitte aufgeteilt: 11 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 8 Abenden für 199 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.488 €.'
 reihenfolge: 32
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Einkauf – Bachelor Professional in Procurement vor. Er folgt den sechs Handlungsbereichen der Fortbildungsordnung, vom Ermitteln der Bedarfe über Strategie, Lieferanten und Einkaufsprozess bis zu Controlling und Führung.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Einkaufsfällen aus Industrie und Handel: Du bewertest Angebote, baust eine Lieferantenbewertung auf und bereitest Verhandlungen vor, die wir in der Gruppe durchspielen. An den Samstagen trainierst du die lange schriftliche Prüfung in Etappen.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Einkaufsfällen aus Industrie und Handel: Du bewertest Angebote, baust eine Lieferantenbewertung auf und bereitest Verhandlungen vor, die wir in der Gruppe durchspielen. An eigenen Übungsabenden trainierst du die lange schriftliche Prüfung in Etappen.
 
 Der Lehrgang passt zu dir, wenn du im Einkauf arbeitest und mehr Verantwortung für Strategie, Lieferanten und Kosten übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

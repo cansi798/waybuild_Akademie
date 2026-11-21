@@ -7,12 +7,11 @@ kurzbeschreibung: 'Triff Entscheidungen auf Basis von Daten: Du bereitest Daten 
 status: entwurf
 art: kurs
 ue: 96
-dauer: ca. 3 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr
+dauer: ca. 12 Wochen (24 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 1890
-  hinweis: Inklusive Kursunterlagen, Übungsdatensätze und Zertifikat
-  raten: true
+  betrag: 799
+  hinweis: "Entspricht rund 399 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Übungsdatensätze und Zertifikat"
 zielgruppe:
 - Fachkräfte aus Controlling, Vertrieb, Einkauf und Verwaltung
 - Mitarbeitende, die regelmäßig Berichte erstellen
@@ -54,8 +53,8 @@ faq:
   antwort: Du wählst eine Frage aus deinem Arbeitsbereich, zum Beispiel Umsatz nach Region oder Lieferzeiten im Einkauf, und baust dazu ein Dashboard mit Übungs- oder eigenen, anonymisierten Daten. In den letzten Terminen stellst du es der Gruppe vor.
 - frage: Ist das ein IHK-Abschluss?
   antwort: Nein. Das Zertifikat der waybuild Akademie beschreibt, welche Inhalte du in den 96 Unterrichtseinheiten bearbeitet hast. Es ist kein öffentlich-rechtlicher Abschluss.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Datenanalyse mit Excel und Power BI“ in 3 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
+- frage: Wie bezahle ich den Kurs?
+  antwort: 'In einem Betrag per Überweisung, sobald du die Rechnung per E-Mail bekommen hast. Zahlt dein Betrieb, wähle bei der Anmeldung „Mein Betrieb zahlt“.'
 - frage: Wann startet der nächste Kurs?
   antwort: Noch steht kein Starttermin fest. Wenn du dich unverbindlich vormerkst, melden wir uns, sobald die Abende für die Gruppe geplant sind.
 reihenfolge: 33

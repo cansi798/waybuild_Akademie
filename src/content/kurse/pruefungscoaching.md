@@ -11,7 +11,6 @@ zeiten: Termine flexibel nach Vereinbarung, online
 preis:
   betrag: 69
   hinweis: "Einzelcoaching, 60 Minuten. Endpreis, alles inklusive. Vor- und Nachbereitung sowie die Sichtung umfangreicher Unterlagen außerhalb der gebuchten Zeit nur nach vorheriger Vereinbarung."
-  raten: false
 pakete:
   - name: Einzelcoaching
     betrag: 69

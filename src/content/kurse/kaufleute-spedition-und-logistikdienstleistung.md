@@ -7,12 +7,11 @@ kurzbeschreibung: Übe die schriftlichen Bereiche der Abschlussprüfung – Leis
 status: entwurf
 art: kurs
 ue: 36
-dauer: ca. 6 Wochen (12 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+dauer: ca. 5 Wochen (9 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 349
+  betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende Kaufleute für Spedition und Logistikdienstleistung vor der Abschlussprüfung
   - Umschülerinnen und Umschüler in Spedition und Logistik
@@ -47,19 +46,19 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: spedition-2027-sommer
-    start: 2027-03-09
+    start: 2027-03-18
     ende: 2027-04-20
     pruefung: 2027-04-27
     pruefungHinweis: Schriftliche Prüfung am 27. und 28.04.2027 – Leistungserstellung am ersten Tag. Verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-03-02
+    anmeldeschluss: 2027-03-11
     ausfall:
       - 2027-03-25
   - id: spedition-2027-winter
-    start: 2027-10-07
+    start: 2027-10-19
     ende: 2027-11-16
     pruefung: 2027-11-23
     pruefungHinweis: Schriftliche Prüfung am 23. und 24.11.2027 – Leistungserstellung am ersten Tag. Verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-09-30
+    anmeldeschluss: 2027-10-12
 faq:
   - frage: Welcher Verkehrsträger kommt in meiner Prüfung dran?
     antwort: Bei der Anmeldung nennst du zwei Verkehrsträger. Welchen davon du bearbeitest, legt der Prüfungsausschuss fest – du erfährst es erst mit der Aufgabe am Prüfungstag. Im Kurs üben wir deshalb alle Verkehrsträger.

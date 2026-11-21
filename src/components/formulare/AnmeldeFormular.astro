@@ -209,7 +209,7 @@ const kartenKlasse = 'rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8'
     <section class={kartenKlasse} aria-labelledby={`${F}-s4`}>
       <h2 id={`${F}-s4`} class="schritt-titel" data-nr="4">Noch etwas?</h2>
       <div class="mt-6">
-        <Feld form={F} name="nachricht" label="Nachricht an uns" typ="textarea" max={2000} zeilen={4} fehler={FEHLER.nachricht} hinweis="Zum Beispiel Fragen zur Ratenzahlung oder zu deinen Vorkenntnissen." />
+        <Feld form={F} name="nachricht" label="Nachricht an uns" typ="textarea" max={2000} zeilen={4} fehler={FEHLER.nachricht} hinweis="Zum Beispiel Fragen zu deinen Vorkenntnissen oder zum Termin." />
       </div>
     </section>
 
@@ -277,7 +277,6 @@ const kartenKlasse = 'rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8'
             <span class="font-semibold">Endpreis</span>
             <span><span class="font-serif text-3xl font-semibold tabular-nums" data-preis-gesamt>–</span> <span class="text-sm text-gedaempft">alles inklusive</span></span>
           </p>
-          <p class="mt-1 text-sm font-semibold text-tief" data-raten hidden>Ratenzahlung ohne Aufpreis möglich – schreib es uns unten in die Nachricht; den Ratenplan nennen wir dir im Buchungsangebot.</p>
         </div>
         <button type="submit" class="btn btn-accent btn-lg w-full rounded-full px-8 sm:w-auto" data-absenden>Unverbindlich anfragen</button>
       </div>

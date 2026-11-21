@@ -3,16 +3,15 @@ saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Fachkraft für Lagerlogistik
 untertitel: Vorbereitung auf die schriftliche IHK-Abschlussprüfung
-kurzbeschreibung: Übe die schriftlichen Bereiche der Abschlussprüfung – Prozesse der Lagerlogistik, Güterumschlag und WiSo – mit viel Logistikrechnen. Live online an zwölf Abenden.
+kurzbeschreibung: Übe die schriftlichen Bereiche der Abschlussprüfung – Prozesse der Lagerlogistik, Güterumschlag und WiSo – mit viel Logistikrechnen. Live online an neun Abenden.
 status: entwurf
 art: kurs
 ue: 36
-dauer: ca. 6 Wochen (12 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+dauer: ca. 5 Wochen (9 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 349
+  betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende Fachkräfte für Lagerlogistik vor der Abschlussprüfung
   - Umschülerinnen und Umschüler in der Lagerlogistik
@@ -48,19 +47,19 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: lagerlogistik-2027-sommer
-    start: 2027-03-09
+    start: 2027-03-18
     ende: 2027-04-20
     pruefung: 2027-04-27
     pruefungHinweis: Schriftliche Prüfung am 27. und 28.04.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-03-02
+    anmeldeschluss: 2027-03-11
     ausfall:
       - 2027-03-25
   - id: lagerlogistik-2027-winter
-    start: 2027-10-07
+    start: 2027-10-19
     ende: 2027-11-16
     pruefung: 2027-11-23
     pruefungHinweis: Schriftliche Prüfung am 23. und 24.11.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-09-30
+    anmeldeschluss: 2027-10-12
 faq:
   - frage: Bereitet der Kurs auch auf die praktische Prüfung vor?
     antwort: Nein. Die praktischen Arbeitsaufgaben mit Fachgespräch machen die Hälfte deiner Note aus, sie übst du in deinem Ausbildungsbetrieb. Der Kurs deckt die schriftlichen Bereiche ab.

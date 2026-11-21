@@ -7,12 +7,18 @@ kurzbeschreibung: 'Werde Bindeglied zwischen Technik und Kaufmännischem: Du ler
 status: entwurf
 art: kurs
 ue: 600
-dauer: ca. 13 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 12 Monate (150 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3190
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3737
+  hinweis: "Gesamtpreis für alle 13 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 13
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 6
+      betrag: 149
 zielgruppe:
 - Kaufmännische Fachkräfte in Industrieunternehmen
 - Mitarbeitende aus Einkauf, Vertrieb, Produktion und Controlling
@@ -70,13 +76,13 @@ faq:
   antwort: Es muss mindestens zwei Handlungsbereiche aus Teil 2 verbinden, etwa die Kostenwirkung einer Produktionsumstellung. Kurzbeschreibung, Ziel und Gliederung reichst du bei der ersten schriftlichen Prüfungsleistung von Teil 2 ein.
 - frage: Bin ich danach von der AEVO befreit?
   antwort: Teilweise. Wer Teil 2 bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Mit einer zusätzlichen praktischen Prüfung bei der IHK kannst du die Ausbildereignung vollständig nachweisen.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 13 Monaten sind 13 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 13 Abschnitte aufgeteilt: 12 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 6 Abenden für 149 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.737 €.'
 reihenfolge: 30
 ---
 
 Der Lehrgang bereitet dich auf beide Teilprüfungen zum Geprüften Industriefachwirt bzw. zur Geprüften Industriefachwirtin vor. Auf die vier wirtschaftsbezogenen Qualifikationsbereiche folgen die fünf Handlungsbereiche im Industrieunternehmen – Finanzen, Produktion, Vertrieb, Wissensmanagement und Führung.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Fertigung, Einkauf und Vertrieb, zum Beispiel einer Investitionsentscheidung für eine neue Anlage. Die Klausuren beider Teile trainieren wir an den Samstagen unter Zeitvorgabe.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Fertigung, Einkauf und Vertrieb, zum Beispiel einer Investitionsentscheidung für eine neue Anlage. Die Klausuren beider Teile trainieren wir an eigenen Übungsabenden unter Zeitvorgabe.
 
 Der Lehrgang passt zu dir, wenn du kaufmännisch in einem Industrieunternehmen arbeitest und mehr Verantwortung übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

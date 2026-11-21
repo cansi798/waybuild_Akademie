@@ -7,12 +7,15 @@ kurzbeschreibung: 'Übernimm Verantwortung für IT-Projekte und Teams: Du vertie
 status: entwurf
 art: kurs
 ue: 720
-dauer: ca. 16 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 14 Monate (180 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 6590
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 4485
+  hinweis: "Gesamtpreis für alle 15 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 15
+    abende: 12
+    betrag: 299
 zielgruppe:
 - Fachinformatikerinnen und Fachinformatiker sowie andere IT-Fachkräfte mit Berufspraxis
 - Berufsspezialistinnen und Berufsspezialisten im IT-Bereich
@@ -59,13 +62,13 @@ faq:
   antwort: Laut Fortbildungsordnung bist du nach bestandener Prüfung vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Der praktische Teil bleibt, wenn du den AEVO-Nachweis haben möchtest.
 - frage: Reichen 720 Unterrichtseinheiten?
   antwort: Die Fortbildungsordnung nennt einen Lernumfang von in der Regel mindestens 1.200 Stunden. Darin steckt neben dem Unterricht auch die Arbeit an deinem eigenen IT-Projekt, die ohnehin im Betrieb stattfindet. Unsere 720 Live-Einheiten decken alle Prüfungsteile ab; wie viel Zeit du darüber hinaus einplanst, entscheidest du selbst.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Bachelor Professional in IT“ in 16 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 15 Abschnitte aufgeteilt: 15 Abschnitte mit je 12 Abenden für je 299 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 4.485 €.'
 reihenfolge: 36
 ---
 
 Der Lehrgang bereitet dich auf die Fortbildungsprüfung Bachelor Professional in IT vor. Er folgt den vier Prüfungsteilen der Fortbildungsordnung: deiner fachlichen Spezialisierung, dem Management von IT-Projekten, Prozessen und IT-Lösungen, der Führung von Mitarbeitenden und Teams sowie deinem eigenen IT-Projekt.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus IT-Abteilungen und Dienstleistern – vom Projektstart über die Einführung beim Kunden bis zum Mitarbeitergespräch. Englische Fallaufgaben und Gesprächssimulationen üben wir regelmäßig live, damit du die Prüfungsformen kennst.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus IT-Abteilungen und Dienstleistern – vom Projektstart über die Einführung beim Kunden bis zum Mitarbeitergespräch. Englische Fallaufgaben und Gesprächssimulationen üben wir regelmäßig live, damit du die Prüfungsformen kennst.
 
 Der Lehrgang passt zu dir, wenn du IT-Erfahrung hast und Projekt- oder Führungsverantwortung übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

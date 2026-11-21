@@ -24,11 +24,12 @@ Platzhalter in `{{…}}` vor dem Versand ersetzen. Anhänge immer als PDF mit AS
 > danke für deine Anfrage. Für dich ist ein Platz frei – hier ist unser Buchungsangebot.
 >
 > **Kurs:** {{Kurs}}
-> **Termine:** {{Startdatum}} bis {{Enddatum}}, jeweils {{Wochentage}}, {{Uhrzeit, z. B. 17:00–20:00 Uhr}}, live online per Videokonferenz (keine Aufzeichnung)
+> **Termine:** {{Startdatum}} bis {{Enddatum}}, jeweils {{Wochentage}}, {{Uhrzeit, z. B. 17:00–20:00 Uhr}}, live online über unsere eigene Videokonferenz (Jitsi Meet, Anmeldung über unsere Nextcloud, keine Aufzeichnung)
 > **Umfang:** {{UE}} Unterrichtseinheiten
 > **Teilnehmende:** {{Anzahl}} ({{Namen}})
 > **Endpreis:** {{Betrag}} € – alles inklusive (Unterlagen, Zugang zum Live-Unterricht); {{bei Gruppenrabatt: „darin 10 % Gruppenrabatt“}}
-> **Zahlung:** per Rechnung nach der Buchungsbestätigung, fällig 14 Tage nach Erhalt, spätestens vor Kursbeginn. Keine Online-Zahlung. {{bei Raten: „Ratenplan: …“}}
+> **Zahlung:** per Rechnung nach der Buchungsbestätigung, fällig 14 Tage nach Erhalt, spätestens vor Kursbeginn. Keine Online-Zahlung. Keine Ratenzahlung.
+> {{bei Lehrgängen in Abschnitten: „**Abschnitt:** {{Nr.}} von {{Anzahl}} ({{Abende}} Abende, {{Startdatum}} bis {{Enddatum}}) – dieses Angebot gilt nur für diesen Abschnitt; jeden weiteren Abschnitt buchst und bezahlst du einzeln.“}}
 > **Rechnung an:** {{Person/Firma}}
 > **Prüfungsgebühr der IHK:** nicht enthalten.
 >
@@ -83,7 +84,7 @@ vorzeitiges Erlöschen (Abs. 3 Nr. 2). **Telefonnummer fehlt noch** – ohne sie
 > Die vollständige Widerrufsbelehrung und das Muster-Widerrufsformular liegen bei (`Widerrufsbelehrung-und-Formular.pdf`).
 > Online widerrufen: https://waybuild-akademie.de/widerruf/#widerrufsformular („Vertrag widerrufen“).
 >
-> Den Zugangslink zum Live-Unterricht bekommt jede teilnehmende Person vor Kursstart per E-Mail.
+> Den Zugang zum Live-Unterricht bekommt jede teilnehmende Person vor Kursstart per E-Mail: einen persönlichen Nextcloud-Zugang und den Link zum Live-Raum (https://nextcloud.waybuild.de/meeting/{{raum}}). Der Unterricht läuft über unsere eigene Videokonferenz (Jitsi Meet) im Browser.
 >
 > Viele Grüße
 > {{Name}}, waybuild Akademie

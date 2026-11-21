@@ -3,16 +3,15 @@ saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Industriekaufleute – Teil 2
 untertitel: Marketing, Vertrieb, Personalwesen und kaufmännische Steuerung (Ausbildungsordnung 2024)
-kurzbeschreibung: Übe den großen schriftlichen Bereich von Teil 2 und WiSo an Fällen im Stil der Prüfung und bereite die Fachaufgabe im Einsatzgebiet vor. Live online an zehn Abenden.
+kurzbeschreibung: Übe den großen schriftlichen Bereich von Teil 2 und WiSo an Fällen im Stil der Prüfung und bereite die Fachaufgabe im Einsatzgebiet vor. Live online an acht Abenden.
 status: entwurf
 art: kurs
-ue: 30
-dauer: ca. 5 Wochen (10 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+ue: 32
+dauer: ca. 5 Wochen (8 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 299
+  betrag: 249
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende Industriekaufleute nach der Ausbildungsordnung 2024 vor Teil 2
   - Umschülerinnen und Umschüler nach der neuen Ordnung
@@ -51,19 +50,19 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: industriekaufleute-t2-2027-sommer
-    start: 2027-03-16
+    start: 2027-03-23
     ende: 2027-04-20
     pruefung: 2027-04-27
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Dienstag, 27.04.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-03-09
+    anmeldeschluss: 2027-03-16
     ausfall:
       - 2027-03-25
   - id: industriekaufleute-t2-2027-winter
-    start: 2027-10-14
+    start: 2027-10-21
     ende: 2027-11-16
     pruefung: 2027-11-23
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Dienstag, 23.11.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-10-07
+    anmeldeschluss: 2027-10-14
 faq:
   - frage: Was wird in Teil 2 schriftlich geprüft?
     antwort: Der Bereich „Marketing, Vertrieb, Personalwesen und kaufmännische Steuerung und Kontrolle“ mit 150 Minuten (35 % der Note) und Wirtschafts- und Sozialkunde mit 60 Minuten (10 %). Dazu kommt die Fachaufgabe im Einsatzgebiet mit 30 %.

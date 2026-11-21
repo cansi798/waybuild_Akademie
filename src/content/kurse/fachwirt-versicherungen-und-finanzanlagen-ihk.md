@@ -7,12 +7,18 @@ kurzbeschreibung: 'Werde Fach- und Führungskraft in der Versicherungswirtschaft
 status: entwurf
 art: kurs
 ue: 560
-dauer: ca. 12 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 11 Monate (140 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3690
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3488
+  hinweis: "Gesamtpreis für alle 12 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 12
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 8
+      betrag: 199
 zielgruppe:
 - Kaufleute für Versicherungen und Finanzanlagen mit Berufserfahrung
 - Mitarbeitende aus Versicherungsunternehmen, Vermittlung und Maklerbetrieben
@@ -54,13 +60,13 @@ faq:
   antwort: Beide Kundenbedarfsfelder – Vorsorge sowie Sach- und Vermögensschutz für Gewerbekunden. Welchen Bereich du in der Prüfung wählst, entscheidest du selbst und gibst es bei deiner IHK an.
 - frage: Bekomme ich damit auch die Ausbildereignung?
   antwort: Ja. Laut Fortbildungsordnung weist du mit der bestandenen Prüfung auch die berufs- und arbeitspädagogische Eignung nach und erhältst das Zeugnis nach der Ausbilder-Eignungsverordnung.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Bachelor Professional in Versicherungen und Finanzanlagen“ bieten wir 12 gleiche Monatsraten an, eine pro Monat des rund 12-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 12 Abschnitte aufgeteilt: 11 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 8 Abenden für 199 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.488 €.'
 reihenfolge: 46
 ---
 
 Der Lehrgang bereitet dich auf die Fortbildungsprüfung Bachelor Professional in Versicherungen und Finanzanlagen vor. Er folgt den zwei Prüfungsteilen der Fortbildungsordnung: zuerst die Beratung in einem Kundenbedarfsfeld, dann die Kernprozesse Kunden-, Produkt- sowie Schaden- und Leistungsmanagement zusammen mit Steuerung, Zusammenarbeit und Führung.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Beratung, Bestand und Schadenbearbeitung. Komplexe Kundensituationen lösen wir an den Samstagen unter Zeitvorgabe, und für deine Praxistransferarbeit besprechen wir Themenwahl und Aufbau live in der Gruppe.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Beratung, Bestand und Schadenbearbeitung. Komplexe Kundensituationen lösen wir an eigenen Übungsabenden unter Zeitvorgabe, und für deine Praxistransferarbeit besprechen wir Themenwahl und Aufbau live in der Gruppe.
 
 Der Lehrgang passt zu dir, wenn du in der Versicherungs- oder Finanzbranche arbeitest und eine Fach- oder Führungsaufgabe übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

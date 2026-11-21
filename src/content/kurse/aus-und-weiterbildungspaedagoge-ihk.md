@@ -7,12 +7,15 @@ kurzbeschreibung: 'Vom Ausbilderschein zur pädagogischen Fachkraft: Du lernst, 
 status: entwurf
 art: kurs
 ue: 480
-dauer: ca. 11 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 9 Monate (120 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 2990
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  hinweis: "Gesamtpreis für alle 10 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 10
+    abende: 12
+    betrag: 299
 zielgruppe:
 - Ausbilderinnen und Ausbilder mit AEVO, die mehr Verantwortung übernehmen wollen
 - Ausbildungsbeauftragte und Lernbegleiter in Betrieben
@@ -54,13 +57,13 @@ faq:
   antwort: Du bearbeitest eine berufspädagogische Aufgabe aus deinem Einsatzfeld, zum Beispiel die Neuordnung einer Lernstation. Das Thema schlägst du dem Prüfungsausschuss vor; für die Ausarbeitung gibt die Verordnung 30 Kalendertage vor. Im Kurs besprechen wir live, wie du ein Thema eingrenzt und die Arbeit aufbaust.
 - frage: Was bringt mir der Abschluss gegenüber dem Ausbilderschein?
   antwort: Die AEVO ist die Grundlage, um ausbilden zu dürfen. Hier geht es weiter – um Lernberatung, die Planung ganzer Bildungsmaßnahmen, das Gestalten von Prüfungen und die Qualitätssicherung in Aus- und Weiterbildung.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Aus- und Weiterbildungspädagoge/-pädagogin“ lässt sich in 11 gleiche Monatsraten aufteilen, passend zu den rund 11 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 10 Abschnitte aufgeteilt: 10 Abschnitte mit je 12 Abenden für je 299 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 2.990 €.'
 reihenfolge: 12
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Aus- und Weiterbildungspädagogen bzw. zur Geprüften Aus- und Weiterbildungspädagogin vor. Er folgt den drei Prüfungsteilen der Fortbildungsordnung: zuerst Lernbegleitung und Lernberatung, dann die Planung von Bildungsprozessen bis hin zu Prüfung und Qualitätssicherung, zum Schluss die Vorbereitung deiner Projektarbeit.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag, immer in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Ausbildungswerkstatt, Büro und Weiterbildung. Lange Situationsaufgaben lösen wir gemeinsam in den Samstagsterminen, das Fachgespräch probst du in kleinen Runden.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr, immer in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Ausbildungswerkstatt, Büro und Weiterbildung. Lange Situationsaufgaben lösen wir gemeinsam an eigenen Übungsabenden, das Fachgespräch probst du in kleinen Runden.
 
 Der Lehrgang passt zu dir, wenn du bereits ausbildest oder Lernende begleitest und diese Aufgabe auf ein pädagogisch fundiertes Niveau heben willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

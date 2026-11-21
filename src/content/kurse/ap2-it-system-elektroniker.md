@@ -3,16 +3,15 @@ saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: AP2 IT-System-Elektroniker/in
 untertitel: IT-System-Elektroniker/in – schriftliche Prüfung Teil 2
-kurzbeschreibung: Übe Installation und Service an IT-Systemen, die Anbindung an die Stromversorgung und WiSo an prüfungsnahen Aufgaben – live online an 15 Abenden.
+kurzbeschreibung: Übe Installation und Service an IT-Systemen, die Anbindung an die Stromversorgung und WiSo an prüfungsnahen Aufgaben – live online an 10 Abenden.
 status: entwurf
 art: kurs
-ue: 45
-dauer: ca. 7,5 Wochen (15 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+ue: 40
+dauer: ca. 6 Wochen (10 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 369
+  betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende IT-System-Elektroniker/innen vor der AP2
   - Umschülerinnen und Umschüler zum/zur IT-System-Elektroniker/in
@@ -44,19 +43,19 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: ap2-itse-2027-sommer
-    start: 2027-03-02
+    start: 2027-03-18
     ende: 2027-04-22
     pruefung: 2027-04-28
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-02-23
+    anmeldeschluss: 2027-03-11
     ausfall:
       - 2027-03-25
   - id: ap2-itse-2027-winter
-    start: 2027-09-28
+    start: 2027-10-14
     ende: 2027-11-16
     pruefung: 2027-11-24
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-09-21
+    anmeldeschluss: 2027-10-07
 faq:
   - frage: Warum ist die Stromversorgung so wichtig?
     antwort: Den Prüfungsbereich „Anbindung von Geräten, Systemen und Betriebsmitteln an die Stromversorgung“ musst du mindestens mit „ausreichend“ abschließen. Sonst ist die Abschlussprüfung nicht bestanden, auch wenn die übrigen Bereiche gut laufen. Deshalb bekommt er im Kurs viel Zeit.

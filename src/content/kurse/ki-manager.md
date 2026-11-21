@@ -7,12 +7,11 @@ kurzbeschreibung: 'Bring KI sicher in dein Unternehmen: Du lernst Grundlagen, EU
 status: entwurf
 art: kurs
 ue: 64
-dauer: ca. 8 Wochen
-zeiten: Di + Do, 18:00–21:15 Uhr
+dauer: ca. 9 Wochen (16 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 1890
-  hinweis: Inklusive Kursunterlagen, Vorlagen für Anwendungsfall-Bewertung und KI-Richtlinie sowie Zertifikat
-  raten: true
+  betrag: 539
+  hinweis: "Entspricht rund 399 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Vorlagen für Anwendungsfall-Bewertung und KI-Richtlinie sowie Zertifikat"
 zielgruppe:
 - Fach- und Führungskräfte ohne KI-Vorkenntnisse
 - Projektverantwortliche für Digitalisierung
@@ -67,7 +66,6 @@ termine:
   start: 2027-09-07
   ende: 2027-10-28
   anmeldeschluss: 2027-08-31
-  ausfall: []
 faq:
 - frage: Brauche ich Programmierkenntnisse?
   antwort: Nein. Der Kurs richtet sich an Fach- und Führungskräfte. Du arbeitest mit gängigen KI-Werkzeugen und lernst, Vorhaben zu planen, zu bewerten und zu steuern.
@@ -79,8 +77,8 @@ faq:
   antwort: Das Zertifikat bekommst du nach regelmäßiger Teilnahme am Live-Unterricht und der Vorstellung deines Vorhabens in der Gruppe.
 - frage: Ist das ein IHK-Abschluss?
   antwort: Nein. Das Zertifikat der waybuild Akademie beschreibt Inhalte und Umfang der 64 Unterrichtseinheiten und ist kein öffentlich-rechtlicher Abschluss.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis – zum Beispiel in zwei Monatsraten über die Kursdauer. Den Ratenplan findest du in deiner Rechnung.
+- frage: Wie bezahle ich den Kurs?
+  antwort: 'In einem Betrag per Überweisung, sobald du die Rechnung per E-Mail bekommen hast. Zahlt dein Betrieb, wähle bei der Anmeldung „Mein Betrieb zahlt“.'
 reihenfolge: 10
 ---
 

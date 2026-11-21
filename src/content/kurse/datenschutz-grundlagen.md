@@ -3,16 +3,15 @@ saeule: akademie
 kategorie: IT & Cloud
 titel: Datenschutz im Unternehmen
 untertitel: Grundlagen für Datenschutzkoordination und angehende Datenschutzbeauftragte
-kurzbeschreibung: 'Setz Datenschutz im Unternehmen sicher um: Du lernst DSGVO und BDSG, Verarbeitungsverzeichnis, Betroffenenrechte, Maßnahmen, Datenpannen und Datenschutz beim KI-Einsatz – live-online an 16 Abenden.'
+kurzbeschreibung: 'Setz Datenschutz im Unternehmen sicher um: Du lernst DSGVO und BDSG, Verarbeitungsverzeichnis, Betroffenenrechte, Maßnahmen, Datenpannen und Datenschutz beim KI-Einsatz – live-online an 12 Abenden.'
 status: entwurf
 art: kurs
 ue: 48
-dauer: ca. 8 Wochen
-zeiten: Mo + Mi, 18:00–20:30 Uhr
+dauer: ca. 6 Wochen (12 Abende)
+zeiten: Mo + Mi, 17:00–20:00 Uhr
 preis:
-  betrag: 1390
+  betrag: 399
   hinweis: Inklusive Kursunterlagen, Mustervorlagen für Verzeichnis, Informationspflichten und Datenpannen sowie Zertifikat
-  raten: true
 zielgruppe:
 - Angehende Datenschutzbeauftragte
 - Datenschutzkoordinatorinnen und -koordinatoren in Unternehmen
@@ -60,8 +59,8 @@ faq:
   antwort: Nein. Du lernst, Datenschutz im Alltag zu organisieren und Risiken zu erkennen. In schwierigen Einzelfällen solltest du juristischen Rat einholen.
 - frage: Ist das ein IHK-Abschluss?
   antwort: Nein. Mit dem Zertifikat der waybuild Akademie halten wir Inhalte und Umfang der 48 Unterrichtseinheiten fest. Einen öffentlich-rechtlichen Abschluss und eine Benennung zur Datenschutzbeauftragten Person ersetzt es nicht.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis – zum Beispiel in zwei Monatsraten über die Kursdauer. Den Ratenplan findest du in deiner Rechnung.
+- frage: Wie bezahle ich den Kurs?
+  antwort: 'In einem Betrag per Überweisung, sobald du die Rechnung per E-Mail bekommen hast. Zahlt dein Betrieb, wähle bei der Anmeldung „Mein Betrieb zahlt“.'
 reihenfolge: 32
 ---
 
@@ -75,6 +74,6 @@ In diesem Kurs lernst du, Datenschutz in einem Unternehmen sicher zu organisiere
 - eine Datenpanne bewerten und den Meldeweg einhalten
 - den Einsatz von KI-Werkzeugen datenschutzrechtlich einordnen
 
-Der Kurs läuft an 16 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis erklären jede Regel an einem Fall aus dem Unternehmensalltag, danach löst du im Live-Termin ähnliche Fälle selbst und wir besprechen die Lösungen gemeinsam. Über den Kurs hinweg entsteht in den Live-Terminen dein Projekt für einen Beispielbetrieb.
+Der Kurs läuft an 12 Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis erklären jede Regel an einem Fall aus dem Unternehmensalltag, danach löst du im Live-Termin ähnliche Fälle selbst und wir besprechen die Lösungen gemeinsam. Über den Kurs hinweg entsteht in den Live-Terminen dein Projekt für einen Beispielbetrieb.
 
 Der Kurs passt zu dir, wenn du Datenschutz in deinem Unternehmen koordinierst oder diese Aufgabe übernehmen sollst.

@@ -7,12 +7,18 @@ kurzbeschreibung: 'Übernimm Verantwortung in der Immobilienwirtschaft: Du lerns
 status: entwurf
 art: kurs
 ue: 600
-dauer: ca. 13 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 12 Monate (150 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3590
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3737
+  hinweis: "Gesamtpreis für alle 13 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 13
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 6
+      betrag: 149
 zielgruppe:
 - Immobilienkaufleute mit Berufserfahrung
 - Mitarbeitende aus Hausverwaltung, Vermietung, Makler- oder Bauträgerunternehmen
@@ -62,13 +68,13 @@ faq:
   antwort: Schon bei der ersten schriftlichen Prüfungsleistung. Das Thema darf aus jedem Handlungsbereich kommen. Mögliche Themen sammeln wir rechtzeitig vorher im Live-Unterricht.
 - frage: Was ist mit der AEVO?
   antwort: Nach der Fortbildungsordnung ersetzt die bestandene Prüfung den schriftlichen Teil der Ausbildereignungsprüfung. Wenn du den AEVO-Nachweis möchtest, legst du bei der IHK noch den praktischen Teil ab.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Immobilienfachwirt/in“ in 13 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 13 Abschnitte aufgeteilt: 12 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 6 Abenden für 149 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.737 €.'
 reihenfolge: 44
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Immobilienfachwirt bzw. zur Geprüften Immobilienfachwirtin vor. Er folgt den sechs Handlungsbereichen der Prüfungsverordnung und deckt damit die ganze Breite der Immobilienwirtschaft ab – von Recht und Markt über Bewirtschaftung und Bauprojekte bis zu Vertrieb, Unternehmenssteuerung und Personal.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Hausverwaltung, Maklerbüro und Bauträger – etwa einer Betriebskostenabrechnung, einer Projektkalkulation oder einem Vermittlungsauftrag. Die schriftlichen Prüfungsteile üben wir an den Samstagen unter Zeitvorgabe.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Hausverwaltung, Maklerbüro und Bauträger – etwa einer Betriebskostenabrechnung, einer Projektkalkulation oder einem Vermittlungsauftrag. Die schriftlichen Prüfungsteile üben wir an eigenen Übungsabenden unter Zeitvorgabe.
 
 Der Lehrgang passt zu dir, wenn du in Verwaltung, Vermietung, Vertrieb oder Projektentwicklung arbeitest und eine Fach- oder Führungsrolle anstrebst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

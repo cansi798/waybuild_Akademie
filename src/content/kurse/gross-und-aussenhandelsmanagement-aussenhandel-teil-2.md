@@ -3,16 +3,15 @@ saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute für Groß- und Außenhandelsmanagement – Teil 2 Außenhandel
 untertitel: Vorbereitung auf Teil 2 der IHK-Abschlussprüfung, Fachrichtung Außenhandel
-kurzbeschreibung: Übe Außenhandelsgeschäfte mit Incoterms, Zahlungssicherung und Fremdsprache, die kaufmännische Steuerung und WiSo an Fällen im Stil der Prüfung. Live online an zehn Abenden.
+kurzbeschreibung: Übe Außenhandelsgeschäfte mit Incoterms, Zahlungssicherung und Fremdsprache, die kaufmännische Steuerung und WiSo an Fällen im Stil der Prüfung. Live online an acht Abenden.
 status: entwurf
 art: kurs
-ue: 30
-dauer: ca. 5 Wochen (10 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+ue: 32
+dauer: ca. 5 Wochen (8 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 299
+  betrag: 249
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende in der Fachrichtung Außenhandel vor Teil 2
   - Umschülerinnen und Umschüler mit Schwerpunkt Außenhandel
@@ -47,19 +46,19 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: aussenhandel-t2-2027-sommer
-    start: 2027-03-16
+    start: 2027-03-23
     ende: 2027-04-20
     pruefung: 2027-04-27
     pruefungHinweis: Schriftliche Prüfung Teil 2 am 27. und 28.04.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-03-09
+    anmeldeschluss: 2027-03-16
     ausfall:
       - 2027-03-25
   - id: aussenhandel-t2-2027-winter
-    start: 2027-10-14
+    start: 2027-10-21
     ende: 2027-11-16
     pruefung: 2027-11-23
     pruefungHinweis: Schriftliche Prüfung Teil 2 am 23. und 24.11.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-10-07
+    anmeldeschluss: 2027-10-14
 faq:
   - frage: Muss ich gut Englisch können?
     antwort: Die Ausbildungsordnung verlangt, Außenhandelsgeschäfte auch in einer Fremdsprache abzuwickeln. Wir üben typische englische Geschäftsbriefe, Anfragen und Fachbegriffe. Schulenglisch als Basis reicht für den Kurs.

@@ -7,12 +7,18 @@ kurzbeschreibung: 'Mach Zahlen zur Grundlage von Entscheidungen: Du lernst Koste
 status: entwurf
 art: kurs
 ue: 520
-dauer: ca. 11 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 10 Monate (130 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3290
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3239
+  hinweis: "Gesamtpreis für alle 11 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 11
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 10
+      betrag: 249
 zielgruppe:
 - Fachkräfte aus Rechnungswesen, Buchhaltung und Finanzen
 - Mitarbeitende, die ins Controlling wechseln wollen
@@ -64,13 +70,13 @@ faq:
   antwort: Du schlägst dem Prüfungsausschuss zwei Themen aus deiner Controllingpraxis vor, daraus formuliert er die Aufgabe. Du hast 30 Kalendertage Zeit und bereitest das Ergebnis auch als Beratungsleistung für das Management auf. Wie du Themen auswählst und gliederst, besprechen wir live im Kurs.
 - frage: Brauche ich Vorkenntnisse in Buchführung?
   antwort: Ja, sichere Grundlagen im Rechnungswesen solltest du mitbringen. Wenn sie eingerostet sind, hilft dir unser Kurs „Rechnungswesen kompakt“ vorab.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Controller/in“ lässt sich in 11 gleiche Monatsraten aufteilen, passend zu den rund 11 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 11 Abschnitte aufgeteilt: 10 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 10 Abenden für 249 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.239 €.'
 reihenfolge: 34
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Controller bzw. zur Geprüften Controllerin vor. Er folgt den sechs Handlungsbereichen der Prüfungsverordnung: Kostenmanagement, Planung und Budgetierung, Jahresabschlussanalyse und Berichtswesen für die schriftlichen Teile, Beratung sowie Führung und Moderation für Projektarbeit und Fachgespräch.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung rechnen Fälle mit dir durch, wie sie in der Prüfung vorkommen. Weil das Berichtswesen am Rechner geprüft wird, baust du Berichte und Auswertungen in der Tabellenkalkulation selbst auf, und wir besprechen die Ergebnisse gemeinsam am geteilten Bildschirm.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung rechnen Fälle mit dir durch, wie sie in der Prüfung vorkommen. Weil das Berichtswesen am Rechner geprüft wird, baust du Berichte und Auswertungen in der Tabellenkalkulation selbst auf, und wir besprechen die Ergebnisse gemeinsam am geteilten Bildschirm.
 
 Der Lehrgang passt zu dir, wenn du schon mit Zahlen arbeitest und künftig Unternehmensbereiche beraten und steuern willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

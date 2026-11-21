@@ -3,16 +3,15 @@ saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute im Einzelhandel – Teil 1
 untertitel: Verkauf und Werbemaßnahmen, Warenwirtschaft und Kalkulation, WiSo (Teil 1 der Abschlussprüfung)
-kurzbeschreibung: Übe die drei schriftlichen Bereiche von Teil 1 im Einzelhandel – Verkauf und Werbemaßnahmen, Warenwirtschaft und Kalkulation sowie WiSo. Live online an zwölf Abenden.
+kurzbeschreibung: Übe die drei schriftlichen Bereiche von Teil 1 im Einzelhandel – Verkauf und Werbemaßnahmen, Warenwirtschaft und Kalkulation sowie WiSo. Live online an neun Abenden.
 status: entwurf
 art: kurs
 ue: 36
-dauer: ca. 6 Wochen (12 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+dauer: ca. 5 Wochen (9 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 349
+  betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende Kaufleute im Einzelhandel am Ende des zweiten Ausbildungsjahres
   - Auszubildende Verkäuferinnen und Verkäufer vor der Abschlussprüfung
@@ -43,19 +42,19 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: einzelhandel-t1-2027-sommer
-    start: 2027-03-09
+    start: 2027-03-18
     ende: 2027-04-20
     pruefung: 2027-04-27
     pruefungHinweis: Teil 1 im Einzelhandel am Dienstag, 27.04.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-03-02
+    anmeldeschluss: 2027-03-11
     ausfall:
       - 2027-03-25
   - id: einzelhandel-t1-2027-winter
-    start: 2027-10-07
+    start: 2027-10-19
     ende: 2027-11-16
     pruefung: 2027-11-23
     pruefungHinweis: Teil 1 im Einzelhandel am Dienstag, 23.11.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-09-30
+    anmeldeschluss: 2027-10-12
 faq:
   - frage: Warum ist Teil 1 im Einzelhandel im April und November?
     antwort: Anders als in vielen anderen kaufmännischen Berufen liegt Teil 1 hier am Ende des zweiten Ausbildungsjahres. Er findet deshalb an den Terminen im Frühsommer und im Winter statt, zusammen mit den Abschlussprüfungen.

@@ -3,16 +3,15 @@ saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute im Einzelhandel – Teil 2
 untertitel: Geschäftsprozesse im Einzelhandel und Fachgespräch (Teil 2 der Abschlussprüfung)
-kurzbeschreibung: Übe den schriftlichen Bereich „Geschäftsprozesse im Einzelhandel“ und bereite das Fachgespräch in deiner Wahlqualifikation vor. Live online an acht Abenden.
+kurzbeschreibung: Übe den schriftlichen Bereich „Geschäftsprozesse im Einzelhandel“ und bereite das Fachgespräch in deiner Wahlqualifikation vor. Live online an sechs Abenden.
 status: entwurf
 art: kurs
 ue: 24
-dauer: ca. 4 Wochen (8 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+dauer: ca. 3 Wochen (6 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 249
+  betrag: 199
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende Kaufleute im Einzelhandel vor Teil 2
   - Umschülerinnen und Umschüler im Einzelhandel
@@ -42,17 +41,17 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: einzelhandel-t2-2027-sommer
-    start: 2027-03-30
+    start: 2027-04-06
     ende: 2027-04-22
     pruefung: 2027-04-28
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-03-23
+    anmeldeschluss: 2027-03-30
   - id: einzelhandel-t2-2027-winter
-    start: 2027-10-26
+    start: 2027-11-02
     ende: 2027-11-18
     pruefung: 2027-11-24
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-10-19
+    anmeldeschluss: 2027-10-26
 faq:
   - frage: Warum gibt es in Teil 2 kein WiSo?
     antwort: Im Einzelhandel wird Wirtschafts- und Sozialkunde schon in Teil 1 geprüft. In Teil 2 schreibst du nur „Geschäftsprozesse im Einzelhandel“, dazu kommt das Fachgespräch.

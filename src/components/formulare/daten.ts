@@ -31,7 +31,6 @@ export interface FormKurs {
   dauer: string;
   zeiten: string;
   preis: number;
-  raten: boolean;
   pakete: FormPaket[];
   termine: FormTermin[];
 }
@@ -59,7 +58,6 @@ export function formKurs(kurs: Kurs, jetzt: Date = new Date()): FormKurs {
     dauer: d.dauer,
     zeiten: d.zeiten,
     preis: d.preis.betrag,
-    raten: d.preis.raten,
     pakete: (d.pakete ?? []).map((p) => ({ id: paketId(p.name), name: p.name, betrag: p.betrag, beschreibung: p.beschreibung })),
     termine: d.art === 'coaching'
       ? []

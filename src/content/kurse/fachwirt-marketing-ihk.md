@@ -7,12 +7,18 @@ kurzbeschreibung: 'Vom Umsetzen zum Steuern: Du entwickelst Marketingstrategien,
 status: entwurf
 art: kurs
 ue: 560
-dauer: ca. 12 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 11 Monate (140 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3390
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3488
+  hinweis: "Gesamtpreis für alle 12 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 12
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 8
+      betrag: 199
 zielgruppe:
 - Kaufleute für Marketingkommunikation mit ersten Berufsjahren
 - Fachkräfte aus Marketing, Kommunikation und Vertrieb
@@ -58,13 +64,13 @@ faq:
   antwort: Es muss mindestens einen Marketing-Prüfungsbereich mit „Kommunikation, Führung und Zusammenarbeit“ verknüpfen, etwa die Einführung einer neuen Markenstrategie im Team. Kurzbeschreibung und Gliederung reichst du zur zweiten schriftlichen Prüfungsleistung ein.
 - frage: Was ist mit der AEVO?
   antwort: Wer die Prüfung bestanden hat, ist laut Fortbildungsordnung vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Fachwirt/in für Marketing“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 12 gleiche Monatsraten über die Kursdauer von rund 12 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 12 Abschnitte aufgeteilt: 11 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 8 Abenden für 199 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.488 €.'
 reihenfolge: 31
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin für Marketing vor, seit 2023 mit der Bezeichnung Bachelor Professional in Marketing. Er folgt den vier Prüfungsbereichen der Fortbildungsordnung: Strategie, Konzepte und Projekte, Marketingcontrolling sowie Kommunikation, Führung und Zusammenarbeit.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Unternehmen und Agenturen: Du leitest aus Marktdaten eine Strategie ab, baust ein Konzept mit Budget und Kennzahlen und stellst es der Gruppe vor. An den Samstagen trainierst du die langen schriftlichen Aufgaben.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Unternehmen und Agenturen: Du leitest aus Marktdaten eine Strategie ab, baust ein Konzept mit Budget und Kennzahlen und stellst es der Gruppe vor. An eigenen Übungsabenden trainierst du die langen schriftlichen Aufgaben.
 
 Der Lehrgang passt zu dir, wenn du im Marketing arbeitest und Strategie, Budget und Team verantworten willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

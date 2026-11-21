@@ -3,16 +3,15 @@ saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute für Groß- und Außenhandelsmanagement – Teil 1
 untertitel: Organisieren des Warensortiments und von Dienstleistungen (Teil 1 der Abschlussprüfung)
-kurzbeschreibung: Übe den Prüfungsbereich von Teil 1 – Sortiment und Dienstleistungen organisieren, Angebote vergleichen, Kundenaufträge bearbeiten. Live online an acht Abenden.
+kurzbeschreibung: Übe den Prüfungsbereich von Teil 1 – Sortiment und Dienstleistungen organisieren, Angebote vergleichen, Kundenaufträge bearbeiten. Live online an sechs Abenden.
 status: entwurf
 art: kurs
 ue: 24
-dauer: ca. 4 Wochen (8 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+dauer: ca. 3 Wochen (6 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 249
+  betrag: 199
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende im Groß- und Außenhandelsmanagement beider Fachrichtungen vor Teil 1
   - Umschülerinnen und Umschüler in diesem Beruf
@@ -41,17 +40,17 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: gua-t1-2027-fruehjahr
-    start: 2027-01-26
+    start: 2027-02-02
     ende: 2027-02-18
     pruefung: 2027-02-24
     pruefungHinweis: Schriftliche Prüfung Teil 1 am Mittwoch, 24.02.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-01-19
+    anmeldeschluss: 2027-01-26
   - id: gua-t1-2027-herbst
-    start: 2027-08-31
+    start: 2027-09-07
     ende: 2027-09-23
     pruefung: 2027-09-29
     pruefungHinweis: Schriftliche Prüfung Teil 1 am Mittwoch, 29.09.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-08-24
+    anmeldeschluss: 2027-08-31
 faq:
   - frage: Ist Teil 1 für Groß- und Außenhandel gleich?
     antwort: Ja. Teil 1 ist für beide Fachrichtungen identisch. Erst in Teil 2 trennen sich die Prüfungen in Großhandel und Außenhandel.

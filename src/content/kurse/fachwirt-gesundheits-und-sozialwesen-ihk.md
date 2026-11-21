@@ -7,12 +7,18 @@ kurzbeschreibung: 'Übernimm Leitungsaufgaben in Pflege, Gesundheit oder Soziale
 status: entwurf
 art: kurs
 ue: 604
-dauer: ca. 13 Monate
-zeiten: Mo + Mi, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 12 Monate (151 Abende)
+zeiten: Mo, Mi + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3490
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3767
+  hinweis: "Gesamtpreis für alle 13 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 13
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 7
+      betrag: 179
 zielgruppe:
 - Fachkräfte aus Pflege, Arztpraxis, Klinik und Sozialeinrichtungen
 - Verwaltungskräfte im Gesundheits- und Sozialwesen
@@ -55,13 +61,16 @@ abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprü
 termine:
 - id: fachwirt-gesundheit-2027-mai
   start: 2027-05-03
-  ende: 2028-06-03
+  ende: 2028-05-08
   anmeldeschluss: 2027-04-26
   ausfall:
+  - 2027-05-06
   - 2027-05-17
+  - 2027-12-23
   - 2027-12-27
   - 2027-12-29
-  - 2028-01-01
+  - 2027-12-30
+  - 2028-04-13
   - 2028-04-17
   - 2028-05-01
 faq:
@@ -73,13 +82,13 @@ faq:
   antwort: Die Fortbildungsordnung sagt ausdrücklich, dass ehrenamtliche Tätigkeiten bei der Berufspraxis zu berücksichtigen sind. Wie viel davon angerechnet wird, entscheidet deine IHK.
 - frage: Was ist mit der AEVO?
   antwort: Nach bestandener Prüfung bist du vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Du kannst bei der IHK zusätzlich eine praktische Prüfung beantragen; mit ihr hast du die Ausbildereignung vollständig nachgewiesen.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Fachwirt/in im Gesundheits- und Sozialwesen“ lässt sich in 13 gleiche Monatsraten aufteilen, passend zu den rund 13 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 13 Abschnitte aufgeteilt: 12 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 7 Abenden für 179 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.767 €.'
 reihenfolge: 22
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Fachwirt bzw. zur Geprüften Fachwirtin im Gesundheits- und Sozialwesen vor. Er folgt den sechs Handlungsbereichen der Fortbildungsordnung – von der Organisation der Abläufe über Qualität, Schnittstellen und Finanzen bis zu Personalführung und Marketing.
 
-Der Unterricht läuft live per Video am Montag- und Mittwochabend und an jedem zweiten Samstagvormittag, immer in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Pflegedienst, Arztpraxis, Klinikverwaltung und sozialer Einrichtung. Die lange schriftliche Prüfung üben wir an den Samstagen in Etappen und werten die Lösungen gemeinsam aus.
+Der Unterricht läuft live per Video am Montag-, Mittwoch- und Donnerstagabend von 17:00 bis 20:00 Uhr, immer in derselben Gruppe. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Fällen aus Pflegedienst, Arztpraxis, Klinikverwaltung und sozialer Einrichtung. Die lange schriftliche Prüfung üben wir an eigenen Übungsabenden in Etappen und werten die Lösungen gemeinsam aus.
 
 Der Lehrgang passt zu dir, wenn du in Pflege, Gesundheit oder im sozialen Bereich arbeitest und mehr Verantwortung für Team, Qualität und Budget übernehmen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

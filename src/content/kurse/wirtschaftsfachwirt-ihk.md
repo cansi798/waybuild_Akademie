@@ -6,13 +6,19 @@ untertitel: Berufsbegleitende Vorbereitung auf die IHK-Prüfung „Geprüfte/r W
 kurzbeschreibung: 'Mach den nächsten Karriereschritt: Du lernst die wirtschaftsbezogenen Grundlagen und danach Management, Controlling, Logistik, Marketing und Führung – berufsbegleitend live-online.'
 status: entwurf
 art: kurs
-ue: 602
-dauer: ca. 13 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+ue: 604
+dauer: ca. 12 Monate (151 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3290
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3767
+  hinweis: "Gesamtpreis für alle 13 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 13
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 7
+      betrag: 179
 zielgruppe:
 - Kaufmännische Fachkräfte mit Berufserfahrung aus allen Branchen
 - Mitarbeitende, die Führungsaufgaben übernehmen wollen
@@ -67,14 +73,15 @@ abschluss: Teilnahmebescheinigung der waybuild Akademie; den Abschluss „Geprü
 termine:
 - id: wirtschaftsfachwirt-2027-maerz
   start: 2027-03-02
-  ende: 2028-04-04
+  ende: 2028-03-06
   anmeldeschluss: 2027-02-23
   ausfall:
   - 2027-03-25
-  - 2027-05-01
+  - 2027-03-29
   - 2027-05-06
+  - 2027-05-17
   - 2027-12-23
-  - 2027-12-25
+  - 2027-12-27
   - 2027-12-28
   - 2027-12-30
 faq:
@@ -86,13 +93,13 @@ faq:
   antwort: Teilweise. Wer Teil 2 bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Bei der IHK kannst du zusätzlich eine praktische Prüfung beantragen und hast dann die Ausbildereignung vollständig nachgewiesen.
 - frage: Was ist, wenn ich einen Termin verpasse?
   antwort: Gib uns kurz Bescheid. Die Kursunterlagen des Termins bekommst du trotzdem, und den Stoff kannst du nach Absprache in einem späteren Live-Termin nachholen.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Wirtschaftsfachwirt/in“ lässt sich in 13 gleiche Monatsraten aufteilen, passend zu den rund 13 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 13 Abschnitte aufgeteilt: 12 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 7 Abenden für 179 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.767 €.'
 reihenfolge: 11
 ---
 
 Der Lehrgang bereitet dich auf beide Teilprüfungen zum Geprüften Wirtschaftsfachwirt bzw. zur Geprüften Wirtschaftsfachwirtin vor. Im ersten Abschnitt arbeitest du die vier wirtschaftsbezogenen Qualifikationsbereiche durch, im zweiten die fünf Handlungsbereiche von betrieblichem Management über Controlling, Logistik und Marketing bis zu Führung und Zusammenarbeit.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung rechnen, diskutieren und präsentieren mit dir an Fällen aus Unternehmen verschiedener Branchen. Vor jeder Teilprüfung trainierst du an den Samstagen Klausuren unter Zeitvorgabe, und wir besprechen die Lösungswege anschließend gemeinsam.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr in einer festen Gruppe. Dozenten mit IHK-Prüfer-Erfahrung rechnen, diskutieren und präsentieren mit dir an Fällen aus Unternehmen verschiedener Branchen. Vor jeder Teilprüfung trainierst du an eigenen Übungsabenden Klausuren unter Zeitvorgabe, und wir besprechen die Lösungswege anschließend gemeinsam.
 
 Der Lehrgang passt zu dir, wenn du kaufmännisch arbeitest und mehr Verantwortung übernehmen willst – ohne deinen Job zu unterbrechen. Zur Prüfung meldest du dich selbst bei deiner IHK an.

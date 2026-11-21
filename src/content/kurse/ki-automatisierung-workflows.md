@@ -3,16 +3,15 @@ saeule: akademie
 kategorie: KI
 titel: KI-Automatisierung und Workflows
 untertitel: Abläufe mit KI-Bausteinen, Agenten und Automatisierungs-Werkzeugen verbinden
-kurzbeschreibung: 'Lass wiederkehrende Abläufe automatisch laufen: Du baust Workflows mit KI-Bausteinen, verbindest Mail, Tabellen und Formulare und setzt Agenten kontrolliert ein – live-online an 12 Abenden.'
+kurzbeschreibung: 'Lass wiederkehrende Abläufe automatisch laufen: Du baust Workflows mit KI-Bausteinen, verbindest Mail, Tabellen und Formulare und setzt Agenten kontrolliert ein – live-online an 9 Abenden.'
 status: entwurf
 art: kurs
 ue: 36
-dauer: ca. 6 Wochen
-zeiten: Di + Do, 18:00–20:30 Uhr
+dauer: ca. 5 Wochen (9 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 990
+  betrag: 299
   hinweis: Inklusive Kursunterlagen, Workflow-Vorlagen und Zertifikat
-  raten: false
 zielgruppe:
 - Fachkräfte, die Abläufe im Unternehmen verbessern wollen
 - Teams aus Verwaltung, Vertrieb und Marketing
@@ -54,7 +53,7 @@ abschluss: Zertifikat der waybuild Akademie
 termine:
 - id: ki-automatisierung-2027-april
   start: 2027-04-13
-  ende: 2027-05-25
+  ende: 2027-05-13
   anmeldeschluss: 2027-04-06
   ausfall:
   - 2027-05-06
@@ -80,6 +79,6 @@ In diesem Kurs lernst du, wiederkehrende Abläufe mit Automatisierungs-Werkzeuge
 - einschätzen, wo ein Agent hilft und wo ein Mensch freigeben muss
 - Zugangsdaten, Datenschutz und Kosten im Betrieb im Griff behalten
 
-Der Kurs läuft an zwölf Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis bauen jeden Schritt am geteilten Bildschirm vor, danach baust du ihn im Live-Termin selbst nach und wir besprechen Fehler direkt gemeinsam. In den letzten Terminen entsteht dein eigenes Projekt.
+Der Kurs läuft an neun Abenden live per Video in einer festen Gruppe. Dozenten mit langjähriger Praxis bauen jeden Schritt am geteilten Bildschirm vor, danach baust du ihn im Live-Termin selbst nach und wir besprechen Fehler direkt gemeinsam. In den letzten Terminen entsteht dein eigenes Projekt.
 
 Der Kurs passt zu dir, wenn du viele Routineaufgaben hast und sie Schritt für Schritt automatisieren willst – auch ohne Programmierkenntnisse.

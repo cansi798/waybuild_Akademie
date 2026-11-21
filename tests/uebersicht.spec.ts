@@ -37,8 +37,8 @@ test.describe('Kursübersicht (Vorschau-Build)', () => {
     // Zeile: Titel-Link, Umfang, Preis, Start bzw. „Termin folgt“
     const ap1 = page.locator('[data-kurszeile="ap1-it-berufe"]');
     await expect(ap1.getByRole('link')).toHaveAttribute('href', /\/kurse\/ap1-it-berufe\/$/);
-    await expect(ap1).toContainText('35 UE');
-    await expect(ap1).toContainText('349 €');
+    await expect(ap1).toContainText('36 UE');
+    await expect(ap1).toContainText('299 €');
     await expect(page.locator('[data-kurszeile="webentwicklung-html-css-javascript"]')).toContainText('Termin folgt');
     // Entwürfe: kleines Badge nur an Entwürfen
     await expect(page.locator('[data-kurszeile="ap2-fachinformatiker-anwendungsentwicklung"] [data-entwurf-marke]')).toBeVisible();

@@ -45,7 +45,7 @@ Ein Pfeil mit leerer Spitze bedeutet „ist eine besondere Art von“ (eine Firm
 |---|---|---|---|
 | **Kurs** | Ein Angebot der Akademie, z. B. „Vorbereitung auf die IHK-Prüfung AP1 – IT-Berufe“. Adresse `/kurse/<slug>/`. | `saeule`, `kategorie`, `titel`, `kurzbeschreibung` (≤ 220 Zeichen), `status` (entwurf/freigegeben), `art` (kurs/coaching), `ue`, `dauer`, `zeiten`, `zielgruppe`, `voraussetzungen`, `abschluss`, `reihenfolge`, Beschreibung als Fließtext | US-03, US-04, US-05, US-21, NFA-16 |
 | **Termin** (Durchführung) | Ein konkreter Kursdurchgang mit Start- und Enddatum. | `id` (z. B. `ap1-2027-fruehjahr`), `start`, `ende`, `pruefung` (IHK-Prüfungstag), `pruefungHinweis`, `anmeldeschluss`, `ausfall` (entfallende Tage) | US-07, US-25, US-28 |
-| **Preis** | Teilnahmegebühr je Person als Endpreis. | `betrag`, `hinweis` (z. B. „inkl. Lernmaterial“), `raten` (Ratenzahlung möglich ja/nein) | US-03, NFA-21 |
+| **Preis** | Teilnahmegebühr je Person als Endpreis. | `betrag`, `hinweis` (z. B. „inkl. Lernmaterial“), `abschnitte` (nur lange IHK-Weiterbildungen: Anzahl, Abende und Preis je Abschnitt) | US-03, NFA-21 |
 | **Paket** | Nur beim Coaching: buchbare Pakete (z. B. Einzelcoaching, 3er-Paket, Intensivbegleitung, je 60 Minuten). | `name`, `betrag`, `beschreibung` | US-15 |
 | **Modul** (Inhaltsblock) | Gliederung der Kursinhalte, z. B. „Netzwerke“ mit Stichpunkten. | `titel`, `punkte` | US-04 |
 | **FAQ** | Kursbezogene Frage mit Antwort. | `frage`, `antwort` | US-17 |
@@ -108,7 +108,7 @@ Schritte im Backoffice (außerhalb der Website):
 2. **Prüfung:** Angaben vollständig und plausibel? Sonst Rückfrage per E-Mail (Antwort auf die Anmelde-E-Mail geht direkt an die Person).
 3. **Durchführung entscheiden:** spätestens 10 Tage vor Start (GR-08); bei Absage weiter mit P-03.
 4. **Rechnung** an die Privatperson oder an die Rechnungs-E-Mail der Firma, mit Vorgangsnummer und ggf. Bestellnummer;
-   bei langen Weiterbildungen auf Wunsch als Ratenplan (GR-09).
+   bei langen Weiterbildungen je gebuchtem Abschnitt eine eigene Rechnung (GR-09).
 5. **Zahlungseingang** prüfen.
 6. **Zugangsdaten zum Live-Raum** vor Kursbeginn per E-Mail an jede teilnehmende Person (nie auf der Website, US-09 AK2).
 
@@ -153,7 +153,7 @@ Schritte im Backoffice (außerhalb der Website):
 | GR-06 | **Ersatzperson:** Statt der angemeldeten Person darf jederzeit vor Kursbeginn kostenlos eine Ersatzperson teilnehmen (Mitteilung per E-Mail). | Teilnahmebedingungen, FAQ | US-20 |
 | GR-07 | **Verbindlichkeit (geändert 21.11.2026, #6771):** Das Formular ist eine unverbindliche Buchungsanfrage. Der Vertrag kommt ausschließlich per E-Mail zustande: Buchungsangebot des Teams (Vorlage A, `docs/vorlagen/buchung-mails.md`) → Zusage der Person → Buchungsbestätigung (Annahme, Vorlage B). Interesse vormerken (mit Double-Opt-in), Coaching- und Kontaktanfragen sind ebenfalls unverbindlich. | Formulartexte, Danke-Seite | US-10, US-14, US-15 AK4 |
 | GR-08 | **Absage durch die Akademie:** bis 10 Tage vor Kursstart möglich; Angemeldete erhalten volle Erstattung oder wechseln kostenlos auf einen anderen Termin. | Teilnahmebedingungen, Prozess P-03 | – |
-| GR-09 | **Ratenzahlung** bei langen Weiterbildungen (Kursfeld `preis.raten = true`) ohne Aufpreis; Ratenplan steht in der Rechnung. Hinweis auf Kursseite und im Formular. | Inhaltsdatei, Kursseite, Rechnung | – |
+| GR-09 | **Keine Ratenzahlung (geändert 21.11.2026, Can #6801; Verbraucherkreditrecht ab 20.11.2026).** Lange IHK-Weiterbildungen sind in Abschnitte geteilt (Kursfeld `preis.abschnitte`); jeder Abschnitt wird einzeln gebucht und mit eigener Rechnung bezahlt. Hinweis auf der Kursseite und in den Teilnahmebedingungen. | Inhaltsdatei, Kursseite, Rechnung | – |
 | GR-10 | **Entwürfe nur in der Vorschau:** Neue Kurse starten mit `status: entwurf`. Entwürfe erscheinen nur in der Vorschau (gelbes Band, nicht buchbar) und nirgends im Live-Build – weder als Seite noch in Katalog, Terminen, Countdown, Sitemap oder strukturierten Daten. | Build, Tests | US-22, NFA-19 |
 | GR-11 | **Vergangene Termine ausblenden:** Termine mit abgelaufenem Anmeldeschluss werden nicht als buchbar gezeigt; die Website wird täglich neu erzeugt. Der Formular-Endpunkt lehnt Anmeldungen zu abgelaufenen Terminen zusätzlich ab. | Build, Endpunkt | US-25 |
 | GR-12 | **Preise sind Endpreise** in Euro („inkl. aller Kosten“, inklusive ggf. anfallender Umsatzsteuer). Kein Hinweis „umsatzsteuerfrei“, solange keine Befreiung vorliegt. Die IHK-Prüfungsgebühr ist nie enthalten – das steht bei jedem IHK-Kurs. | Kurskarte, Kursseite, Formular | NFA-21, US-04 AK4 |
@@ -410,7 +410,7 @@ bzw. Nachricht (Kontakt, 10–2.000 Zeichen, „Bitte schreib uns kurz, worum es
 
 Aus den offenen Fragen des Anforderungsdokuments sind entschieden: Eingangsbestätigung (ja), Formular-Versand (PHP auf
 ALL-INKL), bis 5 Personen mit 10 % ab 3 Personen, Pflichtangaben Betrieb, Absage- und Stornoregeln, Anmeldeschluss,
-Ratenzahlung (ja), Plätze-Anzeige (zunächst nicht), Vertrauensaussagen (nur „Dozenten mit IHK-Prüfer-Erfahrung“),
+Ratenzahlung (nein, stattdessen einzeln buchbare Abschnitte – geändert 21.11.2026), Plätze-Anzeige (zunächst nicht), Vertrauensaussagen (nur „Dozenten mit IHK-Prüfer-Erfahrung“),
 Reichweitenmessung (zunächst keine), Weiterleitung top-abschluss.de (auf die Prüfungsvorbereitung).
 
 Noch offen:

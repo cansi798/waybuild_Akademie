@@ -3,16 +3,15 @@ saeule: ihk-pruefung
 kategorie: Kaufmännische Berufe
 titel: Kaufleute im E-Commerce – Teil 2
 untertitel: Geschäftsprozesse, Kundenkommunikation und WiSo (Teil 2 der Abschlussprüfung)
-kurzbeschreibung: Übe die drei schriftlichen Bereiche von Teil 2 – Geschäftsprozesse im E-Commerce, Kundenkommunikation und WiSo – an Fällen im Stil der Prüfung. Live online an zehn Abenden.
+kurzbeschreibung: Übe die drei schriftlichen Bereiche von Teil 2 – Geschäftsprozesse im E-Commerce, Kundenkommunikation und WiSo – an Fällen im Stil der Prüfung. Live online an acht Abenden.
 status: entwurf
 art: kurs
-ue: 30
-dauer: ca. 5 Wochen (10 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+ue: 32
+dauer: ca. 4 Wochen (8 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 299
+  betrag: 249
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende Kaufleute im E-Commerce vor Teil 2
   - Umschülerinnen und Umschüler im Onlinehandel
@@ -48,19 +47,17 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: e-commerce-t2-2027-sommer
-    start: 2027-03-18
+    start: 2027-03-30
     ende: 2027-04-22
     pruefung: 2027-04-28
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-03-11
-    ausfall:
-      - 2027-03-25
+    anmeldeschluss: 2027-03-23
   - id: e-commerce-t2-2027-winter
-    start: 2027-10-19
+    start: 2027-10-26
     ende: 2027-11-18
     pruefung: 2027-11-24
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-10-12
+    anmeldeschluss: 2027-10-19
 faq:
   - frage: Wie verteilen sich die Noten in Teil 2?
     antwort: Geschäftsprozesse im E-Commerce zählen 30 %, Kundenkommunikation 15 %, WiSo 10 % und das Fachgespräch 20 %. Die übrigen 25 % stammen aus Teil 1.

@@ -45,15 +45,15 @@ function tag(int $plus): string { return (new DateTimeImmutable('today'))->modif
 // Terminliste (S-06) mit Daten relativ zu heute
 file_put_contents(API . '/termine.json', json_encode(['version' => 1, 'erzeugt' => date('c'), 'kurse' => [
     'testkurs' => ['titel' => 'Vorbereitung auf die IHK-Prüfung AP1', 'art' => 'kurs', 'status' => 'freigegeben', 'ue' => 35, 'dauer' => 'ca. 5 Wochen',
-        'zeiten' => 'Di + Do, 18:00–20:45 Uhr', 'preis' => 349, 'raten' => false, 'pakete' => [], 'termine' => [
+        'zeiten' => 'Di + Do, 18:00–20:45 Uhr', 'preis' => 349, 'pakete' => [], 'termine' => [
             ['id' => 'spaet', 'start' => tag(40), 'ende' => tag(70), 'anmeldeschluss' => tag(33), 'pruefung' => tag(75)],
             ['id' => 'bald', 'start' => tag(10), 'ende' => tag(40), 'anmeldeschluss' => tag(3), 'pruefung' => null],
             ['id' => 'zu', 'start' => tag(5), 'ende' => tag(30), 'anmeldeschluss' => tag(-2), 'pruefung' => null],
         ]],
-    'entwurfkurs' => ['titel' => 'Entwurf', 'art' => 'kurs', 'status' => 'entwurf', 'ue' => 10, 'dauer' => 'x', 'zeiten' => 'x', 'preis' => 99, 'raten' => true, 'pakete' => [],
+    'entwurfkurs' => ['titel' => 'Entwurf', 'art' => 'kurs', 'status' => 'entwurf', 'ue' => 10, 'dauer' => 'x', 'zeiten' => 'x', 'preis' => 99, 'pakete' => [],
         'termine' => [['id' => 'e1', 'start' => tag(40), 'ende' => tag(50), 'anmeldeschluss' => tag(33), 'pruefung' => null]]],
     'coaching' => ['titel' => 'Individuelles Prüfungscoaching', 'art' => 'coaching', 'status' => 'freigegeben', 'ue' => null, 'dauer' => 'je 60 Minuten', 'zeiten' => 'flexibel',
-        'preis' => 69, 'raten' => false, 'termine' => [], 'pakete' => [
+        'preis' => 69, 'termine' => [], 'pakete' => [
             ['id' => 'einzelcoaching', 'name' => 'Einzelcoaching', 'betrag' => 69, 'beschreibung' => '1 × 60 Minuten'],
             ['id' => 'coaching-paket', 'name' => 'Coaching-Paket', 'betrag' => 189, 'beschreibung' => '3 × 60 Minuten'],
         ]],

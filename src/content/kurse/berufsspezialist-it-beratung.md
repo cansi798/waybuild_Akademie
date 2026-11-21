@@ -7,12 +7,15 @@ kurzbeschreibung: 'Berate Kunden auf Augenhöhe: Du gewinnst und betreust Kunden
 status: entwurf
 art: kurs
 ue: 240
-dauer: ca. 11 Monate
-zeiten: Di, 18:00–21:15 Uhr, dazu ein Samstag im Monat 09:00–14:15 Uhr
+dauer: ca. 7 Monate (60 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3790
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 1495
+  hinweis: "Gesamtpreis für alle 5 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 5
+    abende: 12
+    betrag: 299
 zielgruppe:
 - IT-Fachkräfte mit Kundenkontakt in Beratung, Vertrieb oder Support
 - Kaufleute für IT-System-Management oder Digitalisierungsmanagement nach der Ausbildung
@@ -66,6 +69,6 @@ reihenfolge: 27
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Berufsspezialisten bzw. zur Geprüften Berufsspezialistin für IT-Beratung vor. Die sechs Qualifikationsschwerpunkte der Fortbildungsordnung reichen von Kundengewinnung und Stakeholdermanagement über Angebote und Verträge bis zur Betreuung im laufenden Betrieb.
 
-Der Unterricht läuft jeden Dienstagabend und an einem Samstag im Monat live per Video. Dozenten mit IHK-Prüfer-Erfahrung bringen Fälle aus Beratungsprojekten mit: Du analysierst Kundenbedarf, baust ein Angebot auf und übst Beratungsgespräche in kleinen Runden. Die Samstage nutzen wir für Prüfungsaufgaben unter Zeitvorgabe.
+Der Unterricht läuft am Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr live per Video. Dozenten mit IHK-Prüfer-Erfahrung bringen Fälle aus Beratungsprojekten mit: Du analysierst Kundenbedarf, baust ein Angebot auf und übst Beratungsgespräche in kleinen Runden. Eigene Übungsabende nutzen wir für Prüfungsaufgaben unter Zeitvorgabe.
 
 Der Lehrgang passt zu dir, wenn du in der IT mit Kunden arbeitest und diese Rolle fachlich festigen willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.

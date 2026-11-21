@@ -133,7 +133,7 @@ stehen im [Testdokument](06-tests.md#5-bekannte-grenzen).
 
 | Punkt | Was fehlt | Zuständig | Bezug |
 |---|---|---|---|
-| **Anwaltsprüfung** | Prüfung von Impressum, Datenschutz, Teilnahmebedingungen (Storno, Absage, Raten, Kündigung langer Lehrgänge), Widerrufsbelehrung, Wertersatz-Wortlaut, Altersbestätigung, Vertragspartner bei „Betrieb zahlt“, Fernunterrichtsfrage; danach `RECHT_GEPRUEFT = true` | Geschäftsführung mit Rechtsberatung | R-01, R-02, R-10, TD-01, TD-08 |
+| **Anwaltsprüfung** | Prüfung von Impressum, Datenschutz, Teilnahmebedingungen (Storno, Absage, Abschnitte langer Lehrgänge, Kündigung), Widerrufsbelehrung, Wertersatz-Wortlaut, Altersbestätigung, Vertragspartner bei „Betrieb zahlt“, Fernunterrichtsfrage; danach `RECHT_GEPRUEFT = true` | Geschäftsführung mit Rechtsberatung | R-01, R-02, R-10, TD-01, TD-08 |
 | **Firmendaten** | Telefonnummer, Registergericht, Registernummer, USt-IdNr. für Impressum und Kontaktseite | Geschäftsführung | TD-01 |
 | **Kursentwürfe freigeben** | 40 Entwürfe fachlich und sprachlich prüfen (Schablonentexte individualisieren, Rahmenpläne abgleichen), Preise festlegen, freigeben | Redaktion, Geschäftsführung | US-23, TD-06 |
 | **Umsatzsteuer** | Bescheinigung zur Umsatzsteuerbefreiung von Bildungsleistungen ist beantragt; Preise bleiben Endpreise „alles inklusive“ | Geschäftsführung mit Steuerberatung | R-03, TD-02 |

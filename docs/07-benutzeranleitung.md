@@ -63,7 +63,7 @@ Jede Änderung wird mit Datum und Namen gespeichert. So ist zum Beispiel jede Fr
 - **Einrückungen sind wichtig.** Eingerückt wird nur mit Leerzeichen (zwei pro Stufe), nicht mit der Tab-Taste.
 - Ein Datum hat immer die Form **Jahr-Monat-Tag**, z. B. `2027-01-19`.
 - Beträge stehen ohne €-Zeichen. Cent werden mit Punkt geschrieben: `349` oder `59.90`.
-- Texte mit Doppelpunkt oder Anführungszeichen setzt man in Anführungszeichen: `zeiten: "Di + Do, 18:00–20:45 Uhr"`.
+- Texte mit Doppelpunkt oder Anführungszeichen setzt man in Anführungszeichen: `zeiten: "Di + Do, 17:00–20:00 Uhr"`.
 
 Wenn ein Feld fehlt oder falsch ist, **stoppt der Bau** mit einer Fehlermeldung. Die Website bleibt dann auf dem alten Stand. Es kann also nichts Halbfertiges online gehen (NFA-17). Mehr dazu in [A12](#a12-wenn-etwas-nicht-klappt).
 
@@ -115,16 +115,35 @@ Der Preis steht im Datenkopf unter `preis:`.
 
 ```yaml
 preis:
-  betrag: 349
+  betrag: 299
   hinweis: "Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die Prüfungsgebühr deiner IHK ist nicht enthalten."
-  raten: false
 ```
 
 | Feld | Bedeutung | Beispiel |
 |---|---|---|
-| `betrag` | Teilnahmegebühr je Person in Euro, Endpreis | `349` |
+| `betrag` | Teilnahmegebühr je Person in Euro, Endpreis (bei Abschnitten: Summe aller Abschnitte) | `299` |
 | `hinweis` | Kurzer Text unter dem Preis | siehe oben |
-| `raten` | Ratenzahlung möglich (`true`) oder nicht (`false`) | `false` |
+| `abschnitte` | Nur lange IHK-Weiterbildungen: einzeln buchbare und bezahlbare Abschnitte (siehe unten) | – |
+
+Preisstaffel (Kalkulation 21.11.2026, Fassung 2): 149 € bis 4 Abende, 199 € bis 6, 249 € bis 8, 299 € bis 12 Abende.
+IT-Praxiskurse (Datenschutz, Webentwicklung, KI-Manager, IT-Sicherheit, Datenanalyse): 399 € je 12 Abende.
+Ein Abend = 17:00–20:00 Uhr = 4 UE à 45 Minuten, die kurze Pause in der Mitte zählt mit.
+
+Lange IHK-Weiterbildungen (über 24 Abende) sind in Abschnitte à 12 Abende geteilt. Jeden Abschnitt buchen und bezahlen
+Teilnehmende einzeln, eine Rechnung je Abschnitt:
+
+```yaml
+preis:
+  betrag: 3767          # Summe aller Abschnitte
+  hinweis: "Gesamtpreis für alle 13 Abschnitte – …"
+  abschnitte:
+    anzahl: 13          # Abschnitte insgesamt
+    abende: 12          # Abende je Abschnitt
+    betrag: 299         # Preis je Abschnitt
+    letzter:            # nur wenn der letzte Abschnitt kürzer ist
+      abende: 7
+      betrag: 179
+```
 
 Beim Coaching stehen die Preise je Paket unter `pakete:` (Feld `betrag` je Paket).
 
@@ -238,7 +257,7 @@ Ein neuer Kurs entsteht durch eine **neue Datei**. Am Code muss nichts geändert
 | `art` | ja | `kurs` oder `coaching` |
 | `ue` | nein | Unterrichtseinheiten à 45 Minuten, ganze Zahl |
 | `dauer` | ja | z. B. „ca. 8 Wochen“ |
-| `zeiten` | ja | z. B. „Di + Do, 18:00–21:15 Uhr“ |
+| `zeiten` | ja | z. B. „Di + Do, 17:00–20:00 Uhr“ (Unterricht immer 17:00–20:00 Uhr = 4 UE je Abend) |
 | `preis` | ja | siehe [A3](#a3-preis-ändern) |
 | `pakete` | nein | nur beim Coaching |
 | `zielgruppe` | ja | Liste, je Zeile ein Punkt mit `-` |
@@ -262,11 +281,10 @@ status: entwurf
 art: kurs
 ue: 32
 dauer: ca. 4 Wochen
-zeiten: "Di + Do, 18:00–21:15 Uhr"
+zeiten: "Di + Do, 17:00–20:00 Uhr"
 preis:
-  betrag: 590
+  betrag: 249
   hinweis: "Endpreis, alles inklusive: Live-Unterricht und Unterlagen."
-  raten: false
 zielgruppe:
   - Erste Zielgruppe
   - Zweite Zielgruppe
@@ -438,9 +456,9 @@ Gleichzeitig prüfen, ob Texte auf anderen Seiten angepasst werden müssen (FAQ 
 6. **Rechnung schreiben** (erst nach der Buchungsbestätigung) – an die Privatperson oder an die Rechnungs-E-Mail der Firma.
    - Vorgangsnummer und ggf. Bestellnummer angeben.
    - Fälligkeit laut Teilnahmebedingungen.
-   - Bei langen Weiterbildungen mit `raten: true` auf Wunsch einen Ratenplan.
+   - Bei langen Weiterbildungen in Abschnitten: eine Rechnung je gebuchtem Abschnitt. Ratenzahlung bieten wir nicht an.
 7. **Zahlungseingang** prüfen.
-8. **Zugang zum Live-Raum:** Vor Kursbeginn jeder teilnehmenden Person einzeln per E-Mail schicken. Der Zugangslink steht nie auf der Website.
+8. **Zugang zum Live-Raum:** Vor Kursbeginn jeder teilnehmenden Person einzeln per E-Mail schicken: persönlicher Nextcloud-Zugang und Link zum Live-Raum `https://nextcloud.waybuild.de/meeting/<raum>` (Raumname nur a–z, 0–9, Bindestrich). Der Unterricht läuft über unsere eigene Jitsi-Instanz, Gäste ohne Nextcloud-Anmeldung kommen nicht hinein. Der Zugangslink steht nie auf der Website.
 
 **Andere Mails**
 

@@ -7,12 +7,18 @@ kurzbeschreibung: 'Vom Facharbeiter zur Führungskraft in der Metallindustrie: D
 status: entwurf
 art: kurs
 ue: 760
-dauer: ca. 17 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 15 Monate (190 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4690
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 4734
+  hinweis: "Gesamtpreis für alle 16 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 16
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 10
+      betrag: 249
 zielgruppe:
 - Fachkräfte aus Metallberufen mit Berufserfahrung
 - Vorarbeiterinnen und Vorarbeiter, Schichtleitungen
@@ -62,13 +68,13 @@ faq:
   antwort: Vor dem Start hilft dir unser Vorkurs „Naturwissenschaftliche und technische Grundlagen“. Dort frischst du Rechnen, Formeln und Physik für den Prüfungsbereich „Naturwissenschaftliche und technische Gesetzmäßigkeiten“ auf.
 - frage: Brauche ich den Ausbilderschein schon zu Beginn?
   antwort: Nein. Den Nachweis brauchst du erst vor Beginn der letzten Prüfungsleistung. Unseren AEVO-Kurs kannst du vorher oder nebenbei belegen.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis – zum Beispiel in 17 Monatsraten über die rund 17 Monate Kursdauer. Zahlt dein Arbeitgeber, stellen wir die Rechnung an das Unternehmen.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 16 Abschnitte aufgeteilt: 15 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 10 Abenden für 249 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 4.734 €.'
 reihenfolge: 50
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Industriemeister bzw. zur Geprüften Industriemeisterin der Fachrichtung Metall vor. Im ersten Teil arbeitest du die fünf Basisqualifikationen durch, von Recht und Betriebswirtschaft bis zu naturwissenschaftlich-technischen Gesetzmäßigkeiten. Im zweiten Teil geht es um die Handlungsbereiche Technik, Organisation sowie Führung und Personal.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung rechnen mit dir Aufgaben aus Betriebstechnik, Kostenwesen und Arbeitsschutz und besprechen Lösungswege gemeinsam. Die langen Situationsaufgaben trainieren wir an den Samstagen.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung rechnen mit dir Aufgaben aus Betriebstechnik, Kostenwesen und Arbeitsschutz und besprechen Lösungswege gemeinsam. Die langen Situationsaufgaben trainieren wir an eigenen Übungsabenden.
 
 Wichtig: Praxis- und Werkstattteile sind nicht Teil des Kurses. Es gibt keine Übungen an Maschinen, Anlagen oder in der Werkstatt; wir bereiten dich auf die schriftlichen Situationsaufgaben und das Fachgespräch vor. Zur Prüfung meldest du dich selbst bei deiner IHK an.

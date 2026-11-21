@@ -7,12 +7,11 @@ kurzbeschreibung: Für alle, die noch nach der Ordnung von 2002 geprüft werden 
 status: entwurf
 art: kurs
 ue: 36
-dauer: ca. 6 Wochen (12 Abende)
-zeiten: Di + Do, 18:00–20:30 Uhr
+dauer: ca. 5 Wochen (9 Abende)
+zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 349
+  betrag: 299
   hinweis: "Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende, die vor August 2024 begonnen haben und noch nach der alten Ordnung geprüft werden
   - Prüflinge, die die Abschlussprüfung nach der Ordnung von 2002 wiederholen

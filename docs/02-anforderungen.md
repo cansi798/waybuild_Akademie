@@ -459,7 +459,7 @@ Diese Punkte müssen vor bzw. in der Spezifikation (Phase 1, Dokument 03) entsch
 4. **Rechnungsangaben Betrieb:** Welche Angaben braucht das Backoffice zwingend (Bestellnummer, Kostenstelle, USt-ID)?
 5. **Mindestteilnehmerzahl und Absage-Regel:** Ab wie vielen Anmeldungen findet ein Kurs statt, bis wann wird abgesagt, wie wird das kommuniziert?
 6. **Anmeldeschluss und Storno:** Fristen je Kurs (für US-25 und die Teilnahmebedingungen).
-7. **Ratenzahlung** für lange Weiterbildungen (Fachwirt, Betriebswirt) per Rechnung: ja oder nein?
+7. **Ratenzahlung** für lange Weiterbildungen (Fachwirt, Betriebswirt) per Rechnung: ja oder nein? – Entschieden 21.11.2026 (Can #6801): nein; lange Lehrgänge werden in einzeln buchbaren und bezahlbaren Abschnitten angeboten.
 8. **Termin-Status** (US-08): Wer pflegt „Wenige Plätze“/„Ausgebucht“ und ab welcher Platzzahl?
 9. **Belegbare Vertrauensaussagen** zum Start (z. B. Gruppengröße, Prüfungserfahrung der Lehrenden) – welche dürfen genannt werden?
 10. **Reichweitenmessung:** ganz verzichten oder cookielose Messung ab Start?

@@ -7,12 +7,18 @@ kurzbeschreibung: 'Verbinde Medienproduktion und Management: Du lernst Recht, BW
 status: entwurf
 art: kurs
 ue: 640
-dauer: ca. 14 Monate
-zeiten: Di + Do, 18:00–21:15 Uhr, dazu jeden zweiten Samstag 09:00–14:15 Uhr
+dauer: ca. 12 Monate (160 Abende)
+zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4490
-  hinweis: Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3986
+  hinweis: "Gesamtpreis für alle 14 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 14
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 4
+      betrag: 99
 zielgruppe:
 - Mediengestalterinnen und Mediengestalter mit Berufserfahrung
 - Fachkräfte aus Druck, Verlag, Agentur oder Digitalproduktion
@@ -60,13 +66,13 @@ faq:
   antwort: Die Fortbildungsordnung macht den Nachweis der berufs- und arbeitspädagogischen Qualifikationen zum Teil des Abschlusses. Du musst ihn vor Beginn des letzten Prüfungsbestandteils vorlegen. Unseren AEVO-Kurs kannst du vorher oder nebenbei belegen.
 - frage: Wie läuft die Projektarbeit?
   antwort: Der Prüfungsausschuss stellt das Thema passend zu deinem Wahlschwerpunkt, du kannst Vorschläge machen. Für die Gesamtplanung hast du 30 Kalendertage. Wie du sie aufbaust – von der Produktplanung bis zur Kalkulation –, üben wir im Kurs an einem gemeinsamen Beispiel.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Medienfachwirt/in“ bieten wir 14 gleiche Monatsraten an, eine pro Monat des rund 14-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 14 Abschnitte aufgeteilt: 13 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 4 Abenden für 99 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.986 €.'
 reihenfolge: 45
 ---
 
 Der Lehrgang bereitet dich auf die Prüfung zum Geprüften Medienfachwirt bzw. zur Geprüften Medienfachwirtin – Bachelor Professional in Media vor. Im ersten Teil geht es um Recht, Betriebswirtschaft, Planungsmethoden und Zusammenarbeit, im zweiten um Medienproduktion sowie Führung und Organisation, zum Schluss um deine Projektarbeit.
 
-Der Unterricht läuft live per Video am Dienstag- und Donnerstagabend und an jedem zweiten Samstagvormittag. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Beispielen aus Druckerei, Verlag, Agentur und Digitalproduktion – vom Produktionsablauf über die Kalkulation bis zum Personaleinsatz. Eine Gesamtplanung bauen wir gemeinsam Schritt für Schritt, damit du die Form der Projektarbeit kennst.
+Der Unterricht läuft live per Video am Montag-, Dienstag- und Donnerstagabend von 17:00 bis 20:00 Uhr. Dozenten mit IHK-Prüfer-Erfahrung arbeiten mit Beispielen aus Druckerei, Verlag, Agentur und Digitalproduktion – vom Produktionsablauf über die Kalkulation bis zum Personaleinsatz. Eine Gesamtplanung bauen wir gemeinsam Schritt für Schritt, damit du die Form der Projektarbeit kennst.
 
 Der Lehrgang passt zu dir, wenn du in der Medienproduktion arbeitest und künftig Projekte, Budgets und Teams verantworten willst. Zur Prüfung meldest du dich selbst bei deiner IHK an.
