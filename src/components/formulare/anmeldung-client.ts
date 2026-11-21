@@ -88,7 +88,7 @@ function einrichten(form: HTMLFormElement) {
       if (t?.pruefung) z.push(['IHK-Prüfung', `${datumDe(t.pruefung)} (verbindlich ist die Einladung deiner IHK)`]);
     }
     const namen = personenNamen();
-    if (namen.length) z.push([anzahl() === 1 ? 'Teilnehmer/in' : `Teilnehmende (${anzahl()})`, namen.join(', ')]);
+    if (namen.length) z.push([anzahl() === 1 ? 'Teilnehmer' : `Teilnehmer (${anzahl()})`, namen.join(', ')]);
     const r = rechnungText();
     if (r) z.push([wert(form, 'zahlweg') === 'betrieb' ? 'Rechnung an (Firma)' : 'Rechnung an', r]);
     const preis = aktuellerPreis();

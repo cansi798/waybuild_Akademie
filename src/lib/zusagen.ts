@@ -1,4 +1,4 @@
-// Risikoumkehr (Zusagen an Teilnehmende) – EINE Quelle für Kurskarte, Kursseite, Termine, Coaching und Anmeldung.
+// Risikoumkehr (Zusagen an Teilnehmer) – EINE Quelle für Kurskarte, Kursseite, Termine, Coaching und Anmeldung.
 // Grundlage: Teilnahmebedingungen #storno (Nr. 10), #ersatz (Nr. 11), #absage (Nr. 12), #coaching Abs. 3 (Nr. 5) – Fassung 21.11.2026.
 // Wortlaut noch nicht entschieden (Can, Frage 29) und Teilnahmebedingungen noch Entwurf (Anwalt prüft die Pauschalen):
 // Änderungen NUR hier, dann greifen sie überall gleichzeitig. Keine Zahl zur Mindestteilnehmerzahl nennen.

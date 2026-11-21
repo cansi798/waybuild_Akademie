@@ -5,7 +5,7 @@ import Basis from '../../layouts/Basis.astro';
 import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
 import Seitenkopf from '../../components/seiten/Seitenkopf.astro';
 import { href } from '../../lib/pfad';
-import { AKADEMIE } from '../../lib/site';
+import { AKADEMIE, ANFRAGE_PFAD } from '../../lib/site';
 
 const MERKMALE = [
   {
@@ -105,7 +105,7 @@ const WIE = [
       <h2 id="cta-titel" class="max-w-xl text-3xl sm:text-4xl">Lern uns im Kurs kennen.</h2>
       <div class="flex flex-wrap gap-3">
         <a href={href('/kurse/')} class="btn btn-accent btn-lg rounded-full px-7">Kurse ansehen</a>
-        <a href={href('/kontakt/')} class="btn btn-lg rounded-full border-white/40 bg-transparent px-7 text-white hover:bg-white/10">Kontakt</a>
+        <a href={href(ANFRAGE_PFAD)} class="btn btn-lg rounded-full border-white/40 bg-transparent px-7 text-white hover:bg-white/10">Unverbindlich anfragen</a>
       </div>
     </div>
   </section>
