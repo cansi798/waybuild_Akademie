@@ -51,13 +51,18 @@ const umfang = umfangText(kurs);
 const preisLabel = entwurf ? 'Preisvorschlag' : coaching ? 'ab' : 'Teilnahmegebühr';
 const hinweisEnthaeltIhk = /IHK/.test(d.preis.hinweis ?? '');
 
-// Haupt-Handlung: Coaching anfragen | Unverbindlich anfragen (→ Termine, dort die Buchungsanfrage je Termin) | Interesse vormerken
+// Haupt-Handlung: Coaching anfragen | Unverbindlich anfragen (→ /anmeldung/, unverbindliche Buchungsanfrage) | Interesse vormerken
 const aktion = coaching
   ? { text: 'Coaching anfragen', url: href(`/anmeldung/?kurs=${kurs.id}`), daten: 'coaching' }
   : termine.length > 0
-    ? { text: entwurf ? 'Termine ansehen' : 'Unverbindlich anfragen', url: '#termine', daten: 'termine' }
+    ? entwurf
+      ? { text: 'Termine ansehen', url: '#termine', daten: 'termine' }
+      : // Loop 21.11. (MKT-001): ein Tap bis zum Formular. Die Anmeldung ist seit recht-6771 eine unverbindliche
+        // Buchungsanfrage; der Termin wird im Formular gewählt (kein veralteter Termin im Link zwischen zwei Builds).
+        { text: 'Unverbindlich anfragen', url: href(`/anmeldung/?kurs=${kurs.id}`), daten: 'anfrage' }
     : { text: 'Interesse vormerken', url: href(interesseUrl(kurs)), daten: 'interesse' };
-const aktionKurz = aktion.text;
+// Leiste/Seitenleiste: kurz, damit bei 320 px das Startdatum sichtbar bleibt (QA R3)
+const aktionKurz = aktion.daten === 'anfrage' ? 'Anfragen' : aktion.text;
 // Beweis nur, wo er stimmt: Säule ihk-pruefung (Prüfungsvorbereitung + Coaching), nicht bei Entwürfen.
 const mitBeweis = !entwurf && (d.saeule === 'ihk-pruefung' || coaching);
 // Risikoumkehr nur bei buchbaren Angeboten (freigegeben, mit Termin bzw. Coaching)
@@ -68,7 +73,14 @@ const buchbar = !entwurf && (coaching || termine.length > 0);
 const gemeinsameFragen: FaqId[] = coaching
   ? ['coaching-verbindlich', 'coaching-verschieben', 'coaching-betrieb', 'coaching-technik', 'coaching-wer']
   : ['storno', 'absage', 'betrieb', 'technik', ...(d.saeule === 'ihk-pruefung' ? (['pruefung-anmeldung'] as FaqId[]) : [])];
-const faqEintraege = ohneDoppelte(d.faq, fragen(...gemeinsameFragen));
+// Loop 21.11. (MKT-006): typische Azubi-Einwände („schaffe ich das?“, „verpasst“, „wie läuft ein Abend?“) auffüllen,
+// höchstens 10 Fragen. „verpasst“ nur, wenn die Kursdatei die Frage nicht schon selbst stellt.
+const eigeneVerpasst = d.faq.some((f) => /verpass/i.test(f.frage));
+const eigeneVorkenntnis = d.faq.some((f) => /Vorkenntnis|Vorwissen|Fachwissen/i.test(f.frage));
+const einwandFragen: FaqId[] = coaching
+  ? []
+  : [...(pruefungskurs && !eigeneVorkenntnis ? (['fachwissen'] as FaqId[]) : []), ...(eigeneVerpasst ? [] : (['verpasst'] as FaqId[])), 'kursabend'];
+const faqEintraege = ohneDoppelte(d.faq, fragen(...gemeinsameFragen), fragen(...einwandFragen)).slice(0, 10);
 
 const abschnitte = [
   { id: 'ueberblick', name: 'Überblick' },
@@ -175,6 +187,13 @@ const schema =
           </div>
           <a href={aktion.url} class="btn btn-accent mt-5 w-full rounded-full" data-hauptaktion={aktion.daten}>{aktion.text}</a>
           {buchbar && <Risikoumkehr variante={coaching ? 'coaching' : 'kurs'} ton="dunkel" class="mt-4" />}
+          {aktion.daten === 'anfrage' && (
+            <p class="mt-3 text-sm text-white/85" data-kopf-verbindlich>
+              Kostenlos und unverbindlich – verbindlich erst mit deiner Zusage und unserer Buchungsbestätigung per E-Mail.
+              {termine.length > 1 && <> <a href="#termine" class="font-semibold text-white underline underline-offset-4 hover:no-underline" data-kopf-termine>Alle {termine.length} Termine ansehen</a></>}
+            </p>
+          )}
+          {buchbar && !coaching && <p class="mt-3 text-sm text-white/85" data-kopf-zahler>Rechnung an dich oder deinen Betrieb · ab 3 Personen 10 % Rabatt</p>}
           {!coaching && !naechster && <p class="mt-3 text-sm text-white/80">Merk dir den Kurs unverbindlich vor.</p>}
         </div>
 
@@ -273,7 +292,7 @@ const schema =
             <div class="mt-6 rounded-2xl bg-white p-6 ring-1 ring-base-300" data-termine-coaching>
               <p class="text-lg font-semibold">Flexibel nach Vereinbarung</p>
               <p class="mt-2 text-gedaempft">
-                Du schilderst dein Anliegen und deinen Prüfungszeitraum, wir stimmen passende Online-Termine ab. Die Anfrage ist unverbindlich – der Vertrag kommt erst mit der Terminabstimmung zustande.
+                Du schilderst dein Anliegen und deinen Prüfungszeitraum, wir stimmen passende Online-Termine ab. Die Anfrage ist unverbindlich – verbindlich wird es erst mit deiner Zusage und unserer Bestätigung per E-Mail.
               </p>
               <a href={href(`/anmeldung/?kurs=${kurs.id}`)} class="btn btn-secondary mt-5 rounded-full px-6">
                 Coaching anfragen
@@ -338,8 +357,8 @@ const schema =
             <div class:list={['grid gap-3 text-sm', !coaching && 'mt-5 border-t border-white/20 pt-5 text-white/85', coaching && 'text-gedaempft']}>
               {d.preis.hinweis && <p>{d.preis.hinweis}</p>}
               {ihk && !coaching && !hinweisEnthaeltIhk && <p>Die Prüfungsgebühr deiner IHK ist nicht enthalten.</p>}
-              {!coaching && <p>Ab 3 Personen in einer Anmeldung gibt es 10 % Rabatt.</p>}
-              {d.preis.raten && <p class="rounded-xl bg-white/10 p-3 font-semibold text-white" data-raten>Ratenzahlung ohne Aufpreis möglich – gib es bei der Anmeldung an; den Ratenplan findest du in deiner Rechnung.</p>}
+              {!coaching && <p>Ab 3 Personen in einer Buchung gibt es 10 % Rabatt – {d.saeule === 'ihk-pruefung' ? 'praktisch, wenn dein Ausbildungsbetrieb mehrere Azubis anmeldet.' : 'praktisch, wenn dein Arbeitgeber mehrere Kollegen anmeldet.'}</p>}
+              {d.preis.raten && <p class="rounded-xl bg-white/10 p-3 font-semibold text-white" data-raten>Ratenzahlung ohne Aufpreis möglich – gib es in deiner Anfrage an; den Ratenplan nennen wir dir im Buchungsangebot.</p>}
             </div>
           </div>
           <div class="bg-white p-6 sm:p-7">
@@ -415,7 +434,7 @@ const schema =
           <li>live-online</li>
           {naechster && <li class="font-semibold">Start {formatDatum(naechster.start)}</li>}
         </ul>
-        <a href={aktion.url} class="btn btn-secondary mt-5 w-full rounded-full">{aktionKurz}</a>
+        <a href={aktion.url} class="btn btn-secondary mt-5 w-full rounded-full">{aktion.text}</a>
         {buchbar && <Risikoumkehr variante={coaching ? 'coaching' : 'kurs'} klein class="mt-4" />}
       </div>
     </aside>

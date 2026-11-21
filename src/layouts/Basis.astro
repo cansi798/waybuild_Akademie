@@ -22,7 +22,10 @@ interface Props {
 }
 
 const { titel, beschreibung = AKADEMIE.beschreibung, noindex = false, schema = [] } = Astro.props;
-const vollerTitel = titel.includes(AKADEMIE.name) ? titel : `${titel} | ${AKADEMIE.name}`;
+// Loop 21.11. (MKT-009): Markenzusatz nur, solange der Titel damit höchstens 60 Zeichen hat (Snippet nicht abgeschnitten).
+const mitMarke = `${titel} | ${AKADEMIE.name}`;
+const kurzMarke = `${titel} | waybuild`;
+const vollerTitel = titel.includes(AKADEMIE.name) ? titel : mitMarke.length <= 60 ? mitMarke : kurzMarke.length <= 60 ? kurzMarke : titel;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogBild = absolut('/og-bild.png', Astro.site);
 const robots = IS_PREVIEW || noindex ? 'noindex, nofollow' : 'index, follow';

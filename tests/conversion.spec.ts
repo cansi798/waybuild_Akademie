@@ -53,11 +53,12 @@ test.describe('Risikoumkehr', () => {
 });
 
 test.describe('Hauptaktion und Kursseite', () => {
-  test('einheitlich „Unverbindlich anfragen“ (Seitenleiste, Leiste, Kurskarte, Terminkarte), Kopf „Anfragen“', async ({ page }) => {
+  test('Kursseite: „Unverbindlich anfragen“ mit einem Tap zum Formular; Listen: „Unverbindlich anfragen“ zu den Terminen', async ({ page }) => {
     await page.goto('./kurse/ap1-it-berufe/');
     await expect(page.locator('[data-hauptaktion]')).toHaveText('Unverbindlich anfragen');
-    await expect(page.locator('[data-cta-leiste] a')).toHaveText('Unverbindlich anfragen');
-    await expect(page.locator('[data-anmelden]').first()).toContainText('Unverbindlich anfragen');
+    await expect(page.locator('[data-hauptaktion]')).toHaveAttribute('href', /\/anmeldung\/\?kurs=ap1-it-berufe$/);
+    await expect(page.locator('[data-kopf-verbindlich]')).toContainText('verbindlich erst mit deiner Zusage und unserer Buchungsbestätigung per E-Mail');
+    await expect(page.locator('[data-cta-leiste] a')).toHaveText('Anfragen');
     await page.goto('./pruefungsvorbereitung/');
     const karte = page.locator('[data-kurskarte="ap1-it-berufe"] a.btn');
     await expect(karte).toContainText('Unverbindlich anfragen');
