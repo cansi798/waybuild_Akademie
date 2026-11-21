@@ -133,6 +133,25 @@ const { titel, beschreibung, abschnitte } = Astro.props;
   .recht-text :global(address) {
     font-style: normal;
   }
+  /* Angaben-Liste (Impressum): Bezeichnung über bzw. neben dem Wert */
+  .recht-text :global(dl.recht-liste) {
+    display: grid;
+    gap: 0.35rem 1.5rem;
+  }
+  .recht-text :global(dl.recht-liste dt) {
+    font-weight: 650;
+  }
+  .recht-text :global(dl.recht-liste dd) {
+    margin: 0 0 0.6rem;
+  }
+  @media (min-width: 40rem) {
+    .recht-text :global(dl.recht-liste) {
+      grid-template-columns: 11rem minmax(0, 1fr);
+    }
+    .recht-text :global(dl.recht-liste dd) {
+      margin: 0;
+    }
+  }
   .recht-text :global(ul) {
     list-style: disc;
     padding-left: 1.4rem;

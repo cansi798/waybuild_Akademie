@@ -117,18 +117,19 @@ pruefe($r['status'] === 303 && preg_match('~^/danke/\?art=anmeldung&vorgang=A-\d
 $m = mails();
 pruefe(count($m) === 2, 'zwei Mails (Team + Bestätigung)');
 pruefe(($m[0]['an'] ?? '') === 'anmeldung@waybuild-akademie.de', 'Team-Mail an anmeldung@');
-pruefe(str_starts_with($m[0]['betreff'] ?? '', 'Anmeldung · Vorbereitung auf die IHK-Prüfung AP1 · '), 'Betreff „Anmeldung · Kurs · Startdatum“');
+pruefe(str_starts_with($m[0]['betreff'] ?? '', 'Buchungsanfrage · Vorbereitung auf die IHK-Prüfung AP1 · '), 'Betreff „Buchungsanfrage · Kurs · Startdatum“');
 pruefe(str_contains($m[0]['kopf'] ?? '', 'Reply-To: lena@beispiel.de'), 'Reply-To = Ansprechperson');
 pruefe(str_contains($m[0]['kopf'] ?? '', 'Content-Type: text/plain; charset=UTF-8'), 'Klartext UTF-8');
 $t0 = $m[0]['text'] ?? '';
 foreach (['RECHNUNG AN: PRIVAT', 'Hauptstraße 1', '22846 Norderstedt', '1. Lena Muster <lena@beispiel.de> – Ansprechperson, Tel. +49 40 123456',
-    'Endpreis (alles inklusive): 349,00 €', 'Teilnahmebedingungen akzeptiert: ja', 'Volljährig oder mit Einverständnis der Erziehungsberechtigten bzw. Anmeldung durch den Ausbildungsbetrieb: ja', '"volljaehrigOderEinverstaendnis": true', '"gesamtpreis": 349', '"termin": "spaet"', '----- DATEN (JSON, für CRM) -----'] as $s) {
+    'Endpreis (alles inklusive): 349,00 €', 'BUCHUNGSANFRAGE (unverbindlich', 'Teilnahmebedingungen und Widerrufsbelehrung zur Kenntnis genommen: ja', 'nach Ablauf der Widerrufsfrist (Baustein nicht nötig)', 'Volljährig oder mit Einverständnis der Erziehungsberechtigten bzw. Anmeldung durch den Ausbildungsbetrieb: ja', '"volljaehrigOderEinverstaendnis": true', '"gesamtpreis": 349', '"termin": "spaet"', '----- DATEN (JSON, für CRM) -----'] as $s) {
     pruefe(str_contains($t0, $s), "Team-Mail enthält „{$s}“");
 }
 $t1 = $m[1]['text'] ?? '';
 pruefe(($m[1]['an'] ?? '') === 'lena@beispiel.de', 'Bestätigung an die Ansprechperson');
-foreach (['Hallo,', 'Teilnehmende: 1 Person', 'Rechnung an: dich (Ich zahle selbst)', 'Rechnung folgt per E-Mail', 'Endpreis: 349,00 € – alles inklusive', 'https://waybuild-akademie.de/widerruf/',
-    'https://waybuild-akademie.de/teilnahmebedingungen/', 'Zugang zum Live-Raum', 'noch keine Annahme'] as $s) {
+foreach (['Hallo,', 'Teilnehmende: 1 Person', 'Rechnung an: dich (Ich zahle selbst)', 'Endpreis: 349,00 € – alles inklusive', 'https://waybuild-akademie.de/widerruf/',
+    'https://waybuild-akademie.de/teilnahmebedingungen/', 'Zugang zum Live-Raum', 'unverbindlich und kostenlos', 'Buchungsangebot',
+    'Verbindlich wird die Buchung erst mit unserer Buchungsbestätigung per E-Mail', 'Amtsgericht Kiel, HRB 29883 KI', 'Geschäftsführer: Can Siebert'] as $s) {
     pruefe(str_contains($t1, $s), "Bestätigung enthält „{$s}“");
 }
 
@@ -154,7 +155,7 @@ gruppe('Ungültige Eingaben');
 mails_leeren();
 $r = anfrage('/api/anmeldung.php', ['kurs' => 'testkurs', 'termin' => 'spaet']);
 pruefe($r['status'] === 422 && str_contains($r['kopf']['content-type'] ?? '', 'text/html'), 'ohne JS: 422 als HTML-Seite');
-foreach (['Bitte gib deinen Vornamen ein.', 'Bitte gib deinen Nachnamen ein.', 'Bitte wähle aus, wer die Rechnung bekommt.', 'Bitte bestätige die Teilnahmebedingungen.', 'Zurück'] as $s) {
+foreach (['Bitte gib deinen Vornamen ein.', 'Bitte gib deinen Nachnamen ein.', 'Bitte wähle aus, wer die Rechnung bekommt.', 'Bitte bestätige, dass du Teilnahmebedingungen und Widerrufsbelehrung zur Kenntnis genommen hast.', 'Zurück'] as $s) {
     pruefe(str_contains($r['text'], htmlspecialchars($s, ENT_QUOTES | ENT_HTML5)), "Fehlerseite nennt „{$s}“");
 }
 $r = anfrage('/api/anmeldung.php', ['kurs' => 'testkurs', 'termin' => 'spaet'], true);
@@ -194,13 +195,13 @@ pruefe(($r['json']['fehler']['kurs'] ?? '') === 'Bitte wähle einen Kurs aus.', 
 $r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['kurs' => 'erfunden']), true);
 pruefe(isset($r['json']['fehler']['kurs']), 'unbekannter Kurs');
 
-gruppe('Wertersatz bei Kursstart innerhalb von 14 Tagen');
-$r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['termin' => 'bald']), true);
-pruefe(str_starts_with($r['json']['fehler']['wertersatz'] ?? '', 'Dein Kurs startet innerhalb der 14-tägigen Widerrufsfrist.'), 'Start in 10 Tagen: Bestätigung Pflicht');
+gruppe('Kursstart innerhalb von 14 Tagen (Verlangen erst in der Zusage per E-Mail)');
 mails_leeren();
-$r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['termin' => 'bald', 'wertersatz' => '1']));
-pruefe($r['status'] === 303 && str_contains(mails()[1]['text'] ?? '', 'Wertersatz für bereits erbrachte Leistungen'), 'mit Bestätigung: 303, Mail bestätigt das Verlangen');
-pruefe(anfrage('/api/anmeldung.php', $gueltig)['status'] === 303, 'Start in 40 Tagen: Bestätigung freiwillig');
+$r = anfrage('/api/anmeldung.php', array_merge($gueltig, ['termin' => 'bald']));
+$m = mails();
+pruefe($r['status'] === 303, 'Start in 10 Tagen: Anfrage ohne Wertersatz-Haken angenommen');
+pruefe(str_contains($m[0]['text'] ?? '', 'innerhalb der Widerrufsfrist: im Buchungsangebot den Baustein'), 'Team-Mail erinnert an den Baustein „Beginn vor Ablauf der Widerrufsfrist“');
+pruefe(!str_contains($m[1]['text'] ?? '', 'Wertersatz') && !preg_match('/zahlungspflichtig/i', $m[1]['text'] ?? ''), 'Bestätigung ohne Wertersatz-Erklärung und ohne „zahlungspflichtig“');
 
 gruppe('Coaching-Anfrage (unverbindlich)');
 $coach = ['kurs' => 'coaching', 'paket' => 'coaching-paket', 'p1_vorname' => 'Tom', 'p1_nachname' => 'Berg', 'p1_email' => 'tom@beispiel.de', 'zahlweg' => 'selbst',
@@ -276,14 +277,28 @@ pruefe($r['status'] === 500 && ($r['json']['code'] ?? '') === 'versand' && str_c
 $r = anfrage('/api/anmeldung.php', $gueltig, false, 'POST', 8081);
 pruefe($r['status'] === 500 && str_contains($r['text'], 'anmeldung@waybuild-akademie.de'), 'ohne JS: Fehlerseite mit E-Mail-Adresse');
 
-gruppe('Interesse vormerken');
+gruppe('Interesse vormerken (Double-Opt-in)');
 mails_leeren();
 $int = ['name' => 'Sara Yilmaz', 'email' => 'sara@beispiel.de', 'kurs' => 'testkurs', 'wunschzeitraum' => 'Frühjahr', 'einwilligung' => '1'];
 $r = anfrage('/api/interesse.php', $int);
 $m = mails();
 pruefe($r['status'] === 303 && str_starts_with($r['kopf']['location'] ?? '', '/danke/?art=interesse'), '303 → /danke/?art=interesse');
-pruefe(($m[0]['an'] ?? '') === 'info@waybuild-akademie.de' && str_starts_with($m[0]['betreff'] ?? '', 'Interesse · '), 'Mail an info@');
-pruefe(str_contains($m[1]['text'] ?? '', 'Wir melden uns, sobald Termine feststehen.'), 'Bestätigung „Wir melden uns, sobald Termine feststehen.“');
+pruefe(count($m) === 1 && ($m[0]['an'] ?? '') === 'sara@beispiel.de' && str_starts_with($m[0]['betreff'] ?? '', 'Bitte bestätige deine Vormerkung'), 'Schritt 1: nur Bitte um Bestätigung an die Person, noch keine Team-Mail');
+pruefe(!str_contains($m[0]['text'] ?? '', 'Sara') && !str_contains($m[0]['text'] ?? '', 'Frühjahr'), 'Bestätigungsbitte ohne Name und Freitext');
+preg_match('~https://waybuild-akademie\.de/api/interesse-bestaetigen\.php\?t=([A-Za-z0-9_-]+)~', $m[0]['text'] ?? '', $treffer);
+$token = $treffer[1] ?? '';
+pruefe($token !== '' && !str_contains(base64_decode(strtr($token, '-_', '+/')) ?: '', 'sara@'), 'Link enthält verschlüsseltes Token (keine Klardaten)');
+pruefe(!glob(DATEN . '/interesse*') && !glob(DATEN . '/*/interesse*'), 'vor der Bestätigung wird nichts gespeichert');
+mails_leeren();
+$r = anfrage('/api/interesse-bestaetigen.php?t=' . $token, [], false, 'GET');
+pruefe($r['status'] === 200 && str_contains($r['text'], 'Vormerkung bestätigen') && str_contains($r['text'], 'method="post"') && count(mails()) === 0, 'GET zeigt nur den Bestätigungsknopf, versendet nichts');
+$r = anfrage('/api/interesse-bestaetigen.php', ['t' => $token]);
+$m = mails();
+pruefe($r['status'] === 200 && str_contains($r['text'], 'du bist vorgemerkt'), 'POST bestätigt');
+pruefe(count($m) === 1 && ($m[0]['an'] ?? '') === 'info@waybuild-akademie.de' && str_starts_with($m[0]['betreff'] ?? '', 'Interesse · '), 'erst jetzt: Mail an info@');
+pruefe(str_contains($m[0]['text'] ?? '', 'per Double-Opt-in bestätigt') && str_contains($m[0]['text'] ?? '', 'Name: Sara Yilmaz') && str_contains($m[0]['text'] ?? '', 'Wunschzeitraum: Frühjahr') && str_contains($m[0]['text'] ?? '', '"doubleOptIn": true'), 'Team-Mail mit Daten und Nachweis der Bestätigung');
+pruefe(anfrage('/api/interesse-bestaetigen.php?t=' . substr($token, 0, -2) . 'xx', [], false, 'GET')['status'] === 400, 'manipuliertes Token → 400');
+pruefe(anfrage('/api/interesse-bestaetigen.php?t=', [], false, 'GET')['status'] === 400, 'leeres Token → 400');
 $r = anfrage('/api/interesse.php', array_merge($int, ['einwilligung' => '', 'kurs' => '', 'wunschzeitraum' => str_repeat('x', 101)]), true);
 pruefe(array_keys($r['json']['fehler'] ?? []) == ['kurs', 'wunschzeitraum', 'einwilligung'], 'Kurs, Wunschzeitraum, Einwilligung geprüft');
 
@@ -296,6 +311,23 @@ pruefe($r['status'] === 303 && str_starts_with($r['kopf']['location'] ?? '', '/d
 pruefe(($m[0]['an'] ?? '') === 'info@waybuild-akademie.de' && str_contains($m[0]['text'] ?? '', 'Thema: Anmeldung für meinen Betrieb'), 'Mail an info@ mit Thema');
 $r = anfrage('/api/kontakt.php', array_merge($kon, ['thema' => 'werbung', 'nachricht' => 'kurz', 'einwilligung' => '']), true);
 pruefe(($r['json']['fehler']['thema'] ?? '') === 'Bitte wähle ein Thema aus.' && ($r['json']['fehler']['nachricht'] ?? '') === 'Bitte schreib uns kurz, worum es geht.' && isset($r['json']['fehler']['einwilligung']), 'Thema, Nachricht (min. 10), Einwilligung');
+
+gruppe('Kursanfrage (art=anfrage, Kurzanfrage Startseite)');
+mails_leeren();
+$r = anfrage('/api/kontakt.php', ['art' => 'anfrage', 'name' => 'Mia Roth', 'email' => 'mia@beispiel.de', 'kurs' => 'testkurs']);
+$m = mails();
+pruefe($r['status'] === 303 && str_starts_with($r['kopf']['location'] ?? '', '/danke/?art=anfrage&vorgang=K-'), '303 → /danke/?art=anfrage (ohne Thema, Nachricht und Haken)');
+pruefe(($m[0]['an'] ?? '') === 'info@waybuild-akademie.de' && str_starts_with($m[0]['betreff'] ?? '', 'Kursanfrage · Vorbereitung auf die IHK-Prüfung AP1 · Mia Roth') && str_contains($m[0]['text'] ?? '', 'KURSANFRAGE (unverbindlich'), 'Team-Mail „Kursanfrage“ mit Kurs');
+pruefe(str_starts_with($m[1]['betreff'] ?? '', 'Deine unverbindliche Kursanfrage (K-'), 'Betreff „Deine unverbindliche Kursanfrage“');
+foreach (['unverbindliche Kursanfrage', 'Wir prüfen den passenden Termin', 'Verbindlich wird es erst mit unserer Buchungsbestätigung per E-Mail', 'Zustimmung deiner Eltern', 'Ausbildungsbetrieb meldet dich an', 'Kurs: Vorbereitung auf die IHK-Prüfung AP1', 'HRB 29883 KI'] as $s) {
+    pruefe(str_contains($m[1]['text'] ?? '', $s), "Kursanfrage-Bestätigung enthält „{$s}“");
+}
+pruefe(!str_contains($m[1]['text'] ?? '', 'Mia'), 'Kursanfrage-Bestätigung ohne Namen');
+$r = anfrage('/api/kontakt.php', ['art' => 'anfrage', 'name' => 'Mia Roth', 'email' => 'mia@beispiel.de', 'kurs' => 'entwurfkurs'], true);
+pruefe(isset($r['json']['fehler']['kurs']), 'Kursanfrage: Entwurf/unbekannter Kurs abgelehnt');
+mails_leeren();
+$r = anfrage('/api/kontakt.php', array_merge($kon, ['art' => 'boese']));
+pruefe($r['status'] === 303 && str_starts_with($r['kopf']['location'] ?? '', '/danke/?art=kontakt') && str_contains(mails()[1]['betreff'] ?? '', 'Deine Nachricht ist angekommen'), 'unbekannte art → normales Kontaktformular');
 
 gruppe('Widerruf (§ 356a BGB)');
 mails_leeren();
@@ -335,7 +367,7 @@ pruefe(($m[1]['an'] ?? '') === 'opfer@beispiel.de' && str_starts_with($m[1]['tex
 mails_leeren();
 anfrage('/api/interesse.php', ['name' => 'Klick www.boese.example', 'email' => 'opfer@beispiel.de', 'kurs' => 'testkurs', 'wunschzeitraum' => 'http://phish.example', 'nachricht' => $boese, 'einwilligung' => '1']);
 $m = mails();
-pruefe(count($m) === 2 && !preg_match('~phish|boese|http://|www\.~i', ($m[1]['text'] ?? '') . ($m[1]['betreff'] ?? '')), 'Interesse: Bestätigung ohne Freitext');
+pruefe(count($m) === 1 && !preg_match('~phish|boese|http://|www\.~i', preg_replace('~https://waybuild-akademie\.de/\S*~', '', ($m[0]['text'] ?? '')) . ($m[0]['betreff'] ?? '')), 'Interesse: Bestätigungsbitte ohne Freitext (nur eigener Link)');
 mails_leeren();
 anfrage('/api/anmeldung.php', array_merge($betrieb, ['p1_vorname' => 'www.boese.example', 'nachricht' => $boese, 'bestellnummer' => 'http://phish.example', 'firma' => 'Gewinn GmbH www.boese.example']));
 $m = mails();

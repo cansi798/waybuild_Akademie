@@ -423,29 +423,32 @@ Gleichzeitig prüfen, ob Texte auf anderen Seiten angepasst werden müssen (FAQ 
 **So sieht die Mail aus**
 
 - Postfach: `anmeldung@waybuild-akademie.de`
-- Betreff: „Anmeldung · *Kurs* · *Startdatum*“
-- Inhalt in fester Reihenfolge: Vorgangsnummer (z. B. `A-20261215-7F3K`), Kurs und Termin, **RECHNUNG AN: PRIVAT** oder **RECHNUNG AN: FIRMA** mit Anschrift, alle Teilnehmenden einzeln, Endpreis (Rabatt ab 3 Personen schon abgezogen), Bestätigungen (Teilnahmebedingungen, Volljährigkeit, ggf. Wertersatz), Nachricht.
+- Betreff: „Buchungsanfrage · *Kurs* · *Startdatum*“ (unverbindlich – noch kein Vertrag)
+- Inhalt in fester Reihenfolge: Vorgangsnummer (z. B. `A-20261215-7F3K`), Kurs und Termin, **RECHNUNG AN: PRIVAT** oder **RECHNUNG AN: FIRMA** mit Anschrift, alle Teilnehmenden einzeln, Endpreis (Rabatt ab 3 Personen schon abgezogen), Kenntnisnahmen (Teilnahmebedingungen, Volljährigkeit), Hinweis, ob der Kurs innerhalb der Widerrufsfrist startet, Nachricht.
 - Am Ende steht ein Datenblock „DATEN (JSON, für CRM)“. Er ist für ein späteres CRM gedacht und kann ignoriert werden.
 - Wer auf die Mail antwortet, schreibt direkt an die anmeldende Person (Ansprechperson).
 
 **Schritte im Backoffice (Prozess P-01)**
 
 1. **Prüfen:** Sind die Angaben vollständig und plausibel? Sonst per „Antworten“ nachfragen.
-2. **Eingangsbestätigung:** Steht in der Mail „Eingangsbestätigung an die Person: **NICHT versendet**“, bitte selbst kurz bestätigen. Das passiert nur, wenn sehr viele Mails an dieselbe Adresse gingen.
-3. **Durchführung entscheiden:** spätestens 10 Tage vor Kursstart. Bei Absage weiter mit [A5](#a5-termin-absagen-oder-ausfalltag-eintragen).
-4. **Rechnung schreiben** – an die Privatperson oder an die Rechnungs-E-Mail der Firma.
+2. **Buchungsangebot schicken** (von Hand, Vorlage A in `docs/vorlagen/buchung-mails.md`, mit PDF-Anhängen Teilnahmebedingungen + Widerrufsbelehrung). Startet der Kurs innerhalb der Widerrufsfrist, den Baustein „Beginn vor Ablauf der Widerrufsfrist“ einfügen.
+3. **Zusage abwarten.** Erst wenn die Person zusagt: **Buchungsbestätigung** schicken (Vorlage B) – damit ist der Vertrag geschlossen. Ohne Zusage kein Vertrag und keine Rechnung.
+4. **Eingangsbestätigung:** Steht in der Mail „Eingangsbestätigung an die Person: **NICHT versendet**“, bitte selbst kurz bestätigen. Das passiert nur, wenn sehr viele Mails an dieselbe Adresse gingen.
+5. **Durchführung entscheiden:** spätestens 10 Tage vor Kursstart. Bei Absage weiter mit [A5](#a5-termin-absagen-oder-ausfalltag-eintragen).
+6. **Rechnung schreiben** (erst nach der Buchungsbestätigung) – an die Privatperson oder an die Rechnungs-E-Mail der Firma.
    - Vorgangsnummer und ggf. Bestellnummer angeben.
    - Fälligkeit laut Teilnahmebedingungen.
    - Bei langen Weiterbildungen mit `raten: true` auf Wunsch einen Ratenplan.
-5. **Zahlungseingang** prüfen.
-6. **Zugang zum Live-Raum:** Vor Kursbeginn jeder teilnehmenden Person einzeln per E-Mail schicken. Der Zugangslink steht nie auf der Website.
+7. **Zahlungseingang** prüfen.
+8. **Zugang zum Live-Raum:** Vor Kursbeginn jeder teilnehmenden Person einzeln per E-Mail schicken. Der Zugangslink steht nie auf der Website.
 
 **Andere Mails**
 
 | Art | Postfach | Was tun |
 |---|---|---|
 | **Coaching-Anfrage** | `anmeldung@` | Unverbindlich. Innerhalb von zwei Werktagen Online-Termine vorschlagen. Rechnung erst nach der Terminabstimmung. |
-| **Interesse vormerken** | `info@` | In die Liste „Interesse je Kurs“ eintragen. Steht ein Termin fest, alle Vorgemerkten benachrichtigen. Wer sich abmeldet, wird gelöscht. |
+| **Interesse vormerken** | `info@` | Kommt erst nach der Bestätigung per Double-Opt-in (Betreff „Interesse · …“, Text „per Double-Opt-in bestätigt“) – nur diese Mails zählen. In die Liste „Interesse je Kurs“ eintragen. Steht ein Termin fest, alle Vorgemerkten benachrichtigen. Wer sich abmeldet, wird gelöscht. |
+| **Kursanfrage** (Kurzanfrage, Betreff „Kursanfrage · …“) | `info@` | Unverbindlich. Termin prüfen, innerhalb von zwei Werktagen antworten; bei Buchungswunsch Buchungsangebot nach Vorlage A. Minderjährige: Zustimmung der Eltern oder Anmeldung durch den Betrieb einholen. |
 | **Kontakt** | `info@` | Innerhalb von zwei Werktagen antworten (per Mail oder Rückruf). |
 | **Widerruf** | `anmeldung@` | Ernst nehmen und sofort bearbeiten: Vorgang heraussuchen, Rechnung stornieren bzw. bereits gezahlte Beträge erstatten. Steht in der Mail „NICHT versendet“, den Eingang selbst bestätigen. Bei Unklarheiten (z. B. Wertersatz, Kurs schon begonnen) die Rechtsberatung fragen. |
 
@@ -484,10 +487,11 @@ Das Formular speichert **keine** Daten auf dem Server. Die Mails im Postfach sin
 3. Wählen, wer zahlt: **„Ich zahle selbst“** (deine Anschrift) oder **„Mein Betrieb zahlt“** (Firma, Ansprechperson, Rechnungs-E-Mail).
 4. Bis zu fünf Personen kannst du in einer Anmeldung eintragen. Ab drei Personen gibt es 10 % Rabatt.
 5. Teilnahmebedingungen, Datenschutz und Widerrufsbelehrung lesen und die Häkchen setzen.
-6. Startet der Kurs in weniger als 14 Tagen, bestätigst du zusätzlich, dass wir schon vor Ende der Widerrufsfrist beginnen sollen.
-7. Auf **„Zahlungspflichtig anmelden“** klicken. Die Anmeldung ist verbindlich.
+6. Auf **„Unverbindlich anfragen“** klicken. Die Anfrage ist kostenlos und unverbindlich.
+7. Wir schicken dir ein Buchungsangebot per E-Mail. Möchtest du buchen, antwortest du darauf. Startet der Kurs innerhalb der 14-tägigen Widerrufsfrist, schreibst du in deine Antwort zusätzlich, dass wir schon vorher beginnen sollen (Satz steht im Angebot).
+8. Mit unserer **Buchungsbestätigung per E-Mail** ist die Buchung verbindlich. Danach kommt die Rechnung.
 
-Ohne Termin? Dann klick auf **„Interesse vormerken“**. Das ist unverbindlich und kostenlos. Wir melden uns, sobald es einen Termin gibt.
+Ohne Termin? Dann klick auf **„Interesse vormerken“**. Das ist unverbindlich und kostenlos. Du bekommst eine E-Mail mit Bestätigungslink; erst nach dem Klick auf „Vormerkung bestätigen“ merken wir dich vor. Wir melden uns, sobald es einen Termin gibt.
 
 Für das **Prüfungscoaching** klickst du auf „Paket anfragen“. Die Anfrage ist unverbindlich; wir stimmen die Termine mit dir ab.
 

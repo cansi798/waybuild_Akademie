@@ -1,6 +1,8 @@
 ---
 // Anmeldeformular (US-10 … US-13, US-15): Kurs + Termin bzw. Coaching-Paket, 1–5 Teilnehmende, Zahlweg mit Rechnungsangaben,
-// Live-Preis (ab 3 Personen −10 %), Zusammenfassung, Bestätigungen und der Knopf „Zahlungspflichtig anmelden“ (Button-Lösung).
+// Live-Preis (ab 3 Personen −10 %), Zusammenfassung, Kenntnisnahme und der Knopf „Unverbindlich anfragen“.
+// Rechtsmodell (Teilnahmebedingungen Nr. 2): Das Formular ist nur eine unverbindliche Buchungsanfrage. Der Vertrag kommt
+// erst per E-Mail zustande (unser Buchungsangebot → deine Zusage → unsere Buchungsbestätigung).
 // Ohne JavaScript: alle Bereiche sichtbar und klar beschriftet, normales POST an /api/anmeldung.php.
 import Feld from './Feld.astro';
 import Haken from './Haken.astro';
@@ -177,7 +179,7 @@ const kartenKlasse = 'rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8'
         </label>
         <label class="wahlkarte">
           <input type="radio" id={`${F}-zahlweg-betrieb`} name="zahlweg" value="betrieb" required class="radio radio-secondary mt-0.5 shrink-0" data-feld data-pflicht data-fehler-pflicht={FEHLER.zahlweg} aria-describedby={`${F}-zahlweg-fehler`} />
-          <span><span class="block font-semibold">Mein Betrieb zahlt</span><span class="block text-sm text-gedaempft">Rechnung an die Firma</span></span>
+          <span><span class="block font-semibold">Mein Betrieb zahlt</span><span class="block text-sm text-gedaempft">Rechnung an die Firma – auch wenn dein Ausbildungsbetrieb dich anmeldet</span></span>
         </label>
         <p id={`${F}-zahlweg-fehler`} class="feld-fehler sm:col-span-2" data-fehler-fuer="zahlweg" hidden></p>
       </fieldset>
@@ -213,7 +215,7 @@ const kartenKlasse = 'rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8'
 
     <!-- 5 Prüfen und absenden -->
     <section class="rounded-[1.5rem] bg-white p-5 ring-2 ring-navy sm:p-8" aria-labelledby={`${F}-s5`}>
-      <h2 id={`${F}-s5`} class="schritt-titel" data-nr="5">Prüfen und absenden</h2>
+      <h2 id={`${F}-s5`} class="schritt-titel" data-nr="5">Prüfen und unverbindlich anfragen</h2>
 
       <div class="mt-6 rounded-2xl bg-base-200/70 p-5" data-zusammenfassung-box hidden>
         <h3 class="font-sans text-base font-semibold">Deine Angaben im Überblick</h3>
@@ -232,7 +234,8 @@ const kartenKlasse = 'rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8'
       <div class="mt-6 grid gap-4">
         <div data-bereich="kurs">
           <Haken form={F} name="agb" pflicht nativ fehler={FEHLER.agb}>
-            Ich habe die <a class="link-fliess" href={href('/teilnahmebedingungen/')} target="_blank">Teilnahmebedingungen</a> gelesen und akzeptiere sie.
+            Ich habe die <a class="link-fliess" href={href('/teilnahmebedingungen/')} target="_blank">Teilnahmebedingungen</a> und die{' '}
+            <a class="link-fliess" href={href('/widerruf/')} target="_blank">Widerrufsbelehrung</a> zur Kenntnis genommen. Sie gelten, wenn ich die Buchung später per E-Mail verbindlich zusage.
           </Haken>
         </div>
         <div data-bereich="kurs">
@@ -241,19 +244,22 @@ const kartenKlasse = 'rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8'
           </Haken>
         </div>
         <Haken form={F} name="datenschutz" pflicht nativ fehler={FEHLER.datenschutz}>
-          Ich habe die <a class="link-fliess" href={href('/datenschutz/')} target="_blank">Datenschutzerklärung</a> und die{' '}
-          <a class="link-fliess" href={href('/widerruf/')} target="_blank">Widerrufsbelehrung</a> gelesen.
+          Ich habe die <a class="link-fliess" href={href('/datenschutz/')} target="_blank">Datenschutzerklärung</a> zur Kenntnis genommen.
         </Haken>
-        <div data-bereich="kurs">
-          <Haken form={F} name="wertersatz" fehler={FEHLER.wertersatz} hinweis="Pflicht, wenn dein Kurs innerhalb von 14 Tagen nach heute startet – sonst freiwillig.">
-            Ich verlange ausdrücklich, dass ihr vor Ablauf der Widerrufsfrist mit der Leistung beginnt. Mir ist bekannt, dass ich bei Widerruf Wertersatz für bereits erbrachte Leistungen schulde.
-          </Haken>
+        <div class="rounded-2xl bg-base-200/70 p-4 text-sm" data-bereich="kurs" data-ablauf-buchung>
+          <p class="font-semibold">So wird aus deiner Anfrage eine Buchung</p>
+          <ol class="mt-2 grid list-decimal gap-1 pl-5">
+            <li>Du schickst diese Anfrage – <strong>kostenlos und unverbindlich</strong>.</li>
+            <li>Wir schicken dir per E-Mail ein Buchungsangebot mit allen Unterlagen.</li>
+            <li>Du sagst per Antwort-Mail zu, wenn du buchen möchtest.</li>
+            <li><strong>Verbindlich wird es erst mit unserer Buchungsbestätigung per E-Mail.</strong> Bis dahin kannst du jederzeit formlos absagen.</li>
+          </ol>
+          <p class="mt-2">
+            Als Verbraucher hast du danach ein 14-tägiges Widerrufsrecht – alles dazu in der{' '}
+            <a class="link-fliess" href={href('/widerruf/')} target="_blank">Widerrufsbelehrung</a>. Widerrufen kannst du auch online über{' '}
+            <a class="link-fliess" href={href('/widerruf/#widerrufsformular')}>Vertrag widerrufen</a>.
+          </p>
         </div>
-        <p class="rounded-2xl bg-base-200/70 p-4 text-sm" data-bereich="kurs">
-          <strong>Dein Widerrufsrecht:</strong> Als Verbraucher kannst du den Vertrag innerhalb von 14 Tagen ohne Angabe von Gründen widerrufen –
-          alles dazu in der <a class="link-fliess" href={href('/widerruf/')} target="_blank">Widerrufsbelehrung</a>. Widerrufen kannst du auch online über die Seite{' '}
-          <a class="link-fliess" href={href('/widerruf/')}>Vertrag widerrufen</a>.
-        </p>
       </div>
 
       <!-- Risikoumkehr direkt über dem Absende-Knopf (Wortlaut: lib/zusagen.ts) -->
@@ -271,11 +277,11 @@ const kartenKlasse = 'rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8'
             <span class="font-semibold">Endpreis</span>
             <span><span class="font-serif text-3xl font-semibold tabular-nums" data-preis-gesamt>–</span> <span class="text-sm text-gedaempft">alles inklusive</span></span>
           </p>
-          <p class="mt-1 text-sm font-semibold text-tief" data-raten hidden>Ratenzahlung ohne Aufpreis möglich – schreib es uns unten in die Nachricht; den Ratenplan findest du dann in deiner Rechnung.</p>
+          <p class="mt-1 text-sm font-semibold text-tief" data-raten hidden>Ratenzahlung ohne Aufpreis möglich – schreib es uns unten in die Nachricht; den Ratenplan nennen wir dir im Buchungsangebot.</p>
         </div>
-        <button type="submit" class="btn btn-accent btn-lg w-full rounded-full px-8 sm:w-auto" data-absenden>Zahlungspflichtig anmelden</button>
+        <button type="submit" class="btn btn-accent btn-lg w-full rounded-full px-8 sm:w-auto" data-absenden>Unverbindlich anfragen</button>
       </div>
-      <p class="mt-4 text-sm text-gedaempft" data-knopf-hinweis>Die Rechnung kommt per E-Mail – eine Online-Zahlung ist nicht nötig. Die Prüfungsgebühr deiner IHK ist nicht enthalten.</p>
+      <p class="mt-4 text-sm text-gedaempft" data-knopf-hinweis>Kostenlos und unverbindlich. Verbindlich wird es erst mit deiner Zusage und unserer Buchungsbestätigung per E-Mail. Die Prüfungsgebühr deiner IHK ist nicht enthalten.</p>
     </section>
   </form>
 

@@ -1,5 +1,5 @@
 ---
-// /danke/?art=anmeldung|coaching|interesse|kontakt[&vorgang=…][&demo=1] (US-12, US-14, US-15 AK4, US-16 AK2).
+// /danke/?art=anmeldung|anfrage|coaching|interesse|kontakt[&vorgang=…][&demo=1] (US-12, US-14, US-15 AK4, US-16 AK2).
 // Ohne JavaScript erscheint der allgemeine Text; mit JavaScript der passende Block und die Zusammenfassung
 // (aus sessionStorage, vom Formular vor dem Absenden abgelegt – nichts davon verlässt den Browser).
 import Basis from '../../layouts/Basis.astro';
@@ -15,12 +15,13 @@ interface Block {
 const BLOECKE: Block[] = [
   {
     art: 'anmeldung',
-    titel: 'Danke – deine Anmeldung ist angekommen',
-    text: 'Wir haben deine Anmeldung erhalten. Du bekommst gleich eine Eingangsbestätigung per E-Mail mit Kurs, Termin und Endpreis.',
+    titel: 'Danke – deine Buchungsanfrage ist angekommen',
+    text: 'Deine Anfrage ist kostenlos und unverbindlich. Verbindlich wird die Buchung erst, wenn du unser Buchungsangebot per E-Mail zusagst und wir dir die Buchung per E-Mail bestätigen.',
     schritte: [
       ['Eingangsbestätigung', 'Kommt in den nächsten Minuten an die E-Mail-Adresse der Ansprechperson. Nichts da? Schau bitte auch im Spam-Ordner nach.'],
-      ['Rechnung', 'Du erhältst die Rechnung per E-Mail; eine Online-Zahlung ist nicht nötig. Zahlt dein Betrieb, geht sie an die Rechnungsadresse der Firma.'],
-      ['Zugang zum Live-Raum', 'Vor Kursstart bekommt jede teilnehmende Person den Zugang zum Live-Unterricht per E-Mail.'],
+      ['Buchungsangebot', 'Wir schicken dir per E-Mail ein Angebot mit Kurs, Terminen, Endpreis, Teilnahmebedingungen, Widerrufsbelehrung und Muster-Widerrufsformular.'],
+      ['Deine Zusage', 'Möchtest du buchen, antwortest du auf das Angebot. Bis zu unserer Bestätigung kannst du jederzeit formlos absagen.'],
+      ['Buchungsbestätigung und Rechnung', 'Mit unserer Buchungsbestätigung per E-Mail ist die Buchung verbindlich. Die Rechnung kommt per E-Mail; zahlt dein Betrieb, geht sie an die Firma. Vor Kursstart bekommt jede teilnehmende Person den Zugang zum Live-Raum.'],
     ],
   },
   {
@@ -35,12 +36,22 @@ const BLOECKE: Block[] = [
   },
   {
     art: 'interesse',
-    titel: 'Danke – dein Interesse ist vorgemerkt',
-    text: 'Wir melden uns, sobald Termine feststehen. Die Vormerkung ist unverbindlich und kostenlos.',
+    titel: 'Fast geschafft – bitte bestätige deine E-Mail-Adresse',
+    text: 'Wir haben dir eine E-Mail mit einem Bestätigungslink geschickt. Erst wenn du darin auf „Vormerkung bestätigen“ klickst, merken wir dich vor (Double-Opt-in). Die Vormerkung ist unverbindlich und kostenlos.',
     schritte: [
-      ['Bestätigung', 'Du bekommst gleich eine kurze Bestätigung per E-Mail.'],
+      ['Bestätigungslink', 'Kommt in den nächsten Minuten. Der Link gilt 7 Tage. Nichts da? Schau bitte auch im Spam-Ordner nach.'],
       ['Benachrichtigung', 'Steht ein Termin fest, schreiben wir dir – dann entscheidest du in Ruhe.'],
-      ['Abmelden', 'Keine Nachricht mehr gewünscht? Antworte einfach auf unsere E-Mail.'],
+      ['Abmelden', 'Keine Nachricht mehr gewünscht? Eine kurze E-Mail an uns genügt.'],
+    ],
+  },
+  {
+    art: 'anfrage',
+    titel: 'Danke – deine unverbindliche Kursanfrage ist angekommen',
+    text: 'Deine Anfrage ist kostenlos und unverbindlich. Wir prüfen den passenden Termin. Verbindlich wird es erst mit unserer Buchungsbestätigung per E-Mail.',
+    schritte: [
+      ['Eingangsbestätigung', 'Kommt in den nächsten Minuten per E-Mail. Nichts da? Schau bitte auch im Spam-Ordner nach.'],
+      ['Termin und Buchungsangebot', 'Wir melden uns in der Regel innerhalb von zwei Werktagen. Möchtest du buchen, schicken wir dir ein Buchungsangebot mit allen Unterlagen.'],
+      ['Verbindlich erst mit Bestätigung', 'Du sagst per Antwort-Mail zu, wir bestätigen die Buchung per E-Mail. Bist du noch nicht volljährig, brauchen wir die Zustimmung deiner Eltern – oder dein Ausbildungsbetrieb meldet dich an.'],
     ],
   },
   {
@@ -74,9 +85,10 @@ const BLOECKE: Block[] = [
           Deine Angaben sind bei uns angekommen. Du bekommst gleich eine Bestätigung per E-Mail.
         </p>
         <ul class="mt-8 grid gap-3">
-          <li class="rounded-2xl bg-white p-5 ring-1 ring-base-300"><strong>Anmeldung:</strong> Du erhältst die Rechnung per E-Mail; eine Online-Zahlung ist nicht nötig. Den Zugang zum Live-Raum bekommst du vor Kursstart.</li>
+          <li class="rounded-2xl bg-white p-5 ring-1 ring-base-300"><strong>Buchungsanfrage:</strong> Unverbindlich. Wir schicken dir ein Buchungsangebot per E-Mail – verbindlich wird es erst mit deiner Zusage und unserer Buchungsbestätigung.</li>
           <li class="rounded-2xl bg-white p-5 ring-1 ring-base-300"><strong>Coaching-Anfrage:</strong> Wir melden uns zur Terminabstimmung – erst dann kommt der Vertrag zustande.</li>
-          <li class="rounded-2xl bg-white p-5 ring-1 ring-base-300"><strong>Interesse oder Nachricht:</strong> Wir melden uns, sobald Termine feststehen bzw. in der Regel innerhalb von zwei Werktagen.</li>
+          <li class="rounded-2xl bg-white p-5 ring-1 ring-base-300"><strong>Interesse vormerken:</strong> Bitte bestätige den Link in unserer E-Mail – erst dann merken wir dich vor.</li>
+          <li class="rounded-2xl bg-white p-5 ring-1 ring-base-300"><strong>Nachricht:</strong> Wir antworten in der Regel innerhalb von zwei Werktagen.</li>
         </ul>
       </div>
 
