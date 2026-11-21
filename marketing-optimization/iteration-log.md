@@ -62,3 +62,18 @@ qa_gate: "ausstehend"
 impact: hypothesis_only
 next: "Entgendern content/kurse erst nach kalk-Merge (Jan); 22 Dateien hätten sonst Konflikte"
 ```
+
+### QA Runde 4 (unabhängig, 22:05–22:12)
+G1 PASS (105 neue Links lösen auf, live-sicher über sichtbareBerufe) · G2 PASS (≥ 44 px, kein H-Scroll) · G3 PASS (axe 0 auf Kursseite/404/Über uns, 320+1280) · G5 PASS_WITH_LIMITATIONS („Lehrende“) · G6 PASS_WITH_LIMITATIONS (Verbindlichkeit uneinheitlich). Tap-Zählung 390 px: Start→Kachel→Formular 2 ✔ · Suche „FISI“ 3 ✘ · Kursseite 1 ✔ · /pruefungsvorbereitung/ 2 ✔.
+
+## Runde 5 – ein Ablauf für die Verbindlichkeit, Suche mit Enter (22:12–22:28)
+
+```yaml
+round: 5
+focus: "decision: Verbindlichkeit überall gleich (Anfrage → Angebot → Zusage → Bestätigung); Suchweg ≤ 2 Schritte"
+files_changed: [src/lib/zusagen.ts (ZUSAGEN.anfrage), src/pages/index.astro, src/pages/pruefungsvorbereitung/[beruf].astro, src/pages/danke/index.astro, src/pages/ueber-uns/index.astro, src/pages/llms.txt.ts, src/components/start/BerufWahl.astro, tests/start-6771.spec.ts]
+checks: {build: pass, playwright_chromium_voll: 118 pass / 5 skip, axe: 6/6 pass (axe-core in akad-loop nachverlinkt)}
+qa_gate: "PASS_WITH_LIMITATIONS (Selbstprüfung + Suite; Wortlaut ZUSAGEN.anfrage ist eine Text-Entscheidung → Can/Jan bestätigen)"
+impact: hypothesis_only
+```
+Hinweis: `ZUSAGEN.anfrage` war als „Wortlaut verbindlich (Audit #6771)“ markiert. Neu: „Deine Anfrage ist unverbindlich. Du bekommst ein Angebot per E-Mail – verbindlich wird es erst mit deiner Zusage und unserer Bestätigung.“ Das passt zum Rechtsmodell aus recht-6771 und folgt der Formulierung von Anmeldung und Danke-Seite. Bei Ablehnung: nur zusagen.ts:13 + Test zurücksetzen.

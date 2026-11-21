@@ -68,7 +68,7 @@ const FAQ = [
   { frage: 'Ist der Unterricht live oder aufgezeichnet?', antwort: 'Live. Du lernst in Echtzeit mit Dozent und Gruppe. Es gibt keine Aufzeichnungen und keinen Selbstlernkurs.' },
   { frage: 'Ist meine Anfrage verbindlich?', antwort: `Die Anfrage ist kostenlos. ${ZUSAGEN.anfrage}` },
   { frage: 'Ist das eine Veranstaltung der IHK?', antwort: 'Nein. Die waybuild Akademie ist ein unabhängiger Anbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine.' },
-  { frage: 'Wie bezahle ich?', antwort: 'Nach der Anmeldung bekommst du die Rechnung per E-Mail – an dich oder an deinen Betrieb. Eine Online-Zahlung gibt es nicht.' },
+  { frage: 'Wie bezahle ich?', antwort: 'Nach unserer Bestätigung bekommst du die Rechnung per E-Mail – an dich oder an deinen Betrieb. Eine Online-Zahlung gibt es nicht.' },
 ];
 
 const FAKTEN: [string, string][] = [
@@ -213,8 +213,8 @@ const kursListe = {
       <p class="mt-2 font-semibold" data-zusage-anfrage>{ZUSAGEN.anfrage}</p>
       <ol class="mt-6 grid gap-3">
         <li><strong>1.</strong> Bereich und Kurs wählen – oder offen lassen.</li>
-        <li><strong>2.</strong> Wir prüfen den Termin.</li>
-        <li><strong>3.</strong> Du bekommst unsere Bestätigung per E-Mail.</li>
+        <li><strong>2.</strong> Du bekommst unser Angebot per E-Mail.</li>
+        <li><strong>3.</strong> Du sagst zu – mit unserer Bestätigung per E-Mail ist dein Platz sicher.</li>
       </ol>
       <p class="mt-6 text-sm text-gedaempft">Lieber per E-Mail? <a class="link-fliess" href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a></p>
     </div>

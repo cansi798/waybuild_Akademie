@@ -36,7 +36,7 @@ Die ${AKADEMIE.name} bietet Live-Online-Kurse für ganz Deutschland in drei Bere
 - Preise sind Endpreise, alles inklusive. Die Prüfungsgebühr der IHK ist nicht enthalten.
 - Bezahlung per Rechnung per E-Mail – an Teilnehmer oder ihren Betrieb. Keine Online-Zahlung.
 - ${IHK_HINWEIS}
-- Lehrende in der Prüfungsvorbereitung: Dozenten mit IHK-Prüfer-Erfahrung.
+- Unterricht in der Prüfungsvorbereitung: Dozenten mit IHK-Prüfer-Erfahrung.
 - Anfrage: Formular auf der Startseite (${url('/#anfrage')}). ${ZUSAGEN.anfrage}
 - Ausführliche Fassung: ${url('/llms-full.txt')}
 
