@@ -3,9 +3,10 @@
 ## 1. Zeitbudget
 
 - **Angefragt:** bis 22.11.2026 01:00 CET (ab 00:30 nur QA und Abschluss).
-- **Genutzt:** 20:11 bis ca. 00:50, also etwa 4,5 Stunden aktive Sitzung.
-- **Ablauf:** 8 Runden plus 4 unabhängige QA-Durchgänge. Die Runden 1–2 waren Baseline und Audit, gleichzeitig liefen drei andere Helfer. Ab Runde 3 wurde umgesetzt.
-- **Agenten:** 3 Audit-Rollen parallel (Journey/Funnel/IA, SEO/GEO/Technik/A11y, Copy/Trust/Compliance), außerdem 4 getrennte QA-Rollen.
+- **Genutzt:** 20:11 bis ca. 00:15, also etwa 4 Stunden aktive Sitzung. Ab 00:05 gab es keine neuen Änderungen mehr, nur noch Abschluss-QA.
+- **Ablauf:** 11 Runden plus 7 unabhängige QA- bzw. Audit-Durchgänge. Die Runden 1–2 waren Baseline und Audit, gleichzeitig liefen drei andere Helfer. Ab Runde 3 wurde umgesetzt.
+- **Agenten:** 3 Audit-Rollen parallel (Journey/Funnel/IA, SEO/GEO/Technik/A11y, Copy/Trust/Compliance), außerdem 6 getrennte QA-Rollen (R3, R4, R5–6, Lektorat R8, R9, R11) und ein UX-Durchgang in R9 mit Screenshots.
+- **Push:** bis R10 über Jan. Ab 00:00 hat Can angewiesen, selbst zu pushen. Runde 11 ging deshalb selbst nach main (5eb14ab), das ist Pages-Vorschau, nicht live.
 
 ## 2. Ziel und Baseline
 
@@ -29,17 +30,21 @@
 | 5 | 5a6ac62 | Ein Ablauf überall: Anfrage → Angebot → Zusage → Bestätigung; „Dozenten“ statt „Lehrende“; Berufssuche: Enter öffnet bei einem Treffer | zusagen.ts, index, [beruf], danke, ueber-uns, BerufWahl |
 | 6 | f7364cd | Kopf-„Anfragen“ mit Seitenzusammenhang (Kurs-/Berufsseite) | Kopf.astro, Test |
 | 7 | 3339d57 | QA-Fixes: kein festes Angebotsversprechen, Danke mit Zusage, Mobilmenü schließt, Coaching-Kopf, IME-Schutz | zusagen.ts, index, [beruf], danke, Kopf, BerufWahl |
-| 8 | (siehe unten) | Entgendern aller 70 Kursdateien (nur „(m/w/d)“, keine Paarformen, „Mitarbeiter“) | src/content/kurse/*.md |
+| 8 | a827008 | Entgendern von 68 Kursdateien (nur „(m/w/d)“, keine Paarformen, „Mitarbeiter“), Lektorats-QA eingearbeitet; Kurzanfrage-Mail nennt die Zusage | src/content/kurse/*.md, kontakt.php, php-test.sh |
+| 9 | 5235b6d | Kursseite: Zweitweg „Kurz fragen – nur Name und E-Mail“ (Kurzanfrage mit Vorauswahl), kürzere Anmelde-Einleitung, Autofill Betriebsrechnung, Kopf-Anfrage auf /coaching/ | kurse/[slug], anmeldung, AnmeldeFormular, Kopf |
+| 10 | 5995ba4 | QA-Fixes R9: Einleitung mit Buchungsangebot, billing name/organization, Fokus aufs erste leere Pflichtfeld | dito |
+| 11 | 5eb14ab | Mobile Sticky-Leiste erst nach einer Bildschirmhöhe, „Erst Beruf wählen ↓“ entfernt, IHK-Hinweis „Maßgeblich ist die Einladung deiner IHK“ statt „verbindlich“ | StickyAnfrage, index, TerminKarte, Lernpfad, faq.ts, 25 Kursdateien u. a. |
 
 ## 4. Validiert
 
 Die einzelnen Läufe stehen in `qa-checklist.md`. Wichtigste Ergebnisse:
 
 - **Build:** 0 Fehler, 106 Seiten.
-- **Chromium (volle Suite):** 119 pass / 5 skip, zuletzt nach Runde 8.
-- **Webkit (volle Suite auf f7364cd):** 119 pass / 5 skip.
+- **Chromium (volle Suite auf 5eb14ab):** 121 pass / 5 skip. Unter Serverlast ~55 gab es vereinzelt Timeouts bzw. einen axe-Flake auf /pruefungsvorbereitung/. Einzeln laufen diese Tests grün.
+- **Webkit (volle Suite):** 121 pass / 5 skip auf 5235b6d. Endlauf auf 5eb14ab: 121 pass / 5 skip.
+- **PHP:** php-test 236/236.
 - **axe:** auf allen geänderten Seiten 0 Verstöße.
-- **Unabhängige QA:** 4 Durchgänge, alle Befunde sind eingearbeitet oder unten als offen genannt.
+- **Unabhängige QA:** Alle Befunde sind eingearbeitet oder unten als offen genannt.
 
 ## 5. Wirkung
 
@@ -53,16 +58,16 @@ Die einzelnen Läufe stehen in `qa-checklist.md`. Wichtigste Ergebnisse:
 
 ## 6. Offene Risiken und Freigaben
 
-- `public/api/kontakt.php:113–114`: Die Mail an den Kunden nach der Kurzanfrage nennt die Zusage nicht. Das liegt im Bereich PHP/Recht und wurde nicht geändert.
-- `/coaching/`: Der Kopf führt zu `/#anfrage`, die Kurzanfrage hat aber keinen Bereich „Coaching“.
+- `src/lib/site.ts` IHK_HINWEIS ist ein rechtstextnaher Abgrenzungshinweis. Er wurde leicht umformuliert („die Termine legt sie fest“), Can sollte das zur Kenntnis nehmen.
+- Die Kurzanfrage hat keinen Bereich „Coaching“. Der Kopf auf /coaching/ führt deshalb jetzt zur Coaching-Anmeldung.
 - Live sind nur 3 Kurse freigegeben. Can muss die übrigen Kursentwürfe freigeben.
 - Die Rechtstexte prüft der Anwalt noch. Hier wurden sie nicht geändert.
 - Die Preise stehen weiter auf dem Stand von kalk-6771. Hier wurden sie nicht verändert.
 
 ## 7. Nächste Iteration (Top 3)
 
-1. Die Kurzanfrage-Mail (kontakt.php) an den Ablauf Anfrage → Angebot → Zusage → Bestätigung angleichen und auf `/coaching/` einen Coaching-Bereich in der Kurzanfrage ergänzen.
-2. Prüfen, ob die Kursseite die Kurzanfrage direkt eingebettet bekommt (3 Felder statt 5-Schritt-Formular). Das wäre ein A/B-würdiger Schritt, sobald Messung möglich ist.
+1. Die Kurzanfrage direkt auf der Kursseite einbetten (MKT-021) statt Sprung zur Startseite. Für Betriebe ein optionales Feld „Anzahl Azubis“ ergänzen (MKT-013, betrifft PHP).
+2. Unterkurse für Weiterbildungen erst bewerben, wenn Can Entwürfe freigibt (MKT-017). Live sind heute nur 3 Kurse freigegeben.
 3. Nach Can-Freigabe der Kursentwürfe: SEO-Titel und Beschreibungen der Weiterbildungsseiten schärfen und Organization-Schema mit Adresse, `legalName` und `sameAs` ergänzen (site.ts).
 
 ## 8. Quality Gates (Endstand)

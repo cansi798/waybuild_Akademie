@@ -159,3 +159,6 @@ checks: {build: pass, chromium_voll: 121 pass / 5 skip, webkit start+seiten+star
 qa: "unabhängig PASS_WITH_LIMITATIONS → Vorschlag „maßgeblich“ statt „legt … fest“ (Orientierungsfunktion) übernommen; IHK_HINWEIS ist rechtstextnah → Can zur Kenntnis"
 qa_gate: PASS_WITH_LIMITATIONS
 ```
+
+## Abschluss (00:05–00:15)
+Keine neuen Änderungen nach Runde 11. Endlauf auf 5eb14ab: Chromium 121/5 skip, Webkit 121/5 skip, php-test 236/236. report.md, qa-checklist.md, backlog.md aktualisiert.

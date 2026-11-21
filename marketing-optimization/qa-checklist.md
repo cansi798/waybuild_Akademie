@@ -25,3 +25,18 @@
 | G7 Evidenz | PASS | iteration-log + Commits; Wirkung nur Hypothese |
 
 Webkit nach R2 nicht erneut gelaufen (Zeit/Serverlast) → für Webkit NOT_VERIFIED.
+
+## Nachtrag R6–R11
+
+| Runde | Check | Ergebnis |
+|---|---|---|
+| R6–R7 | Chromium voll / Webkit voll (f7364cd) | 119 / 119 pass, je 5 skip |
+| R5–6-QA | unabhängig | PASS_WITH_LIMITATIONS → R7 |
+| R8 | php-test, Chromium voll | 236/236, 119 pass / 5 skip; Lektorats-QA FAIL → korrigiert |
+| R9 | UX-Audit 390/1280 (qa/r9), Chromium voll, Webkit voll | 121 pass / 5 skip (beide) |
+| R9-QA | unabhängig | PASS_WITH_LIMITATIONS → R10 |
+| R10 | Chromium voll | 120 pass / 1 Flake (einzeln grün) / 5 skip |
+| R11 | Chromium voll, Webkit-Teil, QA | 121 pass; 45 pass; PASS_WITH_LIMITATIONS → „maßgeblich“ |
+| Ende (5eb14ab) | Webkit voll, php-test | 121 pass / 5 skip, 236/236 |
+
+Webkit ist damit verifiziert (früheres NOT_VERIFIED aufgehoben). G4 Performance: Video-MP4 je ~2,2 MB, mobil preload none; Desktop lädt erstes Video sofort (nicht vom Loop geändert, Hinweis an start-Bereich).
