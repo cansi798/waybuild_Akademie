@@ -64,7 +64,7 @@ const istAktiv = (p: string) => (pfad === href(p) || (p !== '/' && pfad.startsWi
             <a href={href('/kurse/')} class="flex min-h-12 items-center rounded-xl px-4 text-navy hover:bg-base-200">Alle Kurse</a>
           </li>
           <li class="mt-2">
-            <a href={href(ANFRAGE_PFAD)} class="btn btn-accent w-full rounded-full text-base">Kurs anfragen</a>
+            <a href={href(ANFRAGE_PFAD)} class="btn btn-accent w-full rounded-full text-base" data-kopf-anfrage-menue>Kurs anfragen</a>
           </li>
         </ul>
       </nav>
@@ -106,6 +106,14 @@ const istAktiv = (p: string) => (pfad === href(p) || (p !== '/' && pfad.startsWi
 </style>
 
 <script>
+  // Loop 21.11.: „Anfragen“ im Kopf behält den Zusammenhang der Seite – Kursseite → deren Buchungsanfrage (Kurs vorausgewählt),
+  // Seite mit eigener Kurzanfrage (Berufsseite) → dortiges Formular. Ohne JavaScript bleibt es bei /#anfrage.
+  {
+    const ziel =
+      document.querySelector<HTMLAnchorElement>('a[data-hauptaktion="anfrage"]')?.getAttribute('href') ??
+      (document.querySelector('form[data-anfrage-formular]#anfrage') ? '#anfrage' : null);
+    if (ziel) for (const a of document.querySelectorAll<HTMLAnchorElement>("a[data-kopf-anfrage], a[data-kopf-anfrage-menue]")) a.setAttribute('href', ziel);
+  }
   const menue = document.querySelector<HTMLDetailsElement>('[data-menue]');
   if (menue) {
     const knopf = menue.querySelector('summary');

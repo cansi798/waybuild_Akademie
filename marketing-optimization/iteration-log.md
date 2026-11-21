@@ -77,3 +77,17 @@ qa_gate: "PASS_WITH_LIMITATIONS (Selbstprüfung + Suite; Wortlaut ZUSAGEN.anfrag
 impact: hypothesis_only
 ```
 Hinweis: `ZUSAGEN.anfrage` war als „Wortlaut verbindlich (Audit #6771)“ markiert. Neu: „Deine Anfrage ist unverbindlich. Du bekommst ein Angebot per E-Mail – verbindlich wird es erst mit deiner Zusage und unserer Bestätigung.“ Das passt zum Rechtsmodell aus recht-6771 und folgt der Formulierung von Anmeldung und Danke-Seite. Bei Ablehnung: nur zusagen.ts:13 + Test zurücksetzen.
+
+Jan 22:30: R4–R5 in main (5a6ac62) gepusht; Wortlaut ZUSAGEN.anfrage freigegeben.
+
+## Runde 6 – Kopf-„Anfragen“ mit Seitenzusammenhang (22:30–22:35)
+
+```yaml
+round: 6
+focus: "decision: Kopf-Knopf springt von Kurs-/Berufsseite zur Startseite und verliert den Kurs (QA R4 #5)"
+hypothese: "Wer auf einer Kurs- oder Berufsseite oben „Anfragen“ tippt, landet im passenden Formular mit Vorauswahl → weniger Abbrüche"
+files_changed: [src/components/Kopf.astro (kleines Inline-Skript; ohne JS unverändert /#anfrage), tests/start-6771.spec.ts]
+checks: {build: pass, start-6771+startseite+conversion: 44 pass / 2 skip}
+qa_gate: "PASS_WITH_LIMITATIONS (Selbstprüfung + neuer Test; kein separater QA-Agent)"
+impact: hypothesis_only
+```

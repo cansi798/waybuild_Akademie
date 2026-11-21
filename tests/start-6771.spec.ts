@@ -147,3 +147,13 @@ test('Berufssuche: Enter bei genau einem Treffer öffnet die Berufsseite (Loop 2
   await suche.press('Enter');
   await expect(page).toHaveURL(/\/pruefungsvorbereitung\/fachinformatiker-systemintegration\/$/);
 });
+
+test('Kopf „Anfragen“ behält den Seitenzusammenhang (Loop 21.11.)', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('./kurse/ap1-it-berufe/');
+  await expect(page.locator('[data-kopf-anfrage]')).toHaveAttribute('href', /\/anmeldung\/\?kurs=ap1-it-berufe$/);
+  await page.goto('./pruefungsvorbereitung/fachinformatiker-systemintegration/');
+  await expect(page.locator('[data-kopf-anfrage]')).toHaveAttribute('href', '#anfrage');
+  await page.goto('./kontakt/');
+  await expect(page.locator('[data-kopf-anfrage]')).toHaveAttribute('href', /\/#anfrage$/);
+});
