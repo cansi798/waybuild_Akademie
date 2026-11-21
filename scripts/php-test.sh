@@ -329,6 +329,23 @@ mails_leeren();
 $r = anfrage('/api/kontakt.php', array_merge($kon, ['art' => 'boese']));
 pruefe($r['status'] === 303 && str_starts_with($r['kopf']['location'] ?? '', '/danke/?art=kontakt') && str_contains(mails()[1]['betreff'] ?? '', 'Deine Nachricht ist angekommen'), 'unbekannte art → normales Kontaktformular');
 
+gruppe('Kurzanfrage-Formular (Startseite/Berufsseiten, #6771: art=anfrage + Bereich als Thema)');
+mails_leeren();
+$anf = ['art' => 'anfrage', 'name' => 'Ali Demir', 'email' => 'ali@beispiel.de', 'thema' => 'pruefung', 'kurs' => 'testkurs', 'einwilligung' => '1'];
+$r = anfrage('/api/kontakt.php', $anf);
+$m = mails();
+pruefe($r['status'] === 303 && str_starts_with($r['kopf']['location'] ?? '', '/danke/?art=anfrage&vorgang=K-'), 'ohne Nachricht → 303 /danke/?art=anfrage');
+pruefe(str_contains($m[0]['text'] ?? '', 'Thema: Anfrage Prüfungsvorbereitung') && str_contains($m[0]['text'] ?? '', '(testkurs)'), 'Team-Mail mit Bereich und Kurs');
+pruefe(($m[1]['an'] ?? '') === 'ali@beispiel.de' && str_starts_with($m[1]['betreff'] ?? '', 'Deine unverbindliche Kursanfrage (K-') && str_contains($m[1]['text'] ?? '', 'Kurs: Vorbereitung auf die IHK-Prüfung AP1') && !str_contains($m[1]['text'] ?? '', 'Ali'), 'Bestätigung „Deine unverbindliche Kursanfrage“ mit Kurstitel, ohne Namen');
+$r = anfrage('/api/kontakt.php', array_merge($anf, ['kurs' => 'erfunden']), true);
+pruefe(($r['json']['fehler']['kurs'] ?? '') === 'Bitte wähle einen Kurs aus.', 'Kurs nur aus der Terminliste');
+$r = anfrage('/api/kontakt.php', array_merge($anf, ['kurs' => '', 'thema' => 'ihk-weiterbildung']), true);
+pruefe($r['status'] === 200 && ($r['json']['ok'] ?? false) === true, 'Bereich ohne Kurs genügt');
+$r = anfrage('/api/kontakt.php', array_merge($anf, ['thema' => 'werbung']), true);
+pruefe(isset($r['json']['fehler']['thema']), 'unbekannter Bereich abgelehnt');
+$r = anfrage('/api/kontakt.php', array_merge($kon, ['nachricht' => '', 'kurs' => 'testkurs']), true);
+pruefe(isset($r['json']['fehler']['nachricht']), 'normale Kontaktanfrage: Nachricht bleibt Pflicht');
+
 gruppe('Widerruf (§ 356a BGB)');
 mails_leeren();
 $wid = ['name' => 'Lena Muster', 'email' => 'lena@beispiel.de', 'kurs' => 'testkurs', 'anmeldedatum' => tag(-2), 'vorgang' => 'a-20261113-7f3k',

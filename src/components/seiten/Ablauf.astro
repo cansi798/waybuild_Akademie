@@ -1,43 +1,39 @@
 ---
-// „So läuft's“ – EINE gemeinsame Komponente (Conversion-Konzept E) für Kursseiten, Landing, Coaching und Anmeldung:
-// Termin wählen → Rechnung per E-Mail → Live-Unterricht → Prüfung bei deiner IHK (Ziel, Bernstein markiert).
-// Mit Termin-Daten (Landing) steht unter jedem Schritt das passende Datum. Coaching: gleiche vier Schritte, eigene Texte.
-// Kurse ohne IHK-Prüfung (Säule akademie) übergeben ein eigenes Ziel. Start- und Hero-Dateien haben eigene Varianten.
+// „So läuft's“ – EINE gemeinsame Komponente (Conversion-Konzept E) für Kursseiten, Landing, Coaching und Anmeldung.
+// Rechtsmodell seit #6771 (Teilnahmebedingungen #vertragsschluss): Unverbindlich anfragen → Buchungsangebot per E-Mail →
+// Zusage per Antwort-Mail → unsere Buchungsbestätigung (Ziel, Bernstein markiert). Mit Termin-Daten (Landing) steht unter
+// jedem Schritt der passende Zeitpunkt. Coaching: gleiche vier Schritte, eigene Texte (Termine werden abgestimmt).
 import { formatDatum } from '../../lib/kurse';
 
 interface Props {
   coaching?: boolean;
   /** Daten des nächsten Termins (optional) */
   termin?: { anmeldeschluss: Date; start: Date; ende: Date; pruefung?: Date };
-  /** letzter Schritt, wenn es keine IHK-Prüfung gibt */
-  ziel?: { titel: string; text: string };
   /** senkrechte, kleine Liste (Seitenleiste der Anmeldung) */
   kompakt?: boolean;
   /** Überschriftenebene der Schritte */
   ebene?: 'h3' | 'h4';
 }
-const { coaching = false, termin: t, ziel, kompakt = false, ebene = 'h3' } = Astro.props;
+const { coaching = false, termin: t, kompakt = false, ebene = 'h3' } = Astro.props;
 const Titel = ebene;
 
 type Schritt = { titel: string; text: string; wann?: string };
 const schritte: Schritt[] = coaching
   ? [
-      { titel: 'Coaching anfragen', text: 'Paket, Thema und Prüfungszeitraum angeben. Wir stimmen die Termine mit dir ab – erst dann wird es verbindlich.' },
-      { titel: 'Rechnung per E-Mail', text: 'An dich oder an deinen Betrieb. Keine Online-Zahlung.' },
-      { titel: 'Live 1:1 online', text: 'Je 60 Minuten Rückmeldung und Training per Videokonferenz – zu deinen selbst erstellten Unterlagen.' },
-      { titel: 'Prüfung bei deiner IHK', text: 'Präsentation und Fachgespräch legst du bei deiner IHK ab.' },
+      { titel: 'Unverbindlich anfragen', text: 'Paket, Thema und Prüfungszeitraum angeben. Kein Kundenkonto, keine Zahlungspflicht.' },
+      { titel: 'Buchungsangebot per E-Mail', text: 'Wir schlagen dir passende Online-Termine vor und schicken dir das Angebot mit allen Unterlagen.' },
+      { titel: 'Zusage per Antwort-Mail', text: 'Passen Termine und Angebot, sagst du einfach per Antwort-Mail zu. Bis dahin ist nichts verbindlich.' },
+      { titel: 'Unsere Bestätigung', text: 'Mit unserer Buchungsbestätigung per E-Mail ist das Coaching verbindlich. Die Rechnung kommt per E-Mail, keine Online-Zahlung.' },
     ]
   : [
-      { titel: 'Termin wählen', text: 'Ein kurzes Formular, kein Kundenkonto. Anmelden bis 7 Tage vor Kursstart.', wann: t && `bis ${formatDatum(t.anmeldeschluss)}` },
-      { titel: 'Rechnung per E-Mail', text: 'An dich oder an deinen Betrieb, keine Online-Zahlung. Den Link zum Live-Raum bekommst du vor dem Start.', wann: t && 'nach der Anmeldung' },
-      { titel: 'Live-Unterricht', text: 'In einer festen Gruppe, in Echtzeit. Fragen klärst du sofort – per Mikrofon oder Chat.', wann: t && `${formatDatum(t.start, 'tagmonat')}–${formatDatum(t.ende)}` },
-      ziel
-        ? { titel: ziel.titel, text: ziel.text }
-        : {
-            titel: 'Prüfung bei deiner IHK',
-            text: 'Verbindlich ist die Einladung deiner IHK.',
-            wann: t && (t.pruefung ? formatDatum(t.pruefung) : 'laut Einladung deiner IHK'),
-          },
+      { titel: 'Unverbindlich anfragen', text: 'Ein kurzes Formular, kein Kundenkonto, keine Zahlungspflicht. Anfragen bis 7 Tage vor Kursstart.', wann: t && `bis ${formatDatum(t.anmeldeschluss)}` },
+      { titel: 'Buchungsangebot per E-Mail', text: 'Wir prüfen den Termin und schicken dir in der Regel innerhalb von zwei Werktagen ein Buchungsangebot mit allen Unterlagen.', wann: t && 'nach deiner Anfrage' },
+      { titel: 'Zusage per Antwort-Mail', text: 'Passt alles, sagst du einfach per Antwort-Mail zu. Bis dahin kannst du jederzeit formlos absagen.' },
+      {
+        titel: 'Unsere Bestätigung',
+        text: 'Mit unserer Buchungsbestätigung per E-Mail ist dein Platz verbindlich. Danach kommt die Rechnung, keine Online-Zahlung. Vor dem Start bekommst du deinen Nextcloud-Zugang und den Link zum Live-Raum – der Unterricht läuft über unsere eigene Videokonferenz.',
+        wann: t && `Kursstart ${formatDatum(t.start)}`,
+      },
     ];
 const letzter = schritte.length - 1;
 ---

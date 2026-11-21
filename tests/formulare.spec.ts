@@ -74,7 +74,7 @@ test.describe('Anmeldung', () => {
     // Rechtsmodell 21.11.2026: Formular = unverbindliche Buchungsanfrage, Vertrag erst per E-Mail (Teilnahmebedingungen Nr. 2)
     await expect(knopf).toHaveText('Unverbindlich anfragen');
     expect((await knopf.textContent())?.trim()).toBe('Unverbindlich anfragen');
-    await expect(page.locator('[data-ablauf-buchung]')).toContainText('Verbindlich wird es erst mit unserer Buchungsbestätigung per E-Mail.');
+    await expect(page.locator('[data-ablauf-buchung]')).toContainText('Verbindlich wird es erst mit deiner Zusage und unserer Buchungsbestätigung per E-Mail.');
     await expect(page.locator('[data-knopf-hinweis]')).toContainText('Kostenlos und unverbindlich.');
     await expect(page.locator('[data-preis-gesamt]')).toHaveText('349,00 €');
     if (istVorschau) await expect(page.locator('[data-demo-hinweis]').first()).toContainText('Demo-Modus');

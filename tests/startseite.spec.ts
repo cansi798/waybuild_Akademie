@@ -24,7 +24,7 @@ test('Startseite lädt ohne Konsolenfehler', async ({ page }) => {
   page.on('pageerror', (e) => fehler.push(e.message));
   const antwort = await page.goto('./');
   expect(antwort?.status()).toBe(200);
-  await expect(page.locator('h1')).toContainText('Gut vorbereitet in die Prüfung');
+  await expect(page.locator('h1')).toContainText('Gut vorbereitet in deine IHK-Prüfung');
   // „load“ statt „networkidle“: Die Bühnen-Animationen laufen weiter, networkidle war unter Last unzuverlässig.
   // Module-Skripte laufen vor „load“; die kurze Wartezeit fängt späte Fehler (Timer, Beobachter) ab.
   await page.waitForLoadState('load');
@@ -37,27 +37,13 @@ for (const breite of BREITEN) {
     await page.setViewportSize({ width: breite, height: 900 });
     await page.goto('./');
     await keinHScroll(page);
-    // Bühne und Lernpfad einmal ins Bild holen
-    await page.locator('[data-warum]').scrollIntoViewIfNeeded();
+    // Formular einmal ins Bild holen
+    await page.locator('form#anfrage').scrollIntoViewIfNeeded();
     await keinHScroll(page);
   });
 }
 
-test('Countdown zeigt positive Tageszahl bis zur AP1 am 24.02.2027', async ({ page }) => {
-  await page.clock.setFixedTime(new Date('2026-12-01T10:00:00+01:00'));
-  await page.goto('./');
-  const tafel = page.locator('[data-cd-tafel="0"]');
-  await expect(tafel).toBeVisible();
-  await expect(tafel.locator('[data-cd-datum]')).toHaveText('24.02.2027');
-  await expect(tafel.locator('[data-cd-tage]')).toHaveText('85');
-  await expect(tafel).toContainText('Dein Kurs startet am 19.01.2027');
-  // Umschalter auf AP2
-  await page.getByText('AP2', { exact: true }).click();
-  await expect(page.locator('[data-cd-tafel="1"]')).toBeVisible();
-  await expect(tafel).toBeHidden();
-  const tageAp2 = Number(await page.locator('[data-cd-tafel="1"] [data-cd-tage]').textContent());
-  expect(tageAp2).toBeGreaterThan(0);
-});
+// Countdown entfällt auf der Startseite (Can #6771: wenig Text, Berufsauswahl statt Countdown).
 
 test('mobiles Menü ist per Tastatur bedienbar', async ({ page, browserName }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -70,7 +56,7 @@ test('mobiles Menü ist per Tastatur bedienbar', async ({ page, browserName }) =
   await expect(liste).toBeVisible();
   // Mit Tab in die Menüpunkte (WebKit: Links nur mit Alt+Tab, wie Safari-Standard)
   await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab');
-  await expect(liste.getByRole('link', { name: 'Kurse' })).toBeFocused();
+  await expect(liste.getByRole('link', { name: 'Prüfungsvorbereitung' })).toBeFocused();
   await page.keyboard.press('Escape');
   await expect(liste).toBeHidden();
   await expect(knopf).toBeFocused();
@@ -132,10 +118,11 @@ test('IHK-Hinweis steht im Fuß', async ({ page }) => {
   await expect(page.locator('[data-ihk-hinweis]')).toContainText('keine Veranstaltung der IHK');
 });
 
+// Warum-Bühne steht seit #6771 auf der Prüfungsvorbereitung (nicht mehr auf der Startseite).
 test.describe('Warum-Bühne', () => {
   test('Szenen laufen nacheinander, Pause hält an', async ({ page }) => {
     await page.clock.install();
-    await page.goto('./');
+    await page.goto('./pruefungsvorbereitung/');
     const buehne = page.locator('[data-warum]');
     await expect(buehne).toHaveClass(/ist-buehne/);
     await buehne.scrollIntoViewIfNeeded();
@@ -163,17 +150,17 @@ test.describe('Warum-Bühne', () => {
 
   test('reduzierte Bewegung: statische Bildfolge mit allen Szenen', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.goto('./');
+    await page.goto('./pruefungsvorbereitung/');
     const buehne = page.locator('[data-warum]');
     await expect(buehne).not.toHaveClass(/ist-buehne/);
     for (let i = 0; i < 6; i++) await expect(page.locator(`[data-wb-szene="${i}"]`)).toBeVisible();
     await expect(page.locator('[data-wb-pause]')).toBeHidden();
   });
 
-  test('Buchen-Knopf führt zu den Kursen', async ({ page }) => {
-    await page.goto('./');
+  test('Buchen-Knopf führt zu den Terminen', async ({ page }) => {
+    await page.goto('./pruefungsvorbereitung/');
     await page.locator('[data-wb-buchen]').click();
-    await expect(page).toHaveURL(/\/kurse\/$/);
+    await expect(page).toHaveURL(/#termine$/);
   });
 });
 
@@ -181,7 +168,8 @@ test('alle Seiten ohne horizontales Scrollen bei 320 px', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 });
   const seiten = ['', 'kurse/', 'kurse/ap1-it-berufe/', 'kurse/ap2-fachinformatiker-systemintegration/', 'kurse/pruefungscoaching/',
     'termine/', 'pruefungsvorbereitung/', 'coaching/', 'ueber-uns/', 'faq/', 'kontakt/', 'anmeldung/', 'interesse/', 'danke/',
-    'impressum/', 'datenschutz/', 'teilnahmebedingungen/', 'widerruf/', 'gibt-es-nicht/'];
+    'impressum/', 'datenschutz/', 'teilnahmebedingungen/', 'widerruf/', 'gibt-es-nicht/',
+    'pruefungsvorbereitung/fachinformatiker-systemintegration/', 'pruefungsvorbereitung/industriekaufmann/'];
   for (const s of seiten) {
     await page.goto(`./${s}`);
     const r = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);

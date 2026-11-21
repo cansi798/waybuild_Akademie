@@ -1,5 +1,5 @@
 ---
-// Station 1: Das Anmeldeformular füllt sich, der Knopf „Zahlungspflichtig anmelden“ wird gedrückt, Haken.
+// Station 1: Das Anmeldeformular füllt sich, der Knopf „Unverbindlich anfragen“ wird gedrückt (Ablauf seit #6771: Anfrage → Angebot per Mail → Zusage → unsere Bestätigung), Haken.
 // Grundzustand = Endbild (statische Bildfolge); Animation nur in der aktiven Station der Bühne.
 import type { ReiseWerte } from './reise';
 interface Props { w: ReiseWerte }
@@ -44,7 +44,7 @@ const { w } = Astro.props;
 
     <g class="s1-knopf">
       <rect x="120" y="298" width="240" height="34" rx="17" fill="#f2a900" />
-      <text x="240" y="320" text-anchor="middle" font-size="13.5" font-weight="700" fill="#00346b" class="hr-sans">Zahlungspflichtig anmelden</text>
+      <text x="240" y="320" text-anchor="middle" font-size="13.5" font-weight="700" fill="#00346b" class="hr-sans">Unverbindlich anfragen</text>
     </g>
   </g>
 

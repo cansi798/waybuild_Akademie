@@ -9,6 +9,8 @@ export const ZUSAGEN = {
   ausfall: 'Fällt ein Kurs aus, bekommst du dein Geld zurück oder wechselst kostenlos',
   /** Prüfungscoaching (Teilnahmebedingungen Nr. 5 Abs. 3, Vertrag erst per E-Mail nach abgestimmten Terminen). */
   coaching: 'Anfrage unverbindlich · Termin bis 24 Stunden vorher kostenlos verschieben',
+  /** Kurzanfrage (Startseite, Berufsseiten, FAQ, llms): Wortlaut verbindlich (Audit #6771). */
+  anfrage: 'Deine Anfrage ist unverbindlich – verbindlich wird es erst mit unserer Bestätigung per E-Mail.',
   /** Verweis auf die vollständigen Regeln. */
   link: { text: 'Teilnahmebedingungen', pfad: '/teilnahmebedingungen/#storno', pfadCoaching: '/teilnahmebedingungen/#coaching' },
 } as const;

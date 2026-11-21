@@ -53,21 +53,24 @@ test.describe('Risikoumkehr', () => {
 });
 
 test.describe('Hauptaktion und Kursseite', () => {
-  test('einheitlich „Termin wählen“ (Kopf, Seitenleiste, Leiste, Kurskarte, Mobilmenü)', async ({ page }) => {
+  test('Kursseite: „Unverbindlich anfragen“ mit einem Tap zum Formular; Listen: „Unverbindlich anfragen“ zu den Terminen', async ({ page }) => {
     await page.goto('./kurse/ap1-it-berufe/');
-    await expect(page.locator('[data-hauptaktion]')).toHaveText('Termin wählen');
-    await expect(page.locator('[data-cta-leiste] a')).toHaveText('Termin wählen');
+    await expect(page.locator('[data-hauptaktion]')).toHaveText('Unverbindlich anfragen');
+    await expect(page.locator('[data-hauptaktion]')).toHaveAttribute('href', /\/anmeldung\/\?kurs=ap1-it-berufe$/);
+    await expect(page.locator('[data-kopf-verbindlich]')).toContainText('verbindlich erst mit deiner Zusage und unserer Buchungsbestätigung per E-Mail');
+    await expect(page.locator('[data-cta-leiste] a')).toHaveText('Anfragen');
     await page.goto('./pruefungsvorbereitung/');
     const karte = page.locator('[data-kurskarte="ap1-it-berufe"] a.btn');
-    await expect(karte).toContainText('Termin wählen');
+    await expect(karte).toContainText('Unverbindlich anfragen');
     await expect(karte).toHaveAttribute('href', /\/kurse\/ap1-it-berufe\/#termine$/);
     await expect(page.locator('[data-kurskarte="pruefungscoaching"] a.btn')).toContainText('Coaching anfragen');
     // Hero der Landing: genau ein Knopf
     await expect(page.locator('main section').first().locator('a.btn')).toHaveCount(1);
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('./termine/');
-    await page.getByText('Menü', { exact: true }).click();
-    await expect(page.locator('header a.btn-accent')).toHaveText('Termin wählen');
+    await page.locator('[data-menue] > summary').click();
+    // Seit #6771: Kopf mit „Anfragen“, im Mobilmenü „Kurs anfragen“ (Kurzanfrage auf der Startseite)
+    await expect(page.locator('header a.btn-accent')).toHaveText(['Anfragen', 'Kurs anfragen']);
   });
 
   test('mobil 390: Preis, nächster Start und Knopf in der ersten Ansicht', async ({ page }) => {
@@ -144,11 +147,12 @@ test.describe('FAQ und So läuft\'s', () => {
     for (const s of ['kurse/ap1-it-berufe/', 'pruefungsvorbereitung/']) {
       await page.goto(`./${s}`);
       const titel = await page.locator('[data-ablauf] [data-schritt] :is(h3,h4)').allTextContents();
-      expect(titel.map((t) => t.replace(/^Schritt \d: /, '').trim()), s).toEqual(['Termin wählen', 'Rechnung per E-Mail', 'Live-Unterricht', 'Prüfung bei deiner IHK']);
+      expect(titel.map((t) => t.replace(/^Schritt \d: /, '').trim()), s).toEqual(['Unverbindlich anfragen', 'Buchungsangebot per E-Mail', 'Zusage per Antwort-Mail', 'Unsere Bestätigung']);
     }
     await page.goto('./coaching/');
     await expect(page.locator('[data-ablauf] [data-schritt]')).toHaveCount(4);
-    await expect(page.locator('[data-ablauf] [data-schritt="4"]')).toContainText('Prüfung bei deiner IHK');
+    await expect(page.locator('[data-ablauf] [data-schritt="4"]')).toContainText('Unsere Bestätigung');
+    await expect(page.locator('[data-ablauf] [data-schritt="4"]')).toContainText('verbindlich');
   });
 });
 

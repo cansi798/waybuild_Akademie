@@ -67,6 +67,13 @@ export const KONTAKT_THEMEN = [
   { id: 'coaching', name: 'Prüfungscoaching' },
 ] as const;
 
+/** Kurzanfrage (Startseite, Berufsseiten): Bereich = Thema für /api/kontakt.php; Nachricht dort freiwillig. */
+export const ANFRAGE_BEREICHE = [
+  { id: 'pruefung', name: 'Prüfungsvorbereitung (AP1/AP2)', saeule: 'ihk-pruefung' },
+  { id: 'ihk-weiterbildung', name: 'IHK-Weiterbildung (Fachwirt, Betriebswirt …)', saeule: 'ihk-weiterbildung' },
+  { id: 'akademie', name: 'waybuild Weiterbildung (KI, IT, Programmierung)', saeule: 'akademie' },
+] as const;
+
 export interface Preis {
   einzel: number;
   personen: number;
