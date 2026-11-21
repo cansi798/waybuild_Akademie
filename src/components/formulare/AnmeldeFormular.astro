@@ -196,11 +196,11 @@ const kartenKlasse = 'rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8'
       <div class="mt-6 grid gap-5 sm:grid-cols-6" data-zahlweg-bereich="betrieb">
         <h3 class="font-serif text-xl sm:col-span-6">Rechnung an deinen Betrieb <span class="font-sans text-sm font-normal text-gedaempft">(bei „Mein Betrieb zahlt“)</span></h3>
         <Feld form={F} name="firma" label="Firmenname" pflicht min={2} max={120} fehler={FEHLER.firma} autocomplete="organization" klasse="sm:col-span-6" />
-        <Feld form={F} name="ansprechperson" label="Ansprechperson für die Rechnung" pflicht min={2} max={100} fehler={FEHLER.ansprechperson} klasse="sm:col-span-6" />
-        <Feld form={F} name="firma_strasse" label="Straße und Hausnummer" pflicht min={3} max={100} fehler={FEHLER.strasse} klasse="sm:col-span-6" />
-        <Feld form={F} name="firma_plz" label="PLZ" pflicht regel="plz" max={10} fehler={FEHLER.plz} inputmode="numeric" klasse="sm:col-span-2" />
-        <Feld form={F} name="firma_ort" label="Ort" pflicht min={2} max={60} fehler={FEHLER.ort} klasse="sm:col-span-4" />
-        <Feld form={F} name="rechnung_email" label="E-Mail für die Rechnung" typ="email" pflicht regel="email" max={254} fehler={FEHLER.rechnungEmail} inputmode="email" klasse="sm:col-span-6" />
+        <Feld form={F} name="ansprechperson" label="Ansprechperson für die Rechnung" pflicht min={2} max={100} fehler={FEHLER.ansprechperson} autocomplete="name" klasse="sm:col-span-6" />
+        <Feld form={F} name="firma_strasse" label="Straße und Hausnummer" pflicht min={3} max={100} fehler={FEHLER.strasse} autocomplete="billing street-address" klasse="sm:col-span-6" />
+        <Feld form={F} name="firma_plz" label="PLZ" pflicht regel="plz" max={10} fehler={FEHLER.plz} inputmode="numeric" autocomplete="billing postal-code" klasse="sm:col-span-2" />
+        <Feld form={F} name="firma_ort" label="Ort" pflicht min={2} max={60} fehler={FEHLER.ort} autocomplete="billing address-level2" klasse="sm:col-span-4" />
+        <Feld form={F} name="rechnung_email" label="E-Mail für die Rechnung" typ="email" pflicht regel="email" max={254} fehler={FEHLER.rechnungEmail} inputmode="email" autocomplete="billing email" klasse="sm:col-span-6" />
         <Feld form={F} name="bestellnummer" label="Bestellnummer oder Kostenstelle" max={50} fehler={FEHLER.bestellnummer} klasse="sm:col-span-6" />
       </div>
     </section>

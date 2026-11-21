@@ -157,3 +157,18 @@ test('Kopf „Anfragen“ behält den Seitenzusammenhang (Loop 21.11.)', async (
   await page.goto('./kontakt/');
   await expect(page.locator('[data-kopf-anfrage]')).toHaveAttribute('href', /\/#anfrage$/);
 });
+
+test('Kopf „Anfragen“ auf /coaching/ führt zur Coaching-Anfrage (Loop 21.11.)', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('./coaching/');
+  await expect(page.locator('[data-kopf-anfrage]')).toHaveAttribute('href', /\/anmeldung\/\?kurs=pruefungscoaching/);
+});
+
+test('Kursseite: „Kurz fragen“ führt zur Kurzanfrage mit Kurs-Vorauswahl (Loop R9)', async ({ page }) => {
+  await page.goto('./kurse/ap1-it-berufe/');
+  const link = page.locator('[data-kurzanfrage]');
+  await expect(link).toHaveAttribute('href', /\/\?bereich=pruefung&kurs=ap1-it-berufe#anfrage$/);
+  await link.click();
+  await expect(page.locator('#anfrage')).toBeInViewport();
+  await expect(page.locator('#anfrage-kurs')).toHaveValue('ap1-it-berufe');
+});

@@ -27,6 +27,7 @@ import {
 } from '../../lib/kurse';
 import { href } from '../../lib/pfad';
 import { berufKurz, berufUrl, sichtbareBerufe } from '../../lib/berufe';
+import { ANFRAGE_BEREICHE } from '../../lib/formular';
 import Risikoumkehr from '../../components/seiten/Risikoumkehr.astro';
 import { BEWEIS_DOZENTEN } from '../../lib/zusagen';
 import { fragen, ohneDoppelte, type FaqId } from '../../lib/faq';
@@ -75,6 +76,9 @@ const aktion = coaching
         { text: 'Unverbindlich anfragen', url: href(`/anmeldung/?kurs=${kurs.id}`), daten: 'anfrage' }
     : { text: 'Interesse vormerken', url: href(interesseUrl(kurs)), daten: 'interesse' };
 // Leiste/Seitenleiste: kurz, damit bei 320 px das Startdatum sichtbar bleibt (QA R3)
+// Loop R9: Alternative zum 5-Schritt-Formular – Kurzanfrage (4 Angaben) auf der Startseite, Kurs vorausgewählt
+const kurzBereich = ANFRAGE_BEREICHE.find((b) => b.saeule === d.saeule)?.id;
+const kurzAnfrageUrl = kurzBereich ? href(`/?bereich=${kurzBereich}&kurs=${kurs.id}#anfrage`) : undefined;
 const aktionKurz = aktion.daten === 'anfrage' ? 'Anfragen' : aktion.text;
 // Beweis nur, wo er stimmt: Säule ihk-pruefung (Prüfungsvorbereitung + Coaching), nicht bei Entwürfen.
 const mitBeweis = !entwurf && (d.saeule === 'ihk-pruefung' || coaching);
@@ -210,6 +214,11 @@ const schema =
             <p class="mt-3 text-sm text-white/85" data-kopf-verbindlich>
               Kostenlos und unverbindlich – verbindlich erst mit deiner Zusage und unserer Buchungsbestätigung per E-Mail.
               {termine.length > 1 && <> <a href="#termine" class="font-semibold text-white underline underline-offset-4 hover:no-underline" data-kopf-termine>Alle {termine.length} Termine ansehen</a></>}
+            </p>
+          )}
+          {aktion.daten === 'anfrage' && kurzAnfrageUrl && (
+            <p class="mt-2 text-sm text-white/85">
+              Erst nur eine Frage? <a href={kurzAnfrageUrl} class="font-semibold text-white underline underline-offset-4 hover:no-underline" data-kurzanfrage>Kurz fragen – nur 4 Angaben</a>
             </p>
           )}
           {buchbar && !coaching && <p class="mt-3 text-sm text-white/85" data-kopf-zahler>Rechnung an dich oder deinen Betrieb · ab 3 Personen 10 % Rabatt</p>}

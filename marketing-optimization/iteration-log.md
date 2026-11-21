@@ -120,3 +120,16 @@ checks: {build: pass, chromium_voll: 119 pass / 5 skip, php_test: 236/236}
 qa_gate: "PASS_WITH_LIMITATIONS (Lektorat nach Korrektur nicht erneut durch Agent, Rest-Grep 0 echte Treffer)"
 impact: "Regelkonformität; Conversion-Wirkung nicht messbar"
 ```
+
+## Runde 9 – kürzerer Weg für „nur kurz fragen“ (23:07–23:25)
+
+UX-Durchgang (unabhängiger Agent, 390×844 + 1280, Screenshots qa/r9/): Kursseite führte nur ins 5-Schritt-Formular (12–15 Pflichtfelder) statt in die Kurzanfrage (4); /anmeldung/ mobil erst unter der ersten Ansicht; Betriebsrechnung ohne Autofill; Berufsseite: Kopf-Sprung ohne Fokus; /coaching/-Kopf ohne Coaching.
+
+```yaml
+round: 9
+hypothese: "Azubis, die nur eine Frage haben, brechen beim 5-Schritt-Formular ab; ein Zweitweg „Kurz fragen – nur 4 Angaben“ (Kurs vorausgewählt) fängt sie auf."
+files_changed: [src/pages/kurse/[slug].astro, src/pages/anmeldung/index.astro (Einleitung 46 → 17 Wörter), src/components/formulare/AnmeldeFormular.astro (autocomplete billing …), src/components/Kopf.astro (Coaching-Seite, Fokus ins Namensfeld), tests/start-6771.spec.ts]
+checks: {build: pass, chromium_voll: 121 pass / 5 skip, Vorauswahl kurs=ap1-it-berufe geprüft}
+qa_gate: PASS_WITH_LIMITATIONS (Selbstprüfung + Tests; kein weiterer QA-Agent)
+verworfen: "Sticky-Leiste Startseite verzögern / „Erst Beruf wählen ↓“ streichen – Startseite ist Gestaltung von start-6771/Can, Risiko 2 → Backlog MKT-019"
+```
