@@ -45,13 +45,13 @@ termine:
     start: 2027-03-30
     ende: 2027-04-22
     pruefung: 2027-04-28
-    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – maßgeblich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-03-23
   - id: bueromanagement-t2-2027-winter
     start: 2027-10-26
     ende: 2027-11-18
     pruefung: 2027-11-24
-    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – maßgeblich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-10-19
 faq:
   - frage: Was zählt in Teil 2 am meisten?

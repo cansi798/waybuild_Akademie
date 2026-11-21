@@ -49,7 +49,7 @@ termine:
     start: 2027-03-18
     ende: 2027-04-20
     pruefung: 2027-04-27
-    pruefungHinweis: Schriftliche Prüfung Teil 2 am 27. und 28.04.2027 – verbindlich ist die Einladung deiner IHK.
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am 27. und 28.04.2027 – maßgeblich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-03-11
     ausfall:
       - 2027-03-25
@@ -57,7 +57,7 @@ termine:
     start: 2027-10-19
     ende: 2027-11-16
     pruefung: 2027-11-23
-    pruefungHinweis: Schriftliche Prüfung Teil 2 am 23. und 24.11.2027 – verbindlich ist die Einladung deiner IHK.
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am 23. und 24.11.2027 – maßgeblich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-10-12
 faq:
   - frage: Rechnen wir auch Leasing- und Finanzierungsbeispiele?

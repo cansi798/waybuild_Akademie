@@ -8,7 +8,7 @@ export const FAQ = {
   // Allgemein
   'ihk-veranstaltung': {
     frage: 'Ist der Kurs eine offizielle IHK-Veranstaltung?',
-    antwort: 'Nein. Die waybuild Akademie ist ein unabhängiger Anbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine.',
+    antwort: 'Nein. Die waybuild Akademie ist ein unabhängiger Anbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; die Termine legt sie fest.',
   },
   dozenten: {
     frage: 'Wer unterrichtet bei euch?',
@@ -104,7 +104,7 @@ export const FAQ = {
   },
   'pruefung-wann': {
     frage: 'Wann ist meine Prüfung?',
-    antwort: 'Bei jedem Termin steht der bundesweite schriftliche Prüfungstag. Verbindlich ist die Einladung deiner IHK.',
+    antwort: 'Bei jedem Termin steht der bundesweite schriftliche Prüfungstag. Maßgeblich ist die Einladung deiner IHK.',
   },
   'pruefung-anmeldung': {
     frage: 'Melde ich mich bei euch auch zur Prüfung an?',

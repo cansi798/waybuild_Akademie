@@ -145,3 +145,17 @@ files_changed: [src/pages/anmeldung/index.astro, src/components/formulare/Anmeld
 checks: {build: pass, chromium_voll: 120 pass / 1 flaky (axe 1440 /pruefungsvorbereitung/, einzeln 2/2 pass, Seite unverändert) / 5 skip}
 qa_gate: PASS_WITH_LIMITATIONS
 ```
+
+Jan 23:48: Can 22:25 „Entscheidung Empfehlung selbst treffen“ → MKT-019/020 umsetzen. Jan 00:00: Can 23:55 „Empfehlungen direkt umsetzen und pushen“ → Loop pusht ab jetzt selbst nach grüner Runde.
+
+## Runde 11 – Mobile Startseite entschlacken, IHK-Hinweis ohne „verbindlich“ (23:49–00:03)
+
+```yaml
+round: 11
+change_ids: [MKT-019, MKT-020]
+hypothese: "Weniger gleichartige Aufrufe in der ersten Ansicht + freie zweite Berufskachel → Berufswahl wird schneller genutzt; ohne „verbindlich“ neben „unverbindlich anfragen“ keine Verunsicherung."
+files_changed: [src/components/start/StickyAnfrage.astro (erst nach 0,9 Bildschirmhöhen), src/pages/index.astro („Erst Beruf wählen ↓“ entfernt), „Maßgeblich ist die Einladung deiner IHK“ statt „Verbindlich ist …“ in TerminKarte, Lernpfad, kurse/[slug], termine, pruefungsvorbereitung, faq.ts, anmeldung-client.ts, ReiseBuehne, WarumBuehne, 25 Kursdateien (pruefungHinweis); „die Termine legt sie fest“ in site.ts IHK_HINWEIS, faq.ts, index, ueber-uns; Tests]
+checks: {build: pass, chromium_voll: 121 pass / 5 skip, webkit start+seiten+startseite: 45 pass / 4 skip}
+qa: "unabhängig PASS_WITH_LIMITATIONS → Vorschlag „maßgeblich“ statt „legt … fest“ (Orientierungsfunktion) übernommen; IHK_HINWEIS ist rechtstextnah → Can zur Kenntnis"
+qa_gate: PASS_WITH_LIMITATIONS
+```

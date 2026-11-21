@@ -15,9 +15,17 @@ const { bereich } = Astro.props;
 <script>
   const leiste = document.querySelector<HTMLElement>('[data-sticky-anfrage]');
   const form = document.querySelector('[data-anfrage-formular]');
+  // Loop R11 (MKT-019): erst nach etwa einer Bildschirmhöhe einblenden – oben stehen Kopf- und Hero-Knopf schon im Blick.
   if (leiste && form && 'IntersectionObserver' in window) {
+    let formSichtbar = false;
+    const pruefen = () => {
+      leiste.hidden = formSichtbar || window.scrollY < window.innerHeight * 0.9;
+    };
     new IntersectionObserver((es) => {
-      leiste.hidden = es[0].isIntersecting;
+      formSichtbar = es[0].isIntersecting;
+      pruefen();
     }, { rootMargin: '0px 0px -10% 0px' }).observe(form);
+    window.addEventListener('scroll', pruefen, { passive: true });
+    pruefen();
   }
 </script>

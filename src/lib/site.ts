@@ -10,7 +10,7 @@ export const AKADEMIE = {
 
 /** Pflichthinweis (Fuß + IHK-Kursseiten, US-19) – wörtlich laut Plan. */
 export const IHK_HINWEIS =
-  'Unabhängiges Bildungsangebot der waybuild Akademie – keine Veranstaltung der IHK. Die Prüfung legst du bei deiner zuständigen IHK ab; verbindlich sind deren Termine.';
+  'Unabhängiges Bildungsangebot der waybuild Akademie – keine Veranstaltung der IHK. Die Prüfung legst du bei deiner zuständigen IHK ab; die Termine legt sie fest.';
 
 /** Hauptmenü (Can #6771): drei Bereiche + Kontakt; dazu im Kopf der feste Knopf „Anfragen“ (→ Startseite #anfrage). */
 export const MENUE = [

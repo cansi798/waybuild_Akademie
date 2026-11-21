@@ -91,6 +91,9 @@ test.describe('Startseite: Berufsauswahl und Kurzanfrage', () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('./');
     const leiste = page.locator('[data-sticky-anfrage]');
+    // erst nach etwa einer Bildschirmhöhe (Loop R11)
+    await expect(leiste).toBeHidden();
+    await page.mouse.wheel(0, 900);
     await expect(leiste).toBeVisible();
     await page.locator('form#anfrage').scrollIntoViewIfNeeded();
     await expect(leiste).toBeHidden();

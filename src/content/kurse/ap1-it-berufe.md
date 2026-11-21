@@ -52,13 +52,13 @@ termine:
     start: 2027-01-21
     ende: 2027-02-18
     pruefung: 2027-02-24
-    pruefungHinweis: Verbindlich ist die Einladung deiner IHK.
+    pruefungHinweis: Maßgeblich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-01-14
   - id: ap1-2027-herbst
     start: 2027-08-26
     ende: 2027-09-23
     pruefung: 2027-09-29
-    pruefungHinweis: Verbindlich ist die Einladung deiner IHK.
+    pruefungHinweis: Maßgeblich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-08-19
 faq:
   - frage: Für welche Berufe ist der Kurs?

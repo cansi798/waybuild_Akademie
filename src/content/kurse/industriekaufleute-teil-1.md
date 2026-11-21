@@ -48,13 +48,13 @@ termine:
     start: 2027-02-02
     ende: 2027-02-18
     pruefung: 2027-02-24
-    pruefungHinweis: Schriftliche Prüfung Teil 1 am Mittwoch, 24.02.2027 – verbindlich ist die Einladung deiner IHK.
+    pruefungHinweis: Schriftliche Prüfung Teil 1 am Mittwoch, 24.02.2027 – maßgeblich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-01-26
   - id: industriekaufleute-t1-2027-herbst
     start: 2027-09-07
     ende: 2027-09-23
     pruefung: 2027-09-29
-    pruefungHinweis: Schriftliche Prüfung Teil 1 am Mittwoch, 29.09.2027 – verbindlich ist die Einladung deiner IHK.
+    pruefungHinweis: Schriftliche Prüfung Teil 1 am Mittwoch, 29.09.2027 – maßgeblich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-08-31
 faq:
   - frage: Wie ist Teil 1 aufgebaut?

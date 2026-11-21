@@ -202,7 +202,7 @@ test.describe('Seiten (Vorschau-Build)', () => {
   test('Termine: chronologisch, vergangene ausgeblendet', async ({ page }) => {
     await page.clock.setFixedTime(new Date('2026-12-01T10:00:00+01:00'));
     await page.goto('./termine/');
-    await expect(page.locator('[data-ihk-einladung]')).toContainText('Verbindlich ist die Einladung deiner IHK');
+    await expect(page.locator('[data-ihk-einladung]')).toContainText('Maßgeblich ist die Einladung deiner IHK');
     const lesen = () =>
       page.locator('li[data-termin]:visible').evaluateAll((els) =>
         els.map((e) => ({ start: (e as HTMLElement).dataset.start!, schluss: (e as HTMLElement).dataset.anmeldeschluss!, id: (e as HTMLElement).dataset.termin! })),

@@ -347,7 +347,7 @@ const schema =
             <div data-termine-liste>
               {termine.length > 0 && (
                 <>
-                  {pruefungskurs && <p class="mt-3 max-w-2xl text-gedaempft">Jeder Kurs endet kurz vor dem bundesweiten schriftlichen Prüfungstag. Verbindlich ist die Einladung deiner IHK.</p>}
+                  {pruefungskurs && <p class="mt-3 max-w-2xl text-gedaempft">Jeder Kurs endet kurz vor dem bundesweiten schriftlichen Prüfungstag. Maßgeblich ist die Einladung deiner IHK.</p>}
                   <ul class="mt-6 grid gap-4">
                     {termine.map((t) => (
                       <TerminKarte kurs={kurs} termin={t} />

@@ -53,7 +53,7 @@ termine:
     start: 2027-03-23
     ende: 2027-04-20
     pruefung: 2027-04-27
-    pruefungHinweis: Schriftliche Prüfung Teil 2 am Dienstag, 27.04.2027 – verbindlich ist die Einladung deiner IHK.
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Dienstag, 27.04.2027 – maßgeblich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-03-16
     ausfall:
       - 2027-03-25
@@ -61,7 +61,7 @@ termine:
     start: 2027-10-21
     ende: 2027-11-16
     pruefung: 2027-11-23
-    pruefungHinweis: Schriftliche Prüfung Teil 2 am Dienstag, 23.11.2027 – verbindlich ist die Einladung deiner IHK.
+    pruefungHinweis: Schriftliche Prüfung Teil 2 am Dienstag, 23.11.2027 – maßgeblich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-10-14
 faq:
   - frage: Was wird in Teil 2 schriftlich geprüft?

@@ -68,7 +68,7 @@ const monat = new Intl.DateTimeFormat('de-DE', { month: 'short', year: 'numeric'
         <dd class="font-semibold">{formatDatum(t.anmeldeschluss)}</dd>
       </div>
     </dl>
-    {t.pruefung && <p class="mt-1 text-sm text-gedaempft">{t.pruefungHinweis ?? 'Verbindlich ist die Einladung deiner IHK.'}</p>}
+    {t.pruefung && <p class="mt-1 text-sm text-gedaempft">{t.pruefungHinweis ?? 'Maßgeblich ist die Einladung deiner IHK.'}</p>}
     {
       t.ausfall.length > 0 && (
         <p class="mt-2 inline-flex rounded-lg bg-base-200 px-3 py-1.5 text-sm" data-ausfall>

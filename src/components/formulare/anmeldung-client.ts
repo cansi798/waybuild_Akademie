@@ -85,7 +85,7 @@ function einrichten(form: HTMLFormElement) {
     } else {
       if (t) z.push(['Termin', `${t.zeitraum}, ${k.zeiten}, live online`]);
       if (k.ue) z.push(['Umfang', `${k.ue} Unterrichtseinheiten · ${k.dauer}`]);
-      if (t?.pruefung) z.push(['IHK-Prüfung', `${datumDe(t.pruefung)} (verbindlich ist die Einladung deiner IHK)`]);
+      if (t?.pruefung) z.push(['IHK-Prüfung', `${datumDe(t.pruefung)} (maßgeblich ist die Einladung deiner IHK)`]);
     }
     const namen = personenNamen();
     if (namen.length) z.push([anzahl() === 1 ? 'Teilnehmer' : `Teilnehmer (${anzahl()})`, namen.join(', ')]);
@@ -138,7 +138,7 @@ function einrichten(form: HTMLFormElement) {
         setzeText('[data-info-preis]', coaching ? `ab ${euro(Math.min(...k.pakete.map((p) => p.betrag)))}` : euro(k.preis));
         const pz = $('[data-info-pruefung-zeile]');
         if (pz) pz.hidden = !t?.pruefung;
-        setzeText('[data-info-pruefung]', t?.pruefung ? `IHK-Prüfung zur Orientierung: ${datumDe(t.pruefung)} – verbindlich ist die Einladung deiner IHK.` : '');
+        setzeText('[data-info-pruefung]', t?.pruefung ? `IHK-Prüfung zur Orientierung: ${datumDe(t.pruefung)} – maßgeblich ist die Einladung deiner IHK.` : '');
       }
     }
 
