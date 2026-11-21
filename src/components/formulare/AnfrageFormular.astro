@@ -1,0 +1,89 @@
+---
+// Kurzanfrage (Can #6771): so wenig Felder wie möglich – Bereich, Kurs (freiwillig), Name, E-Mail, Telefon/Nachricht freiwillig,
+// Einwilligung. POST an /api/kontakt.php (Thema = Bereich, Nachricht dort freiwillig, art=anfrage) → info@ + Eingangsbestätigung.
+// Danke-Seite: ?art=anfrage („Deine unverbindliche Kursanfrage“); Mailbetreff/-text und Weiterleitung im PHP macht der Rechts-Helfer.
+// Vorauswahl: ?bereich=…&kurs=… in der Adresse oder Links mit data-anfrage-bereich / data-anfrage-kurs / data-anfrage-text
+// auf derselben Seite (ohne Neuladen, Fokus ins Namensfeld). Unverbindlich: keine Buchung, keine Zahlungspflicht.
+import Feld from './Feld.astro';
+import Haken from './Haken.astro';
+import Grundlagen from './Grundlagen.astro';
+import { formularDaten } from './daten';
+import { ANFRAGE_BEREICHE, FEHLER } from '../../lib/formular';
+import { ZUSAGEN } from '../../lib/zusagen';
+import { IS_PREVIEW } from '../../lib/env';
+import { href } from '../../lib/pfad';
+import { saeulenName, type Saeule } from '../../lib/kurse';
+
+interface Props {
+  /** Vorauswahl ohne Adresse (z. B. Berufsseite) */
+  bereich?: (typeof ANFRAGE_BEREICHE)[number]['id'];
+}
+const { bereich } = Astro.props;
+const F = 'anfrage';
+const kurse = (await formularDaten()).kurse;
+// formularDaten() liefert die Säule als Anzeigenamen (saeulenName) – darüber zuordnen
+const gruppen = ANFRAGE_BEREICHE.map((b) => ({ ...b, name: saeulenName(b.saeule as Saeule), kurse: kurse.filter((k) => k.saeule === saeulenName(b.saeule as Saeule)) })).filter((g) => g.kurse.length > 0);
+---
+
+<form
+  id={F}
+  class="formular grid scroll-mt-24 gap-5 rounded-[1.5rem] bg-white p-5 ring-1 ring-base-300 sm:p-8"
+  method="post"
+  action={href('/api/kontakt.php')}
+  accept-charset="utf-8"
+  data-einfaches-formular
+  data-anfrage-formular
+  data-art="anfrage"
+  data-demo={IS_PREVIEW ? 'true' : 'false'}
+  data-danke={href('/danke/')}
+  data-token={href('/api/token.php')}
+>
+  <Grundlagen form={F} />
+  <input type="hidden" name="art" value="anfrage" />
+  <div class="grid gap-5 sm:grid-cols-2">
+    <Feld form={F} name="thema" label="Was suchst du?" typ="select" pflicht nativ fehler={FEHLER.thema} zusatz={{ 'data-url-param': 'bereich', 'data-zeile': 'Bereich' }}>
+      <option value="">Bitte wählen</option>
+      {ANFRAGE_BEREICHE.map((b) => <option value={b.id} selected={b.id === bereich}>{b.name}</option>)}
+    </Feld>
+    <Feld form={F} name="kurs" label="Kurs" typ="select" fehler={FEHLER.kurs} zusatz={{ 'data-url-param': 'kurs', 'data-zeile': 'Kurs' }}>
+      <option value="">Weiß ich noch nicht</option>
+      {
+        gruppen.map((g) => (
+          <optgroup label={g.name}>
+            {g.kurse.map((k) => (
+              <option value={k.id} data-bereich={g.id}>
+                {k.titel}
+                {k.status === 'entwurf' ? ' (Entwurf)' : ''}
+              </option>
+            ))}
+          </optgroup>
+        ))
+      }
+    </Feld>
+    <Feld form={F} name="name" label="Name" pflicht nativ min={2} max={100} fehler={FEHLER.name} autocomplete="name" zusatz={{ 'data-zeile': 'Name' }} />
+    <Feld form={F} name="email" label="E-Mail" typ="email" pflicht nativ regel="email" max={254} fehler={FEHLER.email} autocomplete="email" inputmode="email" zusatz={{ 'data-zeile': 'E-Mail' }} />
+  </div>
+  <details class="group rounded-2xl bg-base-200/60 px-4 py-1" data-anfrage-mehr>
+    <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-semibold [&::-webkit-details-marker]:hidden">
+      Telefon oder Nachricht ergänzen
+      <svg viewBox="0 0 20 20" class="size-5 shrink-0 transition-transform group-open:rotate-45" aria-hidden="true"><path d="M10 4v12M4 10h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+    </summary>
+    <div class="grid gap-5 pt-2 pb-4">
+      <Feld form={F} name="telefon" label="Telefon" typ="tel" regel="telefon" fehler={FEHLER.telefon} autocomplete="tel" inputmode="tel" hinweis="Wenn du lieber angerufen werden möchtest." />
+      <Feld form={F} name="nachricht" label="Nachricht" typ="textarea" max={2000} zeilen={3} fehler={FEHLER.nachricht} platzhalter="z. B. Beruf, Prüfungstermin oder Fragen" />
+    </div>
+  </details>
+  <Haken form={F} name="einwilligung" pflicht nativ fehler={FEHLER.einwilligungKontakt}>
+    Ihr dürft meine Angaben nutzen, um meine Anfrage zu beantworten. Mehr dazu in der{' '}
+    <a class="link-fliess" href={href('/datenschutz/')} target="_blank">Datenschutzerklärung</a>.
+  </Haken>
+  <div class="grid gap-3 border-t border-base-300 pt-5 sm:flex sm:flex-wrap sm:items-center sm:gap-4">
+    <button type="submit" class="btn btn-accent btn-lg w-full rounded-full px-8 sm:w-auto" data-absenden>Unverbindlich anfragen</button>
+    <p class="text-sm text-gedaempft">{ZUSAGEN.anfrage}</p>
+  </div>
+</form>
+
+<script>
+  import './einfach-client';
+  import './anfrage-client';
+</script>

@@ -1,0 +1,121 @@
+---
+// Berufsauswahl „Welcher Beruf bist du?“ (Can #6772): große, antippbare Kacheln (echte Links → Tastatur + Screenreader),
+// Sofortfilter „Beruf suchen …“ ohne Seitenwechsel, Link „Alle Berufe“. Ein Tipp = Berufsseite mit AP1/AP2-Knöpfen.
+// Startseite: häufige Berufe sichtbar, die übrigen erscheinen beim Suchen. `alle`: alle Berufe sofort sichtbar.
+// Ohne JavaScript sind alle Kacheln sichtbar, das Suchfeld bleibt verborgen.
+import { berufUrl, sichtbareBerufe } from '../../lib/berufe';
+import { href } from '../../lib/pfad';
+
+interface Props {
+  alle?: boolean;
+  /** Überschrift-Ebene (Startseite h2, Prüfungsvorbereitung h2) */
+  titelId?: string;
+  titel?: string;
+}
+const { alle = false, titelId = 'berufe-titel', titel = 'Welcher Beruf bist du?' } = Astro.props;
+const berufe = await sichtbareBerufe();
+const sortiert = alle ? berufe : [...berufe.filter((b) => b.oft), ...berufe.filter((b) => !b.oft)];
+const teileText = (b: (typeof berufe)[number]) => b.teile.map((t) => t.kurz).join(' · ');
+const such = (b: (typeof berufe)[number]) => [b.name, ...b.such].join(' ');
+const hatSeltene = !alle && berufe.some((b) => !b.oft);
+---
+
+<div class="beruf-wahl" data-beruf-wahl data-alle={alle ? 'true' : 'false'}>
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <h2 id={titelId} class="text-3xl sm:text-4xl">{titel}</h2>
+    {!alle && <a href={href('/pruefungsvorbereitung/#berufe')} class="link-fliess font-semibold">Alle Berufe ({berufe.length})</a>}
+  </div>
+
+  <div class="mt-5 max-w-xl" data-beruf-suche hidden>
+    <label for={`${titelId}-suche`} class="sr-only">Beruf suchen</label>
+    <div class="relative">
+      <svg viewBox="0 0 24 24" class="pointer-events-none absolute top-1/2 left-4 z-10 size-5 -translate-y-1/2 text-gedaempft" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" /><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+      <input
+        id={`${titelId}-suche`}
+        type="search"
+        class="input input-lg w-full rounded-full pl-12 text-base"
+        placeholder="Beruf suchen …"
+        autocomplete="off"
+        enterkeyhint="search"
+        aria-describedby={`${titelId}-treffer`}
+        data-beruf-eingabe
+      />
+    </div>
+    <p id={`${titelId}-treffer`} class="mt-2 text-sm text-gedaempft" aria-live="polite" data-beruf-treffer></p>
+  </div>
+
+  <ul class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-beruf-liste>
+    {
+      sortiert.map((b) => (
+        <li data-beruf={b.slug} data-such={such(b)} data-selten={!alle && !b.oft ? '' : undefined}>
+          <a
+            href={href(berufUrl(b))}
+            class="group flex min-h-20 items-center justify-between gap-4 rounded-2xl bg-white px-5 py-4 ring-1 ring-base-300 transition hover:ring-2 hover:ring-navy focus-visible:ring-2 focus-visible:ring-navy"
+          >
+            <span class="min-w-0">
+              <span class="trennen block text-lg leading-snug font-semibold">{b.name}</span>
+              <span class="mt-1 block text-sm text-gedaempft">
+                <span class="sr-only">Prüfungsvorbereitung: </span>
+                {teileText(b)}
+              </span>
+            </span>
+            <span class="grid size-10 shrink-0 place-items-center rounded-full bg-base-200 transition-colors group-hover:bg-navy group-hover:text-white" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="size-5"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="mt-4 rounded-2xl bg-base-200 p-5" data-beruf-leer hidden>
+    Dein Beruf ist nicht dabei? <a href={href('/?bereich=pruefung#anfrage')} class="link-fliess font-semibold" data-anfrage-bereich="pruefung">Frag uns einfach</a> – wir schauen, was passt.
+  </p>
+  {
+    hatSeltene && (
+      <button type="button" class="btn btn-ghost mt-3 rounded-full" data-beruf-mehr hidden>
+        Weitere Berufe zeigen
+      </button>
+    )
+  }
+</div>
+
+<script>
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue')
+      .replace(/ß/g, 'ss')
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  for (const box of document.querySelectorAll<HTMLElement>('[data-beruf-wahl]')) {
+    const eingabe = box.querySelector<HTMLInputElement>('[data-beruf-eingabe]')!;
+    const treffer = box.querySelector<HTMLElement>('[data-beruf-treffer]')!;
+    const leer = box.querySelector<HTMLElement>('[data-beruf-leer]')!;
+    const mehr = box.querySelector<HTMLButtonElement>('[data-beruf-mehr]');
+    const zeilen = [...box.querySelectorAll<HTMLElement>('[data-beruf]')];
+    let alleAuf = box.dataset.alle === 'true';
+    box.querySelector<HTMLElement>('[data-beruf-suche]')!.hidden = false;
+    const filtern = () => {
+      const worte = norm(eingabe.value).split(' ').filter(Boolean);
+      let n = 0;
+      for (const z of zeilen) {
+        const text = norm(z.dataset.such ?? '');
+        const passt = worte.length ? worte.every((w) => text.includes(w)) : alleAuf || z.dataset.selten === undefined;
+        z.hidden = !passt;
+        if (passt) n++;
+      }
+      leer.hidden = n > 0;
+      if (mehr) mehr.hidden = alleAuf || worte.length > 0;
+      treffer.textContent = worte.length ? (n === 1 ? '1 Beruf gefunden' : `${n} Berufe gefunden`) : '';
+    };
+    eingabe.addEventListener('input', filtern);
+    mehr?.addEventListener('click', () => {
+      alleAuf = true;
+      filtern();
+      zeilen.find((z) => z.dataset.selten !== undefined)?.querySelector('a')?.focus();
+    });
+    filtern();
+  }
+</script>

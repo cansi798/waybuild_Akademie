@@ -1,10 +1,11 @@
 ---
-// /danke/?art=anmeldung|coaching|interesse|kontakt[&vorgang=…][&demo=1] (US-12, US-14, US-15 AK4, US-16 AK2).
+// /danke/?art=anmeldung|coaching|interesse|kontakt|anfrage[&vorgang=…][&demo=1] (US-12, US-14, US-15 AK4, US-16 AK2).
 // Ohne JavaScript erscheint der allgemeine Text; mit JavaScript der passende Block und die Zusammenfassung
 // (aus sessionStorage, vom Formular vor dem Absenden abgelegt – nichts davon verlässt den Browser).
 import Basis from '../../layouts/Basis.astro';
 import { AKADEMIE } from '../../lib/site';
 import { href } from '../../lib/pfad';
+import { ZUSAGEN } from '../../lib/zusagen';
 
 interface Block {
   art: string;
@@ -41,6 +42,16 @@ const BLOECKE: Block[] = [
       ['Bestätigung', 'Du bekommst gleich eine kurze Bestätigung per E-Mail.'],
       ['Benachrichtigung', 'Steht ein Termin fest, schreiben wir dir – dann entscheidest du in Ruhe.'],
       ['Abmelden', 'Keine Nachricht mehr gewünscht? Antworte einfach auf unsere E-Mail.'],
+    ],
+  },
+  {
+    // Kurzanfrage (Startseite, Berufsseiten – #6771). PHP leitet bei Bereichs-Themen auf ?art=anfrage (Rechts-Helfer).
+    art: 'anfrage',
+    titel: 'Danke – deine unverbindliche Kursanfrage ist angekommen',
+    text: ZUSAGEN.anfrage,
+    schritte: [
+      ['Eingang', 'Du bekommst gleich eine kurze Eingangsbestätigung per E-Mail. Nichts da? Schau bitte auch im Spam-Ordner nach.'],
+      ['Nächster Schritt', 'Wir prüfen den Termin und schicken dir eine Bestätigung per E-Mail.'],
     ],
   },
   {

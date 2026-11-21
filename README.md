@@ -63,6 +63,17 @@ Diagramme (PlantUML) unter [`docs/diagramme/`](docs/diagramme/LIESMICH.md), Form
 
 Live-Tests: nach `scripts/bau.sh live` → `BASE=/ scripts/test.sh tests/seiten.spec.ts tests/recht.spec.ts tests/hero.spec.ts`; danach für die Vorschau-Tests wieder `scripts/bau.sh`.
 
+## Startseite und Berufsauswahl (Can #6771/#6772)
+
+- Startseite: Hero → „Welcher Beruf bist du?“ (`src/components/start/BerufWahl.astro`) → drei Bereiche mit Video
+  (`VideoPlatz.astro`) → Katalog-Kurzweg → Kurz gefragt/Auf einen Blick → Kurzanfrage (`formulare/AnfrageFormular.astro`,
+  POST an `api/kontakt.php`, Thema = Bereich, Nachricht freiwillig). Mobil feste Leiste „Unverbindlich anfragen“.
+- Berufe: Zuordnung Beruf → Kursdateien in `src/lib/berufe.ts`; Berufsseiten `/pruefungsvorbereitung/<beruf>/`.
+- Videos: Dateien nach `public/video/` – je Bereich `<id>-16x9.mp4`, `<id>-9x16.mp4`, `<id>-poster.jpg`, `<id>-poster-9x16.jpg`
+  mit `<id>` = `akademie-pruefung`, `akademie-ihk-weiterbildung`, `akademie-weiterbildung` (Untertitel eingebrannt).
+  Fehlt die mp4, zeigt die Seite „Video folgt“. Transkript: `VIDEOS` in `src/lib/site.ts`.
+- KI-Suchen: `llms.txt` und `llms-full.txt` entstehen beim Build aus den Kursdaten.
+
 ## Aufbau
 
 `src/layouts/Basis.astro` (Kopf, Fuß, SEO, Vorschau-Banner) · `src/components/` (Kopf, Fuss, Countdown, Lernpfad, KursKarte, WarumBuehne, ImAufbau) · `src/pages/` · `public/logo/` · `tests/` · `.github/workflows/deploy.yml`.

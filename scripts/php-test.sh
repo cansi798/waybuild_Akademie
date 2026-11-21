@@ -297,6 +297,21 @@ pruefe(($m[0]['an'] ?? '') === 'info@waybuild-akademie.de' && str_contains($m[0]
 $r = anfrage('/api/kontakt.php', array_merge($kon, ['thema' => 'werbung', 'nachricht' => 'kurz', 'einwilligung' => '']), true);
 pruefe(($r['json']['fehler']['thema'] ?? '') === 'Bitte wähle ein Thema aus.' && ($r['json']['fehler']['nachricht'] ?? '') === 'Bitte schreib uns kurz, worum es geht.' && isset($r['json']['fehler']['einwilligung']), 'Thema, Nachricht (min. 10), Einwilligung');
 
+gruppe('Kurzanfrage (Startseite/Berufsseiten, #6771)');
+mails_leeren();
+$anf = ['name' => 'Ali Demir', 'email' => 'ali@beispiel.de', 'thema' => 'pruefung', 'kurs' => 'testkurs', 'einwilligung' => '1'];
+$r = anfrage('/api/kontakt.php', $anf);
+$m = mails();
+pruefe($r['status'] === 303 && str_starts_with($r['kopf']['location'] ?? '', '/danke/?art=kontakt'), 'ohne Nachricht → 303 /danke/');
+pruefe(str_contains($m[0]['text'] ?? '', 'Thema: Anfrage Prüfungsvorbereitung') && str_contains($m[0]['text'] ?? '', '(testkurs)'), 'Team-Mail mit Bereich und Kurs');
+pruefe(($m[1]['an'] ?? '') === 'ali@beispiel.de' && str_contains($m[1]['text'] ?? '', 'Kurs: ') && !str_contains($m[1]['text'] ?? '', 'Ali'), 'Bestätigung mit Kurstitel, ohne Namen');
+$r = anfrage('/api/kontakt.php', array_merge($anf, ['kurs' => 'erfunden']), true);
+pruefe(($r['json']['fehler']['kurs'] ?? '') === 'Bitte wähle einen Kurs aus.', 'Kurs nur aus der Terminliste');
+$r = anfrage('/api/kontakt.php', array_merge($anf, ['kurs' => '', 'thema' => 'ihk-weiterbildung']), true);
+pruefe($r['status'] === 200 && ($r['json']['ok'] ?? false) === true, 'Bereich ohne Kurs genügt');
+$r = anfrage('/api/kontakt.php', array_merge($kon, ['nachricht' => '', 'kurs' => 'testkurs']), true);
+pruefe(isset($r['json']['fehler']['nachricht']) && isset($r['json']['fehler']['kurs']), 'normale Kontaktanfrage: Nachricht Pflicht, kein Kurs');
+
 gruppe('Widerruf (§ 356a BGB)');
 mails_leeren();
 $wid = ['name' => 'Lena Muster', 'email' => 'lena@beispiel.de', 'kurs' => 'testkurs', 'anmeldedatum' => tag(-2), 'vorgang' => 'a-20261113-7f3k',

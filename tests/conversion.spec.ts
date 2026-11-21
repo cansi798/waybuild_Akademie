@@ -53,7 +53,7 @@ test.describe('Risikoumkehr', () => {
 });
 
 test.describe('Hauptaktion und Kursseite', () => {
-  test('einheitlich „Termin wählen“ (Kopf, Seitenleiste, Leiste, Kurskarte, Mobilmenü)', async ({ page }) => {
+  test('einheitlich „Termin wählen“ (Seitenleiste, Leiste, Kurskarte), Kopf „Anfragen“', async ({ page }) => {
     await page.goto('./kurse/ap1-it-berufe/');
     await expect(page.locator('[data-hauptaktion]')).toHaveText('Termin wählen');
     await expect(page.locator('[data-cta-leiste] a')).toHaveText('Termin wählen');
@@ -66,8 +66,9 @@ test.describe('Hauptaktion und Kursseite', () => {
     await expect(page.locator('main section').first().locator('a.btn')).toHaveCount(1);
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('./termine/');
-    await page.getByText('Menü', { exact: true }).click();
-    await expect(page.locator('header a.btn-accent')).toHaveText('Termin wählen');
+    await page.locator('[data-menue] > summary').click();
+    // Seit #6771: Kopf mit „Anfragen“, im Mobilmenü „Kurs anfragen“ (Kurzanfrage auf der Startseite)
+    await expect(page.locator('header a.btn-accent')).toHaveText(['Anfragen', 'Kurs anfragen']);
   });
 
   test('mobil 390: Preis, nächster Start und Knopf in der ersten Ansicht', async ({ page }) => {

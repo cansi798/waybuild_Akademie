@@ -15,6 +15,7 @@ import { buchbareTermine, formatDatum, freigegebeneKurse, kurzname, type Kurs, t
 import { href } from '../../lib/pfad';
 import Risikoumkehr from '../../components/seiten/Risikoumkehr.astro';
 import { fragen } from '../../lib/faq';
+import BerufWahl from '../../components/start/BerufWahl.astro';
 
 const kurse = (await freigegebeneKurse()).filter((k) => k.data.saeule === 'ihk-pruefung');
 // Kurse zuerst, Coaching zuletzt
@@ -80,6 +81,13 @@ const FAQ = fragen('welcher-kurs', 'anmelden', 'bezahlen', 'betrieb', 'storno', 
           </aside>
         )
       }
+    </div>
+  </section>
+
+  <!-- Berufsauswahl (Can #6772): alle Berufe, Sofortfilter -->
+  <section id="berufe" class="scroll-mt-20 border-b border-base-300 bg-white" aria-labelledby="berufe-liste-titel">
+    <div class="rahmen py-12 sm:py-16">
+      <BerufWahl alle titelId="berufe-liste-titel" />
     </div>
   </section>
 

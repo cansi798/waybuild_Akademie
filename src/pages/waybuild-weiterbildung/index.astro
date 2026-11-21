@@ -1,0 +1,16 @@
+---
+// /waybuild-weiterbildung/ – Menüziel „waybuild Weiterbildung“ (Audit #6771 Punkt 7): Kurse oder „in Vorbereitung“ + Kurzanfrage.
+import BereichSeite from '../../components/start/BereichSeite.astro';
+import { VIDEOS } from '../../lib/site';
+---
+
+<BereichSeite
+  saeule="akademie"
+  bereich="akademie"
+  pfad="/waybuild-weiterbildung/"
+  titel="Weiterbildung der waybuild Akademie"
+  seoTitel="Weiterbildung KI, IT und Programmierung"
+  beschreibung="Eigene Kurse der waybuild Akademie zu KI, IT und Programmierung – praxisnah, abends live online, mit Teilnahmezertifikat. Unverbindlich anfragen."
+  satz="Eigene Praxiskurse zu KI, IT und Programmierung – mit Teilnahmezertifikat der waybuild Akademie."
+  video={VIDEOS.akademie}
+/>

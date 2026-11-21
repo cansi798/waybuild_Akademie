@@ -27,7 +27,7 @@ const LEER: ReiseWerte = {
 const w = optionen[0] ?? LEER;
 
 const STATIONEN = [
-  { kurz: 'Anmelden', titel: 'Anmelden', dauer: 4000 },
+  { kurz: 'Anfragen', titel: 'Unverbindlich anfragen', dauer: 4000 },
   { kurz: 'Rechnung', titel: 'Rechnung per E-Mail', dauer: 3200 },
   { kurz: 'Live', titel: 'Live-Unterricht abends', dauer: 3800 },
   { kurz: 'Prüfung', titel: 'Prüfungstag', dauer: 3400 },
@@ -64,8 +64,8 @@ const n = STATIONEN.length;
             <p class="hr-schritt">Schritt {i + 1} von {n}</p>
             <h3 class="hr-h3">{s.titel}</h3>
             <p class="hr-p">
-              {i === 0 && <>Termin wählen, Formular ausfüllen, „Zahlungspflichtig anmelden“ – fertig.</>}
-              {i === 1 && <>Nach der Anmeldung – an dich oder deinen Betrieb. Keine Online-Zahlung.</>}
+              {i === 0 && <>Termin wählen und „Unverbindlich anfragen“. Du bekommst ein Angebot per E-Mail – verbindlich wird es erst mit deiner Zusage und unserer Bestätigung.</>}
+              {i === 1 && <>Nach unserer Bestätigung – an dich oder deinen Betrieb. Keine Online-Zahlung.</>}
               {i === 2 && <><span data-hr-f="zeiten">{w.zeiten}</span>. Übungsaufgaben besprechen wir gemeinsam live.</>}
               {i === 3 &&
                 (w.iso ? (
