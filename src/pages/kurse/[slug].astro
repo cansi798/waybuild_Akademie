@@ -51,11 +51,11 @@ const umfang = umfangText(kurs);
 const preisLabel = entwurf ? 'Preisvorschlag' : coaching ? 'ab' : 'Teilnahmegebühr';
 const hinweisEnthaeltIhk = /IHK/.test(d.preis.hinweis ?? '');
 
-// Haupt-Handlung: Coaching anfragen | Termin wählen | Interesse vormerken
+// Haupt-Handlung: Coaching anfragen | Unverbindlich anfragen (→ Termine, dort die Buchungsanfrage je Termin) | Interesse vormerken
 const aktion = coaching
   ? { text: 'Coaching anfragen', url: href(`/anmeldung/?kurs=${kurs.id}`), daten: 'coaching' }
   : termine.length > 0
-    ? { text: entwurf ? 'Termine ansehen' : 'Termin wählen', url: '#termine', daten: 'termine' }
+    ? { text: entwurf ? 'Termine ansehen' : 'Unverbindlich anfragen', url: '#termine', daten: 'termine' }
     : { text: 'Interesse vormerken', url: href(interesseUrl(kurs)), daten: 'interesse' };
 const aktionKurz = aktion.text;
 // Beweis nur, wo er stimmt: Säule ihk-pruefung (Prüfungsvorbereitung + Coaching), nicht bei Entwürfen.
@@ -381,7 +381,7 @@ const schema =
         </ul>
         {d.saeule === 'ihk-weiterbildung' && <p class="mt-4 text-gedaempft">Über die Zulassung zur Prüfung entscheidet deine IHK.</p>}
         <h3 class="mt-12 text-2xl">So läuft's ab</h3>
-        <div class="mt-6"><Ablauf coaching={coaching} ebene="h4" ziel={ihk ? undefined : { titel: 'Dein Abschluss', text: d.abschluss }} /></div>
+        <div class="mt-6"><Ablauf coaching={coaching} ebene="h4" /></div>
         <p class="mt-4 text-sm text-gedaempft">
           Mehr Antworten zu Anmeldung, Zahlung und Live-Unterricht findest du in den <a href={href('/faq/')} class="link-fliess">häufigen Fragen</a>.
         </p>

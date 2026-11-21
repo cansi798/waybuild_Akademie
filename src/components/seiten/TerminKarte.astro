@@ -85,10 +85,10 @@ const monat = new Intl.DateTimeFormat('de-DE', { month: 'short', year: 'numeric'
     </p>
     {
       entwurf ? (
-        <span class="rounded-full bg-base-200 px-4 py-2 text-sm font-semibold">Anmeldung nach Freigabe</span>
+        <span class="rounded-full bg-base-200 px-4 py-2 text-sm font-semibold">Anfrage nach Freigabe</span>
       ) : (
         <a href={href(anmeldeUrl(kurs, t))} class="btn btn-secondary rounded-full px-6" data-anmelden>
-          Anmelden<span class="sr-only">: {d.titel}, Start {formatDatum(t.start)}</span>
+          Unverbindlich anfragen<span class="sr-only">: {d.titel}, Start {formatDatum(t.start)}</span>
         </a>
       )
     }

@@ -53,13 +53,14 @@ test.describe('Risikoumkehr', () => {
 });
 
 test.describe('Hauptaktion und Kursseite', () => {
-  test('einheitlich „Termin wählen“ (Seitenleiste, Leiste, Kurskarte), Kopf „Anfragen“', async ({ page }) => {
+  test('einheitlich „Unverbindlich anfragen“ (Seitenleiste, Leiste, Kurskarte, Terminkarte), Kopf „Anfragen“', async ({ page }) => {
     await page.goto('./kurse/ap1-it-berufe/');
-    await expect(page.locator('[data-hauptaktion]')).toHaveText('Termin wählen');
-    await expect(page.locator('[data-cta-leiste] a')).toHaveText('Termin wählen');
+    await expect(page.locator('[data-hauptaktion]')).toHaveText('Unverbindlich anfragen');
+    await expect(page.locator('[data-cta-leiste] a')).toHaveText('Unverbindlich anfragen');
+    await expect(page.locator('[data-anmelden]').first()).toContainText('Unverbindlich anfragen');
     await page.goto('./pruefungsvorbereitung/');
     const karte = page.locator('[data-kurskarte="ap1-it-berufe"] a.btn');
-    await expect(karte).toContainText('Termin wählen');
+    await expect(karte).toContainText('Unverbindlich anfragen');
     await expect(karte).toHaveAttribute('href', /\/kurse\/ap1-it-berufe\/#termine$/);
     await expect(page.locator('[data-kurskarte="pruefungscoaching"] a.btn')).toContainText('Coaching anfragen');
     // Hero der Landing: genau ein Knopf
@@ -145,11 +146,12 @@ test.describe('FAQ und So läuft\'s', () => {
     for (const s of ['kurse/ap1-it-berufe/', 'pruefungsvorbereitung/']) {
       await page.goto(`./${s}`);
       const titel = await page.locator('[data-ablauf] [data-schritt] :is(h3,h4)').allTextContents();
-      expect(titel.map((t) => t.replace(/^Schritt \d: /, '').trim()), s).toEqual(['Termin wählen', 'Rechnung per E-Mail', 'Live-Unterricht', 'Prüfung bei deiner IHK']);
+      expect(titel.map((t) => t.replace(/^Schritt \d: /, '').trim()), s).toEqual(['Unverbindlich anfragen', 'Buchungsangebot per E-Mail', 'Zusage per Antwort-Mail', 'Unsere Bestätigung']);
     }
     await page.goto('./coaching/');
     await expect(page.locator('[data-ablauf] [data-schritt]')).toHaveCount(4);
-    await expect(page.locator('[data-ablauf] [data-schritt="4"]')).toContainText('Prüfung bei deiner IHK');
+    await expect(page.locator('[data-ablauf] [data-schritt="4"]')).toContainText('Unsere Bestätigung');
+    await expect(page.locator('[data-ablauf] [data-schritt="4"]')).toContainText('verbindlich');
   });
 });
 
