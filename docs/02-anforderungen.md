@@ -134,11 +134,11 @@ Als **Besucher/in** möchte ich Kurse per Suchbegriff finden (z. B. „Python“
 ### 3.2 Anfragen und Anmelden
 
 #### US-10 Zu einem Termin anmelden · **Muss**
-Als **Interessent/in** möchte ich mich über ein einfaches Formular verbindlich zu einem bestimmten Termin anmelden, damit mein Platz reserviert ist.
+Als **Interessent/in** möchte ich über ein einfaches Formular einen bestimmten Termin unverbindlich anfragen und per E-Mail verbindlich buchen, damit mein Platz reserviert ist.
 - AK1: Das Formular zeigt oben Kurs, Zeitraum und Preis des gewählten Termins; der Termin ist änderbar, aber vorausgewählt.
 - AK2: Pflichtfelder sind nur: Vorname, Nachname, E-Mail, Zahlweg, Rechnungsanschrift sowie die Bestätigung der Teilnahmebedingungen und der Kenntnisnahme von Datenschutz und Widerruf. Telefon und Nachricht sind freiwillig.
 - AK3: Fehler werden direkt am Feld in Textform erklärt (nicht nur farblich) und die Eingaben bleiben erhalten.
-- AK4: Der Absende-Knopf ist eindeutig beschriftet mit „Zahlungspflichtig anmelden“ (Button-Lösung nach § 312j BGB).
+- AK4: Der Absende-Knopf heißt „Unverbindlich anfragen“; der Vertrag kommt erst per E-Mail zustande (Buchungsangebot → Zusage → Buchungsbestätigung, geändert 21.11.2026).
 
 #### US-11 Zahlweg wählen: selbst zahlen oder Betrieb zahlt · **Muss**
 Als **Teilnehmer/in** möchte ich wählen, ob ich selbst zahle oder mein Betrieb zahlt, damit die Rechnung an die richtige Stelle geht.

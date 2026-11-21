@@ -1,6 +1,7 @@
 ---
-// Widerrufsbelehrung für Dienstleistungen (Muster nach Anlage 1 zu Art. 253 EGBGB, Fassung ab 19.06.2026) und
-// Muster-Widerrufsformular (Anlage 2) – ENTWURF (Task 5).
+// Widerrufsbelehrung für Dienstleistungen – ENTWURF, Stand 21.11.2026. Wortlaut nach dem amtlichen Muster
+// Anlage 1 zu Art. 246a § 1 Abs. 2 Satz 2 EGBGB (gesetze-im-internet.de, URL „art_253anlage_1“, abgerufen 21.11.2026)
+// inkl. Gestaltungshinweis zur Online-Widerrufsfunktion (§ 356a BGB) und Muster-Widerrufsformular nach Anlage 2.
 // Die Belehrung bleibt bewusst in der „Sie“-Form des gesetzlichen Musters (Gesetzlichkeitsfiktion), der Rest der Seite duzt.
 // Die elektronische Widerrufsfunktion (§ 356a BGB) baut Task 4 als src/components/formulare/WiderrufFormular.astro;
 // sie wird hier optional eingebunden, damit der Build auch ohne die Datei funktioniert.
@@ -33,7 +34,8 @@ const abschnitte = [
 
   <h2 id="kurz">Das Wichtigste in Kürze</h2>
   <ul>
-    <li>Als <strong>Verbraucher</strong> kannst du deine Anmeldung innerhalb von <strong>14 Tagen</strong> ab Vertragsschluss ohne Begründung widerrufen.</li>
+    <li>Als <strong>Verbraucher</strong> kannst du deinen Vertrag innerhalb von <strong>14 Tagen</strong> ab Vertragsschluss ohne Begründung widerrufen. Vertragsschluss ist der Tag, an dem dir unsere Buchungsbestätigung per E-Mail zugeht.</li>
+    <li>Vor der Buchungsbestätigung brauchst du keinen Widerruf: Deine Anfrage ist unverbindlich, und deine Zusage kannst du bis zur Bestätigung formlos zurückziehen.</li>
     <li>Am einfachsten geht das <a href="#widerrufsformular">online über „Vertrag widerrufen“</a> – ohne Anmeldung. Du bekommst sofort eine Eingangsbestätigung per E-Mail.</li>
     <li>Alternativ reicht ein Brief oder eine E-Mail an <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a>.</li>
     <li>Beginnt der Kurs auf deinen Wunsch schon innerhalb der 14 Tage, zahlst du bei einem Widerruf nur den Anteil für den bereits erhaltenen Unterricht.</li>
@@ -42,8 +44,9 @@ const abschnitte = [
 
   <h2 id="belehrung">Widerrufsbelehrung</h2>
   <p class="text-gedaempft">
-    Die folgende Belehrung entspricht dem gesetzlichen Muster und verwendet deshalb die Anrede „Sie“.{' '}
-    <Luecke text="Anwalt prüfen: Wortlaut mit Anlage 1 zu Art. 253 EGBGB (Fassung ab 19.06.2026) abgleichen" />
+    Die folgende Belehrung folgt wörtlich dem gesetzlichen Muster (Anlage 1 zu Art. 246a § 1 Abs. 2 Satz 2 EGBGB, Fassung
+    abgerufen am 21.11.2026) und verwendet deshalb die Anrede „Sie“.{' '}
+    <Luecke text="Anwalt prüfen: Wortlaut und Bausteinwahl (Dienstleistung, Online-Widerrufsfunktion) bestätigen" />
   </p>
   <div class="recht-kasten" data-widerrufsbelehrung>
     <h3>Widerrufsrecht</h3>
@@ -53,14 +56,14 @@ const abschnitte = [
       Um Ihr Widerrufsrecht auszuüben, müssen Sie uns ({anschrift}, Telefon:{' '}
       {FIRMA.telefon ?? <Luecke text="bitte ergänzen: Telefonnummer" />}, E-Mail:{' '}
       <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a>) mittels einer eindeutigen Erklärung (z. B. ein mit der
-      Post versandter Brief oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür
+      Post versandter Brief oder eine E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür
       das beigefügte Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.
     </p>
     <p>
-      Sie können Ihren Widerruf auch über die Widerrufsfunktion auf unserer Webseite erklären:{' '}
-      <a href={href(WIDERRUF_PFAD)}>{widerrufUrl}</a> (Schaltfläche „Vertrag widerrufen“). Machen Sie von dieser Möglichkeit
-      Gebrauch, so werden wir Ihnen unverzüglich (z. B. per E-Mail) eine Bestätigung über den Eingang eines solchen Widerrufs
-      auf einem dauerhaften Datenträger übermitteln.
+      Sie können Ihr Widerrufsrecht auch online unter <a href={href(WIDERRUF_PFAD)}>{widerrufUrl}</a> (Schaltfläche „Vertrag
+      widerrufen“) ausüben. Wenn Sie diese Online-Funktion nutzen, übermitteln wir Ihnen auf einem dauerhaften Datenträger
+      (z. B. durch eine E-Mail) unverzüglich eine Eingangsbestätigung mit Informationen zum Inhalt der Widerrufserklärung sowie
+      dem Datum und der Uhrzeit ihres Eingangs.
     </p>
     <p>
       Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung über die Ausübung des Widerrufsrechts vor Ablauf
@@ -78,7 +81,7 @@ const abschnitte = [
       Entgelte berechnet.
     </p>
     <p>
-      Haben Sie verlangt, dass die Dienstleistungen während der Widerrufsfrist beginnen sollen, so haben Sie uns einen
+      Haben Sie verlangt, dass die Dienstleistungen während der Widerrufsfrist beginnen soll, so haben Sie uns einen
       angemessenen Betrag zu zahlen, der dem Anteil der bis zu dem Zeitpunkt, zu dem Sie uns von der Ausübung des
       Widerrufsrechts hinsichtlich dieses Vertrags unterrichten, bereits erbrachten Dienstleistungen im Vergleich zum
       Gesamtumfang der im Vertrag vorgesehenen Dienstleistungen entspricht.
@@ -87,16 +90,21 @@ const abschnitte = [
 
   <h2 id="hinweise">Ergänzende Hinweise</h2>
   <p>
-    <strong>Wertersatz bei vorzeitigem Beginn:</strong> Startet dein Kurs innerhalb der Widerrufsfrist, fragen wir dich bei
-    der Anmeldung ausdrücklich, ob der Unterricht schon vorher beginnen soll. Widerrufst du nach Kursbeginn, berechnen wir den
+    <strong>Wertersatz bei vorzeitigem Beginn:</strong> Startet dein Kurs innerhalb der Widerrufsfrist, bitten wir dich im
+    Buchungsangebot, in deiner Zusage ausdrücklich zu verlangen, dass der Unterricht schon vorher beginnt (§ 357a Abs. 2
+    BGB). Beginnt der Kurs innerhalb der Widerrufsfrist, können wir die Buchung nur mit diesem Verlangen bestätigen; sonst
+    bieten wir dir gern einen späteren Termin an. Widerrufst du nach Kursbeginn, berechnen wir den
     Wertersatz anteilig: Teilnahmegebühr geteilt durch die vereinbarten Unterrichtseinheiten, mal die bis zu deinem Widerruf
     angebotenen Unterrichtseinheiten. Alles Übrige erstatten wir dir.{' '}
     <Luecke text="Anwalt prüfen: Form des ausdrücklichen Verlangens, Berechnung nach angebotenen oder besuchten Einheiten" />
   </p>
   <p>
-    <strong>Vorzeitiges Erlöschen:</strong> Das Widerrufsrecht erlischt, wenn wir die Dienstleistung vollständig erbracht
-    haben und du vorher ausdrücklich zugestimmt hast, dass wir vor Ablauf der Widerrufsfrist beginnen, und du bestätigt hast,
-    dass du von diesem Erlöschen weißt (§ 356 Abs. 4 BGB).
+    <strong>Vorzeitiges Erlöschen:</strong> Das Widerrufsrecht erlischt mit der vollständigen Erbringung der Dienstleistung,
+    wenn du vor Beginn ausdrücklich zugestimmt hast, dass wir vor Ablauf der Widerrufsfrist beginnen, und bestätigt hast,
+    dass du weißt, dass dein Widerrufsrecht mit vollständiger Vertragserfüllung erlischt (§ 356 Abs. 5 Nr. 2 BGB;
+    Information nach Art. 246a § 1 Abs. 3 Nr. 2 EGBGB). Bei einem einzelnen Coaching-Termin innerhalb der Widerrufsfrist
+    kann das schon nach diesem Termin der Fall sein. Spätestens erlischt das Widerrufsrecht zwölf Monate und 14 Tage nach
+    Vertragsschluss (§ 356 Abs. 4 BGB).
   </p>
   <p>
     <strong>Kein Widerrufsrecht für Unternehmer:</strong> Das Widerrufsrecht gilt nur für Verbraucher (§ 13 BGB). Meldet ein

@@ -129,6 +129,8 @@ $gesendet = bestaetigung_senden($email, 'Eingangsbestätigung deines Widerrufs (
     '',
     'Viele Grüße',
     'dein Team der waybuild Akademie',
+    '',
+    ...FIRMA_ZEILEN,
 ]), $k['absender']['anmeldung'], $bestaetigen);
 
 if (will_json()) {

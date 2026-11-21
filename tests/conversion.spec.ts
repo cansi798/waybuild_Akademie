@@ -36,12 +36,12 @@ test.describe('Risikoumkehr', () => {
     await expect(page.locator('#pakete [data-zusage="coaching"]')).toContainText(ersterTeil(COACHING));
   });
 
-  test('Anmeldung: Zusage direkt über dem Absende-Knopf, Knopftext unverändert', async ({ page }) => {
+  test('Anmeldung: Zusage direkt über dem Absende-Knopf, Knopftext „Unverbindlich anfragen“', async ({ page }) => {
     await page.goto('./anmeldung/?kurs=ap1-it-berufe');
     const zeile = page.locator('#anmeldung [data-zusage="kurs"]');
     await expect(zeile).toBeVisible();
     await expect(zeile).toContainText(ersterTeil(KURS));
-    await expect(page.locator('#anmeldung [data-absenden]')).toHaveText('Zahlungspflichtig anmelden');
+    await expect(page.locator('#anmeldung [data-absenden]')).toHaveText('Unverbindlich anfragen');
     const z = (await zeile.boundingBox())!;
     const k = (await page.locator('#anmeldung [data-absenden]').boundingBox())!;
     expect(z.y).toBeLessThan(k.y);

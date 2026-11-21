@@ -36,10 +36,9 @@ const FEHLER = [
     'personenMax' => 'Pro Anmeldung sind höchstens 5 Personen möglich.',
     'emailDoppelt' => 'Diese E-Mail-Adresse ist schon eingetragen.',
     'nachricht' => 'Deine Nachricht ist zu lang – bitte kürze sie auf 2.000 Zeichen.',
-    'agb' => 'Bitte bestätige die Teilnahmebedingungen.',
+    'agb' => 'Bitte bestätige, dass du Teilnahmebedingungen und Widerrufsbelehrung zur Kenntnis genommen hast.',
     'alter' => 'Bitte bestätige, dass du volljährig bist – oder dass deine Erziehungsberechtigten einverstanden sind bzw. dein Ausbildungsbetrieb dich anmeldet.',
-    'datenschutz' => 'Bitte bestätige, dass du Datenschutzerklärung und Widerrufsbelehrung gelesen hast.',
-    'wertersatz' => 'Dein Kurs startet innerhalb der 14-tägigen Widerrufsfrist. Bitte bestätige, dass wir schon vorher mit dem Kurs beginnen dürfen.',
+    'datenschutz' => 'Bitte bestätige, dass du die Datenschutzerklärung zur Kenntnis genommen hast.',
     'zuSchnell' => 'Das ging sehr schnell – bitte versuche es in einer Minute erneut.',
     'name' => 'Bitte gib deinen Namen ein.',
     'wunschzeitraum' => 'Bitte fasse deinen Wunschzeitraum kürzer (höchstens 100 Zeichen).',
@@ -50,7 +49,7 @@ const FEHLER = [
     'wunschzeiten' => 'Bitte fasse deine Wunschzeiten kürzer (höchstens 200 Zeichen).',
     'thema' => 'Bitte wähle ein Thema aus.',
     'kontaktNachricht' => 'Bitte schreib uns kurz, worum es geht.',
-    'einwilligungKontakt' => 'Bitte bestätige, dass wir deine Angaben zur Beantwortung deiner Anfrage nutzen dürfen.',
+    'einwilligungKontakt' => 'Bitte bestätige, dass du den Datenschutzhinweis gelesen hast.',
     'vertrag' => 'Bitte wähle den Kurs aus oder gib die Vorgangsnummer aus deiner Bestätigungs-E-Mail an.',
     'vorgang' => 'Die Vorgangsnummer findest du in deiner Bestätigungs-E-Mail, z. B. A-20261113-7F3K.',
     'anmeldedatum' => 'Bitte gib ein gültiges Anmeldedatum ein – es darf nicht in der Zukunft liegen.',
@@ -468,6 +467,18 @@ function bestaetigung_senden(string $an, string $betreff, array $zeilen, string 
     return mail_senden($an, $betreff, implode("\n", $zeilen), $von, $von, true);
 }
 
+/**
+ * Pflichtangaben für geschäftliche E-Mails der UG (§ 35a Abs. 1 GmbHG i. V. m. § 5a Abs. 1 GmbHG: Rechtsform, Sitz,
+ * Registergericht, Registernummer, Geschäftsführer). Stand 21.11.2026 laut Handelsregister (Angabe Can, 15.11.2026).
+ */
+const FIRMA_ZEILEN = [
+    '--',
+    'waybuild Akademie – ein Angebot der Waybuild UG (haftungsbeschränkt)',
+    'Kuno-Liesenberg-Kehre 32a, 22844 Norderstedt',
+    'Sitz: Norderstedt · Registergericht: Amtsgericht Kiel, HRB 29883 KI',
+    'Geschäftsführer: Can Siebert',
+];
+
 /** Fester Schluss jeder Eingangsbestätigung. */
 const BESTAETIGUNG_FUSS = [
     '',
@@ -475,7 +486,51 @@ const BESTAETIGUNG_FUSS = [
     '',
     'Viele Grüße',
     'dein Team der waybuild Akademie',
+    '',
+    ...FIRMA_ZEILEN,
 ];
+
+// ---------------------------------------------------------------- Double-Opt-in (Interesse vormerken, § 7 Abs. 2 UWG)
+
+/** Gültigkeit des Bestätigungslinks in Sekunden (7 Tage). */
+const DOI_GUELTIG = 7 * 86400;
+
+/**
+ * Bestätigungs-Token ohne Datenbank: die Vormerkung wird mit AES-256-GCM verschlüsselt (Schlüssel aus dem
+ * Formular-Geheimnis abgeleitet) und steckt nur im Link. Bis zur Bestätigung speichert der Server nichts;
+ * Server-Logfiles sehen nur den verschlüsselten Wert.
+ */
+function doi_schluessel(): string
+{
+    return hash_hmac('sha256', 'doi-interesse-v1', geheimnis(), true);
+}
+
+function doi_token(array $daten): string
+{
+    $iv = random_bytes(12);
+    $tag = '';
+    $klar = json_encode($daten, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    $geheim = openssl_encrypt((string) $klar, 'aes-256-gcm', doi_schluessel(), OPENSSL_RAW_DATA, $iv, $tag);
+    return rtrim(strtr(base64_encode($iv . $tag . $geheim), '+/', '-_'), '=');
+}
+
+/** Entschlüsselt und prüft das Token (Echtheit, Alter). null = ungültig oder abgelaufen. */
+function doi_lesen(string $token): ?array
+{
+    if ($token === '' || strlen($token) > 8000 || !preg_match('/^[A-Za-z0-9_-]+$/', $token)) {
+        return null;
+    }
+    $roh = base64_decode(strtr($token, '-_', '+/'), true);
+    if ($roh === false || strlen($roh) < 29) {
+        return null;
+    }
+    $klar = openssl_decrypt(substr($roh, 28), 'aes-256-gcm', doi_schluessel(), OPENSSL_RAW_DATA, substr($roh, 0, 12), substr($roh, 12, 16));
+    $daten = $klar === false ? null : json_decode($klar, true);
+    if (!is_array($daten) || !is_int($daten['t'] ?? null) || $daten['t'] > time() + 60 || $daten['t'] < time() - DOI_GUELTIG) {
+        return null;
+    }
+    return $daten;
+}
 
 function zeitfalle_pruefen(): void
 {

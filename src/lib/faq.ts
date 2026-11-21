@@ -34,11 +34,11 @@ export const FAQ = {
   },
   bezahlen: {
     frage: 'Wie bezahle ich?',
-    antwort: 'Nach der Anmeldung bekommst du die Rechnung per E-Mail und überweist den Betrag – innerhalb von 14 Tagen, spätestens vor Kursbeginn. Eine Online-Zahlung gibt es nicht.',
+    antwort: 'Nach unserer Buchungsbestätigung bekommst du die Rechnung per E-Mail und überweist den Betrag – innerhalb von 14 Tagen, spätestens vor Kursbeginn. Eine Online-Zahlung gibt es nicht.',
   },
   raten: {
     frage: 'Kann ich in Raten zahlen?',
-    antwort: 'Bei langen Weiterbildungen ja, ohne Aufpreis – die Kursseite zeigt, wo das möglich ist. Gib es bei der Anmeldung im Feld „Nachricht an uns“ an; den Ratenplan findest du in deiner Rechnung. Die Prüfungsvorbereitungen zahlst du in einem Betrag.',
+    antwort: 'Bei langen Weiterbildungen ja, ohne Aufpreis – die Kursseite zeigt, wo das möglich ist. Gib es in deiner Buchungsanfrage im Feld „Nachricht an uns“ an; den Ratenplan nennen wir im Buchungsangebot. Die Prüfungsvorbereitungen zahlst du in einem Betrag.',
   },
   betrieb: {
     frage: 'Kann mein Betrieb die Rechnung bekommen?',

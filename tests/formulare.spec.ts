@@ -71,18 +71,20 @@ test.describe('Anmeldung', () => {
     await expect(feld(page, 'kurs')).toHaveValue('ap1-it-berufe');
     await expect(feld(page, 'termin')).toHaveValue('ap1-2027-fruehjahr');
     const knopf = page.locator('#anmeldung [data-absenden]');
-    await expect(knopf).toHaveText('Zahlungspflichtig anmelden');
-    expect((await knopf.textContent())?.trim()).toBe('Zahlungspflichtig anmelden');
+    // Rechtsmodell 21.11.2026: Formular = unverbindliche Buchungsanfrage, Vertrag erst per E-Mail (Teilnahmebedingungen Nr. 2)
+    await expect(knopf).toHaveText('Unverbindlich anfragen');
+    expect((await knopf.textContent())?.trim()).toBe('Unverbindlich anfragen');
+    await expect(page.locator('[data-ablauf-buchung]')).toContainText('Verbindlich wird es erst mit unserer Buchungsbestätigung per E-Mail.');
+    await expect(page.locator('[data-knopf-hinweis]')).toContainText('Kostenlos und unverbindlich.');
     await expect(page.locator('[data-preis-gesamt]')).toHaveText('349,00 €');
     if (istVorschau) await expect(page.locator('[data-demo-hinweis]').first()).toContainText('Demo-Modus');
     else await expect(page.locator('[data-demo-hinweis]')).toHaveCount(0);
     // Links an der Bestätigungsstelle (US-20 AK2)
-    await expect(page.locator('[data-feld-rahmen="agb"] a')).toHaveAttribute('href', /\/teilnahmebedingungen\/$/);
+    await expect(page.locator('[data-feld-rahmen="agb"] a').first()).toHaveAttribute('href', /\/teilnahmebedingungen\/$/);
     await expect(page.locator('[data-feld-rahmen="datenschutz"] a').first()).toHaveAttribute('href', /\/datenschutz\/$/);
-    await expect(page.locator('[data-feld-rahmen="datenschutz"] a').nth(1)).toHaveAttribute('href', /\/widerruf\/$/);
-    await expect(page.locator('[data-feld-rahmen="wertersatz"] label')).toHaveText(
-      /Ich verlange ausdrücklich, dass ihr vor Ablauf der Widerrufsfrist mit der Leistung beginnt\. Mir ist bekannt, dass ich bei Widerruf Wertersatz für bereits erbrachte Leistungen schulde\./,
-    );
+    await expect(page.locator('[data-feld-rahmen="agb"] a').nth(1)).toHaveAttribute('href', /\/widerruf\/$/);
+    // Kein Wertersatz-Haken in der Anfrage: das Verlangen gehört in die Zusage per E-Mail (§ 357a Abs. 2 BGB)
+    await expect(page.locator('[data-feld-rahmen="wertersatz"]')).toHaveCount(0);
   });
 
   test('ohne Parameter: Kurs wählen, Termine passend zum Kurs', async ({ page }) => {
@@ -108,14 +110,13 @@ test.describe('Anmeldung', () => {
     await expect(fehler(page, 'strasse')).toHaveText('Bitte gib Straße und Hausnummer ein.');
     await expect(fehler(page, 'plz')).toHaveText('Bitte gib eine gültige Postleitzahl ein.');
     await expect(fehler(page, 'ort')).toHaveText('Bitte gib deinen Ort ein.');
-    await expect(fehler(page, 'agb')).toHaveText('Bitte bestätige die Teilnahmebedingungen.');
-    await expect(fehler(page, 'datenschutz')).toHaveText('Bitte bestätige, dass du Datenschutzerklärung und Widerrufsbelehrung gelesen hast.');
+    await expect(fehler(page, 'agb')).toHaveText('Bitte bestätige, dass du Teilnahmebedingungen und Widerrufsbelehrung zur Kenntnis genommen hast.');
+    await expect(fehler(page, 'datenschutz')).toHaveText('Bitte bestätige, dass du die Datenschutzerklärung zur Kenntnis genommen hast.');
     await expect(fehler(page, 'alter')).toContainText('Bitte bestätige, dass du volljährig bist');
     await expect(page.locator('[data-feld-rahmen="alter"] label')).toContainText(
       'Ich bin volljährig – oder meine Erziehungsberechtigten sind mit der Anmeldung einverstanden, oder mein Ausbildungsbetrieb meldet mich an.',
     );
     await expect(fehler(page, 'firma')).toBeHidden();
-    await expect(fehler(page, 'wertersatz')).toBeHidden(); // Start nach Ablauf der Frist → freiwillig
     await expect(feld(page, 'firma')).toBeHidden();
     // aria
     await expect(feld(page, 'p1_vorname')).toHaveAttribute('aria-invalid', 'true');
@@ -213,36 +214,20 @@ test.describe('Anmeldung', () => {
     await expect(page.locator('[data-zusammenfassung]')).toContainText('Lena Muster');
     await page.locator('#anmeldung [data-absenden]').click();
     await expect(page).toHaveURL(danke('anmeldung'));
-    await expect(page.locator('h1:visible')).toHaveText('Danke – deine Anmeldung ist angekommen');
+    await expect(page.locator('h1:visible')).toHaveText('Danke – deine Buchungsanfrage ist angekommen');
     await expect(page.locator('[data-danke-demo]')).toBeVisible();
     await expect(page.locator('[data-danke-zeilen]')).toContainText('Lena Muster');
     await expect(page.locator('[data-danke-zeilen]')).toContainText('349,00 €, alles inklusive');
-    await expect(page.locator('[data-danke-art="anmeldung"]').getByText('Du erhältst die Rechnung per E-Mail; eine Online-Zahlung ist nicht nötig.')).toBeVisible();
+    await expect(page.locator('[data-danke-art="anmeldung"]')).toContainText('Deine Anfrage ist kostenlos und unverbindlich.');
     expect(gesendet).toBe(false);
   });
 });
 
-test.describe('Wertersatz-Bestätigung', () => {
-  test('Pflicht bei Kursstart innerhalb von 14 Tagen', async ({ page }) => {
+test.describe('Kursstart innerhalb der Widerrufsfrist', () => {
+  test('Anfrage geht ohne Wertersatz-Haken durch (Verlangen erst in der Zusage per E-Mail)', async ({ page }) => {
     await page.clock.setFixedTime(IN_FRIST);
     await page.goto(AP1);
     await gueltigSelbst(page);
-    await expect(feld(page, 'wertersatz')).toHaveAttribute('aria-required', 'true');
-    await expect(page.locator('[data-feld-rahmen="wertersatz"] [data-haken-hinweis]')).toContainText('Pflicht: Dein Kurs startet in 11 Tagen');
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect(fehler(page, 'wertersatz')).toContainText('Dein Kurs startet innerhalb der 14-tägigen Widerrufsfrist.');
-    await expect(feld(page, 'wertersatz')).toBeFocused();
-    await feld(page, 'wertersatz').check();
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect(page).toHaveURL(danke('anmeldung'));
-  });
-
-  test('freiwillig bei späterem Kursstart', async ({ page }) => {
-    await page.clock.setFixedTime(VOR_FRIST);
-    await page.goto(AP1);
-    await gueltigSelbst(page);
-    await expect(feld(page, 'wertersatz')).toBeVisible();
-    await expect(feld(page, 'wertersatz')).toHaveAttribute('aria-required', 'false');
     await page.locator('#anmeldung [data-absenden]').click();
     await expect(page).toHaveURL(danke('anmeldung'));
   });
@@ -253,7 +238,6 @@ test.describe('Coaching', () => {
     await page.goto(`anmeldung/?kurs=pruefungscoaching&paket=${encodeURIComponent('Coaching-Paket')}`);
     await expect(feld(page, 'termin')).toBeHidden();
     await expect(feld(page, 'personen')).toBeHidden();
-    await expect(feld(page, 'wertersatz')).toBeHidden();
     await expect(feld(page, 'alter')).toBeHidden();
     await expect(page.locator('input[name="paket"][value="coaching-paket"]')).toBeChecked();
     await expect(page.locator('[data-preis-gesamt]')).toHaveText('189,00 €');
@@ -297,7 +281,7 @@ test.describe('Interesse und Kontakt', () => {
     await feld(page, 'einwilligung', 'interesse').check();
     await page.locator('#interesse [data-absenden]').click();
     await expect(page).toHaveURL(danke('interesse'));
-    await expect(page.getByText('Wir melden uns, sobald Termine feststehen.').first()).toBeVisible();
+    await expect(page.locator('h1:visible')).toHaveText('Fast geschafft – bitte bestätige deine E-Mail-Adresse');
   });
 
   test('Kontakt: Themen, Telefon-Platzhalter, Pflichtfelder', async ({ page }) => {
