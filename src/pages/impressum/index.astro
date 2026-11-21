@@ -1,5 +1,8 @@
 ---
-// Impressum nach § 5 DDG – ENTWURF (Task 5). Firmendaten aus dem Impressum der Firmen-Website übernommen.
+// Impressum nach § 5 DDG und § 18 MStV – ENTWURF, Stand 21.11.2026 (RECHT_GEPRUEFT = false).
+// Firmendaten zentral in src/components/recht/status.ts (Anschrift + Register laut Handelsregister, Angabe Can 15.11.2026).
+// Unbekanntes (Telefon, USt-IdNr.) bleibt markierter Platzhalter – nie erfinden. Kein Link zur OS-Plattform
+// (eingestellt zum 20.07.2025, VO (EU) 2024/3228).
 import RechtSeite from '../../components/recht/RechtSeite.astro';
 import Luecke from '../../components/recht/Luecke.astro';
 import { FIRMA } from '../../components/recht/status';
@@ -9,16 +12,17 @@ import { href } from '../../lib/pfad';
 const abschnitte = [
   { id: 'anbieter', titel: 'Anbieter' },
   { id: 'kontakt', titel: 'Kontakt' },
-  { id: 'register', titel: 'Register und Umsatzsteuer' },
+  { id: 'register', titel: 'Handelsregister' },
+  { id: 'umsatzsteuer', titel: 'Umsatzsteuer' },
   { id: 'verantwortlich', titel: 'Verantwortlich für den Inhalt' },
   { id: 'streitbeilegung', titel: 'Verbraucherstreitbeilegung' },
   { id: 'ihk', titel: 'Unabhängig von der IHK' },
-  { id: 'haftung', titel: 'Links und Inhalte' },
+  { id: 'haftung', titel: 'Urheberrecht, Links und Inhalte' },
 ];
 ---
 
-<RechtSeite titel="Impressum" beschreibung="Impressum der waybuild Akademie: Anbieter Waybuild UG (haftungsbeschränkt) in Norderstedt, Kontakt, Registerangaben, Verantwortliche und Hinweis zur IHK." {abschnitte}>
-  <p slot="einleitung" class="mt-5 text-lg">Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG).</p>
+<RechtSeite titel="Impressum" beschreibung="Impressum der waybuild Akademie: Anbieter Waybuild UG (haftungsbeschränkt) in Norderstedt, Kontakt, Handelsregister, Verantwortlicher und Hinweis zur IHK." {abschnitte}>
+  <p slot="einleitung" class="mt-5 text-lg">Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG) und § 18 Medienstaatsvertrag (MStV).</p>
 
   <h2 id="anbieter">Anbieter</h2>
   <address>
@@ -27,43 +31,48 @@ const abschnitte = [
     {FIRMA.plz} {FIRMA.ort}<br />
     {FIRMA.land}
   </address>
-  <p>Vertreten durch den Geschäftsführer: {FIRMA.geschaeftsfuehrer}</p>
+  <p>Vertretungsberechtigter Geschäftsführer: {FIRMA.geschaeftsfuehrer}</p>
   <p>
-    Die <strong>waybuild Akademie</strong> ist eine Marke und ein Angebot der {FIRMA.name}. Vertragspartner für alle Kurse
-    und Coachings ist die {FIRMA.name}.
+    Die <strong>waybuild Akademie</strong> ist ein Angebot der {FIRMA.name}. Vertragspartner für alle Kurse und Coachings
+    ist die {FIRMA.name}.
   </p>
 
   <h2 id="kontakt">Kontakt</h2>
-  <p>
-    E-Mail: <a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a><br />
-    Telefon: {FIRMA.telefon ?? <Luecke text="bitte ergänzen: Telefonnummer" />}<br />
-    Kontaktformular: <a href={href('/kontakt/')}>waybuild-akademie.de/kontakt/</a>
-  </p>
-  <p>
-    Wir beantworten Nachrichten in der Regel innerhalb von zwei Werktagen.{' '}
-    <Luecke text="Annahme – bitte bestätigen: Antwortzeit" />
-  </p>
+  <dl class="recht-liste">
+    <dt>E-Mail</dt>
+    <dd><a href={`mailto:${AKADEMIE.mailInfo}`}>{AKADEMIE.mailInfo}</a></dd>
+    <dt>Telefon</dt>
+    <dd>{FIRMA.telefon ?? <Luecke text="bitte ergänzen: Telefonnummer (Pflicht im Fernabsatz, Art. 246a § 1 Abs. 1 Nr. 3 EGBGB)" />}</dd>
+    <dt>Kontaktformular</dt>
+    <dd><a href={href('/kontakt/')}>waybuild-akademie.de/kontakt/</a></dd>
+  </dl>
 
-  <h2 id="register">Register und Umsatzsteuer</h2>
-  <p>
-    Registergericht: {FIRMA.registergericht ?? <Luecke text="bitte ergänzen: Amtsgericht" />}<br />
-    Registernummer: {FIRMA.registernummer ?? <Luecke text="bitte ergänzen: HRB-Nummer" />}
-  </p>
+  <h2 id="register">Handelsregister</h2>
+  <dl class="recht-liste">
+    <dt>Registergericht</dt>
+    <dd>{FIRMA.registergericht ?? <Luecke text="bitte ergänzen: Amtsgericht" />}</dd>
+    <dt>Registernummer</dt>
+    <dd>{FIRMA.registernummer ?? <Luecke text="bitte ergänzen: HRB-Nummer" />}</dd>
+  </dl>
+
+  <h2 id="umsatzsteuer">Umsatzsteuer</h2>
   <p>
     Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:{' '}
-    {FIRMA.ustId ?? <Luecke text="bitte ergänzen: USt-IdNr., falls erteilt; ohne USt-IdNr. stattdessen die Wirtschafts-Identifikationsnummer (§ 139c AO, § 5 Abs. 1 Nr. 6 DDG), falls zugeteilt – sonst Zeile streichen" />}
+    {FIRMA.ustId ?? <Luecke text="bitte ergänzen: USt-IdNr. oder Wirtschafts-Identifikationsnummer (§ 139c AO), falls zugeteilt – sonst Abschnitt streichen (§ 5 Abs. 1 Nr. 6 DDG)" />}
   </p>
 
   <h2 id="verantwortlich">Verantwortlich für den Inhalt</h2>
-  <p>Verantwortlich für den Inhalt nach § 18 Abs. 2 Medienstaatsvertrag (MStV):</p>
-  <p>{FIRMA.geschaeftsfuehrer}, Anschrift wie oben</p>
+  <p>Verantwortlich im Sinne des § 18 Abs. 2 MStV:</p>
+  <address>
+    {FIRMA.geschaeftsfuehrer}<br />
+    {FIRMA.strasse}<br />
+    {FIRMA.plz} {FIRMA.ort}
+  </address>
 
   <h2 id="streitbeilegung">Verbraucherstreitbeilegung</h2>
   <p>
     Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
-    teilzunehmen (§ 36 Verbraucherstreitbeilegungsgesetz). Die Waybuild UG beschäftigt nicht mehr als zehn Personen und ist
-    daher nach § 36 Abs. 3 VSBG nicht zur Teilnahme verpflichtet.{' '}
-    <Luecke text="Anwalt prüfen: Beschäftigtenzahl zum 31.12. des Vorjahres" />
+    teilzunehmen (§ 36 Verbraucherstreitbeilegungsgesetz).
   </p>
   <p>
     Wenn du mit uns unzufrieden bist, schreib uns gern direkt an{' '}
@@ -78,10 +87,14 @@ const abschnitte = [
     Gebühren der Prüfungen regelt deine zuständige IHK.
   </p>
 
-  <h2 id="haftung">Links und Inhalte</h2>
+  <h2 id="haftung">Urheberrecht, Links und Inhalte</h2>
+  <p>
+    Texte, Grafiken, Logos und Kursunterlagen dieser Website sind urheberrechtlich geschützt. Eine Verwendung außerhalb der
+    gesetzlichen Erlaubnisse braucht unsere vorherige Zustimmung in Textform.
+  </p>
   <p>
     Wir erstellen die Inhalte dieser Website mit Sorgfalt. Termine, Preise und Kursinhalte können sich ändern; verbindlich
-    ist die Bestätigung deiner Anmeldung. Für Inhalte verlinkter fremder Websites sind ausschließlich deren Betreiber
+    ist die Buchungsbestätigung per E-Mail. Für Inhalte verlinkter fremder Websites sind ausschließlich deren Betreiber
     verantwortlich. Wenn dir ein Fehler oder ein rechtswidriger Inhalt auffällt, gib uns bitte Bescheid – wir korrigieren
     ihn umgehend.
   </p>

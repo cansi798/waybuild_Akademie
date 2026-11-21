@@ -34,7 +34,7 @@ export const FAQ = {
   },
   bezahlen: {
     frage: 'Wie bezahle ich?',
-    antwort: 'Nach der Anmeldung bekommst du die Rechnung per E-Mail und überweist den Betrag – innerhalb von 14 Tagen, spätestens vor Kursbeginn. Eine Online-Zahlung gibt es nicht.',
+    antwort: 'Nach unserer Buchungsbestätigung bekommst du die Rechnung per E-Mail und überweist den Betrag – innerhalb von 14 Tagen, spätestens vor Kursbeginn. Eine Online-Zahlung gibt es nicht.',
   },
   abschnitte: {
     frage: 'Kann ich einen langen Lehrgang in Abschnitten buchen?',
@@ -78,7 +78,7 @@ export const FAQ = {
   },
   zugang: {
     frage: 'Wie bekomme ich den Zugang?',
-    antwort: 'Vor Kursbeginn schicken wir dir den Link zum Live-Raum per E-Mail. Auf der Website steht er nicht.',
+    antwort: 'Vor Kursbeginn schicken wir dir per E-Mail deinen persönlichen Zugang zu unserer Nextcloud und den Link zum Live-Raum (nextcloud.waybuild.de/meeting/…). Du meldest dich mit diesem Zugang an und bist dann im Unterricht – er läuft über unsere eigene Videokonferenz (Jitsi Meet) im Browser, ein Konto bei einem anderen Anbieter brauchst du nicht. Auf der Website steht der Link nicht.',
   },
   fragen: {
     frage: 'Kann ich Fragen stellen?',

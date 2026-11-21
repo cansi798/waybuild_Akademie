@@ -1,5 +1,8 @@
 <?php
-// Anmeldung zu einem Kurstermin (verbindlich, „Zahlungspflichtig anmelden“) und Coaching-Anfrage (unverbindlich, „Paket anfragen“).
+// Buchungsanfrage zu einem Kurstermin (unverbindlich, „Unverbindlich anfragen“) und Coaching-Anfrage (unverbindlich, „Paket anfragen“).
+// Rechtsmodell (Stand 21.11.2026, Teilnahmebedingungen Nr. 2): Das Formular ist nur eine Anfrage, kein Angebot. Das Team
+// schickt danach per E-Mail ein Buchungsangebot (Vorlage docs/vorlagen/buchung-mails.md); verbindlich wird es erst mit der
+// Zusage der Person und unserer Buchungsbestätigung per E-Mail (individuelle Kommunikation, § 312j Abs. 5 BGB).
 // Ablauf laut Sequenzdiagramm (docs/04-architektur.md, Abschnitt 4): nur POST → Lockfeld → Rate-Limit/Zeitfalle →
 // serverseitige Prüfung gegen die Terminliste (S-06) → Preis selbst berechnen → Mail an anmeldung@ → Eingangsbestätigung → 303.
 declare(strict_types=1);
@@ -142,10 +145,9 @@ if ($coaching) {
     pruefe_text($f, 'wunschzeiten', $wunschzeiten, 0, 200, FEHLER['wunschzeiten'], false);
 }
 
-// ---- Bestätigungen (Button-Lösung, Widerruf)
+// ---- Kenntnisnahme (keine Vertragserklärung – die folgt erst per E-Mail)
 $agb = angehakt('agb');
 $datenschutz = angehakt('datenschutz');
-$wertersatz = angehakt('wertersatz');
 if (!$coaching && !$agb) {
     $f['agb'] = FEHLER['agb'];
 }
@@ -157,10 +159,7 @@ if (!$coaching && !$volljaehrig) {
     $f['alter'] = FEHLER['alter']; // Minderjährige: Einverständnis der Erziehungsberechtigten oder Anmeldung durch den Betrieb
 }
 $tageBisStart = $termin !== null ? tage_bis((string) $termin['start']) : null;
-$wertersatzPflicht = $tageBisStart !== null && $tageBisStart <= WIDERRUFSFRIST_TAGE;
-if ($wertersatzPflicht && !$wertersatz) {
-    $f['wertersatz'] = FEHLER['wertersatz'];
-}
+$startInFrist = $tageBisStart !== null && $tageBisStart <= WIDERRUFSFRIST_TAGE;
 
 if ($f) {
     fehler_antwort(422, 'validierung', 'Bitte prüfe deine Angaben – ein paar Felder fehlen noch oder stimmen nicht.', $f);
@@ -181,7 +180,7 @@ $bestaetigen = bestaetigung_erlaubt($erste['email']);
 
 // ---- Text der Anmeldung (feste Reihenfolge, US-24)
 $zeilen = [];
-$zeilen[] = ($coaching ? 'COACHING-ANFRAGE (unverbindlich)' : 'ANMELDUNG (verbindlich, zahlungspflichtig)') . ' – Vorgang ' . $vorgang;
+$zeilen[] = ($coaching ? 'COACHING-ANFRAGE (unverbindlich)' : 'BUCHUNGSANFRAGE (unverbindlich – Buchungsangebot per E-Mail schicken)') . ' – Vorgang ' . $vorgang;
 $zeilen[] = 'Eingang: ' . jetzt_text($eingang);
 $zeilen[] = bestaetigung_vermerk($bestaetigen);
 $zeilen[] = '';
@@ -232,13 +231,14 @@ $zeilen[] = 'Endpreis (alles inklusive): ' . euro($gesamt);
 $zeilen[] = '';
 $zeilen[] = 'BESTÄTIGUNGEN';
 if (!$coaching) {
-    $zeilen[] = 'Teilnahmebedingungen akzeptiert: ja';
+    $zeilen[] = 'Teilnahmebedingungen und Widerrufsbelehrung zur Kenntnis genommen: ja';
     $zeilen[] = 'Volljährig oder mit Einverständnis der Erziehungsberechtigten bzw. Anmeldung durch den Ausbildungsbetrieb: ja';
 }
-$zeilen[] = 'Datenschutzerklärung und Widerrufsbelehrung gelesen: ja';
+$zeilen[] = 'Datenschutzerklärung zur Kenntnis genommen: ja';
 if (!$coaching) {
-    $zeilen[] = 'Beginn vor Ablauf der Widerrufsfrist ausdrücklich verlangt (Wertersatz bekannt): '
-        . ($wertersatz ? 'ja' : 'nein') . ' – Kursstart in ' . $tageBisStart . ' Tagen' . ($wertersatzPflicht ? ' (Pflicht)' : '');
+    $zeilen[] = 'Kursstart in ' . $tageBisStart . ' Tagen' . ($startInFrist
+        ? ' – innerhalb der Widerrufsfrist: im Buchungsangebot den Baustein „Beginn vor Ablauf der Widerrufsfrist“ (Vorlage A) aufnehmen'
+        : ' – nach Ablauf der Widerrufsfrist (Baustein nicht nötig)');
 }
 if ($coaching) {
     $zeilen[] = '';
@@ -263,14 +263,14 @@ $zeilen[] = json_block([
         : $rechnung,
     'rabattProzent' => $rabattProzent,
     'gesamtpreis' => $gesamt,
-    'wertersatzVerlangt' => $wertersatz,
+    'startInWiderrufsfrist' => $startInFrist,
     'volljaehrigOderEinverstaendnis' => $coaching ? null : $volljaehrig,
     'nachricht' => $nachricht,
 ] + ($coaching ? ['anliegen' => $anliegen, 'pruefungszeitraum' => $pruefungszeitraum, 'wunschzeiten' => $wunschzeiten] : []));
 
 $betreff = $coaching
     ? 'Coaching-Anfrage · ' . $paket['name'] . ' · ' . $erste['vorname'] . ' ' . $erste['nachname']
-    : 'Anmeldung · ' . $kurs['titel'] . ' · ' . datum_de($termin['start']);
+    : 'Buchungsanfrage · ' . $kurs['titel'] . ' · ' . datum_de($termin['start']);
 
 $postfach = $k['empfaenger'][$art];
 if (!mail_senden($postfach, $betreff, implode("\n", $zeilen), $k['absender']['anmeldung'], $erste['email'])) {
@@ -285,13 +285,14 @@ $b[] = '';
 if ($coaching) {
     $b[] = 'danke für deine Coaching-Anfrage. Sie ist bei uns eingegangen und noch unverbindlich: Der Vertrag kommt erst zustande, wenn wir gemeinsam die Termine abgestimmt haben.';
 } else {
-    $b[] = 'danke für deine Anmeldung. Mit dieser E-Mail bestätigen wir, dass sie bei uns eingegangen ist. Sie ist noch keine Annahme – der Vertrag kommt zustande, sobald wir dir die Anmeldung mit der Rechnung bestätigen.';
+    $b[] = 'danke für deine Buchungsanfrage. Mit dieser E-Mail bestätigen wir nur, dass sie bei uns eingegangen ist.';
+    $b[] = 'Deine Anfrage ist unverbindlich und kostenlos – du gehst damit noch keine Zahlungspflicht ein.';
 }
 $b[] = '';
 $b[] = 'Vorgangsnummer: ' . $vorgang;
 $b[] = 'Eingang: ' . jetzt_text($eingang);
 $b[] = '';
-$b[] = 'DEINE ANMELDUNG';
+$b[] = $coaching ? 'DEINE ANFRAGE' : 'DEINE BUCHUNGSANFRAGE';
 $b[] = 'Kurs: ' . $kurs['titel'];
 if ($coaching) {
     $b[] = 'Paket: ' . $paket['name'] . ' (' . $paket['beschreibung'] . ')';
@@ -307,10 +308,6 @@ if (!$coaching && $rabattProzent > 0) {
     $b[] = 'Preis: ' . $anzahl . ' × ' . euro($einzel) . ' = ' . euro($zwischensumme) . ', abzüglich ' . $rabattProzent . ' % Gruppenrabatt';
 }
 $b[] = 'Endpreis: ' . euro($gesamt) . ' – alles inklusive';
-if (!$coaching && $wertersatz) {
-    $b[] = '';
-    $b[] = 'Du hast ausdrücklich verlangt, dass wir vor Ablauf der Widerrufsfrist mit der Leistung beginnen. Dir ist bekannt, dass du bei einem Widerruf Wertersatz für bereits erbrachte Leistungen schuldest.';
-}
 $b[] = '';
 $b[] = 'SO GEHT ES WEITER';
 if ($coaching) {
@@ -318,8 +315,10 @@ if ($coaching) {
     $b[] = '2. Nach der Terminabstimmung: Rechnung folgt per E-Mail. Eine Online-Zahlung ist nicht nötig.';
     $b[] = 'Projektantrag, Dokumentation und alle Prüfungsleistungen erstellst du selbst – das Coaching ist Beratung, Rückmeldung und Training.';
 } else {
-    $b[] = '1. Rechnung folgt per E-Mail' . ($zahlweg === 'betrieb' ? ' an die angegebene Rechnungsadresse deines Betriebs' : '') . '. Eine Online-Zahlung ist nicht nötig.';
-    $b[] = '2. Vor Kursstart bekommt jede teilnehmende Person den Zugang zum Live-Raum per E-Mail.';
+    $b[] = '1. Wir prüfen deine Anfrage und schicken dir per E-Mail ein Buchungsangebot mit allen Vertragsunterlagen (Teilnahmebedingungen, Widerrufsbelehrung, Muster-Widerrufsformular).';
+    $b[] = '2. Möchtest du buchen, sagst du uns das mit einer Antwort auf das Angebot zu.';
+    $b[] = '3. Verbindlich wird die Buchung erst mit unserer Buchungsbestätigung per E-Mail. Bis dahin kannst du jederzeit formlos absagen.';
+    $b[] = '4. Danach kommt die Rechnung per E-Mail' . ($zahlweg === 'betrieb' ? ' an die angegebene Rechnungsadresse deines Betriebs' : '') . ' – eine Online-Zahlung ist nicht nötig. Vor Kursstart bekommt jede teilnehmende Person den Zugang zum Live-Raum.';
 }
 $b[] = '';
 $b[] = 'WICHTIGE LINKS';
@@ -329,7 +328,7 @@ $b[] = 'Datenschutzerklärung: ' . link_zu('datenschutz/');
 
 bestaetigung_senden(
     $erste['email'],
-    ($coaching ? 'Deine Coaching-Anfrage ist angekommen' : 'Deine Anmeldung ist angekommen') . ' (' . $vorgang . ')',
+    ($coaching ? 'Deine Coaching-Anfrage ist angekommen' : 'Deine Buchungsanfrage ist angekommen') . ' (' . $vorgang . ')',
     array_merge($b, BESTAETIGUNG_FUSS),
     $k['absender']['anmeldung'],
     $bestaetigen,

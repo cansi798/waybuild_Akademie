@@ -3,11 +3,14 @@
 import type { APIRoute } from 'astro';
 import { formatDatum, formatEuro, freigegebeneKurse, naechsterTermin, saeulenName, umfangText } from '../lib/kurse';
 import { absolut } from '../lib/pfad';
-import { AKADEMIE, IHK_HINWEIS } from '../lib/site';
+import { AKADEMIE, IHK_HINWEIS, UNTERRICHT } from '../lib/site';
+import { ZUSAGEN } from '../lib/zusagen';
+import { berufUrl, sichtbareBerufe } from '../lib/berufe';
 
 export const GET: APIRoute = async ({ site }) => {
   const url = (pfad: string) => absolut(pfad, site);
   const kurse = await freigegebeneKurse();
+  const berufe = await sichtbareBerufe();
 
   const kursZeilen = kurse.map((k) => {
     const d = k.data;
@@ -28,12 +31,24 @@ export const GET: APIRoute = async ({ site }) => {
 
 > ${AKADEMIE.beschreibung}
 
-Die ${AKADEMIE.name} bietet Live-Online-Kurse für ganz Deutschland: synchroner Unterricht in festen Gruppen, abends per Videokonferenz – keine Aufzeichnungen, kein Selbstlernkurs. Zielgruppen sind Auszubildende und Umschüler vor der IHK-Abschlussprüfung sowie Berufstätige, die sich berufsbegleitend weiterbilden. Ansprache: Du.
+Die ${AKADEMIE.name} bietet Live-Online-Kurse für ganz Deutschland in drei Bereichen: IHK-Prüfungsvorbereitung für Auszubildende (AP1/AP2), IHK-Weiterbildung (z. B. Fachwirt, Betriebswirt) und eigene Weiterbildung (KI, IT, Programmierung). ${UNTERRICHT.satz} Synchroner Unterricht in festen Gruppen – keine Aufzeichnungen, kein Selbstlernkurs. Zielgruppen sind Auszubildende und Umschüler vor der IHK-Abschlussprüfung sowie Berufstätige, die sich berufsbegleitend weiterbilden. Ansprache: Du.
 
 - Preise sind Endpreise, alles inklusive. Die Prüfungsgebühr der IHK ist nicht enthalten.
 - Bezahlung per Rechnung per E-Mail – an Teilnehmende oder ihren Betrieb. Keine Online-Zahlung.
 - ${IHK_HINWEIS}
-- Lehrende: Dozenten mit IHK-Prüfer-Erfahrung.
+- Lehrende in der Prüfungsvorbereitung: Dozenten mit IHK-Prüfer-Erfahrung.
+- Anfrage: Formular auf der Startseite (${url('/#anfrage')}). ${ZUSAGEN.anfrage}
+- Ausführliche Fassung: ${url('/llms-full.txt')}
+
+## Prüfungsvorbereitung nach Beruf
+
+${berufe.map((b) => `- [${b.name}](${url(berufUrl(b))}): ${b.teile.map((t) => t.kurz).join(', ')}`).join('\n')}
+
+## Bereiche
+
+- [Prüfungsvorbereitung](${url('/pruefungsvorbereitung/')})
+- [IHK-Weiterbildung](${url('/ihk-weiterbildung/')})
+- [waybuild Weiterbildung](${url('/waybuild-weiterbildung/')})
 
 ## Kurse
 

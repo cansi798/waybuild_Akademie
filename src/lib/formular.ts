@@ -5,7 +5,7 @@
 export const MAX_PERSONEN = 5;
 export const RABATT_AB_PERSONEN = 3;
 export const RABATT_PROZENT = 10;
-/** Widerrufsfrist in Tagen: startet der Kurs früher, ist das ausdrückliche Verlangen (Wertersatz) Pflicht. */
+/** Widerrufsfrist in Tagen: startet der Kurs früher, braucht das Buchungsangebot den Baustein „Beginn vor Ablauf der Widerrufsfrist“. */
 export const WIDERRUFSFRIST_TAGE = 14;
 
 /** Feste Fehlertexte im Du-Ton (Spezifikation 5.4 – verbindlich). */
@@ -29,11 +29,9 @@ export const FEHLER = {
   personenMax: 'Pro Anmeldung sind höchstens 5 Personen möglich.',
   emailDoppelt: 'Diese E-Mail-Adresse ist schon eingetragen.',
   nachricht: 'Deine Nachricht ist zu lang – bitte kürze sie auf 2.000 Zeichen.',
-  agb: 'Bitte bestätige die Teilnahmebedingungen.',
+  agb: 'Bitte bestätige, dass du Teilnahmebedingungen und Widerrufsbelehrung zur Kenntnis genommen hast.',
   alter: 'Bitte bestätige, dass du volljährig bist – oder dass deine Erziehungsberechtigten einverstanden sind bzw. dein Ausbildungsbetrieb dich anmeldet.',
-  datenschutz: 'Bitte bestätige, dass du Datenschutzerklärung und Widerrufsbelehrung gelesen hast.',
-  wertersatz:
-    'Dein Kurs startet innerhalb der 14-tägigen Widerrufsfrist. Bitte bestätige, dass wir schon vorher mit dem Kurs beginnen dürfen.',
+  datenschutz: 'Bitte bestätige, dass du die Datenschutzerklärung zur Kenntnis genommen hast.',
   zuSchnell: 'Das ging sehr schnell – bitte versuche es in einer Minute erneut.',
   // Interesse
   name: 'Bitte gib deinen Namen ein.',
@@ -47,7 +45,7 @@ export const FEHLER = {
   // Kontakt
   thema: 'Bitte wähle ein Thema aus.',
   kontaktNachricht: 'Bitte schreib uns kurz, worum es geht.',
-  einwilligungKontakt: 'Bitte bestätige, dass wir deine Angaben zur Beantwortung deiner Anfrage nutzen dürfen.',
+  einwilligungKontakt: 'Bitte bestätige, dass du den Datenschutzhinweis gelesen hast.',
   // Widerruf (§ 356a BGB: nur Name, Vertragsangabe und E-Mail sind Pflicht, kein Grund)
   vertrag: 'Bitte wähle den Kurs aus oder gib die Vorgangsnummer aus deiner Bestätigungs-E-Mail an.',
   vorgang: 'Die Vorgangsnummer findest du in deiner Bestätigungs-E-Mail, z. B. A-20261113-7F3K.',
@@ -67,6 +65,13 @@ export const KONTAKT_THEMEN = [
   { id: 'beratung', name: 'Beratung zur Kurswahl' },
   { id: 'betrieb', name: 'Anmeldung für meinen Betrieb' },
   { id: 'coaching', name: 'Prüfungscoaching' },
+] as const;
+
+/** Kurzanfrage (Startseite, Berufsseiten): Bereich = Thema für /api/kontakt.php; Nachricht dort freiwillig. */
+export const ANFRAGE_BEREICHE = [
+  { id: 'pruefung', name: 'Prüfungsvorbereitung (AP1/AP2)', saeule: 'ihk-pruefung' },
+  { id: 'ihk-weiterbildung', name: 'IHK-Weiterbildung (Fachwirt, Betriebswirt …)', saeule: 'ihk-weiterbildung' },
+  { id: 'akademie', name: 'waybuild Weiterbildung (KI, IT, Programmierung)', saeule: 'akademie' },
 ] as const;
 
 export interface Preis {

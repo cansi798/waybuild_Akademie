@@ -150,128 +150,30 @@ test.describe('Kursübersicht (Vorschau-Build)', () => {
     const kategorien = await page.locator('[data-kat-gruppe]').count();
     await expect(page.locator('[data-kat-gruppe] h3:visible')).toHaveCount(kategorien);
     await expect(page.locator('[data-sprung]:visible')).toHaveCount(kategorien);
-    // Menü ohne JavaScript: „Kurse“ ist ein normaler Link
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await expect(page.getByRole('navigation', { name: 'Hauptmenü', exact: true }).getByRole('link', { name: 'Kurse' })).toBeVisible();
-    await expect(page.locator('[data-mega-knopf]')).toBeHidden();
     await ctx.close();
   });
 });
 
-test.describe('Menü „Kurse“', () => {
-  test('Mega-Menü: Tastatur, Esc, Fokusfalle, Klick außerhalb; alle Links liefern 200', async ({ page, request }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto('./');
-    const knopf = page.locator('[data-mega-knopf]');
-    const panel = page.locator('[data-mega-panel]');
-    await expect(knopf).toHaveAttribute('aria-expanded', 'false');
-    await expect(panel).toBeHidden();
-
-    await knopf.focus();
-    await page.keyboard.press('Enter');
-    await expect(knopf).toHaveAttribute('aria-expanded', 'true');
-    await expect(panel).toBeVisible();
-    await expect(panel.getByRole('link', { name: 'Alle Kurse ansehen →' })).toBeVisible();
-
-    // Fokusfalle: Tab bleibt im Menü (Knopf + Links), auch rückwärts
-    const links = await panel.locator('a[href]').count();
-    await page.keyboard.press('Tab');
-    await expect(panel.locator('a[href]').first()).toBeFocused();
-    await page.keyboard.press('Shift+Tab');
-    await expect(knopf).toBeFocused();
-    await page.keyboard.press('Shift+Tab');
-    await expect(panel.locator('a[href]').last()).toBeFocused();
-    await page.keyboard.press('Tab');
-    await expect(knopf).toBeFocused();
-    for (let i = 0; i < links + 3; i++) await page.keyboard.press('Tab');
-    expect(await page.evaluate(() => !!document.activeElement?.closest('[data-mega-panel], [data-mega-knopf]'))).toBe(true);
-
-    await page.keyboard.press('Escape');
-    await expect(panel).toBeHidden();
-    await expect(knopf).toHaveAttribute('aria-expanded', 'false');
-    await expect(knopf).toBeFocused();
-
-    // Klick öffnet, Klick außerhalb schließt
-    await knopf.click();
-    await expect(panel).toBeVisible();
-    await page.locator('main h1').dispatchEvent('click');
-    await expect(panel).toBeHidden();
-
-    // Inhalt: Säulen als Spalten, Kategorien mit Anzahl, höchstens 6 Kurse je Kategorie
-    for (const kat of await panel.locator('[data-mega-kategorie]').all()) {
-      const liste = kat.locator('xpath=following-sibling::ul[1]');
-      expect(await liste.locator('[data-mega-kurs]').count()).toBeLessThanOrEqual(6);
-    }
-    const kursLinks = await panel.locator('[data-mega-kurs]').evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.megaKurs!));
-    for (const k of kursLinks) expect(sichtbar).toContain(k);
-
-    const ziele = new Set(await panel.locator('a[href]').evaluateAll((els) => els.map((a) => (a as HTMLAnchorElement).href)));
-    expect(ziele.size).toBeGreaterThan(3);
-    for (const z of ziele) expect((await request.get(z)).status(), z).toBe(200);
-  });
-
-  test('Kategorie aus dem Mega-Menü filtert die Übersicht', async ({ page }) => {
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto('./');
-    await page.locator('[data-mega-knopf]').click();
-    const kat = page.locator('[data-mega-kategorie="it-berufe"]');
-    await kat.click();
-    await expect(page).toHaveURL(/\/kurse\/\?saeule=ihk-pruefung&kategorie=it-berufe$/);
-    await expect(page.locator('[data-katalog]')).toHaveAttribute('data-filter-bereit', 'true');
-    expect(await page.locator('li[data-kurs]:visible:not([data-kategorie="it-berufe"])').count()).toBe(0);
-    expect(await page.locator('li[data-kurs]:visible').count()).toBeGreaterThan(0);
-  });
-
-  test('mobil: „Kurse“ klappt die Kategorien auf', async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto('./');
-    await page.locator('[data-menue] > summary').click();
-    const bereich = page.locator('[data-kurse-kategorien]');
-    const kategorien = bereich.locator('[data-mobil-kategorie]');
-    await expect(kategorien.first()).toBeHidden();
-    await bereich.locator('summary').click();
-    await expect(bereich).toHaveAttribute('open', '');
-    const n = await kategorien.count();
-    expect(n).toBeGreaterThan(0);
-    await expect(bereich.locator('[data-mobil-kategorie]:visible')).toHaveCount(n);
-    await expect(kategorien.first()).toHaveAttribute('href', /\/kurse\/\?saeule=[a-z-]+&kategorie=[a-z-]+$/);
-    await keinHScroll(page, 'mobiles Menü offen');
-    await kategorien.first().click();
-    await expect(page).toHaveURL(/kategorie=/);
-    await expect(page.locator('[data-katalog]')).toHaveAttribute('data-filter-bereit', 'true');
-    const slug = new URL(page.url()).searchParams.get('kategorie');
-    expect(await page.locator(`li[data-kurs]:visible:not([data-kategorie="${slug}"])`).count()).toBe(0);
-  });
-
-  test('320 px: kein horizontales Scrollen (Liste, Karten, Menü)', async ({ page }) => {
-    await page.setViewportSize({ width: 320, height: 800 });
-    await page.goto('./kurse/');
-    await keinHScroll(page, '/kurse/ Liste');
-    if (await page.locator('[data-ansicht-wahl="karten"]').count()) {
-      await page.locator('[data-ansicht-wahl="karten"]').click();
-      await keinHScroll(page, '/kurse/ Karten');
-    }
-    await page.locator('[data-menue] > summary').click();
-    await page.locator('[data-kurse-kategorien] summary').click();
-    await keinHScroll(page, 'Menü offen');
-  });
+// Mega-Menü „Kurse“ entfällt (Can #6771: knappes Hauptmenü) – Übersicht bleibt unter /kurse/ und im Fuß.
+test('320 px: kein horizontales Scrollen (Liste, Karten, Menü)', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.goto('./kurse/');
+  await keinHScroll(page, '/kurse/ Liste');
+  if (await page.locator('[data-ansicht-wahl="karten"]').count()) {
+    await page.locator('[data-ansicht-wahl="karten"]').click();
+    await keinHScroll(page, '/kurse/ Karten');
+  }
+  await page.locator('[data-menue] > summary').click();
+  await keinHScroll(page, 'Menü offen');
 });
 
 test.describe('Live-Build: Menü', () => {
   test.skip(istVorschau, 'nur im Live-Build (scripts/bau.sh live, BASE=/ scripts/test.sh)');
 
-  test('keine Entwürfe im Menü, keine leeren Kategorien', async ({ page }) => {
+  test('keine Entwürfe im Menü und in der Übersicht', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('./');
-    const panel = page.locator('[data-mega-panel]');
-    const kursLinks = await panel.locator('a[href*="/kurse/"]').evaluateAll((els) => els.map((a) => new URL((a as HTMLAnchorElement).href).pathname));
-    for (const p of kursLinks.filter((x) => /^\/kurse\/[^/]+\/$/.test(x))) expect(freigegeben).toContain(p.split('/')[2]);
-    expect(await page.locator('[data-mega-kurs]').count()).toBe(freigegeben.length);
-    expect(await panel.innerHTML()).not.toMatch(/Entwurf|data-entwurf/);
     expect(await page.locator('#menue-mobil-liste').innerHTML()).not.toMatch(/Entwurf|data-entwurf/);
-    for (const kat of await panel.locator('[data-mega-kategorie]').all()) {
-      expect(await kat.locator('xpath=following-sibling::ul[1]').locator('[data-mega-kurs]').count()).toBeGreaterThan(0);
-    }
     await page.goto('./kurse/');
     await expect(page.locator('[data-entwurf-marke]')).toHaveCount(0);
   });

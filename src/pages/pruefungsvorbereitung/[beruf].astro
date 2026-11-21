@@ -1,0 +1,141 @@
+---
+// Berufsseite (Can #6772): ein Beruf, AP1/AP2 (bzw. Teil 1/Teil 2) als klare Karten mit den nächsten Terminen und groß
+// „Unverbindlich anfragen“ → Kurzanfrage auf derselben Seite, Kurs vorausgefüllt. Höchstens 2 Taps von der Startseite bis zum Formular.
+// Daten: Zuordnung aus lib/berufe.ts, Titel/Preise/UE/Zeiten/Termine aus den Kursdaten.
+import Basis from '../../layouts/Basis.astro';
+import AnfrageFormular from '../../components/formulare/AnfrageFormular.astro';
+import StickyAnfrage from '../../components/start/StickyAnfrage.astro';
+import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
+import { brotkrumenSchema, kursSchema } from '../../components/seiten/schema';
+import { berufKurz, berufUrl, sichtbareBerufe, type Beruf } from '../../lib/berufe';
+import { buchbareTermine, formatDatum, formatEuro, umfangText } from '../../lib/kurse';
+import { href } from '../../lib/pfad';
+import { UNTERRICHT } from '../../lib/site';
+import { ZUSAGEN } from '../../lib/zusagen';
+
+export async function getStaticPaths() {
+  return (await sichtbareBerufe()).map((beruf) => ({ params: { beruf: beruf.slug }, props: { beruf } }));
+}
+const { beruf } = Astro.props as { beruf: Beruf };
+const kurz = berufKurz(beruf);
+const teile = beruf.teile.map((t) => ({ ...t, termine: t.daten ? buchbareTermine(t.daten).slice(0, 2) : [] }));
+const anker = (i: number) => `teil-${i + 1}`;
+const preise = teile.flatMap((t) => (t.daten ? [t.daten.data.preis.betrag] : []));
+const ab = preise.length ? Math.min(...preise) : undefined;
+const beschreibung = `Prüfungsvorbereitung für ${beruf.name}: ${teile.map((t) => t.kurz).join(' und ')} live online, abends. ${ab ? `Ab ${formatEuro(ab)} Endpreis. ` : ''}Unverbindlich anfragen.`;
+const schema = [
+  brotkrumenSchema([['Start', '/'], ['Prüfungsvorbereitung', '/pruefungsvorbereitung/'], [kurz, berufUrl(beruf)]], Astro.site),
+  ...teile.flatMap((t) => (t.daten ? kursSchema(t.daten, buchbareTermine(t.daten), Astro.site) : [])),
+];
+---
+
+<Basis titel={`Prüfungsvorbereitung ${kurz}`} beschreibung={beschreibung} schema={schema}>
+  <section class="rahmen pt-6 pb-10 sm:pt-10 sm:pb-14">
+    <nav aria-label="Brotkrumen" class="text-sm text-gedaempft">
+      <ol class="flex flex-wrap gap-x-2">
+        <li><a href={href('/')} class="link-fliess">Startseite</a> <span aria-hidden="true">›</span></li>
+        <li><a href={href('/pruefungsvorbereitung/')} class="link-fliess">Prüfungsvorbereitung</a> <span aria-hidden="true">›</span></li>
+        <li aria-current="page">{kurz}</li>
+      </ol>
+    </nav>
+    <h1 class="trennen mt-4 text-[2.1rem] leading-[1.08] sm:text-5xl">
+      <span class="block text-lg font-sans font-semibold text-petrol-text sm:text-xl">Prüfungsvorbereitung</span>
+      {beruf.name}
+    </h1>
+    <p class="mt-3 inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold ring-1 ring-base-300" data-unterricht-hinweis>
+      <span class="size-2.5 rounded-full bg-bernstein" aria-hidden="true"></span>
+      {UNTERRICHT.kurz}
+    </p>
+
+    <!-- Zwei klare Knöpfe: Prüfungsteil wählen -->
+    <ul class:list={['mt-6 grid gap-3', teile.length > 1 && 'grid-cols-2', teile.length > 2 && 'sm:grid-cols-3']} aria-label="Prüfungsteil wählen und unverbindlich anfragen">
+      {
+        teile.map((t, i) => (
+          <li class:list={[teile.length > 2 && i === 2 && 'col-span-2 sm:col-span-1']}>
+            <a
+              href="#anfrage"
+              class="btn btn-secondary btn-lg h-auto min-h-16 w-full flex-col gap-0.5 rounded-2xl py-3 text-lg leading-tight"
+              data-anfrage-bereich="pruefung"
+              data-anfrage-kurs={t.daten ? t.kurs : undefined}
+              data-anfrage-text={`Beruf: ${beruf.name}, Prüfung: ${t.kurz}`}
+              data-teil-knopf={t.kurs}
+            >
+              {t.name}
+              <span class="text-sm font-normal opacity-90">{t.termine[0] ? `nächster Start ${formatDatum(t.termine[0].start, 'tagmonat')}` : 'Termin auf Anfrage'}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="border-y border-base-300 bg-white" aria-label="Termine und Anmeldung">
+    <div class:list={['rahmen grid gap-5 py-10 sm:py-14', teile.length > 1 && 'lg:grid-cols-2', teile.length > 2 && 'xl:grid-cols-3']}>
+      {
+        teile.map((t, i) => {
+          const d = t.daten?.data;
+          return (
+            <article id={anker(i)} class="grid scroll-mt-24 content-start gap-4 rounded-[1.5rem] bg-base-100 p-5 ring-1 ring-base-300 sm:p-7" data-beruf-teil={t.kurs}>
+              <div class="flex flex-wrap items-start justify-between gap-3">
+                <h2 class="text-2xl sm:text-3xl">{t.name}</h2>
+                {d && (
+                  <p class="text-right">
+                    <span class="block font-serif text-2xl font-semibold tabular-nums">{formatEuro(d.preis.betrag)}</span>
+                    <span class="block text-xs text-gedaempft">Endpreis{t.daten && umfangText(t.daten) ? ` · ${umfangText(t.daten)}` : ''}</span>
+                  </p>
+                )}
+              </div>
+              {t.termine.length > 0 ? (
+                <div>
+                  <h3 class="font-sans text-sm font-semibold tracking-wide text-gedaempft uppercase">Nächste Termine</h3>
+                  <ul class="mt-2 grid gap-2">
+                    {t.termine.map((x) => (
+                      <li class="rounded-xl bg-white px-4 py-3 ring-1 ring-base-300">
+                        <span class="block font-semibold">
+                          {formatDatum(x.start, 'tagmonat')}–{formatDatum(x.ende)}
+                        </span>
+                        {x.pruefung && <span class="block text-sm text-gedaempft">Prüfung: {formatDatum(x.pruefung)}{x.pruefungHinweis ? ` (${x.pruefungHinweis})` : ''}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                  {d && <p class="mt-2 text-sm text-gedaempft">{d.zeiten}</p>}
+                </div>
+              ) : (
+                <p class="rounded-xl bg-base-200 px-4 py-3 text-gedaempft">Termine sind in Planung. Frag unverbindlich an – wir melden uns, sobald es losgeht.</p>
+              )}
+              <a
+                href="#anfrage"
+                class="btn btn-accent btn-lg h-auto min-h-14 w-full rounded-full text-lg"
+                data-anfrage-bereich="pruefung"
+                data-anfrage-kurs={t.daten ? t.kurs : undefined}
+                data-anfrage-text={`Beruf: ${beruf.name}, Prüfung: ${t.kurz}`}
+              >
+                Unverbindlich anfragen<span class="sr-only">: {t.name}, {kurz}</span>
+              </a>
+              {t.daten && (
+                <a href={href(`/kurse/${t.kurs}/`)} class="link-fliess justify-self-start text-sm font-semibold">
+                  Alle Details zum Kurs<span class="sr-only">: {d?.titel}</span>
+                </a>
+              )}
+            </article>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <section class="rahmen grid gap-8 py-12 sm:py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14" aria-labelledby="anfrage-titel">
+    <div>
+      <h2 id="anfrage-titel" class="text-3xl sm:text-4xl">Unverbindlich anfragen</h2>
+      <p class="mt-3 font-semibold" data-zusage-anfrage>{ZUSAGEN.anfrage}</p>
+      <ol class="mt-5 grid gap-3 text-lg">
+        <li><strong>1.</strong> Formular abschicken – dauert eine Minute.</li>
+        <li><strong>2.</strong> Wir prüfen den Termin.</li>
+        <li><strong>3.</strong> Du bekommst unsere Bestätigung per E-Mail.</li>
+      </ol>
+      <div class="mt-6"><IhkHinweis /></div>
+    </div>
+    <AnfrageFormular bereich="pruefung" />
+  </section>
+  <StickyAnfrage bereich="pruefung" />
+</Basis>

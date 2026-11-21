@@ -15,6 +15,7 @@ import { buchbareTermine, formatDatum, freigegebeneKurse, kurzname, type Kurs, t
 import { href } from '../../lib/pfad';
 import Risikoumkehr from '../../components/seiten/Risikoumkehr.astro';
 import { fragen } from '../../lib/faq';
+import BerufWahl from '../../components/start/BerufWahl.astro';
 
 const kurse = (await freigegebeneKurse()).filter((k) => k.data.saeule === 'ihk-pruefung');
 // Kurse zuerst, Coaching zuletzt
@@ -52,7 +53,7 @@ const FAQ = fragen('welcher-kurs', 'anmelden', 'bezahlen', 'betrieb', 'storno', 
           AP1 für alle IT-Berufe, AP2 Systemintegration und persönliches Prüfungscoaching. Abends live online – mit Dozenten mit IHK-Prüfer-Erfahrung.
         </p>
         <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <a href="#termine" class="btn btn-accent btn-lg rounded-full px-7">Termin wählen</a>
+          <a href="#termine" class="btn btn-accent btn-lg rounded-full px-7">Unverbindlich anfragen</a>
           <a href={href('/coaching/')} class="link-fliess font-semibold">Lieber 1:1? Zum Prüfungscoaching</a>
         </div>
       </div>
@@ -80,6 +81,13 @@ const FAQ = fragen('welcher-kurs', 'anmelden', 'bezahlen', 'betrieb', 'storno', 
           </aside>
         )
       }
+    </div>
+  </section>
+
+  <!-- Berufsauswahl (Can #6772): alle Berufe, Sofortfilter -->
+  <section id="berufe" class="scroll-mt-20 border-b border-base-300 bg-white" aria-labelledby="berufe-liste-titel">
+    <div class="rahmen py-12 sm:py-16">
+      <BerufWahl alle titelId="berufe-liste-titel" />
     </div>
   </section>
 
@@ -198,10 +206,10 @@ const FAQ = fragen('welcher-kurs', 'anmelden', 'bezahlen', 'betrieb', 'storno', 
     <div class="rahmen flex flex-col gap-8 py-16 sm:py-20 md:flex-row md:items-center md:justify-between">
       <div class="max-w-xl">
         <h2 id="cta-titel" class="text-3xl sm:text-4xl">Such dir deinen Termin aus.</h2>
-        <p class="mt-3 text-lg text-white/85">Anmelden per Formular, Rechnung per E-Mail – an dich oder an deinen Betrieb.</p>
+        <p class="mt-3 text-lg text-white/85">Unverbindlich anfragen, Buchungsangebot per E-Mail – verbindlich erst mit deiner Zusage und unserer Bestätigung. Rechnung an dich oder an deinen Betrieb.</p>
       </div>
       <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
-        <a href="#termine" class="btn btn-accent btn-lg rounded-full px-7">Termin wählen</a>
+        <a href="#termine" class="btn btn-accent btn-lg rounded-full px-7">Unverbindlich anfragen</a>
         <a href={href('/kontakt/')} class="font-semibold text-white underline underline-offset-4 hover:no-underline">Frage stellen</a>
       </div>
     </div>

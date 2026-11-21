@@ -69,7 +69,7 @@ test('Fuß-Link „Vertrag widerrufen“ steht auf jeder Seite', async ({ page }
 test('Widerruf: Belehrung, Muster-Formular und Bereich #widerrufsformular vorhanden', async ({ page }) => {
   await page.goto('./widerruf/');
   await expect(page.locator('[data-widerrufsbelehrung]')).toContainText('binnen vierzehn Tagen');
-  await expect(page.locator('[data-widerrufsbelehrung]')).toContainText('Widerrufsfunktion');
+  await expect(page.locator('[data-widerrufsbelehrung]')).toContainText('Online-Funktion');
   await expect(page.locator('[data-widerrufsbelehrung]')).toContainText('angemessenen Betrag');
   await expect(page.locator('[data-muster-widerrufsformular]')).toContainText('Unzutreffendes streichen');
   // Formular (Task 4) oder Ersatzhinweis – eins von beiden ist da
@@ -81,4 +81,41 @@ test('Widerruf: Belehrung, Muster-Formular und Bereich #widerrufsformular vorhan
 test('Teilnahmebedingungen: Nachweisvorbehalt bei Storno', async ({ page }) => {
   await page.goto('./teilnahmebedingungen/');
   await expect(page.locator('#storno ~ p').filter({ hasText: 'Nachweis' }).first()).toContainText('geringerer Schaden');
+});
+
+// Stand 21.11.2026 (#6771): Registerdaten, Vertragsschluss per E-Mail, aktuelle Normzitate
+test('Impressum: Anschrift und Handelsregister laut Registerauszug, kein OS-Plattform-Link', async ({ page }) => {
+  await page.goto('./impressum/');
+  const text = await page.locator('[data-recht-text]').innerText();
+  expect(text).toContain('Kuno-Liesenberg-Kehre 32a');
+  expect(text).toContain('22844 Norderstedt');
+  expect(text).toContain('Amtsgericht Kiel');
+  expect(text).toContain('HRB 29883 KI');
+  expect(text).toContain('§ 18 Abs. 2 MStV');
+  expect(text).not.toMatch(/Rathausallee|ec\.europa\.eu\/consumers\/odr|OS-Plattform/);
+});
+
+test('Teilnahmebedingungen: unverbindliche Anfrage, Vertrag erst mit Buchungsbestätigung per E-Mail', async ({ page }) => {
+  await page.goto('./teilnahmebedingungen/');
+  const abschnitt = page.locator('#vertragsschluss ~ p');
+  await expect(abschnitt.filter({ hasText: 'Unverbindlich anfragen' })).toHaveCount(1);
+  await expect(abschnitt.filter({ hasText: 'Der Vertrag kommt erst zustande, wenn wir deine Zusage per E-Mail annehmen' })).toHaveCount(1);
+  expect(await page.locator('[data-recht-text]').innerText()).not.toContain('Zahlungspflichtig anmelden');
+});
+
+test('Widerruf: Muster nach Art. 246a EGBGB, vorzeitiges Erlöschen nach § 356 Abs. 5', async ({ page }) => {
+  await page.goto('./widerruf/');
+  const text = await page.locator('[data-recht-text]').innerText();
+  expect(text).toContain('Anlage 1 zu Art. 246a § 1 Abs. 2 Satz 2 EGBGB');
+  expect(text).toContain('§ 356 Abs. 5 Nr. 2 BGB');
+  expect(text).not.toContain('Art. 253 EGBGB');
+  await expect(page.locator('[data-widerrufsbelehrung]')).toContainText('Sie können Ihr Widerrufsrecht auch online unter');
+});
+
+test('Datenschutz: Double-Opt-in, Nextcloud/Contabo und 8 Jahre für Buchungsbelege genannt', async ({ page }) => {
+  await page.goto('./datenschutz/');
+  const text = await page.locator('[data-recht-text]').innerText();
+  expect(text).toContain('Double-Opt-in');
+  expect(text).toContain('Contabo GmbH');
+  expect(text).toMatch(/Buchungsbelege wie Rechnungen\s+8 Jahre/);
 });

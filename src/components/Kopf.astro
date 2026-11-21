@@ -1,26 +1,19 @@
 ---
-// Kopf: Logo + Hauptmenü. Mobil als <details>-Menü: per Tastatur (Enter/Leertaste) bedienbar und ohne JavaScript nutzbar;
-// das kleine Skript ergänzt Escape zum Schließen, Schließen bei Klick außerhalb und den Fokus zurück auf den Knopf.
-// „Kurse“: Desktop = Mega-Menü (Knopf mit aria-expanded, Klick/Enter/Leertaste, Esc, Fokusfalle, Klick außerhalb schließt;
-// ohne JavaScript ein normaler Link), mobil = Link „Kurse“ plus aufklappbare Kategorien (details/summary).
-// Daten aus der Collection (live nur freigegebene Kurse), beim Build als HTML erzeugt.
-import { MENUE } from '../lib/site';
+// Kopf (Can #6771): Logo, knappes Hauptmenü (Prüfungsvorbereitung · IHK-Weiterbildung · waybuild Weiterbildung · Kontakt)
+// und der feste Knopf „Anfragen“ (→ Kurzanfrage auf der Startseite). Der Kopf bleibt beim Scrollen oben (sticky).
+// Mobil als <details>-Menü: per Tastatur bedienbar und ohne JavaScript nutzbar; das Skript ergänzt Escape,
+// Schließen bei Klick außerhalb und den Fokus zurück auf den Knopf. Alle Kurse: im Fuß und unter /kurse/.
+import { ANFRAGE_PFAD, MENUE } from '../lib/site';
 import { href } from '../lib/pfad';
-import { alleKurse, kategorieUrl, nachSaeuleUndKategorie, saeulenName } from '../lib/kurse';
-import MegaMenue from './uebersicht/MegaMenue.astro';
-import './uebersicht/menue.css';
-
-const kurse = await alleKurse();
-const gruppen = nachSaeuleUndKategorie(kurse);
 
 const pfad = Astro.url.pathname;
-const istAktiv = (p: string) => pfad === href(p) || (p !== '/' && pfad.startsWith(href(p)));
+const istAktiv = (p: string) => (pfad === href(p) || (p !== '/' && pfad.startsWith(href(p))));
 ---
 
 <header class="sticky top-0 z-50 border-b border-base-300/70 bg-base-100/95 backdrop-blur supports-[backdrop-filter]:bg-base-100/85">
   <div class="rahmen flex h-[4.5rem] items-center justify-between gap-4">
     <a href={href('/')} class="flex shrink-0 items-center rounded-md" aria-label="waybuild Akademie – zur Startseite">
-      <img src={href('/logo/waybuild-akademie.svg')} alt="waybuild Akademie" width="1357" height="447" class="h-11 w-auto sm:h-12" />
+      <img src={href('/logo/waybuild-akademie.svg')} alt="waybuild Akademie" width="1357" height="447" class="h-9 w-auto min-[400px]:h-11 sm:h-12" />
     </a>
 
     <nav aria-label="Hauptmenü" class="hidden lg:block">
@@ -31,106 +24,52 @@ const istAktiv = (p: string) => pfad === href(p) || (p !== '/' && pfad.startsWit
               <a
                 href={href(m.pfad)}
                 aria-current={istAktiv(m.pfad) ? 'page' : undefined}
-                class:list={['relative inline-flex min-h-11 items-center rounded-full px-3.5 text-navy transition-colors hover:bg-base-200 aria-[current=page]:bg-navy aria-[current=page]:text-white', m.pfad === '/kurse/' && 'nur-ohne-js']}
+                class="relative inline-flex min-h-11 items-center rounded-full px-3.5 text-navy transition-colors hover:bg-base-200 aria-[current=page]:bg-navy aria-[current=page]:text-white"
               >
                 {m.name}
               </a>
-              {m.pfad === '/kurse/' && (
-                <button
-                  type="button"
-                  class="nur-mit-js relative inline-flex min-h-11 cursor-pointer items-center gap-1.5 rounded-full px-3.5 text-navy transition-colors hover:bg-base-200 aria-expanded:bg-base-200 aria-[current=page]:bg-navy aria-[current=page]:text-white"
-                  aria-expanded="false"
-                  aria-controls="mega-kurse"
-                  aria-current={istAktiv(m.pfad) ? 'page' : undefined}
-                  data-mega-knopf
-                >
-                  {m.name}
-                  <svg aria-hidden="true" viewBox="0 0 20 20" class="mega-chevron size-4 opacity-70"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                </button>
-              )}
             </li>
           ))
         }
       </ul>
     </nav>
 
+    <a href={href(ANFRAGE_PFAD)} class="btn btn-accent -mr-2 ml-auto min-h-11 rounded-full px-3.5 sm:px-5 lg:ml-0 lg:mr-0" data-kopf-anfrage>Anfragen</a>
     <details class="menue-mobil lg:hidden" data-menue>
       <summary
-        class="flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-full border border-base-300 bg-white px-4 font-medium text-navy [&::-webkit-details-marker]:hidden"
+        class="flex min-h-11 min-w-11 cursor-pointer list-none items-center justify-center gap-2 rounded-full border border-base-300 bg-white px-3 font-medium min-[400px]:px-4 text-navy [&::-webkit-details-marker]:hidden"
         aria-controls="menue-mobil-liste"
       >
         <span class="menue-icon" aria-hidden="true"><span></span><span></span><span></span></span>
-        <span class="menue-text-zu">Menü</span>
-        <span class="menue-text-auf">Schließen</span>
+        <span class="menue-text-zu max-[399px]:sr-only">Menü</span>
+        <span class="menue-text-auf max-[399px]:sr-only">Schließen</span>
       </summary>
       <nav aria-label="Hauptmenü mobil" id="menue-mobil-liste" class="absolute inset-x-0 top-full max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain border-b border-base-300 bg-base-100 shadow-[0_24px_40px_-24px_rgba(0,52,107,0.35)]">
         <ul class="rahmen grid gap-1 py-4">
           {
-            MENUE.map((m) =>
-              m.pfad === '/kurse/' && gruppen.length > 0 ? (
-                <li class="relative">
-                  <a
-                    href={href(m.pfad)}
-                    aria-current={istAktiv(m.pfad) ? 'page' : undefined}
-                    class="flex min-h-12 items-center rounded-xl py-1 pr-16 pl-4 font-serif text-xl text-navy hover:bg-base-200 aria-[current=page]:bg-navy aria-[current=page]:text-white"
-                  >
-                    {m.name}
-                  </a>
-                  <details class="kurse-kat" data-kurse-kategorien>
-                    <summary
-                      class:list={[
-                        'absolute top-0 right-0 flex size-12 cursor-pointer items-center justify-center rounded-xl',
-                        istAktiv(m.pfad) ? 'text-white hover:bg-white/15' : 'text-navy hover:bg-base-300',
-                      ]}
-                    >
-                      <span class="sr-only">Kurs-Kategorien</span>
-                      <svg aria-hidden="true" viewBox="0 0 20 20" class="kurse-kat-chevron size-5"><path d="M5 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                    </summary>
-                    <div class="grid gap-4 px-4 pt-3 pb-4">
-                      {gruppen.map((g) => (
-                        <div>
-                          <p class="text-xs font-semibold tracking-wide text-gedaempft uppercase">{saeulenName(g.saeule)}</p>
-                          <ul class="mt-1 grid">
-                            {g.kategorien.map((kat) => (
-                              <li>
-                                <a href={href(kategorieUrl(g.saeule, kat.name))} class="flex min-h-11 items-center justify-between gap-3 rounded-lg px-2 -mx-2 font-medium text-navy hover:bg-base-200" data-mobil-kategorie={kat.slug}>
-                                  {kat.name}
-                                  <span class="mega-zahl">
-                                    <span class="sr-only">(</span>
-                                    {kat.kurse.length}
-                                    <span class="sr-only"> {kat.kurse.length === 1 ? 'Kurs' : 'Kurse'})</span>
-                                  </span>
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  </details>
-                </li>
-              ) : (
-                <li>
-                  <a
-                    href={href(m.pfad)}
-                    aria-current={istAktiv(m.pfad) ? 'page' : undefined}
-                    class="flex min-h-12 items-center justify-between rounded-xl px-4 font-serif text-xl text-navy hover:bg-base-200 aria-[current=page]:bg-navy aria-[current=page]:text-white"
-                  >
-                    {m.name}
-                    <svg aria-hidden="true" viewBox="0 0 20 20" class="size-5 opacity-60"><path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-                  </a>
-                </li>
-              ),
-            )
+            MENUE.map((m) => (
+              <li>
+                <a
+                  href={href(m.pfad)}
+                  aria-current={istAktiv(m.pfad) ? 'page' : undefined}
+                  class="flex min-h-12 items-center justify-between rounded-xl px-4 font-serif text-xl text-navy hover:bg-base-200 aria-[current=page]:bg-navy aria-[current=page]:text-white"
+                >
+                  {m.name}
+                  <svg aria-hidden="true" viewBox="0 0 20 20" class="size-5 opacity-60"><path d="M7 4l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </a>
+              </li>
+            ))
           }
+          <li>
+            <a href={href('/kurse/')} class="flex min-h-12 items-center rounded-xl px-4 text-navy hover:bg-base-200">Alle Kurse</a>
+          </li>
           <li class="mt-2">
-            <a href={href('/termine/')} class="btn btn-accent w-full rounded-full text-base">Termin wählen</a>
+            <a href={href(ANFRAGE_PFAD)} class="btn btn-accent w-full rounded-full text-base">Kurs anfragen</a>
           </li>
         </ul>
       </nav>
     </details>
   </div>
-  {gruppen.length > 0 && <MegaMenue kurse={kurse} />}
 </header>
 
 <style>
@@ -185,31 +124,4 @@ const istAktiv = (p: string) => pfad === href(p) || (p !== '/' && pfad.startsWit
     matchMedia('(min-width: 64rem)').addEventListener('change', (e) => e.matches && schliessen(false));
   }
 
-  // Mega-Menü „Kurse“ (Desktop): Knopf öffnet/schließt (Klick, Enter, Leertaste), Esc schließt mit Fokus zurück,
-  // Tab bleibt im offenen Menü (Fokusfalle), Klick außerhalb schließt.
-  const knopf = document.querySelector<HTMLButtonElement>('[data-mega-knopf]');
-  const panel = document.querySelector<HTMLElement>('[data-mega-panel]');
-  if (knopf && panel) {
-    const offen = () => !panel.hidden;
-    const setze = (auf: boolean, fokus = false) => {
-      panel.hidden = !auf;
-      knopf.setAttribute('aria-expanded', String(auf));
-      if (!auf && fokus) knopf.focus();
-    };
-    knopf.addEventListener('click', () => setze(!offen()));
-    document.addEventListener('keydown', (e) => {
-      if (!offen()) return;
-      if (e.key === 'Escape') setze(false, true);
-      else if (e.key === 'Tab') {
-        const ziele = [knopf, ...panel.querySelectorAll<HTMLElement>('a[href]')];
-        const i = ziele.indexOf(document.activeElement as HTMLElement);
-        e.preventDefault();
-        ziele[(i + (e.shiftKey ? -1 : 1) + ziele.length) % ziele.length].focus();
-      }
-    });
-    document.addEventListener('click', (e) => {
-      if (offen() && !panel.contains(e.target as Node) && !knopf.contains(e.target as Node)) setze(false);
-    });
-    matchMedia('(min-width: 64rem)').addEventListener('change', (e) => !e.matches && setze(false));
-  }
 </script>

@@ -1,0 +1,180 @@
+---
+// Video-Platz je Bereich (Can #6771, Vorbild waybuild_Hauptseite/src/components/Video.astro):
+// - Startet beim Hineinscrollen STUMM (Autoplay-Regel der Browser), Untertitel sind eingebrannt; keine Endlosschleife.
+// - Großer Knopf „Mit Ton ansehen“ (Ton an + einmal von vorn), dazu „Ton an/aus“ und „Anhalten/Abspielen“ (WCAG 2.2.2).
+// - Mobil im Hochformat 9:16 (<source media>), sonst 16:9. prefers-reduced-motion: kein Autoplay.
+// - Ohne JavaScript: Bedienleiste des Browsers. Text zum Video (Transkript) immer aufklappbar.
+// - Solange die mp4 in public/video/ fehlt: Platzhalter mit Poster bzw. „Video folgt“ (Dateinamen siehe VIDEOS in site.ts).
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { href } from '../../lib/pfad';
+
+interface Props {
+  id: string;
+  titel: string;
+  text: string;
+}
+const { id, titel, text } = Astro.props;
+const datei = (n: string) => `/video/${id}-${n}`;
+const da = (n: string) => existsSync(join(process.cwd(), 'public', datei(n)));
+const hatVideo = da('16x9.mp4');
+const hatHoch = da('9x16.mp4');
+const poster = da('poster.jpg') ? href(datei('poster.jpg')) : undefined;
+const posterHoch = da('poster-9x16.jpg') ? href(datei('poster-9x16.jpg')) : poster;
+const HOCH = '(max-width: 639px) and (orientation: portrait)';
+const vid = `video-${id}`;
+---
+
+<figure class="video-platz grid gap-3" data-video={hatVideo ? '' : undefined}>
+  <div class="relative mx-auto aspect-[9/16] w-full max-w-[20rem] overflow-hidden rounded-[1.5rem] bg-navy ring-1 ring-base-300 sm:aspect-video sm:max-w-none">
+    {
+      hatVideo ? (
+        <>
+          <video
+            id={vid}
+            class="absolute inset-0 size-full object-cover"
+            muted
+            playsinline
+            preload="none"
+            controls
+            disablepictureinpicture
+            disableRemotePlayback
+            data-poster={poster}
+            data-poster-hoch={posterHoch}
+            data-hoch={HOCH}
+            aria-label={`Video: ${titel} (mit Untertiteln)`}
+          >
+            {hatHoch && <source src={href(datei('9x16.mp4'))} type="video/mp4" media={HOCH} />}
+            <source src={href(datei('16x9.mp4'))} type="video/mp4" />
+          </video>
+          <button type="button" class="video-mitton btn btn-accent btn-lg absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full px-6 shadow-lg" aria-controls={vid} hidden>
+            <svg viewBox="0 0 24 24" class="size-6" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            Mit Ton ansehen
+          </button>
+        </>
+      ) : (
+        <div class="absolute inset-0 grid place-items-center p-6 text-center text-white" data-video-platzhalter>
+          {poster && (
+            <picture>
+              {posterHoch && <source srcset={posterHoch} media={HOCH} />}
+              <img src={poster} alt="" class="absolute inset-0 size-full object-cover opacity-70" loading="lazy" decoding="async" />
+            </picture>
+          )}
+          <span class="relative grid justify-items-center gap-3">
+            <span class="grid size-16 place-items-center rounded-full bg-bernstein text-navy" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="ml-1 size-7"><path d="M7 5v14l12-7z" fill="currentColor" /></svg>
+            </span>
+            <span class="font-serif text-xl leading-tight">{titel}</span>
+            <span class="rounded-full bg-white/15 px-3 py-1 text-sm">Video folgt – mit Can und Jamil (Geschäftsführung)</span>
+          </span>
+        </div>
+      )
+    }
+  </div>
+  {
+    hatVideo && (
+      <div class="video-steuerung flex flex-wrap justify-center gap-2 sm:justify-start" role="group" aria-label="Video steuern" hidden>
+        <button type="button" class="video-ton btn btn-sm rounded-full" aria-controls={vid} aria-pressed="false">Ton an</button>
+        <button type="button" class="video-knopf btn btn-sm btn-outline rounded-full" aria-controls={vid}>Video anhalten</button>
+      </div>
+    )
+  }
+  <figcaption>
+    <details class="text-sm text-gedaempft">
+      <summary class="inline-flex min-h-11 cursor-pointer items-center font-semibold text-navy">Text zum Video</summary>
+      <p class="pb-2">{text}</p>
+    </details>
+  </figcaption>
+</figure>
+
+<script>
+  for (const box of document.querySelectorAll<HTMLElement>('[data-video]')) {
+    const v = box.querySelector<HTMLVideoElement>('video')!;
+    const steuer = box.querySelector<HTMLElement>('.video-steuerung')!;
+    const ton = box.querySelector<HTMLButtonElement>('.video-ton')!;
+    const knopf = box.querySelector<HTMLButtonElement>('.video-knopf')!;
+    const mitTon = box.querySelector<HTMLButtonElement>('.video-mitton')!;
+    const poster = (matchMedia(v.dataset.hoch!).matches ? v.dataset.posterHoch : v.dataset.poster) ?? '';
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    v.controls = false;
+    steuer.hidden = false;
+    mitTon.hidden = false;
+    let angehalten = still;
+    let fertig = false;
+    let tonSchonAn = false;
+    const spiele = () => {
+      if (poster && !v.poster) v.poster = poster;
+      v.preload = 'auto';
+      v.play().catch(() => {});
+    };
+    const zeige = () => {
+      const laeuft = !v.paused && !v.ended;
+      knopf.textContent = laeuft ? 'Video anhalten' : fertig ? 'Nochmal abspielen' : 'Video abspielen';
+      mitTon.hidden = !v.muted;
+      ton.setAttribute('aria-pressed', String(!v.muted));
+      ton.textContent = v.muted ? 'Ton an' : 'Ton aus';
+    };
+    const tonUmschalten = () => {
+      v.muted = !v.muted;
+      if (!v.muted && !tonSchonAn) {
+        tonSchonAn = true;
+        v.currentTime = 0;
+        fertig = false;
+        angehalten = false;
+        spiele();
+      } else if (!v.muted && v.paused) {
+        angehalten = false;
+        if (v.ended) v.currentTime = 0;
+        fertig = false;
+        spiele();
+      }
+      zeige();
+    };
+    ton.addEventListener('click', tonUmschalten);
+    mitTon.addEventListener('click', () => v.muted && tonUmschalten());
+    v.addEventListener('click', () => v.muted && tonUmschalten());
+    knopf.addEventListener('click', () => {
+      if (!v.paused && !v.ended) {
+        angehalten = true;
+        v.pause();
+        return;
+      }
+      angehalten = false;
+      if (v.ended || fertig) {
+        v.currentTime = 0;
+        fertig = false;
+      }
+      spiele();
+    });
+    v.addEventListener('play', zeige);
+    v.addEventListener('pause', zeige);
+    v.addEventListener('volumechange', zeige);
+    v.addEventListener('ended', () => {
+      fertig = true;
+      zeige();
+    });
+    zeige();
+    if (!('IntersectionObserver' in window)) {
+      if (poster) v.poster = poster;
+      continue;
+    }
+    new IntersectionObserver(
+      (es, io) => {
+        if (es[0].isIntersecting) {
+          if (poster) v.poster = poster;
+          if (!still) v.preload = 'metadata';
+          io.disconnect();
+        }
+      },
+      { rootMargin: '400px 0px' },
+    ).observe(v);
+    new IntersectionObserver(
+      (es) => {
+        if (es[0].isIntersecting) {
+          if (!angehalten && !fertig && v.paused) spiele();
+        } else if (!v.paused) v.pause();
+      },
+      { threshold: 0.35 },
+    ).observe(v);
+  }
+</script>

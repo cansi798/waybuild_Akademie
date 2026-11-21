@@ -273,7 +273,7 @@ test.describe('Seiten (Vorschau-Build)', () => {
       const box = await leiste.boundingBox();
       return box ? Math.round(box.y + box.height) : 9999;
     }).toBeLessThanOrEqual(845);
-    await expect(leiste.getByRole('link')).toHaveAttribute('href', '#termine');
+    await expect(leiste.getByRole('link')).toHaveAttribute('href', /\/anmeldung\/\?kurs=ap1-it-berufe$/);
   });
 
   test('strukturierte Daten: JSON-LD ist gültiges JSON', async ({ page }) => {

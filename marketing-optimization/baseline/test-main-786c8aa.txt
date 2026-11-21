@@ -1,0 +1,261 @@
+
+Running 248 tests using 2 workers
+
+[1/248] [chromium] › barrierefreiheit.spec.ts:23:1 › enthält die Pflichtangaben nach Anlage 3 BFSG und den Feedback-Kontakt
+[2/248] [chromium] › barrierefreiheit.spec.ts:12:1 › lädt mit H1, Entwurfsband und Stand
+[3/248] [chromium] › barrierefreiheit.spec.ts:42:1 › Fuß-Link „Barrierefreiheit“ steht auf allen Seiten des Builds
+[4/248] [chromium] › barrierefreiheit.spec.ts:62:1 › Fuß-Link führt von jeder Seite zur Erklärung
+[5/248] [chromium] › barrierefreiheit.spec.ts:74:1 › kein horizontales Scrollen bei 320 px
+[6/248] [chromium] › barrierefreiheit.spec.ts:82:3 › axe: keine Verstöße (WCAG 2.x A/AA + best-practice) bei 1280 px
+[7/248] [chromium] › barrierefreiheit.spec.ts:82:3 › axe: keine Verstöße (WCAG 2.x A/AA + best-practice) bei 320 px
+[8/248] [chromium] › conversion.spec.ts:16:3 › Risikoumkehr › Kursseite: am Preis im Kopf, unter den Terminen (mit Ausfall), in der Preisbox
+[9/248] [chromium] › conversion.spec.ts:29:3 › Risikoumkehr › Kurskarten, Terminübersicht und Coaching
+[10/248] [chromium] › conversion.spec.ts:39:3 › Risikoumkehr › Anmeldung: Zusage direkt über dem Absende-Knopf, Knopftext unverändert
+[11/248] [chromium] › conversion.spec.ts:56:3 › Hauptaktion und Kursseite › einheitlich „Termin wählen“ (Kopf, Seitenleiste, Leiste, Kurskarte, Mobilmenü)
+[12/248] [chromium] › conversion.spec.ts:73:3 › Hauptaktion und Kursseite › mobil 390: Preis, nächster Start und Knopf in der ersten Ansicht
+[13/248] [chromium] › conversion.spec.ts:84:3 › Hauptaktion und Kursseite › Beweis „Dozenten mit IHK-Prüfer-Erfahrung“ nur bei Prüfungsvorbereitung und Coaching
+[14/248] [chromium] › conversion.spec.ts:97:3 › Hauptaktion und Kursseite › /kurse/: keine Aussage „alle Kurse abends“ mehr
+[15/248] [chromium] › conversion.spec.ts:107:5 › FAQ und So läuft's › pruefungsvorbereitung/: 8–10 Fragen offen lesbar, Sprungmarken, FAQPage passt
+[16/248] [chromium] › conversion.spec.ts:107:5 › FAQ und So läuft's › coaching/: 8–10 Fragen offen lesbar, Sprungmarken, FAQPage passt
+[17/248] [chromium] › conversion.spec.ts:130:5 › FAQ und So läuft's › kurse/ap1-it-berufe/: Kurs-FAQ um gemeinsame Fragen auf 8–10 aufgefüllt, ohne Doppelte, Schema = Liste
+[18/248] [chromium] › conversion.spec.ts:130:5 › FAQ und So läuft's › kurse/ap2-fachinformatiker-systemintegration/: Kurs-FAQ um gemeinsame Fragen auf 8–10 aufgefüllt, ohne Doppelte, Schema = Liste
+[19/248] [chromium] › conversion.spec.ts:130:5 › FAQ und So läuft's › kurse/pruefungscoaching/: Kurs-FAQ um gemeinsame Fragen auf 8–10 aufgefüllt, ohne Doppelte, Schema = Liste
+[20/248] [chromium] › conversion.spec.ts:143:3 › FAQ und So läuft's › So läuft's: vier Schritte, gleich auf Kursseite, Landing und Coaching
+[21/248] [chromium] › conversion.spec.ts:158:3 › axe: geänderte Seiten ohne Verstöße bei 1280 px
+[22/248] [chromium] › conversion.spec.ts:158:3 › axe: geänderte Seiten ohne Verstöße bei 320 px
+[23/248] [chromium] › datenschutz.spec.ts:7:1 › keine Requests an fremde Server, keine Cookies, nur dokumentierter Browser-Speicher – auf jeder Seite
+[24/248] [chromium] › datenschutz.spec.ts:29:1 › Datenschutzerklärung nennt die Browser-Speicher-Einträge und keine ungeprüfte DPF-Aussage
+[25/248] [chromium] › formulare.spec.ts:69:3 › Anmeldung › Kurs und Termin aus der Adresse vorausgewählt, Knopftext exakt
+[26/248] [chromium] › formulare.spec.ts:88:3 › Anmeldung › ohne Parameter: Kurs wählen, Termine passend zum Kurs
+[27/248] [chromium] › formulare.spec.ts:100:3 › Anmeldung › Pflichtfelder bei „Ich zahle selbst“: Fehlertexte, aria, Fokus, Zusammenfassung
+[28/248] [chromium] › formulare.spec.ts:138:3 › Anmeldung › Pflichtfelder bei „Mein Betrieb zahlt“
+[29/248] [chromium] › formulare.spec.ts:155:3 › Anmeldung › ohne Zahlweg: Hinweis am Auswahlfeld
+[30/248] [chromium] › formulare.spec.ts:163:3 › Anmeldung › 1–5 Personen, Rabatt ab 3, Live-Preis
+[31/248] [chromium] › formulare.spec.ts:197:3 › Anmeldung › Anmeldeschluss vorbei: Termin nicht wählbar
+[32/248] [chromium] › formulare.spec.ts:204:3 › Anmeldung › Demo-Modus: gültige Anmeldung führt ohne Versand zur Danke-Seite
+[33/248] [chromium] › formulare.spec.ts:226:3 › Wertersatz-Bestätigung › Pflicht bei Kursstart innerhalb von 14 Tagen
+[34/248] [chromium] › formulare.spec.ts:240:3 › Wertersatz-Bestätigung › freiwillig bei späterem Kursstart
+[35/248] [chromium] › formulare.spec.ts:252:3 › Coaching › Paketwahl statt Termin, unverbindliche Anfrage
+[36/248] [chromium] › formulare.spec.ts:278:3 › Coaching › unbekanntes Paket wird ignoriert, ohne Paket: Hinweis
+[37/248] [chromium] › formulare.spec.ts:287:3 › Interesse und Kontakt › Interesse vormerken: Vorauswahl, Pflichtfelder, Danke
+[38/248] [chromium] › formulare.spec.ts:303:3 › Interesse und Kontakt › Kontakt: Themen, Telefon-Platzhalter, Pflichtfelder
+[39/248] [chromium] › formulare.spec.ts:326:3 › Widerruf (§ 356a BGB) › zweistufig: „Vertrag jetzt widerrufen“ → „Widerruf bestätigen“ → Eingang mit Datum und Uhrzeit
+[40/248] [chromium] › formulare.spec.ts:358:3 › ohne JavaScript › Anmeldung sendet ein normales POST an /api/anmeldung.php
+[41/248] [chromium] › formulare.spec.ts:384:3 › ohne JavaScript › Interesse und Kontakt senden per POST an ihre PHP-Skripte
+[42/248] [chromium] › formulare.spec.ts:395:5 › 320 px ohne horizontales Scrollen › anmeldung/?kurs=ap1-it-berufe&termin=ap1-2027-fruehjahr
+[43/248] [chromium] › formulare.spec.ts:395:5 › 320 px ohne horizontales Scrollen › anmeldung/?kurs=pruefungscoaching
+[44/248] [chromium] › formulare.spec.ts:395:5 › 320 px ohne horizontales Scrollen › interesse/
+[45/248] [chromium] › formulare.spec.ts:395:5 › 320 px ohne horizontales Scrollen › kontakt/
+[46/248] [chromium] › formulare.spec.ts:395:5 › 320 px ohne horizontales Scrollen › danke/?art=anmeldung
+[47/248] [chromium] › formulare.spec.ts:395:5 › 320 px ohne horizontales Scrollen › widerruf/
+[48/248] [chromium] › hero.spec.ts:33:3 › Hero-Reise › Stationen wechseln automatisch und laufen in Schleife
+[49/248] [chromium] › hero.spec.ts:52:3 › Hero-Reise › Pause hält an, Weiter läuft weiter; Stationsname wird angesagt
+[50/248] [chromium] › hero.spec.ts:80:3 › Hero-Reise › reduzierte Bewegung: alle Stationen statisch als Bildfolge, keine Steuerung
+[51/248] [chromium] › hero.spec.ts:98:3 › Hero-Reise › Kursstart und Prüfungstag kommen aus den Kursdaten (Zeit fixiert)
+[52/248] [chromium] › hero.spec.ts:121:3 › Hero-Reise › keine Termine fest im Code der Hero-Bauteile
+[53/248] [chromium] › hero.spec.ts:129:5 › Hero-Reise › kein horizontales Scrollen bei 320 px (alle Stationen)
+[54/248] [chromium] › hero.spec.ts:129:5 › Hero-Reise › kein horizontales Scrollen bei 375 px (alle Stationen)
+[55/248] [chromium] › hero.spec.ts:129:5 › Hero-Reise › kein horizontales Scrollen bei 768 px (alle Stationen)
+[56/248] [chromium] › hero.spec.ts:129:5 › Hero-Reise › kein horizontales Scrollen bei 1280 px (alle Stationen)
+[57/248] [chromium] › hero.spec.ts:129:5 › Hero-Reise › kein horizontales Scrollen bei 1440 px (alle Stationen)
+[58/248] [chromium] › hero.spec.ts:148:5 › Hero-Reise › Bühne mobil höchstens 70 % der Höhe (390 × 844)
+[59/248] [chromium] › hero.spec.ts:148:5 › Hero-Reise › Bühne mobil höchstens 70 % der Höhe (375 × 667)
+[60/248] [chromium] › hero.spec.ts:148:5 › Hero-Reise › Bühne mobil höchstens 70 % der Höhe (360 × 740)
+[61/248] [chromium] › hero.spec.ts:148:5 › Hero-Reise › Bühne mobil höchstens 70 % der Höhe (320 × 568)
+[62/248] [chromium] › hero.spec.ts:157:3 › Hero-Reise › Hauptknopf „Kurs & Termin wählen“ führt zu den Kursen
+[63/248] [chromium] › recht.spec.ts:13:5 › /impressum/ › lädt mit H1 und Entwurfsband
+[64/248] [chromium] › recht.spec.ts:24:5 › /impressum/ › Inhaltsverzeichnis: jeder Anker hat ein Ziel und springt dorthin
+[65/248] [chromium] › recht.spec.ts:41:5 › /impressum/ › Fuß-Link „Vertrag widerrufen“ führt zu /widerruf/#widerrufsformular
+[66/248] [chromium] › recht.spec.ts:51:5 › /impressum/ › kein horizontales Scrollen bei 320 px
+[67/248] [chromium] › recht.spec.ts:13:5 › /datenschutz/ › lädt mit H1 und Entwurfsband
+[68/248] [chromium] › recht.spec.ts:24:5 › /datenschutz/ › Inhaltsverzeichnis: jeder Anker hat ein Ziel und springt dorthin
+[69/248] [chromium] › recht.spec.ts:41:5 › /datenschutz/ › Fuß-Link „Vertrag widerrufen“ führt zu /widerruf/#widerrufsformular
+[70/248] [chromium] › recht.spec.ts:51:5 › /datenschutz/ › kein horizontales Scrollen bei 320 px
+[71/248] [chromium] › recht.spec.ts:13:5 › /teilnahmebedingungen/ › lädt mit H1 und Entwurfsband
+[72/248] [chromium] › recht.spec.ts:24:5 › /teilnahmebedingungen/ › Inhaltsverzeichnis: jeder Anker hat ein Ziel und springt dorthin
+[73/248] [chromium] › recht.spec.ts:41:5 › /teilnahmebedingungen/ › Fuß-Link „Vertrag widerrufen“ führt zu /widerruf/#widerrufsformular
+[74/248] [chromium] › recht.spec.ts:51:5 › /teilnahmebedingungen/ › kein horizontales Scrollen bei 320 px
+[75/248] [chromium] › recht.spec.ts:13:5 › /widerruf/ › lädt mit H1 und Entwurfsband
+[76/248] [chromium] › recht.spec.ts:24:5 › /widerruf/ › Inhaltsverzeichnis: jeder Anker hat ein Ziel und springt dorthin
+[77/248] [chromium] › recht.spec.ts:41:5 › /widerruf/ › Fuß-Link „Vertrag widerrufen“ führt zu /widerruf/#widerrufsformular
+[78/248] [chromium] › recht.spec.ts:51:5 › /widerruf/ › kein horizontales Scrollen bei 320 px
+[79/248] [chromium] › recht.spec.ts:60:1 › Fuß-Link „Vertrag widerrufen“ steht auf jeder Seite
+[80/248] [chromium] › recht.spec.ts:69:1 › Widerruf: Belehrung, Muster-Formular und Bereich #widerrufsformular vorhanden
+[81/248] [chromium] › recht.spec.ts:81:1 › Teilnahmebedingungen: Nachweisvorbehalt bei Storno
+[82/248] [chromium] › seiten.spec.ts:45:3 › Seiten (Vorschau-Build) › Katalog: Filter nach Säule und Kategorie mit Trefferzahl und Adresse
+[83/248] [chromium] › seiten.spec.ts:81:3 › Seiten (Vorschau-Build) › Katalog: Filter aus der Adresse (?saeule=, auch Kurzform)
+[84/248] [chromium] › seiten.spec.ts:101:5 › Seiten (Vorschau-Build) › ohne JavaScript › Katalog zeigt alle Kurse, nach Säulen gegliedert
+[85/248] [chromium] › seiten.spec.ts:111:5 › Seiten (Vorschau-Build) › ohne JavaScript › Termine und FAQ sind ohne JavaScript lesbar
+[86/248] [chromium] › seiten.spec.ts:122:3 › Seiten (Vorschau-Build) › Katalog: Entwürfe tragen das gelbe Band
+[87/248] [chromium] › seiten.spec.ts:135:3 › Seiten (Vorschau-Build) › Kursseiten: Sprungnavigation und Anmelde-Links mit Kurs und Termin
+[88/248] [chromium] › seiten.spec.ts:164:3 › Seiten (Vorschau-Build) › Kurse ohne Termin zeigen „Interesse vormerken“
+[89/248] [chromium] › seiten.spec.ts:186:3 › Seiten (Vorschau-Build) › Coaching: Kursseite und Coaching-Seite führen zur Anfrage
+[90/248] [chromium] › seiten.spec.ts:202:3 › Seiten (Vorschau-Build) › Termine: chronologisch, vergangene ausgeblendet
+[91/248] [chromium] › seiten.spec.ts:234:3 › Seiten (Vorschau-Build) › Termine: Filter nach Säule
+[92/248] [chromium] › seiten.spec.ts:248:3 › Seiten (Vorschau-Build) › 320 px: kein horizontales Scrollen, auch beim längsten Kurstitel
+[93/248] [chromium] › seiten.spec.ts:264:3 › Seiten (Vorschau-Build) › mobil: klebende Handlungsleiste erscheint nach dem Kopf
+[94/248] [chromium] › seiten.spec.ts:279:3 › Seiten (Vorschau-Build) › strukturierte Daten: JSON-LD ist gültiges JSON
+[95/248] [chromium] › seiten.spec.ts:307:3 › Seiten (Vorschau-Build) › AP1: Zeiten mit 3- und 4-UE-Abenden
+[96/248] [chromium] › seiten.spec.ts:317:3 › Live-Build › nirgends „Entwurf“, keine Entwurfsseiten
+[97/248] [chromium] › seiten.spec.ts:341:3 › Live-Build › Katalog und Termine zeigen nur freigegebene Kurse
+[98/248] [chromium] › startseite.spec.ts:21:1 › Startseite lädt ohne Konsolenfehler
+[99/248] [chromium] › startseite.spec.ts:36:3 › kein horizontales Scrollen bei 320 px
+[100/248] [chromium] › startseite.spec.ts:36:3 › kein horizontales Scrollen bei 375 px
+[101/248] [chromium] › startseite.spec.ts:36:3 › kein horizontales Scrollen bei 768 px
+[102/248] [chromium] › startseite.spec.ts:36:3 › kein horizontales Scrollen bei 1280 px
+[103/248] [chromium] › startseite.spec.ts:36:3 › kein horizontales Scrollen bei 1440 px
+[104/248] [chromium] › startseite.spec.ts:46:1 › Countdown zeigt positive Tageszahl bis zur AP1 am 24.02.2027
+[105/248] [chromium] › startseite.spec.ts:62:1 › mobiles Menü ist per Tastatur bedienbar
+[106/248] [chromium] › startseite.spec.ts:79:1 › alle internen Links liefern 200
+[107/248] [chromium] › startseite.spec.ts:110:1 › Vorschau: noindex und robots.txt sperrt alles
+[108/248] [chromium] › startseite.spec.ts:119:1 › Live: indexierbar, robots.txt mit Sitemap, kein Vorschau-Banner
+[109/248] [chromium] › startseite.spec.ts:130:1 › IHK-Hinweis steht im Fuß
+[110/248] [chromium] › startseite.spec.ts:136:3 › Warum-Bühne › Szenen laufen nacheinander, Pause hält an
+[111/248] [chromium] › startseite.spec.ts:164:3 › Warum-Bühne › reduzierte Bewegung: statische Bildfolge mit allen Szenen
+[112/248] [chromium] › startseite.spec.ts:173:3 › Warum-Bühne › Buchen-Knopf führt zu den Kursen
+[113/248] [chromium] › startseite.spec.ts:180:1 › alle Seiten ohne horizontales Scrollen bei 320 px
+[114/248] [chromium] › uebersicht.spec.ts:29:3 › Kursübersicht (Vorschau-Build) › Liste ist Standard, Karten umschaltbar, Wahl wird gemerkt
+[115/248] [chromium] › uebersicht.spec.ts:61:3 › Kursübersicht (Vorschau-Build) › gesperrter Speicher: Seite funktioniert trotzdem
+[116/248] [chromium] › uebersicht.spec.ts:78:3 › Kursübersicht (Vorschau-Build) › Schnellsuche findet „Fachwirt“ und „AP1“, leere Meldung mit „Filter zurücksetzen“
+[117/248] [chromium] › uebersicht.spec.ts:117:3 › Kursübersicht (Vorschau-Build) › Filter ?saeule= und Kategorie wirken auch in der Kartenansicht
+[118/248] [chromium] › uebersicht.spec.ts:127:3 › Kursübersicht (Vorschau-Build) › Sprungleiste springt zur Kategorie
+[119/248] [chromium] › uebersicht.spec.ts:142:3 › Kursübersicht (Vorschau-Build) › ohne JavaScript ist die gruppierte Liste vollständig
+[120/248] [chromium] › uebersicht.spec.ts:162:3 › Menü „Kurse“ › Mega-Menü: Tastatur, Esc, Fokusfalle, Klick außerhalb; alle Links liefern 200
+[121/248] [chromium] › uebersicht.spec.ts:213:3 › Menü „Kurse“ › Kategorie aus dem Mega-Menü filtert die Übersicht
+[122/248] [chromium] › uebersicht.spec.ts:225:3 › Menü „Kurse“ › mobil: „Kurse“ klappt die Kategorien auf
+[123/248] [chromium] › uebersicht.spec.ts:246:3 › Menü „Kurse“ › 320 px: kein horizontales Scrollen (Liste, Karten, Menü)
+[124/248] [chromium] › uebersicht.spec.ts:263:3 › Live-Build: Menü › keine Entwürfe im Menü, keine leeren Kategorien
+[125/248] [webkit] › barrierefreiheit.spec.ts:12:1 › lädt mit H1, Entwurfsband und Stand
+[126/248] [webkit] › barrierefreiheit.spec.ts:23:1 › enthält die Pflichtangaben nach Anlage 3 BFSG und den Feedback-Kontakt
+[127/248] [webkit] › barrierefreiheit.spec.ts:42:1 › Fuß-Link „Barrierefreiheit“ steht auf allen Seiten des Builds
+[128/248] [webkit] › barrierefreiheit.spec.ts:62:1 › Fuß-Link führt von jeder Seite zur Erklärung
+[129/248] [webkit] › barrierefreiheit.spec.ts:74:1 › kein horizontales Scrollen bei 320 px
+[130/248] [webkit] › barrierefreiheit.spec.ts:82:3 › axe: keine Verstöße (WCAG 2.x A/AA + best-practice) bei 1280 px
+[131/248] [webkit] › barrierefreiheit.spec.ts:82:3 › axe: keine Verstöße (WCAG 2.x A/AA + best-practice) bei 320 px
+[132/248] [webkit] › conversion.spec.ts:16:3 › Risikoumkehr › Kursseite: am Preis im Kopf, unter den Terminen (mit Ausfall), in der Preisbox
+[133/248] [webkit] › conversion.spec.ts:29:3 › Risikoumkehr › Kurskarten, Terminübersicht und Coaching
+[134/248] [webkit] › conversion.spec.ts:39:3 › Risikoumkehr › Anmeldung: Zusage direkt über dem Absende-Knopf, Knopftext unverändert
+[135/248] [webkit] › conversion.spec.ts:56:3 › Hauptaktion und Kursseite › einheitlich „Termin wählen“ (Kopf, Seitenleiste, Leiste, Kurskarte, Mobilmenü)
+[136/248] [webkit] › conversion.spec.ts:73:3 › Hauptaktion und Kursseite › mobil 390: Preis, nächster Start und Knopf in der ersten Ansicht
+[137/248] [webkit] › conversion.spec.ts:84:3 › Hauptaktion und Kursseite › Beweis „Dozenten mit IHK-Prüfer-Erfahrung“ nur bei Prüfungsvorbereitung und Coaching
+[138/248] [webkit] › conversion.spec.ts:97:3 › Hauptaktion und Kursseite › /kurse/: keine Aussage „alle Kurse abends“ mehr
+[139/248] [webkit] › conversion.spec.ts:107:5 › FAQ und So läuft's › pruefungsvorbereitung/: 8–10 Fragen offen lesbar, Sprungmarken, FAQPage passt
+[140/248] [webkit] › conversion.spec.ts:107:5 › FAQ und So läuft's › coaching/: 8–10 Fragen offen lesbar, Sprungmarken, FAQPage passt
+[141/248] [webkit] › conversion.spec.ts:130:5 › FAQ und So läuft's › kurse/ap1-it-berufe/: Kurs-FAQ um gemeinsame Fragen auf 8–10 aufgefüllt, ohne Doppelte, Schema = Liste
+[142/248] [webkit] › conversion.spec.ts:130:5 › FAQ und So läuft's › kurse/ap2-fachinformatiker-systemintegration/: Kurs-FAQ um gemeinsame Fragen auf 8–10 aufgefüllt, ohne Doppelte, Schema = Liste
+[143/248] [webkit] › conversion.spec.ts:130:5 › FAQ und So läuft's › kurse/pruefungscoaching/: Kurs-FAQ um gemeinsame Fragen auf 8–10 aufgefüllt, ohne Doppelte, Schema = Liste
+[144/248] [webkit] › conversion.spec.ts:143:3 › FAQ und So läuft's › So läuft's: vier Schritte, gleich auf Kursseite, Landing und Coaching
+[145/248] [webkit] › conversion.spec.ts:158:3 › axe: geänderte Seiten ohne Verstöße bei 1280 px
+[146/248] [webkit] › conversion.spec.ts:158:3 › axe: geänderte Seiten ohne Verstöße bei 320 px
+[147/248] [webkit] › datenschutz.spec.ts:7:1 › keine Requests an fremde Server, keine Cookies, nur dokumentierter Browser-Speicher – auf jeder Seite
+[148/248] [webkit] › datenschutz.spec.ts:29:1 › Datenschutzerklärung nennt die Browser-Speicher-Einträge und keine ungeprüfte DPF-Aussage
+[149/248] [webkit] › formulare.spec.ts:69:3 › Anmeldung › Kurs und Termin aus der Adresse vorausgewählt, Knopftext exakt
+[150/248] [webkit] › formulare.spec.ts:88:3 › Anmeldung › ohne Parameter: Kurs wählen, Termine passend zum Kurs
+[151/248] [webkit] › formulare.spec.ts:100:3 › Anmeldung › Pflichtfelder bei „Ich zahle selbst“: Fehlertexte, aria, Fokus, Zusammenfassung
+[152/248] [webkit] › formulare.spec.ts:138:3 › Anmeldung › Pflichtfelder bei „Mein Betrieb zahlt“
+[153/248] [webkit] › formulare.spec.ts:155:3 › Anmeldung › ohne Zahlweg: Hinweis am Auswahlfeld
+[154/248] [webkit] › formulare.spec.ts:163:3 › Anmeldung › 1–5 Personen, Rabatt ab 3, Live-Preis
+[155/248] [webkit] › formulare.spec.ts:197:3 › Anmeldung › Anmeldeschluss vorbei: Termin nicht wählbar
+[156/248] [webkit] › formulare.spec.ts:204:3 › Anmeldung › Demo-Modus: gültige Anmeldung führt ohne Versand zur Danke-Seite
+[157/248] [webkit] › formulare.spec.ts:226:3 › Wertersatz-Bestätigung › Pflicht bei Kursstart innerhalb von 14 Tagen
+[158/248] [webkit] › formulare.spec.ts:240:3 › Wertersatz-Bestätigung › freiwillig bei späterem Kursstart
+[159/248] [webkit] › formulare.spec.ts:252:3 › Coaching › Paketwahl statt Termin, unverbindliche Anfrage
+[160/248] [webkit] › formulare.spec.ts:278:3 › Coaching › unbekanntes Paket wird ignoriert, ohne Paket: Hinweis
+[161/248] [webkit] › formulare.spec.ts:287:3 › Interesse und Kontakt › Interesse vormerken: Vorauswahl, Pflichtfelder, Danke
+[162/248] [webkit] › formulare.spec.ts:303:3 › Interesse und Kontakt › Kontakt: Themen, Telefon-Platzhalter, Pflichtfelder
+[163/248] [webkit] › hero.spec.ts:33:3 › Hero-Reise › Stationen wechseln automatisch und laufen in Schleife
+[164/248] [webkit] › formulare.spec.ts:326:3 › Widerruf (§ 356a BGB) › zweistufig: „Vertrag jetzt widerrufen“ → „Widerruf bestätigen“ → Eingang mit Datum und Uhrzeit
+[165/248] [webkit] › hero.spec.ts:52:3 › Hero-Reise › Pause hält an, Weiter läuft weiter; Stationsname wird angesagt
+[166/248] [webkit] › formulare.spec.ts:358:3 › ohne JavaScript › Anmeldung sendet ein normales POST an /api/anmeldung.php
+[167/248] [webkit] › hero.spec.ts:80:3 › Hero-Reise › reduzierte Bewegung: alle Stationen statisch als Bildfolge, keine Steuerung
+[168/248] [webkit] › formulare.spec.ts:384:3 › ohne JavaScript › Interesse und Kontakt senden per POST an ihre PHP-Skripte
+[169/248] [webkit] › hero.spec.ts:98:3 › Hero-Reise › Kursstart und Prüfungstag kommen aus den Kursdaten (Zeit fixiert)
+[170/248] [webkit] › formulare.spec.ts:395:5 › 320 px ohne horizontales Scrollen › anmeldung/?kurs=ap1-it-berufe&termin=ap1-2027-fruehjahr
+[171/248] [webkit] › hero.spec.ts:121:3 › Hero-Reise › keine Termine fest im Code der Hero-Bauteile
+[172/248] [webkit] › hero.spec.ts:129:5 › Hero-Reise › kein horizontales Scrollen bei 320 px (alle Stationen)
+[173/248] [webkit] › formulare.spec.ts:395:5 › 320 px ohne horizontales Scrollen › anmeldung/?kurs=pruefungscoaching
+[174/248] [webkit] › formulare.spec.ts:395:5 › 320 px ohne horizontales Scrollen › interesse/
+[175/248] [webkit] › formulare.spec.ts:395:5 › 320 px ohne horizontales Scrollen › kontakt/
+[176/248] [webkit] › hero.spec.ts:129:5 › Hero-Reise › kein horizontales Scrollen bei 375 px (alle Stationen)
+[177/248] [webkit] › formulare.spec.ts:395:5 › 320 px ohne horizontales Scrollen › danke/?art=anmeldung
+[178/248] [webkit] › formulare.spec.ts:395:5 › 320 px ohne horizontales Scrollen › widerruf/
+[179/248] [webkit] › hero.spec.ts:129:5 › Hero-Reise › kein horizontales Scrollen bei 768 px (alle Stationen)
+[180/248] [webkit] › hero.spec.ts:129:5 › Hero-Reise › kein horizontales Scrollen bei 1280 px (alle Stationen)
+[181/248] [webkit] › hero.spec.ts:129:5 › Hero-Reise › kein horizontales Scrollen bei 1440 px (alle Stationen)
+[182/248] [webkit] › hero.spec.ts:148:5 › Hero-Reise › Bühne mobil höchstens 70 % der Höhe (390 × 844)
+[183/248] [webkit] › hero.spec.ts:148:5 › Hero-Reise › Bühne mobil höchstens 70 % der Höhe (375 × 667)
+[184/248] [webkit] › hero.spec.ts:148:5 › Hero-Reise › Bühne mobil höchstens 70 % der Höhe (360 × 740)
+[185/248] [webkit] › hero.spec.ts:148:5 › Hero-Reise › Bühne mobil höchstens 70 % der Höhe (320 × 568)
+[186/248] [webkit] › hero.spec.ts:157:3 › Hero-Reise › Hauptknopf „Kurs & Termin wählen“ führt zu den Kursen
+[187/248] [webkit] › recht.spec.ts:13:5 › /impressum/ › lädt mit H1 und Entwurfsband
+[188/248] [webkit] › recht.spec.ts:24:5 › /impressum/ › Inhaltsverzeichnis: jeder Anker hat ein Ziel und springt dorthin
+[189/248] [webkit] › recht.spec.ts:41:5 › /impressum/ › Fuß-Link „Vertrag widerrufen“ führt zu /widerruf/#widerrufsformular
+[190/248] [webkit] › recht.spec.ts:51:5 › /impressum/ › kein horizontales Scrollen bei 320 px
+[191/248] [webkit] › recht.spec.ts:13:5 › /datenschutz/ › lädt mit H1 und Entwurfsband
+[192/248] [webkit] › recht.spec.ts:24:5 › /datenschutz/ › Inhaltsverzeichnis: jeder Anker hat ein Ziel und springt dorthin
+[193/248] [webkit] › recht.spec.ts:41:5 › /datenschutz/ › Fuß-Link „Vertrag widerrufen“ führt zu /widerruf/#widerrufsformular
+[194/248] [webkit] › recht.spec.ts:51:5 › /datenschutz/ › kein horizontales Scrollen bei 320 px
+[195/248] [webkit] › recht.spec.ts:13:5 › /teilnahmebedingungen/ › lädt mit H1 und Entwurfsband
+[196/248] [webkit] › recht.spec.ts:24:5 › /teilnahmebedingungen/ › Inhaltsverzeichnis: jeder Anker hat ein Ziel und springt dorthin
+[197/248] [webkit] › recht.spec.ts:41:5 › /teilnahmebedingungen/ › Fuß-Link „Vertrag widerrufen“ führt zu /widerruf/#widerrufsformular
+[198/248] [webkit] › recht.spec.ts:51:5 › /teilnahmebedingungen/ › kein horizontales Scrollen bei 320 px
+[199/248] [webkit] › recht.spec.ts:13:5 › /widerruf/ › lädt mit H1 und Entwurfsband
+[200/248] [webkit] › recht.spec.ts:24:5 › /widerruf/ › Inhaltsverzeichnis: jeder Anker hat ein Ziel und springt dorthin
+[201/248] [webkit] › recht.spec.ts:41:5 › /widerruf/ › Fuß-Link „Vertrag widerrufen“ führt zu /widerruf/#widerrufsformular
+[202/248] [webkit] › recht.spec.ts:51:5 › /widerruf/ › kein horizontales Scrollen bei 320 px
+[203/248] [webkit] › recht.spec.ts:60:1 › Fuß-Link „Vertrag widerrufen“ steht auf jeder Seite
+[204/248] [webkit] › recht.spec.ts:69:1 › Widerruf: Belehrung, Muster-Formular und Bereich #widerrufsformular vorhanden
+[205/248] [webkit] › recht.spec.ts:81:1 › Teilnahmebedingungen: Nachweisvorbehalt bei Storno
+[206/248] [webkit] › seiten.spec.ts:45:3 › Seiten (Vorschau-Build) › Katalog: Filter nach Säule und Kategorie mit Trefferzahl und Adresse
+[207/248] [webkit] › seiten.spec.ts:81:3 › Seiten (Vorschau-Build) › Katalog: Filter aus der Adresse (?saeule=, auch Kurzform)
+[208/248] [webkit] › seiten.spec.ts:101:5 › Seiten (Vorschau-Build) › ohne JavaScript › Katalog zeigt alle Kurse, nach Säulen gegliedert
+[209/248] [webkit] › seiten.spec.ts:111:5 › Seiten (Vorschau-Build) › ohne JavaScript › Termine und FAQ sind ohne JavaScript lesbar
+[210/248] [webkit] › seiten.spec.ts:122:3 › Seiten (Vorschau-Build) › Katalog: Entwürfe tragen das gelbe Band
+[211/248] [webkit] › seiten.spec.ts:135:3 › Seiten (Vorschau-Build) › Kursseiten: Sprungnavigation und Anmelde-Links mit Kurs und Termin
+[212/248] [webkit] › seiten.spec.ts:164:3 › Seiten (Vorschau-Build) › Kurse ohne Termin zeigen „Interesse vormerken“
+[213/248] [webkit] › seiten.spec.ts:186:3 › Seiten (Vorschau-Build) › Coaching: Kursseite und Coaching-Seite führen zur Anfrage
+[214/248] [webkit] › seiten.spec.ts:202:3 › Seiten (Vorschau-Build) › Termine: chronologisch, vergangene ausgeblendet
+[215/248] [webkit] › seiten.spec.ts:234:3 › Seiten (Vorschau-Build) › Termine: Filter nach Säule
+[216/248] [webkit] › seiten.spec.ts:248:3 › Seiten (Vorschau-Build) › 320 px: kein horizontales Scrollen, auch beim längsten Kurstitel
+[217/248] [webkit] › seiten.spec.ts:264:3 › Seiten (Vorschau-Build) › mobil: klebende Handlungsleiste erscheint nach dem Kopf
+[218/248] [webkit] › seiten.spec.ts:279:3 › Seiten (Vorschau-Build) › strukturierte Daten: JSON-LD ist gültiges JSON
+[219/248] [webkit] › seiten.spec.ts:307:3 › Seiten (Vorschau-Build) › AP1: Zeiten mit 3- und 4-UE-Abenden
+[220/248] [webkit] › seiten.spec.ts:317:3 › Live-Build › nirgends „Entwurf“, keine Entwurfsseiten
+[221/248] [webkit] › seiten.spec.ts:341:3 › Live-Build › Katalog und Termine zeigen nur freigegebene Kurse
+[222/248] [webkit] › startseite.spec.ts:21:1 › Startseite lädt ohne Konsolenfehler
+[223/248] [webkit] › startseite.spec.ts:36:3 › kein horizontales Scrollen bei 320 px
+[224/248] [webkit] › startseite.spec.ts:36:3 › kein horizontales Scrollen bei 375 px
+[225/248] [webkit] › startseite.spec.ts:36:3 › kein horizontales Scrollen bei 768 px
+[226/248] [webkit] › startseite.spec.ts:36:3 › kein horizontales Scrollen bei 1280 px
+[227/248] [webkit] › startseite.spec.ts:36:3 › kein horizontales Scrollen bei 1440 px
+[228/248] [webkit] › startseite.spec.ts:46:1 › Countdown zeigt positive Tageszahl bis zur AP1 am 24.02.2027
+[229/248] [webkit] › startseite.spec.ts:62:1 › mobiles Menü ist per Tastatur bedienbar
+[230/248] [webkit] › startseite.spec.ts:79:1 › alle internen Links liefern 200
+[231/248] [webkit] › startseite.spec.ts:110:1 › Vorschau: noindex und robots.txt sperrt alles
+[232/248] [webkit] › startseite.spec.ts:119:1 › Live: indexierbar, robots.txt mit Sitemap, kein Vorschau-Banner
+[233/248] [webkit] › startseite.spec.ts:130:1 › IHK-Hinweis steht im Fuß
+[234/248] [webkit] › startseite.spec.ts:136:3 › Warum-Bühne › Szenen laufen nacheinander, Pause hält an
+[235/248] [webkit] › startseite.spec.ts:164:3 › Warum-Bühne › reduzierte Bewegung: statische Bildfolge mit allen Szenen
+[236/248] [webkit] › startseite.spec.ts:173:3 › Warum-Bühne › Buchen-Knopf führt zu den Kursen
+[237/248] [webkit] › startseite.spec.ts:180:1 › alle Seiten ohne horizontales Scrollen bei 320 px
+[238/248] [webkit] › uebersicht.spec.ts:29:3 › Kursübersicht (Vorschau-Build) › Liste ist Standard, Karten umschaltbar, Wahl wird gemerkt
+[239/248] [webkit] › uebersicht.spec.ts:61:3 › Kursübersicht (Vorschau-Build) › gesperrter Speicher: Seite funktioniert trotzdem
+[240/248] [webkit] › uebersicht.spec.ts:78:3 › Kursübersicht (Vorschau-Build) › Schnellsuche findet „Fachwirt“ und „AP1“, leere Meldung mit „Filter zurücksetzen“
+[241/248] [webkit] › uebersicht.spec.ts:117:3 › Kursübersicht (Vorschau-Build) › Filter ?saeule= und Kategorie wirken auch in der Kartenansicht
+[242/248] [webkit] › uebersicht.spec.ts:127:3 › Kursübersicht (Vorschau-Build) › Sprungleiste springt zur Kategorie
+[243/248] [webkit] › uebersicht.spec.ts:142:3 › Kursübersicht (Vorschau-Build) › ohne JavaScript ist die gruppierte Liste vollständig
+[244/248] [webkit] › uebersicht.spec.ts:162:3 › Menü „Kurse“ › Mega-Menü: Tastatur, Esc, Fokusfalle, Klick außerhalb; alle Links liefern 200
+[245/248] [webkit] › uebersicht.spec.ts:213:3 › Menü „Kurse“ › Kategorie aus dem Mega-Menü filtert die Übersicht
+[246/248] [webkit] › uebersicht.spec.ts:225:3 › Menü „Kurse“ › mobil: „Kurse“ klappt die Kategorien auf
+[247/248] [webkit] › uebersicht.spec.ts:246:3 › Menü „Kurse“ › 320 px: kein horizontales Scrollen (Liste, Karten, Menü)
+[248/248] [webkit] › uebersicht.spec.ts:263:3 › Live-Build: Menü › keine Entwürfe im Menü, keine leeren Kategorien
+  Slow test file: [webkit] › formulare.spec.ts (2.2m)
+  Slow test file: [chromium] › formulare.spec.ts (1.0m)
+  Consider splitting slow test files to speed up parallel execution
+  8 skipped
+  240 passed (15.9m)
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice

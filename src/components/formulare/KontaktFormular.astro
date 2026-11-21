@@ -1,5 +1,6 @@
 ---
-// Kontakt- und Beratungsanfrage (US-16): Name, E-Mail, optional Telefon, Thema, Nachricht, Einwilligung → /api/kontakt.php → info@.
+// Kontakt- und Beratungsanfrage (US-16): Name, E-Mail, optional Telefon, Thema, Nachricht, Kenntnisnahme Datenschutzhinweis
+// (keine Einwilligung – Rechtsgrundlage Art. 6 Abs. 1 lit. b/f DSGVO) → /api/kontakt.php → info@.
 import Feld from './Feld.astro';
 import Haken from './Haken.astro';
 import Grundlagen from './Grundlagen.astro';
@@ -34,8 +35,8 @@ const F = 'kontakt';
   </div>
   <Feld form={F} name="nachricht" label="Deine Nachricht" typ="textarea" pflicht nativ min={10} max={2000} zeilen={6} fehler={FEHLER.kontaktNachricht} />
   <Haken form={F} name="einwilligung" pflicht nativ fehler={FEHLER.einwilligungKontakt}>
-    Ihr dürft meine Angaben nutzen, um meine Anfrage zu beantworten. Mehr dazu in der{' '}
-    <a class="link-fliess" href={href('/datenschutz/')} target="_blank">Datenschutzerklärung</a>.
+    Ich habe den Datenschutzhinweis gelesen: Ihr nutzt meine Angaben nur, um meine Anfrage zu beantworten (Einzelheiten in der{' '}
+    <a class="link-fliess" href={href('/datenschutz/')} target="_blank">Datenschutzerklärung</a>).
   </Haken>
   <div class="flex flex-wrap items-center gap-4 border-t border-base-300 pt-6">
     <button type="submit" class="btn btn-accent btn-lg rounded-full px-8" data-absenden>Nachricht senden</button>

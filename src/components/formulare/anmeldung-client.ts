@@ -2,7 +2,7 @@
 // Personen 1–5, Zahlweg-Bereiche, Wertersatz-Pflicht bei Start innerhalb der Widerrufsfrist, Live-Preis und Zusammenfassung.
 import { bereich, formularEinrichten, wert, type Zeile } from './formular';
 import type { FormDaten, FormKurs, FormTermin } from './daten';
-import { FEHLER, MAX_PERSONEN, berechnePreis, buchbarIso, euro, paketId, tageBisIso, wertersatzPflicht } from '../../lib/formular';
+import { FEHLER, MAX_PERSONEN, berechnePreis, buchbarIso, euro, paketId } from '../../lib/formular';
 
 // Zusatz für Entwürfe nur im Vorschau-Build: Vite setzt PUBLIC_PREVIEW beim Bauen ein, live fällt der Text ganz weg.
 const ENTWURF_ZUSATZ = import.meta.env.PUBLIC_PREVIEW === 'true' ? ' (Entwurf – live nicht buchbar)' : '';
@@ -22,7 +22,6 @@ function einrichten(form: HTMLFormElement) {
   const kursSel = form.elements.namedItem('kurs') as HTMLSelectElement;
   const terminSel = form.elements.namedItem('termin') as HTMLSelectElement;
   const personenSel = form.elements.namedItem('personen') as HTMLSelectElement;
-  const wertersatz = form.elements.namedItem('wertersatz') as HTMLInputElement;
   const knopf = form.querySelector<HTMLButtonElement>('[data-absenden]')!;
   const params = new URLSearchParams(location.search);
 
@@ -126,26 +125,7 @@ function einrichten(form: HTMLFormElement) {
     const zw = wert(form, 'zahlweg');
     bereich($('[data-zahlweg-bereich="selbst"]'), zw === 'selbst');
     bereich($('[data-zahlweg-bereich="betrieb"]'), zw === 'betrieb');
-
-    // Wertersatz: Pflicht bei Kursstart innerhalb der Widerrufsfrist (Zeitpunkt: jetzt im Browser, verbindlich prüft der Server)
     const t = termin();
-    const pflicht = !coaching && !!t && wertersatzPflicht(t.start);
-    wertersatz.toggleAttribute('data-pflicht', pflicht);
-    wertersatz.setAttribute('aria-required', String(pflicht));
-    form.querySelector('[data-feld-rahmen="wertersatz"] [data-pflicht-stern]')?.classList.toggle('hidden', !pflicht);
-    const hinweis = form.querySelector<HTMLElement>('[data-feld-rahmen="wertersatz"] [data-haken-hinweis]');
-    if (hinweis) {
-      hinweis.textContent = !t
-        ? 'Pflicht, wenn dein Kurs innerhalb von 14 Tagen nach heute startet – sonst freiwillig.'
-        : pflicht
-          ? `Pflicht: Dein Kurs startet in ${tageBisIso(t.start)} Tagen – also noch innerhalb der 14-tägigen Widerrufsfrist.`
-          : 'Freiwillig: Dein Kurs startet erst nach Ablauf der 14-tägigen Widerrufsfrist.';
-    }
-    if (!pflicht && wertersatz.getAttribute('aria-invalid')) {
-      wertersatz.removeAttribute('aria-invalid');
-      const p = form.querySelector<HTMLElement>('[data-fehler-fuer="wertersatz"]');
-      if (p) p.hidden = true;
-    }
 
     // Kursinfo
     const info = $('[data-kursinfo]');
@@ -206,12 +186,12 @@ function einrichten(form: HTMLFormElement) {
       );
     }
 
-    // Knopf: verbindliche Anmeldung vs. unverbindliche Coaching-Anfrage (GR-07, GR-14)
-    const knopfText = coaching ? 'Paket anfragen' : 'Zahlungspflichtig anmelden';
+    // Knopf: unverbindliche Buchungsanfrage bzw. Coaching-Anfrage (GR-07, GR-14) – Vertragsschluss erst per E-Mail
+    const knopfText = coaching ? 'Paket anfragen' : 'Unverbindlich anfragen';
     if (knopf.textContent !== knopfText) knopf.textContent = knopfText;
     setzeText('[data-knopf-hinweis]', coaching
       ? 'Unverbindliche Anfrage – wir melden uns zur Terminabstimmung. Die Rechnung kommt danach per E-Mail.'
-      : 'Die Rechnung kommt per E-Mail – eine Online-Zahlung ist nicht nötig. Die Prüfungsgebühr deiner IHK ist nicht enthalten.');
+      : 'Kostenlos und unverbindlich. Verbindlich wird es erst mit deiner Zusage und unserer Buchungsbestätigung per E-Mail. Die Prüfungsgebühr deiner IHK ist nicht enthalten.');
   }
 
   // Vorauswahl aus der Adresse

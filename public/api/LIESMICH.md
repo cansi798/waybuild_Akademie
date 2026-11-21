@@ -7,7 +7,8 @@ Ohne Composer und ohne Datenbank.
 | Datei | Aufgabe |
 |---|---|
 | `anmeldung.php` | Anmeldung (verbindlich) und Coaching-Anfrage (unverbindlich) → `anmeldung@` |
-| `interesse.php` | Interesse vormerken → `info@` |
+| `interesse.php` | Interesse vormerken, Schritt 1: nur Bitte um Bestätigung (Double-Opt-in) an die Person |
+| `interesse-bestaetigen.php` | Double-Opt-in, Schritt 2: GET zeigt Bestätigungsknopf, POST schickt die Vormerkung → `info@` |
 | `kontakt.php` | Kontaktformular → `info@` |
 | `widerruf.php` | Online-Widerruf (§ 356a BGB), zweistufig → `anmeldung@` |
 | `token.php` | signierter Zeitstempel für die Zeitfalle (holt das Formular per JavaScript) |

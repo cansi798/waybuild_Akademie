@@ -1,0 +1,97 @@
+---
+// Bereichsseite (Audit #6771, Punkt 7): Ziel der Menüpunkte „IHK-Weiterbildung“ und „waybuild Weiterbildung“.
+// Gibt es sichtbare Kurse (live: freigegeben), stehen sie kompakt nach Kategorie da; gibt es keine, erscheint
+// „Kurse in Vorbereitung – frag unverbindlich an“. In beiden Fällen direkt darunter die Kurzanfrage (Bereich vorgewählt).
+import Basis from '../../layouts/Basis.astro';
+import AnfrageFormular from '../formulare/AnfrageFormular.astro';
+import StickyAnfrage from './StickyAnfrage.astro';
+import VideoPlatz from './VideoPlatz.astro';
+import IhkHinweis from '../seiten/IhkHinweis.astro';
+import { brotkrumenSchema } from '../seiten/schema';
+import { alleKurse, formatEuro, nachSaeuleUndKategorie, umfangText, type Saeule } from '../../lib/kurse';
+import { href } from '../../lib/pfad';
+import { UNTERRICHT } from '../../lib/site';
+import { ZUSAGEN } from '../../lib/zusagen';
+
+interface Props {
+  saeule: Saeule;
+  bereich: 'ihk-weiterbildung' | 'akademie';
+  pfad: string;
+  titel: string;
+  seoTitel: string;
+  beschreibung: string;
+  satz: string;
+  video: { id: string; titel: string; text: string };
+}
+const { saeule, bereich, pfad, titel, seoTitel, beschreibung, satz, video } = Astro.props;
+const gruppe = nachSaeuleUndKategorie(await alleKurse()).find((g) => g.saeule === saeule);
+const kategorien = gruppe?.kategorien ?? [];
+---
+
+<Basis titel={seoTitel} beschreibung={beschreibung} schema={[brotkrumenSchema([['Start', '/'], [titel, pfad]], Astro.site)]}>
+  <section class="border-b border-base-300">
+    <div class="rahmen grid grid-cols-[minmax(0,1fr)] items-center gap-8 pt-8 pb-10 sm:pt-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
+      <div>
+        <p class="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-sm font-semibold ring-1 ring-base-300" data-unterricht-hinweis>
+          <span class="size-2.5 rounded-full bg-bernstein" aria-hidden="true"></span>
+          {UNTERRICHT.kurz}
+        </p>
+        <h1 class="trennen mt-4 text-[2.3rem] leading-[1.05] sm:text-6xl">{titel}</h1>
+        <p class="mt-4 text-lg text-gedaempft">{satz}</p>
+        <a href="#anfrage" class="btn btn-accent btn-lg mt-6 rounded-full px-8" data-anfrage-bereich={bereich}>Unverbindlich anfragen</a>
+      </div>
+      <VideoPlatz id={video.id} titel={video.titel} text={video.text} />
+    </div>
+  </section>
+
+  <section class="border-b border-base-300 bg-white" aria-labelledby="kurse-titel">
+    <div class="rahmen py-10 sm:py-14">
+      {
+        kategorien.length > 0 ? (
+          <>
+            <h2 id="kurse-titel" class="text-2xl sm:text-3xl">Kurse</h2>
+            <div class="mt-6 grid gap-8">
+              {kategorien.map((kat) => (
+                <div>
+                  <h3 class="font-sans text-sm font-semibold tracking-wide text-gedaempft uppercase">{kat.name}</h3>
+                  <ul class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                    {kat.kurse.map((k) => (
+                      <li>
+                        <a href={href(`/kurse/${k.id}/`)} class="flex min-h-16 items-center justify-between gap-3 rounded-2xl bg-base-100 px-5 py-3 ring-1 ring-base-300 hover:ring-2 hover:ring-navy">
+                          <span class="min-w-0">
+                            <span class="trennen block font-semibold">{k.data.titel}</span>
+                            <span class="block text-sm text-gedaempft">
+                              {[umfangText(k), `${formatEuro(k.data.preis.betrag)} Endpreis`].filter(Boolean).join(' · ')}
+                              {k.data.status === 'entwurf' ? ' · Entwurf' : ''}
+                            </span>
+                          </span>
+                          <svg viewBox="0 0 24 24" class="size-5 shrink-0" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div class="max-w-2xl rounded-3xl bg-base-200 p-6 sm:p-8" data-bereich-vorbereitung>
+            <h2 id="kurse-titel" class="text-2xl sm:text-3xl">Kurse in Vorbereitung – frag unverbindlich an</h2>
+            <p class="mt-3 text-gedaempft">Die Kurse in diesem Bereich planen wir gerade. Sag uns, was du suchst – wir melden uns mit Terminen und Preisen.</p>
+            <a href="#anfrage" class="btn btn-secondary mt-5 rounded-full" data-anfrage-bereich={bereich}>Zum Anfrageformular</a>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="rahmen grid gap-8 py-12 sm:py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14" aria-labelledby="anfrage-titel">
+    <div>
+      <h2 id="anfrage-titel" class="text-3xl sm:text-4xl">Unverbindlich anfragen</h2>
+      <p class="mt-3 font-semibold" data-zusage-anfrage>{ZUSAGEN.anfrage}</p>
+      {saeule === 'ihk-weiterbildung' && <div class="mt-6"><IhkHinweis /></div>}
+    </div>
+    <AnfrageFormular bereich={bereich} />
+  </section>
+  <StickyAnfrage bereich={bereich} />
+</Basis>

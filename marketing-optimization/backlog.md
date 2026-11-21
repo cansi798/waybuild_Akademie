@@ -1,0 +1,24 @@
+# Backlog (Priorität = (Impact × Confidence) / (Effort × Risk), Heuristik – keine Messdaten)
+
+Status: proposed · in-progress · done · blocked (Freigabe/anderer Helfer) · rejected. „frei“ = Datei gehört keinem anderen Helfer.
+
+| ID | Phase | Seite/Datei | Problem (Evidenz) | Hypothese | I | C | E | R | Prio | Status / Owner |
+|---|---|---|---|---|---|---|---|---|---|---|
+| MKT-001 | decision | `/kurse/[slug]/` (frei) | Kein unverbindlicher Weg: nur „Termin wählen“ → „Anmelden“ → „Zahlungspflichtig anmelden“ ([slug].astro:55–59, 176, 431) | Primärer CTA „Unverbindlich anfragen“ + Kurzanfrage auf der Kursseite (Kurs vorausgewählt) senkt die Hürde → mehr Anfragen | 5 | 3 | 2 | 2 | 3,75 | done (R3, 174ea3d): Hauptaktion → /anmeldung/?kurs= (unverbindliche Buchungsanfrage seit recht-6771); Kurzanfrage-Einbettung optional nach Merge |
+| MKT-002 | decision | alle Anfrage-Stellen (besetzt) | Cans Satz „verbindlich erst nach Bestätigung per E-Mail“ fehlt; S6771 sagt „erst mit deiner Anmeldung“ (index.astro:68, [beruf].astro:132) | Ein einheitlicher Satz (zentrale Konstante) schafft Vertrauen | 4 | 4 | 1 | 2 | 8 | an Jan gemeldet (start-6771/recht-6771) |
+| MKT-003 | consideration | site.ts / content/kurse (besetzt) | Zeit 17–20 Uhr (S6771) widerspricht Kursdaten 18:00–20:30/21:15 in main; kalk-6771 hat neue Zeiten | Widerspruch kostet Vertrauen; kalk-6771 vor/mit start-6771 mergen | 4 | 5 | 1 | 1 | 20 | an Jan gemeldet – Merge-Reihenfolge |
+| MKT-004 | decision | `[beruf].astro` (besetzt) | CTA „Unverbindlich anmelden“ vs. Knopf „Unverbindlich anfragen“ (:112, :128) | Einheitlich „anfragen“ | 3 | 5 | 1 | 1 | 15 | an Jan gemeldet |
+| MKT-005 | awareness | site.ts:55–65, VideoPlatz:68 (besetzt) | „mit Can und Jamil“ ohne Rolle | Rolle „Geschäftsführung“ nennen (Regel) | 2 | 5 | 1 | 1 | 10 | an Jan gemeldet |
+| MKT-006 | decision | `/kurse/[slug]/` (frei) | FAQ ohne Azubi-Einwände „verpasst/krank“, „nach der Arbeit“, „schaffe ich das“ – IDs existieren in faq.ts | Einwände dort beantworten, wo entschieden wird | 3 | 3 | 1 | 1 | 9 | done (R2, 119049b) |
+| MKT-007 | decision | `/kurse/[slug]/` (frei) | „Betrieb zahlt“ + Gruppenrabatt erst tief im Preisblock (:341) | Zahler-Info nahe CTA erhöht Anfragen von Betrieben | 3 | 3 | 1 | 1 | 9 | done (R2, 119049b) |
+| MKT-008 | consideration | `/kurse/[slug]/` (frei) | Kursseite ohne Rücklink zur Berufsseite; 34 Kursseiten nur 1 eingehender Link | Rücklink + „passend für Beruf …“ stärkt Navigation/SEO | 3 | 3 | 2 | 1 | 4,5 | blocked bis Merge (berufe.ts) – Loop |
+| MKT-009 | awareness | Basis.astro:29 (frei) | 19 Kurstitel > 60 Zeichen inkl. Markenzusatz | Markenzusatz bei Überlänge weglassen → vollständige Titel im Snippet | 2 | 3 | 1 | 1 | 6 | done (R2, 119049b) |
+| MKT-010 | awareness | [slug].astro:134, schema.ts:98 (frei) | H1/Course-Name ohne Beruf bei AP1/AP2 | Beruf in H1/Schema → Suchintention „AP2 Fachinformatiker“ | 3 | 2 | 2 | 2 | 1,5 | proposed (Text aus content = besetzt; nur Schema-Name aus Untertitel) |
+| MKT-011 | retention | danke / kontakt.php (besetzt) | Kurzanfrage landet als „Nachricht“ statt „Anfrage“ | eigener Danke-Block „Anfrage unverbindlich, nächster Schritt“ | 3 | 4 | 2 | 2 | 3 | an Jan gemeldet (recht-6771) |
+| MKT-012 | consideration | 404, ueber-uns (frei) | Sackgassen ohne Anfrage-CTA/Berufswahl | CTA + Berufswahl einbauen | 2 | 3 | 1 | 1 | 6 | blocked bis Merge (BerufWahl) |
+| MKT-013 | decision | Kurzanfrage (besetzt) | Für Betriebe kein Feld „Anzahl Azubis / Betrieb zahlt“ | optionales Feld → Betriebe fragen an statt 5-Schritt-Anmeldung | 3 | 2 | 2 | 2 | 1,5 | Patch-Idee an start-6771 |
+| MKT-014 | consideration | content/kurse (besetzt) | ~248 Genderformen („Geprüfte/r …/in“, Paarformen, „Mitarbeitende“) | Regel „nie gendern“ – generisches Maskulinum + (m/w/d) | 3 | 5 | 3 | 2 | 2,5 | Jan 20:30: Loop übernimmt nach Merge; Skript vorbereitet |
+| MKT-015 | consideration | coaching:182, anmeldung:17, anmeldung-client.ts:92, llms.txt:34 | Genderformen auf Seiten | ersetzen | 2 | 5 | 1 | 1 | 10 | Coaching done (R2); Rest nach Merge (Jan: Loop übernimmt) |
+| MKT-016 | awareness | WarumBuehne:34 (besetzt) | „erfahrene IHK-Prüfer“ statt erlaubtem Claim | nur „Dozenten mit IHK-Prüfer-Erfahrung“ | 2 | 5 | 1 | 1 | 10 | an Jan gemeldet (Startseite-Helfer entfernt WarumBuehne evtl.) |
+| MKT-017 | awareness | live-Katalog | Live nur 3 freigegebene Kurse; Menü/Start bewerben Bereiche mit 0 Live-Kursen | Can entscheidet: Bereiche ausblenden oder Vormerk-Seiten | 4 | 4 | 2 | 3 | 2,7 | Freigabe Can nötig |
+| MKT-018 | – | Videos | public/video leer, 3 Blöcke „Video folgt“ | echte Videos (Can/Jamil als GF) | 4 | 3 | 4 | 1 | 3 | extern (Dreh), offen |

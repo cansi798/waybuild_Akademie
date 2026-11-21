@@ -4,21 +4,23 @@
 export const RECHT_GEPRUEFT = false;
 
 /** Datum der Fassung (wird auf allen vier Seiten als „Stand“ gezeigt). */
-export const RECHT_STAND = '13.11.2026';
+export const RECHT_STAND = '21.11.2026';
 
-/** Firmendaten für die Rechtstexte. Übernommen aus dem Impressum der Firmen-Website (waybuild_website, src/config/site.ts).
- *  Felder mit `null` sind dort noch offen und erscheinen als markierter Platzhalter <mark>[…]</mark>. */
+/** Firmendaten für die Rechtstexte. Stand 21.11.2026: Anschrift, Registergericht und Registernummer laut
+ *  Handelsregisterauszug (Angabe Can, 15.11.2026). Felder mit `null` sind noch offen und erscheinen als markierter
+ *  Platzhalter <mark>[…]</mark> – nie erfinden. */
 export const FIRMA = {
   name: 'Waybuild UG (haftungsbeschränkt)',
-  strasse: 'Rathausallee 76',
-  plz: '22846',
+  strasse: 'Kuno-Liesenberg-Kehre 32a',
+  plz: '22844',
   ort: 'Norderstedt',
   land: 'Deutschland',
   geschaeftsfuehrer: 'Can Siebert',
   /** Noch keine bestätigte Telefonnummer → bewusst offen (Platzhalter). */
   telefon: null as string | null,
-  registergericht: null as string | null,
-  registernummer: null as string | null,
+  registergericht: 'Amtsgericht Kiel' as string | null,
+  registernummer: 'HRB 29883 KI' as string | null,
+  /** USt-IdNr. bzw. Wirtschafts-IdNr. unbekannt → offen (§ 5 Abs. 1 Nr. 6 DDG: nur angeben, wenn vorhanden). */
   ustId: null as string | null,
 } as const;
 
