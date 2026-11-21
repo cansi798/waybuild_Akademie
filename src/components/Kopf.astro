@@ -116,7 +116,7 @@ const istAktiv = (p: string) => (pfad === href(p) || (p !== '/' && pfad.startsWi
       for (const a of document.querySelectorAll<HTMLAnchorElement>('a[data-kopf-anfrage], a[data-kopf-anfrage-menue]')) {
         a.setAttribute('href', ziel);
         // Sprung zum Formular auf derselben Seite: Fokus ins Namensfeld (Loop R9)
-        if (ziel === '#anfrage') a.addEventListener('click', () => setTimeout(() => document.getElementById('anfrage-name')?.focus({ preventScroll: true }), 0));
+        if (ziel === '#anfrage') a.addEventListener('click', () => setTimeout(() => (document.querySelector<HTMLElement>('#anfrage :is(select, input)[required]:invalid') ?? document.getElementById('anfrage-name'))?.focus({ preventScroll: true }), 0));
       }
   }
   const menue = document.querySelector<HTMLDetailsElement>('[data-menue]');

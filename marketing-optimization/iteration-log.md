@@ -133,3 +133,15 @@ checks: {build: pass, chromium_voll: 121 pass / 5 skip, Vorauswahl kurs=ap1-it-b
 qa_gate: PASS_WITH_LIMITATIONS (Selbstprüfung + Tests; kein weiterer QA-Agent)
 verworfen: "Sticky-Leiste Startseite verzögern / „Erst Beruf wählen ↓“ streichen – Startseite ist Gestaltung von start-6771/Can, Risiko 2 → Backlog MKT-019"
 ```
+
+### QA Runde 9 (unabhängig) + Webkit voll auf 5235b6d: 121 pass / 5 skip
+Gate PASS_WITH_LIMITATIONS: „4 Angaben“ stimmt, kein toter Link (Kurzanfrage nutzt dieselbe Kursquelle), autocomplete gültig, #anfrage-name auf 20/20 Seiten. Fixes: Anmelde-Einleitung ohne Angebotsschritt; „name“ füllte Azubi-Namen in Ansprechperson; Fokus übersprang leeres Pflichtfeld „Bereich“.
+
+## Runde 10 – QA-Fixes R9 (23:33–23:40)
+
+```yaml
+round: 10
+files_changed: [src/pages/anmeldung/index.astro, src/components/formulare/AnmeldeFormular.astro (billing organization/name/address-line1), src/components/Kopf.astro (Fokus auf erstes leeres Pflichtfeld), src/pages/kurse/[slug].astro („Kurz fragen – nur Name und E-Mail“)]
+checks: {build: pass, chromium_voll: 120 pass / 1 flaky (axe 1440 /pruefungsvorbereitung/, einzeln 2/2 pass, Seite unverändert) / 5 skip}
+qa_gate: PASS_WITH_LIMITATIONS
+```
