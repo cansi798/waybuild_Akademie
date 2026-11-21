@@ -13,7 +13,7 @@ test.describe('Startseite: Berufsauswahl und Kurzanfrage', () => {
     await expect(page.locator('#bereich-pruefung [data-beruf-wahl]')).toBeVisible();
     await expect(page.locator('[data-video-platzhalter], [data-video]')).toHaveCount(3);
     await expect(page.locator('form#anfrage')).toBeVisible();
-    await expect(page.locator('[data-zusage-anfrage]')).toHaveText('Deine Anfrage ist unverbindlich. Du bekommst ein Angebot per E-Mail – verbindlich wird es erst mit deiner Zusage und unserer Bestätigung.');
+    await expect(page.locator('[data-zusage-anfrage]')).toHaveText('Deine Anfrage ist unverbindlich. Wir melden uns per E-Mail mit Termin und Angebot – verbindlich wird es erst mit deiner Zusage und unserer Bestätigung.');
     await expect(page.locator('main')).not.toContainText('Unverbindlich anmelden');
   });
 

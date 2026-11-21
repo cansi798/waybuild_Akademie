@@ -110,13 +110,17 @@ const istAktiv = (p: string) => (pfad === href(p) || (p !== '/' && pfad.startsWi
   // Seite mit eigener Kurzanfrage (Berufsseite) → dortiges Formular. Ohne JavaScript bleibt es bei /#anfrage.
   {
     const ziel =
-      document.querySelector<HTMLAnchorElement>('a[data-hauptaktion="anfrage"]')?.getAttribute('href') ??
+      document.querySelector<HTMLAnchorElement>('a[data-hauptaktion="anfrage"], a[data-hauptaktion="coaching"]')?.getAttribute('href') ??
       (document.querySelector('form[data-anfrage-formular]#anfrage') ? '#anfrage' : null);
     if (ziel) for (const a of document.querySelectorAll<HTMLAnchorElement>("a[data-kopf-anfrage], a[data-kopf-anfrage-menue]")) a.setAttribute('href', ziel);
   }
   const menue = document.querySelector<HTMLDetailsElement>('[data-menue]');
   if (menue) {
     const knopf = menue.querySelector('summary');
+    // Sprung auf derselben Seite (#anfrage): Menü schließen, sonst verdeckt es das Formular (QA R6)
+    menue.addEventListener('click', (e) => {
+      if ((e.target as Element).closest('a')) menue.open = false;
+    });
     const schliessen = (fokus: boolean) => {
       if (!menue.open) return;
       menue.open = false;
