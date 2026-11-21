@@ -68,7 +68,13 @@ const buchbar = !entwurf && (coaching || termine.length > 0);
 const gemeinsameFragen: FaqId[] = coaching
   ? ['coaching-verbindlich', 'coaching-verschieben', 'coaching-betrieb', 'coaching-technik', 'coaching-wer']
   : ['storno', 'absage', 'betrieb', 'technik', ...(d.saeule === 'ihk-pruefung' ? (['pruefung-anmeldung'] as FaqId[]) : [])];
-const faqEintraege = ohneDoppelte(d.faq, fragen(...gemeinsameFragen));
+// Loop 21.11. (MKT-006): typische Azubi-Einwände („schaffe ich das?“, „verpasst“, „wie läuft ein Abend?“) auffüllen,
+// höchstens 10 Fragen. „verpasst“ nur, wenn die Kursdatei die Frage nicht schon selbst stellt.
+const eigeneVerpasst = d.faq.some((f) => /verpass/i.test(f.frage));
+const einwandFragen: FaqId[] = coaching
+  ? []
+  : [...(pruefungskurs ? (['fachwissen'] as FaqId[]) : []), ...(eigeneVerpasst ? [] : (['verpasst'] as FaqId[])), 'kursabend'];
+const faqEintraege = ohneDoppelte(d.faq, fragen(...gemeinsameFragen), fragen(...einwandFragen)).slice(0, 10);
 
 const abschnitte = [
   { id: 'ueberblick', name: 'Überblick' },
@@ -175,6 +181,7 @@ const schema =
           </div>
           <a href={aktion.url} class="btn btn-accent mt-5 w-full rounded-full" data-hauptaktion={aktion.daten}>{aktion.text}</a>
           {buchbar && <Risikoumkehr variante={coaching ? 'coaching' : 'kurs'} ton="dunkel" class="mt-4" />}
+          {buchbar && !coaching && <p class="mt-3 text-sm text-white/85" data-kopf-zahler>Rechnung an dich oder {d.saeule === 'ihk-pruefung' ? 'deinen Ausbildungsbetrieb' : 'deinen Arbeitgeber'} · ab 3 Personen 10 % Rabatt</p>}
           {!coaching && !naechster && <p class="mt-3 text-sm text-white/80">Merk dir den Kurs unverbindlich vor.</p>}
         </div>
 
@@ -338,7 +345,7 @@ const schema =
             <div class:list={['grid gap-3 text-sm', !coaching && 'mt-5 border-t border-white/20 pt-5 text-white/85', coaching && 'text-gedaempft']}>
               {d.preis.hinweis && <p>{d.preis.hinweis}</p>}
               {ihk && !coaching && !hinweisEnthaeltIhk && <p>Die Prüfungsgebühr deiner IHK ist nicht enthalten.</p>}
-              {!coaching && <p>Ab 3 Personen in einer Anmeldung gibt es 10 % Rabatt.</p>}
+              {!coaching && <p>Ab 3 Personen in einer Anmeldung gibt es 10 % Rabatt – {d.saeule === 'ihk-pruefung' ? 'praktisch, wenn dein Ausbildungsbetrieb mehrere Azubis anmeldet.' : 'praktisch, wenn dein Arbeitgeber mehrere Kollegen anmeldet.'}</p>}
               {d.preis.raten && <p class="rounded-xl bg-white/10 p-3 font-semibold text-white" data-raten>Ratenzahlung ohne Aufpreis möglich – gib es bei der Anmeldung an; den Ratenplan findest du in deiner Rechnung.</p>}
             </div>
           </div>
