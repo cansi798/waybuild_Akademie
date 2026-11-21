@@ -17,7 +17,6 @@ export const GET: APIRoute = async () => {
         dauer: k.dauer,
         zeiten: k.zeiten,
         preis: k.preis,
-        raten: k.raten,
         pakete: k.pakete.map(({ id, name, betrag, beschreibung }) => ({ id, name, betrag, beschreibung })),
         termine: k.termine.map(({ id, start, ende, anmeldeschluss, pruefung }) => ({ id, start, ende, anmeldeschluss, pruefung: pruefung ?? null })),
       },

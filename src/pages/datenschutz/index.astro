@@ -250,24 +250,35 @@ const abschnitte = [
 
   <h2 id="unterricht">Live-Unterricht per Videokonferenz</h2>
   <p>
-    Unser Unterricht findet ausschließlich live per Videokonferenz statt. Wir nutzen dafür eine selbst betriebene
-    Videokonferenz-Software (Jitsi Meet) auf unserem gemieteten Server bei Contabo (siehe oben); es ist kein
-    Videokonferenz-Dienst eines anderen Anbieters eingebunden.{' '}
-    <Luecke text="Annahme – bitte bestätigen: Unterricht läuft über die eigene Jitsi-Instanz" />
+    Unser Unterricht findet ausschließlich live per Videokonferenz statt. Wir nutzen dafür unsere <strong>eigene
+    Videokonferenz</strong>: die Open-Source-Software Jitsi Meet, die wir selbst auf unserem gemieteten Server bei Contabo
+    betreiben (derselbe Server wie unsere Nextcloud, siehe oben). Ein Videokonferenz-Dienst eines anderen Anbieters (zum
+    Beispiel Zoom, Microsoft Teams oder Google Meet) ist nicht eingebunden.
+  </p>
+  <p>
+    <strong>So kommst du in den Unterricht:</strong> Vor Kursbeginn bekommst du per E-Mail einen persönlichen Zugang zu
+    unserer Nextcloud und den Link zum Live-Raum, zum Beispiel https://nextcloud.waybuild.de/meeting/&lt;raum&gt;. Der Link
+    führt zuerst zur Anmeldung in unserer Nextcloud. Erst nach der Anmeldung leitet dich die Nextcloud mit einer kurzlebigen,
+    signierten Zugangsberechtigung (gültig 2 Stunden) in den Live-Raum weiter. Ohne Anmeldung kommt niemand in den Raum;
+    Gastzugänge sind abgeschaltet.
   </p>
   <dl class="recht-liste">
-    <dt>Daten</dt>
-    <dd>dein Anzeigename, Bild und Ton, solange du Kamera und Mikrofon einschaltest, Chat-Nachrichten während des Termins, technische Verbindungsdaten (IP-Adresse, Gerät, Zeitpunkt)</dd>
+    <dt>Daten für deinen Nextcloud-Zugang</dt>
+    <dd>Name, E-Mail-Adresse, Benutzername und Passwort (nur verschlüsselt als Prüfwert gespeichert), Zeitpunkt und IP-Adresse der Anmeldungen</dd>
+    <dt>Daten im Live-Raum</dt>
+    <dd>dein Name und deine E-Mail-Adresse aus dem Nextcloud-Zugang (der Name ist für die Gruppe sichtbar), Bild und Ton, solange du Kamera und Mikrofon einschaltest, Chat-Nachrichten während des Termins, technische Verbindungsdaten (IP-Adresse, Gerät, Browser, Zeitpunkt)</dd>
     <dt>Zweck</dt>
-    <dd>Durchführung des gebuchten Unterrichts</dd>
+    <dd>Durchführung des gebuchten Unterrichts; die Anmeldung stellt sicher, dass nur Teilnehmende des Kurses und die Lehrkraft im Raum sind</dd>
     <dt>Rechtsgrundlage</dt>
     <dd>Art. 6 Abs. 1 lit. b DSGVO (Vertrag)</dd>
+    <dt>Verbindung</dt>
+    <dd>Bild und Ton laufen über unseren eigenen Server, nicht direkt zwischen den Geräten der Teilnehmenden. Die Videokonferenz lädt keine Inhalte anderer Anbieter nach (keine Profilbilder von Fremddiensten, keine Analyse- oder Statistikdienste).</dd>
     <dt>Keine Aufzeichnung</dt>
-    <dd>Wir zeichnen weder Bild noch Ton auf; auch Teilnehmenden ist das Aufzeichnen untersagt. Kamera und Mikrofon kannst du selbst ein- und ausschalten.</dd>
+    <dd>Aufzeichnung und Live-Streaming sind technisch abgeschaltet; wir zeichnen weder Bild noch Ton auf. Auch Teilnehmenden ist das Aufzeichnen untersagt. Kamera und Mikrofon kannst du selbst ein- und ausschalten.</dd>
     <dt>Speicherdauer</dt>
-    <dd>Bild, Ton und Chat werden nur während des Termins übertragen und nicht gespeichert; technische Verbindungsprotokolle des Servers werden nach <Luecke text="bitte ergänzen: Löschfrist der Server-Protokolle" /> gelöscht</dd>
+    <dd>Bild, Ton und Chat werden nur während des Termins übertragen und nicht gespeichert. Technische Verbindungsprotokolle des Servers löschen wir nach <Luecke text="bitte ergänzen: Löschfrist der Server-Protokolle (Nextcloud und Videokonferenz)" />. Deinen Nextcloud-Zugang löschen wir nach Ende deines Kurses, spätestens <Luecke text="bitte festlegen: Frist nach Kursende (Empfehlung: 4 Wochen)" />.</dd>
   </dl>
-  <p>Den Zugangslink zum Unterricht bekommst du per E-Mail. Bitte gib ihn nicht weiter.</p>
+  <p>Den Link und deinen Zugang zum Unterricht bekommst du per E-Mail. Bitte gib beides nicht weiter.</p>
 
   <h2 id="empfaenger">Empfänger und Drittländer</h2>
   <p>Wir geben deine Daten nur weiter, wenn es für die genannten Zwecke nötig ist:</p>
@@ -300,6 +311,7 @@ const abschnitte = [
         <tr><td>Rechnungen und Buchungsbelege</td><td>8 Jahre ab Ende des Kalenderjahres</td></tr>
         <tr><td>Widerrufe</td><td>3 Jahre zum Jahresende (Verjährung); Belege einer Rückzahlung 8 Jahre</td></tr>
         <tr><td>Videokonferenz (Bild, Ton, Chat)</td><td>keine Speicherung</td></tr>
+        <tr><td>Nextcloud-Zugang für den Unterricht</td><td>nach Kursende, spätestens <Luecke text="Frist festlegen" /></td></tr>
       </tbody>
     </table>
   </div>

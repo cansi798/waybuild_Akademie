@@ -438,9 +438,9 @@ Gleichzeitig prüfen, ob Texte auf anderen Seiten angepasst werden müssen (FAQ 
 6. **Rechnung schreiben** (erst nach der Buchungsbestätigung) – an die Privatperson oder an die Rechnungs-E-Mail der Firma.
    - Vorgangsnummer und ggf. Bestellnummer angeben.
    - Fälligkeit laut Teilnahmebedingungen.
-   - Bei langen Weiterbildungen mit `raten: true` auf Wunsch einen Ratenplan.
+   - Bei langen Weiterbildungen in Abschnitten: eine Rechnung je gebuchtem Abschnitt. Ratenzahlung bieten wir nicht an.
 7. **Zahlungseingang** prüfen.
-8. **Zugang zum Live-Raum:** Vor Kursbeginn jeder teilnehmenden Person einzeln per E-Mail schicken. Der Zugangslink steht nie auf der Website.
+8. **Zugang zum Live-Raum:** Vor Kursbeginn jeder teilnehmenden Person einzeln per E-Mail schicken: persönlicher Nextcloud-Zugang und Link zum Live-Raum `https://nextcloud.waybuild.de/meeting/<raum>` (Raumname nur a–z, 0–9, Bindestrich). Der Unterricht läuft über unsere eigene Jitsi-Instanz, Gäste ohne Nextcloud-Anmeldung kommen nicht hinein. Der Zugangslink steht nie auf der Website.
 
 **Andere Mails**
 

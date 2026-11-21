@@ -17,7 +17,7 @@ const titel = [
   ['coaching', 'Prüfungscoaching'],
   ['preise', 'Preise'],
   ['zahlung', 'Rechnung und Zahlung'],
-  ['raten', 'Ratenzahlung bei langen Weiterbildungen'],
+  ['abschnitte', 'Lange Weiterbildungen in Abschnitten, keine Ratenzahlung'],
   ['gruppen', 'Mehrere Teilnehmende und Gruppenrabatt'],
   ['storno', 'Rücktritt durch Teilnehmende'],
   ['ersatz', 'Ersatzperson'],
@@ -155,6 +155,12 @@ const nr = (id: (typeof titel)[number][0]) => abschnitte.find((x) => x.id === id
     du selbst verantwortlich.
   </p>
   <p>
+    (6) Den Live-Unterricht führen wir über unsere <strong>eigene Videokonferenz</strong> (Jitsi Meet auf unserem Server)
+    durch, nicht über den Videodienst eines anderen Anbieters. Vor Kursbeginn bekommst du per E-Mail einen persönlichen
+    Zugang zu unserer Nextcloud und den Link zum Live-Raum (Form: https://nextcloud.waybuild.de/meeting/&lt;raum&gt;). Du
+    meldest dich mit deinem Nextcloud-Zugang an; ohne Anmeldung ist keine Teilnahme möglich.
+  </p>
+  <p>
     <Luecke text="Anwalt prüfen: Einordnung als synchroner Live-Unterricht ohne ZFU-Zulassung (FernUSG; BGH III ZR 137/25) für jeden Kurstyp, besonders lange Weiterbildungen" />
   </p>
 
@@ -189,25 +195,31 @@ const nr = (id: (typeof titel)[number][0]) => abschnitte.find((x) => x.id === id
   <p>
     (1) Eine Online-Zahlung gibt es nicht. Nach der Buchungsbestätigung bekommst du eine Rechnung per E-Mail. Der
     Rechnungsbetrag ist innerhalb von 14 Tagen nach Erhalt der Rechnung fällig, spätestens jedoch vor Kursbeginn, und wird
-    per Überweisung auf das in der Rechnung genannte Konto gezahlt. Ist Ratenzahlung vereinbart, gilt Nr. {nr('raten')}.
+    per Überweisung auf das in der Rechnung genannte Konto gezahlt. Bei Weiterbildungen in Abschnitten bekommst du für jeden
+    Abschnitt eine eigene Rechnung (Nr. {nr('abschnitte')}).
   </p>
   <p>
     (2) Wählst du „Mein Betrieb zahlt“, stellen wir die Rechnung an den angegebenen Betrieb.
   </p>
 
-  <h2 id="raten">{h('raten')}</h2>
+  <h2 id="abschnitte">{h('abschnitte')}</h2>
   <p>
-    (1) Bei langen Weiterbildungen, bei denen die Kursseite das ausdrücklich anbietet, kannst du die Teilnahmegebühr nach
-    Vereinbarung in gleichen Monatsraten zahlen. Es entstehen <strong>keine Zinsen, Gebühren oder Aufschläge</strong>; der
-    Gesamtbetrag ist derselbe wie bei Einmalzahlung.
+    (1) Lange IHK-Weiterbildungen (zum Beispiel Fachwirt, Meister oder Betriebswirt) sind in Abschnitte aufgeteilt. Anzahl
+    der Abschnitte, Abende je Abschnitt und Preis je Abschnitt stehen auf der Kursseite; der Gesamtpreis ist die Summe aller
+    Abschnitte.
   </p>
   <p>
-    (2) Jede Rate ist die Vergütung für den jeweils folgenden Unterrichtsabschnitt und wird zu Beginn dieses Abschnitts
-    fällig. Den Ratenplan nennen wir im Buchungsangebot. Eine Klausel, nach der bei Verzug der gesamte Restbetrag sofort
-    fällig wird, gibt es nicht; bei Verzug gelten die gesetzlichen Regeln.
+    (2) Jeden Abschnitt buchst und bezahlst du <strong>einzeln</strong>: Für jeden Abschnitt kommt ein eigener Vertrag nach
+    Nr. {nr('vertragsschluss')} zustande, und du bekommst für jeden Abschnitt eine eigene Rechnung. Mit der Buchung eines
+    Abschnitts verpflichtest du dich nicht, weitere Abschnitte zu buchen.
   </p>
   <p>
-    <Luecke text="Anwalt prüfen: Verbraucherkreditrecht seit 20.11.2026 (§ 506 BGB n. F.; Ausnahme nur für unentgeltlichen Zahlungsaufschub bis 50 Tage) – trägt die Teilvergütung je Abschnitt?" />
+    (3) Eine <strong>Ratenzahlung</strong> oder eine andere Teilzahlung des Preises eines Kurses oder Abschnitts bieten wir
+    nicht an.
+  </p>
+  <p>
+    <Luecke text="bitte festlegen: bis wann der Folgeabschnitt gebucht sein muss, damit der Platz in derselben Gruppe frei bleibt (Empfehlung: 14 Tage vor dessen Beginn)" />{' '}
+    <Luecke text={`Anwalt prüfen: Abschnitte als jeweils eigene Verträge (Verbraucherkreditrecht seit 20.11.2026, Kündigungsregel Nr. ${nr('kuendigung')}, FernUSG)`} />
   </p>
 
   <h2 id="gruppen">{h('gruppen')}</h2>
