@@ -51,18 +51,18 @@ export const UNTERRICHT = {
 export const VIDEOS = {
   pruefung: {
     id: 'akademie-pruefung',
-    titel: 'Prüfungsvorbereitung in 60 Sekunden',
-    text: 'Can und Jamil (Geschäftsführung) erklären, wie die Prüfungsvorbereitung der waybuild Akademie abläuft: Beruf wählen, unverbindlich anfragen, abends live online üben – mit prüfungsnahen Aufgaben für AP1 und AP2.',
+    titel: 'Prüfungsvorbereitung kurz erklärt',
+    text: 'Jamil: Deine IHK-Abschlussprüfung rückt näher – und du weißt nicht, wo du anfangen sollst? Can: Dann bist du hier richtig: Wir bereiten dich gezielt auf AP1 und AP2 vor. Jamil: Für kaufmännische Berufe und für IT-Berufe. Can: Abends von 17 bis 20 Uhr, live online – deine Fragen stellst du direkt im Unterricht. Jamil: Wir trainieren prüfungsnahe Aufgaben – mit Dozenten mit IHK-Prüfer-Erfahrung. Can: So gehst du mit einem klaren Plan in deine Prüfung. Jamil: Faire Festpreise – den Preis siehst du direkt beim Kurs. Can: Deine Anfrage ist unverbindlich. Verbindlich wird es erst nach Bestätigung per E-Mail. Jamil und Can: Frag jetzt unverbindlich an – direkt hier unter dem Video.',
   },
   ihk: {
     id: 'akademie-ihk-weiterbildung',
     titel: 'IHK-Weiterbildung neben dem Job',
-    text: 'Can und Jamil (Geschäftsführung) erklären, wie du dich berufsbegleitend auf eine IHK-Fortbildungsprüfung vorbereitest – zum Beispiel zum Fachwirt oder Betriebswirt. Die Prüfung legst du bei deiner IHK ab.',
+    text: 'Can: Du willst beruflich weiterkommen – ohne deinen Job aufzugeben? Jamil: Dann mach deine IHK-Weiterbildung berufsbegleitend bei der waybuild Akademie. Can: Zum Beispiel Fachwirt, Betriebswirt, Bilanzbuchhalter oder Meister. Jamil: Der Unterricht läuft abends von 17 bis 20 Uhr, live online. Can: Deine Fragen stellst du direkt im Unterricht – und bekommst gleich eine Antwort. Jamil: Schritt für Schritt bereiten wir dich auf deine IHK-Prüfung vor. Can: Faire Festpreise – den Preis siehst du direkt beim Kurs. Jamil: Deine Anfrage ist unverbindlich. Verbindlich wird es erst nach Bestätigung per E-Mail. Jamil und Can: Frag jetzt unverbindlich an – direkt hier unter dem Video.',
   },
   akademie: {
     id: 'akademie-weiterbildung',
     titel: 'Weiterbildung der waybuild Akademie',
-    text: 'Can und Jamil (Geschäftsführung) stellen die eigenen Kurse der waybuild Akademie vor: KI, IT und Programmierung – praxisnah, live online und mit Teilnahmezertifikat der Akademie.',
+    text: 'Jamil: KI, IT oder Programmierung – willst du das endlich selbst anwenden? Can: Dann schau dir die eigenen Kurse der waybuild Akademie an. Jamil: Zum Beispiel KI im Büroalltag, KI-Automatisierung und Workflows oder KI-Manager. Can: Oder Python-Programmierung, Webentwicklung und IT-Sicherheit im Unternehmen. Jamil: Alles abends von 17 bis 20 Uhr, live online – Schritt für Schritt mit eigenen Übungen. Can: Du fragst direkt nach, statt allein vor Videos zu sitzen. Jamil: Faire Festpreise – den Preis siehst du beim jeweiligen Kurs. Can: Deine Anfrage ist unverbindlich. Verbindlich wird es erst nach Bestätigung per E-Mail. Jamil und Can: Frag jetzt unverbindlich an – direkt hier unter dem Video.',
   },
 } as const;
 
