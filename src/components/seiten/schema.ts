@@ -90,6 +90,8 @@ export function kursSchema(kurs: Kurs, termine: Termin[], site: URL | undefined,
     '@type': 'Course',
     '@id': `${url}#kurs`,
     name: d.titel,
+    // Loop 21.11. (MKT-010): Beruf/Fachrichtung aus dem Untertitel für die Suchintention („AP2 Fachinformatiker …“)
+    alternateName: `${d.titel} – ${d.untertitel}`,
     description: d.kurzbeschreibung,
     url,
     inLanguage: 'de',

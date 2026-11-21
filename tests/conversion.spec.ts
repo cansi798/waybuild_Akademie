@@ -57,8 +57,8 @@ test.describe('Hauptaktion und Kursseite', () => {
     await page.goto('./kurse/ap1-it-berufe/');
     await expect(page.locator('[data-hauptaktion]')).toHaveText('Unverbindlich anfragen');
     await expect(page.locator('[data-hauptaktion]')).toHaveAttribute('href', /\/anmeldung\/\?kurs=ap1-it-berufe$/);
-    await expect(page.locator('[data-kopf-verbindlich]')).toContainText('verbindlich erst mit unserer Buchungsbestätigung per E-Mail');
-    await expect(page.locator('[data-cta-leiste] a')).toHaveText('Unverbindlich anfragen');
+    await expect(page.locator('[data-kopf-verbindlich]')).toContainText('verbindlich erst mit deiner Zusage und unserer Buchungsbestätigung per E-Mail');
+    await expect(page.locator('[data-cta-leiste] a')).toHaveText('Anfragen');
     await page.goto('./pruefungsvorbereitung/');
     const karte = page.locator('[data-kurskarte="ap1-it-berufe"] a.btn');
     await expect(karte).toContainText('Termin wählen');
