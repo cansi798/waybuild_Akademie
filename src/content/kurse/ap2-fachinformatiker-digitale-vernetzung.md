@@ -46,11 +46,11 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: ap2-fidv-2027-sommer
-    start: 2027-03-11
-    ende: 2027-04-15
+    start: 2027-03-18
+    ende: 2027-04-22
     pruefung: 2027-04-28
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-03-04
+    anmeldeschluss: 2027-03-11
     ausfall:
       - 2027-03-25
   - id: ap2-fidv-2027-winter

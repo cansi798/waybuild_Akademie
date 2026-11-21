@@ -11,7 +11,7 @@ dauer: ca. 10 Monate (130 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 3239
-  hinweis: "Gesamtpreis für alle 11 Abschnitte. Gesamtpreis für alle 11 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  hinweis: "Gesamtpreis für alle 11 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
   abschnitte:
     anzahl: 11
     abende: 12

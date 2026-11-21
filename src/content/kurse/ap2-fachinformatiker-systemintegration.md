@@ -44,11 +44,11 @@ inhalte:
 abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du bei deiner zuständigen IHK ab.
 termine:
   - id: ap2-2027-sommer
-    start: 2027-03-11
-    ende: 2027-04-15
+    start: 2027-03-18
+    ende: 2027-04-22
     pruefung: 2027-04-28
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-03-04
+    anmeldeschluss: 2027-03-11
     ausfall:
       - 2027-03-25
   - id: ap2-2027-winter
@@ -61,7 +61,7 @@ faq:
   - frage: Bereitet der Kurs auch auf die Projektarbeit vor?
     antwort: Der Kurs konzentriert sich auf die schriftlichen Prüfungsbereiche. Für Projektantrag, Dokumentation, Präsentation und Fachgespräch gibt es unser individuelles Prüfungscoaching.
   - frage: Findet an Gründonnerstag Unterricht statt?
-    antwort: Nein. Gründonnerstag (25.03.2027) ist frei, ebenso Karfreitag und Ostermontag. Die Zahl der Abende bleibt gleich, der Kurs endet wie geplant am 15.04.2027.
+    antwort: Nein. Gründonnerstag (25.03.2027) ist frei, ebenso Karfreitag und Ostermontag. Die Zahl der Abende bleibt gleich, der Kurs endet wie geplant am 22.04.2027.
   - frage: Ist der Kurs eine offizielle IHK-Veranstaltung?
     antwort: Nein. Der Kurs ist ein unabhängiges Angebot der waybuild Akademie. Die Prüfung legst du bei deiner zuständigen IHK ab.
   - frage: Was ist, wenn ich einen Abend verpasse?
