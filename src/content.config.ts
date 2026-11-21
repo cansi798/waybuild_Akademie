@@ -21,9 +21,22 @@ const kurse = defineCollection({
     ue: z.number().int().positive().optional(),
     /** "ca. 5 Wochen", "ca. 14 Monate" */
     dauer: z.string(),
-    /** "Di + Do, 17:00–20:00 Uhr" (Abendraster: 4 UE je Abend) */
+    /** "Di + Do, 17:00–20:00 Uhr" (Abendraster: 4 UE je Abend inkl. kurzer Pause) */
     zeiten: z.string(),
-    preis: z.object({ betrag: z.number(), hinweis: z.string().optional(), raten: z.boolean().default(false) }),
+    preis: z.object({
+      /** Endpreis; bei Lehrgängen mit Abschnitten der Gesamtpreis aller Abschnitte */
+      betrag: z.number(),
+      hinweis: z.string().optional(),
+      /** Lange IHK-Weiterbildungen: einzeln buchbare und bezahlbare Abschnitte à 12 Abende (Can #6801) */
+      abschnitte: z
+        .object({
+          anzahl: z.number().int().positive(),
+          abende: z.number().int().positive(),
+          betrag: z.number(),
+          letzter: z.object({ abende: z.number().int().positive(), betrag: z.number() }).optional(),
+        })
+        .optional(),
+    }),
     /** nur Coaching */
     pakete: z.array(z.object({ name: z.string(), betrag: z.number(), beschreibung: z.string() })).optional(),
     zielgruppe: z.array(z.string()),

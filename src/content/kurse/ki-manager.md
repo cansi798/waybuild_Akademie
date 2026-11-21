@@ -10,9 +10,8 @@ ue: 64
 dauer: ca. 9 Wochen (16 Abende)
 zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 399
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Vorlagen für Anwendungsfall-Bewertung und KI-Richtlinie sowie Zertifikat
-  raten: true
+  betrag: 539
+  hinweis: "Entspricht rund 399 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Vorlagen für Anwendungsfall-Bewertung und KI-Richtlinie sowie Zertifikat"
 zielgruppe:
 - Fach- und Führungskräfte ohne KI-Vorkenntnisse
 - Projektverantwortliche für Digitalisierung
@@ -78,8 +77,8 @@ faq:
   antwort: Das Zertifikat bekommst du nach regelmäßiger Teilnahme am Live-Unterricht und der Vorstellung deines Vorhabens in der Gruppe.
 - frage: Ist das ein IHK-Abschluss?
   antwort: Nein. Das Zertifikat der waybuild Akademie beschreibt Inhalte und Umfang der 64 Unterrichtseinheiten und ist kein öffentlich-rechtlicher Abschluss.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis – zum Beispiel in zwei Monatsraten über die Kursdauer. Den Ratenplan findest du in deiner Rechnung.
+- frage: Wie bezahle ich den Kurs?
+  antwort: 'In einem Betrag per Überweisung, sobald du die Rechnung per E-Mail bekommen hast. Zahlt dein Betrieb, wähle bei der Anmeldung „Mein Betrieb zahlt“.'
 reihenfolge: 10
 ---
 

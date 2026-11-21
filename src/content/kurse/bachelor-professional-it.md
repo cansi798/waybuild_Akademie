@@ -10,9 +10,12 @@ ue: 720
 dauer: ca. 14 Monate (180 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4489
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 4485
+  hinweis: "Gesamtpreis für alle 15 Abschnitte. Gesamtpreis für alle 15 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 15
+    abende: 12
+    betrag: 299
 zielgruppe:
 - Fachinformatikerinnen und Fachinformatiker sowie andere IT-Fachkräfte mit Berufspraxis
 - Berufsspezialistinnen und Berufsspezialisten im IT-Bereich
@@ -59,8 +62,8 @@ faq:
   antwort: Laut Fortbildungsordnung bist du nach bestandener Prüfung vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Der praktische Teil bleibt, wenn du den AEVO-Nachweis haben möchtest.
 - frage: Reichen 720 Unterrichtseinheiten?
   antwort: Die Fortbildungsordnung nennt einen Lernumfang von in der Regel mindestens 1.200 Stunden. Darin steckt neben dem Unterricht auch die Arbeit an deinem eigenen IT-Projekt, die ohnehin im Betrieb stattfindet. Unsere 720 Live-Einheiten decken alle Prüfungsteile ab; wie viel Zeit du darüber hinaus einplanst, entscheidest du selbst.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Bachelor Professional in IT“ in 14 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 15 Abschnitte aufgeteilt: 15 Abschnitte mit je 12 Abenden für je 299 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 4.485 €.'
 reihenfolge: 36
 ---
 

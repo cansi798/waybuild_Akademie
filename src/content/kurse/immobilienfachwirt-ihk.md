@@ -10,9 +10,15 @@ ue: 600
 dauer: ca. 12 Monate (150 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3739
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3737
+  hinweis: "Gesamtpreis für alle 13 Abschnitte. Gesamtpreis für alle 13 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 13
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 6
+      betrag: 149
 zielgruppe:
 - Immobilienkaufleute mit Berufserfahrung
 - Mitarbeitende aus Hausverwaltung, Vermietung, Makler- oder Bauträgerunternehmen
@@ -62,8 +68,8 @@ faq:
   antwort: Schon bei der ersten schriftlichen Prüfungsleistung. Das Thema darf aus jedem Handlungsbereich kommen. Mögliche Themen sammeln wir rechtzeitig vorher im Live-Unterricht.
 - frage: Was ist mit der AEVO?
   antwort: Nach der Fortbildungsordnung ersetzt die bestandene Prüfung den schriftlichen Teil der Ausbildereignungsprüfung. Wenn du den AEVO-Nachweis möchtest, legst du bei der IHK noch den praktischen Teil ab.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Immobilienfachwirt/in“ in 12 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 13 Abschnitte aufgeteilt: 12 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 6 Abenden für 149 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.737 €.'
 reihenfolge: 44
 ---
 

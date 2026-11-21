@@ -3,16 +3,15 @@ saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: Vorbereitung auf die IHK-Abschlussprüfung Teil 2 (AP2)
 untertitel: Fachinformatiker/in Fachrichtung Systemintegration
-kurzbeschreibung: Gezielte Vorbereitung auf die schriftlichen Prüfungsbereiche der AP2 Systemintegration – IT-Systeme, Netzwerke sowie Wirtschafts- und Sozialkunde – live online an 12 Abenden.
+kurzbeschreibung: Gezielte Vorbereitung auf die schriftlichen Prüfungsbereiche der AP2 Systemintegration – IT-Systeme, Netzwerke sowie Wirtschafts- und Sozialkunde – live online an 10 Abenden.
 status: freigegeben
 art: kurs
-ue: 48
-dauer: ca. 7 Wochen (12 Abende)
+ue: 40
+dauer: ca. 6 Wochen (10 Abende)
 zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die Prüfungsgebühr deiner IHK ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende Fachinformatiker/innen Systemintegration vor der AP2
   - Umschülerinnen und Umschüler der Fachrichtung Systemintegration
@@ -46,23 +45,23 @@ abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du b
 termine:
   - id: ap2-2027-sommer
     start: 2027-03-11
-    ende: 2027-04-22
+    ende: 2027-04-15
     pruefung: 2027-04-28
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-03-04
     ausfall:
       - 2027-03-25
   - id: ap2-2027-winter
-    start: 2027-10-07
+    start: 2027-10-14
     ende: 2027-11-16
     pruefung: 2027-11-24
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-09-30
+    anmeldeschluss: 2027-10-07
 faq:
   - frage: Bereitet der Kurs auch auf die Projektarbeit vor?
     antwort: Der Kurs konzentriert sich auf die schriftlichen Prüfungsbereiche. Für Projektantrag, Dokumentation, Präsentation und Fachgespräch gibt es unser individuelles Prüfungscoaching.
   - frage: Findet an Gründonnerstag Unterricht statt?
-    antwort: Nein. Gründonnerstag (25.03.2027) ist frei, ebenso Karfreitag und Ostermontag. Die Zahl der Abende bleibt gleich, der Kurs endet wie geplant am 22.04.2027.
+    antwort: Nein. Gründonnerstag (25.03.2027) ist frei, ebenso Karfreitag und Ostermontag. Die Zahl der Abende bleibt gleich, der Kurs endet wie geplant am 15.04.2027.
   - frage: Ist der Kurs eine offizielle IHK-Veranstaltung?
     antwort: Nein. Der Kurs ist ein unabhängiges Angebot der waybuild Akademie. Die Prüfung legst du bei deiner zuständigen IHK ab.
   - frage: Was ist, wenn ich einen Abend verpasse?

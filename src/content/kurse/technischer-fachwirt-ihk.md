@@ -10,9 +10,15 @@ ue: 700
 dauer: ca. 14 Monate (175 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4369
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 4365
+  hinweis: "Gesamtpreis für alle 15 Abschnitte. Gesamtpreis für alle 15 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 15
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 7
+      betrag: 179
 zielgruppe:
 - Fachkräfte aus Technik und Produktion, die Kaufmännisches dazulernen wollen
 - Kaufleute in Industriebetrieben, die technische Zusammenhänge verstehen wollen
@@ -55,8 +61,8 @@ faq:
   antwort: Ja. Ein bestandener Technischer Fachwirt (IHK) ist einer der Zugänge zur Prüfung Technische/r Betriebswirt/in. Auch dafür gibt es bei uns einen Lehrgang.
 - frage: Was ist mit der AEVO?
   antwort: Nach bestandenen handlungsspezifischen Qualifikationen kannst du bei der IHK eine zusätzliche praktische Prüfung beantragen. Bestehst du sie, bekommst du ein zusätzliches Zeugnis über die berufs- und arbeitspädagogische Qualifikation.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Technische/r Fachwirt/in“ bieten wir 14 gleiche Monatsraten an, eine pro Monat des rund 14-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 15 Abschnitte aufgeteilt: 14 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 7 Abenden für 179 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 4.365 €.'
 reihenfolge: 34
 ---
 

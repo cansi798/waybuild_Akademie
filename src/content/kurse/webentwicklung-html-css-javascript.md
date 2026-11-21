@@ -10,9 +10,8 @@ ue: 48
 dauer: ca. 6 Wochen (12 Abende)
 zeiten: Mo + Mi, 17:00–20:00 Uhr
 preis:
-  betrag: 299
+  betrag: 399
   hinweis: Inklusive Kursunterlagen, Beispielcode und Zertifikat
-  raten: false
 zielgruppe:
 - Einsteigerinnen und Einsteiger ins Web
 - Fachkräfte aus Marketing und Kommunikation, die Webseiten pflegen

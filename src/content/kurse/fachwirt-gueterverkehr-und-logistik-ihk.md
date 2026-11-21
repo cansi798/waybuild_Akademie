@@ -10,9 +10,15 @@ ue: 560
 dauer: ca. 11 Monate (140 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3489
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3488
+  hinweis: "Gesamtpreis für alle 12 Abschnitte. Gesamtpreis für alle 12 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 12
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 8
+      betrag: 199
 zielgruppe:
 - Kaufleute für Spedition und Logistikdienstleistung mit Berufserfahrung
 - Disponentinnen und Disponenten in Transport und Logistik
@@ -56,8 +62,8 @@ faq:
   antwort: Ja, etwa bei Kosten- und Ertragsanalysen, Kennzahlen und Budgets. Solche Aufgaben rechnen wir regelmäßig gemeinsam im Unterricht.
 - frage: Was ist mit der AEVO?
   antwort: Die Fortbildungsordnung sieht eine Befreiung vom schriftlichen Teil der Ausbildereignungsprüfung vor, wenn du diese Prüfung bestanden hast.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Fachwirt/in für Güterverkehr und Logistik“ in 11 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 12 Abschnitte aufgeteilt: 11 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 8 Abenden für 199 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.488 €.'
 reihenfolge: 41
 ---
 

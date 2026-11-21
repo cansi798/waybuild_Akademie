@@ -12,7 +12,6 @@ zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 249
   hinweis: Inklusive Kursunterlagen, Übungsumgebung für den Live-Unterricht und Zertifikat
-  raten: false
 zielgruppe:
 - Einsteigerinnen und Einsteiger in die IT
 - Fachkräfte aus Einkauf, Projekt und Verwaltung, die mit Cloud-Projekten zu tun haben

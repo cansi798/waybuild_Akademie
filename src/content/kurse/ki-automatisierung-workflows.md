@@ -12,7 +12,6 @@ zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 299
   hinweis: Inklusive Kursunterlagen, Workflow-Vorlagen und Zertifikat
-  raten: false
 zielgruppe:
 - Fachkräfte, die Abläufe im Unternehmen verbessern wollen
 - Teams aus Verwaltung, Vertrieb und Marketing

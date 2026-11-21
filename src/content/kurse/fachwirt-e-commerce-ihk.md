@@ -10,9 +10,15 @@ ue: 600
 dauer: ca. 12 Monate (150 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3739
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3737
+  hinweis: "Gesamtpreis für alle 13 Abschnitte. Gesamtpreis für alle 13 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 13
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 6
+      betrag: 149
 zielgruppe:
 - Kaufleute im E-Commerce oder im Einzelhandel mit Berufserfahrung
 - Mitarbeitende aus Onlineshop, Online-Marketing oder Marktplatzmanagement
@@ -59,8 +65,8 @@ faq:
   antwort: Ja. Die Fortbildungsordnung verlangt ausdrücklich, mehrere Vertriebswege einzubeziehen. Marktplätze, eigener Shop und stationärer Handel kommen deshalb in vielen Fällen zusammen vor.
 - frage: Bin ich danach von der AEVO befreit?
   antwort: Teilweise. Wer die Prüfung bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Den praktischen Teil legst du bei Bedarf noch ab.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Fachwirt/in im E-Commerce“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 12 gleiche Monatsraten über die Kursdauer von rund 12 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 13 Abschnitte aufgeteilt: 12 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 6 Abenden für 149 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.737 €.'
 reihenfolge: 43
 ---
 

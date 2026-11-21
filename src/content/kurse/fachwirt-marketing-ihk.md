@@ -10,9 +10,15 @@ ue: 560
 dauer: ca. 11 Monate (140 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3489
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3488
+  hinweis: "Gesamtpreis für alle 12 Abschnitte. Gesamtpreis für alle 12 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 12
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 8
+      betrag: 199
 zielgruppe:
 - Kaufleute für Marketingkommunikation mit ersten Berufsjahren
 - Fachkräfte aus Marketing, Kommunikation und Vertrieb
@@ -58,8 +64,8 @@ faq:
   antwort: Es muss mindestens einen Marketing-Prüfungsbereich mit „Kommunikation, Führung und Zusammenarbeit“ verknüpfen, etwa die Einführung einer neuen Markenstrategie im Team. Kurzbeschreibung und Gliederung reichst du zur zweiten schriftlichen Prüfungsleistung ein.
 - frage: Was ist mit der AEVO?
   antwort: Wer die Prüfung bestanden hat, ist laut Fortbildungsordnung vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Fachwirt/in für Marketing“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 11 gleiche Monatsraten über die Kursdauer von rund 11 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 12 Abschnitte aufgeteilt: 11 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 8 Abenden für 199 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.488 €.'
 reihenfolge: 31
 ---
 

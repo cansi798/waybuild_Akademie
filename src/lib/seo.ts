@@ -21,7 +21,7 @@ const SEO_KURSE: Record<string, (k: Kurs) => KursSeo> = {
   }),
   'ap2-fachinformatiker-systemintegration': (k) => ({
     titel: 'AP2 Fachinformatiker Systemintegration',
-    beschreibung: `AP2-Vorbereitung für Fachinformatiker Systemintegration: IT-Systeme, Netzwerke und WiSo gezielt prüfungsnah üben – live online an 12 Abenden, ${formatEuro(k.data.preis.betrag)} Endpreis.`,
+    beschreibung: `AP2-Vorbereitung für Fachinformatiker Systemintegration: IT-Systeme, Netzwerke und WiSo gezielt prüfungsnah üben – live online an 10 Abenden, ${formatEuro(k.data.preis.betrag)} Endpreis.`,
   }),
   pruefungscoaching: (k) => ({
     titel: 'Prüfungscoaching 1:1 für IT-Berufe',

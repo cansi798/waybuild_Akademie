@@ -50,6 +50,16 @@ const pruefungskurs = d.saeule === 'ihk-pruefung' && !coaching;
 const umfang = umfangText(kurs);
 const preisLabel = entwurf ? 'Preisvorschlag' : coaching ? 'ab' : 'Teilnahmegebühr';
 const hinweisEnthaeltIhk = /IHK/.test(d.preis.hinweis ?? '');
+// Lange IHK-Weiterbildungen: einzeln buchbare und bezahlbare Abschnitte (Can #6801)
+const preisAbschnitte = d.preis.abschnitte;
+const abschnittZeilen = preisAbschnitte
+  ? (() => {
+      const voll = preisAbschnitte.anzahl - (preisAbschnitte.letzter ? 1 : 0);
+      const z = [`Abschnitt 1${voll > 1 ? `–${voll}` : ''}: je ${preisAbschnitte.abende} Abende, je ${formatEuro(preisAbschnitte.betrag)}`];
+      if (preisAbschnitte.letzter) z.push(`Abschnitt ${preisAbschnitte.anzahl}: ${preisAbschnitte.letzter.abende} Abende, ${formatEuro(preisAbschnitte.letzter.betrag)}`);
+      return z;
+    })()
+  : [];
 
 // Haupt-Handlung: Coaching anfragen | Termin wählen | Interesse vormerken
 const aktion = coaching
@@ -83,7 +93,10 @@ const kerndaten: { name: string; wert: string; breit?: boolean }[] = [
   ...(umfang ? [{ name: 'Umfang', wert: umfang }] : []),
   coaching ? { name: 'Pakete', wert: `${d.pakete?.length ?? 1} zur Wahl` } : { name: 'Dauer', wert: d.dauer },
   { name: 'Format', wert: 'live-online' },
-  { name: entwurf ? 'Preisvorschlag' : 'Preis', wert: `${coaching ? 'ab ' : ''}${formatEuro(d.preis.betrag)}${entwurf ? '' : ' – alles inklusive'}` },
+  {
+    name: entwurf ? 'Preisvorschlag' : 'Preis',
+    wert: `${coaching ? 'ab ' : ''}${formatEuro(d.preis.betrag)}${preisAbschnitte ? ` für ${preisAbschnitte.anzahl} Abschnitte, je einzeln buchbar` : ''}${entwurf ? '' : ' – alles inklusive'}`,
+  },
   { name: coaching ? 'Termine' : 'Zeiten', wert: d.zeiten, breit: true },
 ];
 
@@ -149,7 +162,10 @@ const schema =
             <p data-kopf-preis>
               <span class="block text-sm text-white/75">{coaching ? 'Preis ab' : preisLabel}</span>
               <span class="font-serif text-[2.1rem] leading-none font-semibold tabular-nums">{formatEuro(d.preis.betrag)}</span>
-              <span class="mt-1.5 block text-xs text-white/80">{entwurf ? 'Vorschlag' : coaching ? 'je 60 Minuten, Endpreis' : 'Endpreis, alles inklusive'}</span>
+              <span class="mt-1.5 block text-xs text-white/80">
+                {preisAbschnitte ? `Gesamtpreis, ${preisAbschnitte.anzahl} Abschnitte · ` : ''}
+                {entwurf ? 'Vorschlag' : coaching ? 'je 60 Minuten, Endpreis' : 'Endpreis, alles inklusive'}
+              </span>
             </p>
             {
               coaching ? (
@@ -332,6 +348,16 @@ const schema =
                   <p class="text-sm text-white/75">{preisLabel} je Person</p>
                   <p class="font-serif text-5xl leading-none font-semibold tabular-nums">{formatEuro(d.preis.betrag)}</p>
                   <p class="mt-2 font-semibold text-bernstein">{entwurf ? 'Vorschlag – noch nicht freigegeben' : 'Endpreis, alles inklusive'}</p>
+                  {preisAbschnitte && (
+                    <div class="mt-4 rounded-xl bg-white/10 p-3 text-sm text-white" data-abschnitte>
+                      <p class="font-semibold">Gesamtpreis für {preisAbschnitte.anzahl} Abschnitte – jeden Abschnitt buchst und bezahlst du einzeln:</p>
+                      <ul class="mt-2 grid gap-1">
+                        {abschnittZeilen.map((z) => (
+                          <li>{z}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </>
               )
             }
@@ -339,7 +365,6 @@ const schema =
               {d.preis.hinweis && <p>{d.preis.hinweis}</p>}
               {ihk && !coaching && !hinweisEnthaeltIhk && <p>Die Prüfungsgebühr deiner IHK ist nicht enthalten.</p>}
               {!coaching && <p>Ab 3 Personen in einer Anmeldung gibt es 10 % Rabatt.</p>}
-              {d.preis.raten && <p class="rounded-xl bg-white/10 p-3 font-semibold text-white" data-raten>Ratenzahlung ohne Aufpreis möglich – gib es bei der Anmeldung an; den Ratenplan findest du in deiner Rechnung.</p>}
             </div>
           </div>
           <div class="bg-white p-6 sm:p-7">

@@ -12,7 +12,6 @@ zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 299
   hinweis: "Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende, die vor August 2024 begonnen haben und noch nach der alten Ordnung geprüft werden
   - Prüflinge, die die Abschlussprüfung nach der Ordnung von 2002 wiederholen

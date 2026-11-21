@@ -11,8 +11,7 @@ dauer: ca. 6 Monate (45 Abende)
 zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 1129
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Beispielprojekte und Zertifikat
-  raten: true
+  hinweis: "Entspricht rund 299 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Beispielprojekte und Zertifikat"
 zielgruppe:
 - Quereinsteigerinnen und Quereinsteiger, die in die Softwareentwicklung wechseln wollen
 - Fachkräfte mit ersten Programmiererfahrungen
@@ -70,8 +69,8 @@ faq:
   antwort: In kleinen Teams entwickelt ihr eine Webanwendung mit Datenbank und Schnittstelle, zum Beispiel eine Termin- oder Inventarverwaltung. Ihr arbeitet wie im echten Projekt mit Git, Tests und kurzen Sprints und stellt das Ergebnis zum Schluss vor.
 - frage: Welche Rolle spielt KI beim Programmieren?
   antwort: Wir zeigen, wie KI-Assistenten beim Schreiben, Erklären und Testen von Code helfen. Genauso wichtig ist, ihre Vorschläge zu prüfen – deshalb lernst du zuerst die Grundlagen selbst.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 6 Monaten sind 6 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
+- frage: Wie bezahle ich den Kurs?
+  antwort: 'In einem Betrag per Überweisung, sobald du die Rechnung per E-Mail bekommen hast. Zahlt dein Betrieb, wähle bei der Anmeldung „Mein Betrieb zahlt“.'
 reihenfolge: 23
 ---
 

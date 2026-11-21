@@ -3,16 +3,15 @@ saeule: ihk-pruefung
 kategorie: IT-Berufe
 titel: AP2 Fachinformatiker/in Anwendungsentwicklung
 untertitel: Fachinformatiker/in Fachrichtung Anwendungsentwicklung – schriftliche Prüfung Teil 2
-kurzbeschreibung: Trainiere „Planen eines Softwareproduktes“, „Entwicklung und Umsetzung von Algorithmen“ sowie WiSo an prüfungsnahen Aufgaben – live online an 12 Abenden.
+kurzbeschreibung: Trainiere „Planen eines Softwareproduktes“, „Entwicklung und Umsetzung von Algorithmen“ sowie WiSo an prüfungsnahen Aufgaben – live online an 10 Abenden.
 status: entwurf
 art: kurs
-ue: 48
-dauer: ca. 7 Wochen (12 Abende)
+ue: 40
+dauer: ca. 6 Wochen (10 Abende)
 zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende Fachinformatiker/innen Anwendungsentwicklung vor der AP2
   - Umschülerinnen und Umschüler der Fachrichtung Anwendungsentwicklung
@@ -50,18 +49,18 @@ abschluss: Teilnahmebescheinigung der waybuild Akademie; die Prüfung legst du b
 termine:
   - id: ap2-fiae-2027-sommer
     start: 2027-03-11
-    ende: 2027-04-22
+    ende: 2027-04-15
     pruefung: 2027-04-28
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 28.04.2027 – verbindlich ist die Einladung deiner IHK.
     anmeldeschluss: 2027-03-04
     ausfall:
       - 2027-03-25
   - id: ap2-fiae-2027-winter
-    start: 2027-10-07
+    start: 2027-10-14
     ende: 2027-11-16
     pruefung: 2027-11-24
     pruefungHinweis: Schriftliche Prüfung Teil 2 am Mittwoch, 24.11.2027 – verbindlich ist die Einladung deiner IHK.
-    anmeldeschluss: 2027-09-30
+    anmeldeschluss: 2027-10-07
 faq:
   - frage: Mit welcher Programmiersprache arbeitet ihr?
     antwort: Vor allem mit Pseudocode und SQL. Beispiele zeigen wir zusätzlich in verbreiteten Sprachen wie Java, C# oder Python. In der Prüfung zählt die richtige Logik – welche Schreibweise erlaubt ist, steht in der jeweiligen Aufgabe.

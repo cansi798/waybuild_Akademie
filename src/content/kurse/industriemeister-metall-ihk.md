@@ -10,9 +10,15 @@ ue: 760
 dauer: ca. 15 Monate (190 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4739
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 4734
+  hinweis: "Gesamtpreis für alle 16 Abschnitte. Gesamtpreis für alle 16 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 16
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 10
+      betrag: 249
 zielgruppe:
 - Fachkräfte aus Metallberufen mit Berufserfahrung
 - Vorarbeiterinnen und Vorarbeiter, Schichtleitungen
@@ -62,8 +68,8 @@ faq:
   antwort: Vor dem Start hilft dir unser Vorkurs „Naturwissenschaftliche und technische Grundlagen“. Dort frischst du Rechnen, Formeln und Physik für den Prüfungsbereich „Naturwissenschaftliche und technische Gesetzmäßigkeiten“ auf.
 - frage: Brauche ich den Ausbilderschein schon zu Beginn?
   antwort: Nein. Den Nachweis brauchst du erst vor Beginn der letzten Prüfungsleistung. Unseren AEVO-Kurs kannst du vorher oder nebenbei belegen.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis – zum Beispiel in 15 Monatsraten über die rund 15 Monate Kursdauer. Zahlt dein Arbeitgeber, stellen wir die Rechnung an das Unternehmen.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 16 Abschnitte aufgeteilt: 15 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 10 Abenden für 249 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 4.734 €.'
 reihenfolge: 50
 ---
 

@@ -10,9 +10,15 @@ ue: 760
 dauer: ca. 15 Monate (190 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4739
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 4734
+  hinweis: "Gesamtpreis für alle 16 Abschnitte. Gesamtpreis für alle 16 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 16
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 10
+      betrag: 249
 zielgruppe:
 - Elektronikerinnen und Elektroniker mit Berufserfahrung
 - Fachkräfte aus Instandhaltung und Automatisierung
@@ -61,8 +67,8 @@ faq:
   antwort: Rechtliche Pflichten und Arbeitsschutz behandeln wir so, wie sie in der Prüfung gefragt sind. Eine Bestellung zur verantwortlichen Elektrofachkraft ersetzt der Kurs nicht.
 - frage: Wann sollte ich die AEVO machen?
   antwort: Die Verordnung sieht vor, dass du die berufs- und arbeitspädagogischen Qualifikationen in der Regel vor der Zulassung zu den Basisqualifikationen erwirbst; nachweisen musst du sie spätestens vor der letzten Prüfungsleistung. Unser AEVO-Kurs passt deshalb gut vor den Start.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Industriemeister/in Elektrotechnik“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 15 gleiche Monatsraten über die Kursdauer von rund 15 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 16 Abschnitte aufgeteilt: 15 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 10 Abenden für 249 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 4.734 €.'
 reihenfolge: 51
 ---
 

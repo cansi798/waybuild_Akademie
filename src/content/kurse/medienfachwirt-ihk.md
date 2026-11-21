@@ -10,9 +10,15 @@ ue: 640
 dauer: ca. 12 Monate (160 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3989
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3986
+  hinweis: "Gesamtpreis für alle 14 Abschnitte. Gesamtpreis für alle 14 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 14
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 4
+      betrag: 99
 zielgruppe:
 - Mediengestalterinnen und Mediengestalter mit Berufserfahrung
 - Fachkräfte aus Druck, Verlag, Agentur oder Digitalproduktion
@@ -60,8 +66,8 @@ faq:
   antwort: Die Fortbildungsordnung macht den Nachweis der berufs- und arbeitspädagogischen Qualifikationen zum Teil des Abschlusses. Du musst ihn vor Beginn des letzten Prüfungsbestandteils vorlegen. Unseren AEVO-Kurs kannst du vorher oder nebenbei belegen.
 - frage: Wie läuft die Projektarbeit?
   antwort: Der Prüfungsausschuss stellt das Thema passend zu deinem Wahlschwerpunkt, du kannst Vorschläge machen. Für die Gesamtplanung hast du 30 Kalendertage. Wie du sie aufbaust – von der Produktplanung bis zur Kalkulation –, üben wir im Kurs an einem gemeinsamen Beispiel.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Medienfachwirt/in“ bieten wir 12 gleiche Monatsraten an, eine pro Monat des rund 12-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 14 Abschnitte aufgeteilt: 13 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 4 Abenden für 99 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.986 €.'
 reihenfolge: 45
 ---
 

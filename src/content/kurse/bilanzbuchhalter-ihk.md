@@ -10,9 +10,15 @@ ue: 600
 dauer: ca. 12 Monate (150 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3739
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3737
+  hinweis: "Gesamtpreis für alle 13 Abschnitte. Gesamtpreis für alle 13 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 13
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 6
+      betrag: 149
 zielgruppe:
 - Fachkräfte aus Buchhaltung und Rechnungswesen
 - Steuerfachangestellte, die in ein Unternehmen wechseln wollen
@@ -62,8 +68,8 @@ faq:
   antwort: Teilweise. Laut Fortbildungsordnung bist du nach bestandener Prüfung vom schriftlichen Teil der Ausbildereignungsprüfung befreit.
 - frage: Reichen 600 Unterrichtseinheiten?
   antwort: Die Fortbildungsordnung nennt einen Lernumfang von in der Regel mindestens 1.200 Stunden. Dazu zählt neben dem Unterricht auch deine eigene Vorbereitung und deine Praxis im Rechnungswesen. Unsere 600 Live-Einheiten decken alle sieben Handlungsbereiche ab; wie viel Zeit du zusätzlich einplanst, entscheidest du selbst.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Für den Lehrgang „Bilanzbuchhalter/in“ bieten wir 12 gleiche Monatsraten an, eine pro Monat des rund 12-monatigen Lehrgangs und jeweils für den folgenden Unterrichtsabschnitt. Den Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 13 Abschnitte aufgeteilt: 12 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 6 Abenden für 149 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.737 €.'
 reihenfolge: 33
 ---
 

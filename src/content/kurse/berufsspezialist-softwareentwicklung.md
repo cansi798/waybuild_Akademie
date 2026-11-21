@@ -10,9 +10,12 @@ ue: 240
 dauer: ca. 7 Monate (60 Abende)
 zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 1499
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 1495
+  hinweis: "Gesamtpreis für alle 5 Abschnitte. Gesamtpreis für alle 5 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 5
+    abende: 12
+    betrag: 299
 zielgruppe:
 - Fachinformatikerinnen und Fachinformatiker für Anwendungsentwicklung nach der Ausbildung
 - Entwicklerinnen und Entwickler ohne formalen IT-Abschluss mit mehrjähriger Praxis

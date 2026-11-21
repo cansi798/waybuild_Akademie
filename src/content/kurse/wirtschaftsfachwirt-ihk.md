@@ -10,9 +10,15 @@ ue: 604
 dauer: ca. 12 Monate (151 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3769
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3767
+  hinweis: "Gesamtpreis für alle 13 Abschnitte. Gesamtpreis für alle 13 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 13
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 7
+      betrag: 179
 zielgruppe:
 - Kaufmännische Fachkräfte mit Berufserfahrung aus allen Branchen
 - Mitarbeitende, die Führungsaufgaben übernehmen wollen
@@ -87,8 +93,8 @@ faq:
   antwort: Teilweise. Wer Teil 2 bestanden hat, ist vom schriftlichen Teil der Ausbildereignungsprüfung befreit. Bei der IHK kannst du zusätzlich eine praktische Prüfung beantragen und hast dann die Ausbildereignung vollständig nachgewiesen.
 - frage: Was ist, wenn ich einen Termin verpasse?
   antwort: Gib uns kurz Bescheid. Die Kursunterlagen des Termins bekommst du trotzdem, und den Stoff kannst du nach Absprache in einem späteren Live-Termin nachholen.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Wirtschaftsfachwirt/in“ lässt sich in 12 gleiche Monatsraten aufteilen, passend zu den rund 12 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 13 Abschnitte aufgeteilt: 12 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 7 Abenden für 179 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.767 €.'
 reihenfolge: 11
 ---
 

@@ -36,9 +36,9 @@ export const FAQ = {
     frage: 'Wie bezahle ich?',
     antwort: 'Nach der Anmeldung bekommst du die Rechnung per E-Mail und überweist den Betrag – innerhalb von 14 Tagen, spätestens vor Kursbeginn. Eine Online-Zahlung gibt es nicht.',
   },
-  raten: {
-    frage: 'Kann ich in Raten zahlen?',
-    antwort: 'Bei langen Weiterbildungen ja, ohne Aufpreis – die Kursseite zeigt, wo das möglich ist. Gib es bei der Anmeldung im Feld „Nachricht an uns“ an; den Ratenplan findest du in deiner Rechnung. Die Prüfungsvorbereitungen zahlst du in einem Betrag.',
+  abschnitte: {
+    frage: 'Kann ich einen langen Lehrgang in Abschnitten buchen?',
+    antwort: 'Ja. Lange IHK-Weiterbildungen wie Fachwirt, Meister oder Betriebswirt sind in Abschnitte von je 12 Abenden aufgeteilt. Jeden Abschnitt buchst und bezahlst du einzeln – Anzahl und Preis der Abschnitte stehen auf der Kursseite. Prüfungsvorbereitungen und kürzere Kurse zahlst du in einem Betrag.',
   },
   betrieb: {
     frage: 'Kann mein Betrieb die Rechnung bekommen?',
@@ -70,7 +70,7 @@ export const FAQ = {
   // Live-Unterricht
   kursabend: {
     frage: 'Wie läuft ein Kurstermin ab?',
-    antwort: 'Jeder Termin hat ein Schwerpunktthema. Die Lehrkraft führt kurz ein, danach besprechen wir prüfungsnahe Aufgaben gemeinsam live.',
+    antwort: 'Ein Kursabend geht von 17:00 bis 20:00 Uhr: 4 Unterrichtseinheiten à 45 Minuten, mit einer kurzen Pause in der Mitte. Jeder Termin hat ein Schwerpunktthema. Die Lehrkraft führt kurz ein, danach besprechen wir prüfungsnahe Aufgaben gemeinsam live.',
   },
   technik: {
     frage: 'Was brauche ich für den Live-Unterricht?',
@@ -189,7 +189,7 @@ export function ohneDoppelte(...listen: FaqEintrag[][]): FaqEintrag[] {
 /** Gruppen der zentralen FAQ-Seite (/faq/). */
 export const FAQ_GRUPPEN: { id: string; titel: string; ids: FaqId[] }[] = [
   { id: 'allgemein', titel: 'Allgemein', ids: ['ihk-veranstaltung', 'dozenten', 'vor-ort', 'anbieter'] },
-  { id: 'anmeldung', titel: 'Anmeldung & Bezahlung', ids: ['anmelden', 'anmeldeschluss', 'bezahlen', 'raten', 'betrieb', 'mehrere', 'endpreis'] },
+  { id: 'anmeldung', titel: 'Anmeldung & Bezahlung', ids: ['anmelden', 'anmeldeschluss', 'bezahlen', 'abschnitte', 'betrieb', 'mehrere', 'endpreis'] },
   { id: 'storno', titel: 'Storno & Absage', ids: ['storno', 'ersatz', 'absage', 'coaching-verschieben'] },
   { id: 'live-unterricht', titel: 'Live-Unterricht', ids: ['kursabend', 'gruppe', 'technik', 'zugang', 'fragen', 'verpasst', 'unterlagen'] },
   { id: 'pruefung', titel: 'Prüfung', ids: ['welcher-kurs', 'pruefung-wann', 'pruefung-anmeldung', 'fachwissen', 'umschueler', 'projektantrag'] },

@@ -12,7 +12,6 @@ zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 299
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die Prüfungsgebühr deiner IHK ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende der sieben IT-Berufe vor der AP1
   - Umschülerinnen und Umschüler in einem IT-Beruf

@@ -10,9 +10,15 @@ ue: 564
 dauer: ca. 12 Monate (141 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3519
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3518
+  hinweis: "Gesamtpreis für alle 12 Abschnitte. Gesamtpreis für alle 12 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 12
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 9
+      betrag: 229
 zielgruppe:
 - Mitarbeitende aus Personalabteilungen
 - Sachbearbeitung Personal und Entgelt
@@ -71,8 +77,8 @@ faq:
   antwort: Nein, den Nachweis brauchst du erst bis zur letzten Prüfungsleistung. Du kannst unseren AEVO-Kurs vorher oder parallel besuchen.
 - frage: Was ist, wenn ich einen Termin verpasse?
   antwort: Gib uns kurz Bescheid. Die Kursunterlagen bekommst du trotzdem, und den Stoff kannst du nach Absprache in einem späteren Live-Termin nachholen.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Auf Wunsch zahlst du den Lehrgang „Personalfachkaufmann/-frau“ in 12 gleichen Monatsraten – so läuft die Zahlung parallel zum Lehrgang. Jede Rate bezieht sich auf den nächsten Unterrichtsabschnitt, die Termine stehen in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 12 Abschnitte aufgeteilt: 11 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 9 Abenden für 229 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.518 €.'
 reihenfolge: 21
 ---
 

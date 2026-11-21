@@ -10,9 +10,8 @@ ue: 48
 dauer: ca. 6 Wochen (12 Abende)
 zeiten: Mo + Mi, 17:00–20:00 Uhr
 preis:
-  betrag: 299
+  betrag: 399
   hinweis: Inklusive Kursunterlagen, Mustervorlagen für Verzeichnis, Informationspflichten und Datenpannen sowie Zertifikat
-  raten: true
 zielgruppe:
 - Angehende Datenschutzbeauftragte
 - Datenschutzkoordinatorinnen und -koordinatoren in Unternehmen
@@ -60,8 +59,8 @@ faq:
   antwort: Nein. Du lernst, Datenschutz im Alltag zu organisieren und Risiken zu erkennen. In schwierigen Einzelfällen solltest du juristischen Rat einholen.
 - frage: Ist das ein IHK-Abschluss?
   antwort: Nein. Mit dem Zertifikat der waybuild Akademie halten wir Inhalte und Umfang der 48 Unterrichtseinheiten fest. Einen öffentlich-rechtlichen Abschluss und eine Benennung zur Datenschutzbeauftragten Person ersetzt es nicht.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis – zum Beispiel in zwei Monatsraten über die Kursdauer. Den Ratenplan findest du in deiner Rechnung.
+- frage: Wie bezahle ich den Kurs?
+  antwort: 'In einem Betrag per Überweisung, sobald du die Rechnung per E-Mail bekommen hast. Zahlt dein Betrieb, wähle bei der Anmeldung „Mein Betrieb zahlt“.'
 reihenfolge: 32
 ---
 

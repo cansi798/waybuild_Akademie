@@ -10,9 +10,12 @@ ue: 720
 dauer: ca. 14 Monate (180 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4489
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 4485
+  hinweis: "Gesamtpreis für alle 15 Abschnitte. Gesamtpreis für alle 15 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 15
+    abende: 12
+    betrag: 299
 zielgruppe:
 - Berufskraftfahrerinnen und Berufskraftfahrer mit Berufserfahrung
 - Fachkräfte im Fahrbetrieb
@@ -60,8 +63,8 @@ faq:
   antwort: Die Verordnung nennt neben Berufskraftfahrern ausdrücklich die Fachkraft im Fahrbetrieb als Zugang, also auch Beschäftigte aus Bus- und Nahverkehrsbetrieben. Im Unterricht nutzen wir Beispiele aus Güter- und Personenverkehr.
 - frage: Brauche ich den Ausbilderschein?
   antwort: Ja, die Ausbildereignung gehört zur Meisterqualifikation. Den Nachweis brauchst du vor Beginn der letzten Prüfungsleistung; unser AEVO-Kurs lässt sich vorher oder nebenbei belegen.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Meister/in für Kraftverkehr“ lässt sich in 14 gleiche Monatsraten aufteilen, passend zu den rund 14 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 15 Abschnitte aufgeteilt: 15 Abschnitte mit je 12 Abenden für je 299 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 4.485 €.'
 reihenfolge: 53
 ---
 

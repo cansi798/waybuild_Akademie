@@ -10,9 +10,15 @@ ue: 560
 dauer: ca. 11 Monate (140 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3489
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3488
+  hinweis: "Gesamtpreis für alle 12 Abschnitte. Gesamtpreis für alle 12 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 12
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 8
+      betrag: 199
 zielgruppe:
 - Industriemeisterinnen und -meister sowie andere technische Meister
 - Staatlich geprüfte Technikerinnen und Techniker
@@ -51,8 +57,8 @@ faq:
   antwort: Der Prüfungsausschuss stellt ein Thema mit technischem und kaufmännischem Hintergrund und berücksichtigt dabei deine Vorschläge. Du hast 30 Kalendertage für die schriftliche Ausarbeitung. Wie du ein Thema aus deiner Fachrichtung zuschneidest, besprechen wir live im Kurs.
 - frage: Ich bin Ingenieurin bzw. Ingenieur. Kann ich teilnehmen?
   antwort: Ja, mit einem staatlich anerkannten Ingenieurabschluss und mindestens zwei Jahren einschlägiger Praxis nennt die Verordnung diesen Weg ausdrücklich. Über deine Zulassung entscheidet deine IHK.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Technische/r Betriebswirt/in“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 11 gleiche Monatsraten über die Kursdauer von rund 11 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 12 Abschnitte aufgeteilt: 11 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 8 Abenden für 199 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.488 €.'
 reihenfolge: 35
 ---
 

@@ -12,7 +12,6 @@ zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 249
   hinweis: "Einführungspreis für alle Kurstermine 2027. Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die IHK-Gebühr für deine Prüfung ist nicht enthalten."
-  raten: false
 zielgruppe:
   - Auszubildende Kaufleute für Büromanagement vor Teil 2
   - Umschülerinnen und Umschüler im Büromanagement

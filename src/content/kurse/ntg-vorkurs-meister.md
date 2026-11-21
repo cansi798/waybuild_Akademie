@@ -12,7 +12,6 @@ zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 249
   hinweis: Inklusive Kursunterlagen und Übungsaufgaben mit Lösungswegen
-  raten: false
 zielgruppe:
 - Fachkräfte vor einem Lehrgang zum Industriemeister oder Logistikmeister
 - Alle, deren Schulmathe schon länger zurückliegt

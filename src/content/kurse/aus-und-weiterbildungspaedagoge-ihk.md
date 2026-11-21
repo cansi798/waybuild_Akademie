@@ -10,9 +10,12 @@ ue: 480
 dauer: ca. 9 Monate (120 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 2989
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 2990
+  hinweis: "Gesamtpreis für alle 10 Abschnitte. Gesamtpreis für alle 10 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 10
+    abende: 12
+    betrag: 299
 zielgruppe:
 - Ausbilderinnen und Ausbilder mit AEVO, die mehr Verantwortung übernehmen wollen
 - Ausbildungsbeauftragte und Lernbegleiter in Betrieben
@@ -54,8 +57,8 @@ faq:
   antwort: Du bearbeitest eine berufspädagogische Aufgabe aus deinem Einsatzfeld, zum Beispiel die Neuordnung einer Lernstation. Das Thema schlägst du dem Prüfungsausschuss vor; für die Ausarbeitung gibt die Verordnung 30 Kalendertage vor. Im Kurs besprechen wir live, wie du ein Thema eingrenzt und die Arbeit aufbaust.
 - frage: Was bringt mir der Abschluss gegenüber dem Ausbilderschein?
   antwort: Die AEVO ist die Grundlage, um ausbilden zu dürfen. Hier geht es weiter – um Lernberatung, die Planung ganzer Bildungsmaßnahmen, das Gestalten von Prüfungen und die Qualitätssicherung in Aus- und Weiterbildung.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Aus- und Weiterbildungspädagoge/-pädagogin“ lässt sich in 9 gleiche Monatsraten aufteilen, passend zu den rund 9 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 10 Abschnitte aufgeteilt: 10 Abschnitte mit je 12 Abenden für je 299 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 2.990 €.'
 reihenfolge: 12
 ---
 

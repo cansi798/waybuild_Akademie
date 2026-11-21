@@ -229,9 +229,6 @@ if (!$coaching) {
     }
 }
 $zeilen[] = 'Endpreis (alles inklusive): ' . euro($gesamt);
-if (!empty($kurs['raten'])) {
-    $zeilen[] = 'Ratenzahlung möglich – mit der Person absprechen.';
-}
 $zeilen[] = '';
 $zeilen[] = 'BESTÄTIGUNGEN';
 if (!$coaching) {
@@ -310,9 +307,6 @@ if (!$coaching && $rabattProzent > 0) {
     $b[] = 'Preis: ' . $anzahl . ' × ' . euro($einzel) . ' = ' . euro($zwischensumme) . ', abzüglich ' . $rabattProzent . ' % Gruppenrabatt';
 }
 $b[] = 'Endpreis: ' . euro($gesamt) . ' – alles inklusive';
-if (!empty($kurs['raten'])) {
-    $b[] = 'Ratenzahlung möglich – sprechen wir nach der Anmeldung ab.';
-}
 if (!$coaching && $wertersatz) {
     $b[] = '';
     $b[] = 'Du hast ausdrücklich verlangt, dass wir vor Ablauf der Widerrufsfrist mit der Leistung beginnen. Dir ist bekannt, dass du bei einem Widerruf Wertersatz für bereits erbrachte Leistungen schuldest.';

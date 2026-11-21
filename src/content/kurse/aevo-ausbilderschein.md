@@ -11,8 +11,7 @@ dauer: ca. 9 Wochen (16 Abende)
 zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 399
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Inklusive Kursunterlagen und Vorlagen für deine Präsentation
-  raten: false
+  hinweis: "Entspricht rund 299 € je 12 Abende (48 UE). Inklusive Kursunterlagen und Vorlagen für deine Präsentation"
 zielgruppe:
 - Fachkräfte, die künftig Auszubildende betreuen
 - Teamleitungen und Personalverantwortliche

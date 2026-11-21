@@ -10,9 +10,15 @@ ue: 560
 dauer: ca. 11 Monate (140 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3489
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3488
+  hinweis: "Gesamtpreis für alle 12 Abschnitte. Gesamtpreis für alle 12 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 12
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 8
+      betrag: 199
 zielgruppe:
 - Kaufleute für Büromanagement mit Berufserfahrung
 - Assistenzen, Teamassistenzen sowie Office-Managerinnen und -Manager
@@ -59,8 +65,8 @@ faq:
   antwort: Das Thema muss sich auf „Führen, Betreuen, Verwalten und Ausbilden“ und einen weiteren Handlungsbereich beziehen, zum Beispiel die Einarbeitung neuer Teammitglieder in ein Projekt. Kurzbeschreibung, Ziel und Gliederung reichst du zur schriftlichen Prüfung ein. Im Kurs besprechen wir deine Idee live.
 - frage: Ist der Abschluss etwas für mich, wenn ich im Sekretariat arbeite?
   antwort: Gut möglich. Der Lehrgang baut auf Büropraxis auf und erweitert sie um Projekt-, Veranstaltungs- und Personalaufgaben. Ob deine Praxis für die Zulassung reicht, prüft deine IHK.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 11 Monaten sind 11 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 12 Abschnitte aufgeteilt: 11 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 8 Abenden für 199 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.488 €.'
 reihenfolge: 40
 ---
 

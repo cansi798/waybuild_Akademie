@@ -12,7 +12,6 @@ zeiten: Mo + Mi, 17:00–20:00 Uhr
 preis:
   betrag: 249
   hinweis: "Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Der Vorkurs endet ohne IHK-Prüfung."
-  raten: false
 zielgruppe:
   - Auszubildende in kaufmännischen Berufen, denen Buchführung und Kostenrechnung schwerfallen
   - Alle, die eine Fortbildung wie den Fachwirt planen

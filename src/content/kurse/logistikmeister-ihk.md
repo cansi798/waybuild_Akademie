@@ -10,9 +10,12 @@ ue: 720
 dauer: ca. 14 Monate (180 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 4489
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 4485
+  hinweis: "Gesamtpreis für alle 15 Abschnitte. Gesamtpreis für alle 15 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 15
+    abende: 12
+    betrag: 299
 zielgruppe:
 - Fachkräfte für Lagerlogistik mit Berufserfahrung
 - Schicht- und Teamleitungen in Lager und Umschlag
@@ -61,8 +64,8 @@ faq:
   antwort: Ja, ein Prüfungsbereich der grundlegenden Qualifikationen ist „Berücksichtigen naturwissenschaftlicher und technischer Gesetzmäßigkeiten“. Wenn du hier unsicher bist, frischt unser Vorkurs „Naturwissenschaftliche und technische Grundlagen“ das Nötige vor dem Start auf.
 - frage: Logistikmeister oder Fachwirt für Logistiksysteme – was passt besser?
   antwort: Der Meister richtet sich auf die Führung im operativen Bereich, der Fachwirt stärker auf Analyse und Planung ganzer Logistiksysteme. Für den Meister brauchst du außerdem die AEVO. Die Zulassung prüft in beiden Fällen deine IHK.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis – zum Beispiel in 14 Monatsraten über die rund 14 Monate Kursdauer. Zahlt dein Betrieb, wähle bei der Anmeldung „Mein Betrieb zahlt“.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 15 Abschnitte aufgeteilt: 15 Abschnitte mit je 12 Abenden für je 299 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 4.485 €.'
 reihenfolge: 52
 ---
 

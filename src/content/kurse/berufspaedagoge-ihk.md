@@ -10,9 +10,15 @@ ue: 640
 dauer: ca. 12 Monate (160 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3989
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3986
+  hinweis: "Gesamtpreis für alle 14 Abschnitte. Gesamtpreis für alle 14 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 14
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 4
+      betrag: 99
 zielgruppe:
 - Ausbildungsleitungen und erfahrene Ausbilderinnen und Ausbilder
 - Fachkräfte aus Personalentwicklung und Bildungsmanagement
@@ -52,8 +58,8 @@ faq:
   antwort: 'Zuerst die „Kernprozesse der beruflichen Bildung“ schriftlich, danach „Berufspädagogisches Handeln“ schriftlich und mit Fachgespräch. Die Projektarbeit im dritten Teil beginnst du erst, wenn die ersten beiden Teile mindestens ausreichend sind – spätestens ein Jahr danach soll es losgehen.'
 - frage: Welche Funktion kann ich für die Projektarbeit wählen?
   antwort: Die Verordnung nennt lehrende, entwickelnde, leitende, beratende und prüfende Funktionen, zum Beispiel Ausbildungsleitung, Bildungscontrolling oder Weiterbildungsberatung. Das Thema schlägst du dem Prüfungsausschuss vor; im Kurs besprechen wir mögliche Themen live in der Gruppe.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Bei einem Lehrgang von rund 12 Monaten sind 12 gleiche Monatsraten möglich. Jede Rate deckt den folgenden Abschnitt des Unterrichts, den Ratenplan bekommst du mit deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 14 Abschnitte aufgeteilt: 13 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 4 Abenden für 99 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.986 €.'
 reihenfolge: 13
 ---
 

@@ -12,7 +12,6 @@ zeiten: Mo + Mi, 17:00–20:00 Uhr
 preis:
   betrag: 299
   hinweis: Inklusive Kursunterlagen, Beispielcode und Zertifikat
-  raten: false
 zielgruppe:
 - Einsteigerinnen und Einsteiger ohne Programmiererfahrung
 - Fachkräfte, die Aufgaben mit Tabellen und Dateien automatisieren wollen

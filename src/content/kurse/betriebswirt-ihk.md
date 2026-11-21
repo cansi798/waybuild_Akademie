@@ -10,9 +10,15 @@ ue: 640
 dauer: ca. 12 Monate (160 Abende)
 zeiten: Mo, Mi + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3989
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3986
+  hinweis: "Gesamtpreis für alle 14 Abschnitte. Gesamtpreis für alle 14 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 14
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 4
+      betrag: 99
 zielgruppe:
 - Fachwirtinnen, Fachwirte und Fachkaufleute, die ins Management wollen
 - Führungskräfte im mittleren Management
@@ -63,8 +69,8 @@ faq:
   antwort: In jeder der drei schriftlichen Aufgabenstellungen sind die Aufgaben zu einem Handlungsbereich auf Englisch gestellt und auf Englisch zu beantworten. Wir arbeiten deshalb regelmäßig mit englischen Fällen und Fachbegriffen.
 - frage: Reichen 640 Unterrichtseinheiten?
   antwort: Die Fortbildungsordnung nennt einen Lernumfang von in der Regel mindestens 1.600 Stunden. Er umfasst neben dem Unterricht auch dein Wissen aus der Fachwirt-Stufe und deine eigene Vorbereitung. Unsere 640 Live-Einheiten decken alle fünf Handlungsbereiche ab; wie viel Zeit du zusätzlich einplanst, entscheidest du selbst.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Du musst den Lehrgang „Betriebswirt/in“ nicht auf einmal bezahlen. Die Gebühr verteilt sich auf 12 gleiche Monatsraten über die Kursdauer von rund 12 Monaten. Welche Rate zu welchem Unterrichtsabschnitt gehört, siehst du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 14 Abschnitte aufgeteilt: 13 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 4 Abenden für 99 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.986 €.'
 reihenfolge: 23
 ---
 

@@ -11,8 +11,14 @@ dauer: ca. 10 Monate (130 Abende)
 zeiten: Mo, Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 3239
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  hinweis: "Gesamtpreis für alle 11 Abschnitte. Gesamtpreis für alle 11 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 11
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 10
+      betrag: 249
 zielgruppe:
 - Fachkräfte aus Rechnungswesen, Buchhaltung und Finanzen
 - Mitarbeitende, die ins Controlling wechseln wollen
@@ -64,8 +70,8 @@ faq:
   antwort: Du schlägst dem Prüfungsausschuss zwei Themen aus deiner Controllingpraxis vor, daraus formuliert er die Aufgabe. Du hast 30 Kalendertage Zeit und bereitest das Ergebnis auch als Beratungsleistung für das Management auf. Wie du Themen auswählst und gliederst, besprechen wir live im Kurs.
 - frage: Brauche ich Vorkenntnisse in Buchführung?
   antwort: Ja, sichere Grundlagen im Rechnungswesen solltest du mitbringen. Wenn sie eingerostet sind, hilft dir unser Kurs „Rechnungswesen kompakt“ vorab.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Controller/in“ lässt sich in 10 gleiche Monatsraten aufteilen, passend zu den rund 10 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 11 Abschnitte aufgeteilt: 10 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 10 Abenden für 249 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.239 €.'
 reihenfolge: 34
 ---
 

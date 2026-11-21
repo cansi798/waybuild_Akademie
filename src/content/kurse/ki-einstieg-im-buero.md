@@ -12,7 +12,6 @@ zeiten: Di + Do, 17:00–20:00 Uhr
 preis:
   betrag: 149
   hinweis: Inklusive Kursunterlagen, Vorlagensammlung für Prompts und Zertifikat
-  raten: false
 zielgruppe:
 - Beschäftigte in Büro und Verwaltung
 - Teams, die KI-Assistenten neu einführen

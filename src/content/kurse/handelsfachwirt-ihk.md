@@ -10,9 +10,15 @@ ue: 604
 dauer: ca. 12 Monate (151 Abende)
 zeiten: Mo, Mi + Do, 17:00–20:00 Uhr
 preis:
-  betrag: 3769
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab
-  raten: true
+  betrag: 3767
+  hinweis: "Gesamtpreis für alle 13 Abschnitte. Gesamtpreis für alle 13 Abschnitte. Enthalten sind alle Live-Termine und die Kursunterlagen; die Prüfungsgebühr rechnet deine IHK direkt ab"
+  abschnitte:
+    anzahl: 13
+    abende: 12
+    betrag: 299
+    letzter:
+      abende: 7
+      betrag: 179
 zielgruppe:
 - Fachkräfte aus Einzel-, Groß- und Onlinehandel
 - Filial-, Abteilungs- und Teamleitungen
@@ -75,8 +81,8 @@ faq:
   antwort: Die Verordnung verlangt Praxis im Verkauf oder in anderen kaufmännischen Tätigkeiten im Handel. Onlinehandel gehört in der Regel dazu; ob deine Tätigkeit reicht, prüft deine IHK.
 - frage: Was ist mit der AEVO?
   antwort: Teilweise. Mit der bestandenen Fortbildungsprüfung entfällt der schriftliche Teil der Ausbildereignungsprüfung; für den Nachweis der Ausbildereignung bleibt der praktische Teil.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis. Die Teilnahmegebühr für den Lehrgang „Handelsfachwirt/in“ lässt sich in 12 gleiche Monatsraten aufteilen, passend zu den rund 12 Monaten Kursdauer. Jede Rate gehört zum jeweils folgenden Unterrichtsabschnitt; den genauen Plan findest du in deiner Rechnung.
+- frage: Kann ich den Lehrgang in Abschnitten buchen und bezahlen?
+  antwort: 'Ja. Der Lehrgang ist in 13 Abschnitte aufgeteilt: 12 Abschnitte mit je 12 Abenden für je 299 € und ein letzter Abschnitt mit 7 Abenden für 179 €. Du buchst und bezahlst jeden Abschnitt einzeln; alle Abschnitte zusammen kosten 3.767 €.'
 reihenfolge: 20
 ---
 

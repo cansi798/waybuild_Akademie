@@ -10,9 +10,8 @@ ue: 60
 dauer: ca. 8 Wochen (15 Abende)
 zeiten: Mo + Mi, 17:00–20:00 Uhr
 preis:
-  betrag: 379
-  hinweis: Entspricht rund 299 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Vorlagen für Schutzbedarf, Notfallplan und Richtlinien sowie Zertifikat
-  raten: true
+  betrag: 499
+  hinweis: "Entspricht rund 399 € je 12 Abende (48 UE). Inklusive Kursunterlagen, Vorlagen für Schutzbedarf, Notfallplan und Richtlinien sowie Zertifikat"
 zielgruppe:
 - Mitarbeitende, die IT-Sicherheit im Unternehmen koordinieren
 - IT-Einsteiger und Administratoren kleiner Firmen
@@ -65,8 +64,8 @@ faq:
   antwort: Du erstellst Schritt für Schritt ein Sicherheitskonzept mit Schutzbedarf, Maßnahmen und Notfallplan – für ein Beispielunternehmen oder, wenn du magst, angelehnt an deinen Betrieb. Am Ende stellst du es der Gruppe vor.
 - frage: Ist das ein IHK-Abschluss?
   antwort: Nein. Das Zertifikat der waybuild Akademie beschreibt, was du in den 60 Unterrichtseinheiten bearbeitet hast. Ein öffentlich-rechtlicher Abschluss ist es nicht.
-- frage: Kann ich in Raten zahlen?
-  antwort: Ja, ohne Aufpreis – zum Beispiel in drei Monatsraten über die Kursdauer. Den Ratenplan findest du in deiner Rechnung.
+- frage: Wie bezahle ich den Kurs?
+  antwort: 'In einem Betrag per Überweisung, sobald du die Rechnung per E-Mail bekommen hast. Zahlt dein Betrieb, wähle bei der Anmeldung „Mein Betrieb zahlt“.'
 reihenfolge: 24
 ---
 

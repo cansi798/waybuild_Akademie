@@ -115,16 +115,35 @@ Der Preis steht im Datenkopf unter `preis:`.
 
 ```yaml
 preis:
-  betrag: 349
+  betrag: 299
   hinweis: "Endpreis, alles inklusive: Live-Unterricht und Unterlagen. Die Prüfungsgebühr deiner IHK ist nicht enthalten."
-  raten: false
 ```
 
 | Feld | Bedeutung | Beispiel |
 |---|---|---|
-| `betrag` | Teilnahmegebühr je Person in Euro, Endpreis | `349` |
+| `betrag` | Teilnahmegebühr je Person in Euro, Endpreis (bei Abschnitten: Summe aller Abschnitte) | `299` |
 | `hinweis` | Kurzer Text unter dem Preis | siehe oben |
-| `raten` | Ratenzahlung möglich (`true`) oder nicht (`false`) | `false` |
+| `abschnitte` | Nur lange IHK-Weiterbildungen: einzeln buchbare und bezahlbare Abschnitte (siehe unten) | – |
+
+Preisstaffel (Kalkulation 21.11.2026, Fassung 2): 149 € bis 4 Abende, 199 € bis 6, 249 € bis 8, 299 € bis 12 Abende.
+IT-Praxiskurse (Datenschutz, Webentwicklung, KI-Manager, IT-Sicherheit, Datenanalyse): 399 € je 12 Abende.
+Ein Abend = 17:00–20:00 Uhr = 4 UE à 45 Minuten, die kurze Pause in der Mitte zählt mit.
+
+Lange IHK-Weiterbildungen (über 24 Abende) sind in Abschnitte à 12 Abende geteilt. Jeden Abschnitt buchen und bezahlen
+Teilnehmende einzeln, eine Rechnung je Abschnitt:
+
+```yaml
+preis:
+  betrag: 3767          # Summe aller Abschnitte
+  hinweis: "Gesamtpreis für alle 13 Abschnitte – …"
+  abschnitte:
+    anzahl: 13          # Abschnitte insgesamt
+    abende: 12          # Abende je Abschnitt
+    betrag: 299         # Preis je Abschnitt
+    letzter:            # nur wenn der letzte Abschnitt kürzer ist
+      abende: 7
+      betrag: 179
+```
 
 Beim Coaching stehen die Preise je Paket unter `pakete:` (Feld `betrag` je Paket).
 
@@ -264,9 +283,8 @@ ue: 32
 dauer: ca. 4 Wochen
 zeiten: "Di + Do, 17:00–20:00 Uhr"
 preis:
-  betrag: 590
+  betrag: 249
   hinweis: "Endpreis, alles inklusive: Live-Unterricht und Unterlagen."
-  raten: false
 zielgruppe:
   - Erste Zielgruppe
   - Zweite Zielgruppe

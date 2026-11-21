@@ -179,8 +179,6 @@ function einrichten(form: HTMLFormElement) {
     }
     setzeText('[data-preis-gesamt]', preis ? euro(preis.gesamt) : '–');
     setzeText('[data-auswahl-preis]', preis ? euro(preis.gesamt) : '–');
-    const raten = $('[data-raten]');
-    if (raten) raten.hidden = !(k?.raten && !coaching);
 
     // Seitenleiste
     setzeText('[data-auswahl-kurs]', k ? k.titel : 'Noch kein Kurs gewählt');
