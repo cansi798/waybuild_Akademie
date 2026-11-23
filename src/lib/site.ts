@@ -44,7 +44,7 @@ export const UNTERRICHT = {
 } as const;
 
 /**
- * Videos der Startseite (je Bereich eins). Dateien legt der Video-Helfer in public/video/ ab:
+ * Videos der Startseite (je Bereich eins). Dateien legt der Video-Helfer ab (mp4 in public/video/, Poster in src/assets/video/):
  *   <id>-16x9.mp4, <id>-9x16.mp4, <id>-poster.jpg, <id>-poster-9x16.jpg (Untertitel eingebrannt, stumm startfähig).
  * Fehlt die mp4, zeigt die Seite den Poster-Platzhalter „Video folgt“. `text` = gesprochener Text (Transkript).
  */

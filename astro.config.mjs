@@ -20,5 +20,8 @@ export default defineConfig({
     }),
   ],
   vite: { plugins: [tailwindcss()] },
+  // CSS-Hauptdatei (~16 KB gzip) bleibt eine eigene, dauerhaft gecachte Datei; nur Kleinstdateien landen im HTML.
+  // Gemessen 23.11.2026 (Lighthouse mobil, 6 Läufe je Seite, abwechselnd): 'always' brachte kein schnelleres FCP/LCP
+  // (Start 1,13 → 1,15 s FCP, Anmeldung 1,04 → 1,17 s) und macht jede Seite ~16 KB größer → bewusst 'auto'.
   build: { inlineStylesheets: 'auto' },
 });

@@ -48,19 +48,28 @@ ErrorDocument 404 /404.html
   <FilesMatch "\.(html|xml|txt)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
-  # Logos, Favicons, Vorschaubild
-  <FilesMatch "\.(svg|png|ico|webmanifest)$">
+  # Logos, Favicons, Vorschaubild, Erklärvideos (Dateinamen ohne Hash → eine Woche, danach neu prüfen)
+  <FilesMatch "\.(svg|png|ico|webmanifest|mp4)$">
     Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
 </IfModule>
 
 # ---------------------------------------------------------------- Kompression
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/xml application/json text/javascript application/javascript image/svg+xml
+# Brotli (falls der Hoster mod_brotli hat) ist ~15–20 % kleiner als gzip; sonst greift mod_deflate (gzip).
+# text/javascript: Apache 2.4 liefert .js so aus; beide JS-Typen stehen drin. Schriften (woff2), Bilder (webp/png/jpg)
+# und Videos (mp4) sind schon komprimiert und bleiben außen vor. Gilt auch für die Antworten der PHP-Formulare.
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css text/xml application/xml application/json text/javascript application/javascript application/manifest+json image/svg+xml image/x-icon
+</IfModule>
+<IfModule !mod_brotli.c>
+  <IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/xml application/json text/javascript application/javascript application/manifest+json image/svg+xml image/x-icon
+  </IfModule>
 </IfModule>
 
 <IfModule mod_mime.c>
   AddType font/woff2 .woff2
+  AddType image/webp .webp
   AddType application/manifest+json .webmanifest
   AddCharset utf-8 .html .css .js .json .xml .txt .svg
 </IfModule>

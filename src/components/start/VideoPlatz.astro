@@ -5,9 +5,15 @@
 // - Mobil im Hochformat 9:16 (<source media>), sonst 16:9. prefers-reduced-motion: kein Autoplay.
 // - Ohne JavaScript: Bedienleiste des Browsers. Text zum Video (Transkript) immer aufklappbar.
 // - Solange die mp4 in public/video/ fehlt: Platzhalter mit Poster bzw. „Video folgt“ (Dateinamen siehe VIDEOS in site.ts).
+// - Poster (Standbild) liegen in src/assets/video/ und werden beim Bauen über astro:assets als WebP in Anzeigegröße
+//   ausgeliefert (16:9 → 1280 px, 9:16 → 720 px breit; vorher 1920-px-JPEG mit ~90 KB, jetzt ~30–40 KB).
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
 import { href } from '../../lib/pfad';
+
+const POSTER = import.meta.glob<{ default: ImageMetadata }>('../../assets/video/*.jpg', { eager: true });
 
 interface Props {
   id: string;
@@ -19,8 +25,12 @@ const datei = (n: string) => `/video/${id}-${n}`;
 const da = (n: string) => existsSync(join(process.cwd(), 'public', datei(n)));
 const hatVideo = da('16x9.mp4');
 const hatHoch = da('9x16.mp4');
-const poster = da('poster.jpg') ? href(datei('poster.jpg')) : undefined;
-const posterHoch = da('poster-9x16.jpg') ? href(datei('poster-9x16.jpg')) : poster;
+const posterBild = async (n: string, breite: number) => {
+  const bild = POSTER[`../../assets/video/${id}-${n}`]?.default;
+  return bild ? (await getImage({ src: bild, width: breite, format: 'webp', quality: 82 })).src : undefined;
+};
+const poster = await posterBild('poster.jpg', 1280);
+const posterHoch = (await posterBild('poster-9x16.jpg', 720)) ?? poster;
 const HOCH = '(max-width: 639px) and (orientation: portrait)';
 const vid = `video-${id}`;
 ---
@@ -158,23 +168,29 @@ const vid = `video-${id}`;
       if (poster) v.poster = poster;
       continue;
     }
-    new IntersectionObserver(
-      (es, io) => {
-        if (es[0].isIntersecting) {
-          if (poster) v.poster = poster;
-          if (!still) v.preload = 'metadata';
-          io.disconnect();
-        }
-      },
-      { rootMargin: '400px 0px' },
-    ).observe(v);
-    new IntersectionObserver(
-      (es) => {
-        if (es[0].isIntersecting) {
-          if (!angehalten && !fertig && v.paused) spiele();
-        } else if (!v.paused) v.pause();
-      },
-      { threshold: 0.35 },
-    ).observe(v);
+    // Erst nach dem Laden der Seite beobachten: Ist ein Video schon beim Öffnen sichtbar (Desktop: das erste),
+    // holt der Browser Poster und Film nicht mehr parallel zu Schriften und CSS, sondern danach (Ablauf sonst gleich).
+    const beobachten = () => {
+      new IntersectionObserver(
+        (es, io) => {
+          if (es[0].isIntersecting) {
+            if (poster) v.poster = poster;
+            if (!still) v.preload = 'metadata';
+            io.disconnect();
+          }
+        },
+        { rootMargin: '400px 0px' },
+      ).observe(v);
+      new IntersectionObserver(
+        (es) => {
+          if (es[0].isIntersecting) {
+            if (!angehalten && !fertig && v.paused) spiele();
+          } else if (!v.paused) v.pause();
+        },
+        { threshold: 0.35 },
+      ).observe(v);
+    };
+    if (document.readyState === 'complete') beobachten();
+    else addEventListener('load', beobachten, { once: true });
   }
 </script>

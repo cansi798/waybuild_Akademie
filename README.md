@@ -69,7 +69,7 @@ Live-Tests: nach `scripts/bau.sh live` → `BASE=/ scripts/test.sh tests/seiten.
   (`VideoPlatz.astro`) → Katalog-Kurzweg → Kurz gefragt/Auf einen Blick → Kurzanfrage (`formulare/AnfrageFormular.astro`,
   POST an `api/kontakt.php`, Thema = Bereich, Nachricht freiwillig). Mobil feste Leiste „Unverbindlich anfragen“.
 - Berufe: Zuordnung Beruf → Kursdateien in `src/lib/berufe.ts`; Berufsseiten `/pruefungsvorbereitung/<beruf>/`.
-- Videos: Dateien nach `public/video/` – je Bereich `<id>-16x9.mp4`, `<id>-9x16.mp4`, `<id>-poster.jpg`, `<id>-poster-9x16.jpg`
+- Videos: Filme nach `public/video/` (`<id>-16x9.mp4`, `<id>-9x16.mp4`), Standbilder nach `src/assets/video/` (`<id>-poster.jpg`, `<id>-poster-9x16.jpg`; werden beim Bauen als WebP in Anzeigegröße ausgegeben)
   mit `<id>` = `akademie-pruefung`, `akademie-ihk-weiterbildung`, `akademie-weiterbildung` (Untertitel eingebrannt).
   Fehlt die mp4, zeigt die Seite „Video folgt“. Transkript: `VIDEOS` in `src/lib/site.ts`.
 - KI-Suchen: `llms.txt` und `llms-full.txt` entstehen beim Build aus den Kursdaten.
