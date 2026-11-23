@@ -5,11 +5,13 @@
 // Danke-Seite: /danke/?art=anfrage.
 // Vorauswahl: ?bereich=…&kurs=… in der Adresse oder Links mit data-anfrage-bereich / data-anfrage-kurs / data-anfrage-text
 // auf derselben Seite (ohne Neuladen, Fokus ins Namensfeld). Unverbindlich: keine Buchung, keine Zahlungspflicht.
+// MKT-013 (23.11.): freiwillig „Anzahl Azubis (Betrieb zahlt)“, 1–50 – für Betriebe statt der 5-Schritt-Anmeldung.
+// MKT-021 (23.11.): auch auf den Kursseiten eingebettet, Kurs per Prop `kurs` vorausgewählt.
 import Feld from './Feld.astro';
 import Haken from './Haken.astro';
 import Grundlagen from './Grundlagen.astro';
 import { formularDaten } from './daten';
-import { ANFRAGE_BEREICHE, FEHLER } from '../../lib/formular';
+import { ANFRAGE_BEREICHE, AZUBIS_MAX, FEHLER, RABATT_AB_PERSONEN, RABATT_PROZENT } from '../../lib/formular';
 import { ZUSAGEN } from '../../lib/zusagen';
 import { IS_PREVIEW } from '../../lib/env';
 import { href } from '../../lib/pfad';
@@ -18,8 +20,10 @@ import { saeulenName, type Saeule } from '../../lib/kurse';
 interface Props {
   /** Vorauswahl ohne Adresse (z. B. Berufsseite) */
   bereich?: (typeof ANFRAGE_BEREICHE)[number]['id'];
+  /** Kurs vorauswählen (Kursseite) */
+  kurs?: string;
 }
-const { bereich } = Astro.props;
+const { bereich, kurs: kursVorauswahl } = Astro.props;
 const F = 'anfrage';
 const kurse = (await formularDaten()).kurse;
 // formularDaten() liefert die Säule als Anzeigenamen (saeulenName) – darüber zuordnen
@@ -52,7 +56,7 @@ const gruppen = ANFRAGE_BEREICHE.map((b) => ({ ...b, name: saeulenName(b.saeule 
         gruppen.map((g) => (
           <optgroup label={g.name}>
             {g.kurse.map((k) => (
-              <option value={k.id} data-bereich={g.id}>
+              <option value={k.id} data-bereich={g.id} selected={k.id === kursVorauswahl}>
                 {k.titel}
                 {k.status === 'entwurf' ? ' (Entwurf)' : ''}
               </option>
@@ -66,11 +70,23 @@ const gruppen = ANFRAGE_BEREICHE.map((b) => ({ ...b, name: saeulenName(b.saeule 
   </div>
   <details class="group rounded-2xl bg-base-200/60 px-4 py-1" data-anfrage-mehr>
     <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 font-semibold [&::-webkit-details-marker]:hidden">
-      Telefon oder Nachricht ergänzen
+      Telefon, Nachricht oder Betrieb ergänzen
       <svg viewBox="0 0 20 20" class="size-5 shrink-0 transition-transform group-open:rotate-45" aria-hidden="true"><path d="M10 4v12M4 10h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
     </summary>
     <div class="grid gap-5 pt-2 pb-4">
       <Feld form={F} name="telefon" label="Telefon" typ="tel" regel="telefon" fehler={FEHLER.telefon} autocomplete="tel" inputmode="tel" hinweis="Wenn du lieber angerufen werden möchtest." />
+      <Feld
+        form={F}
+        name="azubis"
+        label="Anzahl Azubis (Betrieb zahlt)"
+        regel="anzahl"
+        max={2}
+        fehler={FEHLER.azubis}
+        autocomplete="off"
+        inputmode="numeric"
+        hinweis={`Nur, wenn du für deinen Ausbildungsbetrieb anfragst: 1 bis ${AZUBIS_MAX} Personen. Ab ${RABATT_AB_PERSONEN} Personen ${RABATT_PROZENT}\u00a0% Rabatt.`}
+        zusatz={{ 'data-zeile': 'Anzahl Azubis (Betrieb zahlt)' }}
+      />
       <Feld form={F} name="nachricht" label="Nachricht" typ="textarea" max={2000} zeilen={3} fehler={FEHLER.nachricht} platzhalter="z. B. Beruf, Prüfungstermin oder Fragen" />
     </div>
   </details>

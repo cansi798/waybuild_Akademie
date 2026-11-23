@@ -1,7 +1,8 @@
 <?php
 // Kontakt- und Beratungsanfrage (US-16): Name, E-Mail, optional Telefon, Thema, Nachricht, Kenntnisnahme Datenschutzhinweis (keine Einwilligung, Art. 6 Abs. 1 lit. b/f DSGVO) → info@.
 // Zweite Art „anfrage“ (Kurzanfrage auf Startseite/Berufsseiten, Feld art=anfrage): unverbindliche Kursanfrage.
-//   Felder: name, email (Pflicht); telefon, kurs (Slug aus der Terminliste), thema, nachricht (freiwillig).
+//   Felder: name, email (Pflicht); telefon, kurs (Slug aus der Terminliste), thema, nachricht, azubis (freiwillig).
+//   azubis (MKT-013, 23.11.): Anzahl Azubis, für die ein Betrieb anfragt und zahlt – ganze Zahl 1 … AZUBIS_MAX (50).
 //   Mailtexte: „Deine unverbindliche Kursanfrage“, nächster Schritt (Termin prüfen, verbindlich erst mit unserer
 //   Buchungsbestätigung per E-Mail), Hinweis für Minderjährige. Danke-Seite: /danke/?art=anfrage.
 declare(strict_types=1);
@@ -41,6 +42,7 @@ pruefe_text($f, 'name', $name, 2, 100, FEHLER['name']);
 pruefe_email($f, 'email', $email, FEHLER['email']);
 pruefe_telefon($f, 'telefon', $telefon);
 $kurs = null;
+$azubis = null;
 if ($anfrage) {
     // Kursanfrage: Thema und Nachricht freiwillig; Kurs nur aus der Terminliste übernehmen (nie Freitext)
     if ($thema !== '' && !isset(THEMEN[$thema])) {
@@ -56,6 +58,14 @@ if ($anfrage) {
         }
     }
     pruefe_text($f, 'nachricht', $nachricht, 0, 2000, FEHLER['nachricht'], false);
+    $azubisText = einzeilig('azubis');
+    if ($azubisText !== '') {
+        if (preg_match('/^\d{1,2}$/', $azubisText) === 1 && (int) $azubisText >= 1 && (int) $azubisText <= AZUBIS_MAX) {
+            $azubis = (int) $azubisText;
+        } else {
+            $f['azubis'] = FEHLER['azubis'];
+        }
+    }
 } else {
     if (!isset(THEMEN[$thema])) {
         $f['thema'] = FEHLER['thema'];
@@ -84,6 +94,7 @@ $text = implode("\n", [
     '',
     'Thema: ' . THEMEN[$thema],
     ...($anfrage ? ['Kurs: ' . ($kurs !== null ? $kurs['titel'] . ' (' . $kursId . ')' : '–')] : []),
+    ...($anfrage ? ['Anzahl Azubis (Betrieb zahlt): ' . ($azubis !== null ? (string) $azubis : '–')] : []),
     'Name: ' . $name,
     'E-Mail: ' . $email,
     'Telefon: ' . ($telefon !== '' ? $telefon : '–'),
@@ -91,11 +102,11 @@ $text = implode("\n", [
     'NACHRICHT',
     $nachricht !== '' ? $nachricht : '–',
     '',
-    json_block(['vorgang' => $vorgang, 'art' => $art, 'kurs' => $kurs !== null ? $kursId : null, 'eingang' => date('c', $eingang), 'thema' => $thema, 'name' => $name, 'email' => $email, 'telefon' => $telefon, 'nachricht' => $nachricht]),
+    json_block(['vorgang' => $vorgang, 'art' => $art, 'kurs' => $kurs !== null ? $kursId : null, 'azubis' => $azubis, 'eingang' => date('c', $eingang), 'thema' => $thema, 'name' => $name, 'email' => $email, 'telefon' => $telefon, 'nachricht' => $nachricht]),
 ]);
 
 $postfach = $k['empfaenger']['kontakt'];
-if (!mail_senden($postfach, ($anfrage ? 'Kursanfrage · ' . ($kurs['titel'] ?? THEMEN[$thema]) : 'Kontakt · ' . THEMEN[$thema]) . ' · ' . $name, $text, $k['absender']['info'], $email)) {
+if (!mail_senden($postfach, ($anfrage ? 'Kursanfrage · ' . ($kurs['titel'] ?? THEMEN[$thema]) . ($azubis !== null ? ' · Betrieb, ' . $azubis . ' Azubis' : '') : 'Kontakt · ' . THEMEN[$thema]) . ' · ' . $name, $text, $k['absender']['info'], $email)) {
     versand_fehler($postfach);
 }
 
@@ -106,6 +117,7 @@ $bausteine = $anfrage ? [
     'danke für deine unverbindliche Kursanfrage. Sie ist bei uns eingegangen – Kosten oder eine Zahlungspflicht entstehen dadurch nicht.',
     '',
     ...($kurs !== null ? ['Kurs: ' . $kurs['titel']] : []),
+    ...($azubis !== null ? ['Anzahl Azubis (Betrieb zahlt): ' . $azubis] : []),
     'Vorgangsnummer: ' . $vorgang,
     'Eingang: ' . jetzt_text($eingang),
     '',

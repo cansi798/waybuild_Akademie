@@ -5,6 +5,8 @@
 export const MAX_PERSONEN = 5;
 export const RABATT_AB_PERSONEN = 3;
 export const RABATT_PROZENT = 10;
+/** Kurzanfrage (MKT-013): freiwillige Anzahl Azubis, für die ein Betrieb anfragt (ganze Zahl 1 … AZUBIS_MAX). */
+export const AZUBIS_MAX = 50;
 /** Widerrufsfrist in Tagen: startet der Kurs früher, braucht das Buchungsangebot den Baustein „Beginn vor Ablauf der Widerrufsfrist“. */
 export const WIDERRUFSFRIST_TAGE = 14;
 
@@ -44,6 +46,7 @@ export const FEHLER = {
   wunschzeiten: 'Bitte fasse deine Wunschzeiten kürzer (höchstens 200 Zeichen).',
   // Kontakt
   thema: 'Bitte wähle ein Thema aus.',
+  azubis: 'Bitte gib die Anzahl Azubis als ganze Zahl von 1 bis 50 ein.',
   kontaktNachricht: 'Bitte schreib uns kurz, worum es geht.',
   einwilligungKontakt: 'Bitte bestätige, dass du den Datenschutzhinweis gelesen hast.',
   // Widerruf (§ 356a BGB: nur Name, Vertragsangabe und E-Mail sind Pflicht, kein Grund)

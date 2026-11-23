@@ -6,6 +6,8 @@
 | 21.11. | Runden 1–2 nur Audit/Backlog; Implementierung erst nach Merge von start-6771 + recht-6771, vorher nur freie Dateien | Jan-Auftrag |
 | 21.11. | Repo öffentlich → Artefakte ohne Interna (keine Kalkulation, keine Rechtsrisiken, keine Personen außer GF) | Orchestrator |
 
+| 23.11. | Can 06:55 „Alle Vorschläge umsetzen“ → alles ohne fehlende Fakten umsetzen (MKT-013, MKT-021, Weiterbildungsseiten, Organization-Schema); Faktenfragen bleiben offen | Can über Jan |
+
 ## Gesperrte Bereiche (Change Owner = andere Helfer)
 
 - **start-6771:** Startseite, Kopf/Fuß, Berufe (`src/lib/berufe.ts`, `/pruefungsvorbereitung/*`), AnfrageFormular, llms*.txt, seo.ts/site.ts, Tests startseite/uebersicht/conversion
@@ -16,3 +18,6 @@
 ## Wiederholungsverbote / verworfene Maßnahmen
 
 (werden je Runde ergänzt)
+
+- Organization-Schema: keine Telefonnummer und kein `sameAs`, solange Can sie nicht bestätigt (nie erfinden).
+- Eingebettete Kurzanfrage nur auf freigegebenen Kursen mit Termin (Server lehnt Entwürfe ab); Coaching behält seine eigene Anfrage.

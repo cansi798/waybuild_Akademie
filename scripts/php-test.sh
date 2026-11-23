@@ -346,6 +346,27 @@ pruefe(isset($r['json']['fehler']['thema']), 'unbekannter Bereich abgelehnt');
 $r = anfrage('/api/kontakt.php', array_merge($kon, ['nachricht' => '', 'kurs' => 'testkurs']), true);
 pruefe(isset($r['json']['fehler']['nachricht']), 'normale Kontaktanfrage: Nachricht bleibt Pflicht');
 
+gruppe('Kurzanfrage: Anzahl Azubis (MKT-013, freiwillig, 1–50)');
+mails_leeren();
+$r = anfrage('/api/kontakt.php', array_merge($anf, ['azubis' => '4']));
+$m = mails();
+pruefe($r['status'] === 303 && str_starts_with($r['kopf']['location'] ?? '', '/danke/?art=anfrage&vorgang=K-'), 'mit Anzahl Azubis → 303 /danke/?art=anfrage');
+pruefe(str_contains($m[0]['text'] ?? '', 'Anzahl Azubis (Betrieb zahlt): 4') && str_contains($m[0]['text'] ?? '', '"azubis": 4'), 'Team-Mail nennt die Anzahl (Text + JSON)');
+pruefe(str_contains($m[0]['betreff'] ?? '', '· Betrieb, 4 Azubis ·'), 'Betreff nennt Betrieb und Anzahl');
+pruefe(str_contains($m[1]['text'] ?? '', 'Anzahl Azubis (Betrieb zahlt): 4'), 'Bestätigung nennt die Anzahl');
+mails_leeren();
+anfrage('/api/kontakt.php', $anf);
+$m = mails();
+pruefe(str_contains($m[0]['text'] ?? '', 'Anzahl Azubis (Betrieb zahlt): –') && !str_contains($m[1]['text'] ?? '', 'Anzahl Azubis') && !str_contains($m[0]['betreff'] ?? '', 'Azubis'), 'ohne Angabe: „–“ in der Team-Mail, nichts in Bestätigung/Betreff');
+foreach (['1' => true, '50' => true, '0' => false, '51' => false, '-3' => false, '2.5' => false, 'zwei' => false, '100' => false, ' 7 ' => true] as $wert => $gilt) {
+    $r = anfrage('/api/kontakt.php', array_merge($anf, ['azubis' => (string) $wert]), true);
+    $fehler = $r['json']['fehler']['azubis'] ?? null;
+    pruefe($gilt ? ($r['status'] === 200 && $fehler === null) : ($r['status'] === 422 && $fehler === 'Bitte gib die Anzahl Azubis als ganze Zahl von 1 bis 50 ein.'), "Anzahl Azubis „{$wert}“ → " . ($gilt ? 'ok' : 'abgelehnt'));
+}
+mails_leeren();
+$r = anfrage('/api/kontakt.php', array_merge($kon, ['azubis' => '999']), true);
+pruefe($r['status'] === 200 && !str_contains(mails()[0]['text'] ?? '', 'Azubis (Betrieb zahlt)'), 'normales Kontaktformular ignoriert das Feld');
+
 gruppe('Widerruf (§ 356a BGB)');
 mails_leeren();
 $wid = ['name' => 'Lena Muster', 'email' => 'lena@beispiel.de', 'kurs' => 'testkurs', 'anmeldedatum' => tag(-2), 'vorgang' => 'a-20261113-7f3k',

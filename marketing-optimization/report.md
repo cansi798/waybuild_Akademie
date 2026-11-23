@@ -83,3 +83,18 @@ Die einzelnen Läufe stehen in `qa-checklist.md`. Wichtigste Ergebnisse:
 | G7 Evidenz | PASS |
 
 **Rollback:** Jede Runde ist ein eigener Commit und lässt sich mit `git revert` zurücknehmen. Live wurde nichts veröffentlicht.
+
+## Nachtrag 23.11.2026 – „Alle Vorschläge umsetzen“ (Can 06:55)
+
+**Umgesetzt** (Branch `vorschlaege-20261123`, alles ohne neue Fakten):
+
+1. **MKT-021 Kurzanfrage auf der Kursseite:** Abschnitt „Kurz fragen“ auf jeder freigegebenen Kursseite mit Termin, Kurs und Bereich vorausgewählt; „Kurz fragen – nur Name und E-Mail“ im Kurskopf springt jetzt auf derselben Seite dorthin (ohne JavaScript ebenso). Eintrag in der Sprungnavigation. Die mobile Handlungsleiste blendet sich aus, solange das Formular im Bild ist.
+2. **MKT-013 Anzahl Azubis:** freiwilliges Feld „Anzahl Azubis (Betrieb zahlt)“ in der Kurzanfrage (aufklappbarer Bereich), ganze Zahl 1–50, im Browser und in `kontakt.php` geprüft. Team-Mail (Text, JSON, Betreff „· Betrieb, N Azubis“) und Eingangsbestätigung nennen die Zahl. Datenschutzerklärung: Feldliste der Kurzanfrage sachlich ergänzt (Kursseiten + Anzahl Azubis), sonst unverändert.
+3. **Weiterbildungsseiten für die Suche:** H1 „IHK-Weiterbildung berufsbegleitend, live online“ bzw. „Weiterbildung zu KI, IT und Programmierung“, ItemList der freigegebenen Kurse (live derzeit keine, daher leer), Link in den gefilterten Katalog.
+4. **Organization-Schema:** Anschrift und `parentOrganization` (Waybuild UG (haftungsbeschränkt), `legalName`, Handelsregister Amtsgericht Kiel, HRB 29883 KI) – nur aus Impressum/`recht/status.ts`.
+
+Bereits erledigt und geprüft: MKT-010 (alternateName), MKT-015/016 (Genderformen, Prüfer-Claim), MKT-002/004/005.
+
+**Offen – braucht Fakten oder Freigaben von Can:** Telefonnummer (Impressum, Schema `telephone`), `sameAs`-Profile, Anwaltsprüfung der Rechtstexte (dort stehen noch „Teilnehmende“/„Mitarbeitende“), Frist für die Abschnitt-Buchung, eigene Jitsi-Adresse, Freigabe der Kursentwürfe (MKT-017; erst dann SEO-Texte der Weiterbildungsseiten mit konkreten Abschlüssen), Videos (MKT-018), USt-IdNr.
+
+**Wirkung:** nicht gemessen (keine Daten). Vorschlag bleibt: Anfragen je Woche im Postfach zählen, Anteil „Kursanfrage · … · Betrieb“ getrennt.

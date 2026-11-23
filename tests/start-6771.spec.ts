@@ -167,11 +167,80 @@ test('Kopf „Anfragen“ auf /coaching/ führt zur Coaching-Anfrage (Loop 21.11
   await expect(page.locator('[data-kopf-anfrage]')).toHaveAttribute('href', /\/anmeldung\/\?kurs=pruefungscoaching/);
 });
 
-test('Kursseite: „Kurz fragen“ führt zur Kurzanfrage mit Kurs-Vorauswahl (Loop R9)', async ({ page }) => {
+test('Kursseite: „Kurz fragen“ springt zur Kurzanfrage auf derselben Seite, Kurs vorausgewählt (MKT-021)', async ({ page }) => {
   await page.goto('./kurse/ap1-it-berufe/');
   const link = page.locator('[data-kurzanfrage]');
-  await expect(link).toHaveAttribute('href', /\/\?bereich=pruefung&kurs=ap1-it-berufe#anfrage$/);
+  await expect(link).toHaveAttribute('href', '#anfrage');
   await link.click();
-  await expect(page.locator('#anfrage')).toBeInViewport();
+  await expect(page).toHaveURL(/\/kurse\/ap1-it-berufe\/#anfrage$/);
+  await expect(page.locator('[data-kurs-kurzanfrage] form#anfrage')).toBeInViewport();
   await expect(page.locator('#anfrage-kurs')).toHaveValue('ap1-it-berufe');
+  await expect(page.locator('#anfrage-thema')).toHaveValue('pruefung');
+  await expect(page.locator('#anfrage-name')).toBeFocused();
+  await expect(page.locator('[data-sprungnavigation] a[href="#kurz-fragen"]')).toHaveText('Kurz fragen');
+});
+
+test('Kursseite: Kurzanfrage mit Anzahl Azubis – Prüfung 1–50, Demo-Absenden (MKT-013/021)', async ({ page }) => {
+  await page.goto('./kurse/ap1-it-berufe/');
+  const form = page.locator('form#anfrage');
+  test.skip((await form.getAttribute('data-demo')) !== 'true', 'nur im Vorschau-Build (Demo ohne PHP)');
+  await page.locator('#anfrage-name').fill('Jana Betrieb');
+  await page.locator('#anfrage-email').fill('jana@beispiel.de');
+  await page.locator('#anfrage-einwilligung').check();
+  await form.locator('[data-anfrage-mehr] summary').click();
+  const azubis = page.locator('#anfrage-azubis');
+  await azubis.fill('51');
+  await form.locator('[data-absenden]').click();
+  await expect(page.locator('[data-fehler-fuer="azubis"]')).toHaveText('Bitte gib die Anzahl Azubis als ganze Zahl von 1 bis 50 ein.');
+  await expect(azubis).toHaveAttribute('aria-invalid', 'true');
+  await azubis.fill('4');
+  await form.locator('[data-absenden]').click();
+  await expect(page).toHaveURL(/danke\/\?art=anfrage/);
+});
+
+test.describe('ohne JavaScript', () => {
+  test.use({ javaScriptEnabled: false });
+  test('Kursseite hat die Kurzanfrage mit Kurs-Vorauswahl', async ({ page }) => {
+    await page.goto('./kurse/ap1-it-berufe/');
+    await expect(page.locator('form#anfrage')).toHaveAttribute('action', /\/api\/kontakt\.php$/);
+    await expect(page.locator('#anfrage-kurs')).toHaveValue('ap1-it-berufe');
+    await expect(page.locator('#anfrage-azubis')).toHaveAttribute('inputmode', 'numeric');
+  });
+});
+
+test('Kursseite mobil: Handlungsleiste weicht der eingebetteten Kurzanfrage (MKT-021)', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('./kurse/ap1-it-berufe/');
+  const leiste = page.locator('[data-cta-leiste]');
+  await page.locator('#inhalte').scrollIntoViewIfNeeded();
+  await expect(leiste).not.toHaveClass(/ist-verdeckt/);
+  await page.locator('#anfrage-email').scrollIntoViewIfNeeded();
+  await expect(leiste).toHaveClass(/ist-verdeckt/);
+});
+
+test('Coaching-Kursseite ohne eingebettete Kurzanfrage (eigene Anfrage)', async ({ page }) => {
+  await page.goto('./kurse/pruefungscoaching/');
+  await expect(page.locator('form#anfrage')).toHaveCount(0);
+  await expect(page.locator('[data-kurzanfrage]')).toHaveCount(0);
+});
+
+test('Organization-Schema: nur belegte Angaben aus dem Impressum', async ({ page }) => {
+  await page.goto('./');
+  const org = (await page.$$eval('script[type="application/ld+json"]', (s) => s.flatMap((x) => JSON.parse(x.textContent || '[]')))).find(
+    (o: { '@type': string }) => o['@type'] === 'EducationalOrganization',
+  );
+  expect(org.address).toMatchObject({ streetAddress: 'Kuno-Liesenberg-Kehre 32a', postalCode: '22844', addressLocality: 'Norderstedt', addressCountry: 'DE' });
+  expect(org.parentOrganization).toMatchObject({ legalName: 'Waybuild UG (haftungsbeschränkt)' });
+  expect(org.parentOrganization.identifier.value).toBe('Amtsgericht Kiel, HRB 29883 KI');
+  expect(org.telephone).toBeUndefined();
+  expect(org.sameAs).toBeUndefined();
+});
+
+test('Weiterbildungsseiten: H1 mit Suchbegriffen, Datenschutz nennt das Feld Anzahl Azubis', async ({ page }) => {
+  await page.goto('./ihk-weiterbildung/');
+  await expect(page.locator('h1')).toHaveText('IHK-Weiterbildung berufsbegleitend, live online');
+  await page.goto('./waybuild-weiterbildung/');
+  await expect(page.locator('h1')).toHaveText('Weiterbildung zu KI, IT und Programmierung');
+  await page.goto('./datenschutz/');
+  await expect(page.locator('main')).toContainText('Anzahl Azubis, wenn ein Betrieb anfragt');
 });

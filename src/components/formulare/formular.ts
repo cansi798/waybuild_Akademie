@@ -1,7 +1,7 @@
 // Browser-Teil aller Formulare (Vanilla TS, ohne Framework). Ohne JavaScript senden die Formulare normal per POST.
 // Mit JavaScript: Prüfung am Feld (Du-Ton, aria-invalid, aria-describedby), Fehler-Zusammenfassung, Fokus auf das erste
 // Fehlerfeld, Versand per fetch (JSON-Antwort des PHP-Endpunkts), Zeitfalle-Token, Demo-Modus in der Vorschau.
-import { MUSTER } from '../../lib/formular';
+import { AZUBIS_MAX, MUSTER } from '../../lib/formular';
 
 export type Zeile = [string, string];
 export interface Zusammenfassung {
@@ -59,6 +59,12 @@ export function feldPruefen(el: Steuer, form: HTMLFormElement): string {
     case 'vorgang':
       if (!new RegExp(MUSTER.vorgang).test(wert)) return formatText;
       break;
+    case 'anzahl': {
+      // ganze Zahl 1 … AZUBIS_MAX (Kurzanfrage „Anzahl Azubis“, MKT-013) – wie public/api/kontakt.php
+      const n = Number(wert);
+      if (!/^\d{1,2}$/.test(wert) || n < 1 || n > AZUBIS_MAX) return formatText;
+      break;
+    }
     case 'vorname':
       if (/^\d+$/.test(wert)) return formatText;
       break;

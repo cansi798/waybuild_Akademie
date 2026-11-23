@@ -28,6 +28,8 @@ import {
 import { href } from '../../lib/pfad';
 import { berufKurz, berufUrl, sichtbareBerufe } from '../../lib/berufe';
 import { ANFRAGE_BEREICHE } from '../../lib/formular';
+import AnfrageFormular from '../../components/formulare/AnfrageFormular.astro';
+import { ZUSAGEN } from '../../lib/zusagen';
 import Risikoumkehr from '../../components/seiten/Risikoumkehr.astro';
 import { BEWEIS_DOZENTEN } from '../../lib/zusagen';
 import { fragen, ohneDoppelte, type FaqId } from '../../lib/faq';
@@ -76,9 +78,11 @@ const aktion = coaching
         { text: 'Unverbindlich anfragen', url: href(`/anmeldung/?kurs=${kurs.id}`), daten: 'anfrage' }
     : { text: 'Interesse vormerken', url: href(interesseUrl(kurs)), daten: 'interesse' };
 // Leiste/Seitenleiste: kurz, damit bei 320 px das Startdatum sichtbar bleibt (QA R3)
-// Loop R9: Alternative zum 5-Schritt-Formular – Kurzanfrage (4 Angaben) auf der Startseite, Kurs vorausgewählt
+// Loop R9 / MKT-021 (23.11.): Alternative zum 5-Schritt-Formular – die Kurzanfrage steht direkt auf der Kursseite
+// (Kurs vorausgewählt), statt zur Startseite zu springen. Nur bei freigegebenen Kursen mit Termin (der Server nimmt nur
+// freigegebene Kurse an); Coaching hat seine eigene Anfrage.
 const kurzBereich = ANFRAGE_BEREICHE.find((b) => b.saeule === d.saeule)?.id;
-const kurzAnfrageUrl = kurzBereich ? href(`/?bereich=${kurzBereich}&kurs=${kurs.id}#anfrage`) : undefined;
+const mitKurzanfrage = aktion.daten === 'anfrage' && kurzBereich !== undefined;
 const aktionKurz = aktion.daten === 'anfrage' ? 'Anfragen' : aktion.text;
 // Beweis nur, wo er stimmt: Säule ihk-pruefung (Prüfungsvorbereitung + Coaching), nicht bei Entwürfen.
 const mitBeweis = !entwurf && (d.saeule === 'ihk-pruefung' || coaching);
@@ -106,6 +110,7 @@ const abschnitte = [
   { id: 'preis', name: 'Preis' },
   { id: 'voraussetzungen', name: 'Voraussetzungen' },
   { id: 'faq', name: 'FAQ' },
+  ...(mitKurzanfrage ? [{ id: 'kurz-fragen', name: 'Kurz fragen' }] : []),
 ];
 
 const kerndaten: { name: string; wert: string; breit?: boolean }[] = [
@@ -216,9 +221,10 @@ const schema =
               {termine.length > 1 && <> <a href="#termine" class="font-semibold text-white underline underline-offset-4 hover:no-underline" data-kopf-termine>Alle {termine.length} Termine ansehen</a></>}
             </p>
           )}
-          {aktion.daten === 'anfrage' && kurzAnfrageUrl && (
+          {mitKurzanfrage && (
             <p class="mt-2 text-sm text-white/85">
-              Erst nur eine Frage? <a href={kurzAnfrageUrl} class="font-semibold text-white underline underline-offset-4 hover:no-underline" data-kurzanfrage>Kurz fragen – nur Name und E-Mail</a>
+              Erst nur eine Frage?{' '}
+              <a href="#anfrage" class="font-semibold text-white underline underline-offset-4 hover:no-underline" data-kurzanfrage data-anfrage-bereich={kurzBereich} data-anfrage-kurs={kurs.id}>Kurz fragen – nur Name und E-Mail</a>
             </p>
           )}
           {buchbar && !coaching && <p class="mt-3 text-sm text-white/85" data-kopf-zahler>Rechnung an dich oder deinen Betrieb · ab 3 Personen 10 % Rabatt</p>}
@@ -471,6 +477,22 @@ const schema =
         )
       }
 
+      <!-- Kurzanfrage direkt auf der Kursseite (MKT-021) -->
+      {
+        mitKurzanfrage && (
+          <section id="kurz-fragen" aria-labelledby="kurz-fragen-titel" class="abschnitt" data-kurs-kurzanfrage>
+            <h2 id="kurz-fragen-titel" class="text-3xl sm:text-4xl">Kurz fragen</h2>
+            <p class="mt-3 max-w-2xl text-lg text-gedaempft">
+              Du willst erst etwas wissen, bevor du dich anmeldest – zum Termin, zu Vorkenntnissen oder zur Rechnung an deinen Betrieb? Name und E-Mail genügen, der Kurs ist schon ausgewählt.
+            </p>
+            <p class="mt-2 max-w-2xl font-semibold" data-zusage-anfrage>{ZUSAGEN.anfrage}</p>
+            <div class="mt-6">
+              <AnfrageFormular bereich={kurzBereich} kurs={kurs.id} />
+            </div>
+          </section>
+        )
+      }
+
       {ihk && <IhkHinweis zusatz={coaching ? 'Projektantrag, Dokumentation und alle Prüfungsleistungen erstellst du selbst. Eine Einflussnahme auf die Prüfung oder deren Bewertung erfolgt nicht.' : undefined} />}
     </div>
 
@@ -543,13 +565,27 @@ const schema =
 
 <script>
   // Mobile Handlungsleiste erst zeigen, wenn der Knopf im Kopf aus dem Bild ist (ohne JS: immer sichtbar).
+  // MKT-021: Solange die eingebettete Kurzanfrage im Bild ist, bleibt die Leiste weg (sie würde Felder verdecken).
   const leiste = document.querySelector<HTMLElement>('[data-cta-leiste]');
   const kopfKnopf = document.querySelector<HTMLElement>('[data-hauptaktion]');
+  const kurzanfrage = document.querySelector<HTMLElement>('[data-kurs-kurzanfrage] form');
   if (leiste && kopfKnopf && 'IntersectionObserver' in window) {
-    new IntersectionObserver(([e]) => {
-      const verdeckt = e.isIntersecting || e.boundingClientRect.top > 0;
+    let kopfDa = true;
+    let formularDa = false;
+    const setzen = () => {
+      const verdeckt = kopfDa || formularDa;
       leiste.classList.toggle('ist-verdeckt', verdeckt);
       leiste.toggleAttribute('inert', verdeckt);
+    };
+    new IntersectionObserver(([e]) => {
+      kopfDa = e.isIntersecting || e.boundingClientRect.top > 0;
+      setzen();
     }).observe(kopfKnopf);
+    if (kurzanfrage) {
+      new IntersectionObserver(([e]) => {
+        formularDa = e.isIntersecting;
+        setzen();
+      }).observe(kurzanfrage);
+    }
   }
 </script>

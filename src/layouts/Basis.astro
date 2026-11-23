@@ -5,6 +5,7 @@ import Kopf from '../components/Kopf.astro';
 import Fuss from '../components/Fuss.astro';
 import { IS_PREVIEW } from '../lib/env';
 import { AKADEMIE } from '../lib/site';
+import { FIRMA } from '../components/recht/status';
 import { href, absolut } from '../lib/pfad';
 // Die zwei Schriftdateien des ersten Bildes (lateinischer Zeichensatz) vorladen – zusammen mit den maßgleichen
 // Ersatzschriften in global.css verhindert das Springen beim Schrift-Tausch (CLS).
@@ -30,6 +31,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogBild = absolut('/og-bild.png', Astro.site);
 const robots = IS_PREVIEW || noindex ? 'noindex, nofollow' : 'index, follow';
 
+const postanschrift = {
+  '@type': 'PostalAddress',
+  streetAddress: FIRMA.strasse,
+  postalCode: FIRMA.plz,
+  addressLocality: FIRMA.ort,
+  addressCountry: 'DE',
+};
 const organisation = {
   '@context': 'https://schema.org',
   '@type': 'EducationalOrganization',
@@ -39,6 +47,19 @@ const organisation = {
   logo: absolut('/logo/waybuild-akademie.svg', Astro.site),
   email: AKADEMIE.mailInfo,
   description: AKADEMIE.beschreibung,
+  // 23.11. (Loop „Nächste Iteration“): nur belegte Angaben aus dem Impressum (FIRMA in recht/status.ts).
+  // Offen und deshalb NICHT enthalten: Telefon (FIRMA.telefon = null) und sameAs (keine bestätigten Profile).
+  address: postanschrift,
+  parentOrganization: {
+    '@type': 'Organization',
+    name: FIRMA.name,
+    legalName: FIRMA.name,
+    address: postanschrift,
+    ...(FIRMA.registernummer && FIRMA.registergericht
+      ? { identifier: { '@type': 'PropertyValue', propertyID: 'Handelsregister', value: `${FIRMA.registergericht}, ${FIRMA.registernummer}` } }
+      : {}),
+  },
+  ...(FIRMA.telefon ? { telephone: FIRMA.telefon } : {}),
 };
 ---
 

@@ -40,3 +40,14 @@ Webkit nach R2 nicht erneut gelaufen (Zeit/Serverlast) → für Webkit NOT_VERIF
 | Ende (5eb14ab) | Webkit voll, php-test | 121 pass / 5 skip, 236/236 |
 
 Webkit ist damit verifiziert (früheres NOT_VERIFIED aufgehoben). G4 Performance: Video-MP4 je ~2,2 MB, mobil preload none; Desktop lädt erstes Video sofort (nicht vom Loop geändert, Hinweis an start-Bereich).
+
+## Runde 12 (23.11., vorschlaege-20261123)
+
+| Check | Ergebnis |
+|---|---|
+| `scripts/bau.sh` (Vorschau) | 0 Fehler, 0 Warnungen |
+| `scripts/bau.sh live` | grün |
+| `scripts/php-test.sh` | 251 bestanden, 0 fehlgeschlagen (13 neue Prüfungen Anzahl Azubis) |
+| `scripts/test.sh --workers=2` (chromium + webkit) | 254 pass / 10 skip / 0 fail |
+| axe 390 + 1440 (Kursseiten AP1/AP2-FISI, IHK-/waybuild-Weiterbildung, Start, Datenschutz) | 0 Verstöße, kein H-Scroll |
+| Screenshots | `qa/vorschlaege-20261123/` |

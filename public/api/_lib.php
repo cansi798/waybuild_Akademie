@@ -48,6 +48,7 @@ const FEHLER = [
     'pruefungszeitraum' => 'Bitte fasse den Prüfungszeitraum kürzer (höchstens 100 Zeichen).',
     'wunschzeiten' => 'Bitte fasse deine Wunschzeiten kürzer (höchstens 200 Zeichen).',
     'thema' => 'Bitte wähle ein Thema aus.',
+    'azubis' => 'Bitte gib die Anzahl Azubis als ganze Zahl von 1 bis 50 ein.',
     'kontaktNachricht' => 'Bitte schreib uns kurz, worum es geht.',
     'einwilligungKontakt' => 'Bitte bestätige, dass du den Datenschutzhinweis gelesen hast.',
     'vertrag' => 'Bitte wähle den Kurs aus oder gib die Vorgangsnummer aus deiner Bestätigungs-E-Mail an.',
@@ -58,6 +59,7 @@ const FEHLER = [
 const MAX_PERSONEN = 5;
 const RABATT_AB_PERSONEN = 3;
 const RABATT_PROZENT = 10;
+const AZUBIS_MAX = 50;
 const WIDERRUFSFRIST_TAGE = 14;
 
 function konfig(): array

@@ -162,3 +162,14 @@ qa_gate: PASS_WITH_LIMITATIONS
 
 ## Abschluss (00:05–00:15)
 Keine neuen Änderungen nach Runde 11. Endlauf auf 5eb14ab: Chromium 121/5 skip, Webkit 121/5 skip, php-test 236/236. report.md, qa-checklist.md, backlog.md aktualisiert.
+
+## Runde 12 – „Alle Vorschläge umsetzen“ (23.11., Can 06:55, Branch vorschlaege-20261123)
+
+```yaml
+round: 12
+change_ids: [MKT-021, MKT-013, MKT-022, MKT-023]
+hypothese: "Formular vor Ort statt Sprung zur Startseite + Feld für Betriebe → mehr unverbindliche Anfragen von der Kursseite, auch von Betrieben; schärfere H1/ItemList/Organisation → bessere Zuordnung in Suche und KI-Suchen."
+files_changed: [src/pages/kurse/[slug].astro, src/components/formulare/AnfrageFormular.astro, Feld.astro, formular.ts, src/lib/formular.ts, public/api/kontakt.php, public/api/_lib.php, scripts/php-test.sh, src/pages/datenschutz/index.astro (nur Feldliste), src/layouts/Basis.astro, src/components/start/BereichSeite.astro, ihk-weiterbildung, waybuild-weiterbildung, tests/start-6771.spec.ts]
+checks: {build: pass (106 Seiten, 0 Fehler), build_live: pass, php: 251 bestanden / 0 fehlgeschlagen, playwright_voll: siehe qa-checklist, axe_390_1440: 0 auf 6 Seiten, h_scroll: 0}
+qa_gate: PASS_WITH_LIMITATIONS (keine Messdaten; Wirkung = Hypothese)
+```

@@ -2,12 +2,16 @@
 // Bereichsseite (Audit #6771, Punkt 7): Ziel der Menüpunkte „IHK-Weiterbildung“ und „waybuild Weiterbildung“.
 // Gibt es sichtbare Kurse (live: freigegeben), stehen sie kompakt nach Kategorie da; gibt es keine, erscheint
 // „Kurse in Vorbereitung – frag unverbindlich an“. In beiden Fällen direkt darunter die Kurzanfrage (Bereich vorgewählt).
+// 23.11. (Loop „Nächste Iteration“, Suche schärfen): H1 mit den Suchbegriffen des Bereichs (`ueberschrift`), ItemList der
+// freigegebenen Kurse als strukturierte Daten und ein Link in den gefilterten Katalog. Keine neuen Fakten: Kursnamen,
+// Kategorien und Preise kommen aus den Kursdateien.
 import Basis from '../../layouts/Basis.astro';
 import AnfrageFormular from '../formulare/AnfrageFormular.astro';
 import StickyAnfrage from './StickyAnfrage.astro';
 import VideoPlatz from './VideoPlatz.astro';
 import IhkHinweis from '../seiten/IhkHinweis.astro';
 import { brotkrumenSchema } from '../seiten/schema';
+import { absolut } from '../../lib/pfad';
 import { alleKurse, formatEuro, nachSaeuleUndKategorie, umfangText, type Saeule } from '../../lib/kurse';
 import { href } from '../../lib/pfad';
 import { UNTERRICHT } from '../../lib/site';
@@ -18,17 +22,31 @@ interface Props {
   bereich: 'ihk-weiterbildung' | 'akademie';
   pfad: string;
   titel: string;
+  /** sichtbare H1 (Suchintention); Standard = titel. `titel` bleibt der Name in Brotkrumen. */
+  ueberschrift?: string;
   seoTitel: string;
   beschreibung: string;
   satz: string;
   video: { id: string; titel: string; text: string };
 }
-const { saeule, bereich, pfad, titel, seoTitel, beschreibung, satz, video } = Astro.props;
+const { saeule, bereich, pfad, titel, ueberschrift = titel, seoTitel, beschreibung, satz, video } = Astro.props;
 const gruppe = nachSaeuleUndKategorie(await alleKurse()).find((g) => g.saeule === saeule);
 const kategorien = gruppe?.kategorien ?? [];
+// Strukturierte Daten nur für freigegebene Kurse (Entwürfe nie, NFA-15)
+const freigegeben = kategorien.flatMap((k) => k.kurse).filter((k) => k.data.status === 'freigegeben');
+const kursListe = freigegeben.length
+  ? [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: `${titel}: Kurse der waybuild Akademie`,
+        itemListElement: freigegeben.map((k, i) => ({ '@type': 'ListItem', position: i + 1, name: k.data.titel, url: absolut(`/kurse/${k.id}/`, Astro.site) })),
+      },
+    ]
+  : [];
 ---
 
-<Basis titel={seoTitel} beschreibung={beschreibung} schema={[brotkrumenSchema([['Start', '/'], [titel, pfad]], Astro.site)]}>
+<Basis titel={seoTitel} beschreibung={beschreibung} schema={[brotkrumenSchema([['Start', '/'], [titel, pfad]], Astro.site), ...kursListe]}>
   <section class="border-b border-base-300">
     <div class="rahmen grid grid-cols-[minmax(0,1fr)] items-center gap-8 pt-8 pb-10 sm:pt-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14">
       <div>
@@ -36,7 +54,7 @@ const kategorien = gruppe?.kategorien ?? [];
           <span class="size-2.5 rounded-full bg-bernstein" aria-hidden="true"></span>
           {UNTERRICHT.kurz}
         </p>
-        <h1 class="trennen mt-4 text-[2.3rem] leading-[1.05] sm:text-6xl">{titel}</h1>
+        <h1 class="trennen mt-4 text-[2.3rem] leading-[1.05] sm:text-6xl">{ueberschrift}</h1>
         <p class="mt-4 text-lg text-gedaempft">{satz}</p>
         <a href="#anfrage" class="btn btn-accent btn-lg mt-6 rounded-full px-8" data-anfrage-bereich={bereich}>Unverbindlich anfragen</a>
       </div>
@@ -73,6 +91,9 @@ const kategorien = gruppe?.kategorien ?? [];
                 </div>
               ))}
             </div>
+            <p class="mt-6 text-sm text-gedaempft">
+              Termine und Filter findest du im <a href={href(`/kurse/?saeule=${saeule}`)} class="link-fliess" data-bereich-katalog>Kurskatalog</a>.
+            </p>
           </>
         ) : (
           <div class="max-w-2xl rounded-3xl bg-base-200 p-6 sm:p-8" data-bereich-vorbereitung>
