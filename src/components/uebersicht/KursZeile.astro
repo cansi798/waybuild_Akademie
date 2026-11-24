@@ -3,7 +3,7 @@
 // Desktop: Spalten wie eine Tabelle (Spaltenköpfe einmal je Kategorie, Etiketten hier nur für Screenreader).
 // Mobil: Titel und Preis oben, darunter Umfang · Dauer · Start in einer Zeile. Entwürfe (nur Vorschau) tragen ein Badge.
 // Stil: uebersicht.css (.ue-…).
-import { formatDatum, formatEuro, isoDatum, naechsterTermin, type Kurs } from '../../lib/kurse';
+import { formatEuro, type Kurs } from '../../lib/kurse';
 import { href } from '../../lib/pfad';
 
 interface Props {
@@ -12,7 +12,6 @@ interface Props {
 const { kurs } = Astro.props;
 const d = kurs.data;
 const istCoaching = d.art === 'coaching';
-const termin = naechsterTermin(kurs);
 const umfang = istCoaching ? 'je 60 Min.' : d.ue ? `${d.ue} UE` : undefined;
 const dauer = istCoaching ? 'nach Vereinbarung' : d.dauer;
 const preis = `${istCoaching ? 'ab ' : ''}${formatEuro(d.preis.betrag)}`;
@@ -28,8 +27,8 @@ const preis = `${istCoaching ? 'ab ' : ''}${formatEuro(d.preis.betrag)}`;
     <p class="ue-wert"><span class="ue-etikett">Umfang: </span>{umfang ?? '–'}</p>
     <p class="ue-wert"><span class="ue-etikett">Dauer: </span>{dauer}</p>
     <p class="ue-wert">
-      <span class="ue-etikett">Nächster Start: </span><span class="ue-etikett-mobil" aria-hidden="true">Start </span>
-      {istCoaching ? 'flexibel' : termin ? <time datetime={isoDatum(termin.start)}>{formatDatum(termin.start)}</time> : 'Termin folgt'}
+      <span class="ue-etikett">Start: </span><span class="ue-etikett-mobil" aria-hidden="true">Start </span>
+      {istCoaching ? 'flexibel' : 'auf Anfrage'}
     </p>
   </div>
   <p class="ue-preis"><span class="ue-etikett">Preis: </span>{preis}</p>

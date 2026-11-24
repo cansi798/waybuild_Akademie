@@ -1,7 +1,7 @@
 // llms.txt (https://llmstxt.org): kurze, maschinenlesbare Übersicht für KI-Suchen und -Assistenten.
 // Wird bei jedem Build aus den Kursdaten erzeugt – nur freigegebene Kurse, Preise als Endpreise, keine Versprechen.
 import type { APIRoute } from 'astro';
-import { formatDatum, formatEuro, freigegebeneKurse, naechsterTermin, saeulenName, umfangText } from '../lib/kurse';
+import { formatEuro, freigegebeneKurse, saeulenName, umfangText } from '../lib/kurse';
 import { absolut } from '../lib/pfad';
 import { AKADEMIE, IHK_HINWEIS, UNTERRICHT } from '../lib/site';
 import { ZUSAGEN } from '../lib/zusagen';
@@ -16,13 +16,12 @@ export const GET: APIRoute = async ({ site }) => {
     const d = k.data;
     const coaching = d.art === 'coaching';
     const seite = coaching ? '/coaching/' : `/kurse/${k.id}/`;
-    const start = naechsterTermin(k);
     const fakten = [
       saeulenName(d.saeule),
       umfangText(k),
       coaching ? undefined : d.dauer,
       `${coaching ? 'ab ' : ''}${formatEuro(d.preis.betrag)} Endpreis`,
-      coaching ? 'Termine nach Vereinbarung' : start ? `nächster Start ${formatDatum(start.start)}` : 'Termin in Planung',
+      coaching ? 'Termine nach Vereinbarung' : 'Start auf Anfrage',
     ].filter(Boolean);
     return `- [${d.titel}](${url(seite)}): ${d.kurzbeschreibung} (${fakten.join(' · ')})`;
   });
@@ -56,12 +55,11 @@ ${kursZeilen.join('\n')}
 
 ## Seiten
 
-- [Prüfungsvorbereitung](${url('/pruefungsvorbereitung/')}): Überblick IHK-Prüfungsvorbereitung für IT-Berufe (AP1, AP2, Prüfungscoaching) mit Prüfungsterminen
-- [Alle Kurse](${url('/kurse/')}): Kurskatalog mit Umfang, Dauer, Preis und nächstem Start
-- [Termine](${url('/termine/')}): alle Starttermine chronologisch mit Anmeldeschluss
+- [Prüfungsvorbereitung](${url('/pruefungsvorbereitung/')}): Überblick IHK-Prüfungsvorbereitung für IT-Berufe (AP1, AP2, Prüfungscoaching)
+- [Alle Kurse](${url('/kurse/')}): Kurskatalog mit Umfang, Dauer und Preis – auf Anfrage
 - [Häufige Fragen](${url('/faq/')}): Anmeldung, Rechnung, Live-Unterricht, Prüfung, Weiterbildung
 - [Über uns](${url('/ueber-uns/')}): wer hinter der Akademie steht und wie wir unterrichten
-- [Kontakt](${url('/kontakt/')}): Kontaktformular und E-Mail ${AKADEMIE.mailInfo}
+- [Kontakt](${url('/kontakt/')}): einfach per E-Mail ${AKADEMIE.mailInfo}
 
 ## Rechtliches
 

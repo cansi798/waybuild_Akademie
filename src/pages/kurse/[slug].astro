@@ -9,8 +9,6 @@ import Ablauf from '../../components/seiten/Ablauf.astro';
 import Entwurfsband from '../../components/seiten/Entwurfsband.astro';
 import FaqVerzeichnis from '../../components/seiten/FaqVerzeichnis.astro';
 import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
-import TerminKarte from '../../components/seiten/TerminKarte.astro';
-import TerminWaechter from '../../components/seiten/TerminWaechter.astro';
 import { brotkrumenSchema, faqSchema, kursSchema } from '../../components/seiten/schema';
 import { kursSeo } from '../../lib/seo';
 import {
@@ -48,7 +46,10 @@ const { Content } = await render(kurs);
 const entwurf = d.status === 'entwurf';
 const coaching = d.art === 'coaching';
 const ihk = istIhkKurs(kurs);
-const termine = buchbareTermine(kurs);
+// Can #7206 (24.11.): alle Kurse „auf Anfrage“ – feste Termine und Buchung werden nicht angezeigt.
+// Reversibel über dieses eine Flag; die Termindaten bleiben in den Kursdateien erhalten.
+const AUF_ANFRAGE = true;
+const termine = AUF_ANFRAGE ? [] : buchbareTermine(kurs);
 const naechster = termine[0];
 const pruefungskurs = d.saeule === 'ihk-pruefung' && !coaching;
 const umfang = umfangText(kurs);
@@ -67,27 +68,21 @@ const abschnittZeilen = preisAbschnitte
     })()
   : [];
 
-// Haupt-Handlung: Coaching anfragen | Unverbindlich anfragen (→ /anmeldung/, unverbindliche Buchungsanfrage) | Interesse vormerken
-const aktion = coaching
-  ? { text: 'Coaching anfragen', url: href(`/anmeldung/?kurs=${kurs.id}`), daten: 'coaching' }
-  : termine.length > 0
-    ? entwurf
-      ? { text: 'Termine ansehen', url: '#termine', daten: 'termine' }
-      : // Loop 21.11. (MKT-001): ein Tap bis zum Formular. Die Anmeldung ist seit recht-6771 eine unverbindliche
-        // Buchungsanfrage; der Termin wird im Formular gewählt (kein veralteter Termin im Link zwischen zwei Builds).
-        { text: 'Unverbindlich anfragen', url: href(`/anmeldung/?kurs=${kurs.id}`), daten: 'anfrage' }
-    : { text: 'Interesse vormerken', url: href(interesseUrl(kurs)), daten: 'interesse' };
-// Leiste/Seitenleiste: kurz, damit bei 320 px das Startdatum sichtbar bleibt (QA R3)
-// Loop R9 / MKT-021 (23.11.): Alternative zum 5-Schritt-Formular – die Kurzanfrage steht direkt auf der Kursseite
-// (Kurs vorausgewählt), statt zur Startseite zu springen. Nur bei freigegebenen Kursen mit Termin (der Server nimmt nur
-// freigegebene Kurse an); Coaching hat seine eigene Anfrage.
 const kurzBereich = ANFRAGE_BEREICHE.find((b) => b.saeule === d.saeule)?.id;
-const mitKurzanfrage = aktion.daten === 'anfrage' && kurzBereich !== undefined;
+// Auf Anfrage (Can #7206): Die Hauptaktion führt immer zur Kurzanfrage direkt auf der Kursseite –
+// kein Termin-/Buchungslink mehr. Entwürfe (nur Vorschau) behalten das unverbindliche Vormerken.
+const aktion = entwurf
+  ? { text: 'Interesse vormerken', url: href(interesseUrl(kurs)), daten: 'interesse' }
+  : kurzBereich !== undefined
+    ? { text: coaching ? 'Coaching anfragen' : 'Unverbindlich anfragen', url: '#kurz-fragen', daten: 'anfrage' }
+    : { text: coaching ? 'Coaching anfragen' : 'Interesse vormerken', url: href(interesseUrl(kurs)), daten: 'interesse' };
+// Die Kurzanfrage (Kurs vorausgewählt) steht auf jeder freigegebenen Kursseite.
+const mitKurzanfrage = !entwurf && kurzBereich !== undefined;
 const aktionKurz = aktion.daten === 'anfrage' ? 'Anfragen' : aktion.text;
 // Beweis nur, wo er stimmt: Säule ihk-pruefung (Prüfungsvorbereitung + Coaching), nicht bei Entwürfen.
 const mitBeweis = !entwurf && (d.saeule === 'ihk-pruefung' || coaching);
-// Risikoumkehr nur bei buchbaren Angeboten (freigegeben, mit Termin bzw. Coaching)
-const buchbar = !entwurf && (coaching || termine.length > 0);
+// Risikoumkehr nur bei Coaching (eigener, weiterhin buchbarer Ablauf); Kurse laufen auf Anfrage.
+const buchbar = !entwurf && coaching;
 
 // FAQ: Fragen der Kursdatei + gemeinsame Fragen aus lib/faq.ts (Storno, Absage, Betrieb, Technik, Prüfungsanmeldung), ohne Doppelte.
 // „Prüfungsanmeldung“ nur bei IHK-Abschlussprüfungen der Säule ihk-pruefung (dort läuft sie über den Ausbildungsbetrieb).
@@ -106,7 +101,6 @@ const faqEintraege = ohneDoppelte(d.faq, fragen(...gemeinsameFragen), fragen(...
 const abschnitte = [
   { id: 'ueberblick', name: 'Überblick' },
   { id: 'inhalte', name: 'Inhalte' },
-  { id: 'termine', name: 'Termine' },
   { id: 'preis', name: 'Preis' },
   { id: 'voraussetzungen', name: 'Voraussetzungen' },
   { id: 'faq', name: 'FAQ' },
@@ -207,8 +201,9 @@ const schema =
                 </p>
               ) : (
                 <p class="min-w-0">
-                  <span class="block text-sm text-white/75">Nächster Start</span>
-                  <span class="font-serif text-xl leading-tight">Termin in Planung</span>
+                  <span class="block text-sm text-white/75">Start</span>
+                  <span class="font-serif text-xl leading-tight">auf Anfrage</span>
+                  <span class="mt-1.5 block text-xs text-white/80">live online · deutschlandweit</span>
                 </p>
               )
             }
@@ -227,8 +222,7 @@ const schema =
               <a href="#anfrage" class="font-semibold text-white underline underline-offset-4 hover:no-underline" data-kurzanfrage data-anfrage-bereich={kurzBereich} data-anfrage-kurs={kurs.id}>Kurz fragen – nur Name und E-Mail</a>
             </p>
           )}
-          {buchbar && !coaching && <p class="mt-3 text-sm text-white/85" data-kopf-zahler>Rechnung an dich oder deinen Betrieb · ab 3 Personen 10 % Rabatt</p>}
-          {!coaching && !naechster && <p class="mt-3 text-sm text-white/80">Merk dir den Kurs unverbindlich vor.</p>}
+          {!coaching && <p class="mt-3 text-sm text-white/85" data-kopf-zahler>Rechnung an dich oder deinen Betrieb · ab 3 Personen 10 % Rabatt</p>}
         </div>
 
         <p class="kopf-text max-w-2xl text-lg text-gedaempft">{d.kurzbeschreibung}</p>
@@ -336,7 +330,7 @@ const schema =
 
       <!-- Termine -->
       <section id="termine" aria-labelledby="termine-titel" class="abschnitt">
-        <h2 id="termine-titel" class="text-3xl sm:text-4xl">Termine</h2>
+        <h2 id="termine-titel" class="text-3xl sm:text-4xl">Start &amp; Anmeldung</h2>
         {
           coaching ? (
             <div class="mt-6 rounded-2xl bg-white p-6 ring-1 ring-base-300" data-termine-coaching>
@@ -344,28 +338,24 @@ const schema =
               <p class="mt-2 text-gedaempft">
                 Du schilderst dein Anliegen und deinen Prüfungszeitraum, wir stimmen passende Online-Termine ab. Die Anfrage ist unverbindlich – verbindlich wird es erst mit deiner Zusage und unserer Bestätigung per E-Mail.
               </p>
-              <a href={href(`/anmeldung/?kurs=${kurs.id}`)} class="btn btn-secondary mt-5 rounded-full px-6">
+              <a href="#kurz-fragen" class="btn btn-secondary mt-5 rounded-full px-6">
                 Coaching anfragen
               </a>
               {!entwurf && <Risikoumkehr variante="coaching" class="mt-4" />}
             </div>
           ) : (
-            <div data-termine-liste>
-              {termine.length > 0 && (
-                <>
-                  {pruefungskurs && <p class="mt-3 max-w-2xl text-gedaempft">Jeder Kurs endet kurz vor dem bundesweiten schriftlichen Prüfungstag. Maßgeblich ist die Einladung deiner IHK.</p>}
-                  <ul class="mt-6 grid gap-4">
-                    {termine.map((t) => (
-                      <TerminKarte kurs={kurs} termin={t} />
-                    ))}
-                  </ul>
-                  {!entwurf && <Risikoumkehr ausfall class="mt-5" />}
-                </>
-              )}
-              <div class="mt-6 rounded-2xl bg-white p-6 ring-1 ring-base-300" data-termine-leer hidden={termine.length > 0}>
-                <p class="text-lg font-semibold">Termin in Planung</p>
-                <p class="mt-2 text-gedaempft">Für diesen Kurs steht noch kein Termin fest. Merk dir den Kurs unverbindlich vor – wir melden uns, sobald es einen Termin gibt.</p>
-                {(termine.length === 0 || !entwurf) && (
+            <div data-termine-anfrage>
+              <div class="mt-6 rounded-2xl bg-white p-6 ring-1 ring-base-300">
+                <p class="text-lg font-semibold">Start auf Anfrage</p>
+                <p class="mt-2 max-w-2xl text-gedaempft">
+                  Diesen Kurs starten wir nach Absprache – als feste Lerngruppe oder individuell für deinen Betrieb,
+                  live online und deutschlandweit. Sag uns kurz Bescheid, dann stimmen wir einen passenden Zeitraum mit dir ab.
+                  Deine Anfrage ist kostenlos und unverbindlich.
+                </p>
+                {pruefungskurs && <p class="mt-3 max-w-2xl text-gedaempft">Wir legen die Prüfungsvorbereitung so, dass sie kurz vor deinem bundesweiten schriftlichen Prüfungstag endet. Maßgeblich ist die Einladung deiner IHK.</p>}
+                {mitKurzanfrage ? (
+                  <a href="#kurz-fragen" class="btn btn-secondary mt-5 rounded-full px-6">Jetzt unverbindlich anfragen</a>
+                ) : (
                   <a href={href(interesseUrl(kurs))} class="btn btn-secondary mt-5 rounded-full px-6" data-interesse>
                     Interesse vormerken<span class="sr-only">: {d.titel}</span>
                   </a>
@@ -506,8 +496,8 @@ const schema =
         <ul class="mt-4 grid gap-1.5 border-t border-base-300 pt-4 text-sm">
           {umfang && <li>{umfang}</li>}
           {!coaching && <li>{d.dauer}</li>}
-          <li>live-online</li>
-          {naechster && <li class="font-semibold">Start {formatDatum(naechster.start)}</li>}
+          <li>live-online · deutschlandweit</li>
+          <li class="font-semibold">Start auf Anfrage</li>
         </ul>
         <a href={aktion.url} class="btn btn-secondary mt-5 w-full rounded-full">{aktion.text}</a>
         {buchbar && <Risikoumkehr variante={coaching ? 'coaching' : 'kurs'} klein class="mt-4" />}
@@ -525,7 +515,6 @@ const schema =
       <a href={aktion.url} class="btn btn-accent shrink-0 rounded-full px-5">{aktionKurz}</a>
     </div>
   </div>
-  <TerminWaechter />
 </Basis>
 
 <style>

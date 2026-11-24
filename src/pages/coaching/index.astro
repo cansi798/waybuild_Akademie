@@ -18,7 +18,8 @@ const kurs = await getEntry('kurse', 'pruefungscoaching');
 if (!kurs) throw new Error('Kursdatei pruefungscoaching.md fehlt');
 const d = kurs.data;
 const pakete = d.pakete ?? [{ name: 'Einzelcoaching', betrag: d.preis.betrag, beschreibung: '1 × 60 Minuten' }];
-const anfrageUrl = href(`/anmeldung/?kurs=${kurs.id}`);
+// Auf Anfrage (Can #7206): zur Kurzanfrage der Coaching-Kursseite (Kurs vorausgewählt), statt zur Buchungsanfrage.
+const anfrageUrl = href(`/kurse/${kurs.id}/#kurz-fragen`);
 const sitzungen = (b: string) => Number(b.match(/(\d+)\s*×/)?.[1] ?? 1);
 
 const ICONS = [
@@ -138,7 +139,7 @@ const beweise = [BEWEIS_DOZENTEN, `ab ${formatEuro(d.preis.betrag)} je 60 Minute
                   {n > 1 ? `${formatEuro(Math.round((p.betrag / n) * 100) / 100)} je Sitzung · ` : ''}Endpreis
                 </p>
                 <a
-                  href={`${anfrageUrl}&paket=${kategorieSlug(p.name)}`}
+                  href={anfrageUrl}
                   class:list={['btn mt-7 rounded-full', hervor ? 'btn-accent' : 'btn-secondary']}
                   data-coaching-anfrage
                 >
