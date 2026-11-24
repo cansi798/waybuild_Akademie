@@ -117,6 +117,8 @@ test.describe('Startseite: Berufsauswahl und Kurzanfrage', () => {
   for (const breite of [390, 1440]) {
     test(`axe 0 + kein H-Scroll bei ${breite} px (Start, Berufsseite)`, async ({ page }) => {
       test.setTimeout(120_000);
+      // reduzierte Bewegung: keine Zwischenzustände der Warum-Bühne (Überblendung) im Kontrast-Check (wie conversion.spec.ts)
+      await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.setViewportSize({ width: breite, height: 900 });
       for (const pfad of ['./', './pruefungsvorbereitung/fachinformatiker-anwendungsentwicklung/', './pruefungsvorbereitung/']) {
         await page.goto(pfad);
@@ -153,8 +155,9 @@ test('Berufssuche: Enter bei genau einem Treffer öffnet die Berufsseite (Loop 2
 
 test('Kopf „Anfragen“ behält den Seitenzusammenhang (Loop 21.11.)', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
+  // Kurse auf Anfrage (Can #7206): Kursseite hat die Kurzanfrage eingebettet → Kopf springt dorthin (#kurz-fragen).
   await page.goto('./kurse/ap1-it-berufe/');
-  await expect(page.locator('[data-kopf-anfrage]')).toHaveAttribute('href', /\/anmeldung\/\?kurs=ap1-it-berufe$/);
+  await expect(page.locator('[data-kopf-anfrage]')).toHaveAttribute('href', '#kurz-fragen');
   await page.goto('./pruefungsvorbereitung/fachinformatiker-systemintegration/');
   await expect(page.locator('[data-kopf-anfrage]')).toHaveAttribute('href', '#anfrage');
   await page.goto('./kontakt/');
@@ -164,7 +167,8 @@ test('Kopf „Anfragen“ behält den Seitenzusammenhang (Loop 21.11.)', async (
 test('Kopf „Anfragen“ auf /coaching/ führt zur Coaching-Anfrage (Loop 21.11.)', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('./coaching/');
-  await expect(page.locator('[data-kopf-anfrage]')).toHaveAttribute('href', /\/anmeldung\/\?kurs=pruefungscoaching/);
+  // Kurse auf Anfrage (Can #7206): Coaching läuft über die Kurzanfrage auf der Kursseite /kurse/pruefungscoaching/#kurz-fragen.
+  await expect(page.locator('[data-kopf-anfrage]')).toHaveAttribute('href', /\/kurse\/pruefungscoaching\/#kurz-fragen$/);
 });
 
 test('Kursseite: „Kurz fragen“ springt zur Kurzanfrage auf derselben Seite, Kurs vorausgewählt (MKT-021)', async ({ page }) => {
@@ -218,10 +222,16 @@ test('Kursseite mobil: Handlungsleiste weicht der eingebetteten Kurzanfrage (MKT
   await expect(leiste).toHaveClass(/ist-verdeckt/);
 });
 
-test('Coaching-Kursseite ohne eingebettete Kurzanfrage (eigene Anfrage)', async ({ page }) => {
+test('Coaching-Kursseite hat die eingebettete Kurzanfrage (Coaching auf Anfrage, Can #7206)', async ({ page }) => {
   await page.goto('./kurse/pruefungscoaching/');
-  await expect(page.locator('form#anfrage')).toHaveCount(0);
-  await expect(page.locator('[data-kurzanfrage]')).toHaveCount(0);
+  // Kurse auf Anfrage: auch Coaching führt zur Kurzanfrage direkt auf der Kursseite.
+  await expect(page.locator('[data-kurs-kurzanfrage] form#anfrage')).toHaveCount(1);
+  await expect(page.locator('[data-kurzanfrage]')).toHaveAttribute('href', '#anfrage');
+  // Kurs ist das Coaching vorgewählt; der Bereich (Thema) ist „pruefung“.
+  await expect(page.locator('#anfrage-kurs')).toHaveValue('pruefungscoaching');
+  await expect(page.locator('#anfrage-thema')).toHaveValue('pruefung');
+  await expect(page.locator('[data-hauptaktion]')).toHaveText('Coaching anfragen');
+  await expect(page.locator('[data-hauptaktion]')).toHaveAttribute('href', '#kurz-fragen');
 });
 
 test('Organization-Schema: nur belegte Angaben aus dem Impressum', async ({ page }) => {

@@ -61,211 +61,10 @@ async function keinHScroll(page: Page) {
   expect(r.sw, `scrollWidth ${r.sw} > clientWidth ${r.cw}`).toBeLessThanOrEqual(r.cw);
 }
 
-test.describe('Anmeldung', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.clock.setFixedTime(VOR_FRIST);
-  });
-
-  test('Kurs und Termin aus der Adresse vorausgewählt, Knopftext exakt', async ({ page }) => {
-    await page.goto(AP1);
-    await expect(feld(page, 'kurs')).toHaveValue('ap1-it-berufe');
-    await expect(feld(page, 'termin')).toHaveValue('ap1-2027-fruehjahr');
-    const knopf = page.locator('#anmeldung [data-absenden]');
-    // Rechtsmodell 21.11.2026: Formular = unverbindliche Buchungsanfrage, Vertrag erst per E-Mail (Teilnahmebedingungen Nr. 2)
-    await expect(knopf).toHaveText('Unverbindlich anfragen');
-    expect((await knopf.textContent())?.trim()).toBe('Unverbindlich anfragen');
-    await expect(page.locator('[data-ablauf-buchung]')).toContainText('Verbindlich wird es erst mit deiner Zusage und unserer Buchungsbestätigung per E-Mail.');
-    await expect(page.locator('[data-knopf-hinweis]')).toContainText('Kostenlos und unverbindlich.');
-    await expect(page.locator('[data-preis-gesamt]')).toHaveText('299,00 €');
-    if (istVorschau) await expect(page.locator('[data-demo-hinweis]').first()).toContainText('Demo-Modus');
-    else await expect(page.locator('[data-demo-hinweis]')).toHaveCount(0);
-    // Links an der Bestätigungsstelle (US-20 AK2)
-    await expect(page.locator('[data-feld-rahmen="agb"] a').first()).toHaveAttribute('href', /\/teilnahmebedingungen\/$/);
-    await expect(page.locator('[data-feld-rahmen="datenschutz"] a').first()).toHaveAttribute('href', /\/datenschutz\/$/);
-    await expect(page.locator('[data-feld-rahmen="agb"] a').nth(1)).toHaveAttribute('href', /\/widerruf\/$/);
-    // Kein Wertersatz-Haken in der Anfrage: das Verlangen gehört in die Zusage per E-Mail (§ 357a Abs. 2 BGB)
-    await expect(page.locator('[data-feld-rahmen="wertersatz"]')).toHaveCount(0);
-  });
-
-  test('ohne Parameter: Kurs wählen, Termine passend zum Kurs', async ({ page }) => {
-    await page.goto('anmeldung/');
-    await expect(feld(page, 'kurs')).toHaveValue('');
-    await feld(page, 'kurs').selectOption('ap2-fachinformatiker-systemintegration');
-    const werte = await feld(page, 'termin').locator('option').evaluateAll((o) => o.map((x) => (x as HTMLOptionElement).value).filter(Boolean));
-    expect(werte.length).toBeGreaterThan(0);
-    expect(werte.every((w) => w.startsWith('ap2-'))).toBe(true);
-    // Entwürfe nur in der Vorschau – dort gekennzeichnet
-    if (istVorschau) await expect(feld(page, 'kurs').locator('option', { hasText: '(Entwurf)' }).first()).toBeAttached();
-    else await expect(feld(page, 'kurs').locator('option', { hasText: 'Entwurf' })).toHaveCount(0);
-  });
-
-  test('Pflichtfelder bei „Ich zahle selbst“: Fehlertexte, aria, Fokus, Zusammenfassung', async ({ page }) => {
-    await page.goto(AP1);
-    await page.locator('input[name="zahlweg"][value="selbst"]').check();
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect(page).toHaveURL(/anmeldung\//);
-    await expect(fehler(page, 'p1_vorname')).toHaveText('Bitte gib deinen Vornamen ein.');
-    await expect(fehler(page, 'p1_nachname')).toHaveText('Bitte gib deinen Nachnamen ein.');
-    await expect(fehler(page, 'p1_email')).toHaveText('Bitte gib eine gültige E-Mail-Adresse ein, z. B. name@beispiel.de.');
-    await expect(fehler(page, 'strasse')).toHaveText('Bitte gib Straße und Hausnummer ein.');
-    await expect(fehler(page, 'plz')).toHaveText('Bitte gib eine gültige Postleitzahl ein.');
-    await expect(fehler(page, 'ort')).toHaveText('Bitte gib deinen Ort ein.');
-    await expect(fehler(page, 'agb')).toHaveText('Bitte bestätige, dass du Teilnahmebedingungen und Widerrufsbelehrung zur Kenntnis genommen hast.');
-    await expect(fehler(page, 'datenschutz')).toHaveText('Bitte bestätige, dass du die Datenschutzerklärung zur Kenntnis genommen hast.');
-    await expect(fehler(page, 'alter')).toContainText('Bitte bestätige, dass du volljährig bist');
-    await expect(page.locator('[data-feld-rahmen="alter"] label')).toContainText(
-      'Ich bin volljährig – oder meine Erziehungsberechtigten sind mit der Anmeldung einverstanden, oder mein Ausbildungsbetrieb meldet mich an.',
-    );
-    await expect(fehler(page, 'firma')).toBeHidden();
-    await expect(feld(page, 'firma')).toBeHidden();
-    // aria
-    await expect(feld(page, 'p1_vorname')).toHaveAttribute('aria-invalid', 'true');
-    await expect(feld(page, 'p1_vorname')).toHaveAttribute('aria-describedby', /anmeldung-p1_vorname-fehler/);
-    await expect(feld(page, 'p1_vorname')).toBeFocused();
-    const summary = page.locator('#anmeldung [data-fehler-summary]');
-    await expect(summary).toBeVisible();
-    await expect(summary).toHaveAttribute('role', 'alert');
-    await expect(summary).toContainText('Bitte prüfe 9 Angaben');
-    // Fehler verschwindet nach Korrektur
-    await feld(page, 'p1_vorname').fill('Lena');
-    await expect(fehler(page, 'p1_vorname')).toBeHidden();
-    await expect(feld(page, 'p1_vorname')).not.toHaveAttribute('aria-invalid', 'true');
-    // Inline: E-Mail beim Verlassen prüfen
-    await feld(page, 'p1_email').fill('lena@');
-    await feld(page, 'p1_email').blur();
-    await expect(fehler(page, 'p1_email')).toBeVisible();
-  });
-
-  test('Pflichtfelder bei „Mein Betrieb zahlt“', async ({ page }) => {
-    await page.goto(AP1);
-    await person1(page);
-    await page.locator('input[name="zahlweg"][value="betrieb"]').check();
-    await expect(feld(page, 'strasse')).toBeHidden();
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect(fehler(page, 'firma')).toHaveText('Bitte gib den Namen deines Betriebs ein.');
-    await expect(fehler(page, 'ansprechperson')).toHaveText('Bitte gib an, wer bei euch die Rechnung bearbeitet.');
-    await expect(fehler(page, 'firma_strasse')).toHaveText('Bitte gib Straße und Hausnummer ein.');
-    await expect(fehler(page, 'firma_plz')).toBeVisible();
-    await expect(fehler(page, 'firma_ort')).toBeVisible();
-    await expect(fehler(page, 'rechnung_email')).toHaveText('Bitte gib die E-Mail-Adresse für die Rechnung ein.');
-    await expect(fehler(page, 'bestellnummer')).toBeHidden(); // freiwillig
-    await expect(fehler(page, 'strasse')).toBeHidden();
-    await expect(feld(page, 'firma')).toBeFocused();
-  });
-
-  test('ohne Zahlweg: Hinweis am Auswahlfeld', async ({ page }) => {
-    await page.goto(AP1);
-    await person1(page);
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect(fehler(page, 'zahlweg')).toHaveText('Bitte wähle aus, wer die Rechnung bekommt.');
-    await expect(page.locator('input[name="zahlweg"]').first()).toHaveAttribute('aria-invalid', 'true');
-  });
-
-  test('1–5 Personen, Rabatt ab 3, Live-Preis', async ({ page }) => {
-    await page.goto(AP1);
-    const personen = feld(page, 'personen');
-    expect(await personen.locator('option').count()).toBe(5);
-    await expect(page.locator('[data-person="2"]')).toBeHidden();
-
-    await personen.selectOption('2');
-    await expect(page.locator('[data-person="2"]')).toBeVisible();
-    await expect(page.locator('[data-person="3"]')).toBeHidden();
-    await expect(page.locator('[data-preis-gesamt]')).toHaveText('598,00 €');
-    await expect(page.locator('[data-preis-rabatt-zeile]')).toBeHidden();
-
-    await personen.selectOption('3');
-    await expect(page.locator('[data-preis-gesamt]')).toHaveText('807,30 €');
-    await expect(page.locator('[data-preis-rabatt-zeile]')).toBeVisible();
-    await expect(page.locator('[data-preis-rabatt]')).toHaveText('−89,70 €');
-    await expect(page.locator('[data-auswahl-preis]')).toHaveText('807,30 €');
-
-    await personen.selectOption('5');
-    for (const n of [1, 2, 3, 4, 5]) await expect(page.locator(`[data-person="${n}"]`)).toBeVisible();
-    await expect(page.locator('[data-preis-gesamt]')).toHaveText('1.345,50 €');
-
-    // weitere Personen sind Pflicht, keine doppelten E-Mail-Adressen
-    await personen.selectOption('2');
-    await gueltigSelbst(page);
-    await feld(page, 'p2_vorname').fill('Ali');
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect(fehler(page, 'p2_nachname')).toHaveText('Bitte ergänze Vorname, Nachname und E-Mail für Person 2.');
-    await feld(page, 'p2_nachname').fill('Demir');
-    await feld(page, 'p2_email').fill('LENA@beispiel.de');
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect(fehler(page, 'p2_email')).toHaveText('Diese E-Mail-Adresse ist schon eingetragen.');
-  });
-
-  test('Anmeldeschluss vorbei: Termin nicht wählbar', async ({ page }) => {
-    await page.clock.setFixedTime(new Date('2027-01-15T09:00:00+01:00'));
-    await page.goto(AP1);
-    await expect(feld(page, 'termin').locator('option[value="ap1-2027-fruehjahr"]')).toBeDisabled();
-    await expect(feld(page, 'termin')).not.toHaveValue('ap1-2027-fruehjahr');
-  });
-
-  test('Demo-Modus: gültige Anmeldung führt ohne Versand zur Danke-Seite', async ({ page }) => {
-    test.skip(!istVorschau, 'Demo-Modus gibt es nur in der Vorschau');
-    let gesendet = false;
-    await page.route('**/api/**', (r) => {
-      gesendet = true;
-      return r.abort();
-    });
-    await page.goto(AP1);
-    await gueltigSelbst(page);
-    await expect(page.locator('[data-zusammenfassung]')).toContainText('Lena Muster');
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect(page).toHaveURL(danke('anmeldung'));
-    await expect(page.locator('h1:visible')).toHaveText('Danke – deine Buchungsanfrage ist angekommen');
-    await expect(page.locator('[data-danke-demo]')).toBeVisible();
-    await expect(page.locator('[data-danke-zeilen]')).toContainText('Lena Muster');
-    await expect(page.locator('[data-danke-zeilen]')).toContainText('299,00 €, alles inklusive');
-    await expect(page.locator('[data-danke-art="anmeldung"]')).toContainText('Deine Anfrage ist kostenlos und unverbindlich.');
-    expect(gesendet).toBe(false);
-  });
-});
-
-test.describe('Kursstart innerhalb der Widerrufsfrist', () => {
-  test('Anfrage geht ohne Wertersatz-Haken durch (Verlangen erst in der Zusage per E-Mail)', async ({ page }) => {
-    await page.clock.setFixedTime(IN_FRIST);
-    await page.goto(AP1);
-    await gueltigSelbst(page);
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect(page).toHaveURL(danke('anmeldung'));
-  });
-});
-
-test.describe('Coaching', () => {
-  test('Paketwahl statt Termin, unverbindliche Anfrage', async ({ page }) => {
-    await page.goto(`anmeldung/?kurs=pruefungscoaching&paket=${encodeURIComponent('Coaching-Paket')}`);
-    await expect(feld(page, 'termin')).toBeHidden();
-    await expect(feld(page, 'personen')).toBeHidden();
-    await expect(feld(page, 'alter')).toBeHidden();
-    await expect(page.locator('input[name="paket"][value="coaching-paket"]')).toBeChecked();
-    await expect(page.locator('[data-preis-gesamt]')).toHaveText('189,00 €');
-    await expect(page.locator('#anmeldung [data-absenden]')).toHaveText('Paket anfragen');
-    await page.locator('input[name="paket"][value="intensivbegleitung"]').check();
-    await expect(page.locator('[data-preis-gesamt]')).toHaveText('299,00 €');
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect(fehler(page, 'anliegen')).toHaveText('Beschreib kurz, wobei wir dir helfen sollen.');
-    await person1(page);
-    await page.locator('input[name="zahlweg"][value="selbst"]').check();
-    await feld(page, 'strasse').fill('Weg 2');
-    await feld(page, 'plz').fill('22846');
-    await feld(page, 'ort').fill('Norderstedt');
-    await feld(page, 'anliegen').fill('Rückmeldung zu meinem Projektantrag');
-    await feld(page, 'wunschzeiten').fill('ab März, abends');
-    await feld(page, 'datenschutz').check();
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect(page).toHaveURL(danke('coaching'));
-    await expect(page.locator('h1:visible')).toHaveText('Danke – deine Coaching-Anfrage ist angekommen');
-  });
-
-  test('unbekanntes Paket wird ignoriert, ohne Paket: Hinweis', async ({ page }) => {
-    await page.goto('anmeldung/?kurs=pruefungscoaching&paket=Gibt%20es%20nicht');
-    await expect(page.locator('input[name="paket"]:checked')).toHaveCount(0);
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect(fehler(page, 'paket')).toHaveText('Bitte wähle ein Paket aus.');
-  });
-});
+// Entfernt (Kurse auf Anfrage, Can #7206): die Beschreibblöcke „Anmeldung“, „Kursstart innerhalb der Widerrufsfrist“ und
+// „Coaching“. Die Seite /anmeldung/ gibt es nicht mehr (nur noch Weiterleitung auf /#anfrage); das AnmeldeFormular wird
+// nirgends mehr eingebunden. Kurs- und Coaching-Anfragen laufen über das AnfrageFormular (Kurzanfrage) – geprüft in
+// start-6771.spec.ts. Interesse- und Widerruf-Formular bleiben und werden unten weiter geprüft.
 
 test.describe('Interesse und Kontakt', () => {
   test('Interesse vormerken: Vorauswahl, Pflichtfelder, Danke', async ({ page }) => {
@@ -284,25 +83,13 @@ test.describe('Interesse und Kontakt', () => {
     await expect(page.locator('h1:visible')).toHaveText('Fast geschafft – bitte bestätige deine E-Mail-Adresse');
   });
 
-  test('Kontakt: Themen, Telefon-Platzhalter, Pflichtfelder', async ({ page }) => {
+  test('Kontakt: kein Formular mehr, E-Mail-Kontakt und Link zur Kurzanfrage', async ({ page }) => {
+    // Kurse auf Anfrage (Can #7206): das Kontaktformular wurde entfernt. /kontakt/ bietet nur noch E-Mail (mailto:info@…)
+    // und den Verweis auf die Kurzanfrage (/#anfrage).
     await page.goto('kontakt/');
-    await expect(page.locator('[data-telefon-platzhalter]')).toContainText('[Telefon folgt]');
-    await expect(page.getByRole('link', { name: 'info@waybuild-akademie.de' }).first()).toBeVisible();
-    const themen = await feld(page, 'thema', 'kontakt').locator('option').allTextContents();
-    expect(themen.slice(1)).toEqual(['Allgemeine Frage', 'Beratung zur Kurswahl', 'Anmeldung für meinen Betrieb', 'Prüfungscoaching']);
-    await feld(page, 'nachricht', 'kontakt').fill('kurz');
-    await page.locator('#kontakt [data-absenden]').click();
-    await expect(fehler(page, 'thema', 'kontakt')).toHaveText('Bitte wähle ein Thema aus.');
-    await expect(fehler(page, 'nachricht', 'kontakt')).toHaveText('Bitte schreib uns kurz, worum es geht.');
-    await expect(feld(page, 'name', 'kontakt')).toBeFocused();
-    await feld(page, 'name', 'kontakt').fill('Jan Peters');
-    await feld(page, 'email', 'kontakt').fill('jan@beispiel.de');
-    await feld(page, 'thema', 'kontakt').selectOption('beratung');
-    await feld(page, 'nachricht', 'kontakt').fill('Welcher Kurs passt zu mir?');
-    await feld(page, 'einwilligung', 'kontakt').check();
-    await page.locator('#kontakt [data-absenden]').click();
-    await expect(page).toHaveURL(danke('kontakt'));
-    await expect(page.locator('h1:visible')).toHaveText('Danke – deine Nachricht ist angekommen');
+    await expect(page.locator('form')).toHaveCount(0);
+    await expect(page.locator('a[href="mailto:info@waybuild-akademie.de"]').first()).toBeVisible();
+    await expect(page.locator('a[href$="/#anfrage"]').first()).toBeVisible();
   });
 });
 
@@ -339,43 +126,18 @@ test.describe('Widerruf (§ 356a BGB)', () => {
 test.describe('ohne JavaScript', () => {
   test.use({ javaScriptEnabled: false });
 
-  test('Anmeldung sendet ein normales POST an /api/anmeldung.php', async ({ page }) => {
-    await page.goto('anmeldung/');
-    const form = page.locator('#anmeldung');
-    await expect(form).toHaveAttribute('method', 'post');
-    await expect(form).toHaveAttribute('action', `${BASE}/api/anmeldung.php`);
-    // ohne JavaScript sind beide Zahlweg-Bereiche sichtbar
-    await expect(feld(page, 'strasse')).toBeVisible();
-    await expect(feld(page, 'firma')).toBeVisible();
-    let anfrage: { methode: string; daten: string } | null = null;
-    await page.route('**/api/anmeldung.php', async (r) => {
-      anfrage = { methode: r.request().method(), daten: r.request().postData() ?? '' };
-      await r.fulfill({ status: 200, contentType: 'text/html', body: '<p>ok</p>' });
-    });
-    await feld(page, 'kurs').selectOption('ap1-it-berufe');
-    await feld(page, 'termin').selectOption('ap1-2027-fruehjahr');
-    await gueltigSelbst(page);
-    await page.locator('#anmeldung [data-absenden]').click();
-    await expect.poll(() => anfrage?.methode).toBe('POST');
-    const daten = new URLSearchParams(anfrage!.daten);
-    expect(daten.get('kurs')).toBe('ap1-it-berufe');
-    expect(daten.get('termin')).toBe('ap1-2027-fruehjahr');
-    expect(daten.get('p1_email')).toBe('lena@beispiel.de');
-    expect(daten.get('zahlweg')).toBe('selbst');
-    expect(daten.get('website')).toBe('');
-  });
-
-  test('Interesse und Kontakt senden per POST an ihre PHP-Skripte', async ({ page }) => {
-    for (const [seite, form] of [['interesse/', 'interesse'], ['kontakt/', 'kontakt']]) {
-      await page.goto(seite);
-      await expect(page.locator(`#${form}`)).toHaveAttribute('method', 'post');
-      await expect(page.locator(`#${form}`)).toHaveAttribute('action', `${BASE}/api/${form}.php`);
-    }
+  // Entfernt (Kurse auf Anfrage, Can #7206): „Anmeldung sendet ein normales POST …“ – die Seite /anmeldung/ gibt es nicht mehr.
+  test('Interesse sendet per POST an sein PHP-Skript', async ({ page }) => {
+    // Kontakt hat kein Formular mehr (Can #7206) – nur noch das Interesse-Formular prüfen.
+    await page.goto('interesse/');
+    await expect(page.locator('#interesse')).toHaveAttribute('method', 'post');
+    await expect(page.locator('#interesse')).toHaveAttribute('action', `${BASE}/api/interesse.php`);
   });
 });
 
 test.describe('320 px ohne horizontales Scrollen', () => {
-  for (const seite of [AP1, 'anmeldung/?kurs=pruefungscoaching', 'interesse/', 'kontakt/', 'danke/?art=anmeldung', 'widerruf/']) {
+  // /anmeldung/ entfällt (Kurse auf Anfrage, Can #7206) – die Kurzanfrage auf 320 px prüft start-6771.spec.ts.
+  for (const seite of ['interesse/', 'kontakt/', 'danke/?art=anmeldung', 'widerruf/']) {
     test(seite, async ({ page }) => {
       await page.setViewportSize({ width: 320, height: 800 });
       await page.goto(seite);

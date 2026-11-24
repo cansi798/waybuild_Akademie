@@ -108,11 +108,9 @@ test.describe('Seiten (Vorschau-Build)', () => {
       for (const g of gruppen) await expect(page.locator(`[data-saeule-gruppe="${g}"] h2`)).toBeVisible();
     });
 
-    test('Termine und FAQ sind ohne JavaScript lesbar', async ({ page }) => {
-      await page.goto('./termine/');
-      expect(await page.locator('li[data-termin]:visible').count()).toBeGreaterThan(1);
+    test('FAQ ist ohne JavaScript lesbar', async ({ page }) => {
+      // Terminübersicht entfällt (Kurse auf Anfrage, Can #7206). FAQ bleibt offene Liste statt Akkordeon: Antworten ohne Klick sichtbar.
       await page.goto('./faq/');
-      // offene Liste statt Akkordeon: Antworten ohne Klick sichtbar
       const erste = page.locator('[data-faq-gruppe="allgemein"] [data-faq-eintrag]').first();
       await expect(erste).toBeVisible();
       await expect(erste).toContainText('Nein');
@@ -132,118 +130,64 @@ test.describe('Seiten (Vorschau-Build)', () => {
     await expect(page.locator('[data-anmelden]')).toHaveCount(0);
   });
 
-  test('Kursseiten: Sprungnavigation und Anmelde-Links mit Kurs und Termin', async ({ page }) => {
+  test('Kursseiten: Sprungnavigation gültig, keine alten Termin-/Anmelde-Reste', async ({ page }) => {
     test.setTimeout(120_000); // läuft über alle Kursseiten
-    await page.clock.setFixedTime(new Date('2026-12-01T10:00:00+01:00'));
     const slugs = await kursSlugs(page);
     expect(slugs.length).toBe(kursDateien.length);
-    let anmeldeLinks = 0;
     for (const slug of slugs) {
       await page.goto(`./kurse/${slug}/`);
       const nav = page.locator('nav[data-sprungnavigation]');
       await expect(nav, slug).toBeVisible();
       const ziele = await nav.locator('a').evaluateAll((els) => els.map((e) => [e.textContent?.trim(), e.getAttribute('href')]));
-      expect(ziele.map((z) => z[0]).slice(0, 5), slug).toEqual(['Überblick', 'Inhalte', 'Termine', 'Preis', 'Voraussetzungen']);
+      // Kurse auf Anfrage (Can #7206): kein „Termine“-Abschnitt mehr; die ersten vier Sprungziele sind fix.
+      expect(ziele.map((z) => z[0]).slice(0, 4), slug).toEqual(['Überblick', 'Inhalte', 'Preis', 'Voraussetzungen']);
       for (const [, ziel] of ziele) expect(await page.locator(ziel!).count(), `${slug} ${ziel}`).toBe(1);
       if (await page.locator('#faq').count()) expect(ziele.map((z) => z[0])).toContain('FAQ');
-
-      const paare = await page.locator('li[data-termin] a[data-anmelden]').evaluateAll((els) =>
-        els.map((a) => ({ href: (a as HTMLAnchorElement).href, termin: (a.closest('li[data-termin]') as HTMLElement).dataset.termin! })),
-      );
-      for (const p of paare) {
-        const u = new URL(p.href);
-        expect(u.pathname, slug).toMatch(/\/anmeldung\/$/);
-        expect(u.searchParams.get('kurs'), slug).toBe(slug);
-        expect(u.searchParams.get('termin'), slug).toBe(p.termin);
-        anmeldeLinks++;
-      }
+      // Keine festen Termine und keine Buchungs-/Anmelde-Links mehr auf der Kursseite.
+      expect(await page.locator('li[data-termin]').count(), slug).toBe(0);
+      expect(await page.locator('[data-anmelden]').count(), slug).toBe(0);
     }
-    expect(anmeldeLinks).toBeGreaterThanOrEqual(4);
   });
 
-  test('Kurse ohne Termin zeigen „Interesse vormerken“', async ({ page }) => {
-    test.setTimeout(120_000); // läuft über alle Kursseiten
+  test('Entwürfe zeigen „Interesse vormerken“ (freigegebene Kurse laufen auf Anfrage)', async ({ page }) => {
+    test.setTimeout(120_000); // läuft über die Entwurfs-Kursseiten
     const slugs = await kursSlugs(page);
-    let ohne = 0;
-    for (const slug of slugs) {
+    let geprueft = 0;
+    // Kurse auf Anfrage (Can #7206): freigegebene Kurse führen zur Kurzanfrage; Entwürfe (nur Vorschau) behalten das Vormerken.
+    for (const slug of entwuerfe) {
+      if (!slugs.includes(slug)) continue;
       await page.goto(`./kurse/${slug}/`);
-      const hatTermine = (await page.locator('li[data-termin]').count()) > 0;
-      const coaching = (await page.locator('[data-termine-coaching]').count()) > 0;
-      if (hatTermine || coaching) continue;
-      ohne++;
+      geprueft++;
       const link = page.locator('[data-interesse]');
       await expect(link, slug).toBeVisible();
       expect(new URL(await link.evaluate((a) => (a as HTMLAnchorElement).href)).search, slug).toBe(`?kurs=${slug}`);
       await expect(page.locator('[data-hauptaktion]'), slug).toHaveText('Interesse vormerken');
       await expect(page.locator(`[data-anmelden]`), slug).toHaveCount(0);
     }
-    expect(ohne).toBeGreaterThan(0);
-    // Kurskarte: Termin in Planung
-    await page.goto('./kurse/');
-    await expect(page.locator('[data-kurskarte="webentwicklung-html-css-javascript"]')).toContainText('Termin in Planung – Interesse vormerken');
+    expect(geprueft).toBeGreaterThan(0);
   });
 
-  test('Coaching: Kursseite und Coaching-Seite führen zur Anfrage', async ({ page }) => {
+  test('Coaching: Kursseite und Coaching-Seite führen zur Kurzanfrage', async ({ page }) => {
+    // Kurse auf Anfrage (Can #7206): Coaching führt zur Kurzanfrage auf der Kursseite (#kurz-fragen), keine Buchung mehr.
     await page.goto('./kurse/pruefungscoaching/');
-    await expect(page.locator('[data-hauptaktion]')).toHaveAttribute('href', /\/anmeldung\/\?kurs=pruefungscoaching$/);
-    // Entwurf mit Terminen: keine Anmeldung, kein Vormerken – nur Termine ansehen
+    await expect(page.locator('[data-hauptaktion]')).toHaveText('Coaching anfragen');
+    await expect(page.locator('[data-hauptaktion]')).toHaveAttribute('href', '#kurz-fragen');
+    // Entwurf: kein Anmelden – „Interesse vormerken“
     await page.goto('./kurse/wirtschaftsfachwirt-ihk/');
-    await expect(page.locator('[data-hauptaktion]')).toHaveText('Termine ansehen');
+    await expect(page.locator('[data-hauptaktion]')).toHaveText('Interesse vormerken');
     await expect(page.locator('[data-anmelden]')).toHaveCount(0);
     await page.goto('./coaching/');
     await expect(page.locator('[data-selbst-hinweis]')).toContainText('Beratung und Feedback – deine Prüfungsleistungen erstellst du selbst.');
     const preise = await page.locator('[data-pakete] li').allTextContents();
     expect(preise.join(' ')).toMatch(/69\s*€[\s\S]*189\s*€[\s\S]*299\s*€/);
-    const ziele = await page.locator('a[data-coaching-anfrage]').evaluateAll((els) => els.map((a) => new URL((a as HTMLAnchorElement).href).searchParams.get('kurs')));
+    // Die Coaching-Anfrage-Knöpfe springen zur Kurzanfrage der Coaching-Kursseite.
+    const ziele = await page.locator('a[data-coaching-anfrage]').evaluateAll((els) => els.map((a) => new URL((a as HTMLAnchorElement).href).pathname));
     expect(ziele.length).toBeGreaterThanOrEqual(3);
-    expect(new Set(ziele)).toEqual(new Set(['pruefungscoaching']));
+    for (const z of ziele) expect(z).toMatch(/\/kurse\/pruefungscoaching\/$/);
   });
 
-  test('Termine: chronologisch, vergangene ausgeblendet', async ({ page }) => {
-    await page.clock.setFixedTime(new Date('2026-12-01T10:00:00+01:00'));
-    await page.goto('./termine/');
-    await expect(page.locator('[data-ihk-einladung]')).toContainText('Maßgeblich ist die Einladung deiner IHK');
-    const lesen = () =>
-      page.locator('li[data-termin]:visible').evaluateAll((els) =>
-        els.map((e) => ({ start: (e as HTMLElement).dataset.start!, schluss: (e as HTMLElement).dataset.anmeldeschluss!, id: (e as HTMLElement).dataset.termin! })),
-      );
-    const vorher = await lesen();
-    expect(vorher.length).toBeGreaterThan(3);
-    expect(vorher.map((t) => t.start)).toEqual([...vorher.map((t) => t.start)].sort());
-    expect(vorher.every((t) => t.schluss >= '2026-12-01')).toBe(true);
-    expect(vorher.map((t) => t.id)).toContain('ap1-2027-fruehjahr');
-    const monate = await page.locator('[data-termin-gruppe]:visible').evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.terminGruppe!));
-    expect(monate).toEqual([...monate].sort());
-
-    // Zeit läuft weiter: Anmeldeschluss AP1 Frühjahr (14.01.2027) ist vorbei
-    await page.clock.setFixedTime(new Date('2027-02-01T10:00:00+01:00'));
-    await page.reload();
-    await expect(page.locator('li[data-termin="ap1-2027-fruehjahr"]')).toBeHidden();
-    await expect(page.locator('li[data-termin="ap2-2027-sommer"]')).toBeVisible();
-    await expect(page.locator('[data-termin-gruppe="2027-01"]')).toBeHidden();
-    const nachher = await lesen();
-    expect(nachher.every((t) => t.schluss >= '2027-02-01')).toBe(true);
-    await expect(page.locator('[data-treffer]')).toHaveText(`${nachher.length} Termine`);
-
-    // Kursseite blendet den abgelaufenen Termin ebenfalls aus
-    await page.goto('./kurse/ap1-it-berufe/');
-    await expect(page.locator('li[data-termin="ap1-2027-fruehjahr"]')).toBeHidden();
-    await expect(page.locator('li[data-termin="ap1-2027-herbst"]')).toBeVisible();
-  });
-
-  test('Termine: Filter nach Säule', async ({ page }) => {
-    await page.goto('./termine/?saeule=pruefungsvorbereitung');
-    await expect(page.locator('[data-filter-saeule="ihk-pruefung"]')).toHaveAttribute('aria-pressed', 'true');
-    expect(await page.locator('li[data-termin]:visible:not([data-saeule="ihk-pruefung"])').count()).toBe(0);
-    await page.locator('[data-filter-saeule=""]').click();
-    const alle = await page.locator('li[data-termin]:visible').count();
-    expect(alle).toBeGreaterThan(await page.locator('li[data-termin][data-saeule="ihk-pruefung"]').count());
-    for (const a of await page.locator('li[data-termin]:visible a[data-anmelden]').all()) {
-      const u = new URL(await a.evaluate((x) => (x as HTMLAnchorElement).href));
-      expect(u.searchParams.get('kurs')).toBeTruthy();
-      expect(u.searchParams.get('termin')).toBeTruthy();
-    }
-  });
+  // Entfernt (Kurse auf Anfrage, Can #7206): „Termine: chronologisch, vergangene ausgeblendet“ und „Termine: Filter nach Säule“.
+  // /termine/ ist nur noch eine Weiterleitung auf /kurse/ – es gibt keine Terminliste und keine Terminfilter mehr.
 
   test('320 px: kein horizontales Scrollen, auch beim längsten Kurstitel', async ({ page }) => {
     test.setTimeout(120_000); // läuft über alle Kursseiten
@@ -252,7 +196,7 @@ test.describe('Seiten (Vorschau-Build)', () => {
     const titel = await page.locator('li[data-kurs] h3').evaluateAll((els) => els.map((e) => e.textContent?.trim() ?? ''));
     const laengster = slugs[titel.reduce((m, t, i) => (t.length > titel[m].length ? i : m), 0)];
     await keinHScroll(page, '/kurse/');
-    for (const s of ['termine/', 'pruefungsvorbereitung/', 'coaching/', 'ueber-uns/', 'faq/', `kurse/${laengster}/`, ...slugs.map((x) => `kurse/${x}/`)]) {
+    for (const s of ['pruefungsvorbereitung/', 'coaching/', 'ueber-uns/', 'faq/', 'kontakt/', `kurse/${laengster}/`, ...slugs.map((x) => `kurse/${x}/`)]) {
       await page.goto(`./${s}`);
       await keinHScroll(page, s);
     }
@@ -273,11 +217,13 @@ test.describe('Seiten (Vorschau-Build)', () => {
       const box = await leiste.boundingBox();
       return box ? Math.round(box.y + box.height) : 9999;
     }).toBeLessThanOrEqual(845);
-    await expect(leiste.getByRole('link')).toHaveAttribute('href', /\/anmeldung\/\?kurs=ap1-it-berufe$/);
+    // Kurse auf Anfrage (Can #7206): die Leiste springt zur eingebetteten Kurzanfrage (#kurz-fragen).
+    await expect(leiste.getByRole('link')).toHaveAttribute('href', '#kurz-fragen');
   });
 
   test('strukturierte Daten: JSON-LD ist gültiges JSON', async ({ page }) => {
-    const seiten = ['kurse/', 'kurse/ap1-it-berufe/', 'kurse/ap2-fachinformatiker-systemintegration/', 'kurse/pruefungscoaching/', `kurse/${entwuerfe[0]}/`, 'termine/', 'pruefungsvorbereitung/', 'coaching/', 'ueber-uns/', 'faq/'];
+    // /termine/ entfällt (Kurse auf Anfrage, Can #7206 – nur noch Weiterleitung ohne JSON-LD).
+    const seiten = ['kurse/', 'kurse/ap1-it-berufe/', 'kurse/ap2-fachinformatiker-systemintegration/', 'kurse/pruefungscoaching/', `kurse/${entwuerfe[0]}/`, 'pruefungsvorbereitung/', 'coaching/', 'ueber-uns/', 'faq/'];
     const typen: Record<string, string[]> = {};
     for (const s of seiten) {
       await page.goto(`./${s}`);
@@ -290,7 +236,8 @@ test.describe('Seiten (Vorschau-Build)', () => {
         for (const o of ([] as Record<string, unknown>[]).concat(daten as never)) typen[s].push(String(o['@type']));
       }
     }
-    expect(typen['kurse/ap1-it-berufe/']).toEqual(expect.arrayContaining(['Course', 'Event', 'FAQPage']));
+    // Kurse auf Anfrage (Can #7206): Course mit generischer Online-CourseInstance, keine Event-Einträge mehr.
+    expect(typen['kurse/ap1-it-berufe/']).toEqual(expect.arrayContaining(['Course', 'FAQPage']));
     expect(typen['faq/']).toContain('FAQPage');
     expect(typen['coaching/']).toContain('FAQPage');
     expect(typen[`kurse/${entwuerfe[0]}/`]).not.toContain('Course');
@@ -338,13 +285,11 @@ test.describe('Live-Build', () => {
     for (const e of entwuerfe) expect(sitemap, e).not.toContain(`/kurse/${e}/`);
   });
 
-  test('Katalog und Termine zeigen nur freigegebene Kurse', async ({ page }) => {
+  test('Katalog zeigt nur freigegebene Kurse', async ({ page }) => {
+    // Kurse auf Anfrage (Can #7206): keine Terminübersicht mehr – nur noch der Katalog.
     const slugs = await kursSlugs(page);
     expect(slugs.sort()).toEqual([...freigegeben].sort());
     await expect(page.locator('[data-entwurf-band]')).toHaveCount(0);
-    await page.goto('./termine/');
-    const kurse = await page.locator('li[data-termin]').evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.kurs!));
-    for (const k of kurse) expect(freigegeben).toContain(k);
     await page.goto('./kurse/?saeule=akademie');
     await expect(page.locator('[data-saeule-vorbereitung="akademie"]')).toBeVisible();
   });

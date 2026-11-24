@@ -58,7 +58,8 @@ for (const s of SEITEN) {
 }
 
 test('Fuß-Link „Vertrag widerrufen“ steht auf jeder Seite', async ({ page }) => {
-  for (const pfad of ['', 'kurse/', 'termine/', 'kontakt/', 'anmeldung/', 'gibt-es-nicht/']) {
+  // /termine/ und /anmeldung/ sind seit „Kurse auf Anfrage“ (Can #7206) reine Weiterleitungen ohne Fuß – daher hier raus.
+  for (const pfad of ['', 'kurse/', 'kontakt/', 'coaching/', 'gibt-es-nicht/']) {
     await page.goto(`./${pfad}`);
     const link = page.locator('footer [data-widerruf-link]');
     await expect(link, `/${pfad}`).toHaveCount(1);

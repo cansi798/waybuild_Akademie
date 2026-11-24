@@ -166,8 +166,9 @@ test.describe('Warum-Bühne', () => {
 
 test('alle Seiten ohne horizontales Scrollen bei 320 px', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 });
+  // /termine/ und /anmeldung/ sind seit „Kurse auf Anfrage“ (Can #7206) reine Weiterleitungen (meta-refresh) – nicht prüfbar.
   const seiten = ['', 'kurse/', 'kurse/ap1-it-berufe/', 'kurse/ap2-fachinformatiker-systemintegration/', 'kurse/pruefungscoaching/',
-    'termine/', 'pruefungsvorbereitung/', 'coaching/', 'ueber-uns/', 'faq/', 'kontakt/', 'anmeldung/', 'interesse/', 'danke/',
+    'pruefungsvorbereitung/', 'coaching/', 'ueber-uns/', 'faq/', 'kontakt/', 'interesse/', 'danke/',
     'impressum/', 'datenschutz/', 'teilnahmebedingungen/', 'widerruf/', 'gibt-es-nicht/',
     'pruefungsvorbereitung/fachinformatiker-systemintegration/', 'pruefungsvorbereitung/industriekaufmann/'];
   for (const s of seiten) {

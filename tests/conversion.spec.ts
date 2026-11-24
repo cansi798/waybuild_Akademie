@@ -13,73 +13,58 @@ const ersterTeil = (s: string) => s.split(' · ')[0];
 const normal = (s: string | null) => (s ?? '').replace(/\s+/g, ' ');
 
 test.describe('Risikoumkehr', () => {
-  test('Kursseite: am Preis im Kopf, unter den Terminen (mit Ausfall), in der Preisbox', async ({ page }) => {
-    await page.goto('./kurse/ap1-it-berufe/');
-    const kopf = page.locator('[data-start-kopf] [data-zusage="kurs"]');
-    await expect(kopf).toContainText(ersterTeil(KURS));
-    await expect(kopf.getByRole('link', { name: 'Teilnahmebedingungen' })).toHaveAttribute('href', /\/teilnahmebedingungen\/#storno$/);
-    await expect(page.locator('#termine [data-zusage="kurs"]')).toContainText(AUSFALL);
-    await expect(page.locator('[data-preis-zusagen]')).toContainText(AUSFALL);
-    // Ziel des Links existiert
+  // Kurse auf Anfrage (Can #7206): feste Termine, die Buchung am Preis und die Anmeldeseite /anmeldung/ sind entfallen –
+  // damit auch die Risikoumkehr auf Kursseite, Terminübersicht und Anmeldeseite. Übrig und geprüft: der allgemeine Hinweis
+  // auf /kurse/, die Coaching-Zusage auf /coaching/ und die verlinkten Teilnahmebedingungen. Die Zusage der Kurzanfrage
+  // (Startseite/Berufsseiten) prüft start-6771.spec.ts ([data-zusage-anfrage]).
+  test('Übersicht und Coaching nennen die Zusagen, Teilnahmebedingungen verlinkt', async ({ page }) => {
+    await page.goto('./kurse/');
+    await expect(page.locator('[data-zusage="kurs"]').first()).toContainText(ersterTeil(KURS));
+    await page.goto('./coaching/');
+    await expect(page.locator('#pakete [data-zusage="coaching"]')).toContainText(ersterTeil(COACHING));
+    // Ziel der Verweise existiert
     await page.goto('./teilnahmebedingungen/');
     await expect(page.locator('#storno')).toHaveCount(1);
     await expect(page.locator('#coaching')).toHaveCount(1);
   });
-
-  test('Kurskarten, Terminübersicht und Coaching', async ({ page }) => {
-    await page.goto('./pruefungsvorbereitung/');
-    await expect(page.locator('[data-kurskarte="ap1-it-berufe"] [data-zusage="kurs"]')).toContainText(ersterTeil(KURS));
-    await expect(page.locator('[data-kurskarte="pruefungscoaching"] [data-zusage="coaching"]')).toContainText(ersterTeil(COACHING));
-    await page.goto('./termine/');
-    await expect(page.locator('[data-zusage="kurs"]').first()).toContainText(AUSFALL);
-    await page.goto('./coaching/');
-    await expect(page.locator('#pakete [data-zusage="coaching"]')).toContainText(ersterTeil(COACHING));
-  });
-
-  test('Anmeldung: Zusage direkt über dem Absende-Knopf, Knopftext „Unverbindlich anfragen“', async ({ page }) => {
-    await page.goto('./anmeldung/?kurs=ap1-it-berufe');
-    const zeile = page.locator('#anmeldung [data-zusage="kurs"]');
-    await expect(zeile).toBeVisible();
-    await expect(zeile).toContainText(ersterTeil(KURS));
-    await expect(page.locator('#anmeldung [data-absenden]')).toHaveText('Unverbindlich anfragen');
-    const z = (await zeile.boundingBox())!;
-    const k = (await page.locator('#anmeldung [data-absenden]').boundingBox())!;
-    expect(z.y).toBeLessThan(k.y);
-    // Coaching: eigene Zusage
-    await page.goto('./anmeldung/?kurs=pruefungscoaching');
-    await expect(page.locator('#anmeldung [data-zusage="coaching"]')).toBeVisible();
-    await expect(page.locator('#anmeldung [data-zusage="kurs"]')).toBeHidden();
-  });
 });
 
 test.describe('Hauptaktion und Kursseite', () => {
-  test('Kursseite: „Unverbindlich anfragen“ mit einem Tap zum Formular; Listen: „Unverbindlich anfragen“ zu den Terminen', async ({ page }) => {
+  test('Kursseite: „Unverbindlich anfragen“ mit einem Tap zur Kurzanfrage; Kurskarten: „Unverbindlich anfragen“ zur Kursseite', async ({ page }) => {
     await page.goto('./kurse/ap1-it-berufe/');
     await expect(page.locator('[data-hauptaktion]')).toHaveText('Unverbindlich anfragen');
-    await expect(page.locator('[data-hauptaktion]')).toHaveAttribute('href', /\/anmeldung\/\?kurs=ap1-it-berufe$/);
+    // Kurse auf Anfrage (Can #7206): Hauptaktion springt zur eingebetteten Kurzanfrage (#kurz-fragen), nicht mehr zur Buchung.
+    await expect(page.locator('[data-hauptaktion]')).toHaveAttribute('href', '#kurz-fragen');
     await expect(page.locator('[data-kopf-verbindlich]')).toContainText('verbindlich erst mit deiner Zusage und unserer Buchungsbestätigung per E-Mail');
     await expect(page.locator('[data-cta-leiste] a')).toHaveText('Anfragen');
     await page.goto('./pruefungsvorbereitung/');
     const karte = page.locator('[data-kurskarte="ap1-it-berufe"] a.btn');
     await expect(karte).toContainText('Unverbindlich anfragen');
-    await expect(karte).toHaveAttribute('href', /\/kurse\/ap1-it-berufe\/#termine$/);
+    await expect(karte).toHaveAttribute('href', /\/kurse\/ap1-it-berufe\/#kurz-fragen$/);
     await expect(page.locator('[data-kurskarte="pruefungscoaching"] a.btn')).toContainText('Coaching anfragen');
     // Hero der Landing: genau ein Knopf
     await expect(page.locator('main section').first().locator('a.btn')).toHaveCount(1);
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto('./termine/');
+    await page.goto('./kurse/');
     await page.locator('[data-menue] > summary').click();
     // Seit #6771: Kopf mit „Anfragen“, im Mobilmenü „Kurs anfragen“ (Kurzanfrage auf der Startseite)
     await expect(page.locator('header a.btn-accent')).toHaveText(['Anfragen', 'Kurs anfragen']);
   });
 
-  test('mobil 390: Preis, nächster Start und Knopf in der ersten Ansicht', async ({ page }) => {
+  test('mobil 390: Preis, „Start auf Anfrage“ und Knopf in der ersten Ansicht', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     for (const slug of ['ap1-it-berufe', 'ap2-fachinformatiker-systemintegration']) {
       await page.goto(`./kurse/${slug}/`);
-      for (const sel of ['[data-kopf-preis]', '[data-kopf-start]', '[data-hauptaktion]']) {
-        const box = (await page.locator(sel).boundingBox())!;
-        expect(box.y + box.height, `${slug} ${sel}`).toBeLessThanOrEqual(844);
+      // Kurse auf Anfrage (Can #7206): statt eines festen Starttermins steht „Start auf Anfrage“ im Kopf. Geprüft werden
+      // Preis, die Start-Zeile und der Knopf (nicht der ganze Kopfblock, der weiter unten noch Hinweise trägt).
+      const stelle = {
+        Preis: page.locator('[data-kopf-preis]'),
+        Start: page.locator('[data-start-kopf] p').filter({ hasText: 'auf Anfrage' }),
+        Knopf: page.locator('[data-hauptaktion]'),
+      };
+      for (const [name, loc] of Object.entries(stelle)) {
+        const box = (await loc.boundingBox())!;
+        expect(box.y + box.height, `${slug} ${name}`).toBeLessThanOrEqual(844);
       }
     }
   });
@@ -165,7 +150,8 @@ for (const breite of [1280, 320]) {
     // reduzierte Bewegung: keine Zwischenzustände der Warum-Bühne (Überblendung) im Kontrast-Check
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.setViewportSize({ width: breite, height: 900 });
-    for (const s of ['kurse/ap1-it-berufe/', 'kurse/pruefungscoaching/', 'kurse/ki-manager/', 'pruefungsvorbereitung/', 'coaching/', 'faq/', 'kurse/', 'termine/', 'anmeldung/?kurs=ap1-it-berufe']) {
+    // /termine/ und /anmeldung/ sind seit „Kurse auf Anfrage“ (Can #7206) Weiterleitungen (meta-refresh) – nicht per axe prüfbar.
+    for (const s of ['kurse/ap1-it-berufe/', 'kurse/pruefungscoaching/', 'kurse/ki-manager/', 'pruefungsvorbereitung/', 'coaching/', 'faq/', 'kurse/', 'kontakt/']) {
       await page.goto(`./${s}`);
       await page.addScriptTag({ path: AXE });
       const verstoesse = await page.evaluate(async () => {

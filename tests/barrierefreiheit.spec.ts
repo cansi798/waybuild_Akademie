@@ -60,7 +60,8 @@ test('Fuß-Link „Barrierefreiheit“ steht auf allen Seiten des Builds', async
 });
 
 test('Fuß-Link führt von jeder Seite zur Erklärung', async ({ page }) => {
-  for (const pfad of ['', 'kurse/', 'termine/', 'impressum/', 'anmeldung/', 'gibt-es-nicht/']) {
+  // /termine/ und /anmeldung/ sind seit „Kurse auf Anfrage“ (Can #7206) reine Weiterleitungen ohne Fuß – daher hier raus.
+  for (const pfad of ['', 'kurse/', 'impressum/', 'kontakt/', 'gibt-es-nicht/']) {
     await page.goto(`./${pfad}`);
     const link = page.locator('footer [data-barrierefreiheit-link]');
     await expect(link, `/${pfad}`).toHaveCount(1);
