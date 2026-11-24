@@ -12,11 +12,17 @@ export default defineConfig({
   site,
   base,
   trailingSlash: 'always',
+  // Can #7206/#7207 (24.11.): Kurse laufen „auf Anfrage“, feste Termine und die Buchungsanfrage sind ausgeblendet.
+  // Alte Links/Lesezeichen auf /termine/ und /anmeldung/ landen ohne 404 bei den Kursen bzw. der Kurzanfrage.
+  redirects: {
+    '/termine/': '/kurse/',
+    '/anmeldung/': '/#anfrage',
+  },
   integrations: [
     sitemap({
-      // Nicht in die Sitemap: Danke-Seite und 404 (noindex), Interesse-Formular (noindex, nur mit ?kurs= sinnvoll)
-      // und /kurse/pruefungscoaching/ (noindex, Doppel von /coaching/ – SEO-Audit 13.11.2026).
-      filter: (page) => !/\/(danke|404|interesse|kurse\/pruefungscoaching)\/?$/.test(page),
+      // Nicht in die Sitemap: Danke-Seite und 404 (noindex), Interesse-Formular (noindex, nur mit ?kurs= sinnvoll),
+      // /kurse/pruefungscoaching/ (noindex, Doppel von /coaching/ – SEO-Audit 13.11.2026) und die Redirects /termine, /anmeldung.
+      filter: (page) => !/\/(danke|404|interesse|termine|anmeldung|kurse\/pruefungscoaching)\/?$/.test(page),
     }),
   ],
   vite: { plugins: [tailwindcss()] },

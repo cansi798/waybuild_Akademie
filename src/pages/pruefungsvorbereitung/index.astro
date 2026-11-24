@@ -8,26 +8,24 @@ import Ablauf from '../../components/seiten/Ablauf.astro';
 import WarumBuehne from '../../components/WarumBuehne.astro';
 import FaqVerzeichnis from '../../components/seiten/FaqVerzeichnis.astro';
 import IhkHinweis from '../../components/seiten/IhkHinweis.astro';
-import TerminKarte from '../../components/seiten/TerminKarte.astro';
-import TerminWaechter from '../../components/seiten/TerminWaechter.astro';
 import { brotkrumenSchema, faqSchema } from '../../components/seiten/schema';
 import { buchbareTermine, formatDatum, freigegebeneKurse, kurzname, type Kurs, type Termin } from '../../lib/kurse';
 import { href } from '../../lib/pfad';
-import Risikoumkehr from '../../components/seiten/Risikoumkehr.astro';
 import { fragen } from '../../lib/faq';
 import BerufWahl from '../../components/start/BerufWahl.astro';
 
 const kurse = (await freigegebeneKurse()).filter((k) => k.data.saeule === 'ihk-pruefung');
 // Kurse zuerst, Coaching zuletzt
 const karten = [...kurse.filter((k) => k.data.art === 'kurs'), ...kurse.filter((k) => k.data.art === 'coaching')];
-const termine: { kurs: Kurs; termin: Termin }[] = kurse
-  .filter((k) => k.data.art === 'kurs')
-  .flatMap((kurs) => buchbareTermine(kurs).map((termin) => ({ kurs, termin })))
-  .sort((a, b) => a.termin.start.getTime() - b.termin.start.getTime());
+// Can #7206 (24.11.): Prüfungsvorbereitung läuft auf Anfrage – keine festen Termine/Buchung anzeigen.
+const AUF_ANFRAGE = true;
+const termine: { kurs: Kurs; termin: Termin }[] = AUF_ANFRAGE
+  ? []
+  : kurse
+      .filter((k) => k.data.art === 'kurs')
+      .flatMap((kurs) => buchbareTermine(kurs).map((termin) => ({ kurs, termin })))
+      .sort((a, b) => a.termin.start.getTime() - b.termin.start.getTime());
 const pruefungen = termine.filter((t) => t.termin.pruefung);
-const jahre = [...new Set(termine.map((t) => t.termin.start.getUTCFullYear()))];
-const termineTitel = jahre.length === 1 ? `Termine ${jahre[0]}` : 'Nächste Termine';
-const erster = termine[0];
 
 // 10 Fragen aus der gemeinsamen Quelle (lib/faq.ts) – Reihenfolge entlang der Kundenreise.
 const FAQ = fragen('welcher-kurs', 'anmelden', 'bezahlen', 'betrieb', 'storno', 'gruppe', 'technik', 'verpasst', 'unterlagen', 'pruefung-anmeldung');
@@ -106,44 +104,29 @@ const FAQ = fragen('welcher-kurs', 'anmelden', 'bezahlen', 'betrieb', 'storno', 
     </div>
   </section>
 
-  <!-- Termine -->
-  <section id="termine" class="rahmen scroll-mt-24 py-16 sm:py-20" aria-labelledby="termine-titel" data-termine-liste>
-    <div class="flex flex-wrap items-end justify-between gap-4">
-      <div class="max-w-2xl">
-        <h2 id="termine-titel" class="text-3xl sm:text-4xl">{termineTitel}</h2>
-        <p class="mt-3 text-lg text-gedaempft">Jeder Kurs endet kurz vor dem schriftlichen Prüfungstag.</p>
-      </div>
-      <a href={href('/termine/')} class="link-fliess font-semibold">Alle Termine</a>
+  <!-- Start & Anmeldung (auf Anfrage) -->
+  <section id="termine" class="rahmen scroll-mt-24 py-16 sm:py-20" aria-labelledby="termine-titel">
+    <div class="max-w-2xl">
+      <h2 id="termine-titel" class="text-3xl sm:text-4xl">Start auf Anfrage</h2>
+      <p class="mt-3 text-lg text-gedaempft">Wir starten die Prüfungsvorbereitung nach Absprache – so, dass sie kurz vor deinem schriftlichen IHK-Prüfungstag endet. Maßgeblich ist die Einladung deiner IHK.</p>
     </div>
-    {
-      termine.length > 0 && (
-        <ul class="mt-8 grid gap-4">
-          {termine.map(({ kurs, termin }) => (
-            <TerminKarte kurs={kurs} termin={termin} mitKurs />
-          ))}
-        </ul>
-      )
-    }
-    {termine.length > 0 && <Risikoumkehr form="liste" ausfall class="mt-8" />}
-    <p class="mt-6 rounded-2xl bg-white p-6 ring-1 ring-base-300" data-termine-leer hidden={termine.length > 0}>
-      Neue Termine sind in Planung. <a href={href('/kurse/?saeule=ihk-pruefung')} class="link-fliess font-semibold">Kurs ansehen und Interesse vormerken</a>
-    </p>
+    <div class="mt-6 rounded-2xl bg-white p-6 ring-1 ring-base-300">
+      <p class="text-lg font-semibold">Unverbindlich anfragen</p>
+      <p class="mt-2 max-w-2xl text-gedaempft">Sag uns, für welchen Beruf und welche Prüfung du dich vorbereitest – wir melden uns mit einem passenden Zeitraum und allen Infos. Kostenlos und unverbindlich, live online und deutschlandweit.</p>
+      <a href={href('/kurse/?saeule=ihk-pruefung')} class="btn btn-secondary mt-5 rounded-full px-6">Kurse ansehen</a>
+    </div>
   </section>
 
   <!-- So läuft's -->
-  {
-    erster && (
-      <section class="border-t border-base-300 bg-base-200/60" aria-labelledby="ablauf-titel">
-        <div class="rahmen py-16 sm:py-20">
-          <h2 id="ablauf-titel" class="max-w-xl text-3xl sm:text-4xl">So läuft's</h2>
-          <p class="mt-3 max-w-xl text-lg text-gedaempft">Vier Schritte von der Anmeldung bis zur Prüfung – mit den Daten des nächsten Termins ({kurzname(erster.kurs)}).</p>
-          <div class="mt-12">
-            <Ablauf termin={erster.termin} />
-          </div>
-        </div>
-      </section>
-    )
-  }
+  <section class="border-t border-base-300 bg-base-200/60" aria-labelledby="ablauf-titel">
+    <div class="rahmen py-16 sm:py-20">
+      <h2 id="ablauf-titel" class="max-w-xl text-3xl sm:text-4xl">So läuft's</h2>
+      <p class="mt-3 max-w-xl text-lg text-gedaempft">Vier Schritte von der Anfrage bis zur Prüfung.</p>
+      <div class="mt-12">
+        <Ablauf />
+      </div>
+    </div>
+  </section>
 
   <!-- Was geprüft wird (aufklappbar) -->
   <section class="rahmen py-16 sm:py-20" aria-labelledby="pruefung-titel">
@@ -205,8 +188,8 @@ const FAQ = fragen('welcher-kurs', 'anmelden', 'bezahlen', 'betrieb', 'storno', 
   <section class="bg-tief text-white" aria-labelledby="cta-titel">
     <div class="rahmen flex flex-col gap-8 py-16 sm:py-20 md:flex-row md:items-center md:justify-between">
       <div class="max-w-xl">
-        <h2 id="cta-titel" class="text-3xl sm:text-4xl">Such dir deinen Termin aus.</h2>
-        <p class="mt-3 text-lg text-white/85">Unverbindlich anfragen, Buchungsangebot per E-Mail – verbindlich erst mit deiner Zusage und unserer Bestätigung. Rechnung an dich oder an deinen Betrieb.</p>
+        <h2 id="cta-titel" class="text-3xl sm:text-4xl">Starte deine IHK-Prüfungsvorbereitung.</h2>
+        <p class="mt-3 text-lg text-white/85">Unverbindlich anfragen, Antwort per E-Mail mit passendem Zeitraum und Angebot – verbindlich erst mit deiner Zusage und unserer Bestätigung. Rechnung an dich oder an deinen Betrieb.</p>
       </div>
       <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
         <a href="#termine" class="btn btn-accent btn-lg rounded-full px-7">Unverbindlich anfragen</a>
@@ -214,5 +197,4 @@ const FAQ = fragen('welcher-kurs', 'anmelden', 'bezahlen', 'betrieb', 'storno', 
       </div>
     </div>
   </section>
-  <TerminWaechter />
 </Basis>

@@ -50,6 +50,9 @@ const organisation = {
   // 23.11. (Loop „Nächste Iteration“): nur belegte Angaben aus dem Impressum (FIRMA in recht/status.ts).
   // Offen und deshalb NICHT enthalten: Telefon (FIRMA.telefon = null) und sameAs (keine bestätigten Profile).
   address: postanschrift,
+  // 24.11. (Can #7209): deutschlandweit – alle Kurse live online, bundesweit buchbar.
+  areaServed: { '@type': 'Country', name: 'Deutschland' },
+  availableLanguage: 'de',
   parentOrganization: {
     '@type': 'Organization',
     name: FIRMA.name,

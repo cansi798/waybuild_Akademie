@@ -60,11 +60,11 @@ const KATALOG = [
   { name: 'Prüfungsvorbereitung', zahl: `${berufe.length} Berufe`, url: href('/pruefungsvorbereitung/#berufe') },
   { name: 'IHK-Weiterbildung', zahl: anzahl('ihk-weiterbildung') ? `${anzahl('ihk-weiterbildung')} Kurse` : 'in Vorbereitung', url: href('/ihk-weiterbildung/') },
   { name: 'waybuild Weiterbildung', zahl: anzahl('akademie') ? `${anzahl('akademie')} Kurse` : 'in Vorbereitung', url: href('/waybuild-weiterbildung/') },
-  { name: 'Alle Termine', zahl: 'chronologisch', url: href('/termine/') },
+  { name: 'Alle Kurse', zahl: `${kurse.length} Kurse`, url: href('/kurse/') },
 ];
 
 const FAQ = [
-  { frage: 'Wann ist Unterricht?', antwort: `${UNTERRICHT.satz} Die genauen Abende stehen bei jedem Termin.` },
+  { frage: 'Wann ist Unterricht?', antwort: `${UNTERRICHT.satz} Die genauen Abende stimmen wir bei deiner Anfrage mit dir ab.` },
   { frage: 'Ist der Unterricht live oder aufgezeichnet?', antwort: 'Live. Du lernst in Echtzeit mit Dozent und Gruppe. Es gibt keine Aufzeichnungen und keinen Selbstlernkurs.' },
   { frage: 'Ist meine Anfrage verbindlich?', antwort: `Die Anfrage ist kostenlos. ${ZUSAGEN.anfrage}` },
   { frage: 'Ist das eine Veranstaltung der IHK?', antwort: 'Nein. Die waybuild Akademie ist ein unabhängiger Anbieter. Die Prüfung legst du bei deiner zuständigen IHK ab; die Termine legt sie fest.' },
@@ -73,7 +73,7 @@ const FAQ = [
 
 const FAKTEN: [string, string][] = [
   ['Anbieter', 'Die waybuild Akademie gehört zur Waybuild UG (haftungsbeschränkt) in Norderstedt.'],
-  ['Unterricht', `Alle Kurse finden live online statt, abends von ${UNTERRICHT.zeit}.`],
+  ['Unterricht', `Alle Kurse finden live online statt – deutschlandweit, abends von ${UNTERRICHT.zeit}.`],
   ['Prüfungsvorbereitung', `Vorbereitung auf die IHK-Abschlussprüfung (AP1/AP2) für ${berufe.length} Ausbildungsberufe${abPreis ? `, ab ${formatEuro(abPreis)} Endpreis` : ''}.`],
   ['Bezahlung', 'Per Rechnung an dich oder deinen Betrieb, keine Online-Zahlung.'],
   ['IHK', IHK_HINWEIS],
@@ -166,6 +166,40 @@ const kursListe = {
         ))
       }
     </ul>
+  </section>
+
+  <!-- Für Bildungsträger: Unterlagen & Lernplattform in Kooperation (Can #7211) -->
+  <section class="border-t border-base-300 bg-navy text-white" aria-labelledby="kooperation-titel">
+    <div class="rahmen py-12 sm:py-16">
+      <p class="text-sm font-semibold tracking-wide text-bernstein uppercase">Für Bildungsträger</p>
+      <h2 id="kooperation-titel" class="trennen mt-2 max-w-3xl text-3xl sm:text-4xl">
+        Unterlagen und Lernplattform – in Kooperation, aus einer Hand
+      </h2>
+      <p class="mt-4 max-w-2xl text-lg text-white/85">
+        Sie bieten AZAV-geförderte Weiterbildungen oder Umschulungen an? Machen Sie sich das Leben einfach:
+        Wir liefern fertige, erprobte Lehrunterlagen und eine eigene Lernplattform – von erfahrenen Entwicklern
+        gebaut und passgenau auf Ihre Kurse angepasst.
+      </p>
+      <ul class="mt-8 grid gap-4 sm:grid-cols-3">
+        <li class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/15">
+          <h3 class="font-sans text-base font-semibold">Fertige Standard-Unterlagen</h3>
+          <p class="mt-2 text-sm text-white/80">Erprobte Skripte, Übungen und Prüfungsvorbereitung – sofort einsetzbar und auf Ihre Lehrpläne angepasst.</p>
+        </li>
+        <li class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/15">
+          <h3 class="font-sans text-base font-semibold">Eigene Lernplattform</h3>
+          <p class="mt-2 text-sm text-white/80">Moderne Lernplattform von erfahrenen Entwicklern – Kurse, Materialien und Lernfortschritt an einem Ort, in Ihrem Design.</p>
+        </li>
+        <li class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/15">
+          <h3 class="font-sans text-base font-semibold">Passgenau für AZAV</h3>
+          <p class="mt-2 text-sm text-white/80">Abgestimmt auf Ihre AZAV-Weiterbildung und Umschulung – damit Zulassung und Förderung reibungslos passen.</p>
+        </li>
+      </ul>
+      <div class="mt-8">
+        <a href={`mailto:${AKADEMIE.mailInfo}?subject=Kooperation%3A%20Unterlagen%20und%20Lernplattform`} class="btn btn-accent rounded-full px-7">
+          In Kooperation anfragen
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- Kurz gefragt + Auf einen Blick -->

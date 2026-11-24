@@ -5,7 +5,7 @@ export const AKADEMIE = {
   mailInfo: 'info@waybuild-akademie.de',
   mailAnmeldung: 'anmeldung@waybuild-akademie.de',
   beschreibung:
-    'Live-Online-Kurse der waybuild Akademie: IHK-Prüfungsvorbereitung, Prüfungscoaching und berufsbegleitende Weiterbildung – mit festen Terminen und Endpreisen.',
+    'Live-Online-Kurse der waybuild Akademie: IHK-Prüfungsvorbereitung, Prüfungscoaching und berufsbegleitende Weiterbildung – deutschlandweit, live online, jederzeit auf Anfrage.',
 } as const;
 
 /** Pflichthinweis (Fuß + IHK-Kursseiten, US-19) – wörtlich laut Plan. */
@@ -24,7 +24,6 @@ export const MENUE = [
 export const FUSS_MENUE = [
   { name: 'Prüfungsvorbereitung', pfad: '/pruefungsvorbereitung/' },
   { name: 'Alle Kurse', pfad: '/kurse/' },
-  { name: 'Termine', pfad: '/termine/' },
   { name: 'Coaching', pfad: '/coaching/' },
   { name: 'Über uns', pfad: '/ueber-uns/' },
   { name: 'Kontakt', pfad: '/kontakt/' },
