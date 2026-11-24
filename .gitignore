@@ -12,3 +12,4 @@ playwright-report/
 # PlantUML/Java-Cache
 **/?/
 .java/
+node_modules
